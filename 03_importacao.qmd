@@ -1,6 +1,6 @@
 ---
 # Importação e exportação de dados
-title: "Importação e exportação de dados"
+title: "Importando dados"
 ---
 
 Em breve!
