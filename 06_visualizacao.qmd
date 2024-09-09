@@ -1,0 +1,20 @@
+---
+# Criar visualizações de dados com ggplot2 e ipeaplot
+title: "Visualizando dados"
+---
+
+Em breve!
+
+<!-- - Vocabulário ggplot2 -->
+
+<!-- - Gráficos de dispersão -->
+
+<!-- - Gráficos de linha -->
+
+<!-- - Gráficos de barra/coluna -->
+
+<!-- - Gráficos por subgrupos por color/fill ou facet -->
+
+<!-- - Salvando os gráficos -->
+
+<!-- - Mudanças de layout com ggthemes e ipeaplot -->

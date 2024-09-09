@@ -1,0 +1,14 @@
+---
+# Conhecendo conceitos básicos do R
+title: "Conceitos básicos"
+---
+
+Em breve!
+
+<!-- - Objetos: breve conceito -->
+
+<!-- - Tipos de objetos: vetores, matrizes, listas, data frames -->
+
+<!-- - Tipologia dos dados (lógico, numérico, caracter, fator) -->
+
+<!-- - Funções -->

@@ -1,0 +1,15 @@
+---
+# Ciclo completo com dados brasileiros (ministrado com apoio da COCD)
+title: "Ciclo completo com dados brasileiros"
+subtitle: "Módulo ministrado com apoio da COCD"
+---
+
+Em breve!
+
+<!-- - Pacotes de Dados (PNADcIBGE, censobr, geobr, sidrar, ipeadatar) -->
+
+<!-- - Leitura dos dados -->
+
+<!-- - Manipulação básica -->
+
+<!-- - Visualização dos dados (gráficos) -->

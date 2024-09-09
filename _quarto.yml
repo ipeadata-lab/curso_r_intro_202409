@@ -1,0 +1,56 @@
+# Inspirado em: 
+# - https://github.com/ipeaGIT/censobr_oficina_abep_2024/blob/main/_quarto.yml
+# - https://github.com/ipeaGIT/access_workshop_eit_2024/blob/main/_quarto.yml
+project:
+  type: website
+  output-dir: docs
+  
+execute:
+  freeze: auto
+
+lang: pt 
+
+website:
+  title: "Introdução à análise de dados no R"
+  site-url: "https://ipeadata-lab.github.io/curso_r_intro_202409"
+  repo-url: "https://github.com/ipeadata-lab/curso_r_intro_202409"
+  sidebar:
+    style: "docked"
+    search: true
+    tools: 
+      - icon: github
+        text: github
+        href: https://github.com/ipeadata-lab/curso_r_intro_202409
+    contents:
+      - index.qmd
+      - 00_projeto_eda.qmd
+      - 01_r-rstudio.qmd
+      - 02_conceitos-basicos-r.qmd
+      - 03_importacao.qmd
+      - 04_transformacao.qmd
+      - 05_analise.qmd
+      - 06_visualizacao.qmd
+      - 07_ciclo_completo.qmd
+      - 08_pesquisa_ipea.qmd
+  
+
+page-navigation: true
+
+page-footer: 
+  border: true
+  left: "Copyright 2024, Beatriz Milz e IPEA/COCD" 
+  right: 
+    - icon: github
+      href: https://github.com/ipeadata-lab/curso_r_intro_202409s
+
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+bibliography: references.bib
+
+editor: source
+

@@ -1,0 +1,12 @@
+---
+# Importação e exportação de dados
+title: "Importação e exportação de dados"
+---
+
+Em breve!
+
+<!-- - Importação e exportação de dados (txt, csv, excel, .rds, .dat) -->
+
+<!-- - Visão geral de pacotes de dados -->
+
+<!-- - Salvar dados localmente -->

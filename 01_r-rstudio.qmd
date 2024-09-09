@@ -1,0 +1,19 @@
+---
+# Iniciar um trabalho com o R e o Rstudio
+title: "Conhecendo o R e o Rstudio"
+---
+
+Em breve!
+
+
+<!-- - Instalação  -->
+
+<!-- - Apresentação do software e linguagem  -->
+
+<!-- - Working directory e Rproject -->
+
+<!-- - Scripts -->
+
+<!-- - Pacotes (conceito, instalação e uso) -->
+
+<!-- - Help, manuais e documentação -->

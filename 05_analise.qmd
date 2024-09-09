@@ -1,0 +1,13 @@
+---
+title: "Analisando dados"
+---
+
+Em breve!
+
+<!-- - Estatísticas descritivas -->
+
+<!-- - Estatísticas agregadas (summarize) -->
+
+<!-- - Regressão Linear -->
+
+<!-- - Extraindo tabelas de regressão (broom, stargazer) -->

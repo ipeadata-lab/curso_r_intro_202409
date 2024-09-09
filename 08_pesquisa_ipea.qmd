@@ -1,0 +1,11 @@
+---
+# Usar a infraestrutura de pesquisa do Ipea (módulo ministrado pela COCD)
+title: "Infraestrutura de pesquisa do Ipea"
+subtitle: "Módulo ministrado pela COCD"
+---
+
+Em breve!
+
+<!-- - Storages e bases de dados -->
+
+<!-- - Pacotes recomendados para “big data" -->

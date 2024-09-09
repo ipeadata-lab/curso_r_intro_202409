@@ -1,0 +1,16 @@
+---
+# Manipulando dados com dplyr
+title: "Transformando dados"
+---
+
+Em breve!
+
+<!-- - Seleção de linhas e colunas  -->
+
+<!-- - Criação e transformação de variáveis  -->
+
+<!-- - Formatos de variáveis e conversões (data, numérico, texto, etc.)  -->
+
+<!-- - Ordenamento de linhas -->
+
+<!-- - Merge básico de duas bases -->

@@ -1,0 +1,13 @@
+---
+title: "Introdução ao curso"
+---
+
+Este site apresenta o material de apoio para o curso **"Introdução à análise de dados no R"**, oferecido entre setembro e outubro de 2024.
+
+
+
+## Sobre os instrutores
+
+**Beatriz Milz** <br>
+[Email](mailto:milz.bea@gmail.com) | [GitHub](https://github.com/beatrizmilz) | [LinkedIn](https://www.linkedin.com/in/beatrizmilz/) |
+[ResearchGate](https://www.researchgate.net/profile/Beatriz-Milz) | [Currículo Lattes](http://lattes.cnpq.br/5150665880581477) | [Orcid](https://orcid.org/0000-0002-3064-4486)
