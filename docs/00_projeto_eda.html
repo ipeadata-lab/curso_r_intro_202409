@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introdução à análise de dados no R - Projeto de análise exploratória de dados</title>
+<title>Introdução à análise de dados no R - Projeto de Análise Exploratória de Dados com R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_r-rstudio.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./01_r_rstudio.html" rel="next">
+<link href="./00_instrucoes_pre_curso.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_projeto_eda.html">Projeto de análise exploratória de dados</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_projeto_eda.html">Projeto de Análise Exploratória de Dados com R</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -118,19 +118,25 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00_instrucoes_pre_curso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instruções pré-curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./00_projeto_eda.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Projeto de análise exploratória de dados</span></a>
+ <span class="menu-text">Projeto de Análise Exploratória de Dados com R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_r-rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conhecendo o R e o Rstudio</span></a>
+  <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conhecendo o R e o RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_conceitos-basicos-r.html" class="sidebar-item-text sidebar-link">
+  <a href="./02_conceitos_basicos_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conceitos básicos</span></a>
   </div>
 </li>
@@ -183,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projeto de análise exploratória de dados</h1>
+<h1 class="title">Projeto de Análise Exploratória de Dados com R</h1>
 </div>
 
 
@@ -200,7 +206,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Em breve!</p>
+<p>Com o objetivo de praticar os conceitos apresentados no curso, recomendamos que as pessoas participantes realizem um projeto de análise exploratória de dados paralelamente às aulas. Este projeto permitirá que você consolide o aprendizado adquirido, explorando dados reais e aplicando as ferramentas de análise discutidas em aula.</p>
+<p>Aproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas ou para os monitores. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.</p>
+<p>Os passos a seguir podem te ajudar a organizar o projeto de análise exploratória de dados:</p>
+<ol type="1">
+<li><p><strong>Escolha um conjunto de dados</strong>: Você pode escolher um conjunto de dados de sua preferência. Caso não tenha um conjunto de dados em mente, sugerimos que escolha um dos conjuntos de dados disponíveis nos seguintes pacotes:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/sidrar/vignettes/Introduction_to_sidrar.html">sidrar</a>: Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.</li>
+<li><a href="https://ipeagit.github.io/censobr/">censobr</a>: Dados de censos demográficos brasileiros.</li>
+<li><a href="https://cran.r-project.org/web/packages/ipeadatar/index.html">ipeadatar</a>: Acesso aos dados disponibilizados no <a href="http://www.ipeadata.gov.br/Default.aspx">Ipeadata</a>.</li>
+<li><a href="https://github.com/ipeaGIT/flightsbr">flightsbr</a>: Dados de voos no Brasil.</li>
+</ul></li>
+<li><p><strong>Crie um projeto no RStudio</strong>: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula <a href="./01_r_rstudio.html">Conhecendo o R e o RStudio</a>.</p></li>
+<li><p><strong>Importe os dados</strong>: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula <a href="./03_importacao.html">Importando dados</a>.</p></li>
+<li><p><strong>Objetivo da análise</strong>: Defina o objetivo da análise exploratória de dados. Quais são as perguntas que você deseja responder a partir desta base de dados?</p></li>
+<li><p><strong>Descreva o conjunto de dados brutos</strong>: Faça uma breve descrição do conjunto de dados escolhido. Qual é a unidade amostral (o que cada linha significa)? Quais são as variáveis presentes? Quais são os tipos de variáveis? Você pode incluir tabelas ou gráficos para facilitar a visualização das variáveis e sua distribuição. O que precisa ser feito para deixar a tabela “limpa”, ou seja, pronta para a análise?</p></li>
+<li><p><strong>Limpeza dos dados</strong>: Utilize o que você aprendeu na etapa passada para limpar o conjunto de dados. Isso pode incluir lidar com dados ausentes, remover outliers ou inconsistências. A aula <a href="./04_transformacao.html">Transformando dados</a> será útil nessa etapa.</p></li>
+<li><p><strong>Realize a análise exploratória de dados</strong>: Utilize os conceitos apresentados no curso para realizar a análise exploratória de dados do conjunto escolhido. Lembre-se do objetivo que você definiu anteriormente e busque responder às perguntas que você levantou. Inclua gráficos e tabelas para apresentar os resultados e escreva suas interpretações ao longo do processo. As aulas <a href="./05_analise.html">Analisando dados</a> e <a href="./06_visualizacao.html">Visualizando dados</a> serão úteis nessa etapa.</p></li>
+<li><p><strong>Próximos passos</strong>: Você pode apresentar os resultados para outras pessoas envolvidas no curso (participantes, ministrantes, monitores) e solicitar feedbacks.</p></li>
+</ol>
 
 
 
@@ -594,13 +618,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link  aria-label=" introdução="" ao="" curso"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introdução ao curso</span>
+      <a href="./00_instrucoes_pre_curso.html" class="pagination-link  aria-label=" instruções="" pré-curso"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Instruções pré-curso</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_r-rstudio.html" class="pagination-link" aria-label="Conhecendo o R e o Rstudio">
-        <span class="nav-page-text">Conhecendo o R e o Rstudio</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./01_r_rstudio.html" class="pagination-link" aria-label="Conhecendo o R e o RStudio">
+        <span class="nav-page-text">Conhecendo o R e o RStudio</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

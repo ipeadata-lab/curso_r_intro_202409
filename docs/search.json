@@ -10,23 +10,93 @@
     ]
   },
   {
-    "objectID": "00_projeto_eda.html",
-    "href": "00_projeto_eda.html",
-    "title": "Projeto de análise exploratória de dados",
-    "section": "",
-    "text": "Em breve!",
+    "objectID": "01_r_rstudio.html#working-directory-e-rproject",
+    "href": "01_r_rstudio.html#working-directory-e-rproject",
+    "title": "Conhecendo o R e o RStudio",
+    "section": "Working directory e Rproject",
+    "text": "Working directory e Rproject",
     "crumbs": [
-      "Projeto de análise exploratória de dados"
+      "Conhecendo o R e o RStudio"
     ]
   },
   {
-    "objectID": "02_conceitos-basicos-r.html",
-    "href": "02_conceitos-basicos-r.html",
-    "title": "Conceitos básicos",
+    "objectID": "01_r_rstudio.html#scripts",
+    "href": "01_r_rstudio.html#scripts",
+    "title": "Conhecendo o R e o RStudio",
+    "section": "Scripts",
+    "text": "Scripts",
+    "crumbs": [
+      "Conhecendo o R e o RStudio"
+    ]
+  },
+  {
+    "objectID": "01_r_rstudio.html#pacotes-conceito-instalação-e-uso",
+    "href": "01_r_rstudio.html#pacotes-conceito-instalação-e-uso",
+    "title": "Conhecendo o R e o RStudio",
+    "section": "Pacotes (conceito, instalação e uso)",
+    "text": "Pacotes (conceito, instalação e uso)",
+    "crumbs": [
+      "Conhecendo o R e o RStudio"
+    ]
+  },
+  {
+    "objectID": "01_r_rstudio.html#help-manuais-e-documentação",
+    "href": "01_r_rstudio.html#help-manuais-e-documentação",
+    "title": "Conhecendo o R e o RStudio",
+    "section": "Help, manuais e documentação",
+    "text": "Help, manuais e documentação",
+    "crumbs": [
+      "Conhecendo o R e o RStudio"
+    ]
+  },
+  {
+    "objectID": "01_r_rstudio.html#sugestões-de-leituras",
+    "href": "01_r_rstudio.html#sugestões-de-leituras",
+    "title": "Conhecendo o R e o RStudio",
+    "section": "Sugestões de leituras",
+    "text": "Sugestões de leituras\n\nLivro R para Ciência de Dados 2ed:\n\nFluxo de Trabalho: básico\nFluxo de Trabalho: scripts\nFluxo de Trabalho: obtendo ajuda",
+    "crumbs": [
+      "Conhecendo o R e o RStudio"
+    ]
+  },
+  {
+    "objectID": "03_importacao.html",
+    "href": "03_importacao.html",
+    "title": "Importando dados",
     "section": "",
     "text": "Em breve!",
     "crumbs": [
-      "Conceitos básicos"
+      "Importando dados"
+    ]
+  },
+  {
+    "objectID": "03_importacao.html#sugestões-de-leituras",
+    "href": "03_importacao.html#sugestões-de-leituras",
+    "title": "Importando dados",
+    "section": "Sugestões de leituras",
+    "text": "Sugestões de leituras\n\nLivro R para Ciência de Dados 2ed:\n\nImportação de dados",
+    "crumbs": [
+      "Importando dados"
+    ]
+  },
+  {
+    "objectID": "05_analise.html",
+    "href": "05_analise.html",
+    "title": "Analisando dados",
+    "section": "",
+    "text": "Em breve!",
+    "crumbs": [
+      "Analisando dados"
+    ]
+  },
+  {
+    "objectID": "05_analise.html#sugestões-de-leituras",
+    "href": "05_analise.html#sugestões-de-leituras",
+    "title": "Analisando dados",
+    "section": "Sugestões de leituras",
+    "text": "Sugestões de leituras\n\nLivro: Metodologia de Pesquisa Jurimétrica:\n\nCapítulo 3 - Estatísticas",
+    "crumbs": [
+      "Analisando dados"
     ]
   },
   {
@@ -35,6 +105,16 @@
     "title": "Transformando dados",
     "section": "",
     "text": "Em breve!",
+    "crumbs": [
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "04_transformacao.html#sugestões-de-leituras",
+    "href": "04_transformacao.html#sugestões-de-leituras",
+    "title": "Transformando dados",
+    "section": "Sugestões de leituras",
+    "text": "Sugestões de leituras\n\nLivro R para Ciência de Dados 2ed:\n\nTransformação de dados\nOrganização de dados",
     "crumbs": [
       "Transformando dados"
     ]
@@ -50,13 +130,13 @@
     ]
   },
   {
-    "objectID": "01_r-rstudio.html",
-    "href": "01_r-rstudio.html",
-    "title": "Conhecendo o R e o Rstudio",
-    "section": "",
-    "text": "Em breve!",
+    "objectID": "06_visualizacao.html#sugestões-de-leituras",
+    "href": "06_visualizacao.html#sugestões-de-leituras",
+    "title": "Visualizando dados",
+    "section": "Sugestões de leituras",
+    "text": "Sugestões de leituras\n\nLivro R para Ciência de Dados 2ed:\n\nVisualização de dados\nVsualizar\nVisualizar: Camadas\nVisualizar: Análise exploratória de dados\nVisualizar: Comunicação\n\nLivro: Metodologia de Pesquisa Jurimétrica:\n\nCapítulo 4 - Visualização",
     "crumbs": [
-      "Conhecendo o R e o Rstudio"
+      "Visualizando dados"
     ]
   },
   {
@@ -74,7 +154,7 @@
     "href": "index.html",
     "title": "Introdução ao curso",
     "section": "",
-    "text": "Este site apresenta o material de apoio para o curso “Introdução à análise de dados no R”, oferecido entre setembro e outubro de 2024.",
+    "text": "Este site apresenta o material de apoio para o curso “Introdução à análise de dados no R”, oferecido entre setembro e outubro de 2024. O curso será realizado de forma remota, com aulas ao vivo e atividades práticas.",
     "crumbs": [
       "Introdução ao curso"
     ]
@@ -90,23 +170,43 @@
     ]
   },
   {
-    "objectID": "05_analise.html",
-    "href": "05_analise.html",
-    "title": "Analisando dados",
+    "objectID": "00_projeto_eda.html",
+    "href": "00_projeto_eda.html",
+    "title": "Projeto de Análise Exploratória de Dados com R",
     "section": "",
-    "text": "Em breve!",
+    "text": "Com o objetivo de praticar os conceitos apresentados no curso, recomendamos que as pessoas participantes realizem um projeto de análise exploratória de dados paralelamente às aulas. Este projeto permitirá que você consolide o aprendizado adquirido, explorando dados reais e aplicando as ferramentas de análise discutidas em aula.\nAproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas ou para os monitores. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.\nOs passos a seguir podem te ajudar a organizar o projeto de análise exploratória de dados:\n\nEscolha um conjunto de dados: Você pode escolher um conjunto de dados de sua preferência. Caso não tenha um conjunto de dados em mente, sugerimos que escolha um dos conjuntos de dados disponíveis nos seguintes pacotes:\n\nsidrar: Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.\ncensobr: Dados de censos demográficos brasileiros.\nipeadatar: Acesso aos dados disponibilizados no Ipeadata.\nflightsbr: Dados de voos no Brasil.\n\nCrie um projeto no RStudio: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula Conhecendo o R e o RStudio.\nImporte os dados: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula Importando dados.\nObjetivo da análise: Defina o objetivo da análise exploratória de dados. Quais são as perguntas que você deseja responder a partir desta base de dados?\nDescreva o conjunto de dados brutos: Faça uma breve descrição do conjunto de dados escolhido. Qual é a unidade amostral (o que cada linha significa)? Quais são as variáveis presentes? Quais são os tipos de variáveis? Você pode incluir tabelas ou gráficos para facilitar a visualização das variáveis e sua distribuição. O que precisa ser feito para deixar a tabela “limpa”, ou seja, pronta para a análise?\nLimpeza dos dados: Utilize o que você aprendeu na etapa passada para limpar o conjunto de dados. Isso pode incluir lidar com dados ausentes, remover outliers ou inconsistências. A aula Transformando dados será útil nessa etapa.\nRealize a análise exploratória de dados: Utilize os conceitos apresentados no curso para realizar a análise exploratória de dados do conjunto escolhido. Lembre-se do objetivo que você definiu anteriormente e busque responder às perguntas que você levantou. Inclua gráficos e tabelas para apresentar os resultados e escreva suas interpretações ao longo do processo. As aulas Analisando dados e Visualizando dados serão úteis nessa etapa.\nPróximos passos: Você pode apresentar os resultados para outras pessoas envolvidas no curso (participantes, ministrantes, monitores) e solicitar feedbacks.",
     "crumbs": [
-      "Analisando dados"
+      "Projeto de Análise Exploratória de Dados com R"
     ]
   },
   {
-    "objectID": "03_importacao.html",
-    "href": "03_importacao.html",
-    "title": "Importando dados",
+    "objectID": "00_instrucoes_pre_curso.html",
+    "href": "00_instrucoes_pre_curso.html",
+    "title": "Instruções pré-curso",
+    "section": "",
+    "text": "Importante\n\n\n\nRecomendamos que todas as pessoas participantes instalem o R e o RStudio antes do início do curso. Para isso, siga as instruções disponíveis na página Instruções pré-curso.\nCaso tenha alguma dificuldade, entre em contato com a equipe do curso o quanto antes.",
+    "crumbs": [
+      "Instruções pré-curso"
+    ]
+  },
+  {
+    "objectID": "00_instrucoes_pre_curso.html#instalação-do-r-e-rstudio",
+    "href": "00_instrucoes_pre_curso.html#instalação-do-r-e-rstudio",
+    "title": "Instruções pré-curso",
+    "section": "Instalação do R e RStudio",
+    "text": "Instalação do R e RStudio\nPara a utilização do R, é necessário instalar o software R e o RStudio. O R é a linguagem de programação e o RStudio é um ambiente de desenvolvimento integrado (IDE - Integrated Development Environment) que facilita a utilização do R.\n\n\n\n\n\n\nAviso\n\n\n\nAtenção: O R deve ser instalado antes do RStudio.\n\n\n\nInstalação do R\nPara instalar o R, acesse o site CRAN e escolha o link de download de acordo com o seu sistema operacional:\n\n\n\nCaptura de tela do site CRAN\n\n\nInstale o R utilizando o instalador baixado.\n\n\nInstalação do RStudio\nApós instalar o R, acesse o site RStudio Desktop e escolha o link de download de acordo com o seu sistema operacional:\n\n\n\nCaptura de tela do site RStudio Desktop\n\n\nInstale o RStudio utilizando o instalador baixado.\n\n\nVerificação da instalação\nPara verificar se a instalação foi realizada com sucesso, abra o RStudio. Para isso, procure o ícone do RStudio no menu de programas do seu sistema operacional.\nA tela inicial do RStudio é semelhante à imagem abaixo:\n\n\n\nCaptura de tela da IDE RStudio\n\n\n\n\nVerificação da versão do R\nO R possui versões, e é importante verificar se a versão instalada é recente.\n\n\n\n\n\n\nImportante\n\n\n\nRecomendamos que utilizem o R na versão 4.1.0 ou superior.\nCaso a versão do R seja inferior a 4.1.0, recomendamos que atualizem o R para a versão mais recente.\n\n\nExiste mais de uma forma para verificar a versão do R. A forma mais simples é verificando o texto que aparece no painel “Console” ao abrir o RStudio:\n\n\n\nCaptura de tela da IDE RStudio\n\n\nOutra forma é utilizando o comando R.version.string. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é: 4.3.3:\n\nR.version.string\n\n[1] \"R version 4.3.3 (2024-02-29)\"\n\n\n\n\nInstalação de pacotes necessários\nDurante o curso, utilizaremos diversos pacotes do R. Para instalar os pacotes necessários, execute o seguinte comando no console do RStudio:\n\npacotes_necessarios &lt;- c(\"tidyverse\", \"janitor\", \"sidrar\", \"sf\", \"geobr\")\n\ninstall.packages(pacotes_necessarios)",
+    "crumbs": [
+      "Instruções pré-curso"
+    ]
+  },
+  {
+    "objectID": "02_conceitos_basicos_r.html",
+    "href": "02_conceitos_basicos_r.html",
+    "title": "Conceitos básicos",
     "section": "",
     "text": "Em breve!",
     "crumbs": [
-      "Importando dados"
+      "Conceitos básicos"
     ]
   }
 ]
