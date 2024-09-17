@@ -22,18 +22,23 @@ website:
         text: github
         href: https://github.com/ipeadata-lab/curso_r_intro_202409
     contents:
-      - index.qmd
-      - 00_instrucoes_pre_curso.qmd      
-      - 00_projeto_eda.qmd
-      - 01_r_rstudio.qmd
-      - 02_conceitos_basicos_r.qmd
-      - 03_importacao.qmd
-      - 04_transformacao.qmd
-      - 05_analise.qmd
-      - 06_visualizacao.qmd
-      - 07_ciclo_completo.qmd
-      - 08_pesquisa_ipea.qmd
-  
+      - section: "Pré-curso"
+        contents:
+        - index.qmd
+        - 00_instrucoes_pre_curso.qmd      
+        - 00_projeto_eda.qmd
+      - section: "Materiais"
+        contents:      
+        - 01_r_rstudio.qmd
+        - 02_conceitos_basicos_r.qmd
+        - 03_importacao.qmd
+        - 04_conhecendo.qmd
+        - 05_transformacao.qmd
+        - 06_organizacao.qmd
+        - 07_analise.qmd
+        - 08_visualizacao.qmd
+        - 09_ciclo_completo.qmd
+        - 10_pesquisa_ipea.qmd
 
 page-navigation: true
 
@@ -50,8 +55,10 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+    toc-depth: 5
 
 bibliography: references.bib
 
 editor: source
 
+code-link: true

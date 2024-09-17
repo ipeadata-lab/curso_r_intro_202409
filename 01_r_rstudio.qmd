@@ -3,6 +3,10 @@
 title: "Conhecendo o R e o RStudio"
 ---
 
+:::callout-warning
+Página em construção! Em breve. 
+:::
+
 ## Apresentação do software e linguagem R
 
 
@@ -27,7 +31,8 @@ Para instalar os pacotes necessários, execute o seguinte comando no console do 
 
 ```{r}
 #| eval: false
-pacotes_necessarios <- c("tidyverse", "janitor", "sidrar", "sf", "geobr")
+pacotes_necessarios <- c("tidyverse", "janitor", "sidrar", "sf", "geobr",
+                         "readxl", "writexl", "fs", "naniar", "skimr")
 
 install.packages(pacotes_necessarios)
 ```
@@ -38,7 +43,7 @@ install.packages(pacotes_necessarios)
 ## Help, manuais e documentação
 
 
-## Sugestões de leituras
+## Sugestões de materiais
 
 - Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
   - [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)

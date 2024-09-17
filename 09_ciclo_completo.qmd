@@ -4,7 +4,9 @@ title: "Ciclo completo com dados brasileiros"
 subtitle: "Módulo ministrado com apoio da COCD"
 ---
 
-Em breve!
+:::callout-warning
+Página em construção! Em breve. 
+:::
 
 <!-- - Pacotes de Dados (PNADcIBGE, censobr, geobr, sidrar, ipeadatar) -->
 

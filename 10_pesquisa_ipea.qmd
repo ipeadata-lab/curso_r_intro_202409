@@ -4,7 +4,9 @@ title: "Infraestrutura de pesquisa do Ipea"
 subtitle: "Módulo ministrado pela COCD"
 ---
 
-Em breve!
+:::callout-warning
+Página em construção! Em breve. 
+:::
 
 <!-- - Storages e bases de dados -->
 

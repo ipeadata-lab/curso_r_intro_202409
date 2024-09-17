@@ -1,19 +1,327 @@
 ---
 # Importação e exportação de dados
 title: "Importando dados"
+code-link: true
+
 ---
 
-Em breve!
+:::callout-warning
+Página em construção! Em breve. 
+:::
 
-<!-- - Importação e exportação de dados (txt, csv, excel, .rds, .dat) -->
+::: callout
+Conceitos prévios importantes para essa aula:
 
-<!-- - Visão geral de pacotes de dados -->
+- Pacotes, funções e objetos
 
-<!-- - Salvar dados localmente -->
+- Caminhos de arquivos
+:::
+
+O objetivo da etapa de importação é carregar a base de dados para o *Environment* do R.
+
+Essa etapa pode ser bem rápida (ou não!). Depende da base de dados que precisamos carregar.
+
+Nesta etapa, vamos aprender:
+
+-   Como importar dados de arquivos locais (arquivos que estão salvos no nosso computador);
+
+-   Como salvar dados localmente (salvar objetos do R em arquivos que ficarão salvos no nosso computador);
+
+-   Como importar dados usando pacotes de dados, como o `{sidrar}`.
+
+Ao final, teremos também uma lista com sugestão de materiais extras, caso queira aprofundar mais sobre o assunto.
 
 
-## Sugestões de leituras
+## Importando dados de um arquivo local
 
-- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
-  - [Importação de dados](https://cienciadedatos.github.io/pt-r4ds/data-import.html)
+Para importar dados de um arquivo local, você pode usar funções com o prefixo `read_` de pacotes como `{readr}` e `{readxl}`.
 
+### Arquivos de texto (ex: `.csv`)
+
+O pacote `{readr}` permite a leitura de arquivos de texto separados por algum delimitador, como `.csv`, `.tsv` e `.txt`.
+
+```{r}
+library(readr)
+```
+
+Para realizar a importação de um arquivo deste tipo, é importante saber qual é o delimitador utilizado no arquivo.
+
+A sigla CSV signfica *Comma Separated Values*, ou seja, valores separados por vírgula. Por padrão, a função `read_csv()` do pacote `{readr}` importa arquivos `.csv` com delimitador `,`.
+
+No Brasil, é comum a utilização do `;` como delimitador, e para isso podemos utilizar a função `read_csv2()`. Isso acontece pois utilizamos a vírgula como separador decimal (Ex: `4,20`) e isso pode causar problemas na importação de arquivos `.csv` com delimitador `,`.
+
+Caso o arquivo tenha outro delimitador, você pode utilizar a função `read_delim()` e especificar o delimitador com o argumento `delim`.
+
+Ao importar, uma mensagem aparecerá no console apresentando algumas informações sobre a importação, como:
+
+-   número de linhas;
+
+-   número de colunas;
+
+-   delimitador utilizado;
+
+-   tipos de colunas;
+
+-   nome das colunas por tipo;
+
+-   quantidade de colunas importadas por tipo.
+
+![Captura de tela do console do RStudio, mostrando a mensagem apresentada pela função read_csv()](images/03_output_read_csv.png){fig-align="center"}
+
+#### Arquivo de texto separado por vírgula (`,`)
+
+```{r}
+# Importando dados de um arquivo .csv
+dados_csv <- read_csv("dados/sidrar_4092.csv")
+```
+
+#### Arquivo de texto separado por ponto e vírgula (`;`)
+
+```{r}
+# Importando dados de um arquivo .csv
+# Com separador ponto e vírgula
+dados_csv_2 <- read_csv2("dados/sidrar_4092_2.csv")
+```
+
+### Arquivos Excel (ex: `.xlsx`)
+
+O pacote `{readxl}` permite a leitura de arquivos do Excel.
+
+```{r}
+# Carregando o pacote readxl
+library(readxl)
+```
+
+A função `excel_sheets()` do pacote `{readxl}` retorna o nome das planilhas (*Sheets*) disponíveis em um arquivo Excel:
+
+```{r}
+excel_sheets("dados/sidrar_4092.xlsx")
+```
+
+A função `read_excel()` do pacote `{readxl}` permite a leitura de uma planilha específica de um arquivo Excel, utilizando o argumento `sheet` para especificar o nome da planilha. Caso o argumento `sheet` não seja fornecido, a função importará a primeira planilha do arquivo.
+
+```{r}
+# Importando dados de uma planilha do Excel
+dados_excel <- read_excel("dados/sidrar_4092.xlsx", sheet = "Sheet1")
+```
+
+
+### Arquivo binário do R (`.rds`)
+
+A função `read_rds()` do pacote `{readr}` permite importar um arquivo binário do R.
+
+
+
+
+```{r}
+dados <- read_rds("dados/sidrar_4092.rds")
+```
+
+
+### Import Dataset do RStudio
+
+Caso você esteja com dificuldades, uma dica é usar a funcionalidade *Import Dataset* do RStudio. Essa funcionalidade permite utilizar uma interface *point-and-click* para importar dados, e apresenta o código utilizado para a importação. 
+
+::: callout-tip
+O mais importante ao usar essa funcionalidade é **copiar e colar o código gerado no seu script**, para que você possa reutilizá-lo posteriormente.
+:::
+
+
+Para acessar a funcionalidade *Import Dataset*, clique em *Import Dataset* no canto superior direito do painel *Environment* do RStudio. Caso o arquivo seja um Excel, escolha a opção `From Excel`. Caso o arquivo seja um texto separado por algum delimitador (como CSV), escolha a opção `From Text (readr)`.
+
+![Captura de tela do console do RStudio, mostrando o menu onde podemos encontrar o Import Dataset](images/03_import_dataset.png){fig-align="center"}
+
+## Salvando dados localmente
+
+Para salvar dados localmente, você pode usar funções com o prefixo `write_` de pacotes como `{readr}` e `{writexl}`. Essas funções solicitam dois argumentos principais: - Qual é o objeto que você queremos salvar? Esse objeto deve estar carregado no *Environment*. - Onde queremos salvar o arquivo? O caminho completo do arquivo deve ser fornecido entre aspas, contendo o diretório onde ele será salvo (em qual pasta do computador) e o nome do arquivo (com a extensão, por exemplo, `.csv`).
+
+Antes de salvar os dados, vamos criar um diretório onde salvaremos os arquivos. Você pode criar o diretório manualmente ou usar a função `fs::dir_create("nome_do_diretorio/")` para criar o diretório.
+
+```{r}
+#| eval: false
+library(fs)
+dir_create("dados_output")
+```
+
+::: callout-important
+Atenção: O diretório (pasta no computador) onde o arquivo será salvo deve existir previamente, se não gerará um erro similar a este:
+
+```         
+Error: Cannot open file for writing:
+* 'dados_output/sidrar_4092_salvo.csv'
+```
+:::
+
+### Arquivo de texto (ex: `.csv`)
+
+O pacote `{readr}` permite a escrita de arquivos de texto separados por algum delimitador, como `.csv`, `.tsv` e `.txt`.
+
+A função `write_csv2()` premite a escrita de arquivos `.csv` com separador `;`, que é o padrão no Brasil.
+
+```{r}
+#| eval: false
+write_csv2(dados, "dados_output/sidrar_4092.csv")
+```
+
+### Arquivo excel (ex: `.xlsx`)
+
+A função `write_xlsx()` do pacote `{writexl}` permite a escrita de arquivos do Excel.
+
+```{r}
+#| eval: false
+library(writexl)
+write_xlsx(dados, "dados_output/sidrar_4092.csv")
+```
+
+### Arquivo binário do R (`.rds`)
+
+A função `write_rds()` do pacote `{readr}` permite salvar um objeto do R em um arquivo binário do R.
+
+Esse tipo de arquivo é útil para salvar objetos do R, como dataframes, listas, vetores, sem perder a estrutura do objeto. 
+
+```{r}
+write_rds(dados, "dados_output/sidrar_4092.rds")
+```
+
+## Importando dados usando pacotes de dados
+
+Existem pacotes no R que permitem a importação de dados, como por exemplo: `{sidrar}`, `{geobr}`, `{censobr}`, entre outros.
+
+A parte boa de usar esses pacotes é que eles já possuem funções prontas para importar os dados. 
+
+A parte não-tão-boa é que os pacotes tem funções específicas para importar os dados, e você precisa aprender como usar essas funções. Recomendamos que você leia a documentação do pacote para entender como usar as funções de importação.
+
+Ao longo deste curso, vamos aprender a usar alguns desses pacotes para importar dados específicos.
+
+::: callout-important
+Esses pacotes, em geral, obtém as informações na internet. Isso pode demorar um pouco.
+
+É recomendável que você salve uma cópia local dos dados brutos após o download, e use-os para trabalhar localmente. Isso evita que você precise baixar os dados toda vez que for trabalhar com eles. 
+:::
+
+### Pacote `{sidrar}`
+
+O pacote `{sidrar}` permite a importação de dados do Sistema IBGE de Recuperação Automática (SIDRA).
+
+```{r}
+library(sidrar)
+```
+
+Para importar dados do SIDRA, você precisa saber o **código da tabela** que deseja importar. Uma forma de fazer isso é buscar no site do SIDRA, no IBGE: <https://sidra.ibge.gov.br/>.
+
+#### Buscando tabelas no SIDRA
+
+Outra forma é buscar por palavras-chave no próprio R, utilizando a função `search_sidra()`:
+
+```{r}
+# Exemplo de busca por palavras-chave: 
+# Tabelas com resultados da PNAD Contínua Trimestral
+search_sidra("PNADCT")
+```
+
+
+Neste curso, utilizaremos na maioria das aulas a [Tabela 4092 - Pessoas de 14 anos ou mais de idade, por condição em relação à força de trabalho e condição e ocupação](https://sidra.ibge.gov.br/Tabela/4092), proveniente da Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T).
+
+#### Buscando informações sobre a tabela
+
+Sabendo o código da tabela, você pode buscar informações sobre a tabela com a função `info_sidra()`. 
+
+```{r}
+info_4092 <- info_sidra("4092")
+```
+
+O resultado dessa função é uma lista, portanto podemos acessar os elementos da lista utilizando o operador `$`, seguido pelo nome do elemento.
+
+Primeiro, podemos ver os nomes dos elementos da lista:
+
+```{r}
+names(info_4092)
+```
+Agora podemos consultar os elementos dessa lista!
+
+##### Nome da tabela
+
+```{r}
+info_4092$table
+```
+
+##### Períodos
+
+Isso será importante para a importação dos dados, pois podemos informar qual período queremos importar. 
+
+```{r}
+info_4092$period
+```
+Esses dados estão salvos em um vetor de tamanho um, com textos separados por vírgula. Esse formato não é o ideal para usar na função de importação que veremos a seguir: o melhor é transformar em um vetor, onde cada elemento é um período.
+
+Podemos fazer isso com a função `strsplit()`:
+
+```{r}
+periodos_disponiveis <- strsplit(info_4092$period, ", ")[[1]]
+periodos_disponiveis
+```
+
+Esses são os períodos disponíveis para essa tabela no SIDRA.
+
+
+##### Variáveis
+
+Isso será importante para a importação dos dados, pois podemos informar quais variáveis queremos importar.
+
+```{r}
+info_4092$variable
+```
+
+##### Variáveis - Categorias
+
+```{r}
+info_4092$classific_category
+```
+
+##### Nível territorial
+
+Isso será importante para a importação dos dados, pois precisamos informar qual é o nível territorial a ser usado na importação.
+
+```{r}
+info_4092$geo
+```
+
+
+#### Importando a tabela
+
+A função `get_sidra()` do pacote `{sidrar}` permite importar dados do SIDRA.
+
+```{r}
+#| eval: false
+dados_brutos_4092 <- sidrar::get_sidra(
+  # Qual é o código da tabela que vamos usar?
+  x = 4092,
+  # Períodos: trimestres, vamos usar o vetor criado anteriormente
+  period = periodos_disponiveis,
+  # Nível territorial: Dados por UF
+  geo = "State"
+)
+
+```
+
+
+Lembrando que é importante salvar uma cópia local dos dados após o download. Assim, quando você for trabalhar com esses dados, não precisará baixá-los novamente.
+
+```{r}
+#| eval: false
+# Salvar localmente essa base de dados
+write_rds(dados_brutos_4092, "dados/sidrar_4092_bruto.rds")
+```
+
+```{r}
+#| eval: false
+# Importando os dados salvos localmente
+dados_brutos_4092 <- read_rds("dados/sidrar_4092_bruto.rds")
+```
+
+
+## Sugestões de materiais
+
+-   Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+    -   [Importação de dados](https://cienciadedatos.github.io/pt-r4ds/data-import.html)
+-   Vídeo [Como organizar seu banco de dados para análises estatísticas](https://youtu.be/wzfPR2oQ61A?si=jU4YwAU_n-xQggsD), por Fernanda Peres (30 minutos).

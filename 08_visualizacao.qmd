@@ -3,7 +3,9 @@
 title: "Visualizando dados"
 ---
 
-Em breve!
+:::callout-warning
+Página em construção! Em breve. 
+:::
 
 <!-- - Vocabulário ggplot2 -->
 
@@ -19,8 +21,7 @@ Em breve!
 
 <!-- - Mudanças de layout com ggthemes e ipeaplot -->
 
-
-## Sugestões de leituras
+## Sugestões de materiais
 
 - Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
   - [Visualização de dados](https://cienciadedatos.github.io/pt-r4ds/data-visualize.html)

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introdução à análise de dados no R - Transformando dados</title>
+<title>Introdução à análise de dados no R - Visualizando dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05_analise.html" rel="next">
-<link href="./03_importacao.html" rel="prev">
+<link href="./09_ciclo_completo.html" rel="next">
+<link href="./07_analise.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_transformacao.html">Transformando dados</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./08_visualizacao.html">Visualizando dados</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -110,72 +110,106 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Pré-curso</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução ao curso</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00_instrucoes_pre_curso.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Instruções pré-curso</span></a>
+ <span class="menu-text">Instalação</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00_projeto_eda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projeto de Análise Exploratória de Dados com R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Materiais</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_conceitos_basicos_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conceitos básicos</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_importacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_transformacao.html" class="sidebar-item-text sidebar-link active">
+  <a href="./04_conhecendo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conhecendo a base de dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_transformacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transformando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_analise.html" class="sidebar-item-text sidebar-link">
+  <a href="./06_organizacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrumando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_analise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analisando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_visualizacao.html" class="sidebar-item-text sidebar-link">
+  <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Visualizando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_ciclo_completo.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_ciclo_completo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ciclo completo com dados brasileiros</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_pesquisa_ipea.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_pesquisa_ipea.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -186,16 +220,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#sugestões-de-leituras" id="toc-sugestões-de-leituras" class="nav-link active" data-scroll-target="#sugestões-de-leituras">Sugestões de leituras</a></li>
+  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link active" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./08_visualizacao.html">Visualizando dados</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Transformando dados</h1>
+<h1 class="title">Visualizando dados</h1>
 </div>
 
 
@@ -212,19 +246,40 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Em breve!</p>
-<!-- - Seleção de linhas e colunas  -->
-<!-- - Criação e transformação de variáveis  -->
-<!-- - Formatos de variáveis e conversões (data, numérico, texto, etc.)  -->
-<!-- - Ordenamento de linhas -->
-<!-- - Merge básico de duas bases -->
-<section id="sugestões-de-leituras" class="level2">
-<h2 class="anchored" data-anchor-id="sugestões-de-leituras">Sugestões de leituras</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aviso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Página em construção! Em breve.</p>
+</div>
+</div>
+<!-- - Vocabulário ggplot2 -->
+<!-- - Gráficos de dispersão -->
+<!-- - Gráficos de linha -->
+<!-- - Gráficos de barra/coluna -->
+<!-- - Gráficos por subgrupos por color/fill ou facet -->
+<!-- - Salvando os gráficos -->
+<!-- - Mudanças de layout com ggthemes e ipeaplot -->
+<section id="sugestões-de-materiais" class="level2">
+<h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
 <li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
 <ul>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/data-transform.html">Transformação de dados</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/data-tidy.html">Organização de dados</a></li>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/data-visualize.html">Visualização de dados</a></li>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/visualize.html">Vsualizar</a></li>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/layers.html">Visualizar: Camadas</a></li>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/EDA.html">Visualizar: Análise exploratória de dados</a></li>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/communication.html">Visualizar: Comunicação</a></li>
+</ul></li>
+<li>Livro: <a href="https://livro.abj.org.br/">Metodologia de Pesquisa Jurimétrica</a>:
+<ul>
+<li><a href="https://livro.abj.org.br/04-visualizacao.html">Capítulo 4 - Visualização</a></li>
 </ul></li>
 </ul>
 
@@ -621,13 +676,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03_importacao.html" class="pagination-link  aria-label=" importando="" dados"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Importando dados</span>
+      <a href="./07_analise.html" class="pagination-link  aria-label=" analisando="" dados"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Analisando dados</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05_analise.html" class="pagination-link" aria-label="Analisando dados">
-        <span class="nav-page-text">Analisando dados</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./09_ciclo_completo.html" class="pagination-link" aria-label="Ciclo completo com dados brasileiros">
+        <span class="nav-page-text">Ciclo completo com dados brasileiros</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

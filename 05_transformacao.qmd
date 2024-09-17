@@ -3,7 +3,9 @@
 title: "Transformando dados"
 ---
 
-Em breve!
+:::callout-warning
+Página em construção! Em breve. 
+:::
 
 <!-- - Seleção de linhas e colunas  -->
 
@@ -15,7 +17,7 @@ Em breve!
 
 <!-- - Merge básico de duas bases -->
 
-## Sugestões de leituras
+## Sugestões de materiais
 
 - Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
   - [Transformação de dados](https://cienciadedatos.github.io/pt-r4ds/data-transform.html)

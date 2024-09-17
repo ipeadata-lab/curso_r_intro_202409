@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Introdução à análise de dados no R - Analisando dados</title>
+<title>Introdução à análise de dados no R - Arrumando dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -30,8 +60,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06_visualizacao.html" rel="next">
-<link href="./04_transformacao.html" rel="prev">
+<link href="./07_analise.html" rel="next">
+<link href="./05_transformacao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -40,8 +70,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -67,35 +96,25 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script>
-
-
-<link rel="stylesheet" href="styles.css">
+}</script><link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_analise.html">Analisando dados</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./06_organizacao.html">Arrumando dados</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -110,92 +129,121 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Pré-curso</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução ao curso</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00_instrucoes_pre_curso.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Instruções pré-curso</span></a>
+ <span class="menu-text">Instalação</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00_projeto_eda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projeto de Análise Exploratória de Dados com R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Materiais</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_conceitos_basicos_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conceitos básicos</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_importacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_transformacao.html" class="sidebar-item-text sidebar-link">
+  <a href="./04_conhecendo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conhecendo a base de dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_transformacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transformando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_analise.html" class="sidebar-item-text sidebar-link active">
+  <a href="./06_organizacao.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Arrumando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_analise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analisando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_visualizacao.html" class="sidebar-item-text sidebar-link">
+  <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualizando dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_ciclo_completo.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_ciclo_completo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ciclo completo com dados brasileiros</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_pesquisa_ipea.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_pesquisa_ipea.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
+      </ul>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#sugestões-de-leituras" id="toc-sugestões-de-leituras" class="nav-link active" data-scroll-target="#sugestões-de-leituras">Sugestões de leituras</a></li>
-  </ul>
-</nav>
+<li><a href="#padronizar-nome-das-colunas" id="toc-padronizar-nome-das-colunas" class="nav-link active" data-scroll-target="#padronizar-nome-das-colunas">Padronizar nome das colunas</a></li>
+  <li><a href="#sugest%C3%B5es-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugest%C3%B5es-de-materiais">Sugestões de materiais</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Analisando dados</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./06_organizacao.html">Arrumando dados</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Arrumando dados</h1>
 </div>
 
 
@@ -209,28 +257,92 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aviso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Página em construção! Em breve.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="va">dados_brutos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto_2.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 27000 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ";"
+chr (6): Nível Territorial, Unidade de Medida, Unidade da Federação, Trimest...
+dbl (7): Nível Territorial (Código), Unidade de Medida (Código), Valor, Unid...
 
-
-<p>Em breve!</p>
-<!-- - Estatísticas descritivas -->
-<!-- - Estatísticas agregadas (summarize) -->
-<!-- - Regressão Linear -->
-<!-- - Extraindo tabelas de regressão (broom, stargazer) -->
-<section id="sugestões-de-leituras" class="level2">
-<h2 class="anchored" data-anchor-id="sugestões-de-leituras">Sugestões de leituras</h2>
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<section id="padronizar-nome-das-colunas" class="level2"><h2 class="anchored" data-anchor-id="padronizar-nome-das-colunas">Padronizar nome das colunas</h2>
+<p>O pacote <code>janitor</code> possui uma função chamada <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code> que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># checar nome das colunas da base de dados</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dados_brutos</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Nível Territorial (Código)"                                             
+ [2] "Nível Territorial"                                                      
+ [3] "Unidade de Medida (Código)"                                             
+ [4] "Unidade de Medida"                                                      
+ [5] "Valor"                                                                  
+ [6] "Unidade da Federação (Código)"                                          
+ [7] "Unidade da Federação"                                                   
+ [8] "Trimestre (Código)"                                                     
+ [9] "Trimestre"                                                              
+[10] "Variável (Código)"                                                      
+[11] "Variável"                                                               
+[12] "Condição em relação à força de trabalho e condição de ocupação (Código)"
+[13] "Condição em relação à força de trabalho e condição de ocupação"         </code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># limpar nomes das colunas da base de dados, e salvar em um novo objeto</span></span>
+<span><span class="va">dados_renomeados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="va">dados_brutos</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># checar nome das colunas da base de dados renomeada</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dados_renomeados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "nivel_territorial_codigo"                                             
+ [2] "nivel_territorial"                                                    
+ [3] "unidade_de_medida_codigo"                                             
+ [4] "unidade_de_medida"                                                    
+ [5] "valor"                                                                
+ [6] "unidade_da_federacao_codigo"                                          
+ [7] "unidade_da_federacao"                                                 
+ [8] "trimestre_codigo"                                                     
+ [9] "trimestre"                                                            
+[10] "variavel_codigo"                                                      
+[11] "variavel"                                                             
+[12] "condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao_codigo"
+[13] "condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao"       </code></pre>
+</div>
+</div>
+</section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
-<li>Livro <a href="https://livro.abj.org.br/">Metodologia de Pesquisa Jurimétrica</a>:
+<li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
 <ul>
-<li><a href="https://livro.abj.org.br/03-estatisticas.html">Capítulo 3 - Estatísticas</a></li>
-</ul></li>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/data-transform.html">Transformação de dados</a></li>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/data-tidy.html">Organização de dados</a></li>
+</ul>
+</li>
 </ul>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -616,21 +728,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./04_transformacao.html" class="pagination-link  aria-label=" transformando="" dados"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./05_transformacao.html" class="pagination-link  aria-label=" transformando="" dados="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transformando dados</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_visualizacao.html" class="pagination-link" aria-label="Visualizando dados">
-        <span class="nav-page-text">Visualizando dados</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07_analise.html" class="pagination-link" aria-label="Analisando dados">
+        <span class="nav-page-text">Analisando dados</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

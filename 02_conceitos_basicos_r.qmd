@@ -3,7 +3,9 @@
 title: "Conceitos básicos"
 ---
 
-Em breve!
+:::callout-warning
+Página em construção! Em breve. 
+:::
 
 <!-- - Objetos: breve conceito -->
 

@@ -23,8 +23,8 @@ Os passos a seguir podem te ajudar a organizar o projeto de análise exploratór
 
 1. **Descreva o conjunto de dados brutos**: Faça uma breve descrição do conjunto de dados escolhido. Qual é a unidade amostral (o que cada linha significa)? Quais são as variáveis presentes? Quais são os tipos de variáveis? Você pode incluir tabelas ou gráficos para facilitar a visualização das variáveis e sua distribuição. O que precisa ser feito para deixar a tabela "limpa", ou seja, pronta para a análise?
 
-1. **Limpeza dos dados**: Utilize o que você aprendeu na etapa passada para limpar o conjunto de dados. Isso pode incluir lidar com dados ausentes, remover outliers ou inconsistências. A aula [Transformando dados](04_transformacao.qmd) será útil nessa etapa.
+1. **Limpeza dos dados**: Utilize o que você aprendeu na etapa passada para limpar o conjunto de dados. Isso pode incluir lidar com dados ausentes, remover outliers ou inconsistências. A aula [Transformando dados](05_transformacao.qmd) será útil nessa etapa.
 
-1. **Realize a análise exploratória de dados**: Utilize os conceitos apresentados no curso para realizar a análise exploratória de dados do conjunto escolhido. Lembre-se do objetivo que você definiu anteriormente e busque responder às perguntas que você levantou. Inclua gráficos e tabelas para apresentar os resultados e escreva suas interpretações ao longo do processo. As aulas [Analisando dados](05_analise.qmd) e [Visualizando dados](06_visualizacao.qmd) serão úteis nessa etapa.
+1. **Realize a análise exploratória de dados**: Utilize os conceitos apresentados no curso para realizar a análise exploratória de dados do conjunto escolhido. Lembre-se do objetivo que você definiu anteriormente e busque responder às perguntas que você levantou. Inclua gráficos e tabelas para apresentar os resultados e escreva suas interpretações ao longo do processo. As aulas [Analisando dados](07_analise.qmd) e [Visualizando dados](08_visualizacao.qmd) serão úteis nessa etapa.
 
 1. **Próximos passos**: Você pode apresentar os resultados para outras pessoas envolvidas no curso (participantes, ministrantes, monitores) e solicitar feedbacks.

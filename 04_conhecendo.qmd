@@ -1,0 +1,81 @@
+---
+# Importação e exportação de dados
+title: "Conhecendo a base de dados"
+code-link: true
+---
+
+:::callout-warning
+Página em construção! Em breve. 
+:::
+
+```{r}
+library(readr)
+dados_brutos <- read_csv2("dados/sidrar_4092_bruto_2.csv")
+dados <- read_csv2("dados/sidrar_4092_2.csv")
+```
+
+## Estrutura da base de dados
+
+```{r}
+# Número de colunas 
+ncol(dados)
+
+# Número de linhas
+nrow(dados)
+
+# Número de colunas e linhas
+dim(dados)
+
+# Retorna as primeiras linhas
+head(dados)
+
+# Nomes das colunas
+names(dados)
+
+# Dar uma "olhada" na base
+library(dplyr)
+glimpse(dados)
+```
+
+
+
+## Sumário das variáveis
+
+```{r}
+library(skimr)
+```
+```{r}
+skim_dados <- skim(dados)
+```
+
+```{r}
+skim_dados
+```
+
+
+## Valores faltantes (`NA`)
+
+```{r}
+library(naniar)
+```
+
+```{r}
+naniar::gg_miss_var(dados_brutos)
+```
+
+## Conhecendo os valores únicos de uma coluna
+
+
+Para selecionar colunas, utilize o `$`. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: `dados$ano`.
+
+
+Dica: após escrever o `nome_do_dataframe$`, aperte `tab` para que o RStudio faça sugestões de colunas da base.
+
+A função `unique()` retorna os valores únicos de um vetor. Exemplo: 
+
+```{r}
+unique(dados$ano)
+```
+
+
+
