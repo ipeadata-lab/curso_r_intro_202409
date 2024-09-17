@@ -226,7 +226,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#instalação-do-rstudio" id="toc-instalação-do-rstudio" class="nav-link" data-scroll-target="#instalação-do-rstudio">Instalação do RStudio</a></li>
   <li><a href="#verificação-da-instalação" id="toc-verificação-da-instalação" class="nav-link" data-scroll-target="#verificação-da-instalação">Verificação da instalação</a></li>
   <li><a href="#verificação-da-versão-do-r" id="toc-verificação-da-versão-do-r" class="nav-link" data-scroll-target="#verificação-da-versão-do-r">Verificação da versão do R</a></li>
-  <li><a href="#instalação-de-pacotes-necessários" id="toc-instalação-de-pacotes-necessários" class="nav-link" data-scroll-target="#instalação-de-pacotes-necessários">Instalação de pacotes necessários</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -340,21 +339,12 @@ Importante
 <figcaption>Captura de tela da IDE RStudio</figcaption>
 </figure>
 </div>
-<p>Outra forma é utilizando o comando <code>R.version.string</code>. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é: 4.3.3:</p>
+<p>Outra forma é utilizando o comando <code>R.version.string</code>. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é <strong>4.3.3</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "R version 4.3.3 (2024-02-29)"</code></pre>
 </div>
-</div>
-</section>
-<section id="instalação-de-pacotes-necessários" class="level3">
-<h3 class="anchored" data-anchor-id="instalação-de-pacotes-necessários">Instalação de pacotes necessários</h3>
-<p>Durante o curso, utilizaremos diversos pacotes do R. Para instalar os pacotes necessários, execute o seguinte comando no console do RStudio:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacotes_necessarios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"janitor"</span>, <span class="st">"sidrar"</span>, <span class="st">"sf"</span>, <span class="st">"geobr"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pacotes_necessarios)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

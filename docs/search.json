@@ -30,11 +30,11 @@
     ]
   },
   {
-    "objectID": "01_r_rstudio.html#pacotes-conceito-instalação-e-uso",
-    "href": "01_r_rstudio.html#pacotes-conceito-instalação-e-uso",
+    "objectID": "01_r_rstudio.html#pacotes",
+    "href": "01_r_rstudio.html#pacotes",
     "title": "Conhecendo o R e o RStudio",
-    "section": "Pacotes (conceito, instalação e uso)",
-    "text": "Pacotes (conceito, instalação e uso)",
+    "section": "Pacotes",
+    "text": "Pacotes\n\nO que são pacotes?\n\n\nInstalação de pacotes\n\n\nInstalação de pacotes necessários no curso\nDurante o curso, utilizaremos diversos pacotes do R. Explicaremos o que são pacotes em “Conhecendo o R e o RStudio &gt; Pacotes”, mas, de forma resumida, são extensões que adicionam funcionalidades ao R.\nPara instalar os pacotes necessários, execute o seguinte comando no console do RStudio:\n\npacotes_necessarios &lt;- c(\"tidyverse\", \"janitor\", \"sidrar\", \"sf\", \"geobr\")\n\ninstall.packages(pacotes_necessarios)\n\n\n\nCarregamento de pacotes",
     "crumbs": [
       "Conhecendo o R e o RStudio"
     ]
@@ -94,7 +94,7 @@
     "href": "05_analise.html#sugestões-de-leituras",
     "title": "Analisando dados",
     "section": "Sugestões de leituras",
-    "text": "Sugestões de leituras\n\nLivro: Metodologia de Pesquisa Jurimétrica:\n\nCapítulo 3 - Estatísticas",
+    "text": "Sugestões de leituras\n\nLivro Metodologia de Pesquisa Jurimétrica:\n\nCapítulo 3 - Estatísticas",
     "crumbs": [
       "Analisando dados"
     ]
@@ -194,7 +194,7 @@
     "href": "00_instrucoes_pre_curso.html#instalação-do-r-e-rstudio",
     "title": "Instruções pré-curso",
     "section": "Instalação do R e RStudio",
-    "text": "Instalação do R e RStudio\nPara a utilização do R, é necessário instalar o software R e o RStudio. O R é a linguagem de programação e o RStudio é um ambiente de desenvolvimento integrado (IDE - Integrated Development Environment) que facilita a utilização do R.\n\n\n\n\n\n\nAviso\n\n\n\nAtenção: O R deve ser instalado antes do RStudio.\n\n\n\nInstalação do R\nPara instalar o R, acesse o site CRAN e escolha o link de download de acordo com o seu sistema operacional:\n\n\n\nCaptura de tela do site CRAN\n\n\nInstale o R utilizando o instalador baixado.\n\n\nInstalação do RStudio\nApós instalar o R, acesse o site RStudio Desktop e escolha o link de download de acordo com o seu sistema operacional:\n\n\n\nCaptura de tela do site RStudio Desktop\n\n\nInstale o RStudio utilizando o instalador baixado.\n\n\nVerificação da instalação\nPara verificar se a instalação foi realizada com sucesso, abra o RStudio. Para isso, procure o ícone do RStudio no menu de programas do seu sistema operacional.\nA tela inicial do RStudio é semelhante à imagem abaixo:\n\n\n\nCaptura de tela da IDE RStudio\n\n\n\n\nVerificação da versão do R\nO R possui versões, e é importante verificar se a versão instalada é recente.\n\n\n\n\n\n\nImportante\n\n\n\nRecomendamos que utilizem o R na versão 4.1.0 ou superior.\nCaso a versão do R seja inferior a 4.1.0, recomendamos que atualizem o R para a versão mais recente.\n\n\nExiste mais de uma forma para verificar a versão do R. A forma mais simples é verificando o texto que aparece no painel “Console” ao abrir o RStudio:\n\n\n\nCaptura de tela da IDE RStudio\n\n\nOutra forma é utilizando o comando R.version.string. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é: 4.3.3:\n\nR.version.string\n\n[1] \"R version 4.3.3 (2024-02-29)\"\n\n\n\n\nInstalação de pacotes necessários\nDurante o curso, utilizaremos diversos pacotes do R. Para instalar os pacotes necessários, execute o seguinte comando no console do RStudio:\n\npacotes_necessarios &lt;- c(\"tidyverse\", \"janitor\", \"sidrar\", \"sf\", \"geobr\")\n\ninstall.packages(pacotes_necessarios)",
+    "text": "Instalação do R e RStudio\nPara a utilização do R, é necessário instalar o software R e o RStudio. O R é a linguagem de programação e o RStudio é um ambiente de desenvolvimento integrado (IDE - Integrated Development Environment) que facilita a utilização do R.\n\n\n\n\n\n\nAviso\n\n\n\nAtenção: O R deve ser instalado antes do RStudio.\n\n\n\nInstalação do R\nPara instalar o R, acesse o site CRAN e escolha o link de download de acordo com o seu sistema operacional:\n\n\n\nCaptura de tela do site CRAN\n\n\nInstale o R utilizando o instalador baixado.\n\n\nInstalação do RStudio\nApós instalar o R, acesse o site RStudio Desktop e escolha o link de download de acordo com o seu sistema operacional:\n\n\n\nCaptura de tela do site RStudio Desktop\n\n\nInstale o RStudio utilizando o instalador baixado.\n\n\nVerificação da instalação\nPara verificar se a instalação foi realizada com sucesso, abra o RStudio. Para isso, procure o ícone do RStudio no menu de programas do seu sistema operacional.\nA tela inicial do RStudio é semelhante à imagem abaixo:\n\n\n\nCaptura de tela da IDE RStudio\n\n\n\n\nVerificação da versão do R\nO R possui versões, e é importante verificar se a versão instalada é recente.\n\n\n\n\n\n\nImportante\n\n\n\nRecomendamos que utilizem o R na versão 4.1.0 ou superior.\nCaso a versão do R seja inferior a 4.1.0, recomendamos que atualizem o R para a versão mais recente.\n\n\nExiste mais de uma forma para verificar a versão do R. A forma mais simples é verificando o texto que aparece no painel “Console” ao abrir o RStudio:\n\n\n\nCaptura de tela da IDE RStudio\n\n\nOutra forma é utilizando o comando R.version.string. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é 4.3.3:\n\nR.version.string\n\n[1] \"R version 4.3.3 (2024-02-29)\"",
     "crumbs": [
       "Instruções pré-curso"
     ]

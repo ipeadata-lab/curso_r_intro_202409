@@ -56,20 +56,8 @@ Existe mais de uma forma para verificar a versão do R. A forma mais simples é 
 
 ![Captura de tela da IDE RStudio](images/01_rstudio_version.png){fig-align="center"}
 
-Outra forma é utilizando o comando `R.version.string`. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é: `r R.version$major`.`r R.version$minor`:
+Outra forma é utilizando o comando `R.version.string`. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é **`r R.version$major`.`r R.version$minor`**:
 
 ```{r}
 R.version.string
 ```
-
-### Instalação de pacotes necessários
-
-Durante o curso, utilizaremos diversos pacotes do R. Para instalar os pacotes necessários, execute o seguinte comando no console do RStudio:
-
-```{r}
-#| eval: false
-pacotes_necessarios <- c("tidyverse", "janitor", "sidrar", "sf", "geobr")
-
-install.packages(pacotes_necessarios)
-```
-

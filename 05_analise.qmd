@@ -14,5 +14,5 @@ Em breve!
 
 ## Sugestões de leituras
 
-- [Livro: Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
+- Livro [Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
   - [Capítulo 3 - Estatísticas](https://livro.abj.org.br/03-estatisticas.html)

@@ -31,5 +31,5 @@ Em breve!
   
   
 
-- [Livro: Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
+- Livro: [Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
   - [Capítulo 4 - Visualização](https://livro.abj.org.br/04-visualizacao.html)

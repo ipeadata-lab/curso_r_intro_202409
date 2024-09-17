@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -189,7 +223,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#apresentação-do-software-e-linguagem-r" id="toc-apresentação-do-software-e-linguagem-r" class="nav-link active" data-scroll-target="#apresentação-do-software-e-linguagem-r">Apresentação do software e linguagem R</a></li>
   <li><a href="#working-directory-e-rproject" id="toc-working-directory-e-rproject" class="nav-link" data-scroll-target="#working-directory-e-rproject">Working directory e Rproject</a></li>
   <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a></li>
-  <li><a href="#pacotes-conceito-instalação-e-uso" id="toc-pacotes-conceito-instalação-e-uso" class="nav-link" data-scroll-target="#pacotes-conceito-instalação-e-uso">Pacotes (conceito, instalação e uso)</a></li>
+  <li><a href="#pacotes" id="toc-pacotes" class="nav-link" data-scroll-target="#pacotes">Pacotes</a>
+  <ul class="collapse">
+  <li><a href="#o-que-são-pacotes" id="toc-o-que-são-pacotes" class="nav-link" data-scroll-target="#o-que-são-pacotes">O que são pacotes?</a></li>
+  <li><a href="#instalação-de-pacotes" id="toc-instalação-de-pacotes" class="nav-link" data-scroll-target="#instalação-de-pacotes">Instalação de pacotes</a></li>
+  <li><a href="#instalação-de-pacotes-necessários-no-curso" id="toc-instalação-de-pacotes-necessários-no-curso" class="nav-link" data-scroll-target="#instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</a></li>
+  <li><a href="#carregamento-de-pacotes" id="toc-carregamento-de-pacotes" class="nav-link" data-scroll-target="#carregamento-de-pacotes">Carregamento de pacotes</a></li>
+  </ul></li>
   <li><a href="#help-manuais-e-documentação" id="toc-help-manuais-e-documentação" class="nav-link" data-scroll-target="#help-manuais-e-documentação">Help, manuais e documentação</a></li>
   <li><a href="#sugestões-de-leituras" id="toc-sugestões-de-leituras" class="nav-link" data-scroll-target="#sugestões-de-leituras">Sugestões de leituras</a></li>
   </ul>
@@ -226,8 +266,27 @@ ul.task-list li input[type="checkbox"] {
 <section id="scripts" class="level2">
 <h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
 </section>
-<section id="pacotes-conceito-instalação-e-uso" class="level2">
-<h2 class="anchored" data-anchor-id="pacotes-conceito-instalação-e-uso">Pacotes (conceito, instalação e uso)</h2>
+<section id="pacotes" class="level2">
+<h2 class="anchored" data-anchor-id="pacotes">Pacotes</h2>
+<section id="o-que-são-pacotes" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-são-pacotes">O que são pacotes?</h3>
+</section>
+<section id="instalação-de-pacotes" class="level3">
+<h3 class="anchored" data-anchor-id="instalação-de-pacotes">Instalação de pacotes</h3>
+</section>
+<section id="instalação-de-pacotes-necessários-no-curso" class="level3">
+<h3 class="anchored" data-anchor-id="instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</h3>
+<p>Durante o curso, utilizaremos diversos pacotes do R. Explicaremos o que são pacotes em <a href="./01_r_rstudio.html">“Conhecendo o R e o RStudio &gt; Pacotes”</a>, mas, de forma resumida, são extensões que adicionam funcionalidades ao R.</p>
+<p>Para instalar os pacotes necessários, execute o seguinte comando no console do RStudio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacotes_necessarios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"janitor"</span>, <span class="st">"sidrar"</span>, <span class="st">"sf"</span>, <span class="st">"geobr"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pacotes_necessarios)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="carregamento-de-pacotes" class="level3">
+<h3 class="anchored" data-anchor-id="carregamento-de-pacotes">Carregamento de pacotes</h3>
+</section>
 </section>
 <section id="help-manuais-e-documentação" class="level2">
 <h2 class="anchored" data-anchor-id="help-manuais-e-documentação">Help, manuais e documentação</h2>
