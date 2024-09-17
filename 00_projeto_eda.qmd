@@ -2,4 +2,29 @@
 title: "Projeto de análise exploratória de dados"
 ---
 
-Em breve!
+Com o objetivo de praticar os conceitos apresentados no curso, recomendamos que as pessoas participantes realizem um projeto de análise exploratória de dados paralelamente às aulas. Este projeto permitirá que você consolide o aprendizado adquirido, explorando dados reais e aplicando as ferramentas de análise discutidas em aula.
+
+Aproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas ou para os monitores.
+
+Os passos a seguir podem te ajudar a organizar o projeto de análise exploratória de dados:
+
+1. **Escolha um conjunto de dados**: você pode escolher um conjunto de dados de sua preferência. Caso não tenha um conjunto de dados em mente, sugerimos que escolha um dos conjuntos de dados disponíveis nos seguintes pacotes:
+
+    - [sidrar](https://cran.r-project.org/web/packages/sidrar/vignettes/Introduction_to_sidrar.html)
+    - [censobr](https://ipeagit.github.io/censobr/)
+    - [ipeadatar](https://cran.r-project.org/web/packages/ipeadatar/index.html)
+    - [flightsbr](https://github.com/ipeaGIT/flightsbr)
+
+1. **Crie um projeto**: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula [Conhecendo o R e o RStudio](01_r-rstudio.qmd).
+
+1. **Importe os dados**: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula [Importando dados](03_importacao.qmd).
+
+1. **Objetivo**: defina o objetivo da análise exploratória de dados. Quais são as perguntas que você deseja responder?
+  
+1. **Descreva o conjunto de dados brutos**: faça uma breve descrição do conjunto de dados escolhido. Qual é a unidade amostral (o que cada linha significa)? Quais são as variáveis presentes? Quais são os tipos de variáveis presentes? O que precisamos fazer para deixar a tabela "limpa", ou seja, pronta para a análise?
+
+1. **Limpeza dos dados**: utilize o que você aprendeu na etapa passada para limpar o conjunto de dados. A aula [Transformando dados](04_transformacao.qmd) será útil nessa etapa.
+
+
+1. **Realize a análise exploratória de dados**: utilize os conceitos apresentados no curso para realizar a análise exploratória de dados do conjunto escolhido. Lembre-se do objetivo que você definiu anteriormente, e busque responder as perguntas que você definiu. As aulas [Analisando dados](05_analise.qmd) e [Visualizando dados](06_visualizacao.qmd) serão úteis nessa etapa.
+    
