@@ -3,6 +3,14 @@ title: "Introdução ao curso"
 ---
 
 Este site apresenta o material de apoio para o curso **"Introdução à análise de dados no R"**, oferecido entre setembro e outubro de 2024.
+O curso será realizado de forma remota, com aulas ao vivo e atividades práticas.
+
+:::{.callout-important}
+Recomendamos que todas as pessoas participantes instalem o R e o RStudio antes do início do curso.
+Para isso, siga as instruções disponíveis na página [Instruções pré-curso](00_instrucoes_pre_curso.qmd).
+
+Caso tenha alguma dificuldade, entre em contato com a equipe do curso o quanto antes.
+:::
 
 
 

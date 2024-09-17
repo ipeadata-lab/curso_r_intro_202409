@@ -1,0 +1,63 @@
+---
+title: "Instruções pré-curso"
+---
+
+:::{.callout-important}
+Recomendamos que todas as pessoas participantes instalem o R e o RStudio antes do início do curso.
+Para isso, siga as instruções disponíveis na página [Instruções pré-curso](00_instrucoes_pre_curso.qmd).
+
+Caso tenha alguma dificuldade, entre em contato com a equipe do curso o quanto antes.
+:::
+
+
+## Instalação do R e RStudio
+
+Para a utilização do R, é necessário instalar o software R e o RStudio. O R é a linguagem de programação e o RStudio é um ambiente de desenvolvimento integrado (IDE - Integrated Development Environment) que facilita a utilização do R.
+
+::: callout-warning
+**Atenção:** O R deve ser instalado **antes** do RStudio.
+:::
+
+### Instalação do R
+
+Para instalar o R, acesse o site [CRAN](https://cran.r-project.org/) e escolha o link de download de acordo com o seu sistema operacional:
+
+[![Captura de tela do site CRAN](images/01_cran.png){fig-align="center"}](https://cran.r-project.org/)
+
+Instale o R utilizando o instalador baixado.
+
+### Instalação do RStudio
+
+Após instalar o R, acesse o site [RStudio Desktop](https://posit.co/download/rstudio-desktop/) e escolha o link de download de acordo com o seu sistema operacional:
+
+[![Captura de tela do site RStudio Desktop](images/01_rstudio_desktop.png){fig-align="center"}](https://posit.co/download/rstudio-desktop/)
+
+Instale o RStudio utilizando o instalador baixado.
+
+###  Verificação da instalação
+
+Para verificar se a instalação foi realizada com sucesso, abra o RStudio. Para isso, procure o ícone do RStudio no menu de programas do seu sistema operacional.
+
+A tela inicial do RStudio é semelhante à imagem abaixo:
+
+![Captura de tela da IDE RStudio](images/01_rstudio.png){fig-align="center"}
+
+### Verificação da versão do R
+
+O R possui versões, e é importante verificar se a versão instalada é recente.
+
+:::{.callout-important}
+Recomendamos que utilizem o R na versão 4.1.0 ou superior.
+
+Caso a versão do R seja inferior a 4.1.0, recomendamos que atualizem o R para a versão mais recente.
+:::
+
+Existe mais de uma forma para verificar a versão do R. A forma mais simples é verificando o texto que aparece no painel "Console" ao abrir o RStudio:
+
+![Captura de tela da IDE RStudio](images/01_rstudio_version.png){fig-align="center"}
+
+Outra forma é utilizando o comando `R.version.string`. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é: `r R.version$major`.`r R.version$minor`:
+
+```{r}
+R.version.string
+```
