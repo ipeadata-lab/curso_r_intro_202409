@@ -5,10 +5,22 @@ title: "Conhecendo o R e o RStudio"
 
 ## Apresentação do software e linguagem R
 
+
 ## Working directory e Rproject
+
 
 ## Scripts
 
+
 ## Pacotes (conceito, instalação e uso)
 
+
 ## Help, manuais e documentação
+
+
+## Sugestões de leituras
+
+- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+  - [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
+  - [Fluxo de Trabalho: scripts](https://cienciadedatos.github.io/pt-r4ds/workflow-scripts.html)
+  - [Fluxo de Trabalho: obtendo ajuda](https://cienciadedatos.github.io/pt-r4ds/workflow-help.html)

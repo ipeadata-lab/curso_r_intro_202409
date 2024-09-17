@@ -18,3 +18,18 @@ Em breve!
 <!-- - Salvando os gráficos -->
 
 <!-- - Mudanças de layout com ggthemes e ipeaplot -->
+
+
+## Sugestões de leituras
+
+- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+  - [Visualização de dados](https://cienciadedatos.github.io/pt-r4ds/data-visualize.html)
+  - [Vsualizar](https://cienciadedatos.github.io/pt-r4ds/visualize.html)
+  - [Visualizar: Camadas](https://cienciadedatos.github.io/pt-r4ds/layers.html)
+  - [Visualizar: Análise exploratória de dados](https://cienciadedatos.github.io/pt-r4ds/EDA.html)
+  - [Visualizar: Comunicação](https://cienciadedatos.github.io/pt-r4ds/communication.html)
+  
+  
+
+- [Livro: Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
+  - [Capítulo 4 - Visualização](https://livro.abj.org.br/04-visualizacao.html)

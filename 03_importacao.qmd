@@ -10,3 +10,10 @@ Em breve!
 <!-- - Visão geral de pacotes de dados -->
 
 <!-- - Salvar dados localmente -->
+
+
+## Sugestões de leituras
+
+- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+  - [Importação de dados](https://cienciadedatos.github.io/pt-r4ds/data-import.html)
+

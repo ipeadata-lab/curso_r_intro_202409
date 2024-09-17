@@ -14,3 +14,9 @@ Em breve!
 <!-- - Ordenamento de linhas -->
 
 <!-- - Merge básico de duas bases -->
+
+## Sugestões de leituras
+
+- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+  - [Transformação de dados](https://cienciadedatos.github.io/pt-r4ds/data-transform.html)
+  - [Organização de dados](https://cienciadedatos.github.io/pt-r4ds/data-tidy.html)
