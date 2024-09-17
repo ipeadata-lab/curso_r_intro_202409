@@ -23,9 +23,10 @@ website:
         href: https://github.com/ipeadata-lab/curso_r_intro_202409
     contents:
       - index.qmd
+      - 00_instrucoes_pre_curso.qmd      
       - 00_projeto_eda.qmd
-      - 01_r-rstudio.qmd
-      - 02_conceitos-basicos-r.qmd
+      - 01_r_rstudio.qmd
+      - 02_conceitos_basicos_r.qmd
       - 03_importacao.qmd
       - 04_transformacao.qmd
       - 05_analise.qmd

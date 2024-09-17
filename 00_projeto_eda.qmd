@@ -15,7 +15,7 @@ Os passos a seguir podem te ajudar a organizar o projeto de análise exploratór
     - [ipeadatar](https://cran.r-project.org/web/packages/ipeadatar/index.html): Acesso aos dados disponibilizados no [Ipeadata](http://www.ipeadata.gov.br/Default.aspx).
     - [flightsbr](https://github.com/ipeaGIT/flightsbr): Dados de voos no Brasil.
 
-1. **Crie um projeto no RStudio**: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula [Conhecendo o R e o RStudio](01_r-rstudio.qmd). 
+1. **Crie um projeto no RStudio**: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula [Conhecendo o R e o RStudio](01_r_rstudio.qmd). 
 
 1. **Importe os dados**: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula [Importando dados](03_importacao.qmd).
 
