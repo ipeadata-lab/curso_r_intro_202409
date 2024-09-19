@@ -272,9 +272,13 @@ Aviso
 <p>Página em construção! Em breve.</p>
 </div>
 </div>
+<ul>
+<li>Adicionar o View.</li>
+<li>Usar os dados brutos</li>
+</ul>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
-<span><span class="va">dados_brutos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto_2.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto_2.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.</code></pre>
 </div>
@@ -288,72 +292,61 @@ dbl (7): Nível Territorial (Código), Unidade de Medida (Código), Valor, Unid.
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_2.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
-Rows: 1350 Columns: 13── Column specification ────────────────────────────────────────────────────────
-Delimiter: ";"
-chr  (2): trimestre_texto, unidade_da_federacao
-dbl  (9): ano, trimestre_numero, trimestre_codigo, unidade_da_federacao_codi...
-date (2): trimestre_data_inicio, trimestre_data_fim
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
 </div>
 <section id="estrutura-da-base-de-dados" class="level2"><h2 class="anchored" data-anchor-id="estrutura-da-base-de-dados">Estrutura da base de dados</h2>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Número de colunas </span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Número de colunas </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 13</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Número de linhas</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Número de linhas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1350</code></pre>
+<pre><code>[1] 27000</code></pre>
 </div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Número de colunas e linhas</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Número de colunas e linhas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1350   13</code></pre>
+<pre><code>[1] 27000    13</code></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Retorna as primeiras linhas</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Retorna as primeiras linhas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 13
-    ano trimestre_numero trimestre_data_inicio trimestre_data_fim
-  &lt;dbl&gt;            &lt;dbl&gt; &lt;date&gt;                &lt;date&gt;            
-1  2012                1 2012-01-01            2012-03-31        
-2  2012                1 2012-01-01            2012-03-31        
-3  2012                1 2012-01-01            2012-03-31        
-4  2012                1 2012-01-01            2012-03-31        
-5  2012                1 2012-01-01            2012-03-31        
-6  2012                1 2012-01-01            2012-03-31        
-# ℹ 9 more variables: trimestre_codigo &lt;dbl&gt;, trimestre_texto &lt;chr&gt;,
-#   unidade_da_federacao_codigo &lt;dbl&gt;, unidade_da_federacao &lt;chr&gt;,
-#   forca_de_trabalho_ocupada_mil_pessoas &lt;dbl&gt;,
-#   forca_de_trabalho_desocupada_mil_pessoas &lt;dbl&gt;,
-#   forca_de_trabalho_mil_pessoas &lt;dbl&gt;,
-#   fora_da_forca_de_trabalho_mil_pessoas &lt;dbl&gt;, total_mil_pessoas &lt;dbl&gt;</code></pre>
+  `Nível Territorial (Código)` `Nível Territorial`  `Unidade de Medida (Código)`
+                         &lt;dbl&gt; &lt;chr&gt;                                       &lt;dbl&gt;
+1                            3 Unidade da Federação                         1572
+2                            3 Unidade da Federação                         1572
+3                            3 Unidade da Federação                         1572
+4                            3 Unidade da Federação                         1572
+5                            3 Unidade da Federação                         1572
+6                            3 Unidade da Federação                            2
+# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,
+#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,
+#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,
+#   Variável &lt;chr&gt;,
+#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;,
+#   `Condição em relação à força de trabalho e condição de ocupação` &lt;chr&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Nomes das colunas</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Nomes das colunas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "ano"                                     
- [2] "trimestre_numero"                        
- [3] "trimestre_data_inicio"                   
- [4] "trimestre_data_fim"                      
- [5] "trimestre_codigo"                        
- [6] "trimestre_texto"                         
- [7] "unidade_da_federacao_codigo"             
- [8] "unidade_da_federacao"                    
- [9] "forca_de_trabalho_ocupada_mil_pessoas"   
-[10] "forca_de_trabalho_desocupada_mil_pessoas"
-[11] "forca_de_trabalho_mil_pessoas"           
-[12] "fora_da_forca_de_trabalho_mil_pessoas"   
-[13] "total_mil_pessoas"                       </code></pre>
+<pre><code> [1] "Nível Territorial (Código)"                                             
+ [2] "Nível Territorial"                                                      
+ [3] "Unidade de Medida (Código)"                                             
+ [4] "Unidade de Medida"                                                      
+ [5] "Valor"                                                                  
+ [6] "Unidade da Federação (Código)"                                          
+ [7] "Unidade da Federação"                                                   
+ [8] "Trimestre (Código)"                                                     
+ [9] "Trimestre"                                                              
+[10] "Variável (Código)"                                                      
+[11] "Variável"                                                               
+[12] "Condição em relação à força de trabalho e condição de ocupação (Código)"
+[13] "Condição em relação à força de trabalho e condição de ocupação"         </code></pre>
 </div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Dar uma "olhada" na base</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Dar uma "olhada" na base</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -369,34 +362,34 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,350
+<pre><code>Rows: 27,000
 Columns: 13
-$ ano                                      &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012,…
-$ trimestre_numero                         &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-$ trimestre_data_inicio                    &lt;date&gt; 2012-01-01, 2012-01-01, 2012…
-$ trimestre_data_fim                       &lt;date&gt; 2012-03-31, 2012-03-31, 2012…
-$ trimestre_codigo                         &lt;dbl&gt; 201201, 201201, 201201, 20120…
-$ trimestre_texto                          &lt;chr&gt; "1º trimestre 2012", "1º trim…
-$ unidade_da_federacao_codigo              &lt;dbl&gt; 12, 27, 16, 13, 29, 23, 53, 3…
-$ unidade_da_federacao                     &lt;chr&gt; "Acre", "Alagoas", "Amapá", "…
-$ forca_de_trabalho_ocupada_mil_pessoas    &lt;dbl&gt; 284, 1041, 278, 1386, 6086, 3…
-$ forca_de_trabalho_desocupada_mil_pessoas &lt;dbl&gt; 29, 133, 40, 173, 802, 275, 1…
-$ forca_de_trabalho_mil_pessoas            &lt;dbl&gt; 313, 1173, 318, 1558, 6888, 3…
-$ fora_da_forca_de_trabalho_mil_pessoas    &lt;dbl&gt; 221, 1210, 170, 905, 4098, 29…
-$ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 10986, …</code></pre>
+$ `Nível Territorial (Código)`                                              &lt;dbl&gt; …
+$ `Nível Territorial`                                                       &lt;chr&gt; …
+$ `Unidade de Medida (Código)`                                              &lt;dbl&gt; …
+$ `Unidade de Medida`                                                       &lt;chr&gt; …
+$ Valor                                                                     &lt;dbl&gt; …
+$ `Unidade da Federação (Código)`                                           &lt;dbl&gt; …
+$ `Unidade da Federação`                                                    &lt;chr&gt; …
+$ `Trimestre (Código)`                                                      &lt;dbl&gt; …
+$ Trimestre                                                                 &lt;chr&gt; …
+$ `Variável (Código)`                                                       &lt;dbl&gt; …
+$ Variável                                                                  &lt;chr&gt; …
+$ `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt; …
+$ `Condição em relação à força de trabalho e condição de ocupação`          &lt;chr&gt; …</code></pre>
 </div>
 </div>
 </section><section id="sumário-das-variáveis" class="level2"><h2 class="anchored" data-anchor-id="sumário-das-variáveis">Sumário das variáveis</h2>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">skim_dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">skim_dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">skim_dados</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">skim_dados</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -407,7 +400,7 @@ $ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 109
 </tr>
 <tr class="even">
 <td style="text-align: left;">Number of rows</td>
-<td style="text-align: left;">1350</td>
+<td style="text-align: left;">27000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Number of columns</td>
@@ -423,21 +416,17 @@ $ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 109
 </tr>
 <tr class="even">
 <td style="text-align: left;">character</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Date</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">7</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">9</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">________________________</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Group variables</td>
 <td style="text-align: left;">None</td>
 </tr>
@@ -446,14 +435,14 @@ $ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 109
 <p><strong>Variable type: character</strong></p>
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 12%">
-<col style="width: 17%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 7%">
+<col style="width: 52%">
+<col style="width: 8%">
 <col style="width: 11%">
-<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 9%">
 </colgroup>
 <thead><tr class="header">
 <th style="text-align: left;">skim_variable</th>
@@ -467,17 +456,27 @@ $ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 109
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">trimestre_texto</td>
+<td style="text-align: left;">Nível Territorial</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">50</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">unidade_da_federacao</td>
+<td style="text-align: left;">Unidade de Medida</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unidade da Federação</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">4</td>
@@ -486,63 +485,52 @@ $ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 109
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">0</td>
 </tr>
-</tbody>
-</table>
-<p><strong>Variable type: Date</strong></p>
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 11%">
-<col style="width: 15%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: left;">min</th>
-<th style="text-align: left;">max</th>
-<th style="text-align: left;">median</th>
-<th style="text-align: right;">n_unique</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">trimestre_data_inicio</td>
+<tr class="even">
+<td style="text-align: left;">Trimestre</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: left;">2012-01-01</td>
-<td style="text-align: left;">2024-04-01</td>
-<td style="text-align: left;">2018-02-15</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">50</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variável</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">trimestre_data_fim</td>
+<td style="text-align: left;">Condição em relação à força de trabalho e condição de ocupação</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: left;">2012-03-31</td>
-<td style="text-align: left;">2024-06-30</td>
-<td style="text-align: left;">2018-05-15</td>
-<td style="text-align: right;">50</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 31%">
-<col style="width: 7%">
-<col style="width: 10%">
-<col style="width: 7%">
+<col style="width: 43%">
 <col style="width: 6%">
-<col style="width: 5%">
-<col style="width: 7%">
+<col style="width: 8%">
 <col style="width: 6%">
-<col style="width: 7%">
-<col style="width: 5%">
 <col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 4%">
+<col style="width: 3%">
 </colgroup>
 <thead><tr class="header">
 <th style="text-align: left;">skim_variable</th>
@@ -559,121 +547,95 @@ $ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 109
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">ano</td>
+<td style="text-align: left;">Nível Territorial (Código)</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2017.76</td>
-<td style="text-align: right;">3.62</td>
-<td style="text-align: right;">2012</td>
-<td style="text-align: right;">2015.00</td>
-<td style="text-align: right;">2018.0</td>
-<td style="text-align: right;">2021.00</td>
-<td style="text-align: right;">2024</td>
-<td style="text-align: left;">▇▅▇▅▇</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">trimestre_numero</td>
+<td style="text-align: left;">Unidade de Medida (Código)</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2.46</td>
-<td style="text-align: right;">1.12</td>
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">1.00</td>
+<td style="text-align: right;">394.50</td>
+<td style="text-align: right;">679.84</td>
 <td style="text-align: right;">2.0</td>
-<td style="text-align: right;">3.00</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">▇▇▁▇▇</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">394.50</td>
+<td style="text-align: right;">1572</td>
+<td style="text-align: left;">▇▁▁▁▂</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">trimestre_codigo</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">201778.46</td>
-<td style="text-align: right;">361.49</td>
-<td style="text-align: right;">201201</td>
-<td style="text-align: right;">201501.00</td>
-<td style="text-align: right;">201801.5</td>
-<td style="text-align: right;">202102.00</td>
-<td style="text-align: right;">202402</td>
-<td style="text-align: left;">▇▅▇▅▇</td>
+<td style="text-align: left;">Valor</td>
+<td style="text-align: right;">1350</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">862.03</td>
+<td style="text-align: right;">2896.64</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">7.8</td>
+<td style="text-align: right;">105.75</td>
+<td style="text-align: right;">39480</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">unidade_da_federacao_codigo</td>
+<td style="text-align: left;">Unidade da Federação (Código)</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00</td>
 <td style="text-align: right;">29.11</td>
-<td style="text-align: right;">12.79</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">17.00</td>
+<td style="text-align: right;">12.78</td>
+<td style="text-align: right;">11.0</td>
+<td style="text-align: right;">17.0</td>
 <td style="text-align: right;">27.0</td>
 <td style="text-align: right;">41.00</td>
 <td style="text-align: right;">53</td>
 <td style="text-align: left;">▇▇▇▃▅</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">forca_de_trabalho_ocupada_mil_pessoas</td>
+<td style="text-align: left;">Trimestre (Código)</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3433.32</td>
-<td style="text-align: right;">4362.95</td>
-<td style="text-align: right;">169</td>
-<td style="text-align: right;">1127.25</td>
-<td style="text-align: right;">1693.0</td>
-<td style="text-align: right;">3705.75</td>
-<td style="text-align: right;">24580</td>
-<td style="text-align: left;">▇▂▁▁▁</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">201778.46</td>
+<td style="text-align: right;">361.36</td>
+<td style="text-align: right;">201201.0</td>
+<td style="text-align: right;">201501.0</td>
+<td style="text-align: right;">201801.5</td>
+<td style="text-align: right;">202102.00</td>
+<td style="text-align: right;">202402</td>
+<td style="text-align: left;">▇▅▇▅▇</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">forca_de_trabalho_desocupada_mil_pessoas</td>
+<td style="text-align: left;">Variável (Código)</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">389.25</td>
-<td style="text-align: right;">551.47</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">107.25</td>
-<td style="text-align: right;">203.0</td>
-<td style="text-align: right;">419.75</td>
-<td style="text-align: right;">3636</td>
-<td style="text-align: left;">▇▁▁▁▁</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3484.25</td>
+<td style="text-align: right;">1064.24</td>
+<td style="text-align: right;">1641.0</td>
+<td style="text-align: right;">3475.5</td>
+<td style="text-align: right;">4095.5</td>
+<td style="text-align: right;">4104.25</td>
+<td style="text-align: right;">4105</td>
+<td style="text-align: left;">▂▁▁▁▇</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">forca_de_trabalho_mil_pessoas</td>
+<td style="text-align: left;">Condição em relação à força de trabalho e condição de ocupação (Código)</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3822.55</td>
-<td style="text-align: right;">4869.13</td>
-<td style="text-align: right;">185</td>
-<td style="text-align: right;">1265.50</td>
-<td style="text-align: right;">1854.0</td>
-<td style="text-align: right;">4130.25</td>
-<td style="text-align: right;">26320</td>
-<td style="text-align: left;">▇▂▁▁▁</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">fora_da_forca_de_trabalho_mil_pessoas</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2314.83</td>
-<td style="text-align: right;">2547.57</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">742.50</td>
-<td style="text-align: right;">1297.0</td>
-<td style="text-align: right;">3113.50</td>
-<td style="text-align: right;">14681</td>
-<td style="text-align: left;">▇▂▁▁▁</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">total_mil_pessoas</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6137.41</td>
-<td style="text-align: right;">7380.79</td>
-<td style="text-align: right;">296</td>
-<td style="text-align: right;">2140.25</td>
-<td style="text-align: right;">3092.0</td>
-<td style="text-align: right;">7466.50</td>
-<td style="text-align: right;">39480</td>
-<td style="text-align: left;">▇▂▁▁▁</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">32410.20</td>
+<td style="text-align: right;">29.65</td>
+<td style="text-align: right;">32385.0</td>
+<td style="text-align: right;">32386.0</td>
+<td style="text-align: right;">32387.0</td>
+<td style="text-align: right;">32446.00</td>
+<td style="text-align: right;">32447</td>
+<td style="text-align: left;">▇▁▁▁▅</td>
 </tr>
 </tbody>
 </table>
@@ -681,7 +643,7 @@ $ total_mil_pessoas                        &lt;dbl&gt; 534, 2383, 487, 2463, 109
 </div>
 </section><section id="valores-faltantes-na" class="level2"><h2 class="anchored" data-anchor-id="valores-faltantes-na">Valores faltantes (<code>NA</code>)</h2>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/njtierney/naniar">naniar</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/njtierney/naniar">naniar</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'naniar'</code></pre>
@@ -693,7 +655,7 @@ Attaching package: 'naniar'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">naniar</span><span class="fu">::</span><span class="fu"><a href="https://naniar.njtierney.com/reference/gg_miss_var.html">gg_miss_var</a></span><span class="op">(</span><span class="va">dados_brutos</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">naniar</span><span class="fu">::</span><span class="fu"><a href="https://naniar.njtierney.com/reference/gg_miss_var.html">gg_miss_var</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="04_conhecendo_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -706,9 +668,12 @@ Attaching package: 'naniar'</code></pre>
 <p>Dica: após escrever o <code>nome_do_dataframe$</code>, aperte <code>tab</code> para que o RStudio faça sugestões de colunas da base.</p>
 <p>A função <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code> retorna os valores únicos de um vetor. Exemplo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dados</span><span class="op">$</span><span class="va">ano</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dados</span><span class="op">$</span><span class="va">ano</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Unknown or uninitialised column: `ano`.</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024</code></pre>
+<pre><code>NULL</code></pre>
 </div>
 </div>
 
@@ -792,6 +757,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ipeadata-lab\.github\.io\/curso_r_intro_202409");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,

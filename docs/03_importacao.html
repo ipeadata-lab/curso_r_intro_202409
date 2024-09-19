@@ -323,12 +323,13 @@ Aviso
 <p>Conceitos prévios importantes para essa aula:</p>
 <ul>
 <li><p>Pacotes, funções e objetos</p></li>
+<li><p>Projetos do RStudio (<code>.Rproj</code>) e diretórios</p></li>
 <li><p>Caminhos de arquivos</p></li>
 </ul>
 </div>
 </div>
 </div>
-<p>O objetivo da etapa de importação é carregar a base de dados para o <em>Environment</em> do R.</p>
+<p>O objetivo da etapa de importação é carregar a base de dados para a memória RAM. Assim conseguiremos utilizar os dados no R.</p>
 <p>Essa etapa pode ser bem rápida (ou não!). Depende da base de dados que precisamos carregar.</p>
 <p>Nesta etapa, vamos aprender:</p>
 <ul>
@@ -441,7 +442,11 @@ Dica
 <figcaption>Captura de tela do console do RStudio, mostrando o menu onde podemos encontrar o Import Dataset</figcaption></figure>
 </div>
 </section></section><section id="salvando-dados-localmente" class="level2"><h2 class="anchored" data-anchor-id="salvando-dados-localmente">Salvando dados localmente</h2>
-<p>Para salvar dados localmente, você pode usar funções com o prefixo <code>write_</code> de pacotes como <a href="https://readr.tidyverse.org">readr</a> e <a href="https://docs.ropensci.org/writexl/">writexl</a>. Essas funções solicitam dois argumentos principais: - Qual é o objeto que você queremos salvar? Esse objeto deve estar carregado no <em>Environment</em>. - Onde queremos salvar o arquivo? O caminho completo do arquivo deve ser fornecido entre aspas, contendo o diretório onde ele será salvo (em qual pasta do computador) e o nome do arquivo (com a extensão, por exemplo, <code>.csv</code>).</p>
+<p>Para salvar dados localmente, você pode usar funções com o prefixo <code>write_</code> de pacotes como <a href="https://readr.tidyverse.org">readr</a> e <a href="https://docs.ropensci.org/writexl/">writexl</a>. Essas funções solicitam dois argumentos principais:</p>
+<ul>
+<li><p>Qual é o objeto que você queremos salvar? Esse objeto deve estar disponível no <em>Environment</em> do R.</p></li>
+<li><p>Onde queremos salvar o arquivo? O caminho completo do arquivo deve ser fornecido entre aspas, contendo o diretório onde ele será salvo (em qual pasta do computador) e o nome do arquivo (com a extensão, por exemplo, <code>.csv</code>).</p></li>
+</ul>
 <p>Antes de salvar os dados, vamos criar um diretório onde salvaremos os arquivos. Você pode criar o diretório manualmente ou usar a função <code>fs::dir_create("nome_do_diretorio/")</code> para criar o diretório.</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org">fs</a></span><span class="op">)</span></span>
@@ -559,9 +564,9 @@ Importante
 </div>
 </div>
 <p>Esses dados estão salvos em um vetor de tamanho um, com textos separados por vírgula. Esse formato não é o ideal para usar na função de importação que veremos a seguir: o melhor é transformar em um vetor, onde cada elemento é um período.</p>
-<p>Podemos fazer isso com a função <code><a href="https://rdrr.io/r/base/strsplit.html">strsplit()</a></code>:</p>
+<p>Podemos fazer isso com a função <code>str_split()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">periodos_disponiveis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">info_4092</span><span class="op">$</span><span class="va">period</span>, <span class="st">", "</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">periodos_disponiveis</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">info_4092</span><span class="op">$</span><span class="va">period</span>, <span class="st">", "</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="va">periodos_disponiveis</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "201201" "201202" "201203" "201204" "201301" "201302" "201303" "201304"
@@ -736,6 +741,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ipeadata-lab\.github\.io\/curso_r_intro_202409");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
