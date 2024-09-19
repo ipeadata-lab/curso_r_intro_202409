@@ -8,10 +8,12 @@ code-link: true
 Página em construção! Em breve. 
 :::
 
+- Adicionar o View.
+- Usar os dados brutos
+
 ```{r}
 library(readr)
-dados_brutos <- read_csv2("dados/sidrar_4092_bruto_2.csv")
-dados <- read_csv2("dados/sidrar_4092_2.csv")
+dados <- read_csv2("dados/sidrar_4092_bruto_2.csv")
 ```
 
 ## Estrutura da base de dados
@@ -60,7 +62,7 @@ library(naniar)
 ```
 
 ```{r}
-naniar::gg_miss_var(dados_brutos)
+naniar::gg_miss_var(dados)
 ```
 
 ## Conhecendo os valores únicos de uma coluna
