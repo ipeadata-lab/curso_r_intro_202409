@@ -14,10 +14,12 @@ Conceitos prévios importantes para essa aula:
 
 - Pacotes, funções e objetos
 
+- Projetos do RStudio (`.Rproj`) e diretórios
+
 - Caminhos de arquivos
 :::
 
-O objetivo da etapa de importação é carregar a base de dados para o *Environment* do R.
+O objetivo da etapa de importação é carregar a base de dados para a memória RAM. Assim conseguiremos utilizar os dados no R.
 
 Essa etapa pode ser bem rápida (ou não!). Depende da base de dados que precisamos carregar.
 
@@ -133,7 +135,12 @@ Para acessar a funcionalidade *Import Dataset*, clique em *Import Dataset* no ca
 
 ## Salvando dados localmente
 
-Para salvar dados localmente, você pode usar funções com o prefixo `write_` de pacotes como `{readr}` e `{writexl}`. Essas funções solicitam dois argumentos principais: - Qual é o objeto que você queremos salvar? Esse objeto deve estar carregado no *Environment*. - Onde queremos salvar o arquivo? O caminho completo do arquivo deve ser fornecido entre aspas, contendo o diretório onde ele será salvo (em qual pasta do computador) e o nome do arquivo (com a extensão, por exemplo, `.csv`).
+Para salvar dados localmente, você pode usar funções com o prefixo `write_` de pacotes como `{readr}` e `{writexl}`. 
+Essas funções solicitam dois argumentos principais: 
+
+- Qual é o objeto que você queremos salvar? Esse objeto deve estar disponível no *Environment* do R. 
+
+- Onde queremos salvar o arquivo? O caminho completo do arquivo deve ser fornecido entre aspas, contendo o diretório onde ele será salvo (em qual pasta do computador) e o nome do arquivo (com a extensão, por exemplo, `.csv`).
 
 Antes de salvar os dados, vamos criar um diretório onde salvaremos os arquivos. Você pode criar o diretório manualmente ou usar a função `fs::dir_create("nome_do_diretorio/")` para criar o diretório.
 
@@ -254,10 +261,10 @@ info_4092$period
 ```
 Esses dados estão salvos em um vetor de tamanho um, com textos separados por vírgula. Esse formato não é o ideal para usar na função de importação que veremos a seguir: o melhor é transformar em um vetor, onde cada elemento é um período.
 
-Podemos fazer isso com a função `strsplit()`:
+Podemos fazer isso com a função `str_split()`:
 
 ```{r}
-periodos_disponiveis <- strsplit(info_4092$period, ", ")[[1]]
+periodos_disponiveis <- stringr::str_split(info_4092$period, ", ")[[1]]
 periodos_disponiveis
 ```
 
