@@ -5,12 +5,8 @@ code-link: true
 
 ---
 
-:::callout-warning
-Página em construção! Em breve. 
-:::
-
 ::: callout
-Conceitos prévios importantes para essa aula:
+Conceitos prévios importantes:
 
 - Pacotes, funções e objetos
 
