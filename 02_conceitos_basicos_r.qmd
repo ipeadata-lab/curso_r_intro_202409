@@ -13,4 +13,8 @@ Página em construção! Em breve.
 
 ## Tipologia dos dados (lógico, numérico, caracter, fator)
 
+## Tipo de dados e conversões
+
+Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`,  etc.
+
 ## Valores faltantes (NA)
