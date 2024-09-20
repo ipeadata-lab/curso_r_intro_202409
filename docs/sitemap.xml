@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/02_conceitos_basicos_r.html</loc>
-    <lastmod>2024-09-17T13:15:01.050Z</lastmod>
+    <lastmod>2024-09-20T13:02:14.511Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/00_instrucoes_pre_curso.html</loc>
-    <lastmod>2024-09-17T12:03:49.357Z</lastmod>
+    <lastmod>2024-09-20T14:32:34.665Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/10_pesquisa_ipea.html</loc>
@@ -14,19 +14,15 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/04_conhecendo.html</loc>
-    <lastmod>2024-09-19T14:57:08.877Z</lastmod>
+    <lastmod>2024-09-20T14:35:03.848Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/index.html</loc>
-    <lastmod>2024-09-17T12:30:41.762Z</lastmod>
+    <lastmod>2024-09-20T12:53:13.399Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/07_analise.html</loc>
     <lastmod>2024-09-17T14:03:56.368Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/06_organizacao.html</loc>
-    <lastmod>2024-09-17T13:14:42.729Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/09_ciclo_completo.html</loc>
@@ -38,7 +34,7 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/05_transformacao.html</loc>
-    <lastmod>2024-09-17T13:15:03.485Z</lastmod>
+    <lastmod>2024-09-20T14:30:40.070Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/00_projeto_eda.html</loc>
@@ -46,10 +42,10 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/03_importacao.html</loc>
-    <lastmod>2024-09-19T14:54:12.646Z</lastmod>
+    <lastmod>2024-09-20T13:34:43.346Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/01_r_rstudio.html</loc>
-    <lastmod>2024-09-17T13:14:52.202Z</lastmod>
+    <lastmod>2024-09-20T12:59:43.605Z</lastmod>
   </url>
 </urlset>

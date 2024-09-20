@@ -198,6 +198,7 @@ A presença de valores faltantes é algo comum em bases de dados. Eles podem oco
 Existem algumas funções que nos ajudam a identificar a presença de valores faltantes na base de dados. O pacote `{naniar}` apresenta funções úteis para isso: a função `gg_miss_var()` cria uma visualição apresentando o nome das variáveis da base de dados, assim como a quantidade de valores faltantes em cada uma delas.
 
 ```{r}
+#| label: exemplo-naniar
 #| message: false
 library(naniar)
 # Valores absolutos
