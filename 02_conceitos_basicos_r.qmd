@@ -7,10 +7,10 @@ title: "Conceitos básicos"
 Página em construção! Em breve. 
 :::
 
-<!-- - Objetos: breve conceito -->
+## Objetos: breve conceito
 
-<!-- - Tipos de objetos: vetores, matrizes, listas, data frames -->
+## Tipos de objetos: vetores, matrizes, listas, data frames
 
-<!-- - Tipologia dos dados (lógico, numérico, caracter, fator) -->
+## Tipologia dos dados (lógico, numérico, caracter, fator)
 
-<!-- - Funções -->
+## Valores faltantes (NA)
