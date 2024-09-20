@@ -1,6 +1,10 @@
 ---
-title: "Introdução ao curso"
+title: "Introdução à análise de dados no R"
+subtitle: "Utilizando dados públicos brasileiros"
+
 ---
+
+## Introdução ao material
 
 Este site apresenta o material de apoio para o curso **"Introdução à análise de dados no R"**, oferecido em 2024.
 O curso será realizado de forma remota, com aulas ao vivo e atividades práticas.
