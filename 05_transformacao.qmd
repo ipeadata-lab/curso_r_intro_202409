@@ -3,6 +3,36 @@
 title: "Transformando dados"
 ---
 
+
+```{r}
+library(readr)
+dados_brutos <- read_csv2("dados/sidrar_4092_bruto_2.csv")
+```
+
+
+## Padronizar nome das colunas
+
+O pacote `janitor` possui uma função chamada `clean_names()` que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.
+
+```{r}
+#| message: false
+library(janitor)
+```
+
+
+```{r}
+# checar nome das colunas da base de dados
+names(dados_brutos)
+
+# limpar nomes das colunas da base de dados, e salvar em um novo objeto
+dados_renomeados <- clean_names(dados_brutos)
+
+# checar nome das colunas da base de dados renomeada
+names(dados_renomeados)
+```
+
+
+
 :::callout-warning
 Página em construção! Em breve. 
 :::
