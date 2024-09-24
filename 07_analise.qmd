@@ -6,38 +6,38 @@ title: "Analisando dados"
 Página em construção! Em breve. 
 :::
 
-## Estatísticas descritivas
+<!-- ## Estatísticas descritivas -->
 
-Funções básicas:
-
-
-|  Função |  O que retorna? |
-|--:|--:|
-|  `sum()` |  Soma  | 
-|  `mean()` |  Média |
-|  `median()` |  Mediana |
-|  `var()` |  Variância (simples) |
-|  `sd()` |  Desvio Padrão |
-|  `max()` |  Valor máximo  |
-|  `min()` |  Valor mínimo |
-|  `round()` |  Valor arredondado |
-|  `sqrt()` |  Raíz quadrada |
+<!-- Funções básicas: -->
 
 
-- Argumento importante: `na.rm = TRUE`
+<!-- |  Função |  O que retorna? | -->
+<!-- |--:|--:| -->
+<!-- |  `sum()` |  Soma  |  -->
+<!-- |  `mean()` |  Média | -->
+<!-- |  `median()` |  Mediana | -->
+<!-- |  `var()` |  Variância (simples) | -->
+<!-- |  `sd()` |  Desvio Padrão | -->
+<!-- |  `max()` |  Valor máximo  | -->
+<!-- |  `min()` |  Valor mínimo | -->
+<!-- |  `round()` |  Valor arredondado | -->
+<!-- |  `sqrt()` |  Raíz quadrada | -->
 
-Somando do `vetor_com_na`:
-```{r}
-vetor_com_na <- c(NA, 1, 5, 2, 5, NA)
-sum(vetor_com_na)
-sum(vetor_com_na, na.rm = TRUE)
-```
 
-Calculando a média do `vetor_com_na`:
-```{r}
-mean(vetor_com_na)
-mean(vetor_com_na, na.rm = TRUE)
-```
+<!-- - Argumento importante: `na.rm = TRUE` -->
+
+<!-- Somando do `vetor_com_na`: -->
+<!-- ```{r} -->
+<!-- vetor_com_na <- c(NA, 1, 5, 2, 5, NA) -->
+<!-- sum(vetor_com_na) -->
+<!-- sum(vetor_com_na, na.rm = TRUE) -->
+<!-- ``` -->
+
+<!-- Calculando a média do `vetor_com_na`: -->
+<!-- ```{r} -->
+<!-- mean(vetor_com_na) -->
+<!-- mean(vetor_com_na, na.rm = TRUE) -->
+<!-- ``` -->
 
 
 <!-- - Estatísticas agregadas (summarize) -->

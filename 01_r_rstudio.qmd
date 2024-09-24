@@ -7,42 +7,42 @@ title: "Conhecendo o R e o RStudio"
 Página em construção! Em breve. 
 :::
 
-## Apresentação do software e linguagem R
+<!-- ## Apresentação do software e linguagem R -->
 
 
-## Working directory e Rproject
+<!-- ## Working directory e Rproject -->
 
 
-## Scripts
+<!-- ## Scripts -->
 
-### Funções
-
-
-## Pacotes
-
-### O que são pacotes?
-
-### Instalação de pacotes
-
-### Instalação de pacotes necessários no curso
-
-Durante o curso, utilizaremos diversos pacotes do R.
-Explicaremos o que são pacotes em ["Conhecendo o R e o RStudio > Pacotes"](01_r_rstudio.qmd), mas, de forma resumida, são extensões que adicionam funcionalidades ao R.
-
-Para instalar os pacotes necessários, execute o seguinte comando no console do RStudio:
-
-```{r}
-#| eval: false
-pacotes_necessarios <- c("tidyverse", "janitor", "sidrar", "sf", "geobr",
-                         "readxl", "writexl", "fs", "naniar", "skimr")
-
-install.packages(pacotes_necessarios)
-```
-
-### Carregamento de pacotes
+<!-- ### Funções -->
 
 
-## Help, manuais e documentação
+<!-- ## Pacotes -->
+
+<!-- ### O que são pacotes? -->
+
+<!-- ### Instalação de pacotes -->
+
+<!-- ### Instalação de pacotes necessários no curso -->
+
+<!-- Durante o curso, utilizaremos diversos pacotes do R. -->
+<!-- Explicaremos o que são pacotes em ["Conhecendo o R e o RStudio > Pacotes"](01_r_rstudio.qmd), mas, de forma resumida, são extensões que adicionam funcionalidades ao R. -->
+
+<!-- Para instalar os pacotes necessários, execute o seguinte comando no console do RStudio: -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- pacotes_necessarios <- c("tidyverse", "janitor", "sidrar", "sf", "geobr", -->
+<!--                          "readxl", "writexl", "fs", "naniar", "skimr") -->
+
+<!-- install.packages(pacotes_necessarios) -->
+<!-- ``` -->
+
+<!-- ### Carregamento de pacotes -->
+
+
+<!-- ## Help, manuais e documentação -->
 
 
 ## Sugestões de materiais
