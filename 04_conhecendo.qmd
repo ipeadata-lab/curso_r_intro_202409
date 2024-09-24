@@ -4,33 +4,31 @@ title: "Conhecendo a base de dados"
 code-link: true
 ---
 
-:::callout-warning
+::: callout-warning
 Página em construção! Em breve.
 :::
 
 ::: callout
 Conceitos prévios importantes:
 
-- [Como importar bases de dados?](03_importacao.qmd)
+-   [Como importar bases de dados?](03_importacao.qmd)
 
-- Tipos de variáveis
+-   Tipos de variáveis
 
-- Valores faltantes
-
+-   Valores faltantes
 :::
-
 
 Nesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.
 
 Essa etapa é importante para:
 
-  - Entendermos qual é a estrutura da base de dados: quais são as variáveis presentes, o que cada linha representa, entre outros.
+-   Entendermos qual é a estrutura da base de dados: quais são as variáveis presentes, o que cada linha representa, entre outros.
 
-  - Descobrir se há valores faltantes, em quais variáveis eles estão presentes e em que proporção.
+-   Descobrir se há valores faltantes, em quais variáveis eles estão presentes e em que proporção.
 
-  - Identificar o que é necessário fazer para arrumar a base de dados (isso vamos explorar posteriormente).
+-   Identificar o que é necessário fazer para arrumar a base de dados (isso vamos explorar posteriormente).
 
-:::{.callout}
+::: callout
 **Sugestão:** Ao longo deste capítulo, sugerimos que tente identificar o que é necessário para arrumar essa base de dados.
 :::
 
@@ -77,18 +75,12 @@ Outra forma de acessar o View é clicando na linha do objeto no painel *Environm
 
 ![Captura de tela: Onde clicamos para abrir o View](images/04_environment.png){fig-align="center"}
 
-
 ```{r}
 #| eval: false
 View(dados)
 ```
 
-
-
 ![Gravação da tela - Usando o View](images/04_view.gif){fig-align="center"}
-
-
-
 
 ## Sumário das variáveis
 
@@ -96,19 +88,18 @@ Em funções apresentadas anteriormente, como a `names()`, já conseguimos ter u
 
 Nessa etapa, conheceremos algumas funções que nos ajudarão a ter essas informações. Algumas apresentam as mesmas informações, mas de formas diferentes. Portanto, é interessante conhecer algumas delas, e escolher qual é a que melhor atende às nossas necessidades.
 
-:::{.callout-important}
+::: callout-important
 Cuidado: as funções apresentadas a seguir calculam algumas estatísticas descritivas (como a média, mediana, desvio padrão, valor mínimo, valor máximo, entre outras) em variáveis numéricas. Porém, ainda não "arrumamos" a base de dados (faremos isso no capítulo [Transformando dados](05_transformacao.qmd)), e os dados ainda não estão adequados para esses cálculos.
 
 Alguns exemplos:
 
-- Várias colunas numéricas representam o código de uma categoria, e não faz sentido calcular a média desses códigos.
+-   Várias colunas numéricas representam o código de uma categoria, e não faz sentido calcular a média desses códigos.
 
-- A variável `valor` está relacionada com a variável `unidade_de_medida`. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.
+-   A variável `valor` está relacionada com a variável `unidade_de_medida`. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.
 
 ```{r}
 unique(dados$`Unidade de Medida`)
 ```
-
 
 Falaremos sobre o cálculo de estatísticas descritivas no capítulo [Analisando dados](07_analise.qmd).
 :::
@@ -134,60 +125,52 @@ skim_dados <- skim(dados)
 
 O resultado da função `skim()` é dividido em duas partes:
 
-- *Data summary*: informações gerais sobre a base de dados, como:  nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável[^nota-1].
+-   *Data summary*: informações gerais sobre a base de dados, como: nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável[^1].
 
-- **Variable type**: para cada tipo de variável presente na base de dados, temos informações como:
-  - `skim_variable`: nome da variável.
-  - `n_missing`: número de valores faltantes.
-  - `complete_rate`: proporção de valores não faltantes (está relacionada com a `n_missing`).
-  - Outras colunas específicas segundo o tipo de variável.
+-   **Variable type**: para cada tipo de variável presente na base de dados, temos informações como:
+
+    -   `skim_variable`: nome da variável.
+    -   `n_missing`: número de valores faltantes.
+    -   `complete_rate`: proporção de valores não faltantes (está relacionada com a `n_missing`).
+    -   Outras colunas específicas segundo o tipo de variável.
+
+[^1]: Ainda não abordamos o conceito de grupos, então isso ficará mais claro posteriormente.
 
 A seguir, estão as informações que a função `skim()` retorna para os tipos de variáveis mais frequentes:
 
-- *character* (dados de texto):
-  - `min`: número mínimo de caracteres.
-  - `max`: número máximo de caracteres.
-  - `empty`: número de linhas contendo valores vazios (um valor vazio é um valor que contém apenas `""`).
-  - `n_unique`: número de valores únicos.
-  - `whitespace`: número de linhas contendo apenas espaços em branco.
-
-
-- *numeric* (dados numéricos):
-  - `mean`: média.
-  - `sd`: desvio padrão.
-  - `p0`: valor mínimo.
-  - `p25`: primeiro quartil.
-  - `p50`: mediana.
-  - `p75`: terceiro quartil.
-  - `p100`: valor máximo.
-  - `hist`: histograma dos valores.
-
-
-- *date* (datas):
-  - `min`: data mínima.
-  - `max`: data máxima.
-  - `median`: data mediana.
-  - `n_unique`: número de datas únicas.
-
-- *factor* (dados categóricos):
-  - `ordered`: os níveis do fator estão ordenados?
-  - `n_unique`: número de valores únicos do fator.
-  - `top_counts`: os valores mais frequentes do fator.
-
-- *logical* (dados booleanos):
-  - `mean`: média dos valores, considerando que `TRUE` é 1 e `FALSE` é 0.
-  - `count`: contagem dos valores `TRUE` e `FALSE`.
-
-
-[^nota-1]: Ainda não abordamos o conceito de grupos, então isso ficará mais claro posteriormente.
+-   *character* (dados de texto):
+    -   `min`: número mínimo de caracteres.
+    -   `max`: número máximo de caracteres.
+    -   `empty`: número de linhas contendo valores vazios (um valor vazio é um valor que contém apenas `""`).
+    -   `n_unique`: número de valores únicos.
+    -   `whitespace`: número de linhas contendo apenas espaços em branco.
+-   *numeric* (dados numéricos):
+    -   `mean`: média.
+    -   `sd`: desvio padrão.
+    -   `p0`: valor mínimo.
+    -   `p25`: primeiro quartil.
+    -   `p50`: mediana.
+    -   `p75`: terceiro quartil.
+    -   `p100`: valor máximo.
+    -   `hist`: histograma dos valores.
+-   *date* (datas):
+    -   `min`: data mínima.
+    -   `max`: data máxima.
+    -   `median`: data mediana.
+    -   `n_unique`: número de datas únicas.
+-   *factor* (dados categóricos):
+    -   `ordered`: os níveis do fator estão ordenados?
+    -   `n_unique`: número de valores únicos do fator.
+    -   `top_counts`: os valores mais frequentes do fator.
+-   *logical* (dados booleanos):
+    -   `mean`: média dos valores, considerando que `TRUE` é 1 e `FALSE` é 0.
+    -   `count`: contagem dos valores `TRUE` e `FALSE`.
 
 A seguir, podemos ver o resultado da função `skim()`:
 
 ```{r}
 skim_dados
 ```
-
-
 
 ## Valores faltantes (`NA`)
 
@@ -207,7 +190,6 @@ gg_miss_var(dados)
 # Valores relativos
 gg_miss_var(dados, show_pct = TRUE)
 ```
-
 
 ## 
 
@@ -234,8 +216,6 @@ tail(dados_com_n_linha)
 slice_sample(dados_com_n_linha, n = 5)
 ```
 
-
-
 ## Conhecendo os valores únicos de uma coluna
 
 Para variáveis categóricas ou de texto, é interessante conhecer os valores únicos presentes.
@@ -249,5 +229,3 @@ A função `unique()` retorna os valores únicos de um vetor. Exemplo:
 ```{r}
 unique(dados$`Unidade de Medida`)
 ```
-
-
