@@ -303,14 +303,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container">
 <p>Conceitos prévios importantes:</p>
 <ul>
-<li><p>Pacotes, funções e objetos</p></li>
-<li><p>Projetos do RStudio (<code>.Rproj</code>) e diretórios</p></li>
+<li><p>Pacotes, funções e objetos no R</p></li>
+<li><p>Projetos do RStudio (<code>.Rproj</code>) e diretórios de trabalho</p></li>
 <li><p>Caminhos de arquivos</p></li>
 </ul>
 </div>
 </div>
 </div>
-<p>O objetivo da etapa de importação é carregar a base de dados para a memória RAM. Assim conseguiremos utilizar os dados no R.</p>
+<p>O objetivo da etapa de importação é carregar a base de dados para a memória RAM do computador. Assim conseguiremos utilizar os dados no R.</p>
 <p>Essa etapa pode ser bem rápida (ou não!). Depende da base de dados que precisamos carregar.</p>
 <p>Nesta etapa, vamos aprender:</p>
 <ul>
@@ -455,13 +455,13 @@ Importante
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv2</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"dados_output/sidrar_4092.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="arquivo-excel-ex-.xlsx" class="level3"><h3 class="anchored" data-anchor-id="arquivo-excel-ex-.xlsx">Arquivo excel (ex: <code>.xlsx</code>)</h3>
-<p>A função <code>write_xlsx()</code> do pacote <a href="https://docs.ropensci.org/writexl/">writexl</a> permite a escrita de arquivos do Excel.</p>
+<p>A função <code><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx()</a></code> do pacote <a href="https://docs.ropensci.org/writexl/">writexl</a> permite a escrita de arquivos do Excel.</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/writexl/">writexl</a></span><span class="op">)</span></span>
-<span><span class="fu">write_xlsx</span><span class="op">(</span><span class="va">dados</span>, <span class="st">"dados_output/sidrar_4092.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"dados_output/sidrar_4092.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="arquivo-binário-do-r-.rds-1" class="level3"><h3 class="anchored" data-anchor-id="arquivo-binário-do-r-.rds-1">Arquivo binário do R (<code>.rds</code>)</h3>
-<p>A função <code><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds()</a></code> do pacote <a href="https://readr.tidyverse.org">readr</a> permite salvar um objeto do R em um arquivo binário do R.</p>
+<p>A função <code><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds()</a></code> do pacote <a href="https://readr.tidyverse.org">readr</a> permite salvar um objeto do R em um arquivo binário do R, preservando a estrutura dos objetos.</p>
 <p>Esse tipo de arquivo é útil para salvar objetos do R, como dataframes, listas, vetores, sem perder a estrutura do objeto.</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"dados_output/sidrar_4092.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -482,7 +482,8 @@ Importante
 </div>
 <div class="callout-body-container callout-body">
 <p>Esses pacotes, em geral, obtém as informações na internet. Isso pode demorar um pouco.</p>
-<p>É recomendável que você salve uma cópia local dos dados brutos após o download, e use-os para trabalhar localmente. Isso evita que você precise baixar os dados toda vez que for trabalhar com eles.</p>
+<p>Recomendamos que você salve uma cópia local dos dados brutos após o download. Isso evita a necessidade de baixar os dados novamente e facilita o trabalho localmente, principalmente se a conexão com a internet estiver instável.</p>
+<p>Alguns pacotes, como o <a href="https://github.com/ipeaGIT/censobr">censobr</a>, apresentam funções preparadas para salvar os dados localmente.</p>
 </div>
 </div>
 <section id="pacote-sidrar" class="level3"><h3 class="anchored" data-anchor-id="pacote-sidrar">Pacote <code>{sidrar}</code>
@@ -493,11 +494,11 @@ Importante
 </div>
 <p>Para importar dados do SIDRA, você precisa saber o <strong>código da tabela</strong> que deseja importar. Uma forma de fazer isso é buscar no site do SIDRA, no IBGE: <a href="https://sidra.ibge.gov.br/" class="uri">https://sidra.ibge.gov.br/</a>.</p>
 <section id="buscando-tabelas-no-sidra" class="level4"><h4 class="anchored" data-anchor-id="buscando-tabelas-no-sidra">Buscando tabelas no SIDRA</h4>
-<p>Outra forma é buscar por palavras-chave no próprio R, utilizando a função <code>search_sidra()</code>:</p>
+<p>Outra forma é buscar por palavras-chave no próprio R, utilizando a função <code><a href="https://rdrr.io/pkg/sidrar/man/search_sidra.html">search_sidra()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exemplo de busca por palavras-chave: </span></span>
 <span><span class="co"># Tabelas com resultados da PNAD Contínua Trimestral</span></span>
-<span><span class="fu">search_sidra</span><span class="op">(</span><span class="st">"PNADCT"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/search_sidra.html">search_sidra</a></span><span class="op">(</span><span class="st">"PNADCT"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Tabela 5435 - Pessoas de 14 anos ou mais de idade, ocupadas na semana de referência, por grupamento ocupacional no trabalho principal"                                                                                                                                                             
  [2] "Tabela 5444 - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente e efetivamente recebidos no trabalho principal, por grupamento ocupacional no trabalho principal"                                    
@@ -515,9 +516,9 @@ Importante
 </div>
 <p>Neste curso, utilizaremos na maioria das aulas a <a href="https://sidra.ibge.gov.br/Tabela/4092">Tabela 4092 - Pessoas de 14 anos ou mais de idade, por condição em relação à força de trabalho e condição e ocupação</a>, proveniente da Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T).</p>
 </section><section id="buscando-informações-sobre-a-tabela" class="level4"><h4 class="anchored" data-anchor-id="buscando-informações-sobre-a-tabela">Buscando informações sobre a tabela</h4>
-<p>Sabendo o código da tabela, você pode buscar informações sobre a tabela com a função <code>info_sidra()</code>.</p>
+<p>Sabendo o código da tabela, você pode buscar informações sobre a tabela com a função <code><a href="https://rdrr.io/pkg/sidrar/man/info_sidra.html">info_sidra()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span> <span class="op">&lt;-</span> <span class="fu">info_sidra</span><span class="op">(</span><span class="st">"4092"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/info_sidra.html">info_sidra</a></span><span class="op">(</span><span class="st">"4092"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O resultado dessa função é uma lista, portanto podemos acessar os elementos da lista utilizando o operador <code>$</code>, seguido pelo nome do elemento.</p>
 <p>Primeiro, podemos ver os nomes dos elementos da lista:</p>
@@ -612,9 +613,9 @@ Importante
 </div>
 </div>
 </section></section><section id="importando-a-tabela" class="level4"><h4 class="anchored" data-anchor-id="importando-a-tabela">Importando a tabela</h4>
-<p>A função <code>get_sidra()</code> do pacote <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a> permite importar dados do SIDRA.</p>
+<p>A função <code><a href="https://rdrr.io/pkg/sidrar/man/get_sidra.html">get_sidra()</a></code> do pacote <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a> permite importar dados do SIDRA.</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_brutos_4092</span> <span class="op">&lt;-</span> <span class="fu">sidrar</span><span class="fu">::</span><span class="fu">get_sidra</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_brutos_4092</span> <span class="op">&lt;-</span> <span class="fu">sidrar</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/get_sidra.html">get_sidra</a></span><span class="op">(</span></span>
 <span>  <span class="co"># Qual é o código da tabela que vamos usar?</span></span>
 <span>  x <span class="op">=</span> <span class="fl">4092</span>,</span>
 <span>  <span class="co"># Períodos: trimestres, vamos usar o vetor criado anteriormente</span></span>
