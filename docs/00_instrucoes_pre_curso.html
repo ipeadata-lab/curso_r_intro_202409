@@ -322,6 +322,7 @@ Importante
 <div class="callout-body-container callout-body">
 <p>Recomendamos que utilizem o R na versão 4.1.0 ou superior.</p>
 <p>Caso a versão do R seja inferior a 4.1.0, recomendamos que atualizem o R para a versão mais recente.</p>
+<p>Versões mais antigas podem ter incompatibilidades com alguns códigos que utilizaremos durante o curso.</p>
 </div>
 </div>
 <p>Existe mais de uma forma para verificar a versão do R. A forma mais simples é verificando o texto que aparece no painel “Console” ao abrir o RStudio:</p>
@@ -329,11 +330,26 @@ Importante
 <figure class="figure"><p><img src="images/01_rstudio_version.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 <figcaption>Captura de tela da IDE RStudio</figcaption></figure>
 </div>
-<p>Outra forma é utilizando o comando <code>R.version.string</code>. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é <strong>4.3.3</strong>:</p>
+<p>Outra forma é utilizando o comando <code>R.version.string</code>. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é <strong>4.4.1</strong>:</p>
+<p>O comando <code>R.version</code> retorna um objeto com diversas informações sobre a versão do R, o sistema operacional utilizado, etc:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">R.version.string</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">R.version</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "R version 4.3.3 (2024-02-29)"</code></pre>
+<pre><code>               _                           
+platform       aarch64-apple-darwin20      
+arch           aarch64                     
+os             darwin20                    
+system         aarch64, darwin20           
+status                                     
+major          4                           
+minor          4.1                         
+year           2024                        
+month          06                          
+day            14                          
+svn rev        86737                       
+language       R                           
+version.string R version 4.4.1 (2024-06-14)
+nickname       Race for Your Life          </code></pre>
 </div>
 </div>
 

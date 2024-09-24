@@ -49,6 +49,8 @@ O R possui versões, e é importante verificar se a versão instalada é recente
 Recomendamos que utilizem o R na versão 4.1.0 ou superior.
 
 Caso a versão do R seja inferior a 4.1.0, recomendamos que atualizem o R para a versão mais recente.
+
+Versões mais antigas podem ter incompatibilidades com alguns códigos que utilizaremos durante o curso.
 :::
 
 Existe mais de uma forma para verificar a versão do R. A forma mais simples é verificando o texto que aparece no painel "Console" ao abrir o RStudio:
@@ -57,6 +59,8 @@ Existe mais de uma forma para verificar a versão do R. A forma mais simples é 
 
 Outra forma é utilizando o comando `R.version.string`. Para isso, execute o seguinte comando no console do RStudio. Por exemplo, a versão do R utilizada para a elaboração deste material é **`r R.version$major`.`r R.version$minor`**:
 
+O comando `R.version` retorna um objeto com diversas informações sobre a versão do R, o sistema operacional utilizado, etc:
+
 ```{r}
-R.version.string
+R.version
 ```
