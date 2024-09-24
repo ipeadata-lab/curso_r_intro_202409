@@ -231,14 +231,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
    
   <ul>
-<li><a href="#padronizar-nome-das-colunas" id="toc-padronizar-nome-das-colunas" class="nav-link active" data-scroll-target="#padronizar-nome-das-colunas">Padronizar nome das colunas</a></li>
+<li><a href="#introdu%C3%A7%C3%A3o" id="toc-introdução" class="nav-link active" data-scroll-target="#introdu%C3%A7%C3%A3o">Introdução</a></li>
+  <li><a href="#padronizar-nome-das-colunas" id="toc-padronizar-nome-das-colunas" class="nav-link" data-scroll-target="#padronizar-nome-das-colunas">Padronizar nome das colunas</a></li>
   <li><a href="#filtrando-linhas" id="toc-filtrando-linhas" class="nav-link" data-scroll-target="#filtrando-linhas">Filtrando linhas</a></li>
   <li><a href="#selecionando-colunas" id="toc-selecionando-colunas" class="nav-link" data-scroll-target="#selecionando-colunas">Selecionando colunas</a></li>
   <li><a href="#transformando-a-tabela" id="toc-transformando-a-tabela" class="nav-link" data-scroll-target="#transformando-a-tabela">Transformando a tabela</a></li>
   <li><a href="#criando-e-transformando-vari%C3%A1veis" id="toc-criando-e-transformando-variáveis" class="nav-link" data-scroll-target="#criando-e-transformando-vari%C3%A1veis">Criando e transformando variáveis</a></li>
   <li><a href="#ordenando-as-linhas" id="toc-ordenando-as-linhas" class="nav-link" data-scroll-target="#ordenando-as-linhas">Ordenando as linhas</a></li>
-  <li><a href="#pipe-reescrever-o-que-foi-feito-antes" id="toc-pipe-reescrever-o-que-foi-feito-antes" class="nav-link" data-scroll-target="#pipe-reescrever-o-que-foi-feito-antes">Pipe + reescrever o que foi feito antes</a></li>
-  <li><a href="#merge-b%C3%A1sico-de-duas-bases" id="toc-merge-básico-de-duas-bases" class="nav-link" data-scroll-target="#merge-b%C3%A1sico-de-duas-bases">Merge básico de duas bases</a></li>
+  <li><a href="#pipe---encadeando-fun%C3%A7%C3%B5es" id="toc-pipe---encadeando-funções" class="nav-link" data-scroll-target="#pipe---encadeando-fun%C3%A7%C3%B5es">Pipe - Encadeando funções</a></li>
+  <li><a href="#unindo-duas-bases-de-dados" id="toc-unindo-duas-bases-de-dados" class="nav-link" data-scroll-target="#unindo-duas-bases-de-dados">Unindo duas bases de dados</a></li>
   <li><a href="#sugest%C3%B5es-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugest%C3%B5es-de-materiais">Sugestões de materiais</a></li>
   </ul></nav>
     </div>
@@ -258,22 +259,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><blockquote class="blockquote">
-<p>DÚVIDA: ONDE FALAR DE PIPE? PENSAR!</p>
-</blockquote>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Aviso
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Página em construção! Em breve.</p>
-</div>
-</div>
+</header><section id="introdução" class="level2"><h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
+<p>Primeiramente, precisamos carregar o pacote <code>tidyverse</code> e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, e foi baixada previamente (em <a href="03_importacao.html#pacote-sidrar">Importando dados</a>).</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="va">dados_brutos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto_2.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -295,9 +282,9 @@ Aviso
 <blockquote class="blockquote">
 <p>Considerando que a tabela 4092 apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?</p>
 </blockquote>
-<section id="padronizar-nome-das-colunas" class="level2"><h2 class="anchored" data-anchor-id="padronizar-nome-das-colunas">Padronizar nome das colunas</h2>
-<p>É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas encoding e também .</p>
-<p>O pacote <code>janitor</code> possui uma função chamada <code>clean_names()</code> que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.</p>
+</section><section id="padronizar-nome-das-colunas" class="level2"><h2 class="anchored" data-anchor-id="padronizar-nome-das-colunas">Padronizar nome das colunas</h2>
+<p>É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas encoding e também facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.</p>
+<p>O pacote <code>janitor</code> possui uma função chamada <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code> que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -320,7 +307,7 @@ Aviso
 [13] "Condição em relação à força de trabalho e condição de ocupação"         </code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># limpar nomes das colunas da base de dados, e salvar em um novo objeto</span></span>
-<span><span class="va">dados_renomeados</span> <span class="op">&lt;-</span> <span class="fu">clean_names</span><span class="op">(</span><span class="va">dados_brutos</span><span class="op">)</span></span>
+<span><span class="va">dados_renomeados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="va">dados_brutos</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># checar nome das colunas da base de dados renomeada</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dados_renomeados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -342,7 +329,7 @@ Aviso
 </div>
 </section><section id="filtrando-linhas" class="level2"><h2 class="anchored" data-anchor-id="filtrando-linhas">Filtrando linhas</h2>
 <p>Para responder a pergunta, não precisamos de todas as variáveis presentes na base de dados. Portanto, podemos <strong>filtrar</strong> as linhas que são relevantes para a análise.</p>
-<p>As variáveis disponíveis na base de dados, e suas unidades de medida são:</p>
+<p>Antes de filtrar, podemos consultar quais são os valores distintos possíveis para garantir que selecionamos o correto ao filtrar. As variáveis disponíveis na base de dados, e suas unidades de medida são:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span></span>
 <span>  <span class="co"># base de dados</span></span>
@@ -438,6 +425,7 @@ $ valor_mil_pessoas &lt;dbl&gt; 1210, 765, 703, 62, 446, 1217, 782, 733, 49, 434
 </section><section id="transformando-a-tabela" class="level2"><h2 class="anchored" data-anchor-id="transformando-a-tabela">Transformando a tabela</h2>
 <p>Voltando à pergunta norteadora, queremos calcular a taxa de desocupação de cada estado e região do Brasil ao longo do tempo. Para isso, é mais fácil trabalhar com a tabela onde cada linha represente uma UF por trimestre, e as categorias da variável <code>condicao</code> sejam transformadas em colunas.</p>
 <p>Para fazer essa transformação, podemos usar a função <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>.</p>
+<p>A função <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> é útil quando queremos reorganizar uma tabela para que cada linha represente uma unidade de interesse (neste caso, uma combinação de UF e trimestre) e as variáveis categóricas se tornem colunas. Por exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>, vamos transformar isso para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas. Isso facilita cálculos agregados, como a taxa de desocupação.</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_largos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>  <span class="co"># base de dados</span></span>
@@ -467,9 +455,9 @@ $ `mil_pessoas_Força de trabalho - desocupada` &lt;dbl&gt; 62, 49, 46, 42, 49, 
 $ `mil_pessoas_Fora da força de trabalho`      &lt;dbl&gt; 446, 434, 441, 415, 437, …</code></pre>
 </div>
 </div>
-<p>Agora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável <code>condicao</code> se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função <code>clean_names()</code>.</p>
+<p>Agora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável <code>condicao</code> se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_largos_renomeados</span> <span class="op">&lt;-</span> <span class="fu">clean_names</span><span class="op">(</span><span class="va">dados_largos</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_largos_renomeados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="va">dados_largos</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dados_largos_renomeados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
@@ -484,6 +472,9 @@ $ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 703, 733, 738, 762, 746, 
 $ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 36, 3…
 $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 443,…</code></pre>
 </div>
+</div>
+<div class="callout-info">
+<p>As funções <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> e <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> são usadas para alternar entre dados ‘longos’ e ‘largos’. Normalmente, dados longos são mais fáceis de visualizar, enquanto dados largos são melhores para realizar cálculos comparativos entre categorias.</p>
 </div>
 </section><section id="criando-e-transformando-variáveis" class="level2"><h2 class="anchored" data-anchor-id="criando-e-transformando-variáveis">Criando e transformando variáveis</h2>
 <p>Para criar novas variáveis, ou transformar variáveis que já existem, podemos usar a função <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>.</p>
@@ -594,16 +585,121 @@ $ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.
 </div>
 </div>
 <p>Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).</p>
-</section><section id="pipe-reescrever-o-que-foi-feito-antes" class="level2"><h2 class="anchored" data-anchor-id="pipe-reescrever-o-que-foi-feito-antes">Pipe + reescrever o que foi feito antes</h2>
-<p>FAZER!</p>
-</section><section id="merge-básico-de-duas-bases" class="level2"><h2 class="anchored" data-anchor-id="merge-básico-de-duas-bases">Merge básico de duas bases</h2>
-<p>FAZER!</p>
+</section><section id="pipe---encadeando-funções" class="level2"><h2 class="anchored" data-anchor-id="pipe---encadeando-funções">Pipe - Encadeando funções</h2>
+<p>Nos exemplos anteriores, usamos uma função por vez, para explorar o que cada uma faz. Porém, conforme ficamos mais confortáveis com o uso das funções, podemos encadear várias funções em uma única linha de código, usando o operador pipe (<code>%&gt;%</code> ou <code>|&gt;</code>).</p>
+<p>Podemos reescrever os códigos anteriores, usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: <code>dados_renomeados</code>, <code>dados_filtrados</code>, <code>dados_selecionados</code>, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.</p>
+<p>No exemplo abaixo, criamos menos objetos intermediários, e encadeamos as funções usadas anteriormente usando o pipe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ipeagit.github.io/geobr/">geobr</a></span><span class="op">)</span></span>
-<span><span class="va">geo_estados</span> <span class="op">&lt;-</span> <span class="fu">read_state</span><span class="op">(</span>showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_filtrados_selecionados</span> <span class="op">&lt;-</span> <span class="va">dados_brutos</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># limpando os nomes das colunas</span></span>
+<span>  <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># filtrando as linhas</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">variavel</span> <span class="op">==</span> <span class="st">"Pessoas de 14 anos ou mais de idade"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># selecionando as colunas</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
+<span>    <span class="va">unidade_da_federacao</span>,</span>
+<span>    <span class="va">unidade_da_federacao_codigo</span>,</span>
+<span>    <span class="va">trimestre</span>,</span>
+<span>    <span class="va">trimestre_codigo</span>,</span>
+<span>    <span class="va">condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao</span>,</span>
+<span>    <span class="va">valor</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># renomeando as colunas</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
+<span>    condicao <span class="op">=</span> <span class="va">condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao</span>,</span>
+<span>    valor_mil_pessoas <span class="op">=</span> <span class="va">valor</span>,</span>
+<span>    uf <span class="op">=</span> <span class="va">unidade_da_federacao</span>,</span>
+<span>    uf_codigo <span class="op">=</span> <span class="va">unidade_da_federacao_codigo</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">dados_largos</span> <span class="op">&lt;-</span> <span class="va">dados_filtrados_selecionados</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># transformando para formato largo</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
+<span>    names_from <span class="op">=</span> <span class="va">condicao</span>,</span>
+<span>    values_from <span class="op">=</span> <span class="va">valor_mil_pessoas</span>,</span>
+<span>    names_prefix <span class="op">=</span> <span class="st">"mil_pessoas_"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># limpando o nome das colunas novamente</span></span>
+<span>  <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span>  </span>
+<span>  </span>
+<span><span class="va">dados_preparados</span> <span class="op">&lt;-</span> <span class="va">dados_largos</span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="co"># transformando as variáveis </span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    uf_codigo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">uf_codigo</span><span class="op">)</span>,</span>
+<span>    trimestre_codigo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">trimestre_codigo</span><span class="op">)</span>,</span>
+<span>    prop_desocupacao <span class="op">=</span> <span class="op">(</span></span>
+<span>      <span class="va">mil_pessoas_forca_de_trabalho_desocupada</span> <span class="op">/</span> <span class="va">mil_pessoas_forca_de_trabalho</span></span>
+<span>    <span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,</span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># ordenando a base de dados</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">trimestre_codigo</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">prop_desocupacao</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">geo_estados</span>, <span class="va">dados_ordenados</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code_state"</span> <span class="op">=</span> <span class="st">"uf_codigo"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dados_preparados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,350
+Columns: 10
+$ uf                                       &lt;chr&gt; "Amapá", "Bahia", "Rio Grande…
+$ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…
+$ trimestre                                &lt;chr&gt; "1º trimestre 2012", "1º trim…
+$ trimestre_codigo                         &lt;fct&gt; 201201, 201201, 201201, 20120…
+$ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…
+$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …
+$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …
+$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…
+$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…
+$ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…</code></pre>
+</div>
+</div>
+</section><section id="unindo-duas-bases-de-dados" class="level2"><h2 class="anchored" data-anchor-id="unindo-duas-bases-de-dados">Unindo duas bases de dados</h2>
+<p>Unir duas tabelas é algo comum em análises de dados. Podemos usar algumas funções para combinar duas tabelas, utilizando uma ou mais colunas como “chave”.</p>
+<p>O pacote <a href="https://dplyr.tidyverse.org">dplyr</a> apresenta um conjunto de funções para realizar diferentes tipos de uniões, como <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code>, entre outras.</p>
+<p>A função <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.</p>
+<p>Um exemplo comum de uso é quando temos dados por município ou estado, e desejamos visualizar esses dados em um mapa. Para isso, precisamos de informações geoespaciais, como a delimitação geográfica de cada município ou estado. Podemos usar o <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> para combinar esses dados geoespaciais com os dados que queremos visualizar.</p>
+<p>Vamos usar o pacote <a href="https://ipeagit.github.io/geobr/">geobr</a> para carregar as geometrias dos estados brasileiros.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>O pacote <a href="https://ipeagit.github.io/geobr/">geobr</a> facilita o acesso a dados geoespaciais do Brasil, como estados, municípios e outras divisões administrativas. Ele é muito útil quando queremos fazer análises geoespaciais, já que oferece dados geográficos prontos para uso.</p>
+<p>Podemos utilizar a função <code><a href="https://ipeagit.github.io/geobr/reference/read_state.html">read_state()</a></code> para carregar as geometrias dos estados brasileiros. Isso nos permite combinar essas geometrias com outros dados, como taxas de desocupação, e criar mapas que facilitam a visualização de padrões regionais.</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ipeagit.github.io/geobr/">geobr</a></span><span class="op">)</span></span>
+<span><span class="va">geo_estados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_state.html">read_state</a></span><span class="op">(</span>showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">geo_estados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 27
+Columns: 6
+$ code_state   &lt;dbl&gt; 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27, 2…
+$ abbrev_state &lt;chr&gt; "RO", "AC", "AM", "RR", "PA", "AP", "TO", "MA", "PI", "CE…
+$ name_state   &lt;chr&gt; "Rondônia", "Acre", "Amazonas", "Roraima", "Pará", "Amapá…
+$ code_region  &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, …
+$ name_region  &lt;chr&gt; "Norte", "Norte", "Norte", "Norte", "Norte", "Norte", "No…
+$ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPOLYGON…</code></pre>
+</div>
+</div>
+<p>O <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> é usado aqui para combinar os dados que já estamos trabalhando com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as taxas de desocupação em um mapa. Esse tipo de operação é comum quando queremos realizar análises espaciais, como identificar padrões regionais.</p>
+<p>É importante garantir que as colunas usadas na combinação de tabelas (o argumento <code>by</code> do <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">geo_estados</span><span class="op">$</span><span class="va">code_state</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dados_ordenados</span><span class="op">$</span><span class="va">uf_codigo</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+</div>
+<p>Neste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> não conseguirá fazer a correspondência corretamente, e a função gerará um erro:</p>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">geo_estados</span>, <span class="va">dados_ordenados</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code_state"</span> <span class="op">=</span> <span class="st">"uf_codigo"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `sf_column %in% names(g)`:
 ! Can't join `x$code_state` with `y$uf_codigo` due to incompatible
@@ -612,21 +708,9 @@ $ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.
 ℹ `y$uf_codigo` is a &lt;factor&lt;48524&gt;&gt;.</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Lembrar que a coluna chave deve ter o mesmo tipo.</p>
-</div>
-</div>
+<p>No exemplo, podemos transformar a coluna <code>code_state</code> em fator usando <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. Assim, garantimos que as colunas usadas no argumento <code>by</code> sejam do mesmo tipo e possam ser corretamente combinados.</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_geo</span> <span class="op">&lt;-</span> <span class="va">geo_estados</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_geo</span> <span class="op">&lt;-</span> <span class="va">geo_estados</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>code_state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">code_state</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">dados_ordenados</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code_state"</span> <span class="op">=</span> <span class="st">"uf_codigo"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -651,9 +735,20 @@ $ prop_desocupacao                         &lt;dbl&gt; 8.104575, 6.265985, 5.867
 $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((…</code></pre>
 </div>
 </div>
-<p>Falar que fazer a união de tabelas permite fazer coisas assim, mas que veremos mais futuramente:</p>
+<p>Agora temos uma base de dados que combina os dados do SIDRA com as geometrias dos estados brasileiros.</p>
+<p>Combinar dados dessa forma nos permite fazer visualizações geoespaciais, como um mapa de calor das taxas de desocupação por estado. Isso facilita a identificação de padrões regionais, ajudando na interpretação dos dados.</p>
+<p>Não falaremos nesse momento sobre como criar visualizações e mapas, pois isso será abordado em aulas futuras. Mas podemos adiantar um exemplo de como criar um mapa apresentando as proporções de desocupação por estado:</p>
 <div class="cell">
-<div class="cell-output-display">
+<details class="code-fold"><summary>Código</summary><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_geo</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">trimestre_codigo</span> <span class="op">==</span> <span class="st">"202402"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop_desocupacao</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Proporção de desocupação por UF no 2º trimestre de 2024"</span>,</span>
+<span>       fill <span class="op">=</span> <span class="st">"Proporção de desocupação (%)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="05_transformacao_files/figure-html/geobr-mapa-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
