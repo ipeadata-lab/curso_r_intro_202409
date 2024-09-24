@@ -146,7 +146,7 @@ library(fs)
 dir_create("dados_output")
 ```
 
-::: callout-important
+::: callout-warning
 Atenção: O diretório (pasta no computador) onde o arquivo será salvo deve existir previamente, se não gerará um erro similar a este:
 
 ```         

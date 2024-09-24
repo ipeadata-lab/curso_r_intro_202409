@@ -83,7 +83,7 @@ Em funções apresentadas anteriormente, como a `names()`, já conseguimos ter u
 
 Nessa etapa, conheceremos algumas funções que nos ajudarão a ter essas informações. Algumas apresentam as mesmas informações, mas de formas diferentes. Portanto, é interessante conhecer algumas delas, e escolher qual é a que melhor atende às nossas necessidades.
 
-::: callout-important
+::: callout-warning
 Cuidado: as funções apresentadas a seguir calculam algumas estatísticas descritivas (como a média, mediana, desvio padrão, valor mínimo, valor máximo, entre outras) em variáveis numéricas. Porém, ainda não "arrumamos" a base de dados (faremos isso no capítulo [Transformando dados](05_transformacao.qmd)), e os dados ainda não estão adequados para esses cálculos.
 
 Alguns exemplos:

@@ -45,7 +45,7 @@ A tela inicial do RStudio é semelhante à imagem abaixo:
 
 O R possui versões, e é importante verificar se a versão instalada é recente.
 
-:::{.callout-important}
+:::{.callout-warning}
 Recomendamos que utilizem o R na versão 4.1.0 ou superior.
 
 Caso a versão do R seja inferior a 4.1.0, recomendamos que atualizem o R para a versão mais recente.

@@ -3,11 +3,10 @@
 title: "Transformando dados"
 ---
 
-> DÚVIDA: ONDE FALAR DE PIPE? PENSAR!
 
-:::callout-warning
-Página em construção! Em breve. 
-:::
+## Introdução
+
+Primeiramente, precisamos carregar o pacote `tidyverse` e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre "pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação", e foi baixada previamente (em [Importando dados](03_importacao.html#pacote-sidrar)).
 
 ```{r}
 #| message: false
@@ -42,7 +41,7 @@ Neste capítulo, vamos explorar as funções de transformação de dados do paco
 
 ## Padronizar nome das colunas
 
-É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas encoding e também .
+É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas encoding e também facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.
 
 O pacote `janitor` possui uma função chamada `clean_names()` que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.
 
@@ -67,7 +66,7 @@ names(dados_renomeados)
 
 Para responder a pergunta, não precisamos de todas as variáveis presentes na base de dados. Portanto, podemos **filtrar** as linhas que são relevantes para a análise.
 
-As variáveis disponíveis na base de dados, e suas unidades de medida são:
+Antes de filtrar, podemos consultar quais são os valores distintos possíveis para garantir que selecionamos o correto ao filtrar. As variáveis disponíveis na base de dados, e suas unidades de medida são:
 
 ```{r}
 distinct(
@@ -149,6 +148,8 @@ Voltando à pergunta norteadora, queremos calcular a taxa de desocupação de ca
 
 Para fazer essa transformação, podemos usar a função `pivot_wider()`.
 
+A função `pivot_wider()` é útil quando queremos reorganizar uma tabela para que cada linha represente uma unidade de interesse (neste caso, uma combinação de UF e trimestre) e as variáveis categóricas se tornem colunas. Por exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos `pivot_wider()`, vamos transformar isso para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas. Isso facilita cálculos agregados, como a taxa de desocupação.
+
 ```{r}
 dados_largos <- pivot_wider(
   # base de dados
@@ -173,6 +174,9 @@ Agora temos uma tabela onde cada linha representa uma UF por trimestre, e as cat
 dados_largos_renomeados <- clean_names(dados_largos)
 glimpse(dados_largos_renomeados)
 ```
+::: callout-info
+As funções `pivot_longer()` e `pivot_wider()` são usadas para alternar entre dados 'longos' e 'largos'. Normalmente, dados longos são mais fáceis de visualizar, enquanto dados largos são melhores para realizar cálculos comparativos entre categorias.
+:::
 
 
 ## Criando e transformando variáveis
@@ -246,29 +250,115 @@ glimpse(dados_ordenados)
 ```
 Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).
 
-## Pipe + reescrever o que foi feito antes
+## Pipe - Encadeando funções
 
-FAZER!
+Nos exemplos anteriores, usamos uma função por vez, para explorar o que cada uma faz. Porém, conforme ficamos mais confortáveis com o uso das funções, podemos encadear várias funções em uma única linha de código, usando o operador pipe (`%>%` ou `|>`).
 
-## Merge básico de duas bases
+Podemos reescrever os códigos anteriores, usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: `dados_renomeados`, `dados_filtrados`, `dados_selecionados`, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.
 
-FAZER!
+No exemplo abaixo, criamos menos objetos intermediários, e encadeamos as funções usadas anteriormente usando o pipe: 
+
+
+```{r}
+dados_filtrados_selecionados <- dados_brutos |>
+  # limpando os nomes das colunas
+  clean_names() |>
+  # filtrando as linhas
+  filter(variavel == "Pessoas de 14 anos ou mais de idade") |>
+  # selecionando as colunas
+  select(
+    unidade_da_federacao,
+    unidade_da_federacao_codigo,
+    trimestre,
+    trimestre_codigo,
+    condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
+    valor
+  ) |>
+  # renomeando as colunas
+  rename(
+    condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
+    valor_mil_pessoas = valor,
+    uf = unidade_da_federacao,
+    uf_codigo = unidade_da_federacao_codigo
+  )
+
+dados_largos <- dados_filtrados_selecionados |>
+  # transformando para formato largo
+  pivot_wider(
+    names_from = condicao,
+    values_from = valor_mil_pessoas,
+    names_prefix = "mil_pessoas_"
+  ) |>
+  # limpando o nome das colunas novamente
+  clean_names()
+
+  
+  
+dados_preparados <- dados_largos |>  
+  # transformando as variáveis 
+  mutate(
+    uf_codigo = as.factor(uf_codigo),
+    trimestre_codigo = as.factor(trimestre_codigo),
+    prop_desocupacao = (
+      mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho
+    ) * 100,
+  ) |>
+  # ordenando a base de dados
+  arrange(trimestre_codigo, desc(prop_desocupacao))
+```
+
+```{r}
+glimpse(dados_preparados)
+```
+
+
+
+## Unindo duas bases de dados
+
+Unir duas tabelas é algo comum em análises de dados. Podemos usar algumas funções para combinar duas tabelas, utilizando uma ou mais colunas como "chave".
+
+O  pacote `{dplyr}` apresenta um conjunto de funções para realizar diferentes tipos de uniões, como `left_join()`, `inner_join()`, `full_join()`, `anti_join()`, entre outras.
+
+A função `left_join()` é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.
+
+Um exemplo comum de uso é quando temos dados por município ou estado, e desejamos visualizar esses dados em um mapa. Para isso, precisamos de informações geoespaciais, como a delimitação geográfica de cada município ou estado. Podemos usar o `left_join()` para combinar esses dados geoespaciais com os dados que queremos visualizar.
+
+
+Vamos usar o pacote `{geobr}` para carregar as geometrias dos estados brasileiros.
+
+::: callout
+O pacote `{geobr}` facilita o acesso a dados geoespaciais do Brasil, como estados, municípios e outras divisões administrativas. Ele é muito útil quando queremos fazer análises geoespaciais, já que oferece dados geográficos prontos para uso.
+
+Podemos utilizar a função `read_state()` para carregar as geometrias dos estados brasileiros. Isso nos permite combinar essas geometrias com outros dados, como taxas de desocupação, e criar mapas que facilitam a visualização de padrões regionais.
+:::
 
 ```{r}
 #| message: false
 library(geobr)
 geo_estados <- read_state(showProgress = FALSE)
+glimpse(geo_estados)
 ```
+
+
+O `left_join()` é usado aqui para combinar os dados que já estamos trabalhando com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as taxas de desocupação em um mapa. Esse tipo de operação é comum quando queremos realizar análises espaciais, como identificar padrões regionais.
+
+
+É importante garantir que as colunas usadas na combinação de tabelas (o argumento `by` do `left_join()`) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função `class()`:
+
+```{r}
+class(geo_estados$code_state)
+class(dados_ordenados$uf_codigo)
+```
+
+Neste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O `left_join()` não conseguirá fazer a correspondência corretamente, e a função gerará um erro:
 
 ```{r}
 #| error: true
 left_join(geo_estados, dados_ordenados, by = c("code_state" = "uf_codigo"))
 ```
 
-:::callout-important
-Lembrar que a coluna chave deve ter o mesmo tipo.
-:::
 
+No exemplo, podemos transformar a coluna `code_state` em fator usando `mutate()`. Assim, garantimos que as colunas usadas no argumento `by` sejam do mesmo tipo e possam ser corretamente combinados.
 
 ```{r}
 dados_geo <- geo_estados |> 
@@ -277,11 +367,16 @@ dados_geo <- geo_estados |>
 
 glimpse(dados_geo)
 ```
-Falar que fazer a união de tabelas permite fazer coisas assim, mas que veremos mais futuramente:
+Agora temos uma base de dados que combina os dados do SIDRA com as geometrias dos estados brasileiros.
+
+Combinar dados dessa forma nos permite fazer visualizações geoespaciais, como um mapa de calor das taxas de desocupação por estado. Isso facilita a identificação de padrões regionais, ajudando na interpretação dos dados.
+
+Não falaremos nesse momento sobre como criar visualizações e mapas, pois isso será abordado em aulas futuras. Mas podemos adiantar um exemplo de como criar um mapa apresentando as proporções de desocupação por estado:
 
 ```{r}
 #| label: geobr-mapa
-#| echo: false
+#| echo: true
+#| code-fold: true
 dados_geo |> 
   filter(trimestre_codigo == "202402") |>
   ggplot() +
