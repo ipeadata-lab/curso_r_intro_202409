@@ -297,7 +297,7 @@ Aviso
 </blockquote>
 <section id="padronizar-nome-das-colunas" class="level2"><h2 class="anchored" data-anchor-id="padronizar-nome-das-colunas">Padronizar nome das colunas</h2>
 <p>É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas encoding e também .</p>
-<p>O pacote <code>janitor</code> possui uma função chamada <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code> que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.</p>
+<p>O pacote <code>janitor</code> possui uma função chamada <code>clean_names()</code> que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -320,7 +320,7 @@ Aviso
 [13] "Condição em relação à força de trabalho e condição de ocupação"         </code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># limpar nomes das colunas da base de dados, e salvar em um novo objeto</span></span>
-<span><span class="va">dados_renomeados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="va">dados_brutos</span><span class="op">)</span></span>
+<span><span class="va">dados_renomeados</span> <span class="op">&lt;-</span> <span class="fu">clean_names</span><span class="op">(</span><span class="va">dados_brutos</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># checar nome das colunas da base de dados renomeada</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dados_renomeados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -467,9 +467,9 @@ $ `mil_pessoas_Força de trabalho - desocupada` &lt;dbl&gt; 62, 49, 46, 42, 49, 
 $ `mil_pessoas_Fora da força de trabalho`      &lt;dbl&gt; 446, 434, 441, 415, 437, …</code></pre>
 </div>
 </div>
-<p>Agora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável <code>condicao</code> se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code>.</p>
+<p>Agora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável <code>condicao</code> se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função <code>clean_names()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_largos_renomeados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="va">dados_largos</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_largos_renomeados</span> <span class="op">&lt;-</span> <span class="fu">clean_names</span><span class="op">(</span><span class="va">dados_largos</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dados_largos_renomeados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
@@ -600,7 +600,7 @@ $ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.
 <p>FAZER!</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ipeagit.github.io/geobr/">geobr</a></span><span class="op">)</span></span>
-<span><span class="va">geo_estados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_state.html">read_state</a></span><span class="op">(</span>showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">geo_estados</span> <span class="op">&lt;-</span> <span class="fu">read_state</span><span class="op">(</span>showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">geo_estados</span>, <span class="va">dados_ordenados</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code_state"</span> <span class="op">=</span> <span class="st">"uf_codigo"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>

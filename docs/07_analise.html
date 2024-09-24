@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Introdução à análise de dados no R - Analisando dados</title>
 <style>
 code{white-space: pre-wrap;}
@@ -17,41 +20,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -70,7 +40,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,12 +67,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script><link rel="stylesheet" href="styles.css">
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -112,9 +89,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -129,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -137,8 +118,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -157,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -166,8 +147,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -222,21 +203,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-<li><a href="#estat%C3%ADsticas-descritivas" id="toc-estatísticas-descritivas" class="nav-link active" data-scroll-target="#estat%C3%ADsticas-descritivas">Estatísticas descritivas</a></li>
-  <li><a href="#sugest%C3%B5es-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugest%C3%B5es-de-materiais">Sugestões de materiais</a></li>
-  </ul></nav>
+  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link active" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./07_analise.html">Analisando dados</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./07_analise.html">Analisando dados</a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title">Analisando dados</h1>
 </div>
 
@@ -251,7 +237,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="callout callout-style-default callout-warning callout-titled">
+</header>
+
+
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -264,93 +253,48 @@ Aviso
 <p>Página em construção! Em breve.</p>
 </div>
 </div>
-<section id="estatísticas-descritivas" class="level2"><h2 class="anchored" data-anchor-id="estatísticas-descritivas">Estatísticas descritivas</h2>
-<p>Funções básicas:</p>
-<table class="table">
-<thead><tr class="header">
-<th style="text-align: right;">Função</th>
-<th style="text-align: right;">O que retorna?</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code></td>
-<td style="text-align: right;">Soma</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></td>
-<td style="text-align: right;">Média</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/stats/median.html">median()</a></code></td>
-<td style="text-align: right;">Mediana</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code></td>
-<td style="text-align: right;">Variância (simples)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code></td>
-<td style="text-align: right;">Desvio Padrão</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code></td>
-<td style="text-align: right;">Valor máximo</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code></td>
-<td style="text-align: right;">Valor mínimo</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/base/Round.html">round()</a></code></td>
-<td style="text-align: right;">Valor arredondado</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code></td>
-<td style="text-align: right;">Raíz quadrada</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Argumento importante: <code>na.rm = TRUE</code>
-</li>
-</ul>
-<p>Somando do <code>vetor_com_na</code>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vetor_com_na</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="cn">NA</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">vetor_com_na</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">vetor_com_na</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 13</code></pre>
-</div>
-</div>
-<p>Calculando a média do <code>vetor_com_na</code>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">vetor_com_na</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">vetor_com_na</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.25</code></pre>
-</div>
-</div>
+<!-- ## Estatísticas descritivas -->
+<!-- Funções básicas: -->
+<!-- |  Função |  O que retorna? | -->
+<!-- |--:|--:| -->
+<!-- |  `sum()` |  Soma  |  -->
+<!-- |  `mean()` |  Média | -->
+<!-- |  `median()` |  Mediana | -->
+<!-- |  `var()` |  Variância (simples) | -->
+<!-- |  `sd()` |  Desvio Padrão | -->
+<!-- |  `max()` |  Valor máximo  | -->
+<!-- |  `min()` |  Valor mínimo | -->
+<!-- |  `round()` |  Valor arredondado | -->
+<!-- |  `sqrt()` |  Raíz quadrada | -->
+<!-- - Argumento importante: `na.rm = TRUE` -->
+<!-- Somando do `vetor_com_na`: -->
+<!-- ```{r} -->
+<!-- vetor_com_na <- c(NA, 1, 5, 2, 5, NA) -->
+<!-- sum(vetor_com_na) -->
+<!-- sum(vetor_com_na, na.rm = TRUE) -->
+<!-- ``` -->
+<!-- Calculando a média do `vetor_com_na`: -->
+<!-- ```{r} -->
+<!-- mean(vetor_com_na) -->
+<!-- mean(vetor_com_na, na.rm = TRUE) -->
+<!-- ``` -->
 <!-- - Estatísticas agregadas (summarize) -->
 <!-- - Regressão Linear -->
 <!-- - Extraindo tabelas de regressão (broom, stargazer) -->
-</section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
+<section id="sugestões-de-materiais" class="level2">
+<h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
 <li>Livro <a href="https://livro.abj.org.br/">Metodologia de Pesquisa Jurimétrica</a>:
 <ul>
 <li><a href="https://livro.abj.org.br/03-estatisticas.html">Capítulo 3 - Estatísticas</a></li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -756,8 +700,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./05_transformacao.html" class="pagination-link  aria-label=" transformando="" dados="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05_transformacao.html" class="pagination-link  aria-label=" transformando="" dados"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transformando dados</span>
       </a>          
   </div>
@@ -768,6 +714,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

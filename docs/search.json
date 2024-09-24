@@ -11,61 +11,6 @@
     ]
   },
   {
-    "objectID": "02_conceitos_basicos_r.html#objetos-breve-conceito",
-    "href": "02_conceitos_basicos_r.html#objetos-breve-conceito",
-    "title": "Conceitos básicos",
-    "section": "Objetos: breve conceito",
-    "text": "Objetos: breve conceito",
-    "crumbs": [
-      "Materiais",
-      "Conceitos básicos"
-    ]
-  },
-  {
-    "objectID": "02_conceitos_basicos_r.html#tipos-de-objetos-vetores-matrizes-listas-data-frames",
-    "href": "02_conceitos_basicos_r.html#tipos-de-objetos-vetores-matrizes-listas-data-frames",
-    "title": "Conceitos básicos",
-    "section": "Tipos de objetos: vetores, matrizes, listas, data frames",
-    "text": "Tipos de objetos: vetores, matrizes, listas, data frames",
-    "crumbs": [
-      "Materiais",
-      "Conceitos básicos"
-    ]
-  },
-  {
-    "objectID": "02_conceitos_basicos_r.html#tipologia-dos-dados-lógico-numérico-caracter-fator",
-    "href": "02_conceitos_basicos_r.html#tipologia-dos-dados-lógico-numérico-caracter-fator",
-    "title": "Conceitos básicos",
-    "section": "Tipologia dos dados (lógico, numérico, caracter, fator)",
-    "text": "Tipologia dos dados (lógico, numérico, caracter, fator)",
-    "crumbs": [
-      "Materiais",
-      "Conceitos básicos"
-    ]
-  },
-  {
-    "objectID": "02_conceitos_basicos_r.html#tipo-de-dados-e-conversões",
-    "href": "02_conceitos_basicos_r.html#tipo-de-dados-e-conversões",
-    "title": "Conceitos básicos",
-    "section": "Tipo de dados e conversões",
-    "text": "Tipo de dados e conversões\nExistem várias funções para transformar variáveis de um tipo para outro, como as.factor(), as.character(), as.numeric(), as.Date(), etc.",
-    "crumbs": [
-      "Materiais",
-      "Conceitos básicos"
-    ]
-  },
-  {
-    "objectID": "02_conceitos_basicos_r.html#valores-faltantes-na",
-    "href": "02_conceitos_basicos_r.html#valores-faltantes-na",
-    "title": "Conceitos básicos",
-    "section": "Valores faltantes (NA)",
-    "text": "Valores faltantes (NA)",
-    "crumbs": [
-      "Materiais",
-      "Conceitos básicos"
-    ]
-  },
-  {
     "objectID": "00_instrucoes_pre_curso.html",
     "href": "00_instrucoes_pre_curso.html",
     "title": "Instalação",
@@ -103,7 +48,7 @@
     "href": "04_conhecendo.html",
     "title": "Conhecendo a base de dados",
     "section": "",
-    "text": "Aviso\n\n\n\nPágina em construção! Em breve.\nNesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.\nEssa etapa é importante para:\nVamos começar importando a base de dados que utilizaremos:\nlibrary(tidyverse)\ndados &lt;- read_csv2(\"dados/sidrar_4092_bruto_2.csv\")",
+    "text": "Conceitos prévios importantes:\n\nComo importar bases de dados?\nTipos de variáveis\nValores faltantes\nNesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.\nEssa etapa é importante para:\nVamos começar importando a base de dados que utilizaremos:\nlibrary(tidyverse)\ndados &lt;- read_csv2(\"dados/sidrar_4092_bruto_2.csv\")",
     "crumbs": [
       "Materiais",
       "Conhecendo a base de dados"
@@ -147,7 +92,7 @@
     "href": "04_conhecendo.html#section",
     "title": "Conhecendo a base de dados",
     "section": "",
-    "text": "Em situações onde trabalharmos com dados que possuem um número de linhas muito grande, não podemos utilizar a função View() para ver a tabela inteira.\nNesse caso, podemos ser interessante usar funções que retornam apenas algumas linhas da base de dados, como head(), tail(), slice_sample(), entre outras.\nAntes de usá-las, vamos adicionar uma coluna que represente o número da linha, para que seja mais fácil identificar as linhas que estamos selecionando:\n\ndados_com_n_linha &lt;- rowid_to_column(dados, \"n_linha\")\n\nAgora podemos usar as funções para retornar algumas linhas da base de dados. Observe os resultados apresentados, e os valores na coluna n_linha:\n\n# Exibindo as primeiras linhas\nhead(dados_com_n_linha)\n\n# A tibble: 6 × 14\n  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²\n    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;\n1       1                           3 Unidade da Federaç…                   1572\n2       2                           3 Unidade da Federaç…                   1572\n3       3                           3 Unidade da Federaç…                   1572\n4       4                           3 Unidade da Federaç…                   1572\n5       5                           3 Unidade da Federaç…                   1572\n6       6                           3 Unidade da Federaç…                      2\n# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,\n#   ²​`Unidade de Medida (Código)`\n# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,\n#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,\n#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,\n#   Variável &lt;chr&gt;,\n#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …\n\n# Exibindo as últimas linhas\ntail(dados_com_n_linha)\n\n# A tibble: 6 × 14\n  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²\n    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;\n1   26995                           3 Unidade da Federaç…                      2\n2   26996                           3 Unidade da Federaç…                      2\n3   26997                           3 Unidade da Federaç…                      2\n4   26998                           3 Unidade da Federaç…                      2\n5   26999                           3 Unidade da Federaç…                      2\n6   27000                           3 Unidade da Federaç…                      2\n# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,\n#   ²​`Unidade de Medida (Código)`\n# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,\n#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,\n#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,\n#   Variável &lt;chr&gt;,\n#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …\n\n# \"Sorteando\" linhas\nslice_sample(dados_com_n_linha, n = 5)\n\n# A tibble: 5 × 14\n  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²\n    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;\n1   11125                           3 Unidade da Federaç…                   1572\n2   18983                           3 Unidade da Federaç…                   1572\n3   25273                           3 Unidade da Federaç…                      2\n4    7439                           3 Unidade da Federaç…                      2\n5    8795                           3 Unidade da Federaç…                      2\n# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,\n#   ²​`Unidade de Medida (Código)`\n# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,\n#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,\n#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,\n#   Variável &lt;chr&gt;,\n#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …",
+    "text": "Em situações onde trabalharmos com dados que possuem um número de linhas muito grande, não podemos utilizar a função View() para ver a tabela inteira.\nNesse caso, podemos ser interessante usar funções que retornam apenas algumas linhas da base de dados, como head(), tail(), slice_sample(), entre outras.\nAntes de usá-las, vamos adicionar uma coluna que represente o número da linha, para que seja mais fácil identificar as linhas que estamos selecionando:\n\ndados_com_n_linha &lt;- rowid_to_column(dados, \"n_linha\")\n\nAgora podemos usar as funções para retornar algumas linhas da base de dados. Observe os resultados apresentados, e os valores na coluna n_linha:\n\n# Exibindo as primeiras linhas\nhead(dados_com_n_linha)\n\n# A tibble: 6 × 14\n  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²\n    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;\n1       1                           3 Unidade da Federaç…                   1572\n2       2                           3 Unidade da Federaç…                   1572\n3       3                           3 Unidade da Federaç…                   1572\n4       4                           3 Unidade da Federaç…                   1572\n5       5                           3 Unidade da Federaç…                   1572\n6       6                           3 Unidade da Federaç…                      2\n# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,\n#   ²​`Unidade de Medida (Código)`\n# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,\n#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,\n#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,\n#   Variável &lt;chr&gt;,\n#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …\n\n# Exibindo as últimas linhas\ntail(dados_com_n_linha)\n\n# A tibble: 6 × 14\n  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²\n    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;\n1   26995                           3 Unidade da Federaç…                      2\n2   26996                           3 Unidade da Federaç…                      2\n3   26997                           3 Unidade da Federaç…                      2\n4   26998                           3 Unidade da Federaç…                      2\n5   26999                           3 Unidade da Federaç…                      2\n6   27000                           3 Unidade da Federaç…                      2\n# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,\n#   ²​`Unidade de Medida (Código)`\n# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,\n#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,\n#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,\n#   Variável &lt;chr&gt;,\n#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …\n\n# \"Sorteando\" linhas\nslice_sample(dados_com_n_linha, n = 5)\n\n# A tibble: 5 × 14\n  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²\n    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;\n1     304                           3 Unidade da Federaç…                   1572\n2    8328                           3 Unidade da Federaç…                      2\n3    9717                           3 Unidade da Federaç…                      2\n4   15642                           3 Unidade da Federaç…                   1572\n5    2410                           3 Unidade da Federaç…                      2\n# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,\n#   ²​`Unidade de Medida (Código)`\n# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,\n#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,\n#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,\n#   Variável &lt;chr&gt;,\n#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …",
     "crumbs": [
       "Materiais",
       "Conhecendo a base de dados"
@@ -225,17 +170,6 @@
     "title": "Analisando dados",
     "section": "",
     "text": "Aviso\n\n\n\nPágina em construção! Em breve.",
-    "crumbs": [
-      "Materiais",
-      "Analisando dados"
-    ]
-  },
-  {
-    "objectID": "07_analise.html#estatísticas-descritivas",
-    "href": "07_analise.html#estatísticas-descritivas",
-    "title": "Analisando dados",
-    "section": "Estatísticas descritivas",
-    "text": "Estatísticas descritivas\nFunções básicas:\n\n\nFunção\nO que retorna?\n\n\n\nsum()\nSoma\n\n\nmean()\nMédia\n\n\nmedian()\nMediana\n\n\nvar()\nVariância (simples)\n\n\nsd()\nDesvio Padrão\n\n\nmax()\nValor máximo\n\n\nmin()\nValor mínimo\n\n\nround()\nValor arredondado\n\n\nsqrt()\nRaíz quadrada\n\n\n\n\nArgumento importante: na.rm = TRUE\n\n\nSomando do vetor_com_na:\n\nvetor_com_na &lt;- c(NA, 1, 5, 2, 5, NA)\nsum(vetor_com_na)\n\n[1] NA\n\nsum(vetor_com_na, na.rm = TRUE)\n\n[1] 13\n\n\nCalculando a média do vetor_com_na:\n\nmean(vetor_com_na)\n\n[1] NA\n\nmean(vetor_com_na, na.rm = TRUE)\n\n[1] 3.25",
     "crumbs": [
       "Materiais",
       "Analisando dados"
@@ -467,61 +401,6 @@
     "title": "Conhecendo o R e o RStudio",
     "section": "",
     "text": "Aviso\n\n\n\nPágina em construção! Em breve.",
-    "crumbs": [
-      "Materiais",
-      "Conhecendo o R e o RStudio"
-    ]
-  },
-  {
-    "objectID": "01_r_rstudio.html#apresentação-do-software-e-linguagem-r",
-    "href": "01_r_rstudio.html#apresentação-do-software-e-linguagem-r",
-    "title": "Conhecendo o R e o RStudio",
-    "section": "Apresentação do software e linguagem R",
-    "text": "Apresentação do software e linguagem R",
-    "crumbs": [
-      "Materiais",
-      "Conhecendo o R e o RStudio"
-    ]
-  },
-  {
-    "objectID": "01_r_rstudio.html#working-directory-e-rproject",
-    "href": "01_r_rstudio.html#working-directory-e-rproject",
-    "title": "Conhecendo o R e o RStudio",
-    "section": "Working directory e Rproject",
-    "text": "Working directory e Rproject",
-    "crumbs": [
-      "Materiais",
-      "Conhecendo o R e o RStudio"
-    ]
-  },
-  {
-    "objectID": "01_r_rstudio.html#scripts",
-    "href": "01_r_rstudio.html#scripts",
-    "title": "Conhecendo o R e o RStudio",
-    "section": "Scripts",
-    "text": "Scripts\nFunções",
-    "crumbs": [
-      "Materiais",
-      "Conhecendo o R e o RStudio"
-    ]
-  },
-  {
-    "objectID": "01_r_rstudio.html#pacotes",
-    "href": "01_r_rstudio.html#pacotes",
-    "title": "Conhecendo o R e o RStudio",
-    "section": "Pacotes",
-    "text": "Pacotes\nO que são pacotes?\nInstalação de pacotes\nInstalação de pacotes necessários no curso\nDurante o curso, utilizaremos diversos pacotes do R. Explicaremos o que são pacotes em “Conhecendo o R e o RStudio &gt; Pacotes”, mas, de forma resumida, são extensões que adicionam funcionalidades ao R.\nPara instalar os pacotes necessários, execute o seguinte comando no console do RStudio:\n\npacotes_necessarios &lt;- c(\"tidyverse\", \"janitor\", \"sidrar\", \"sf\", \"geobr\",\n                         \"readxl\", \"writexl\", \"fs\", \"naniar\", \"skimr\")\n\ninstall.packages(pacotes_necessarios)\n\nCarregamento de pacotes",
-    "crumbs": [
-      "Materiais",
-      "Conhecendo o R e o RStudio"
-    ]
-  },
-  {
-    "objectID": "01_r_rstudio.html#help-manuais-e-documentação",
-    "href": "01_r_rstudio.html#help-manuais-e-documentação",
-    "title": "Conhecendo o R e o RStudio",
-    "section": "Help, manuais e documentação",
-    "text": "Help, manuais e documentação",
     "crumbs": [
       "Materiais",
       "Conhecendo o R e o RStudio"

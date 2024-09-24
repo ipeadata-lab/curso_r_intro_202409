@@ -1,12 +1,7 @@
 ---
-# Importação e exportação de dados
 title: "Conhecendo a base de dados"
 code-link: true
 ---
-
-::: callout-warning
-Página em construção! Em breve.
-:::
 
 ::: callout
 Conceitos prévios importantes:
