@@ -43,7 +43,8 @@ Neste capítulo, vamos explorar as funções de transformação de dados do paco
 
 É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas encoding e também facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.
 
-O pacote `janitor` possui uma função chamada `clean_names()` que padroniza os nomes das colunas de um data frame. A função substitui espaços por underline, remove caracteres especiais, e deixa tudo em minúsculo.
+O pacote `janitor` possui a função `clean_names()`, que padroniza os nomes das colunas de um *data frame*. Ele substitui espaços por underline, remove caracteres especiais, e transforma o texto em minúsculo, garantindo maior consistência ao lidar com os dados. Isso evita erros ao acessar colunas.
+
 
 ```{r}
 #| message: false
@@ -66,7 +67,10 @@ names(dados_renomeados)
 
 Para responder a pergunta, não precisamos de todas as variáveis presentes na base de dados. Portanto, podemos **filtrar** as linhas que são relevantes para a análise.
 
-Antes de filtrar, podemos consultar quais são os valores distintos possíveis para garantir que selecionamos o correto ao filtrar. As variáveis disponíveis na base de dados, e suas unidades de medida são:
+Antes de filtrar, podemos consultar os valores distintos possíveis, para garantir que estamos selecionando corretamente o valor de interesse ao aplicar o filtro. Isso ajuda a prevenir erros e garante que o filtro está sendo feito de maneira adequada.
+
+As variáveis disponíveis na base de dados, e suas unidades de medida são:
+
 
 ```{r}
 distinct(
@@ -148,7 +152,9 @@ Voltando à pergunta norteadora, queremos calcular a taxa de desocupação de ca
 
 Para fazer essa transformação, podemos usar a função `pivot_wider()`.
 
-A função `pivot_wider()` é útil quando queremos reorganizar uma tabela para que cada linha represente uma unidade de interesse (neste caso, uma combinação de UF e trimestre) e as variáveis categóricas se tornem colunas. Por exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos `pivot_wider()`, vamos transformar isso para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas. Isso facilita cálculos agregados, como a taxa de desocupação.
+A função `pivot_wider()` é útil quando queremos reorganizar uma tabela, transformando variáveis categóricas em novas colunas. Essa estrutura facilita cálculos comparativos e análises entre as diferentes categorias.
+
+Por exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos `pivot_wider()`, vamos transformar a tabela para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas.
 
 ```{r}
 dados_largos <- pivot_wider(
@@ -183,7 +189,7 @@ As funções `pivot_longer()` e `pivot_wider()` são usadas para alternar entre 
 
 Para criar novas variáveis, ou transformar variáveis que já existem, podemos usar a função `mutate()`.
 
-As variáveis `uf_codigo` e `trimestre_codigo` estão armazenadas como numérico. Mas não faz sentido: não queremos fazer cálculos com esses valores. Portanto, podemos transformá-los em fatores.
+As variáveis `uf_codigo` e `trimestre_codigo` estão armazenadas como valores numéricos. No entanto, como não realizaremos operações matemáticas com esses valores, é mais apropriado transformá-los em fatores, o que facilita a análise e previne erros em cálculos futuros.
 
 Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`,  etc.
 
@@ -252,12 +258,12 @@ Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, 
 
 ## Pipe - Encadeando funções
 
-Nos exemplos anteriores, usamos uma função por vez, para explorar o que cada uma faz. Porém, conforme ficamos mais confortáveis com o uso das funções, podemos encadear várias funções em uma única linha de código, usando o operador pipe (`%>%` ou `|>`).
+Nos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador pipe (`%>%` ou `|>`). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.
+
 
 Podemos reescrever os códigos anteriores, usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: `dados_renomeados`, `dados_filtrados`, `dados_selecionados`, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.
 
 No exemplo abaixo, criamos menos objetos intermediários, e encadeamos as funções usadas anteriormente usando o pipe: 
-
 
 ```{r}
 dados_filtrados_selecionados <- dados_brutos |>
@@ -340,7 +346,7 @@ glimpse(geo_estados)
 ```
 
 
-O `left_join()` é usado aqui para combinar os dados que já estamos trabalhando com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as taxas de desocupação em um mapa. Esse tipo de operação é comum quando queremos realizar análises espaciais, como identificar padrões regionais.
+O `left_join()` é usado aqui para combinar os dados do SIDRA com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as proporções de desocupação por UF em um mapa. Esse tipo de operação é comum quando queremos identificar padrões regionais.
 
 
 É importante garantir que as colunas usadas na combinação de tabelas (o argumento `by` do `left_join()`) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função `class()`:
