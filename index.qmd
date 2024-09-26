@@ -21,12 +21,27 @@ Caso tenha alguma dificuldade, entre em contato com a equipe do curso o quanto a
 ## Sobre a equipe do curso
 
 **Beatriz Milz** <br>
+*Pesquisadora Colaboradora | Estágio pós-doutoral* <br>
+[Laboratório de Planejamento Territorial (LaPlan)](https://laplan.pesquisa.ufabc.edu.br/) - Universidade Federal do ABC (UFABC)
 [Email](mailto:milz.bea@gmail.com) | [GitHub](https://github.com/beatrizmilz) | [LinkedIn](https://www.linkedin.com/in/beatrizmilz/) |
 [ResearchGate](https://www.researchgate.net/profile/Beatriz-Milz) | [Currículo Lattes](http://lattes.cnpq.br/5150665880581477) | [Orcid](https://orcid.org/0000-0002-3064-4486)
 
 
-> Seria legal adicionar as pessoas do IPEA também. Consultar o Rafael para saber a opinião dele.
+**Pedro Cavalcanti Gonçalves Ferreira** <br>
+*Coordenação de Ciência de Dados - COCD* <br>
+Instituto de Pesquisa Econômica Aplicada (Ipea) <br>
+[GitHub](https://github.com/cavalcanti1985) |
+[LinkedIn](https://www.linkedin.com/in/pedro-cavalcanti-256806235/) |
+[Currículo Lattes](http://lattes.cnpq.br/1425315335920636) |
+[Orcid](https://orcid.org/0000-0002-8540-1860) 
+
+
+
+**Rafael H. M. Pereira** <br> *Coordenador de Ciência de Dados* <br> Instituto de Pesquisa Econômica Aplicada (Ipea) <br> [Website](https://www.urbandemographics.org/about/) | [Google Scholar](https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&hl)
+| [Twitter](https://x.com/UrbanDemog) | [Linkedin](https://www.linkedin.com/in/rafael-h-m-pereira/) | 
+
+
 
 ## Sobre este material
 
-> Colocar informações sobre a licença do material.
+Esse material está disponível sob a [licença CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
