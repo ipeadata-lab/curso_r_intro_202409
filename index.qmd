@@ -1,10 +1,12 @@
 ---
-title: "Introdução à análise de dados no R"
+title: 'Introdução à análise de dados no R'
 subtitle: "Utilizando dados públicos brasileiros"
-
 ---
+<img src="images/00_RStudio_logo.png" align="right" width="120px" class = "img-rstudio">
 
-## Introdução ao material
+
+## Introdução ao material 
+
 
 Este site apresenta o material de apoio para o curso **"Introdução à análise de dados no R"**, oferecido em 2024.
 O curso será realizado de forma remota, com aulas ao vivo e atividades práticas.
@@ -18,7 +20,7 @@ Caso tenha alguma dificuldade, entre em contato com a equipe do curso o quanto a
 
 
 
-## Sobre a equipe do curso
+## Equipe do curso
 
 **Beatriz Milz** <br>
 *Pesquisadora Colaboradora | Estágio pós-doutoral* <br>
