@@ -4,3 +4,15 @@ em{
   color: darkcyan;
   font-weight: bold;
 }
+
+.img-rstudio {
+  position: relative;
+  top: -8em;
+}
+
+@media screen and (max-width: 1200px) {
+  .img-rstudio {
+  position: static;
+  top: 0em;
+  }
+}
