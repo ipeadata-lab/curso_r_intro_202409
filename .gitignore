@@ -2,5 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
-
 /.quarto/
+README.html
+README_files/
+_freeze/
+.DS_Store
+/.DS_Store
