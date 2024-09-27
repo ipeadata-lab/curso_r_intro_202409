@@ -2,6 +2,7 @@
 # Importação e exportação de dados
 title: "Importando dados"
 code-link: true
+code-annotations: hover
 
 ---
 
@@ -299,15 +300,15 @@ A função `get_sidra()` do pacote `{sidrar}` permite importar dados do SIDRA.
 ```{r}
 #| eval: false
 dados_brutos_4092 <- sidrar::get_sidra(
-  # Qual é o código da tabela que vamos usar?
-  x = 4092,
-  # Períodos: trimestres, vamos usar o vetor criado anteriormente
-  period = periodos_disponiveis,
-  # Nível territorial: Dados por UF
-  geo = "State"
+  x = 4092,                      # <1>
+  period = periodos_disponiveis, # <2>
+  geo = "State"                  # <3>
 )
 
 ```
+1. Qual é o código da tabela que vamos usar?
+2. Períodos: trimestres, vamos usar o vetor criado anteriormente
+3. Nível territorial: Dados por UF
 
 
 Lembrando que é importante salvar uma cópia local dos dados após o download. Assim, quando você for trabalhar com esses dados, não precisará baixá-los novamente.
