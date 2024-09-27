@@ -10,7 +10,7 @@ Os passos a seguir podem te ajudar a organizar o projeto de análise exploratór
 
 1. **Escolha um conjunto de dados**: Você pode escolher um conjunto de dados de sua preferência. Caso não tenha um conjunto de dados em mente, sugerimos que escolha um dos conjuntos de dados disponíveis nos seguintes pacotes:
 
-    - [sidrar](https://cran.r-project.org/web/packages/sidrar/vignettes/Introduction_to_sidrar.html): Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática do IBGE.
+    - [sidrar](https://cran.r-project.org/web/packages/sidrar/vignettes/Introduction_to_sidrar.html): Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.
     - [censobr](https://ipeagit.github.io/censobr/): Dados de censos demográficos brasileiros.
     - [ipeadatar](https://cran.r-project.org/web/packages/ipeadatar/index.html): Acesso aos dados disponibilizados no [Ipeadata](http://www.ipeadata.gov.br/Default.aspx).
     - [flightsbr](https://github.com/ipeaGIT/flightsbr): Dados de vôos no Brasil.
