@@ -21,9 +21,9 @@ Essa etapa pode ser bem rápida (ou não!). Depende da base de dados que precisa
 
 Nesta etapa, vamos aprender:
 
--   Como importar dados de arquivos locais (arquivos que estão salvos no nosso computador);
+-   Como importar dados de arquivos locais (arquivos que estão salvos no nosso computador) para dentro do R;
 
--   Como salvar dados localmente (salvar objetos do R em arquivos que ficarão salvos no nosso computador);
+-   Como exportar dados do R dados (salvar objetos do R em arquivos que ficarão salvos no nosso computador);
 
 -   Como importar dados usando pacotes de dados, como o `{sidrar}`.
 
