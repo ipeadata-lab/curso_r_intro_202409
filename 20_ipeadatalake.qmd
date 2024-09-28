@@ -10,4 +10,17 @@ Página em construção! Em breve.
 
 <!-- - Storages e bases de dados -->
 
-<!-- - Pacotes recomendados para “big data" -->
+
+
+<!-- overview do ipeadatalake -->
+
+
+
+<!-- ipeadatalake: rapadia analise da PNADc + ipeaplot -->
+
+
+
+<!-- ipeadatalake: rapadia analise da RAIS ou CADunico geocode + ipeaplot -->
+
+
+

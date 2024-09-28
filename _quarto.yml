@@ -36,8 +36,16 @@ website:
         - 05_transformacao.qmd
         - 07_analise.qmd
         - 08_visualizacao.qmd
-        - 09_ciclo_completo.qmd
-        - 10_pesquisa_ipea.qmd
+      - section: "Explorando o Censo Demográfico"
+        contents:
+        - 09_censobr_intro.qmd
+        - 10_censobr_conceitos.qmd
+        - 11_censobr_microdados.qmd
+        - 12_censobr_agregados_setores.qmd
+        - 13_censobr_documentacao.qmd
+      - section: "Data Lake do Ipea"
+        contents:
+        - 20_ipeadatalake.qmd
 
 page-navigation: true
 
