@@ -1,0 +1,15 @@
+---
+# Iniciar um trabalho com o R e o Rstudio
+title: "Projetos no RStudio"
+---
+
+:::callout-warning
+Página em construção! Em breve. 
+:::
+
+<!-- ## Working directory e Rproject -->
+
+<!-- No R, o working directory é o diretório em que os arquivos serão salvos e lidos.  -->
+
+<!-- Mas o uso de Rprojects é ainda mais eficiente. Sempre que criar um novo projeto no RStudio, ele criará um arquivo .Rproj na pasta do projeto e definirá o diretório automaticamente. -->
+
