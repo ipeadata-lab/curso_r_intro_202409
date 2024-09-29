@@ -46,4 +46,12 @@ Instituto de Pesquisa Econômica Aplicada (Ipea) <br>
 
 ## Sobre este material
 
+### Contribuidores
+
+Além da equipe do curso, esse material recebeu contribuições de:
+
+- [Julio Trecenti](https://jtrecenti.com/)
+
+### Licença
+
 Esse material está disponível sob a [licença CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
