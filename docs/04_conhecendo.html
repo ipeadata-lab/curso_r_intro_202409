@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Nesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.</p>
 <p>Essa etapa é importante para:</p>
 <ul>
-<li><p>Entendermos qual é a estrutura da base de dados: quais são as variáveis presentes, o que cada linha representa, entre outros.</p></li>
+<li><p>Entender qual é a estrutura da base de dados: quais são as variáveis presentes, o que cada linha representa, entre outros.</p></li>
 <li><p>Descobrir se há valores faltantes, em quais variáveis eles estão presentes e em que proporção.</p></li>
 <li><p>Identificar o que é necessário fazer para arrumar a base de dados (isso vamos explorar posteriormente).</p></li>
 </ul>
@@ -394,6 +394,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="view" class="level3"><h3 class="anchored" data-anchor-id="view">View</h3>
 <p>Uma outra função que é interessante é a <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>. Ela nos permite visualizar a base de dados em uma nova janela, em formato de tabela. Porém, é importante tomar cuidado ao usá-la com bases de dados grandes, pois pode travar o RStudio dependendo.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Observação:</strong> Se você estiver com o <a href="https://tidyverse.tidyverse.org">tidyverse</a> carregado, a função <code><a href="https://tibble.tidyverse.org/reference/view.html">view()</a></code> (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>, e tem algumas funcionalidades a mais. Para os fins dessa aula, podemos usar qualquer uma das duas.</p>
+</div>
+</div>
+</div>
 <p>Outra forma de acessar o View é clicando na linha do objeto no painel <em>Environment</em> do RStudio:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/04_environment.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -496,94 +506,6 @@ Aviso
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span>
 <span><span class="va">skim_dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>O resultado da função <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> é dividido em duas partes:</p>
-<ul>
-<li><p><em>Data summary</em>: informações gerais sobre a base de dados, como: nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
-<li>
-<p><strong>Variable type</strong>: para cada tipo de variável presente na base de dados, temos informações como:</p>
-<ul>
-<li>
-<code>skim_variable</code>: nome da variável.</li>
-<li>
-<code>n_missing</code>: número de valores faltantes.</li>
-<li>
-<code>complete_rate</code>: proporção de valores não faltantes (está relacionada com a <code>n_missing</code>).</li>
-<li>Outras colunas específicas segundo o tipo de variável.</li>
-</ul>
-</li>
-</ul>
-<p>A seguir, estão as informações que a função <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> retorna para os tipos de variáveis mais frequentes:</p>
-<ul>
-<li>
-<em>character</em> (dados de texto):
-<ul>
-<li>
-<code>min</code>: número mínimo de caracteres.</li>
-<li>
-<code>max</code>: número máximo de caracteres.</li>
-<li>
-<code>empty</code>: número de linhas contendo valores vazios (um valor vazio é um valor que contém apenas <code>""</code>).</li>
-<li>
-<code>n_unique</code>: número de valores únicos.</li>
-<li>
-<code>whitespace</code>: número de linhas contendo apenas espaços em branco.</li>
-</ul>
-</li>
-<li>
-<em>numeric</em> (dados numéricos):
-<ul>
-<li>
-<code>mean</code>: média.</li>
-<li>
-<code>sd</code>: desvio padrão.</li>
-<li>
-<code>p0</code>: valor mínimo.</li>
-<li>
-<code>p25</code>: primeiro quartil.</li>
-<li>
-<code>p50</code>: mediana.</li>
-<li>
-<code>p75</code>: terceiro quartil.</li>
-<li>
-<code>p100</code>: valor máximo.</li>
-<li>
-<code>hist</code>: histograma dos valores.</li>
-</ul>
-</li>
-<li>
-<em>date</em> (datas):
-<ul>
-<li>
-<code>min</code>: data mínima.</li>
-<li>
-<code>max</code>: data máxima.</li>
-<li>
-<code>median</code>: data mediana.</li>
-<li>
-<code>n_unique</code>: número de datas únicas.</li>
-</ul>
-</li>
-<li>
-<em>factor</em> (dados categóricos):
-<ul>
-<li>
-<code>ordered</code>: os níveis do fator estão ordenados?</li>
-<li>
-<code>n_unique</code>: número de valores únicos do fator.</li>
-<li>
-<code>top_counts</code>: os valores mais frequentes do fator.</li>
-</ul>
-</li>
-<li>
-<em>logical</em> (dados booleanos):
-<ul>
-<li>
-<code>mean</code>: média dos valores, considerando que <code>TRUE</code> é 1 e <code>FALSE</code> é 0.</li>
-<li>
-<code>count</code>: contagem dos valores <code>TRUE</code> e <code>FALSE</code>.</li>
-</ul>
-</li>
-</ul>
 <p>A seguir, podemos ver o resultado da função <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">skim_dados</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -838,7 +760,94 @@ Aviso
 </table>
 </div>
 </div>
-</section></section><section id="valores-faltantes-na" class="level2"><h2 class="anchored" data-anchor-id="valores-faltantes-na">Valores faltantes (<code>NA</code>)</h2>
+<p>O resultado da função <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> é dividido em duas partes:</p>
+<ul>
+<li><p><em>Data summary</em>: informações gerais sobre a base de dados, como: nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
+<li>
+<p><strong>Variable type</strong>: para cada tipo de variável presente na base de dados, temos informações como:</p>
+<ul>
+<li>
+<code>skim_variable</code>: nome da variável.</li>
+<li>
+<code>n_missing</code>: número de valores faltantes.</li>
+<li>
+<code>complete_rate</code>: proporção de valores não faltantes (está relacionada com a <code>n_missing</code>).</li>
+<li>Outras colunas específicas segundo o tipo de variável.</li>
+</ul>
+</li>
+</ul>
+<p>A seguir, estão as informações que a função <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> retorna para os tipos de variáveis mais frequentes:</p>
+<ul>
+<li>
+<em>character</em> (dados de texto):
+<ul>
+<li>
+<code>min</code>: número mínimo de caracteres.</li>
+<li>
+<code>max</code>: número máximo de caracteres.</li>
+<li>
+<code>empty</code>: número de linhas contendo valores vazios (um valor vazio é um valor que contém apenas <code>""</code>).</li>
+<li>
+<code>n_unique</code>: número de valores únicos.</li>
+<li>
+<code>whitespace</code>: número de linhas contendo apenas espaços em branco.</li>
+</ul>
+</li>
+<li>
+<em>numeric</em> (dados numéricos):
+<ul>
+<li>
+<code>mean</code>: média.</li>
+<li>
+<code>sd</code>: desvio padrão.</li>
+<li>
+<code>p0</code>: valor mínimo.</li>
+<li>
+<code>p25</code>: primeiro quartil.</li>
+<li>
+<code>p50</code>: mediana.</li>
+<li>
+<code>p75</code>: terceiro quartil.</li>
+<li>
+<code>p100</code>: valor máximo.</li>
+<li>
+<code>hist</code>: histograma dos valores.</li>
+</ul>
+</li>
+<li>
+<em>date</em> (datas):
+<ul>
+<li>
+<code>min</code>: data mínima.</li>
+<li>
+<code>max</code>: data máxima.</li>
+<li>
+<code>median</code>: data mediana.</li>
+<li>
+<code>n_unique</code>: número de datas únicas.</li>
+</ul>
+</li>
+<li>
+<em>factor</em> (dados categóricos):
+<ul>
+<li>
+<code>ordered</code>: os níveis do fator estão ordenados?</li>
+<li>
+<code>n_unique</code>: número de valores únicos do fator.</li>
+<li>
+<code>top_counts</code>: os valores mais frequentes do fator.</li>
+</ul>
+</li>
+<li>
+<em>logical</em> (dados booleanos):
+<ul>
+<li>
+<code>mean</code>: média dos valores, considerando que <code>TRUE</code> é 1 e <code>FALSE</code> é 0.</li>
+<li>
+<code>count</code>: contagem dos valores <code>TRUE</code> e <code>FALSE</code>.</li>
+</ul>
+</li>
+</ul></section></section><section id="valores-faltantes-na" class="level2"><h2 class="anchored" data-anchor-id="valores-faltantes-na">Valores faltantes (<code>NA</code>)</h2>
 <p>A presença de valores faltantes é algo comum em bases de dados. Eles podem ocorrer por diversos motivos, como: não temos a informação, erros de digitação, entre outros.</p>
 <p>É importante identificar onde estão esses valores, para que possamos nos atentar em análises futuras.</p>
 <p>Existem algumas funções que nos ajudam a identificar a presença de valores faltantes na base de dados. O pacote <a href="https://github.com/njtierney/naniar">naniar</a> apresenta funções úteis para isso: a função <code><a href="https://naniar.njtierney.com/reference/gg_miss_var.html">gg_miss_var()</a></code> cria uma visualição apresentando o nome das variáveis da base de dados, assim como a quantidade de valores faltantes em cada uma delas.</p>
@@ -916,11 +925,11 @@ Aviso
 <pre><code># A tibble: 5 × 14
   n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²
     &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;
-1   15294                           3 Unidade da Federaç…                      2
-2   16037                           3 Unidade da Federaç…                      2
-3   14364                           3 Unidade da Federaç…                   1572
-4   11004                           3 Unidade da Federaç…                   1572
-5   16360                           3 Unidade da Federaç…                      2
+1   15193                           3 Unidade da Federaç…                      2
+2    5838                           3 Unidade da Federaç…                      2
+3   20957                           3 Unidade da Federaç…                      2
+4   10764                           3 Unidade da Federaç…                   1572
+5    2801                           3 Unidade da Federaç…                   1572
 # ℹ abbreviated names: ¹​`Nível Territorial (Código)`,
 #   ²​`Unidade de Medida (Código)`
 # ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,
@@ -933,7 +942,16 @@ Aviso
 </section><section id="conhecendo-os-valores-únicos-de-uma-coluna" class="level2"><h2 class="anchored" data-anchor-id="conhecendo-os-valores-únicos-de-uma-coluna">Conhecendo os valores únicos de uma coluna</h2>
 <p>Para variáveis categóricas ou de texto, é interessante conhecer os valores únicos presentes.</p>
 <p>Para acessar uma coluna específica, utilize o <code>$</code>. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: <code>dados$ano</code>.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
 <p>Dica: após escrever o <code>nome_do_dataframe$</code>, aperte <code>tab</code> para que o RStudio faça sugestões de colunas da base.</p>
+</div>
+</div>
+</div>
 <p>A função <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code> retorna os valores únicos de um vetor. Exemplo:</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dados</span><span class="op">$</span><span class="va">`Unidade de Medida`</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -941,6 +959,15 @@ Aviso
 <pre><code>[1] "Mil pessoas" "%"          </code></pre>
 </div>
 </div>
+<p>Note que, nesse caso, foi necessário colocar uma crase para identificar o nome da coluna. Isso acontece porque a coluna contém espaços em branco e, por isso, o R entenderia que o nome da coluna é <code>Unidade</code> e <code>de</code> e <code>Medida</code>. Com a crase, o R entende que o nome da coluna é <code>Unidade de Medida</code>.</p>
+<p>Outra forma de extrair o conteúdo de uma coluna é utilizando o operador <code>[[</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dados</span><span class="op">[[</span><span class="st">"Unidade de Medida"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mil pessoas" "%"          </code></pre>
+</div>
+</div>
+<p>O resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.</p>
 
 
 </section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas de rodapé</h2>
