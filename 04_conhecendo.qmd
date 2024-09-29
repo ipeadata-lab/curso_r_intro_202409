@@ -23,7 +23,7 @@ Essa etapa é importante para:
 
 -   Identificar o que é necessário fazer para arrumar a base de dados (isso vamos explorar posteriormente).
 
-::: callout
+::: callout-tip
 **Sugestão:** Ao longo deste capítulo, sugerimos que tente identificar o que é necessário para arrumar essa base de dados.
 :::
 
@@ -66,7 +66,7 @@ glimpse(dados)
 
 Uma outra função que é interessante é a `View()`. Ela nos permite visualizar a base de dados em uma nova janela, em formato de tabela. Porém, é importante tomar cuidado ao usá-la com bases de dados grandes, pois pode travar o RStudio dependendo.
 
-::: callout
+::: callout-tip
 **Observação:** Se você estiver com o `{tidyverse}` carregado, a função `view()` (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função `View()`, e tem algumas funcionalidades a mais. Para os fins dessa aula, podemos usar qualquer uma das duas.
 :::
 
@@ -94,11 +94,8 @@ Alguns exemplos:
 
 -   Várias colunas numéricas representam o código de uma categoria, e não faz sentido calcular a média desses códigos.
 
--   A variável `valor` está relacionada com a variável `unidade_de_medida`. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.
+-   A variável `valor` está relacionada com a variável `Unidade de Medida`. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.
 
-```{r}
-unique(dados$`Unidade de Medida`)
-```
 
 Falaremos sobre o cálculo de estatísticas descritivas no capítulo [Analisando dados](07_analise.qmd).
 :::
@@ -223,7 +220,7 @@ Para variáveis categóricas ou de texto, é interessante conhecer os valores ú
 
 Para acessar uma coluna específica, utilize o `$`. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: `dados$ano`.
 
-::: callout
+::: callout-tip
 Dica: após escrever o `nome_do_dataframe$`, aperte `tab` para que o RStudio faça sugestões de colunas da base.
 :::
 
@@ -234,6 +231,10 @@ unique(dados$`Unidade de Medida`)
 ```
 
 Note que, nesse caso, foi necessário colocar uma crase para identificar o nome da coluna. Isso acontece porque a coluna contém espaços em branco e, por isso, o R entenderia que o nome da coluna é `Unidade` e `de` e `Medida`. Com a crase, o R entende que o nome da coluna é `Unidade de Medida`.
+
+::: callout-tip
+É uma boa prática evitar espaços em branco e caracteres especiais nos nomes das colunas. Em [Transformando dados > Padronizar nome das colunas](05_transformacao.html#padronizar-nome-das-colunas) apresentaremos uma forma de fazer isso!
+:::
 
 Outra forma de extrair o conteúdo de uma coluna é utilizando o operador `[[`:
 

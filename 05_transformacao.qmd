@@ -331,7 +331,7 @@ Um exemplo comum de uso é quando temos dados por município ou estado, e deseja
 
 Vamos usar o pacote `{geobr}` para carregar as geometrias dos estados brasileiros.
 
-::: callout
+::: callout-tip
 O pacote `{geobr}` facilita o acesso a dados geoespaciais do Brasil, como estados, municípios e outras divisões administrativas. Ele é muito útil quando queremos fazer análises geoespaciais, já que oferece dados geográficos prontos para uso.
 
 Podemos utilizar a função `read_state()` para carregar as geometrias dos estados brasileiros. Isso nos permite combinar essas geometrias com outros dados, como taxas de desocupação, e criar mapas que facilitam a visualização de padrões regionais.

@@ -731,15 +731,18 @@ $ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.
 <p>A função <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.</p>
 <p>Um exemplo comum de uso é quando temos dados por município ou estado, e desejamos visualizar esses dados em um mapa. Para isso, precisamos de informações geoespaciais, como a delimitação geográfica de cada município ou estado. Podemos usar o <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> para combinar esses dados geoespaciais com os dados que queremos visualizar.</p>
 <p>Vamos usar o pacote <a href="https://ipeagit.github.io/geobr/">geobr</a> para carregar as geometrias dos estados brasileiros.</p>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-title-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>O pacote <a href="https://ipeagit.github.io/geobr/">geobr</a> facilita o acesso a dados geoespaciais do Brasil, como estados, municípios e outras divisões administrativas. Ele é muito útil quando queremos fazer análises geoespaciais, já que oferece dados geográficos prontos para uso.</p>
 <p>Podemos utilizar a função <code><a href="https://ipeagit.github.io/geobr/reference/read_state.html">read_state()</a></code> para carregar as geometrias dos estados brasileiros. Isso nos permite combinar essas geometrias com outros dados, como taxas de desocupação, e criar mapas que facilitam a visualização de padrões regionais.</p>
-</div>
 </div>
 </div>
 <div class="cell">
