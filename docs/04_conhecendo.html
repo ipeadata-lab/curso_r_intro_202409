@@ -175,8 +175,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./01_1_rproj.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projetos no RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./02_conceitos_basicos_r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conceitos básicos</span></a>
+ <span class="menu-text">Conceitos básicos do R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -320,8 +326,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Conceitos prévios importantes:</p>
 <ul>
 <li><p><a href="./03_importacao.html">Como importar bases de dados?</a></p></li>
-<li><p>Tipos de variáveis</p></li>
-<li><p>Valores faltantes</p></li>
+<li><p><a href="./02_conceitos_basicos_r.html">Tipos de variáveis</a></p></li>
+<li><p><a href="./02_conceitos_basicos_r.html">Valores faltantes (<code>NA</code>)</a></p></li>
 </ul>
 </div>
 </div>
@@ -349,7 +355,7 @@ Dica
 <p>Vamos começar importando a base de dados que utilizaremos:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto_2.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="estrutura-da-base-de-dados" class="level2"><h2 class="anchored" data-anchor-id="estrutura-da-base-de-dados">Estrutura da base de dados</h2>
 <p>Vamos começar conhecendo a estrutura da base de dados. Para isso, existem algumas funções para saber o número de colunas e linhas, os nomes das colunas, entre outras informações. Algumas delas apresentam as mesmas informações, mas de formas diferentes.</p>
@@ -450,29 +456,29 @@ Aviso
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Nível Territorial (Código) Nível Territorial  Unidade de Medida (Código)
- Min.   :3                  Length:27000       Min.   :   2.0            
- 1st Qu.:3                  Class :character   1st Qu.:   2.0            
- Median :3                  Mode  :character   Median :   2.0            
- Mean   :3                                     Mean   : 394.5            
- 3rd Qu.:3                                     3rd Qu.: 394.5            
- Max.   :3                                     Max.   :1572.0            
+ Length:27000               Length:27000       Length:27000              
+ Class :character           Class :character   Class :character          
+ Mode  :character           Mode  :character   Mode  :character          
+                                                                         
+                                                                         
+                                                                         
                                                                          
  Unidade de Medida      Valor         Unidade da Federação (Código)
- Length:27000       Min.   :    0.3   Min.   :11.00                
- Class :character   1st Qu.:    1.5   1st Qu.:17.00                
- Mode  :character   Median :    7.8   Median :27.00                
-                    Mean   :  862.0   Mean   :29.11                
-                    3rd Qu.:  105.8   3rd Qu.:41.00                
-                    Max.   :39480.0   Max.   :53.00                
+ Length:27000       Min.   :    0.3   Length:27000                 
+ Class :character   1st Qu.:    1.5   Class :character             
+ Mode  :character   Median :    7.8   Mode  :character             
+                    Mean   :  862.0                                
+                    3rd Qu.:  105.8                                
+                    Max.   :39480.0                                
                     NA's   :1350                                   
- Unidade da Federação Trimestre (Código)  Trimestre         Variável (Código)
- Length:27000         Min.   :201201     Length:27000       Min.   :1641     
- Class :character     1st Qu.:201501     Class :character   1st Qu.:3476     
- Mode  :character     Median :201802     Mode  :character   Median :4096     
-                      Mean   :201778                        Mean   :3484     
-                      3rd Qu.:202102                        3rd Qu.:4104     
-                      Max.   :202402                        Max.   :4105     
-                                                                             
+ Unidade da Federação Trimestre (Código)  Trimestre         Variável (Código) 
+ Length:27000         Length:27000       Length:27000       Length:27000      
+ Class :character     Class :character   Class :character   Class :character  
+ Mode  :character     Mode  :character   Mode  :character   Mode  :character  
+                                                                              
+                                                                              
+                                                                              
+                                                                              
    Variável        
  Length:27000      
  Class :character  
@@ -482,12 +488,12 @@ Aviso
                    
                    
  Condição em relação à força de trabalho e condição de ocupação (Código)
- Min.   :32385                                                          
- 1st Qu.:32386                                                          
- Median :32387                                                          
- Mean   :32410                                                          
- 3rd Qu.:32446                                                          
- Max.   :32447                                                          
+ Length:27000                                                           
+ Class :character                                                       
+ Mode  :character                                                       
+                                                                        
+                                                                        
+                                                                        
                                                                         
  Condição em relação à força de trabalho e condição de ocupação
  Length:27000                                                  
@@ -535,11 +541,11 @@ Aviso
 </tr>
 <tr class="even">
 <td style="text-align: left;">character</td>
-<td style="text-align: left;">6</td>
+<td style="text-align: left;">12</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">numeric</td>
-<td style="text-align: left;">7</td>
+<td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">________________________</td>
@@ -554,14 +560,14 @@ Aviso
 <p><strong>Variable type: character</strong></p>
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 52%">
-<col style="width: 8%">
-<col style="width: 11%">
+<col style="width: 55%">
+<col style="width: 7%">
+<col style="width: 10%">
 <col style="width: 3%">
 <col style="width: 3%">
 <col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 8%">
 </colgroup>
 <thead><tr class="header">
 <th style="text-align: left;">skim_variable</th>
@@ -575,6 +581,16 @@ Aviso
 </tr></thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">Nível Territorial (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Nível Territorial</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
@@ -582,6 +598,16 @@ Aviso
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unidade de Medida (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
@@ -595,6 +621,16 @@ Aviso
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Unidade da Federação (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Unidade da Federação</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
@@ -602,6 +638,16 @@ Aviso
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Trimestre (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">50</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
@@ -615,6 +661,16 @@ Aviso
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Variável (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Variável</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
@@ -622,6 +678,16 @@ Aviso
 <td style="text-align: right;">89</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condição em relação à força de trabalho e condição de ocupação (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
@@ -639,17 +705,17 @@ Aviso
 <p><strong>Variable type: numeric</strong></p>
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 43%">
-<col style="width: 6%">
+<col style="width: 16%">
+<col style="width: 11%">
+<col style="width: 16%">
 <col style="width: 8%">
-<col style="width: 6%">
+<col style="width: 9%">
 <col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 6%">
 <col style="width: 4%">
-<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 7%">
 </colgroup>
 <thead><tr class="header">
 <th style="text-align: left;">skim_variable</th>
@@ -664,34 +730,7 @@ Aviso
 <th style="text-align: right;">p100</th>
 <th style="text-align: left;">hist</th>
 </tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Nível Territorial (Código)</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">3.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">3.00</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">▁▁▇▁▁</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Unidade de Medida (Código)</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">394.50</td>
-<td style="text-align: right;">679.84</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">394.50</td>
-<td style="text-align: right;">1572</td>
-<td style="text-align: left;">▇▁▁▁▂</td>
-</tr>
-<tr class="odd">
+<tbody><tr class="odd">
 <td style="text-align: left;">Valor</td>
 <td style="text-align: right;">1350</td>
 <td style="text-align: right;">0.95</td>
@@ -703,60 +742,7 @@ Aviso
 <td style="text-align: right;">105.75</td>
 <td style="text-align: right;">39480</td>
 <td style="text-align: left;">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Unidade da Federação (Código)</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">29.11</td>
-<td style="text-align: right;">12.78</td>
-<td style="text-align: right;">11.0</td>
-<td style="text-align: right;">17.0</td>
-<td style="text-align: right;">27.0</td>
-<td style="text-align: right;">41.00</td>
-<td style="text-align: right;">53</td>
-<td style="text-align: left;">▇▇▇▃▅</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Trimestre (Código)</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">201778.46</td>
-<td style="text-align: right;">361.36</td>
-<td style="text-align: right;">201201.0</td>
-<td style="text-align: right;">201501.0</td>
-<td style="text-align: right;">201801.5</td>
-<td style="text-align: right;">202102.00</td>
-<td style="text-align: right;">202402</td>
-<td style="text-align: left;">▇▅▇▅▇</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Variável (Código)</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">3484.25</td>
-<td style="text-align: right;">1064.24</td>
-<td style="text-align: right;">1641.0</td>
-<td style="text-align: right;">3475.5</td>
-<td style="text-align: right;">4095.5</td>
-<td style="text-align: right;">4104.25</td>
-<td style="text-align: right;">4105</td>
-<td style="text-align: left;">▂▁▁▁▇</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Condição em relação à força de trabalho e condição de ocupação (Código)</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">32410.20</td>
-<td style="text-align: right;">29.65</td>
-<td style="text-align: right;">32385.0</td>
-<td style="text-align: right;">32386.0</td>
-<td style="text-align: right;">32387.0</td>
-<td style="text-align: right;">32446.00</td>
-<td style="text-align: right;">32447</td>
-<td style="text-align: left;">▇▁▁▁▅</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 </div>
 </div>
@@ -882,61 +868,154 @@ Aviso
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exibindo as primeiras linhas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dados_com_n_linha</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 14
-  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²
-    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;
-1       1                           3 Unidade da Federaç…                   1572
-2       2                           3 Unidade da Federaç…                   1572
-3       3                           3 Unidade da Federaç…                   1572
-4       4                           3 Unidade da Federaç…                   1572
-5       5                           3 Unidade da Federaç…                   1572
-6       6                           3 Unidade da Federaç…                      2
-# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,
-#   ²​`Unidade de Medida (Código)`
-# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,
-#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,
-#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,
-#   Variável &lt;chr&gt;,
-#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …</code></pre>
+<pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
+1       1                          3 Unidade da Federação
+2       2                          3 Unidade da Federação
+3       3                          3 Unidade da Federação
+4       4                          3 Unidade da Federação
+5       5                          3 Unidade da Federação
+6       6                          3 Unidade da Federação
+  Unidade de Medida (Código) Unidade de Medida  Valor
+1                       1572       Mil pessoas 1210.0
+2                       1572       Mil pessoas  765.0
+3                       1572       Mil pessoas  703.0
+4                       1572       Mil pessoas   62.0
+5                       1572       Mil pessoas  446.0
+6                          2                 %    0.7
+  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
+1                            11             Rondônia             201201
+2                            11             Rondônia             201201
+3                            11             Rondônia             201201
+4                            11             Rondônia             201201
+5                            11             Rondônia             201201
+6                            11             Rondônia             201201
+          Trimestre Variável (Código)
+1 1º trimestre 2012              1641
+2 1º trimestre 2012              1641
+3 1º trimestre 2012              1641
+4 1º trimestre 2012              1641
+5 1º trimestre 2012              1641
+6 1º trimestre 2012              4087
+                                                       Variável
+1                           Pessoas de 14 anos ou mais de idade
+2                           Pessoas de 14 anos ou mais de idade
+3                           Pessoas de 14 anos ou mais de idade
+4                           Pessoas de 14 anos ou mais de idade
+5                           Pessoas de 14 anos ou mais de idade
+6 Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+  Condição em relação à força de trabalho e condição de ocupação (Código)
+1                                                                   32385
+2                                                                   32386
+3                                                                   32387
+4                                                                   32446
+5                                                                   32447
+6                                                                   32385
+  Condição em relação à força de trabalho e condição de ocupação
+1                                                          Total
+2                                              Força de trabalho
+3                                    Força de trabalho - ocupada
+4                                 Força de trabalho - desocupada
+5                                      Fora da força de trabalho
+6                                                          Total</code></pre>
 </div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exibindo as últimas linhas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">dados_com_n_linha</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 14
-  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²
-    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;
-1   26995                           3 Unidade da Federaç…                      2
-2   26996                           3 Unidade da Federaç…                      2
-3   26997                           3 Unidade da Federaç…                      2
-4   26998                           3 Unidade da Federaç…                      2
-5   26999                           3 Unidade da Federaç…                      2
-6   27000                           3 Unidade da Federaç…                      2
-# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,
-#   ²​`Unidade de Medida (Código)`
-# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,
-#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,
-#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,
-#   Variável &lt;chr&gt;,
-#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …</code></pre>
+<pre><code>      n_linha Nível Territorial (Código)    Nível Territorial
+26995   26995                          3 Unidade da Federação
+26996   26996                          3 Unidade da Federação
+26997   26997                          3 Unidade da Federação
+26998   26998                          3 Unidade da Federação
+26999   26999                          3 Unidade da Federação
+27000   27000                          3 Unidade da Federação
+      Unidade de Medida (Código) Unidade de Medida Valor
+26995                          2                 %  31.6
+26996                          2                 %    NA
+26997                          2                 %   1.1
+26998                          2                 %   1.3
+26999                          2                 %   7.4
+27000                          2                 %   2.3
+      Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
+26995                            53     Distrito Federal             202402
+26996                            53     Distrito Federal             202402
+26997                            53     Distrito Federal             202402
+26998                            53     Distrito Federal             202402
+26999                            53     Distrito Federal             202402
+27000                            53     Distrito Federal             202402
+              Trimestre Variável (Código)
+26995 2º trimestre 2024              4104
+26996 2º trimestre 2024              4105
+26997 2º trimestre 2024              4105
+26998 2º trimestre 2024              4105
+26999 2º trimestre 2024              4105
+27000 2º trimestre 2024              4105
+                                                                                       Variável
+26995                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+26996 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+26997 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+26998 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+26999 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+27000 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+      Condição em relação à força de trabalho e condição de ocupação (Código)
+26995                                                                   32447
+26996                                                                   32385
+26997                                                                   32386
+26998                                                                   32387
+26999                                                                   32446
+27000                                                                   32447
+      Condição em relação à força de trabalho e condição de ocupação
+26995                                      Fora da força de trabalho
+26996                                                          Total
+26997                                              Força de trabalho
+26998                                    Força de trabalho - ocupada
+26999                                 Força de trabalho - desocupada
+27000                                      Fora da força de trabalho</code></pre>
 </div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># "Sorteando" linhas</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">dados_com_n_linha</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 14
-  n_linha Nível Territorial (Código…¹ `Nível Territorial` Unidade de Medida (C…²
-    &lt;int&gt;                       &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt;
-1   13035                           3 Unidade da Federaç…                      2
-2   24675                           3 Unidade da Federaç…                      2
-3   17442                           3 Unidade da Federaç…                   1572
-4    6003                           3 Unidade da Federaç…                   1572
-5   25595                           3 Unidade da Federaç…                      2
-# ℹ abbreviated names: ¹​`Nível Territorial (Código)`,
-#   ²​`Unidade de Medida (Código)`
-# ℹ 10 more variables: `Unidade de Medida` &lt;chr&gt;, Valor &lt;dbl&gt;,
-#   `Unidade da Federação (Código)` &lt;dbl&gt;, `Unidade da Federação` &lt;chr&gt;,
-#   `Trimestre (Código)` &lt;dbl&gt;, Trimestre &lt;chr&gt;, `Variável (Código)` &lt;dbl&gt;,
-#   Variável &lt;chr&gt;,
-#   `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt;, …</code></pre>
+<pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
+1    6851                          3 Unidade da Federação
+2   26310                          3 Unidade da Federação
+3   26585                          3 Unidade da Federação
+4    3984                          3 Unidade da Federação
+5    5207                          3 Unidade da Federação
+  Unidade de Medida (Código) Unidade de Medida Valor
+1                          2                 % 100.0
+2                          2                 %   2.4
+3                       1572       Mil pessoas 755.0
+4                       1572       Mil pessoas  21.0
+5                          2                 %   2.3
+  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
+1                            17            Tocantins             202203
+2                            53     Distrito Federal             201504
+3                            53     Distrito Federal             201902
+4                            14              Roraima             202402
+5                            16                Amapá             201403
+          Trimestre Variável (Código)
+1 3º trimestre 2022              4104
+2 4º trimestre 2015              4087
+3 2º trimestre 2019              1641
+4 2º trimestre 2024              1641
+5 3º trimestre 2014              4087
+                                                         Variável
+1 Distribuição percentual das pessoas de 14 anos ou mais de idade
+2   Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+3                             Pessoas de 14 anos ou mais de idade
+4                             Pessoas de 14 anos ou mais de idade
+5   Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+  Condição em relação à força de trabalho e condição de ocupação (Código)
+1                                                                   32385
+2                                                                   32447
+3                                                                   32447
+4                                                                   32446
+5                                                                   32386
+  Condição em relação à força de trabalho e condição de ocupação
+1                                                          Total
+2                                      Fora da força de trabalho
+3                                      Fora da força de trabalho
+4                                 Força de trabalho - desocupada
+5                                              Força de trabalho</code></pre>
 </div>
 </div>
 </section><section id="conhecendo-os-valores-únicos-de-uma-coluna" class="level2"><h2 class="anchored" data-anchor-id="conhecendo-os-valores-únicos-de-uma-coluna">Conhecendo os valores únicos de uma coluna</h2>
@@ -1084,8 +1163,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           if (link.getAttribute("rel") === null) {
             link.setAttribute("rel", "noopener");
           }
-          // default icon
-          link.classList.add("external");
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
