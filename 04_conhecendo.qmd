@@ -17,7 +17,7 @@ Nesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um 
 
 Essa etapa é importante para:
 
--   Entendermos qual é a estrutura da base de dados: quais são as variáveis presentes, o que cada linha representa, entre outros.
+-   Entender qual é a estrutura da base de dados: quais são as variáveis presentes, o que cada linha representa, entre outros.
 
 -   Descobrir se há valores faltantes, em quais variáveis eles estão presentes e em que proporção.
 
@@ -65,6 +65,10 @@ glimpse(dados)
 ### View
 
 Uma outra função que é interessante é a `View()`. Ela nos permite visualizar a base de dados em uma nova janela, em formato de tabela. Porém, é importante tomar cuidado ao usá-la com bases de dados grandes, pois pode travar o RStudio dependendo.
+
+::: callout
+**Observação:** Se você estiver com o `{tidyverse}` carregado, a função `view()` (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função `View()`, e tem algumas funcionalidades a mais. Para os fins dessa aula, podemos usar qualquer uma das duas.
+:::
 
 Outra forma de acessar o View é clicando na linha do objeto no painel *Environment* do RStudio:
 
@@ -118,6 +122,13 @@ library(skimr)
 skim_dados <- skim(dados)
 ```
 
+A seguir, podemos ver o resultado da função `skim()`:
+
+```{r}
+skim_dados
+```
+
+
 O resultado da função `skim()` é dividido em duas partes:
 
 -   *Data summary*: informações gerais sobre a base de dados, como: nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável[^1].
@@ -161,11 +172,6 @@ A seguir, estão as informações que a função `skim()` retorna para os tipos 
     -   `mean`: média dos valores, considerando que `TRUE` é 1 e `FALSE` é 0.
     -   `count`: contagem dos valores `TRUE` e `FALSE`.
 
-A seguir, podemos ver o resultado da função `skim()`:
-
-```{r}
-skim_dados
-```
 
 ## Valores faltantes (`NA`)
 
@@ -217,10 +223,23 @@ Para variáveis categóricas ou de texto, é interessante conhecer os valores ú
 
 Para acessar uma coluna específica, utilize o `$`. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: `dados$ano`.
 
+::: callout
 Dica: após escrever o `nome_do_dataframe$`, aperte `tab` para que o RStudio faça sugestões de colunas da base.
+:::
 
 A função `unique()` retorna os valores únicos de um vetor. Exemplo:
 
 ```{r}
 unique(dados$`Unidade de Medida`)
 ```
+
+Note que, nesse caso, foi necessário colocar uma crase para identificar o nome da coluna. Isso acontece porque a coluna contém espaços em branco e, por isso, o R entenderia que o nome da coluna é `Unidade` e `de` e `Medida`. Com a crase, o R entende que o nome da coluna é `Unidade de Medida`.
+
+Outra forma de extrair o conteúdo de uma coluna é utilizando o operador `[[`:
+
+```{r}
+unique(dados[["Unidade de Medida"]])
+```
+
+O resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.
+
