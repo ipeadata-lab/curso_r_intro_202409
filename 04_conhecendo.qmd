@@ -67,7 +67,7 @@ glimpse(dados)
 Uma outra função que é interessante é a `View()`. Ela nos permite visualizar a base de dados em uma nova janela, em formato de tabela. Porém, é importante tomar cuidado ao usá-la com bases de dados grandes, pois pode travar o RStudio dependendo.
 
 ::: callout
-**Observação:** Se você estiver com o `{tidyverse}` carregado, a função `view()` (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função `View()`, e tem algumas funcionalidades a mais. Para os fins desse tutorial, podemos usar qualquer uma das duas.
+**Observação:** Se você estiver com o `{tidyverse}` carregado, a função `view()` (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função `View()`, e tem algumas funcionalidades a mais. Para os fins dessa aula, podemos usar qualquer uma das duas.
 :::
 
 Outra forma de acessar o View é clicando na linha do objeto no painel *Environment* do RStudio:
@@ -241,5 +241,5 @@ Outra forma de extrair o conteúdo de uma coluna é utilizando o operador `[[`:
 unique(dados[["Unidade de Medida"]])
 ```
 
-O resultado é o mesmo, mas dessa forma utilizamos a tradicional string para acessar a coluna.
+O resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.
 
