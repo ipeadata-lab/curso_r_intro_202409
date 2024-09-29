@@ -248,6 +248,5 @@ Alguns pacotes apresentam também sites próprios com documentações e *vignett
 ## Sugestões de materiais
 
 - Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
-  - [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
-  - [Fluxo de Trabalho: scripts](https://cienciadedatos.github.io/pt-r4ds/workflow-scripts.html)
+  - [Introdução > Pré-requisitos em diante](https://cienciadedatos.github.io/pt-r4ds/intro.html#pr%C3%A9-requisitos)
   - [Fluxo de Trabalho: obtendo ajuda](https://cienciadedatos.github.io/pt-r4ds/workflow-help.html)

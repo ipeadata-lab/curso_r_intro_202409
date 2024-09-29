@@ -13,3 +13,10 @@ Página em construção! Em breve.
 
 <!-- Mas o uso de Rprojects é ainda mais eficiente. Sempre que criar um novo projeto no RStudio, ele criará um arquivo .Rproj na pasta do projeto e definirá o diretório automaticamente. -->
 
+## Sugestões de materiais
+
+- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+  - [Fluxo de Trabalho: scripts e projetos](https://cienciadedatos.github.io/pt-r4ds/workflow-scripts.html)
+  
+- Livro [Zen do R](https://curso-r.github.io/zen-do-r/index.html):
+  - [Capítulo Rproj e Diretórios](https://curso-r.github.io/zen-do-r/rproj-dir.html)

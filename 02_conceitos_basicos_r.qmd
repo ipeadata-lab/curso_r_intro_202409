@@ -18,3 +18,10 @@ Página em construção! Em breve.
 <!-- Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`,  etc. -->
 
 <!-- ## Valores faltantes (NA) -->
+
+
+## Sugestões de materiais
+
+- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+  - [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
+
