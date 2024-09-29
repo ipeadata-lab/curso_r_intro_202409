@@ -127,7 +127,7 @@ dados_selecionados <- select(
   valor
 )
 
-dados_selecionados
+glimpse(dados_selecionados)
 ```
 
 Podemos renomear colunas com a função `rename()`. Vamos renomear algumas colunas para facilitar o uso posteriormente:

@@ -3,6 +3,14 @@
 title: "Conhecendo o R e o RStudio"
 ---
 
+::: callout
+Pré-requisitos:
+
+- [Instalar o R](00_instrucoes_pre_curso.qmd)
+
+- [Instalar o RStudio](00_instrucoes_pre_curso.qmd)
+
+:::
 
 ## Linguagem R
 
