@@ -4,7 +4,7 @@ title: "Projeto de Análise Exploratória de Dados com R"
 
 Com o objetivo de praticar os conceitos apresentados no curso, recomendamos que as pessoas participantes realizem um projeto de análise exploratória de dados paralelamente às aulas. Este projeto permitirá que você consolide o aprendizado adquirido, explorando dados reais e aplicando as ferramentas de análise discutidas em aula.
 
-Aproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. **Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas ou para os monitores**. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.
+Aproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. **Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas para os monitores**. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.
 
 Os passos a seguir podem te ajudar a organizar o projeto de análise exploratória de dados:
 
@@ -13,8 +13,9 @@ Os passos a seguir podem te ajudar a organizar o projeto de análise exploratór
     - [sidrar](https://cran.r-project.org/web/packages/sidrar/vignettes/Introduction_to_sidrar.html): Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.
     - [censobr](https://ipeagit.github.io/censobr/): Dados de censos demográficos brasileiros.
     - [ipeadatar](https://cran.r-project.org/web/packages/ipeadatar/index.html): Acesso aos dados disponibilizados no [Ipeadata](http://www.ipeadata.gov.br/Default.aspx).
-    - [flightsbr](https://github.com/ipeaGIT/flightsbr): Dados de voos no Brasil.
-
+    - [flightsbr](https://github.com/ipeaGIT/flightsbr): Dados de vôos no Brasil.
+    - [PNADcIBGE](https://cran.r-project.org/web/packages/PNADcIBGE/index.html): Dados da PNAD Contínua do IBGE.
+    
 1. **Crie um projeto no RStudio**: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula [Conhecendo o R e o RStudio](01_r_rstudio.qmd). 
 
 1. **Importe os dados**: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula [Importando dados](03_importacao.qmd).

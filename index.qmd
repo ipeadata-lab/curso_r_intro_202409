@@ -1,6 +1,6 @@
 ---
 title: 'Introdução à análise de dados no R'
-subtitle: "Utilizando dados públicos brasileiros"
+subtitle: "Utilizando dados públicos e registros administrativos brasileiros"
 ---
 <img src="images/00_RStudio_logo.png" align="right" width="120px" class = "img-rstudio">
 
@@ -8,8 +8,8 @@ subtitle: "Utilizando dados públicos brasileiros"
 ## Introdução ao material 
 
 
-Este site apresenta o material de apoio para o curso **"Introdução à análise de dados no R"**, oferecido em 2024.
-O curso será realizado de forma remota, com aulas ao vivo e atividades práticas.
+Este site apresenta o material de apoio para o curso **"Introdução à análise de dados no R"**, oferecido em 2024 para servidores do Instituto de Pesquisa Econômica Aplicada (Ipea).
+O curso será realizado de forma remota híbrida, com aulas ao vivo e atividades práticas.
 
 :::{.callout-important}
 Recomendamos que todas as pessoas participantes instalem o R e o RStudio antes do início do curso.
@@ -40,8 +40,7 @@ Instituto de Pesquisa Econômica Aplicada (Ipea) <br>
 
 
 **Rafael H. M. Pereira** <br> *Coordenador de Ciência de Dados* <br> Instituto de Pesquisa Econômica Aplicada (Ipea) <br> [Website](https://www.urbandemographics.org/about/) |
-[Google Scholar](https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&hl) |
-[Twitter](https://x.com/UrbanDemog) | [Linkedin](https://www.linkedin.com/in/rafael-h-m-pereira/) | 
+[Google Scholar](https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&hl) | [Linkedin](https://www.linkedin.com/in/rafael-h-m-pereira/) | 
 
 
 
