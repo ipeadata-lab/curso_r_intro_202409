@@ -177,6 +177,7 @@ As funções e pacotes do R apresentam textos com explicações e exemplos de us
 
 As documentações podem ser acessadas online, ou diretamente no RStudio.
 
+### Documentação no RStudio
 
 No RStudio, podemos acessar a documentação de uma função ou pacote das seguintes formas:
 
@@ -200,12 +201,40 @@ help(mean)  # Abre a documentação da função mean()
 
 ![Captura de tela do RStudio: Painel Help](images/01_rstudio_help.png){fig-align="center"}
 
-Além disso, a maioria dos pacotes vem com vignettes (tutoriais) que explicam como usá-los. Use a função `browseVignettes()` para listar as *vignettes* disponíveis para um pacote específico:
+Além disso, a maioria dos pacotes vem com textos explicativos sobre como usá-los, chamadas de *vignettes*. Elas estão disponíveis online, mas também podem ser acessadas diretamente no RStudio.
+
+Para acessar no RStudio, podemos usar a função `browseVignettes()` para listar as *vignettes* disponíveis para um pacote específico. A lista será apresentada em uma janela do navegador (ex: Google Chrome, Firefox, Safari, etc):
 
 ```{r}
 #| eval: false
 browseVignettes("dplyr")
 ```
+
+![Captura de tela: Lista de Vignettes do pacote dplyr](images/01_vignettes.png){fig-align="center"}
+
+### Documentação online
+
+Como citado anteriormente, é possível acessar a documentação dos pacotes diretamente no RStudio e também online. No geral, o conteúdo disponível online é igual ao disponível no RStudio, mas pode ser mais fácil de buscar e navegar.
+
+As documentações podem ser acessadas online, nos seguintes sites:
+
+- [CRAN - Available CRAN Packages By Name](https://cran.r-project.org/web/packages/available_packages_by_name.html)
+- [R Package Documentation](https://rdrr.io/)
+- [R Documentation](https://www.rdocumentation.org/)
+
+
+Alguns pacotes apresentam também sites próprios com documentações e *vignettes*. Por exemplo, o pacote `{dplyr}` (que usaremos no curso) tem um [site próprio](https://dplyr.tidyverse.org/index.html) onde conseguimos acessar a documentação.
+
+- Em *[Get started](https://dplyr.tidyverse.org/articles/dplyr.html)* encontramos uma introdução ao pacote, e exemplos de uso para quem quer aprender a usá-lo.
+
+- Em *[Reference](https://dplyr.tidyverse.org/reference/index.html)*, encontramos a lista de funções disponíveis no pacote, e podemos acessar a documentação de cada uma delas:
+
+![Captura de tela: Site do pacote dplyr - Reference](images/01_reference_dplyr.png){fig-align="center"}
+
+
+- Em *[Articles](https://dplyr.tidyverse.org/articles/index.html)* podemos acessar as *vignettes*:
+
+![Captura de tela: Site do pacote dplyr - Vignettes](images/01_vignettes_dplyr.png){fig-align="center"}
 
 
 ## Sugestões de materiais
