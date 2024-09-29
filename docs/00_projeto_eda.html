@@ -190,15 +190,61 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Visualizando dados</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_ciclo_completo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ciclo completo com dados brasileiros</span></a>
+  <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_pesquisa_ipea.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_censobr_conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceitos iniciais do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_censobr_microdados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Microdados do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_censobr_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agregados dos Setores Censitários</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_censobr_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentação dos Censos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Data Lake do Ipea</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
@@ -235,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Com o objetivo de praticar os conceitos apresentados no curso, recomendamos que as pessoas participantes realizem um projeto de análise exploratória de dados paralelamente às aulas. Este projeto permitirá que você consolide o aprendizado adquirido, explorando dados reais e aplicando as ferramentas de análise discutidas em aula.</p>
-<p>Aproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. <strong>Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas ou para os monitores</strong>. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.</p>
+<p>Aproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. <strong>Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas para os monitores</strong>. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.</p>
 <p>Os passos a seguir podem te ajudar a organizar o projeto de análise exploratória de dados:</p>
 <ol type="1">
 <li><p><strong>Escolha um conjunto de dados</strong>: Você pode escolher um conjunto de dados de sua preferência. Caso não tenha um conjunto de dados em mente, sugerimos que escolha um dos conjuntos de dados disponíveis nos seguintes pacotes:</p>
@@ -243,7 +289,8 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://cran.r-project.org/web/packages/sidrar/vignettes/Introduction_to_sidrar.html">sidrar</a>: Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.</li>
 <li><a href="https://ipeagit.github.io/censobr/">censobr</a>: Dados de censos demográficos brasileiros.</li>
 <li><a href="https://cran.r-project.org/web/packages/ipeadatar/index.html">ipeadatar</a>: Acesso aos dados disponibilizados no <a href="http://www.ipeadata.gov.br/Default.aspx">Ipeadata</a>.</li>
-<li><a href="https://github.com/ipeaGIT/flightsbr">flightsbr</a>: Dados de voos no Brasil.</li>
+<li><a href="https://github.com/ipeaGIT/flightsbr">flightsbr</a>: Dados de vôos no Brasil.</li>
+<li><a href="https://cran.r-project.org/web/packages/PNADcIBGE/index.html">PNADcIBGE</a>: Dados da PNAD Contínua do IBGE.</li>
 </ul></li>
 <li><p><strong>Crie um projeto no RStudio</strong>: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula <a href="./01_r_rstudio.html">Conhecendo o R e o RStudio</a>.</p></li>
 <li><p><strong>Importe os dados</strong>: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula <a href="./03_importacao.html">Importando dados</a>.</p></li>

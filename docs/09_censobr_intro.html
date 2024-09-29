@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Introdução à análise de dados no R - Visualizando dados</title>
+<title>Introdução à análise de dados no R - Explorando o Censo Demográfico</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
-
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -30,8 +80,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./09_censobr_intro.html" rel="next">
-<link href="./07_analise.html" rel="prev">
+<link href="./10_censobr_conceitos.html" rel="next">
+<link href="./08_visualizacao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -40,8 +90,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -67,35 +116,25 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script>
-
-
-<link rel="stylesheet" href="styles.css">
+}</script><link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./08_visualizacao.html">Visualizando dados</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -110,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -118,8 +157,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -138,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -147,8 +186,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -186,12 +225,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link active">
+  <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualizando dados</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -200,10 +239,10 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Explorando o Censo Demográfico</span></a>
   </div>
 </li>
@@ -232,7 +271,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -241,35 +280,30 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link active" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
-  </ul>
-</nav>
+<li><a href="#censobr-e-geobr" id="toc-censobr-e-geobr" class="nav-link active" data-scroll-target="#censobr-e-geobr">{censobr} e {geobr}</a></li>
+  <li><a href="#instalando-pacotes-de-r-para-essa-aula" id="toc-instalando-pacotes-de-r-para-essa-aula" class="nav-link" data-scroll-target="#instalando-pacotes-de-r-para-essa-aula">Instalando pacotes de R para essa aula</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./08_visualizacao.html">Visualizando dados</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Visualizando dados</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Explorando o Censo Demográfico</h1>
 </div>
 
 
@@ -283,51 +317,48 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><p>O Censo Demográfico é uma das mais importantes fontes de dados sobre as características e condições de vida da população brasileira. Nesta aula, você vai aprender como baixar e manipular os dados das diversas edições do censo demográfico do Brasil de 1960 a 2022 usando o pacote <a href="https://ipeagit.github.io/censobr/">{censobr}</a> na linguagem de programação R.</p>
+<p>A oficina também vai demonstrar como o {censobr} permite trabalhar com grandes bases de dados (<em>larger-than-memory data</em>) e ser integrado com o pacote <a href="https://ipeagit.github.io/geobr/">{geobr}</a> para visualização espacial de dados em diferentes escalas geográficas.</p>
+<section id="censobr-e-geobr" class="level1"><h1>{censobr} e {geobr}</h1>
+<p>O <strong>{censobr}</strong> é um pacote de R para acessar os dados e documentação dos censos demográficos do Brasil <span class="citation" data-cites="pereira2023censobr">(<a href="#ref-pereira2023censobr" role="doc-biblioref">Pereira e Barbosa 2023</a>)</span>. O pacote disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1960 (mais informações no <a href="https://ipeagit.github.io/censobr/index.html">site do pacote</a>).</p>
+<p>Por sua vez, oO <strong>{geobr}</strong> é um pacote para baixar dados espaciais oficiais do Brasil <span class="citation" data-cites="pereira2019geobr">(<a href="#ref-pereira2019geobr" role="doc-biblioref">Pereira e Gonçalves 2019</a>)</span>. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a <a href="https://ipeagit.github.io/geobr/">lista completa no site do pacote</a>).</p>
+<!-- package logos side by side  -->
+<div style="text-align: center">
+<table><tbody><tr>
+<td style="border:none">
+<img src="./images/censobr_logo.png" width="180">
+</td>
+<td>
+<img src="./images/geobr_logo_y.png" width="180">
+</td>
+</tr></tbody></table>
+</div>
+</section><section id="instalando-pacotes-de-r-para-essa-aula" class="level1"><h1>Instalando pacotes de R para essa aula</h1>
+<p>Para esta aula, você vai precisar dos pacotes abaixo instalados na máquina. A maneira mais simples de fazer isso é executando o código abaixo. Isso pode levar alguns minutos, caso seja a primeira vez que você instala esses pacotes.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pkgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">'censobr'</span>,</span>
+<span>  <span class="st">'geobr'</span>,</span>
+<span>  <span class="st">'arrow'</span>,</span>
+<span>  <span class="st">'dplyr'</span>,</span>
+<span>  <span class="st">'ggplot2'</span>,</span>
+<span>  <span class="st">'quantreg'</span>,</span>
+<span>  <span class="st">'sf'</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">pkgs</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Aviso
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Página em construção! Em breve.</p>
-</div>
-</div>
-<!-- - Vocabulário ggplot2 -->
-<!-- - Gráficos de dispersão -->
-<!-- - Gráficos de linha -->
-<!-- - Gráficos de barra/coluna -->
-<!-- - Gráficos por subgrupos por color/fill ou facet -->
-<!-- - Salvando os gráficos -->
-<!-- - Mudanças de layout com ggthemes e ipeaplot -->
-<section id="sugestões-de-materiais" class="level2">
-<h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
-<ul>
-<li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
-<ul>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/data-visualize.html">Visualização de dados</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/visualize.html">Vsualizar</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/layers.html">Visualizar: Camadas</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/EDA.html">Visualizar: Análise exploratória de dados</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/communication.html">Visualizar: Comunicação</a></li>
-</ul></li>
-<li>Livro: <a href="https://livro.abj.org.br/">Metodologia de Pesquisa Jurimétrica</a>:
-<ul>
-<li><a href="https://livro.abj.org.br/04-visualizacao.html">Capítulo 4 - Visualização</a></li>
-</ul></li>
-</ul>
 
-
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-pereira2023censobr" class="csl-entry" role="listitem">
+Pereira, Rafael H. M., e Rogério J. Barbosa. 2023. <em>censobr: Download Data from Brazil’s Population Census</em>. CRAN. <a href="https://doi.org/10.32614/CRAN.package.censobr">https://doi.org/10.32614/CRAN.package.censobr</a>.
+</div>
+<div id="ref-pereira2019geobr" class="csl-entry" role="listitem">
+Pereira, Rafael H. M., e Caio N. Gonçalves. 2019. <em>geobr: Download Official Spatial Data Sets of Brazil</em>. CRAN. <a href="https://doi.org/10.32614/CRAN.package.geobr">https://doi.org/10.32614/CRAN.package.geobr</a>.
+</div>
+</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -675,25 +706,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       };
     }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
           }
-        });
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
       }
   const findCites = (el) => {
     const parentEl = el.parentElement;
@@ -733,21 +803,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./07_analise.html" class="pagination-link  aria-label=" analisando="" dados"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Analisando dados</span>
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./08_visualizacao.html" class="pagination-link  aria-label=" visualizando="" dados="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visualizando dados</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./09_censobr_intro.html" class="pagination-link" aria-label="Explorando o Censo Demográfico">
-        <span class="nav-page-text">Explorando o Censo Demográfico</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10_censobr_conceitos.html" class="pagination-link" aria-label="Conceitos iniciais do Censo">
+        <span class="nav-page-text">Conceitos iniciais do Censo</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

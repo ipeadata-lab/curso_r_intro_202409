@@ -209,15 +209,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Visualizando dados</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_ciclo_completo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ciclo completo com dados brasileiros</span></a>
+  <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_pesquisa_ipea.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_censobr_conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceitos iniciais do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_censobr_microdados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Microdados do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_censobr_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agregados dos Setores Censitários</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_censobr_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentação dos Censos</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Data Lake do Ipea</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
@@ -314,8 +360,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Essa etapa pode ser bem rápida (ou não!). Depende da base de dados que precisamos carregar.</p>
 <p>Nesta etapa, vamos aprender:</p>
 <ul>
-<li><p>Como importar dados de arquivos locais (arquivos que estão salvos no nosso computador);</p></li>
-<li><p>Como salvar dados localmente (salvar objetos do R em arquivos que ficarão salvos no nosso computador);</p></li>
+<li><p>Como importar dados de arquivos locais (arquivos que estão salvos no nosso computador) para dentro do R;</p></li>
+<li><p>Como exportar dados do R dados (salvar objetos do R em arquivos que ficarão salvos no nosso computador);</p></li>
 <li><p>Como importar dados usando pacotes de dados, como o <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a>.</p></li>
 </ul>
 <p>Ao final, teremos também uma lista com sugestão de materiais extras, caso queira aprofundar mais sobre o assunto.</p>
@@ -615,22 +661,35 @@ Importante
 </section></section><section id="importando-a-tabela" class="level4"><h4 class="anchored" data-anchor-id="importando-a-tabela">Importando a tabela</h4>
 <p>A função <code><a href="https://rdrr.io/pkg/sidrar/man/get_sidra.html">get_sidra()</a></code> do pacote <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a> permite importar dados do SIDRA.</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_brutos_4092</span> <span class="op">&lt;-</span> <span class="fu">sidrar</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/get_sidra.html">get_sidra</a></span><span class="op">(</span></span>
-<span>  <span class="co"># Qual é o código da tabela que vamos usar?</span></span>
+<div class="sourceCode" id="annotated-cell-22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_brutos_4092</span> <span class="op">&lt;-</span> <span class="fu">sidrar</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/get_sidra.html">get_sidra</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fl">4092</span>,</span>
-<span>  <span class="co"># Períodos: trimestres, vamos usar o vetor criado anteriormente</span></span>
 <span>  period <span class="op">=</span> <span class="va">periodos_disponiveis</span>,</span>
-<span>  <span class="co"># Nível territorial: Dados por UF</span></span>
 <span>  geo <span class="op">=</span> <span class="st">"State"</span></span>
 <span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="2" data-code-annotation="1">Qual é o código da tabela que vamos usar?</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="2">Períodos: trimestres, vamos usar o vetor criado anteriormente</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="4" data-code-annotation="3">Nível territorial: Dados por UF</span>
+</dd>
+</dl>
+</div>
 </div>
 <p>Lembrando que é importante salvar uma cópia local dos dados após o download. Assim, quando você for trabalhar com esses dados, não precisará baixá-los novamente.</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Salvar localmente essa base de dados</span></span>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Salvar localmente essa base de dados</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">dados_brutos_4092</span>, <span class="st">"dados/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Importando os dados salvos localmente</span></span>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Importando os dados salvos localmente</span></span>
 <span><span class="va">dados_brutos_4092</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section></section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
@@ -992,25 +1051,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       };
     }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
           }
-        });
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
       }
   const findCites = (el) => {
     const parentEl = el.parentElement;

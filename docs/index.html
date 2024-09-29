@@ -189,15 +189,61 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Visualizando dados</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_ciclo_completo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ciclo completo com dados brasileiros</span></a>
+  <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_pesquisa_ipea.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_censobr_conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceitos iniciais do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_censobr_microdados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Microdados do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_censobr_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agregados dos Setores Censitários</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_censobr_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentação dos Censos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Data Lake do Ipea</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
@@ -225,7 +271,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Pré-curso</a></li><li class="breadcrumb-item"><a href="./index.html">Introdução à análise de dados no R</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Introdução à análise de dados no R</h1>
-<p class="subtitle lead">Utilizando dados públicos brasileiros</p>
+<p class="subtitle lead">Utilizando dados públicos e registros administrativos brasileiros</p>
 </div>
 
 
@@ -245,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/00_RStudio_logo.png" align="right" width="120px" class="img-rstudio"></p>
 <section id="introdução-ao-material" class="level2">
 <h2 class="anchored" data-anchor-id="introdução-ao-material">Introdução ao material</h2>
-<p>Este site apresenta o material de apoio para o curso <strong>“Introdução à análise de dados no R”</strong>, oferecido em 2024. O curso será realizado de forma remota, com aulas ao vivo e atividades práticas.</p>
+<p>Este site apresenta o material de apoio para o curso <strong>“Introdução à análise de dados no R”</strong>, oferecido em 2024 para servidores do Instituto de Pesquisa Econômica Aplicada (Ipea). O curso será realizado de forma remota híbrida, com aulas ao vivo e atividades práticas.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -265,7 +311,7 @@ Importante
 <h2 class="anchored" data-anchor-id="equipe-do-curso">Equipe do curso</h2>
 <p><strong>Beatriz Milz</strong> <br> <em>Pesquisadora Colaboradora | Estágio pós-doutoral</em> <br> <a href="https://laplan.pesquisa.ufabc.edu.br/">Laboratório de Planejamento Territorial (LaPlan)</a> - Universidade Federal do ABC (UFABC) <br> <a href="mailto:milz.bea@gmail.com">Email</a> | <a href="https://github.com/beatrizmilz">GitHub</a> | <a href="https://www.linkedin.com/in/beatrizmilz/">LinkedIn</a> | <a href="https://www.researchgate.net/profile/Beatriz-Milz">ResearchGate</a> | <a href="http://lattes.cnpq.br/5150665880581477">Currículo Lattes</a> | <a href="https://orcid.org/0000-0002-3064-4486">Orcid</a></p>
 <p><strong>Pedro Cavalcanti Gonçalves Ferreira</strong> <br> <em>Coordenação de Ciência de Dados - COCD</em> <br> Instituto de Pesquisa Econômica Aplicada (Ipea) <br> <a href="https://github.com/cavalcanti1985">GitHub</a> | <a href="https://www.linkedin.com/in/pedro-cavalcanti-256806235/">LinkedIn</a> | <a href="http://lattes.cnpq.br/1425315335920636">Currículo Lattes</a> | <a href="https://orcid.org/0000-0002-8540-1860">Orcid</a></p>
-<p><strong>Rafael H. M. Pereira</strong> <br> <em>Coordenador de Ciência de Dados</em> <br> Instituto de Pesquisa Econômica Aplicada (Ipea) <br> <a href="https://www.urbandemographics.org/about/">Website</a> | <a href="https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&amp;hl">Google Scholar</a> | <a href="https://x.com/UrbanDemog">Twitter</a> | <a href="https://www.linkedin.com/in/rafael-h-m-pereira/">Linkedin</a> |</p>
+<p><strong>Rafael H. M. Pereira</strong> <br> <em>Coordenador de Ciência de Dados</em> <br> Instituto de Pesquisa Econômica Aplicada (Ipea) <br> <a href="https://www.urbandemographics.org/about/">Website</a> | <a href="https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&amp;hl">Google Scholar</a> | <a href="https://www.linkedin.com/in/rafael-h-m-pereira/">Linkedin</a> |</p>
 </section>
 <section id="sobre-este-material" class="level2">
 <h2 class="anchored" data-anchor-id="sobre-este-material">Sobre este material</h2>
