@@ -8,9 +8,9 @@ Conceitos prévios importantes:
 
 -   [Como importar bases de dados?](03_importacao.qmd)
 
--   Tipos de variáveis
+-   [Tipos de variáveis](02_conceitos_basicos_r.qmd)
 
--   Valores faltantes
+-   [Valores faltantes (`NA`)](02_conceitos_basicos_r.qmd)
 :::
 
 Nesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.

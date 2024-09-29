@@ -9,11 +9,13 @@ code-annotations: hover
 ::: callout
 Conceitos prévios importantes:
 
-- Pacotes, funções e objetos no R
+- [Funções e Pacotes no R](01_r_rstudio.qmd)
 
-- Projetos do RStudio (`.Rproj`) e diretórios de trabalho
+- [Objetos no R](02_conceitos_basicos_r.qmd)
 
-- Caminhos de arquivos
+- [Projetos do RStudio (`.Rproj`) e diretórios de trabalho](01_1_rproj.qmd)
+
+- [Caminhos de arquivos](01_1_rproj.qmd)
 :::
 
 O objetivo da etapa de importação é carregar a base de dados para a memória RAM do computador. Assim conseguiremos utilizar os dados no R.

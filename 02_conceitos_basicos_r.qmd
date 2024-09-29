@@ -1,6 +1,6 @@
 ---
 # Conhecendo conceitos básicos do R
-title: "Conceitos básicos"
+title: "Conceitos básicos do R"
 ---
 
 :::callout-warning
