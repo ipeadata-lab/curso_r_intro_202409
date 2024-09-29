@@ -30,6 +30,7 @@ website:
       - section: "Materiais"
         contents:      
         - 01_r_rstudio.qmd
+        - 01_1_rproj.qmd        
         - 02_conceitos_basicos_r.qmd
         - 03_importacao.qmd
         - 04_conhecendo.qmd
@@ -63,7 +64,7 @@ format:
     css: styles.css
     toc: true
     toc-depth: 5
-    link-external-icon: true
+    link-external-icon: false
     link-external-newwindow: true
 
 bibliography: references.bib
