@@ -11,7 +11,7 @@ Primeiramente, precisamos carregar o pacote `tidyverse` e a base de dados que va
 ```{r}
 #| message: false
 library(tidyverse)
-dados_brutos <- read_csv2("dados/sidrar_4092_bruto_2.csv")
+dados_brutos <- read_rds("dados/sidrar_4092_bruto.rds")
 ```
 
 ## Padronizar nome das colunas
@@ -319,6 +319,7 @@ glimpse(dados_preparados)
 ```
 
 
+
 ## Unindo duas bases de dados
 
 Unir duas tabelas é algo comum em análises de dados. Usamos operações do tipo *join* para combinar duas tabelas, utilizando uma ou mais colunas como "chave". As colunas do tipo chave têm valores comuns nas duas tabelas e são usadas para identificar as linhas correspondentes entre elas.
@@ -391,6 +392,21 @@ dados_geo |>
   labs(title = "Proporção de desocupação por UF no 2º trimestre de 2024",
        fill = "Proporção de desocupação (%)") +
   theme(legend.position = "bottom")
+```
+
+
+## Salvando a base de dados preparada
+
+Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas. Assim não precisamos repetir todo o processo de limpeza e transformação de dados a cada vez que quisermos fazer uma análise.
+
+É recomendável salvar a base de dados em um formato que preserve a estrutura dos dados, como `.rds`.
+
+```{r}
+#| eval: false
+# Criando a pasta "dados_output" caso ela ainda não exista
+fs::dir_create("dados_output")
+# Salvando os dados preparados
+write_rds(dados_preparados, "dados_output/sidra_4092_arrumado.rds")
 ```
 
 

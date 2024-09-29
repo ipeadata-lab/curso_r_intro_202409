@@ -32,7 +32,7 @@ Vamos começar importando a base de dados que utilizaremos:
 ```{r}
 #| message: false
 library(tidyverse)
-dados <- read_csv2("dados/sidrar_4092_bruto_2.csv")
+dados <- read_rds("dados/sidrar_4092_bruto.rds")
 ```
 
 ## Estrutura da base de dados
