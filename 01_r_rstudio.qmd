@@ -3,66 +3,118 @@
 title: "Conhecendo o R e o RStudio"
 ---
 
-:::callout-warning
-Página em construção! Em breve. 
-:::
-
 ## Apresentação 
 
 ### Software e linguagem R
 
-R é uma linguagem de programação amplamente utilizada para estatística, análise de dados e visualizações. Ela foi desenvolvida para facilitar a análise de dados estatísticos, mas se expandiu para se tornar uma das principais ferramentas de ciência de dados.
+R é uma linguagem de programação com o foco em estatística, análise e visualização de dados. 
+
+Ela é uma linguagem de código aberto, o que significa que qualquer pessoa pode utilizá-la gratuitamente. Além disso, as pessoas com mais experiência na linguagem podem contribuir com o desenvolvimento de novas funcionalidades e pacotes.
+
+Caso queira saber mais sobre a linguagem R, [acesse o site oficial (R-Project)](https://www.r-project.org/about.html).
+
+Ao instalar o R, você terá acesso a um programa chamado "R Console" que permite escrever e executar códigos em R:
+
+![Captura de tela do R Console](images/01_R.png){fig-align="center"}
+
+Porém o `R Console` não é muito amigável para escrever códigos complexos ou realizar análises de dados. Por isso, é recomendado utilizar um ambiente de desenvolvimento integrado (IDE). Existem várias IDEs que podemos utilizar com o R, como: RStudio, Visual Studio Code, Positron, entre outros. A IDE mais utilizada por pessoas que programam em R é o RStudio.
 
 
-Ela é extremamente poderosa para realizar análises complexas de forma eficiente. Ao longo do curso, exploraremos as funcionalidades do R, suas bibliotecas e ferramentas que tornam o trabalho com dados mais acessível.
 
+### RStudio Desktop
 
-### RStudio
+O RStudio é um IDE focada em programação em R, e é desenvolvido pela [Posit](https://posit.co/). Ele facilita a escrita de códigos, execução de scripts, e visualização dos resultados.
 
-Já o RStudio é um ambiente de desenvolvimento integrado (IDE) para R. Ele facilita a escrita de códigos, execução de scripts, e visualização dos resultados. A interface amigável do RStudio ajuda no gerenciamento de projetos e na execução de tarefas repetitivas com mais eficiência.
+Existem algumas versões do RStudio. Neste curso, utilizaremos o [RStudio Desktop](https://posit.co/download/rstudio-desktop/), pois é a versão de código aberto (portanto é gratuita). Daqui em diante, sempre que mencionarmos "RStudio", estaremos nos referindo ao RStudio Desktop.
 
-- Principais componentes da interface do RStudio:  Ao abrir o RStudio, você verá uma janela dividida em quatro áreas principais:
-  
-  - Console: onde os códigos são executados.
-  
-  - Editor de Scripts: onde você pode escrever e salvar seus códigos.
-  
-  - Ambiente: onde as variáveis e dados carregados ficam visíveis.
-  
-  - Painel de Arquivos e Gráficos: onde arquivos, pacotes instalados e gráficos são exibidos.
+::: callout-tip
+Caso o seu computador tenha limitações para instalação de programas, você pode utilizar o [Posit Cloud](https://posit.cloud/), uma versão online do RStudio. Entretanto, a versão gratuita do Posit Cloud tem algumas limitações, como limite de tempo de uso (25 horas por mês) e de memória RAM (1 GB).
+:::
 
-## Working directory e Rproject
+Ao abrir o RStudio, veremos a seguinte tela:
 
-No R, o working directory é o diretório em que os arquivos serão salvos e lidos. 
+![Captura de tela do RStudio](images/01_rstudio_3_paineis.png){fig-align="center"}
+Aos poucos, conheceremos os painéis e funcionalidades do RStudio. Neste momento, podemos destacar os três painéis que são apresentados:
 
-Mas o uso de Rprojects é ainda mais eficiente. Sempre que criar um novo projeto no RStudio, ele criará um arquivo .Rproj na pasta do projeto e definirá o diretório automaticamente.
+- **Console**: painel onde os códigos são executados. É similar ao "R Console", citado anteriormente.
+
+- **Environment**: painel onde as variáveis e dados carregados ficam listados.
+
+- **Files**: painel onde podemos navegar por arquivos no computador. A página inicial é o diretório de trabalho: esse conceito será explicado mais adiante.
 
 ## Scripts
 
-Os scripts são arquivos de texto onde você pode escrever códigos R e salvá-los para reutilização posterior. Eles permitem organizar e documentar suas análises, além de facilitar a reprodução do trabalho.
+No RStudio, podemos escrever e executar códigos no Console, porém os códigos são perdidos quando fechamos o programa. Para salvar os códigos e reutilizá-los posteriormente, utilizamos scripts.
 
-### Funções
+Os scripts são arquivos de texto onde podemos escrever códigos R e salvá-los para utilizar posteriormente. É recomendado que qualquer código que você deseje reutilizar ou que seja importante para a análise que você fizer seja salvo em um script.
 
-Funções são blocos de código que executam tarefas específicas. No R, existem muitas funções prontas, mas você também pode criar suas próprias funções. Isso é útil para evitar repetir códigos. Exemplo de uma função simples:
+Existem algumas formas de criar um novo script:
+
+- No menu superior, clicando em `File > New File > R Script`.
+
+- Utilizando o atalho `Ctrl + Shift + N` (Windows) ou `Cmd + Shift + N` (Mac).
+
+- Clicando no ícone de um arquivo com um sinal de `+` no canto superior esquerdo do RStudio e selecionando `R Script`:
+
+
+![Captura de tela do RStudio: Opção para criar novo Script](images/01_rstudio_new_script.jpg){fig-align="center"}
+
+Após abrir um script, o RStudio exibirá 4 paineis:
+
+![Captura de tela do RStudio](images/01_rstudio_4_paineis.png){fig-align="center"}
+
+::: callout-tip
+O script é um arquivo salvo no nosso computador.
+Lembre-se de salvar os scripts com frequência para evitar perder o nosso trabalho.
+
+Podemos salvar um script de algumas formas, como:
+
+- Clicando em `File > Save` no menu superior.
+
+- Clicando no ícone do disquete (![](images/01_disquete.png)).
+
+- Utilizando o atalho `Ctrl + S` (Windows) ou `Cmd + S` (Mac).
+:::
+
+
+
+## Funções
+
+Agora que já sabemos onde escrever nossos códigos em R (no Console ou em um script), é importante entender o conceito de funções.
+
+Uma função é um bloco de código que executa uma tarefa específica. Isso é útil para evitar escrever códigos repetidos!
+
+No R, existem muitas funções prontas que podemos utilizar. Por exemplo, a função `Sys.Date()` retorna a data atual do sistema:
 
 ```{r}
-# Função para calcular o quadrado de um número
-quadrado <- function(x) {
-  x^2
-}
-
-quadrado(4)  # Retorna 16
+Sys.Date()
 ```
+
+
+Para utilizar uma função, escrevemos o nome dela seguido de parênteses. Dentro dos parênteses, podemos colocar dados e informações úteis para a função executar a tarefa desejada, e são chamados de **argumentos**.
+
+Por exemplo, a função `sqrt()` calcula a raiz quadrada de um número. Para utilizá-la, podemos escrever `mean()` e informar esse número entre parênteses:
+
+```{r}
+sqrt(25)
+```
+Além das funções já existentes no R, podemos instalar pacotes que contêm funções adicionais. 
+
+::: callout-tip
+Ao adquirir experiência com o R, podemos criar nossas próprias funções. Isso é útil para automatizar tarefas repetitivas e para organizar o código.
+::: 
 
 ## Pacotes
 
 ### O que são pacotes?
 
-Pacotes no R são coleções de funções, dados e documentação que estendem a funcionalidade básica da linguagem. O R possui uma vasta gama de pacotes, cada um com um propósito específico, como manipulação de dados, visualização ou modelagem estatística.
+Pacotes no R são coleções de funções, dados e documentação que estendem a funcionalidade básica da linguagem. 
+
+O [CRAN (*Comprehensive R Archive Network*)](https://cran.r-project.org/) é o repositório oficial de pacotes do R. Ele contém milhares de pacotes que podem ser instalados e utilizados gratuitamente. Em setembro de 2024, o CRAN continha mais de 21.000 pacotes disponíveis.
 
 ### Instalação de pacotes
 
-Para utilizar um pacote no R, primeiro precisamos instalá-lo e, em seguida, carregá-lo no ambiente de trabalho. A instalação pode ser feita com a função install.packages(). Por exemplo:
+Para utilizar um pacote no R, primeiro precisamos instalá-lo e, em seguida, carregá-lo no ambiente de trabalho. A instalação pode ser feita com a função `install.packages()`. Por exemplo:
 
 ```{r}
 #| eval: false
@@ -116,6 +168,15 @@ browseVignettes("dplyr")  # Abre os tutoriais do pacote dplyr
 ```
 
 O acesso à documentação e tutoriais é essencial para aprender novas funções e compreender como elas funcionam.
+
+
+## Working directory e Rproject
+
+No R, o working directory é o diretório em que os arquivos serão salvos e lidos. 
+
+Mas o uso de Rprojects é ainda mais eficiente. Sempre que criar um novo projeto no RStudio, ele criará um arquivo .Rproj na pasta do projeto e definirá o diretório automaticamente.
+
+
 
 ## Sugestões de materiais
 
