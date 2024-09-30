@@ -3,25 +3,382 @@
 title: "Conceitos básicos do R"
 ---
 
-:::callout-warning
-Página em construção! Em breve. 
+Existem muitos conceitos básicos que são fundamentais para quem está começando a programar em R.
+
+Nesta aula, vamos abordar algun conceitos considerados mais importantes para as próximas aulas.
+
+## Objetos
+
+No R, um objeto é uma estrutura de dados que armazena valores: podemos armazenar um valor único, um conjunto de valores, uma base de dados, entre outros.
+
+É muito útil armazenar valores em objetos, pois podemos reutilizá-los em diferentes partes do código, sem precisar digitar o valor novamente.
+
+### Objetos existentes no R
+
+Existem alguns objetos já criados no R, como por exemplo: `pi`, que armazena o valor de π (com um número limitado de casas decimais), `letters`, que armazena as letras do alfabeto, entre outros:
+
+```{r}
+pi
+letters
+LETTERS
+month.abb
+month.name
+```
+
+### Criando um objeto
+
+Para criar um objeto, precisamos definir um nome, e atribuir um valor à este nome. Para isso, usamos o operador de atribuição: `<-`. Um atalho para esse operador é o `Ctrl` + `-` no Windows, ou `Option` + `-` no Mac .
+
+No exemplo a seguir, criamos um objeto chamado `nome_do_curso` e atribuímos a ele o texto `"Introdução à análise de dados no R"`:
+
+```{r}
+nome_do_curso <- "Introdução à análise de dados no R"
+```
+
+Podemos acessar o valor armazenado em um objeto digitando o nome do objeto:
+
+```{r}
+nome_do_curso
+```
+
+O objeto apenas será alterado se utilizarmos o operador de atribuição novamente. Por exemplo, a função `tolower()` transforma todas as letras de um texto em minúsculas:
+
+```{r}
+tolower(nome_do_curso)
+```
+
+Mas como não utilizamos a atribuição, o objeto `nome_do_curso` não foi alterado:
+
+```{r}
+nome_do_curso
+```
+
+Para alterar o objeto, precisamos atribuir o resultado da função `tolower()` ao objeto `nome_do_curso`:
+
+```{r}
+nome_do_curso <- tolower(nome_do_curso)
+```
+
+Agora, o objeto `nome_do_curso` foi alterado:
+
+```{r}
+nome_do_curso
+```
+
+Portanto, cuidado: ao criar um objeto com nome igual à outro objeto existente, o objeto anterior será substituído pelo novo objeto.
+
+### Consultando os objetos criados
+
+Para consultar os objetos criados, podemos usar a função `ls()` (*list objects*), que lista todos os objetos criados no ambiente de trabalho (*global environment*):
+
+```{r}
+ls()
+```
+
+Outra forma é consultar o *Painel Environment* no RStudio, que exibe todos os objetos criados, e permite acessar o valor de cada objeto:
+
+![Captura de tela do RStudio: Painel Environment](images/02_environment.png){fig-align="center" width="50%"}
+
+### Removendo objetos
+
+Caso queira remover um objeto, podemos usar a função `rm()` (*remove objects*). Por exemplo, para remover o objeto `pkgs`:
+
+```{r}
+#| eval: false
+rm(nome_do_curso)
+```
+
+Podemos consultar novamente os objetos existentes e verificar se o objeto `pkgs` foi removido:
+
+```{r}
+ls()
+```
+
+Caso queira remover todos os objetos carregados, podemos reiniciar a sessão do R (clicando em *Session* \> *Restart R* no menu superior do RStudio), ou usar a função `rm(list = ls())`. Mas atenção: reiniciar a sessão do RStudio também irá "descarregar" todos os pacotes carregados; portanto, será necessário carregar os pacotes novamente.
+
+```{r}
+#| eval: false
+rm(list = ls()) # remover todos os objetos do Global Environment
+```
+
+### Nomeando objetos
+
+Existem regras e boas práticas para nomear objetos no R. As regras são obrigatórias: se não seguirmos, o código irá gerar um erro. As boas práticas são recomendações, com o objetivo de evitar erros futuros, e facilitar a leitura do código.
+
+::: callout-tip
+Recomendamos seguir essas recomendações não apenas para o nome dos objetos, mas também para nome de pastas e arquivos, nome de colunas, entre outros.
 :::
 
-<!-- ## Objetos: breve conceito -->
+#### Regras para nomear objetos no R
 
-<!-- ## Tipos de objetos: vetores, matrizes, listas, data frames -->
+-   O nome não deve começar com um número. Ex: `1objeto` não é um nome válido.
 
-<!-- ## Tipologia dos dados (lógico, numérico, caracter, fator) -->
+```{r}
+#| error: true
+1objeto <- "exemplo"
+```
 
-<!-- ## Tipo de dados e conversões -->
+-   O nome não deve começar com underline (`_`). Ex: `_objeto` não é um nome válido.
 
-<!-- Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`,  etc. -->
+```{r}
+#| error: true
+_objeto <- "exemplo"
+```
 
-<!-- ## Valores faltantes (NA) -->
+-   O nome do objeto não deve conter traços (`-`), pois o R interpreta o traço como um operador de subtração. Ex: `meu-objeto` não é um nome válido.
+
+```{r}
+#| error: true
+
+objeto-1 <- "exemplo"
+```
+
+### Boas práticas para nomear objetos no R
+
+-   O nome não deve começar com um ponto. Isso não gerará um erro, porém é contra-indicado pois essa sintaxe é utilizada para nomear objetos ocultos no R (portanto, não aparecerá no *Painel Environment*), e isso pode dificultar o acesso posteriormente. Ex: `.objeto` não deve ser usado.
+
+-   Não utilizar acentos, cedilhas, ou outros caracteres especiais. Isso pode gerar problemas de compatibilidade com outros sistemas (chamamos de *encoding*). Ex: `aviões` não é um nome recomendado.
+
+-   Não utilizar espaços, pois dificulta o acesso ao objeto posteriormente: precisaremos utilizar a crase em volta do nome do objeto para acessá-lo.
+
+-   Existem diferentes estilos para nomear objetos[^1], como *snake_case*, onde todas as letras devem ser minúsculas, e as palavras separadas por underline. O importante é escolher um estilo e manter a consistência.
+
+[^1]: A documentação da função `snakecase::to_any_case()` fornece uma lista de estilos de nomenclatura disponíveis no pacote `snakecase`.
+
+-   Utilizar nomes descritivos, que indiquem o conteúdo do objeto. Isso facilita a leitura do código, e a manutenção do código por outras pessoas.
+
+
+
+## Tipos de dados
+
+ Existem diferentes tipos de dados que podemos armazenar em objetos no R, como números, textos, lógicos, fatores, datas, entre outros.
+
+É muito importante identificar o tipo de dado que estamos trabalhando, pois cada tipo de dado permite usar funções específicas.
+
+A função `class()` permite verificar a classe de um objeto. Por exemplo, podemos verificar a classe do objeto `pi`:
+
+```{r}
+class(pi)
+```
+
+### Numérico
+
+Os objetos numéricos no R podem ser de dois tipos:
+
+  - inteiros (*integer*): armazena apenas números inteiros, ou seja, sem casas decimais. Ex: 1, 2, 3, 4, 5.
+
+  - numéricos (*numeric* ou *double*): armazena números que podem conter casas decimais. Ex: 1, 2, **3.14**, 4, 5.
+  
+Na maioria dos casos, utilizamos o tipo *numeric* para armazenar números, pois ele é mais flexível.
+
+Por exemplo, para criar um objeto que armazena o número 42:
+
+```{r}
+exemplo_numero <- 42
+class(exemplo_numero)
+```
+
+Para criar um objeto que armazena um valor usado para converter dólar em reais (R$), podemos usar o tipo `numeric`:
+
+```{r}
+conversao_dolar <- 5.45
+class(conversao_dolar)
+```
+
+### Lógico (binário)
+
+O tipo lógico (*logical*) armazena valores binários: `TRUE` (verdadeiro) ou `FALSE` (falso). Os valores binários podem ser convertidos para números, onde `TRUE` será 1, e `FALSE` será 0.
+
+
+Por exemplo, para criar objetos com os valores lógicos `TRUE` e `FALSE`:
+
+```{r}
+exemplo_logico_verdadeiro <- TRUE
+class(exemplo_logico_verdadeiro)
+
+exemplo_logico_falso <- FALSE
+class(exemplo_logico_falso)
+```
+
+
+### Character (texto)
+
+O tipo texto (*character*, ou também conhecido como *string*) armazena textos. Para criar um objeto com um texto, precisamos colocar o texto entre aspas:
+
+```{r}
+nome_do_curso <- "Introdução à análise de dados no R"
+class(nome_do_curso)
+```
+
+
+
+### Fator (categórico)
+
+O tipo fator (*factor*) armazena variáveis categóricas, ou seja, variáveis que possuem um número limitado de categorias. Os valores possíveis de categoria são chamados de *levels*. Os fatores podem ser ordenados ou não ordenados.
+
+Os fatores são muito úteis para a visualização de dados e para alguns modelos usados em análise de dados.
+
+Neste momento, não vamos aprofundar no conceito de fatores: falaremos mais sobre eles nas próximas aulas.
+
+
+### Datas
+
+O tipo data (*date*) armazena datas no formato `aaaa-mm-dd` (ano-mês-dia). 
+
+Para criar um objeto com uma data, podemos usar a função `as.Date()`, que converte um texto para o tipo *date*. Por exemplo, para criar um objeto com a data de início do curso:
+
+```{r}
+data_inicio_curso <- as.Date("2024-10-01")
+class(data_inicio_curso)
+```
+
+
+A função `Sys.Date()` retorna a data atual do sistema:
+
+```{r}
+data_sistema <- Sys.Date()
+class(data_sistema)
+```
+
+Podemos fazer operações com datas:
+
+```{r}
+data_inicio_curso - data_sistema
+```
+
+
+## Conversões entre tipos de dados
+
+Existem várias funções que podemos usar para transformar variáveis de um tipo para outro. Essas funções tem começam com `as.` seguido pelo tipo de dado que queremos que seja convertido. Por exemplo: 
+
+- `as.character()`: converte valores para texto
+- `as.numeric()`:  converte valores para número
+- `as.logical()`:  converte valores para lógico
+- `as.factor()`:  converte valores para fator
+- `as.Date()`:  converte valores para data
+
+```{r}
+# número para texto
+as.character(2024)
+
+# lógico para número
+as.numeric(TRUE)
+
+# texto para data
+as.Date("2024-10-01")
+
+# texto para lógico
+as.logical("TRUE")
+```
+Porém, nem toda conversão fará sentido. Por exemplo, podemos converter um número para texto, porém nem toda conversão de texto para número funcionará como esperado:
+
+```{r}
+# texto para número
+as.numeric("2024")
+as.numeric("Curso de R")
+```
+Quando a conversão não é possível, o R irá retornar um valor `NA` (Not Available), que indica um valor faltante. Falaremos mais sobre valores faltantes na próxima seção.
+
+
+## Valores faltantes (`NA`)
+
+Valores faltantes são valores que não estão disponíveis, ou que não foram informados. No R, esses valores são representados pelo valor `NA` (Not Available).
+
+Podemos testar se um valor é `NA` usando a função `is.na()`: essa função retornará `TRUE` se o valor for `NA`, e `FALSE` caso contrário.
+
+```{r}
+is.na(NA)
+```
+Algo importante é que o R não consegue fazer operações matemáticas com valores `NA`. Por exemplo, se tentarmos realizar qualquer operação matemática com `NA`, o resultado será `NA`:
+
+```{r}
+NA + 1
+
+NA + NA
+
+NA * 2
+```
+
+É importante identificar os valores NA em nossos dados, pois eles podem afetar o resultado de nossas análises. Por exemplo, se tentarmos calcular a média de um conjunto com valores `NA`, o resultado será `NA`:
+
+```{r}
+numeros_com_na <- c(1, 2, NA, 4, 5)
+mean(numeros_com_na)
+```
+
+Em aulas futuras falaremos sobre como identificar os `NA` em nossos dados, e algumas estratégias para lidar com eles.
+
+
+## Tipos de objetos
+
+Existem diferentes tipos de objetos no R, e cada tipo de objeto possui diferentes propriedades. Os principais tipos de objetos são: vetores, matrizes, *data.frames* e listas. 
+
+
+### Vetores
+
+Vetores armazenam um conjunto de valores de uma dimensão. Eles podem ser criados com a função `c()`, que significa *combine* (combinar). Por exemplo, para criar um vetor com os números de 1 a 5:
+
+```{r}
+vetor_de_numeros <- c(1, 2, 3, 4, 5)
+```
+
+Os vetores podem armazenar diferentes tipos de dados, como números, textos, fatores, entre outros. Porém cada vetor pode armazenar apenas um tipo de dado. Por exemplo, se tentarmos criar um vetor que armazena números e textos, o R irá converter todos os valores para texto. Essa propriedade é chamada de **coerção**.
+
+```{r}
+vetor_misto <- c(1, 2, "três", 4, 5)
+class(vetor_misto)
+vetor_misto
+```
+
+### Matrizes
+
+As matrizes são conjunto de valores com duas dimensões: linhas e colunas. Assim como os vetores, as matrizes podem armazenar apenas um tipo de dado.
+
+Para criar uma matriz, usamos a função `matrix()`. Por exemplo, para criar uma matriz com 2 linhas e 3 colunas, armazenando os números de 1 a 6, podemos usar o seguinte código:
+
+```{r}
+matriz <- matrix(data = 1:6, nrow = 2, ncol = 3)
+matriz
+```
+Não utilizaremos matrizes nesse curso, portanto não vamos aprofundar nesse tipo de objeto.
+
+### Data.frames
+
+Os *data.frames* são conjuntos de valores com duas dimensões: linhas e colunas. Porém, diferente do que vimos para as matrizes, os *data.frames* podem armazenar diferentes tipos de dados em cada coluna.
+
+Esse é o principal tipo de objeto que utilizaremos nesse curso, pois ele é muito útil para armazenar dados tabulares.
+
+Existem alguns *data.frames* já criados no R, como o `airquality`, que armazena dados sobre a qualidade do ar na cidade de Nova York, em 1973. Essas são as primeiras linhas do *data.frame* `airquality`: 
+
+```{r}
+head(airquality)
+```
+
+
+Para criar um data.frame, podemos usar a função `data.frame()`. Entretanto, o mais comum é importar dados de arquivos, como CSV, Excel, ou de bancos de dados. Falaremos sobre como importar dados na [próxima aula](03_importacao.qmd).
+
+
+### Listas
+
+As listas são objetos os objetos mais flexíveis do R: podemos armazenar diferentes tipos de objetos dentro de uma mesma lista. Por exemplo, podemos armazenar um vetor, uma matriz, um *data.frame*, e até mesmo outra lista dentro de uma lista.
+
+Podemos criar uma lista com a função `list()`. Os elementos da lista podem ser nomeados ou não. Vamos criar uma lista nomeada, com três elementos: o número π, o *data.frame* `airquality`, e o vetor `letters`:
+
+```{r}
+lista_exemplo <- list(numero_pi = pi,
+                      df_qualidade_do_ar = airquality,
+                      letras = letters)
+class(lista_exemplo)
+```
+
+A função `str()` (*structure*) exibe a estrutura da lista, mostrando os elementos e seus tipos:
+
+```{r}
+str(lista_exemplo)
+```
 
 
 ## Sugestões de materiais
 
-- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
-  - [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
-
+-   Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+    -   [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
