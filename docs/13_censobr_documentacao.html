@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Introdução à análise de dados no R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -53,6 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -70,7 +74,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,12 +101,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script><link rel="stylesheet" href="styles.css">
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -112,9 +123,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -129,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -137,8 +152,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -157,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -166,8 +181,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -216,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -225,8 +240,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explorando o Censo Demográfico</span></a>
@@ -257,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -266,45 +281,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-<li>
-<a href="#documenta%C3%A7%C3%A3o-dos-censos" id="toc-documentação-dos-censos" class="nav-link active" data-scroll-target="#documenta%C3%A7%C3%A3o-dos-censos">Documentação dos Censos</a>
+  <li><a href="#documentação-dos-censos" id="toc-documentação-dos-censos" class="nav-link active" data-scroll-target="#documentação-dos-censos">Documentação dos Censos</a>
   <ul>
-<li><a href="#documenta%C3%A7%C3%A3o-do-censo-dispon%C3%ADvel-no-censobr" id="toc-documentação-do-censo-disponível-no-censobr" class="nav-link" data-scroll-target="#documenta%C3%A7%C3%A3o-do-censo-dispon%C3%ADvel-no-censobr">Documentação do censo disponível no {censobr}</a></li>
-  <li><a href="#dicion%C3%A1rio-de-dados" id="toc-dicionário-de-dados" class="nav-link" data-scroll-target="#dicion%C3%A1rio-de-dados">Dicionário de dados</a></li>
-  <li><a href="#question%C3%A1rios" id="toc-questionários" class="nav-link" data-scroll-target="#question%C3%A1rios">Questionários</a></li>
+  <li><a href="#documentação-do-censo-disponível-no-censobr" id="toc-documentação-do-censo-disponível-no-censobr" class="nav-link" data-scroll-target="#documentação-do-censo-disponível-no-censobr">Documentação do censo disponível no {censobr}</a></li>
+  <li><a href="#dicionário-de-dados" id="toc-dicionário-de-dados" class="nav-link" data-scroll-target="#dicionário-de-dados">Dicionário de dados</a></li>
+  <li><a href="#questionários" id="toc-questionários" class="nav-link" data-scroll-target="#questionários">Questionários</a></li>
   <li><a href="#manual-do-entrevistador" id="toc-manual-do-entrevistador" class="nav-link" data-scroll-target="#manual-do-entrevistador">Manual do entrevistador</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><section id="documentação-dos-censos" class="level1"><h1>Documentação dos Censos</h1>
-<section id="documentação-do-censo-disponível-no-censobr" class="level2"><h2 class="anchored" data-anchor-id="documentação-do-censo-disponível-no-censobr">Documentação do censo disponível no {censobr}</h2>
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="documentação-dos-censos" class="level1">
+<h1>Documentação dos Censos</h1>
+<section id="documentação-do-censo-disponível-no-censobr" class="level2">
+<h2 class="anchored" data-anchor-id="documentação-do-censo-disponível-no-censobr">Documentação do censo disponível no {censobr}</h2>
 <p>Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conjunto de funções que permitem rápido acesso à documentação dos censos demográficos, incluindo os dicionários de variáveis, questionários e manual do entrevistador para entrevistas.</p>
 <p><strong>Tabela 2. Funções de documentação disponíveis no {censobr}</strong></p>
 
 
 
     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
         table {
             width: 100%;
             border-collapse: collapse;
@@ -317,6 +340,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             text-align: center;
         }
     </style>
+
+
+
+
 <table data-quarto-postprocess="true" class="table">
 <thead>
 <tr class="header">
@@ -384,49 +411,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
+
+
+
+
 <p>Todas funções de documentação baixam os arquivos em formato <code>.html</code> ou <code>.pdf</code>, e abrem o documento no navegador (<em>browser</em>). Assim como as funções de leitura de dados do {censobr}, essas funções de documentação também salvam os arquivos num cache local na primeira vez que a função é rodada. Assim, quando o usuário roda a função novamente, o pacote simplesmente carrega o arquivo local de maneira quase instantânea.</p>
-</section><section id="dicionário-de-dados" class="level2"><h2 class="anchored" data-anchor-id="dicionário-de-dados">Dicionário de dados</h2>
-<p>A função <code><a href="https://ipeagit.github.io/censobr/reference/data_dictionary.html">data_dictionary()</a></code> carrega o dicionário de variáveis, apontando a definição de cada variável e o significado de suas categorias no caso de variáveis categóricas. Atualmente, a função abrange os dicionários dos microdados da amostra para todos os censos brasileiros desde 1960: <code>c(1960, 1970, 1980, 1991, 2000 e 2010)</code>. Além disso, a função também inclui atualmente os dicionários dos dados do universo agregados em setores censitário para os anos 2000 e 2010.</p>
+</section>
+<section id="dicionário-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="dicionário-de-dados">Dicionário de dados</h2>
+<p>A função <code>data_dictionary()</code> carrega o dicionário de variáveis, apontando a definição de cada variável e o significado de suas categorias no caso de variáveis categóricas. Atualmente, a função abrange os dicionários dos microdados da amostra para todos os censos brasileiros desde 1960: <code>c(1960, 1970, 1980, 1991, 2000 e 2010)</code>. Além disso, a função também inclui atualmente os dicionários dos dados do universo agregados em setores censitário para os anos 2000 e 2010.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/censobr">censobr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># dicionário de variáveis de pessoas (microdados da amostra)</span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/data_dictionary.html">data_dictionary</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>, </span>
-<span>                dataset <span class="op">=</span> <span class="st">'population'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># dicionário de variáveis de domicílios (microdados da amostra)</span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/data_dictionary.html">data_dictionary</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>, </span>
-<span>                dataset <span class="op">=</span> <span class="st">'households'</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># dicionário de variáveis de setores censitários (agregados do universo)</span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/data_dictionary.html">data_dictionary</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>, </span>
-<span>                dataset <span class="op">=</span> <span class="st">'tracts'</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censobr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dicionário de variáveis de pessoas (microdados da amostra)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data_dictionary</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">dataset =</span> <span class="st">'population'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dicionário de variáveis de domicílios (microdados da amostra)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data_dictionary</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">dataset =</span> <span class="st">'households'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dicionário de variáveis de setores censitários (agregados do universo)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">data_dictionary</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">dataset =</span> <span class="st">'tracts'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="questionários" class="level2"><h2 class="anchored" data-anchor-id="questionários">Questionários</h2>
-<p>Com frequência, é importante se entender a estrutura e fluxo do questionário utilizado em pesquisas de coleta de dados. A função <code><a href="https://ipeagit.github.io/censobr/reference/questionnaire.html">questionnaire()</a></code> inclui os questionários utilizados na coleta de dados de todos os censos brasileiros desde 1960.</p>
+</section>
+<section id="questionários" class="level2">
+<h2 class="anchored" data-anchor-id="questionários">Questionários</h2>
+<p>Com frequência, é importante se entender a estrutura e fluxo do questionário utilizado em pesquisas de coleta de dados. A função <code>questionnaire()</code> inclui os questionários utilizados na coleta de dados de todos os censos brasileiros desde 1960.</p>
 <p>Além de passar o parâmetro <code>year</code>, o usuário precisa indicar o tipo de questionário de interesse, se o questionário curto do universo (<code>type = 'short'</code>) ou o questionário longo utilizado na pesquisa amostral (<code>type = 'long'</code>).</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># questionário curto da pesquisa do universo</span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/questionnaire.html">questionnaire</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2022</span>, </span>
-<span>              type <span class="op">=</span> <span class="st">'short'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># questionário longo da pesquisa amostral</span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/questionnaire.html">questionnaire</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2022</span>, </span>
-<span>              type <span class="op">=</span> <span class="st">'long'</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># questionário curto da pesquisa do universo</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">questionnaire</span>(<span class="at">year =</span> <span class="dv">2022</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">type =</span> <span class="st">'short'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># questionário longo da pesquisa amostral</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">questionnaire</span>(<span class="at">year =</span> <span class="dv">2022</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">type =</span> <span class="st">'long'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="manual-do-entrevistador" class="level2"><h2 class="anchored" data-anchor-id="manual-do-entrevistador">Manual do entrevistador</h2>
-<p>Por fim, a função <code><a href="https://ipeagit.github.io/censobr/reference/interview_manual.html">interview_manual()</a></code> faz o download e abre no navegador o “Manual do Recenseador”, ou seja, o manual de instruções para os recenseadores do IBGE sobre como coletar os dados do censo. Estão disponíveis os manuais de todos os censos desde 1960.</p>
+</section>
+<section id="manual-do-entrevistador" class="level2">
+<h2 class="anchored" data-anchor-id="manual-do-entrevistador">Manual do entrevistador</h2>
+<p>Por fim, a função <code>interview_manual()</code> faz o download e abre no navegador o “Manual do Recenseador”, ou seja, o manual de instruções para os recenseadores do IBGE sobre como coletar os dados do censo. Estão disponíveis os manuais de todos os censos desde 1960.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Censo de 2010</span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/interview_manual.html">interview_manual</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Censo de 1970</span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/interview_manual.html">interview_manual</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1960</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Censo de 2010</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">interview_manual</span>(<span class="at">year =</span> <span class="dv">2022</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Censo de 1970</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">interview_manual</span>(<span class="at">year =</span> <span class="dv">1960</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -869,8 +911,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./12_censobr_agregados_setores.html" class="pagination-link  aria-label=" agregados="" dos="" setores="" censit="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./12_censobr_agregados_setores.html" class="pagination-link  aria-label=" agregados="" dos="" setores="" censitários"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Agregados dos Setores Censitários</span>
       </a>          
   </div>
@@ -881,6 +925,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

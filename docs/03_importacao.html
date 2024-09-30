@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Introdução à análise de dados no R - Importando dados</title>
 <style>
 code{white-space: pre-wrap;}
@@ -53,6 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -70,7 +74,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,12 +101,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script><link rel="stylesheet" href="styles.css">
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -112,9 +123,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -129,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -137,8 +152,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -157,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -166,8 +181,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -216,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -225,8 +240,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explorando o Censo Demográfico</span></a>
@@ -257,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -266,74 +281,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-<li><a href="#arquivos-que-utilizaremos" id="toc-arquivos-que-utilizaremos" class="nav-link active" data-scroll-target="#arquivos-que-utilizaremos">Arquivos que utilizaremos</a></li>
-  <li>
-<a href="#importando-dados-de-um-arquivo-local" id="toc-importando-dados-de-um-arquivo-local" class="nav-link" data-scroll-target="#importando-dados-de-um-arquivo-local">Importando dados de um arquivo local</a>
+  <li><a href="#arquivos-que-utilizaremos" id="toc-arquivos-que-utilizaremos" class="nav-link active" data-scroll-target="#arquivos-que-utilizaremos">Arquivos que utilizaremos</a></li>
+  <li><a href="#importando-dados-de-um-arquivo-local" id="toc-importando-dados-de-um-arquivo-local" class="nav-link" data-scroll-target="#importando-dados-de-um-arquivo-local">Importando dados de um arquivo local</a>
   <ul>
-<li>
-<a href="#arquivos-de-texto-ex-.csv" id="toc-arquivos-de-texto-ex-.csv" class="nav-link" data-scroll-target="#arquivos-de-texto-ex-.csv">Arquivos de texto (ex: <code>.csv</code>)</a>
+  <li><a href="#arquivos-de-texto-ex-.csv" id="toc-arquivos-de-texto-ex-.csv" class="nav-link" data-scroll-target="#arquivos-de-texto-ex-.csv">Arquivos de texto (ex: <code>.csv</code>)</a>
   <ul>
-<li><a href="#arquivo-de-texto-separado-por-v%C3%ADrgula" id="toc-arquivo-de-texto-separado-por-vírgula" class="nav-link" data-scroll-target="#arquivo-de-texto-separado-por-v%C3%ADrgula">Arquivo de texto separado por vírgula (<code>,</code>)</a></li>
-  <li><a href="#arquivo-de-texto-separado-por-ponto-e-v%C3%ADrgula" id="toc-arquivo-de-texto-separado-por-ponto-e-vírgula" class="nav-link" data-scroll-target="#arquivo-de-texto-separado-por-ponto-e-v%C3%ADrgula">Arquivo de texto separado por ponto e vírgula (<code>;</code>)</a></li>
-  </ul>
-</li>
+  <li><a href="#arquivo-de-texto-separado-por-vírgula" id="toc-arquivo-de-texto-separado-por-vírgula" class="nav-link" data-scroll-target="#arquivo-de-texto-separado-por-vírgula">Arquivo de texto separado por vírgula (<code>,</code>)</a></li>
+  <li><a href="#arquivo-de-texto-separado-por-ponto-e-vírgula" id="toc-arquivo-de-texto-separado-por-ponto-e-vírgula" class="nav-link" data-scroll-target="#arquivo-de-texto-separado-por-ponto-e-vírgula">Arquivo de texto separado por ponto e vírgula (<code>;</code>)</a></li>
+  </ul></li>
   <li><a href="#arquivos-excel-ex-.xlsx" id="toc-arquivos-excel-ex-.xlsx" class="nav-link" data-scroll-target="#arquivos-excel-ex-.xlsx">Arquivos Excel (ex: <code>.xlsx</code>)</a></li>
-  <li><a href="#arquivo-bin%C3%A1rio-do-r-.rds" id="toc-arquivo-binário-do-r-.rds" class="nav-link" data-scroll-target="#arquivo-bin%C3%A1rio-do-r-.rds">Arquivo binário do R (<code>.rds</code>)</a></li>
+  <li><a href="#arquivo-binário-do-r-.rds" id="toc-arquivo-binário-do-r-.rds" class="nav-link" data-scroll-target="#arquivo-binário-do-r-.rds">Arquivo binário do R (<code>.rds</code>)</a></li>
   <li><a href="#import-dataset-do-rstudio" id="toc-import-dataset-do-rstudio" class="nav-link" data-scroll-target="#import-dataset-do-rstudio">Import Dataset do RStudio</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#salvando-dados-localmente" id="toc-salvando-dados-localmente" class="nav-link" data-scroll-target="#salvando-dados-localmente">Salvando dados localmente</a>
+  </ul></li>
+  <li><a href="#salvando-dados-localmente" id="toc-salvando-dados-localmente" class="nav-link" data-scroll-target="#salvando-dados-localmente">Salvando dados localmente</a>
   <ul>
-<li><a href="#arquivo-de-texto-ex-.csv" id="toc-arquivo-de-texto-ex-.csv" class="nav-link" data-scroll-target="#arquivo-de-texto-ex-.csv">Arquivo de texto (ex: <code>.csv</code>)</a></li>
+  <li><a href="#arquivo-de-texto-ex-.csv" id="toc-arquivo-de-texto-ex-.csv" class="nav-link" data-scroll-target="#arquivo-de-texto-ex-.csv">Arquivo de texto (ex: <code>.csv</code>)</a></li>
   <li><a href="#arquivo-excel-ex-.xlsx" id="toc-arquivo-excel-ex-.xlsx" class="nav-link" data-scroll-target="#arquivo-excel-ex-.xlsx">Arquivo excel (ex: <code>.xlsx</code>)</a></li>
-  <li><a href="#arquivo-bin%C3%A1rio-do-r-.rds-1" id="toc-arquivo-binário-do-r-.rds-1" class="nav-link" data-scroll-target="#arquivo-bin%C3%A1rio-do-r-.rds-1">Arquivo binário do R (<code>.rds</code>)</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#importando-dados-usando-pacotes-de-dados" id="toc-importando-dados-usando-pacotes-de-dados" class="nav-link" data-scroll-target="#importando-dados-usando-pacotes-de-dados">Importando dados usando pacotes de dados</a>
+  <li><a href="#arquivo-binário-do-r-.rds-1" id="toc-arquivo-binário-do-r-.rds-1" class="nav-link" data-scroll-target="#arquivo-binário-do-r-.rds-1">Arquivo binário do R (<code>.rds</code>)</a></li>
+  </ul></li>
+  <li><a href="#importando-dados-usando-pacotes-de-dados" id="toc-importando-dados-usando-pacotes-de-dados" class="nav-link" data-scroll-target="#importando-dados-usando-pacotes-de-dados">Importando dados usando pacotes de dados</a>
   <ul>
-<li>
-<a href="#pacote-sidrar" id="toc-pacote-sidrar" class="nav-link" data-scroll-target="#pacote-sidrar">Pacote <code>{sidrar}</code></a>
+  <li><a href="#pacote-sidrar" id="toc-pacote-sidrar" class="nav-link" data-scroll-target="#pacote-sidrar">Pacote <code>{sidrar}</code></a>
   <ul>
-<li><a href="#buscando-tabelas-no-sidra" id="toc-buscando-tabelas-no-sidra" class="nav-link" data-scroll-target="#buscando-tabelas-no-sidra">Buscando tabelas no SIDRA</a></li>
-  <li>
-<a href="#buscando-informa%C3%A7%C3%B5es-sobre-a-tabela" id="toc-buscando-informações-sobre-a-tabela" class="nav-link" data-scroll-target="#buscando-informa%C3%A7%C3%B5es-sobre-a-tabela">Buscando informações sobre a tabela</a>
+  <li><a href="#buscando-tabelas-no-sidra" id="toc-buscando-tabelas-no-sidra" class="nav-link" data-scroll-target="#buscando-tabelas-no-sidra">Buscando tabelas no SIDRA</a></li>
+  <li><a href="#buscando-informações-sobre-a-tabela" id="toc-buscando-informações-sobre-a-tabela" class="nav-link" data-scroll-target="#buscando-informações-sobre-a-tabela">Buscando informações sobre a tabela</a>
   <ul class="collapse">
-<li><a href="#nome-da-tabela" id="toc-nome-da-tabela" class="nav-link" data-scroll-target="#nome-da-tabela">Nome da tabela</a></li>
-  <li><a href="#per%C3%ADodos" id="toc-períodos" class="nav-link" data-scroll-target="#per%C3%ADodos">Períodos</a></li>
-  <li><a href="#vari%C3%A1veis" id="toc-variáveis" class="nav-link" data-scroll-target="#vari%C3%A1veis">Variáveis</a></li>
-  <li><a href="#vari%C3%A1veis---categorias" id="toc-variáveis---categorias" class="nav-link" data-scroll-target="#vari%C3%A1veis---categorias">Variáveis - Categorias</a></li>
-  <li><a href="#n%C3%ADvel-territorial" id="toc-nível-territorial" class="nav-link" data-scroll-target="#n%C3%ADvel-territorial">Nível territorial</a></li>
-  </ul>
-</li>
+  <li><a href="#nome-da-tabela" id="toc-nome-da-tabela" class="nav-link" data-scroll-target="#nome-da-tabela">Nome da tabela</a></li>
+  <li><a href="#períodos" id="toc-períodos" class="nav-link" data-scroll-target="#períodos">Períodos</a></li>
+  <li><a href="#variáveis" id="toc-variáveis" class="nav-link" data-scroll-target="#variáveis">Variáveis</a></li>
+  <li><a href="#variáveis---categorias" id="toc-variáveis---categorias" class="nav-link" data-scroll-target="#variáveis---categorias">Variáveis - Categorias</a></li>
+  <li><a href="#nível-territorial" id="toc-nível-territorial" class="nav-link" data-scroll-target="#nível-territorial">Nível territorial</a></li>
+  </ul></li>
   <li><a href="#importando-a-tabela" id="toc-importando-a-tabela" class="nav-link" data-scroll-target="#importando-a-tabela">Importando a tabela</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
-</li>
-  </ul>
-</li>
-  <li><a href="#sugest%C3%B5es-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugest%C3%B5es-de-materiais">Sugestões de materiais</a></li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./03_importacao.html">Importando dados</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./03_importacao.html">Importando dados</a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title">Importando dados</h1>
 </div>
 
@@ -348,7 +357,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="callout callout-style-simple callout-none no-icon">
+</header>
+
+
+<div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -370,48 +382,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Como importar dados de arquivos locais (arquivos que estão salvos no nosso computador) para dentro do R;</p></li>
 <li><p>Como exportar dados do R dados (salvar objetos do R em arquivos que ficarão salvos no nosso computador);</p></li>
-<li><p>Como importar dados usando pacotes de dados, como o <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a>.</p></li>
+<li><p>Como importar dados usando pacotes de dados, como o <code>{sidrar}</code>.</p></li>
 </ul>
 <p>Ao final, teremos também uma lista com sugestão de materiais extras, caso queira aprofundar mais sobre o assunto.</p>
-<section id="arquivos-que-utilizaremos" class="level2"><h2 class="anchored" data-anchor-id="arquivos-que-utilizaremos">Arquivos que utilizaremos</h2>
+<section id="arquivos-que-utilizaremos" class="level2">
+<h2 class="anchored" data-anchor-id="arquivos-que-utilizaremos">Arquivos que utilizaremos</h2>
 <p>Para os exemplos de importação de dados, vamos utilizar alguns arquivos que estão disponíveis no repositório do curso.</p>
 <p>Para fazer download dos arquivos, verifique se está no projeto criado para o curso, e se sim, copie o código e abaixo, cole e execute-o no console:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
-<span>  url <span class="op">=</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv"</span>,</span>
-<span>  destfile <span class="op">=</span> <span class="st">"dados/sidrar_4092_bruto_2.csv"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
-<span>  url <span class="op">=</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv"</span>,</span>
-<span>  destfile <span class="op">=</span> <span class="st">"dados/sidrar_4092_bruto.csv"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
-<span>  url <span class="op">=</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx"</span>, </span>
-<span>  destfile <span class="op">=</span> <span class="st">"dados/sidrar_4092_bruto.xlsx"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
-<span>  url <span class="op">=</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds"</span>, </span>
-<span>  destfile <span class="op">=</span> <span class="st">"dados/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto_2.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx"</span>, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.xlsx"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds"</span>, </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code> para listar os arquivos no diretório <code>dados</code>:</p>
+<p>É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função <code>dir()</code> para listar os arquivos no diretório <code>dados</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="st">"dados"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">"dados"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>"sidrar_4092_bruto_2.csv" 
 "sidrar_4092_bruto.csv"
 "sidrar_4092_bruto.rds"  
 "sidrar_4092_bruto.xlsx"</code></pre>
-</section><section id="importando-dados-de-um-arquivo-local" class="level2"><h2 class="anchored" data-anchor-id="importando-dados-de-um-arquivo-local">Importando dados de um arquivo local</h2>
-<p>Para importar dados de um arquivo local, você pode usar funções com o prefixo <code>read_</code> de pacotes como <a href="https://readr.tidyverse.org">readr</a> e <a href="https://readxl.tidyverse.org">readxl</a>.</p>
-<section id="arquivos-de-texto-ex-.csv" class="level3"><h3 class="anchored" data-anchor-id="arquivos-de-texto-ex-.csv">Arquivos de texto (ex: <code>.csv</code>)</h3>
-<p>O pacote <a href="https://readr.tidyverse.org">readr</a> permite a leitura de arquivos de texto separados por algum delimitador, como <code>.csv</code>, <code>.tsv</code> e <code>.txt</code>.</p>
+</section>
+<section id="importando-dados-de-um-arquivo-local" class="level2">
+<h2 class="anchored" data-anchor-id="importando-dados-de-um-arquivo-local">Importando dados de um arquivo local</h2>
+<p>Para importar dados de um arquivo local, você pode usar funções com o prefixo <code>read_</code> de pacotes como <code>{readr}</code> e <code>{readxl}</code>.</p>
+<section id="arquivos-de-texto-ex-.csv" class="level3">
+<h3 class="anchored" data-anchor-id="arquivos-de-texto-ex-.csv">Arquivos de texto (ex: <code>.csv</code>)</h3>
+<p>O pacote <code>{readr}</code> permite a leitura de arquivos de texto separados por algum delimitador, como <code>.csv</code>, <code>.tsv</code> e <code>.txt</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para realizar a importação de um arquivo deste tipo, é importante saber qual é o delimitador utilizado no arquivo.</p>
-<p>A sigla CSV signfica <em>Comma Separated Values</em>, ou seja, valores separados por vírgula. Por padrão, a função <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> do pacote <a href="https://readr.tidyverse.org">readr</a> importa arquivos <code>.csv</code> com delimitador <code>,</code>.</p>
-<p>No Brasil, é comum a utilização do <code>;</code> como delimitador, e para isso podemos utilizar a função <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2()</a></code>. Isso acontece pois utilizamos a vírgula como separador decimal (Ex: <code>4,20</code>) e isso pode causar problemas na importação de arquivos <code>.csv</code> com delimitador <code>,</code>.</p>
-<p>Caso o arquivo tenha outro delimitador, você pode utilizar a função <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim()</a></code> e especificar o delimitador com o argumento <code>delim</code>.</p>
+<p>A sigla CSV signfica <em>Comma Separated Values</em>, ou seja, valores separados por vírgula. Por padrão, a função <code>read_csv()</code> do pacote <code>{readr}</code> importa arquivos <code>.csv</code> com delimitador <code>,</code>.</p>
+<p>No Brasil, é comum a utilização do <code>;</code> como delimitador, e para isso podemos utilizar a função <code>read_csv2()</code>. Isso acontece pois utilizamos a vírgula como separador decimal (Ex: <code>4,20</code>) e isso pode causar problemas na importação de arquivos <code>.csv</code> com delimitador <code>,</code>.</p>
+<p>Caso o arquivo tenha outro delimitador, você pode utilizar a função <code>read_delim()</code> e especificar o delimitador com o argumento <code>delim</code>.</p>
 <p>Ao importar, uma mensagem aparecerá no console apresentando algumas informações sobre a importação, como:</p>
 <ul>
 <li><p>número de linhas;</p></li>
@@ -422,13 +438,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>quantidade de colunas importadas por tipo.</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/03_output_read_csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela do console do RStudio, mostrando a mensagem apresentada pela função read_csv()</figcaption></figure>
+<figure class="figure">
+<p><img src="images/03_output_read_csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do console do RStudio, mostrando a mensagem apresentada pela função read_csv()</figcaption>
+</figure>
 </div>
-<section id="arquivo-de-texto-separado-por-vírgula" class="level4"><h4 class="anchored" data-anchor-id="arquivo-de-texto-separado-por-vírgula">Arquivo de texto separado por vírgula (<code>,</code>)</h4>
+<section id="arquivo-de-texto-separado-por-vírgula" class="level4">
+<h4 class="anchored" data-anchor-id="arquivo-de-texto-separado-por-vírgula">Arquivo de texto separado por vírgula (<code>,</code>)</h4>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Importando dados de um arquivo .csv</span></span>
-<span><span class="va">dados_csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando dados de um arquivo .csv</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dados_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/sidrar_4092_bruto.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 27000 Columns: 13
 ── Column specification ────────────────────────────────────────────────────────
@@ -440,11 +459,13 @@ dbl (7): Nível Territorial (Código), Unidade de Medida (Código), Valor, Unid.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
-</section><section id="arquivo-de-texto-separado-por-ponto-e-vírgula" class="level4"><h4 class="anchored" data-anchor-id="arquivo-de-texto-separado-por-ponto-e-vírgula">Arquivo de texto separado por ponto e vírgula (<code>;</code>)</h4>
+</section>
+<section id="arquivo-de-texto-separado-por-ponto-e-vírgula" class="level4">
+<h4 class="anchored" data-anchor-id="arquivo-de-texto-separado-por-ponto-e-vírgula">Arquivo de texto separado por ponto e vírgula (<code>;</code>)</h4>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Importando dados de um arquivo .csv</span></span>
-<span><span class="co"># Com separador ponto e vírgula</span></span>
-<span><span class="va">dados_csv_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto_2.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando dados de um arquivo .csv</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Com separador ponto e vírgula</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>dados_csv_2 <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"dados/sidrar_4092_bruto_2.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.</code></pre>
 </div>
@@ -459,30 +480,37 @@ dbl (7): Nível Territorial (Código), Unidade de Medida (Código), Valor, Unid.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
-</section></section><section id="arquivos-excel-ex-.xlsx" class="level3"><h3 class="anchored" data-anchor-id="arquivos-excel-ex-.xlsx">Arquivos Excel (ex: <code>.xlsx</code>)</h3>
-<p>O pacote <a href="https://readxl.tidyverse.org">readxl</a> permite a leitura de arquivos do Excel.</p>
+</section>
+</section>
+<section id="arquivos-excel-ex-.xlsx" class="level3">
+<h3 class="anchored" data-anchor-id="arquivos-excel-ex-.xlsx">Arquivos Excel (ex: <code>.xlsx</code>)</h3>
+<p>O pacote <code>{readxl}</code> permite a leitura de arquivos do Excel.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Carregando o pacote readxl</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando o pacote readxl</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A função <code><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets()</a></code> do pacote <a href="https://readxl.tidyverse.org">readxl</a> retorna o nome das planilhas (<em>Sheets</em>) disponíveis em um arquivo Excel:</p>
+<p>A função <code>excel_sheets()</code> do pacote <code>{readxl}</code> retorna o nome das planilhas (<em>Sheets</em>) disponíveis em um arquivo Excel:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto.xlsx"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">"dados/sidrar_4092_bruto.xlsx"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sheet1"</code></pre>
 </div>
 </div>
-<p>A função <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> do pacote <a href="https://readxl.tidyverse.org">readxl</a> permite a leitura de uma planilha específica de um arquivo Excel, utilizando o argumento <code>sheet</code> para especificar o nome da planilha. Caso o argumento <code>sheet</code> não seja fornecido, a função importará a primeira planilha do arquivo.</p>
+<p>A função <code>read_excel()</code> do pacote <code>{readxl}</code> permite a leitura de uma planilha específica de um arquivo Excel, utilizando o argumento <code>sheet</code> para especificar o nome da planilha. Caso o argumento <code>sheet</code> não seja fornecido, a função importará a primeira planilha do arquivo.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Importando dados de uma planilha do Excel</span></span>
-<span><span class="va">dados_excel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Sheet1"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando dados de uma planilha do Excel</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dados_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados/sidrar_4092_bruto.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Sheet1"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="arquivo-binário-do-r-.rds" class="level3"><h3 class="anchored" data-anchor-id="arquivo-binário-do-r-.rds">Arquivo binário do R (<code>.rds</code>)</h3>
-<p>A função <code><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds()</a></code> do pacote <a href="https://readr.tidyverse.org">readr</a> permite importar um arquivo binário do R.</p>
+</section>
+<section id="arquivo-binário-do-r-.rds" class="level3">
+<h3 class="anchored" data-anchor-id="arquivo-binário-do-r-.rds">Arquivo binário do R (<code>.rds</code>)</h3>
+<p>A função <code>read_rds()</code> do pacote <code>{readr}</code> permite importar um arquivo binário do R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="import-dataset-do-rstudio" class="level3"><h3 class="anchored" data-anchor-id="import-dataset-do-rstudio">Import Dataset do RStudio</h3>
+</section>
+<section id="import-dataset-do-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="import-dataset-do-rstudio">Import Dataset do RStudio</h3>
 <p>Caso você esteja com dificuldades, uma dica é usar a funcionalidade <em>Import Dataset</em> do RStudio. Essa funcionalidade permite utilizar uma interface <em>point-and-click</em> para importar dados, e apresenta o código utilizado para a importação.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -499,19 +527,24 @@ Dica
 </div>
 <p>Para acessar a funcionalidade <em>Import Dataset</em>, clique em <em>Import Dataset</em> no canto superior direito do painel <em>Environment</em> do RStudio. Caso o arquivo seja um Excel, escolha a opção <code>From Excel</code>. Caso o arquivo seja um texto separado por algum delimitador (como CSV), escolha a opção <code>From Text (readr)</code>.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/03_import_dataset.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela do console do RStudio, mostrando o menu onde podemos encontrar o Import Dataset</figcaption></figure>
+<figure class="figure">
+<p><img src="images/03_import_dataset.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do console do RStudio, mostrando o menu onde podemos encontrar o Import Dataset</figcaption>
+</figure>
 </div>
-</section></section><section id="salvando-dados-localmente" class="level2"><h2 class="anchored" data-anchor-id="salvando-dados-localmente">Salvando dados localmente</h2>
-<p>Para salvar dados localmente, você pode usar funções com o prefixo <code>write_</code> de pacotes como <a href="https://readr.tidyverse.org">readr</a> e <a href="https://docs.ropensci.org/writexl/">writexl</a>. Essas funções solicitam dois argumentos principais:</p>
+</section>
+</section>
+<section id="salvando-dados-localmente" class="level2">
+<h2 class="anchored" data-anchor-id="salvando-dados-localmente">Salvando dados localmente</h2>
+<p>Para salvar dados localmente, você pode usar funções com o prefixo <code>write_</code> de pacotes como <code>{readr}</code> e <code>{writexl}</code>. Essas funções solicitam dois argumentos principais:</p>
 <ul>
 <li><p>Qual é o objeto que você queremos salvar? Esse objeto deve estar disponível no <em>Environment</em> do R.</p></li>
 <li><p>Onde queremos salvar o arquivo? O caminho completo do arquivo deve ser fornecido entre aspas, contendo o diretório onde ele será salvo (em qual pasta do computador) e o nome do arquivo (com a extensão, por exemplo, <code>.csv</code>).</p></li>
 </ul>
 <p>Antes de salvar os dados, vamos criar um diretório onde salvaremos os arquivos. Você pode criar o diretório manualmente ou usar a função <code>fs::dir_create("nome_do_diretorio/")</code> para criar o diretório.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org">fs</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span><span class="st">"dados_output"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fs)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir_create</span>(<span class="st">"dados_output"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -528,26 +561,34 @@ Aviso
 * 'dados_output/sidrar_4092_salvo.csv'</code></pre>
 </div>
 </div>
-<section id="arquivo-de-texto-ex-.csv" class="level3"><h3 class="anchored" data-anchor-id="arquivo-de-texto-ex-.csv">Arquivo de texto (ex: <code>.csv</code>)</h3>
-<p>O pacote <a href="https://readr.tidyverse.org">readr</a> permite a escrita de arquivos de texto separados por algum delimitador, como <code>.csv</code>, <code>.tsv</code> e <code>.txt</code>.</p>
-<p>A função <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv2()</a></code> premite a escrita de arquivos <code>.csv</code> com separador <code>;</code>, que é o padrão no Brasil.</p>
+<section id="arquivo-de-texto-ex-.csv" class="level3">
+<h3 class="anchored" data-anchor-id="arquivo-de-texto-ex-.csv">Arquivo de texto (ex: <code>.csv</code>)</h3>
+<p>O pacote <code>{readr}</code> permite a escrita de arquivos de texto separados por algum delimitador, como <code>.csv</code>, <code>.tsv</code> e <code>.txt</code>.</p>
+<p>A função <code>write_csv2()</code> premite a escrita de arquivos <code>.csv</code> com separador <code>;</code>, que é o padrão no Brasil.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv2</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"dados_output/sidrar_4092_bruto.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv2</span>(dados, <span class="st">"dados_output/sidrar_4092_bruto.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="arquivo-excel-ex-.xlsx" class="level3"><h3 class="anchored" data-anchor-id="arquivo-excel-ex-.xlsx">Arquivo excel (ex: <code>.xlsx</code>)</h3>
-<p>A função <code><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx()</a></code> do pacote <a href="https://docs.ropensci.org/writexl/">writexl</a> permite a escrita de arquivos do Excel.</p>
+</section>
+<section id="arquivo-excel-ex-.xlsx" class="level3">
+<h3 class="anchored" data-anchor-id="arquivo-excel-ex-.xlsx">Arquivo excel (ex: <code>.xlsx</code>)</h3>
+<p>A função <code>write_xlsx()</code> do pacote <code>{writexl}</code> permite a escrita de arquivos do Excel.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/writexl/">writexl</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"dados_output/sidrar_4092_bruto.csv"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(dados, <span class="st">"dados_output/sidrar_4092_bruto.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="arquivo-binário-do-r-.rds-1" class="level3"><h3 class="anchored" data-anchor-id="arquivo-binário-do-r-.rds-1">Arquivo binário do R (<code>.rds</code>)</h3>
-<p>A função <code><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds()</a></code> do pacote <a href="https://readr.tidyverse.org">readr</a> permite salvar um objeto do R em um arquivo binário do R, preservando a estrutura dos objetos.</p>
+</section>
+<section id="arquivo-binário-do-r-.rds-1" class="level3">
+<h3 class="anchored" data-anchor-id="arquivo-binário-do-r-.rds-1">Arquivo binário do R (<code>.rds</code>)</h3>
+<p>A função <code>write_rds()</code> do pacote <code>{readr}</code> permite salvar um objeto do R em um arquivo binário do R, preservando a estrutura dos objetos.</p>
 <p>Esse tipo de arquivo é útil para salvar objetos do R, como dataframes, listas, vetores, sem perder a estrutura do objeto.</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"dados_output/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados, <span class="st">"dados_output/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="importando-dados-usando-pacotes-de-dados" class="level2"><h2 class="anchored" data-anchor-id="importando-dados-usando-pacotes-de-dados">Importando dados usando pacotes de dados</h2>
-<p>Existem pacotes no R que permitem a importação de dados, como por exemplo: <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a>, <a href="https://ipeagit.github.io/geobr/">geobr</a>, <a href="https://github.com/ipeaGIT/censobr">censobr</a>, entre outros.</p>
+</section>
+</section>
+<section id="importando-dados-usando-pacotes-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="importando-dados-usando-pacotes-de-dados">Importando dados usando pacotes de dados</h2>
+<p>Existem pacotes no R que permitem a importação de dados, como por exemplo: <code>{sidrar}</code>, <code>{geobr}</code>, <code>{censobr}</code>, entre outros.</p>
 <p>A parte boa de usar esses pacotes é que eles já possuem funções prontas para importar os dados.</p>
 <p>A parte não-tão-boa é que os pacotes tem funções específicas para importar os dados, e você precisa aprender como usar essas funções. Recomendamos que você leia a documentação do pacote para entender como usar as funções de importação.</p>
 <p>Ao longo deste curso, vamos aprender a usar alguns desses pacotes para importar dados específicos.</p>
@@ -563,22 +604,23 @@ Importante
 <div class="callout-body-container callout-body">
 <p>Esses pacotes, em geral, obtém as informações na internet. Isso pode demorar um pouco.</p>
 <p>Recomendamos que você salve uma cópia local dos dados brutos após o download. Isso evita a necessidade de baixar os dados novamente e facilita o trabalho localmente, principalmente se a conexão com a internet estiver instável.</p>
-<p>Alguns pacotes, como o <a href="https://github.com/ipeaGIT/censobr">censobr</a>, apresentam funções preparadas para salvar os dados localmente.</p>
+<p>Alguns pacotes, como o <code>{censobr}</code>, apresentam funções preparadas para salvar os dados localmente.</p>
 </div>
 </div>
-<section id="pacote-sidrar" class="level3"><h3 class="anchored" data-anchor-id="pacote-sidrar">Pacote <code>{sidrar}</code>
-</h3>
-<p>O pacote <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a> permite a importação de dados do Sistema IBGE de Recuperação Automática (SIDRA).</p>
+<section id="pacote-sidrar" class="level3">
+<h3 class="anchored" data-anchor-id="pacote-sidrar">Pacote <code>{sidrar}</code></h3>
+<p>O pacote <code>{sidrar}</code> permite a importação de dados do Sistema IBGE de Recuperação Automática (SIDRA).</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sidrar)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para importar dados do SIDRA, você precisa saber o <strong>código da tabela</strong> que deseja importar. Uma forma de fazer isso é buscar no site do SIDRA, no IBGE: <a href="https://sidra.ibge.gov.br/" class="uri">https://sidra.ibge.gov.br/</a>.</p>
-<section id="buscando-tabelas-no-sidra" class="level4"><h4 class="anchored" data-anchor-id="buscando-tabelas-no-sidra">Buscando tabelas no SIDRA</h4>
-<p>Outra forma é buscar por palavras-chave no próprio R, utilizando a função <code><a href="https://rdrr.io/pkg/sidrar/man/search_sidra.html">search_sidra()</a></code>:</p>
+<section id="buscando-tabelas-no-sidra" class="level4">
+<h4 class="anchored" data-anchor-id="buscando-tabelas-no-sidra">Buscando tabelas no SIDRA</h4>
+<p>Outra forma é buscar por palavras-chave no próprio R, utilizando a função <code>search_sidra()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exemplo de busca por palavras-chave: </span></span>
-<span><span class="co"># Tabelas com resultados da PNAD Contínua Trimestral</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/search_sidra.html">search_sidra</a></span><span class="op">(</span><span class="st">"PNADCT"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo de busca por palavras-chave: </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabelas com resultados da PNAD Contínua Trimestral</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">search_sidra</span>(<span class="st">"PNADCT"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Tabela 5435 - Pessoas de 14 anos ou mais de idade, ocupadas na semana de referência, por grupamento ocupacional no trabalho principal"                                                                                                                                                             
  [2] "Tabela 5444 - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente e efetivamente recebidos no trabalho principal, por grupamento ocupacional no trabalho principal"                                    
@@ -595,32 +637,37 @@ Importante
 </div>
 </div>
 <p>Neste curso, utilizaremos na maioria das aulas a <a href="https://sidra.ibge.gov.br/Tabela/4092">Tabela 4092 - Pessoas de 14 anos ou mais de idade, por condição em relação à força de trabalho e condição e ocupação</a>, proveniente da Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T).</p>
-</section><section id="buscando-informações-sobre-a-tabela" class="level4"><h4 class="anchored" data-anchor-id="buscando-informações-sobre-a-tabela">Buscando informações sobre a tabela</h4>
-<p>Sabendo o código da tabela, você pode buscar informações sobre a tabela com a função <code><a href="https://rdrr.io/pkg/sidrar/man/info_sidra.html">info_sidra()</a></code>.</p>
+</section>
+<section id="buscando-informações-sobre-a-tabela" class="level4">
+<h4 class="anchored" data-anchor-id="buscando-informações-sobre-a-tabela">Buscando informações sobre a tabela</h4>
+<p>Sabendo o código da tabela, você pode buscar informações sobre a tabela com a função <code>info_sidra()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/info_sidra.html">info_sidra</a></span><span class="op">(</span><span class="st">"4092"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>info_4092 <span class="ot">&lt;-</span> <span class="fu">info_sidra</span>(<span class="st">"4092"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O resultado dessa função é uma lista, portanto podemos acessar os elementos da lista utilizando o operador <code>$</code>, seguido pelo nome do elemento.</p>
 <p>Primeiro, podemos ver os nomes dos elementos da lista:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">info_4092</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(info_4092)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "table"              "period"             "variable"          
 [4] "classific_category" "geo"               </code></pre>
 </div>
 </div>
 <p>Agora podemos consultar os elementos dessa lista!</p>
-<section id="nome-da-tabela" class="level5"><h5 class="anchored" data-anchor-id="nome-da-tabela">Nome da tabela</h5>
+<section id="nome-da-tabela" class="level5">
+<h5 class="anchored" data-anchor-id="nome-da-tabela">Nome da tabela</h5>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span><span class="op">$</span><span class="va">table</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>info_4092<span class="sc">$</span>table</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Tabela 4092: Pessoas de 14 anos ou mais de idade, por condição em relação à força de trabalho e condição de ocupação"</code></pre>
 </div>
 </div>
-</section><section id="períodos" class="level5"><h5 class="anchored" data-anchor-id="períodos">Períodos</h5>
+</section>
+<section id="períodos" class="level5">
+<h5 class="anchored" data-anchor-id="períodos">Períodos</h5>
 <p>Isso será importante para a importação dos dados, pois podemos informar qual período queremos importar.</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span><span class="op">$</span><span class="va">period</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>info_4092<span class="sc">$</span>period</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "201201, 201202, 201203, 201204, 201301, 201302, 201303, 201304, 201401, 201402, 201403, 201404, 201501, 201502, 201503, 201504, 201601, 201602, 201603, 201604, 201701, 201702, 201703, 201704, 201801, 201802, 201803, 201804, 201901, 201902, 201903, 201904, 202001, 202002, 202003, 202004, 202101, 202102, 202103, 202104, 202201, 202202, 202203, 202204, 202301, 202302, 202303, 202304, 202401, 202402"</code></pre>
 </div>
@@ -628,8 +675,8 @@ Importante
 <p>Esses dados estão salvos em um vetor de tamanho um, com textos separados por vírgula. Esse formato não é o ideal para usar na função de importação que veremos a seguir: o melhor é transformar em um vetor, onde cada elemento é um período.</p>
 <p>Podemos fazer isso com a função <code>str_split()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">periodos_disponiveis</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">info_4092</span><span class="op">$</span><span class="va">period</span>, <span class="st">", "</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="va">periodos_disponiveis</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>periodos_disponiveis <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_split</span>(info_4092<span class="sc">$</span>period, <span class="st">", "</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>periodos_disponiveis</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "201201" "201202" "201203" "201204" "201301" "201302" "201303" "201304"
  [9] "201401" "201402" "201403" "201404" "201501" "201502" "201503" "201504"
@@ -641,10 +688,12 @@ Importante
 </div>
 </div>
 <p>Esses são os períodos disponíveis para essa tabela no SIDRA.</p>
-</section><section id="variáveis" class="level5"><h5 class="anchored" data-anchor-id="variáveis">Variáveis</h5>
+</section>
+<section id="variáveis" class="level5">
+<h5 class="anchored" data-anchor-id="variáveis">Variáveis</h5>
 <p>Isso será importante para a importação dos dados, pois podemos informar quais variáveis queremos importar.</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span><span class="op">$</span><span class="va">variable</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>info_4092<span class="sc">$</span>variable</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   cod
 1 1641
@@ -658,9 +707,11 @@ Importante
 4 Coeficiente de variação - Distribuição percentual das pessoas de  anos ou mais de idade (%)</code></pre>
 </div>
 </div>
-</section><section id="variáveis---categorias" class="level5"><h5 class="anchored" data-anchor-id="variáveis---categorias">Variáveis - Categorias</h5>
+</section>
+<section id="variáveis---categorias" class="level5">
+<h5 class="anchored" data-anchor-id="variáveis---categorias">Variáveis - Categorias</h5>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span><span class="op">$</span><span class="va">classific_category</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>info_4092<span class="sc">$</span>classific_category</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`c629 = Condição em relação à força de trabalho e condição de ocupação (5):`
     cod                           desc
@@ -671,10 +722,12 @@ Importante
 5 32447      Fora da força de trabalho</code></pre>
 </div>
 </div>
-</section><section id="nível-territorial" class="level5"><h5 class="anchored" data-anchor-id="nível-territorial">Nível territorial</h5>
+</section>
+<section id="nível-territorial" class="level5">
+<h5 class="anchored" data-anchor-id="nível-territorial">Nível territorial</h5>
 <p>Isso será importante para a importação dos dados, pois precisamos informar qual é o nível territorial a ser usado na importação.</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">info_4092</span><span class="op">$</span><span class="va">geo</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>info_4092<span class="sc">$</span>geo</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          cod
 1      Brazil
@@ -692,16 +745,19 @@ Importante
 6                Região Metropolitana  [1º trimestre 2012 a 1º trimestre 2020, 2º trimestre 2022 a 2º trimestre 2024]</code></pre>
 </div>
 </div>
-</section></section><section id="importando-a-tabela" class="level4"><h4 class="anchored" data-anchor-id="importando-a-tabela">Importando a tabela</h4>
-<p>A função <code><a href="https://rdrr.io/pkg/sidrar/man/get_sidra.html">get_sidra()</a></code> do pacote <a href="https://github.com/rpradosiqueira/sidrar/">sidrar</a> permite importar dados do SIDRA.</p>
+</section>
+</section>
+<section id="importando-a-tabela" class="level4">
+<h4 class="anchored" data-anchor-id="importando-a-tabela">Importando a tabela</h4>
+<p>A função <code>get_sidra()</code> do pacote <code>{sidrar}</code> permite importar dados do SIDRA.</p>
 <div class="cell">
-<div class="sourceCode" id="annotated-cell-25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_brutos_4092</span> <span class="op">&lt;-</span> <span class="fu">sidrar</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sidrar/man/get_sidra.html">get_sidra</a></span><span class="op">(</span></span>
-<span>  x <span class="op">=</span> <span class="fl">4092</span>,</span>
-<span>  period <span class="op">=</span> <span class="va">periodos_disponiveis</span>,</span>
-<span>  geo <span class="op">=</span> <span class="st">"State"</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1" aria-hidden="true" tabindex="-1"></a>dados_brutos_4092 <span class="ot">&lt;-</span> sidrar<span class="sc">::</span><span class="fu">get_sidra</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">4092</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-3" class="code-annotation-target"><a href="#annotated-cell-25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">period =</span> periodos_disponiveis,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3">3</button><span id="annotated-cell-25-4" class="code-annotation-target"><a href="#annotated-cell-25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geo =</span> <span class="st">"State"</span></span>
+<span id="annotated-cell-25-5"><a href="#annotated-cell-25-5" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
-<dl>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="1">Qual é o código da tabela que vamos usar?</span>
@@ -719,25 +775,31 @@ Importante
 </div>
 <p>Lembrando que é importante salvar uma cópia local dos dados após o download. Assim, quando você for trabalhar com esses dados, não precisará baixá-los novamente.</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Salvar localmente essa base de dados</span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">dados_brutos_4092</span>, <span class="st">"dados/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar localmente essa base de dados</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_brutos_4092, <span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Importando os dados salvos localmente</span></span>
-<span><span class="va">dados_brutos_4092</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds</a></span><span class="op">(</span><span class="st">"dados/sidrar_4092_bruto.rds"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando os dados salvos localmente</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dados_brutos_4092 <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section></section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
+</section>
+</section>
+</section>
+<section id="sugestões-de-materiais" class="level2">
+<h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
 <li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
 <ul>
 <li><a href="https://cienciadedatos.github.io/pt-r4ds/data-import.html">Importação de dados</a></li>
-</ul>
-</li>
+</ul></li>
 <li>Vídeo <a href="https://youtu.be/wzfPR2oQ61A?si=jU4YwAU_n-xQggsD">Como organizar seu banco de dados para análises estatísticas</a>, por Fernanda Peres (30 minutos).</li>
 </ul>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1180,8 +1242,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./02_conceitos_basicos_r.html" class="pagination-link  aria-label=" conceitos="" b="" do="" r="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02_conceitos_basicos_r.html" class="pagination-link  aria-label=" conceitos="" básicos="" do="" r"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conceitos básicos do R</span>
       </a>          
   </div>
@@ -1192,6 +1256,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

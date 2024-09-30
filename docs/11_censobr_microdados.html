@@ -534,12 +534,12 @@ Cache local dos dados
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     V0010     V0601 V6036
-1 8.083000 Masculino     8
-2 9.718624 Masculino    28
-3 9.718624  Feminino    19
-4 9.718624  Feminino     3
-5 9.513442  Feminino    61
-6 9.513442 Masculino    58</code></pre>
+1 4.281183  Feminino    31
+2 4.665780 Masculino    80
+3 4.665780  Feminino    77
+4 4.665780  Feminino    38
+5 4.665780 Masculino     8
+6 4.665780 Masculino    14</code></pre>
 </div>
 </div>
 <p>O próximo passo para criamos nossa pirâmide populacional é criar um variável categória com grupos de idade. No exemplo abaix, nós utilizadmos grupos de 5 anos.</p>
@@ -567,13 +567,13 @@ Cache local dos dados
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     V0010     V0601 V6036 age_group
-1 4.732128  Feminino     4     00-05
-2 4.283271 Masculino    19     15-20
-3 4.283271 Masculino    68     65-70
-4 5.922211  Feminino    26     25-30
-5 5.922211 Masculino     0     00-05
-6 5.922211  Feminino     3     00-05</code></pre>
+<pre><code>      V0010     V0601 V6036 age_group
+1 13.207337 Masculino    16     15-20
+2 13.207337  Feminino    22     20-25
+3 13.207337  Feminino    48     45-50
+4 13.207337  Feminino    18     15-20
+5 13.207337  Feminino    22     20-25
+6  9.683377 Masculino     1     00-05</code></pre>
 </div>
 </div>
 <p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada grupo. Repare que ao chamarmos a função <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>, o código é executado e retorna um <code>data.frame</code> com a contagem de pessoas por sexo e faixa de idade. Repare que nós processamos todos os mais de 20 milhões de registro do censo, mas só precisamos carregar na memória essa tabela com 30 observações.</p>
@@ -590,12 +590,12 @@ Cache local dos dados
 # Groups:   V0601 [2]
   V0601     age_group pop_count
   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
-1 Feminino  10-15      8440040.
-2 Masculino 45-50      5692722.
-3 Feminino  00-05      6781032.
-4 Feminino  55-60      4371889.
-5 Masculino 50-55      4825839.
-6 Feminino  25-30      8644127.</code></pre>
+1 Masculino 05-10      7623609.
+2 Masculino 25-30      8458790.
+3 Feminino  15-20      8429180.
+4 Feminino  00-05      6781032.
+5 Feminino  60-65      3470156.
+6 Masculino 55-60      3912544.</code></pre>
 </div>
 </div>
 <p>Pronto, no último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>
@@ -694,11 +694,6 @@ Cache local dos dados
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"Região"</span>, y<span class="op">=</span><span class="st">"Quantidade de domicílios\nconectados à rede de esgoto"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_boxplot()`.
-Caused by error in `loadNamespace()`:
-! there is no package called 'quantreg'</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="11_censobr_microdados_files/figure-html/plot-sewage-regions-1.png" class="img-fluid figure-img" width="672"></p>
@@ -717,7 +712,7 @@ Caused by error in `loadNamespace()`:
 </div>
 <p>Para criarmos uma mapa com a distribuição espacial da cobertura da rede de esgoto no Brasil, nós vamos primeiro usar o pacote <strong>{geobr}</strong> para baixar as geometrias dos municípios brasileiros no ano de 2010. Vamos também sobrepor os limites das grandes regiões do país para dar um pouco mais de contexto à figura.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ipeagit.github.io/geobr/">geobr</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ipeagit.github.io/geobr/">geobr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">regioes_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_region.html">read_region</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>,</span>
 <span>                          showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -750,7 +745,7 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <p>Agora nós só precisamos unir os dados espaciais com nossas estimativas utilizando a variável chave <code>code_muni</code> e mapear os resultados.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge data</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge data</span></span>
 <span><span class="va">esg_sf</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">muni_sf</span>, <span class="va">esg</span>, by <span class="op">=</span> <span class="st">'code_muni'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># plot map</span></span>
@@ -774,7 +769,7 @@ Geodetic CRS:  SIRGAS 2000
 <p>No exemplo anterior, nós agregamos os microdados do censo no nível de municípios. Neste próximo exemplo, faremos uma análise espacial no nível de áreas de ponderação. Aqui nós vamos visualizar como o valor do aluguel varia espacialmente na região metropolitana de São Paulo.</p>
 <p>Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o <strong>{geobr}</strong>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">metro_sp</span> <span class="op">&lt;-</span> <span class="fu">geobr</span><span class="fu">::</span><span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_metro_area.html">read_metro_area</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>,</span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">metro_sp</span> <span class="op">&lt;-</span> <span class="fu">geobr</span><span class="fu">::</span><span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_metro_area.html">read_metro_area</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>,</span>
 <span>                                     showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>              <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name_metro</span> <span class="op">==</span> <span class="st">"RM São Paulo"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -865,7 +860,7 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <p>Por fim, basta unirmos os dados espaciais com nossas estimativas de aluguel pela variável chave de código da área de ponderação (<code>code_weighting</code>), e mapear os resultados.</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rent_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wt_areas</span>, <span class="va">rent</span>, by <span class="op">=</span> <span class="st">'code_weighting'</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rent_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wt_areas</span>, <span class="va">rent</span>, by <span class="op">=</span> <span class="st">'code_weighting'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rent_sf</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">avgrent</span><span class="op">)</span>, color<span class="op">=</span><span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
@@ -888,19 +883,19 @@ Geodetic CRS:  SIRGAS 2000
 <p>Os usuários podem gerenciar os conjuntos de dados em cache usando a função <code><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache()</a></code>. Por exemplo, os usuários podem:</p>
 <p>Listar arquivos em cache:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>list_files <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>list_files <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Deletar um arquivo específico:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>delete_file <span class="op">=</span> <span class="st">"2010_emigration"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>delete_file <span class="op">=</span> <span class="st">"2010_emigration"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Deletar todos arquivos do cache:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>delete_file <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>delete_file <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Por padrão, os arquivos do <strong>{censobr}</strong> são salvos no diretório ‘User’. No entanto, os usuários podem executar a função <code><a href="https://ipeagit.github.io/censobr/reference/set_censobr_cache_dir.html">set_censobr_cache_dir()</a></code> para definir um diretório de cache personalizado. Note que essa definição personalizada precisa ser definida a cada nova sessão do R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tempf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tempf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/set_censobr_cache_dir.html">set_censobr_cache_dir</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">tempf</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

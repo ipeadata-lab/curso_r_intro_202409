@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Introdução à análise de dados no R - Conceitos iniciais do Censo</title>
 <style>
 code{white-space: pre-wrap;}
@@ -73,6 +76,7 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -90,7 +94,8 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -116,12 +121,18 @@ div.csl-indent {
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script><link rel="stylesheet" href="styles.css">
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -132,9 +143,13 @@ div.csl-indent {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -149,7 +164,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -157,8 +172,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -177,7 +192,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -186,8 +201,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -236,7 +251,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -245,8 +260,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explorando o Censo Demográfico</span></a>
@@ -277,7 +292,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -286,36 +301,40 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-<li><a href="#pesquisa-da-amostra-e-do-universo" id="toc-pesquisa-da-amostra-e-do-universo" class="nav-link active" data-scroll-target="#pesquisa-da-amostra-e-do-universo">Pesquisa da amostra e do universo</a></li>
+  <li><a href="#pesquisa-da-amostra-e-do-universo" id="toc-pesquisa-da-amostra-e-do-universo" class="nav-link active" data-scroll-target="#pesquisa-da-amostra-e-do-universo">Pesquisa da amostra e do universo</a></li>
   <li><a href="#microdados-da-amostra-e-dados-agregados-do-universo" id="toc-microdados-da-amostra-e-dados-agregados-do-universo" class="nav-link" data-scroll-target="#microdados-da-amostra-e-dados-agregados-do-universo">Microdados da Amostra e Dados Agregados do Universo</a></li>
-  <li>
-<a href="#setores-censit%C3%A1rios-e-%C3%A1reas-de-pondera%C3%A7%C3%A3o" id="toc-setores-censitários-e-áreas-de-ponderação" class="nav-link" data-scroll-target="#setores-censit%C3%A1rios-e-%C3%A1reas-de-pondera%C3%A7%C3%A3o">Setores Censitários e Áreas de Ponderação</a>
+  <li><a href="#setores-censitários-e-áreas-de-ponderação" id="toc-setores-censitários-e-áreas-de-ponderação" class="nav-link" data-scroll-target="#setores-censitários-e-áreas-de-ponderação">Setores Censitários e Áreas de Ponderação</a>
   <ul>
-<li><a href="#setores-censit%C3%A1rios" id="toc-setores-censitários" class="nav-link" data-scroll-target="#setores-censit%C3%A1rios">Setores censitários</a></li>
-  <li><a href="#%C3%A1reas-de-pondera%C3%A7%C3%A3o" id="toc-áreas-de-ponderação" class="nav-link" data-scroll-target="#%C3%A1reas-de-pondera%C3%A7%C3%A3o">Áreas de ponderação</a></li>
+  <li><a href="#setores-censitários" id="toc-setores-censitários" class="nav-link" data-scroll-target="#setores-censitários">Setores censitários</a></li>
+  <li><a href="#áreas-de-ponderação" id="toc-áreas-de-ponderação" class="nav-link" data-scroll-target="#áreas-de-ponderação">Áreas de ponderação</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./10_censobr_conceitos.html">Conceitos iniciais do Censo</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./10_censobr_conceitos.html">Conceitos iniciais do Censo</a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title">Conceitos iniciais do Censo</h1>
 </div>
 
@@ -330,7 +349,10 @@ div.csl-indent {
   
 
 
-</header><p>O censo demográfico brasileiro é a principal pesquisa populacional domiciliar realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.</p>
+</header>
+
+
+<p>O censo demográfico brasileiro é a principal pesquisa populacional domiciliar realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.</p>
 <p>Nesta seção, nós revisamos alguns conceitos básicos sobre a organização dos censos demográficos no Brasil.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -346,14 +368,16 @@ Nota
 <p>O conteúo desta oficina se refere basicamente aos censos ‘modernos’ de 1960 em diante.</p>
 </div>
 </div>
-<section id="pesquisa-da-amostra-e-do-universo" class="level2"><h2 class="anchored" data-anchor-id="pesquisa-da-amostra-e-do-universo">Pesquisa da amostra e do universo</h2>
+<section id="pesquisa-da-amostra-e-do-universo" class="level2">
+<h2 class="anchored" data-anchor-id="pesquisa-da-amostra-e-do-universo">Pesquisa da amostra e do universo</h2>
 <p>Desde 1960, o Censo Demográfico passou a consistir de duas pesquisas realizadas simultaneamente.</p>
 <ul>
-<li>
-<strong>Universo</strong>: uma pesquisa aplicada a todos os domicílios (ou universo). Esta pesquisa é feita com um questionário <em>básico</em> que costuma ser curto, contendo entre 9 e 30 questões, dependendo da edição do censo.</li>
-<li>
-<strong>Amostra</strong>: uma pesquisa amostral aplicada a apenas uma parcela dos domicílios. A fração amostral era de 25% nos anos de 1960, 1970 e 1980 e passou para cerca de 10% em 1991 em diante. Esta pesquisa é feita com um questionário mais extenso.</li>
-</ul></section><section id="microdados-da-amostra-e-dados-agregados-do-universo" class="level2"><h2 class="anchored" data-anchor-id="microdados-da-amostra-e-dados-agregados-do-universo">Microdados da Amostra e Dados Agregados do Universo</h2>
+<li><strong>Universo</strong>: uma pesquisa aplicada a todos os domicílios (ou universo). Esta pesquisa é feita com um questionário <em>básico</em> que costuma ser curto, contendo entre 9 e 30 questões, dependendo da edição do censo.</li>
+<li><strong>Amostra</strong>: uma pesquisa amostral aplicada a apenas uma parcela dos domicílios. A fração amostral era de 25% nos anos de 1960, 1970 e 1980 e passou para cerca de 10% em 1991 em diante. Esta pesquisa é feita com um questionário mais extenso.</li>
+</ul>
+</section>
+<section id="microdados-da-amostra-e-dados-agregados-do-universo" class="level2">
+<h2 class="anchored" data-anchor-id="microdados-da-amostra-e-dados-agregados-do-universo">Microdados da Amostra e Dados Agregados do Universo</h2>
 <p>Microdados são bancos de dados em que cada observação representa uma unidade de coleta de informação. Nos censos, os microdados se referem aos arquivos em que cada observação ou linha são domicílios ou pessoas. A noção de microdados se contrapõe à de dados agregados, nos quais os casos são “agregações” das informações obtidas a partir por exemplo da soma ou das médias das informações dos microdados. Tais agregações podem ser, por exemplo, no nível de bairros, distritos, municípios etc.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -369,95 +393,108 @@ Importante
 <p>Obs. O IBGE não disponibiliza os microdados do universo porque a sua divulgação poderia violar o sigilo dos respondentes.</p>
 </div>
 </div>
-</section><section id="setores-censitários-e-áreas-de-ponderação" class="level2"><h2 class="anchored" data-anchor-id="setores-censitários-e-áreas-de-ponderação">Setores Censitários e Áreas de Ponderação</h2>
+</section>
+<section id="setores-censitários-e-áreas-de-ponderação" class="level2">
+<h2 class="anchored" data-anchor-id="setores-censitários-e-áreas-de-ponderação">Setores Censitários e Áreas de Ponderação</h2>
 <p>Com os Microdados da Amostra é possível fazer análises por indivíduos, famílias e domicílios. Mas análises espaciais, que levam em conta vizinhanças e distâncias geográficas, por exemplo, também podem ser de interesse. Nesse caso, é importante ter ciência da granularidade dos dados – i.e.&nbsp;de qual a menor unidade espacial que permite inferência estatística. Para isso, cabe destacar as duas principais unidades espaciais na construção dos censos demográficos:</p>
-<section id="setores-censitários" class="level3"><h3 class="anchored" data-anchor-id="setores-censitários">Setores censitários</h3>
+<section id="setores-censitários" class="level3">
+<h3 class="anchored" data-anchor-id="setores-censitários">Setores censitários</h3>
 <ul>
 <li>Os <strong>setores censitários</strong> são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.</li>
-</ul></section><section id="áreas-de-ponderação" class="level3"><h3 class="anchored" data-anchor-id="áreas-de-ponderação">Áreas de ponderação</h3>
+</ul>
+</section>
+<section id="áreas-de-ponderação" class="level3">
+<h3 class="anchored" data-anchor-id="áreas-de-ponderação">Áreas de ponderação</h3>
 <ul>
 <li>As <strong>áreas de ponderação</strong> são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áreas são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.</li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ipeagit.github.io/geobr/">geobr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># codigo do municipio de Belford Roxo</span></span>
-<span><span class="va">mymuni</span> <span class="op">&lt;-</span> <span class="fl">3300456</span></span>
-<span></span>
-<span><span class="co"># baixa geometria do municipio</span></span>
-<span><span class="va">muni</span> <span class="op">&lt;-</span> <span class="fu">geobr</span><span class="fu">::</span><span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_municipality.html">read_municipality</a></span><span class="op">(</span><span class="va">mymuni</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># baixa geometria das areas de ponderacao</span></span>
-<span><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu">geobr</span><span class="fu">::</span><span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_weighting_area.html">read_weighting_area</a></span><span class="op">(</span>code_weighting <span class="op">=</span> <span class="va">mymuni</span>, </span>
-<span>                                 year <span class="op">=</span> <span class="fl">2010</span>, </span>
-<span>                                 simplified <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># baixa geometria dos setores censitarios</span></span>
-<span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="fu">geobr</span><span class="fu">::</span><span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_census_tract.html">read_census_tract</a></span><span class="op">(</span>code_tract <span class="op">=</span> <span class="va">mymuni</span>, </span>
-<span>                               year <span class="op">=</span> <span class="fl">2010</span>, </span>
-<span>                               simplified <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># funcao para 'inclinar' mapa</span></span>
-<span><span class="va">rotate_data_geom</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">x_add</span> <span class="op">=</span> <span class="fl">0</span>, <span class="va">y_add</span> <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">shear_matrix</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1.2</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">}</span></span>
-<span>  </span>
-<span>  <span class="va">rotate_matrix</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> </span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span> </span>
-<span>  <span class="op">}</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">data</span>,</span>
-<span>    geom <span class="op">=</span> <span class="va">geom</span> <span class="op">*</span> <span class="fu">shear_matrix</span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fu">rotate_matrix</span><span class="op">(</span><span class="va">pi</span><span class="op">/</span><span class="fl">20</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x_add</span>, <span class="va">y_add</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># annotate parameters</span></span>
-<span><span class="va">x</span> <span class="op">=</span> <span class="op">-</span><span class="fl">116.03</span></span>
-<span><span class="va">clr</span> <span class="op">=</span> <span class="st">'gray40'</span></span>
-<span><span class="va">sz</span> <span class="op">=</span> <span class="fl">4</span></span>
-<span></span>
-<span><span class="co"># MAP</span></span>
-<span><span class="va">temp1</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># municipio</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu">rotate_data_geom</span><span class="op">(</span>data <span class="op">=</span> <span class="va">muni</span>, y_add <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span>,</span>
-<span>          color<span class="op">=</span><span class="st">'gray30'</span>, fill<span class="op">=</span><span class="st">'#FCDE70'</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, label<span class="op">=</span><span class="st">'Município'</span>, x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="op">-</span><span class="fl">4.59</span>,</span>
-<span>           hjust <span class="op">=</span> <span class="fl">0</span>, color<span class="op">=</span><span class="va">clr</span>, size<span class="op">=</span><span class="va">sz</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  </span>
-<span>  <span class="co"># areas de ponderacao</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu">rotate_data_geom</span><span class="op">(</span>data <span class="op">=</span> <span class="va">ap</span>, y_add <span class="op">=</span> <span class="fl">.07</span><span class="op">)</span>, </span>
-<span>          fill<span class="op">=</span><span class="st">'#ff7b7b'</span>, color<span class="op">=</span><span class="st">'#ff0000'</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, label<span class="op">=</span><span class="st">'Áreas de\nPonderação'</span>, x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span> <span class="op">-</span><span class="fl">4.53</span>,</span>
-<span>           hjust <span class="op">=</span> <span class="fl">0</span>, color<span class="op">=</span><span class="va">clr</span>, size<span class="op">=</span><span class="va">sz</span><span class="op">)</span> <span class="op">+</span></span>
-<span></span>
-<span>  <span class="co"># setores censitarios</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu">rotate_data_geom</span><span class="op">(</span>data <span class="op">=</span> <span class="va">ct</span>, y_add <span class="op">=</span> <span class="fl">0.13</span><span class="op">)</span>,</span>
-<span>          color<span class="op">=</span><span class="st">'gray30'</span>, fill<span class="op">=</span><span class="st">'gray98'</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, label<span class="op">=</span><span class="st">'Setores\nCensitários'</span>, x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span> <span class="op">-</span><span class="fl">4.47</span>, </span>
-<span>           hjust <span class="op">=</span> <span class="fl">0</span>, color<span class="op">=</span><span class="va">clr</span>, size<span class="op">=</span><span class="va">sz</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">116.305</span>, <span class="op">-</span><span class="fl">115.98</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">'white'</span>, color<span class="op">=</span><span class="st">'white'</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">temp1</span></span>
-<span><span class="co"># ggsave(temp1, filename = 'fig_spatial_layers.png', </span></span>
-<span><span class="co">#        width = 12, height = 8, units = 'cm', dpi = 300)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># codigo do municipio de Belford Roxo</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mymuni <span class="ot">&lt;-</span> <span class="dv">3300456</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria do municipio</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>muni <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_municipality</span>(mymuni)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria das areas de ponderacao</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ap <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_weighting_area</span>(<span class="at">code_weighting =</span> mymuni, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">simplified =</span> F)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria dos setores censitarios</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ct <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_census_tract</span>(<span class="at">code_tract =</span> mymuni, </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                               <span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                               <span class="at">simplified =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># funcao para 'inclinar' mapa</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>rotate_data_geom <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">x_add =</span> <span class="dv">0</span>, <span class="at">y_add =</span> <span class="dv">0</span>) {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  shear_matrix <span class="ot">&lt;-</span> <span class="cf">function</span>(){ <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">1.2</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>) }</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  rotate_matrix <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">cos</span>(x), <span class="fu">sin</span>(x), <span class="sc">-</span><span class="fu">sin</span>(x), <span class="fu">cos</span>(x)), <span class="dv">2</span>, <span class="dv">2</span>) </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(data,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> geom <span class="sc">*</span> <span class="fu">shear_matrix</span>() <span class="sc">*</span> <span class="fu">rotate_matrix</span>(pi<span class="sc">/</span><span class="dv">20</span>) <span class="sc">+</span> <span class="fu">c</span>(x_add, y_add)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># annotate parameters</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="sc">-</span><span class="fl">116.03</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>clr <span class="ot">=</span> <span class="st">'gray40'</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>sz <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># MAP</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>temp1  <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># municipio</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> muni, <span class="at">y_add =</span> .<span class="dv">01</span>),</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="st">'#FCDE70'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Município'</span>, <span class="at">x=</span>x, <span class="at">y=</span><span class="sc">-</span><span class="fl">4.59</span>,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># areas de ponderacao</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ap, <span class="at">y_add =</span> .<span class="dv">07</span>), </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">'#ff7b7b'</span>, <span class="at">color=</span><span class="st">'#ff0000'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Áreas de</span><span class="sc">\n</span><span class="st">Ponderação'</span>, <span class="at">x=</span>x, <span class="at">y=</span> <span class="sc">-</span><span class="fl">4.53</span>,</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># setores censitarios</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ct, <span class="at">y_add =</span> <span class="fl">0.13</span>),</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="st">'gray98'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Setores</span><span class="sc">\n</span><span class="st">Censitários'</span>, <span class="at">x=</span>x, <span class="at">y=</span> <span class="sc">-</span><span class="fl">4.47</span>, </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">116.305</span>, <span class="sc">-</span><span class="fl">115.98</span>)) <span class="sc">+</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>, <span class="at">color=</span><span class="st">'white'</span>))</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>temp1</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave(temp1, filename = 'fig_spatial_layers.png', </span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co">#        width = 12, height = 8, units = 'cm', dpi = 300)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/fig_spatial_layers.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="550"></p>
+<figure class="figure">
+<p><img src="images/fig_spatial_layers.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="550"></p>
 </figure>
 </div>
 
 
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-ibge1990estatisticas" class="csl-entry" role="listitem">
 IBGE. 1990. <em>Estatisticas historicas do Brasil : series economicas demograficas e sociais de 1550 a 1988</em>. IBGE. <a href="https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=221431">https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=221431</a>.
 </div>
-</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -861,8 +898,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./09_censobr_intro.html" class="pagination-link  aria-label=" explorando="" o="" censo="" demogr="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09_censobr_intro.html" class="pagination-link  aria-label=" explorando="" o="" censo="" demográfico"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Explorando o Censo Demográfico</span>
       </a>          
   </div>
@@ -873,6 +912,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
