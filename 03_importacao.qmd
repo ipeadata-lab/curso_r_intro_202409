@@ -3,7 +3,6 @@
 title: "Importando dados"
 code-link: true
 code-annotations: hover
-
 ---
 
 ::: callout
@@ -32,6 +31,45 @@ Nesta etapa, vamos aprender:
 
 Ao final, teremos também uma lista com sugestão de materiais extras, caso queira aprofundar mais sobre o assunto.
 
+## Arquivos que utilizaremos
+
+Para os exemplos de importação de dados, vamos utilizar alguns arquivos que estão disponíveis no repositório do curso.
+
+Para fazer download dos arquivos, verifique se está no projeto criado para o curso, e se sim, copie o código e abaixo, cole e execute-o no console:
+
+```{r}
+#| eval: false
+#| collapse: true
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv",
+  destfile = "dados/sidrar_4092_bruto_2.csv")
+
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv",
+  destfile = "dados/sidrar_4092_bruto.csv")
+
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx", 
+  destfile = "dados/sidrar_4092_bruto.xlsx")
+
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds", 
+  destfile = "dados/sidrar_4092_bruto.rds")
+```
+
+É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função `dir()` para listar os arquivos no diretório `dados`:
+
+```{r}
+#| eval: false
+dir("dados")
+```
+
+```
+"sidrar_4092_bruto_2.csv" 
+"sidrar_4092_bruto.csv"
+"sidrar_4092_bruto.rds"  
+"sidrar_4092_bruto.xlsx"
+```
 
 ## Importando dados de um arquivo local
 
@@ -73,7 +111,7 @@ Ao importar, uma mensagem aparecerá no console apresentando algumas informaçõ
 
 ```{r}
 # Importando dados de um arquivo .csv
-dados_csv <- read_csv("dados/sidrar_4092.csv")
+dados_csv <- read_csv("dados/sidrar_4092_bruto.csv")
 ```
 
 #### Arquivo de texto separado por ponto e vírgula (`;`)
@@ -81,7 +119,7 @@ dados_csv <- read_csv("dados/sidrar_4092.csv")
 ```{r}
 # Importando dados de um arquivo .csv
 # Com separador ponto e vírgula
-dados_csv_2 <- read_csv2("dados/sidrar_4092_2.csv")
+dados_csv_2 <- read_csv2("dados/sidrar_4092_bruto_2.csv")
 ```
 
 ### Arquivos Excel (ex: `.xlsx`)
@@ -96,14 +134,14 @@ library(readxl)
 A função `excel_sheets()` do pacote `{readxl}` retorna o nome das planilhas (*Sheets*) disponíveis em um arquivo Excel:
 
 ```{r}
-excel_sheets("dados/sidrar_4092.xlsx")
+excel_sheets("dados/sidrar_4092_bruto.xlsx")
 ```
 
 A função `read_excel()` do pacote `{readxl}` permite a leitura de uma planilha específica de um arquivo Excel, utilizando o argumento `sheet` para especificar o nome da planilha. Caso o argumento `sheet` não seja fornecido, a função importará a primeira planilha do arquivo.
 
 ```{r}
 # Importando dados de uma planilha do Excel
-dados_excel <- read_excel("dados/sidrar_4092.xlsx", sheet = "Sheet1")
+dados_excel <- read_excel("dados/sidrar_4092_bruto.xlsx", sheet = "Sheet1")
 ```
 
 
@@ -112,10 +150,8 @@ dados_excel <- read_excel("dados/sidrar_4092.xlsx", sheet = "Sheet1")
 A função `read_rds()` do pacote `{readr}` permite importar um arquivo binário do R.
 
 
-
-
 ```{r}
-dados <- read_rds("dados/sidrar_4092.rds")
+dados <- read_rds("dados/sidrar_4092_bruto.rds")
 ```
 
 
@@ -166,7 +202,7 @@ A função `write_csv2()` premite a escrita de arquivos `.csv` com separador `;`
 
 ```{r}
 #| eval: false
-write_csv2(dados, "dados_output/sidrar_4092.csv")
+write_csv2(dados, "dados_output/sidrar_4092_bruto.csv")
 ```
 
 ### Arquivo excel (ex: `.xlsx`)
@@ -176,7 +212,7 @@ A função `write_xlsx()` do pacote `{writexl}` permite a escrita de arquivos do
 ```{r}
 #| eval: false
 library(writexl)
-write_xlsx(dados, "dados_output/sidrar_4092.csv")
+write_xlsx(dados, "dados_output/sidrar_4092_bruto.csv")
 ```
 
 ### Arquivo binário do R (`.rds`)
@@ -186,7 +222,7 @@ A função `write_rds()` do pacote `{readr}` permite salvar um objeto do R em um
 Esse tipo de arquivo é útil para salvar objetos do R, como dataframes, listas, vetores, sem perder a estrutura do objeto. 
 
 ```{r}
-write_rds(dados, "dados_output/sidrar_4092.rds")
+write_rds(dados, "dados_output/sidrar_4092_bruto.rds")
 ```
 
 ## Importando dados usando pacotes de dados
