@@ -84,6 +84,7 @@ Outra forma é consultar o *Painel Environment* no RStudio, que exibe todos os o
 Caso queira remover um objeto, podemos usar a função `rm()` (*remove objects*). Por exemplo, para remover o objeto `pkgs`:
 
 ```{r}
+#| eval: false
 rm(nome_do_curso)
 ```
 
@@ -144,21 +145,147 @@ objeto-1 <- "exemplo"
 
 [^1]: A documentação da função `snakecase::to_any_case()` fornece uma lista de estilos de nomenclatura disponíveis no pacote `snakecase`.
 
-<!-- -->
-
 -   Utilizar nomes descritivos, que indiquem o conteúdo do objeto. Isso facilita a leitura do código, e a manutenção do código por outras pessoas.
 
-## Tipos de objetos: vetores, matrizes, listas, data frames
 
-Os objetos podem ser de diferentes tipos, como vetores, matrizes, listas, data frames, etc.
 
-## Tipologia dos dados (lógico, numérico, caracter, fator)
+## Tipos de dados
 
-## Tipo de dados e conversões
+ Existem diferentes tipos de dados que podemos armazenar em objetos no R, como números, textos, lógicos, fatores, datas, entre outros.
+
+É muito importante identificar o tipo de dado que estamos trabalhando, pois cada tipo de dado permite usar funções específicas.
+
+A função `class()` permite verificar a classe de um objeto. Por exemplo, podemos verificar a classe do objeto `pi`:
+
+```{r}
+class(pi)
+```
+
+### Numérico
+
+Os objetos numéricos no R podem ser de dois tipos:
+
+  - inteiros (*integer*): armazena apenas números inteiros, ou seja, sem casas decimais. Ex: 1, 2, 3, 4, 5.
+
+  - numéricos (*numeric* ou *double*): armazena números que podem conter casas decimais. Ex: 1, 2, **3.14**, 4, 5.
+  
+Na maioria dos casos, utilizamos o tipo *numeric* para armazenar números, pois ele é mais flexível.
+
+Por exemplo, para criar um objeto que armazena o número 42:
+
+```{r}
+exemplo_numero <- 42
+class(exemplo_numero)
+```
+
+Para criar um objeto que armazena um valor usado para converter dólar em reais (R$), podemos usar o tipo `numeric`:
+
+```{r}
+conversao_dolar <- 5.45
+class(conversao_dolar)
+```
+
+### Lógico (binário)
+
+O tipo lógico (*logical*) armazena valores binários: `TRUE` (verdadeiro) ou `FALSE` (falso). Os valores binários podem ser convertidos para números, onde `TRUE` será 1, e `FALSE` será 0.
+
+
+Por exemplo, para criar objetos com os valores lógicos `TRUE` e `FALSE`:
+
+```{r}
+exemplo_logico_verdadeiro <- TRUE
+class(exemplo_logico_verdadeiro)
+
+exemplo_logico_falso <- FALSE
+class(exemplo_logico_falso)
+```
+
+
+### Character (texto)
+
+O tipo texto (*character*, ou também conhecido como *string*) armazena textos. Para criar um objeto com um texto, precisamos colocar o texto entre aspas:
+
+```{r}
+nome_do_curso <- "Introdução à análise de dados no R"
+class(nome_do_curso)
+```
+
+
+
+### Fator (categórico)
+
+O tipo fator (*factor*) armazena variáveis categóricas, ou seja, variáveis que possuem um número limitado de categorias. Os valores possíveis de categoria são chamados de *levels*. Os fatores podem ser ordenados ou não ordenados.
+
+Os fatores são muito úteis para a visualização de dados e para alguns modelos usados em análise de dados.
+
+Neste momento, não vamos aprofundar no conceito de fatores: falaremos mais sobre eles nas próximas aulas.
+
+
+### Datas
+
+O tipo data (*date*) armazena datas no formato `aaaa-mm-dd` (ano-mês-dia). 
+
+Para criar um objeto com uma data, podemos usar a função `as.Date()`, que converte um texto para o tipo *date*. Por exemplo, para criar um objeto com a data de início do curso:
+
+```{r}
+data_inicio_curso <- as.Date("2024-10-01")
+class(data_inicio_curso)
+```
+
+
+A função `Sys.Date()` retorna a data atual do sistema:
+
+```{r}
+data_sistema <- Sys.Date()
+class(data_sistema)
+```
+
+Podemos fazer operações com datas:
+
+```{r}
+data_inicio_curso - data_sistema
+```
+
+
+## Conversões entre tipos de dados
+
+...
 
 Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`, etc.
 
-## Valores faltantes (NA)
+## Tipos de objetos
+
+Existem diferentes tipos de objetos no R, e cada tipo de objeto possui diferentes propriedades. Os principais tipos de objetos são: vetores, matrizes, data.frames e listas. 
+
+
+### Vetores
+
+Vetores armazenam um conjunto de valores. Eles podem ser criados com a função `c()`, que significa *combine* (combinar). Por exemplo, para criar um vetor com os números de 1 a 5:
+
+```{r}
+vetor_de_numeros <- c(1, 2, 3, 4, 5)
+```
+
+Os vetores podem armazenar diferentes tipos de valores, como números, textos, fatores, entre outros. Por exemplo, para criar um vetor com números e textos:
+
+### Matrizes
+
+...
+
+### Data.frames
+
+
+...
+
+
+### Listas
+
+...
+
+
+## Valores faltantes (`NA`)
+
+...
 
 ## Sugestões de materiais
 
