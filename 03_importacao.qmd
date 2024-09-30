@@ -1,7 +1,6 @@
 ---
 # Importação e exportação de dados
 title: "Importando dados"
-code-link: true
 code-annotations: hover
 ---
 

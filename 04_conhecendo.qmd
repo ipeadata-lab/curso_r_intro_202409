@@ -1,6 +1,5 @@
 ---
 title: "Conhecendo a base de dados"
-code-link: true
 ---
 
 ::: callout
