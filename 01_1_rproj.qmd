@@ -1,17 +1,107 @@
 ---
 # Iniciar um trabalho com o R e o Rstudio
-title: "Projetos no RStudio"
+title: "Diretório de trabalho e Projetos"
 ---
 
-:::callout-warning
-Página em construção! Em breve. 
+Para conseguir [importar os dados](03_importacao.qmd) no R e salvar os resultados no computador, precisamos conhecer alguns conceitos importantes, como caminhos de arquivos, diretório de trabalho, e os projetos do RStudio. 
+
+## Caminhos de arquivos
+
+Quando queremos importar um arquivo no R, precisamos informar para o R um texto que indica onde o arquivo está localizado no computador, partindo de uma pasta de referência. Esse texto é chamado de **caminho**.
+
+Por exemplo:
+
+```{r}
+"/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409/dados/sidrar_4092_bruto.xlsx"
+```
+
+Os caminhos podem ser **absolutos** ou **relativos**. 
+
+- **Caminho absoluto**: é o caminho completo, desde a raiz do computador até o arquivo ou pasta desejada. Por exemplo:  `"/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409/dados/sidrar_4092_bruto.xlsx`.
+
+- **Caminho relativo**: é o caminho a partir de uma pasta de referência. No geral, a pasta de referência é o diretório de trabalho, um conceito que veremos a seguir. Por exemplo, `dados/sidrar_4092_bruto.xlsx`.
+
+
+**Utilizar caminhos relativos é uma boa prática**, pois queremos que o código funcione em diferentes computadores.Se usarmos caminhos absolutos, dificilmente o código funcionará em outros computadores, pois as pessoas podem ter organizado os arquivos de forma diferente. Ao usar caminhos relativos, o código funcionará em qualquer computador.
+
+## Diretório de trabalho
+
+No R, o diretório de trabalho (*working directory*) é o diretório (uma pasta no computador) onde o R irá partir quando precisarmos interagir com os arquivos do computador: buscar os arquivos que queremos importar, salvar arquivos, entre outros.
+
+Para saber qual é o diretório de trabalho atual, podemos usar a função `getwd()`:
+
+```{r}
+getwd()
+```
+
+## Projetos do RStudio
+
+O RStudio possui uma funcionalidade chamada **projetos**. Quando criamos um projeto no RStudio, uma nova pasta é criada no computador, e o RStudio define essa pasta como o diretório de trabalho. Além disso, o RStudio também cria um arquivo com a extensão `.Rproj` dentro dessa pasta, que contém informações sobre o projeto.
+
+
+É recomendado que sempre trabalhemos em projetos no RStudio, pois isso facilita a organização dos arquivos e a reprodução do código. 
+
+É recomendado também salvar os arquivos referentes ao projeto (como scripts, bases de dados, resultados, etc) dentro do projeto. Isso não significa que precisamos colocar todos os arquivos dentro da pasta principal do projeto: podemos criar sub-pastas para organizar os arquivos.
+
+
+Para criar um projeto no RStudio, primeiro precisamos acessar o menu de criação de projetos (*New project Wizard*). Podemos fazer isso de três formas:
+
+- No menu superior, clicando em `File > New Project...`
+
+- Clicando no ícone de novo projeto na barra de ferramentas do RStudio: ![](images/01_icone_novo_proj.png)
+
+- No canto superior esquerdo, clicando no botão referente à projetos, e depois em `New Project...`: 
+
+![Captura de tela do RStudio: Menu de projetos](images/01_botao_projetos.png){fig-align="center"}
+
+Depois, escolhemos o tipo de projeto que queremos criar. No geral, escolhemos a opção `New Directory`, para criar uma nova pasta no computador:
+
+![Captura de tela do RStudio: Criando um projeto](images/01_new_project.png){fig-align="center"}
+
+Depois, escolhemos o tipo de projeto que queremos criar. Cada tipo de projeto apresenta arquivos específicos de template. O RStudio apresenta algumas opções de projeto, porém é possível adicionar novos tipos de projeto instalandos pacotes específicos. 
+
+No geral, escolhemos a opção `New Project`, para criar um projeto simples:
+
+![Captura de tela do RStudio: Escolhendo o tipo de projeto](images/01_new_project_type.png){fig-align="center"}
+
+Na tela seguinte, precisamos informar o nome do projeto (no campo *Directory name*) e o diretório onde ele será criado (no campo *Create project as subdirectory of*):
+
+![Captura de tela do RStudio: Nomeando o projeto](images/01_new_project_name_dir.png){fig-align="center"}
+
+Após preencher as informações solicitadas, clicamos em `Create Project`. O RStudio criará o projeto e o abrirá:
+
+![Captura de tela do RStudio: projeto criado](images/01_projeto_criado.png){fig-align="center"}
+
+::: callout-tip
+**Note que o nome do projeto que criamos aparece no canto superior direito do RStudio.** 
 :::
 
-<!-- ## Working directory e Rproject -->
+## Abrindo um projeto
 
-<!-- No R, o working directory é o diretório em que os arquivos serão salvos e lidos.  -->
+**Sempre que abrir o RStudio, verifique se você está com o projeto correto aberto**. Se não estiver, abra o projeto clicando no ícone de projetos e depois em `Open Project`.
 
-<!-- Mas o uso de Rprojects é ainda mais eficiente. Sempre que criar um novo projeto no RStudio, ele criará um arquivo .Rproj na pasta do projeto e definirá o diretório automaticamente. -->
+
+![](images/01_abrir_projeto.png){fig-align="center}
+
+
+Você também pode abrir um projeto encontrando-o no seu computador e clicando duas vezes no arquivo `.Rproj`.
+
+
+## Criando um projeto para o curso
+
+Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso. Esse projeto será usado em todas as aulas.
+
+1. Crie um projeto no RStudio, seguindo os passos acima. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.
+
+2. Verifique se está no projeto correto. Para isso, verifique se o nome do projeto criado aparece no canto superior direito do RStudio.
+
+3. Vamos criar algumas pastas para manter o conteúdo organizado. Essas pastas devem ser criadas dentro do projeto que acabamos de criar. Você pode criar as pastas diretamente no seu computador, ou pode criar as pastas usando a função `dir.create("nome_da_pasta")`.
+    - `dados/`: bases de dados brutas que usaremos no curso.
+    - `dados-output/`: bases de dados que criaremos no curso (ex: bases de dados arrumadas).
+    - `scripts/`: scripts que criaremos no curso.
+    - `graficos/`: gráficos que criaremos no curso.
+
+
 
 ## Sugestões de materiais
 
