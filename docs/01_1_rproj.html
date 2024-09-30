@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Introdução à análise de dados no R - Projetos no RStudio</title>
+<title>Introdução à análise de dados no R - Diretório de trabalho e Projetos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,8 +70,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -67,35 +96,25 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script>
-
-
-<link rel="stylesheet" href="styles.css">
+}</script><link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./01_1_rproj.html">Projetos no RStudio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./01_1_rproj.html">Diretório de trabalho e Projetos</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -110,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -118,8 +137,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -138,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -147,8 +166,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -157,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_1_rproj.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Projetos no RStudio</span></a>
+ <span class="menu-text">Diretório de trabalho e Projetos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -197,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -206,8 +225,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explorando o Censo Demográfico</span></a>
@@ -238,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -247,29 +266,34 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+<li><a href="#caminhos-de-arquivos" id="toc-caminhos-de-arquivos" class="nav-link active" data-scroll-target="#caminhos-de-arquivos">Caminhos de arquivos</a></li>
+  <li><a href="#diret%C3%B3rio-de-trabalho" id="toc-diretório-de-trabalho" class="nav-link" data-scroll-target="#diret%C3%B3rio-de-trabalho">Diretório de trabalho</a></li>
+  <li><a href="#projetos-do-rstudio" id="toc-projetos-do-rstudio" class="nav-link" data-scroll-target="#projetos-do-rstudio">Projetos do RStudio</a></li>
+  <li><a href="#abrindo-um-projeto" id="toc-abrindo-um-projeto" class="nav-link" data-scroll-target="#abrindo-um-projeto">Abrindo um projeto</a></li>
+  <li><a href="#criando-um-projeto-para-o-curso" id="toc-criando-um-projeto-para-o-curso" class="nav-link" data-scroll-target="#criando-um-projeto-para-o-curso">Criando um projeto para o curso</a></li>
+  <li><a href="#sugest%C3%B5es-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugest%C3%B5es-de-materiais">Sugestões de materiais</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./01_1_rproj.html">Projetos no RStudio</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Projetos no RStudio</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./01_1_rproj.html">Diretório de trabalho e Projetos</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Diretório de trabalho e Projetos</h1>
 </div>
 
 
@@ -283,30 +307,120 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<div class="callout callout-style-default callout-warning callout-titled">
+</header><p>Para conseguir <a href="./03_importacao.html">importar os dados</a> no R e salvar os resultados no computador, precisamos conhecer alguns conceitos importantes, como caminhos de arquivos, diretório de trabalho, e os projetos do RStudio.</p>
+<section id="caminhos-de-arquivos" class="level2"><h2 class="anchored" data-anchor-id="caminhos-de-arquivos">Caminhos de arquivos</h2>
+<p>Quando queremos importar um arquivo no R, precisamos informar para o R um texto que indica onde o arquivo está localizado no computador, partindo de uma pasta de referência. Esse texto é chamado de <strong>caminho</strong>.</p>
+<p>Por exemplo:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="st">"/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409/dados/sidrar_4092_bruto.xlsx"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409/dados/sidrar_4092_bruto.xlsx"</code></pre>
+</div>
+</div>
+<p>Os caminhos podem ser <strong>absolutos</strong> ou <strong>relativos</strong>.</p>
+<ul>
+<li><p><strong>Caminho absoluto</strong>: é o caminho completo, desde a raiz do computador até o arquivo ou pasta desejada. Por exemplo: <code>"/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409/dados/sidrar_4092_bruto.xlsx</code>.</p></li>
+<li><p><strong>Caminho relativo</strong>: é o caminho a partir de uma pasta de referência. No geral, a pasta de referência é o diretório de trabalho, um conceito que veremos a seguir. Por exemplo, <code>dados/sidrar_4092_bruto.xlsx</code>.</p></li>
+</ul>
+<p><strong>Utilizar caminhos relativos é uma boa prática</strong>, pois queremos que o código funcione em diferentes computadores.Se usarmos caminhos absolutos, dificilmente o código funcionará em outros computadores, pois as pessoas podem ter organizado os arquivos de forma diferente. Ao usar caminhos relativos, o código funcionará em qualquer computador.</p>
+</section><section id="diretório-de-trabalho" class="level2"><h2 class="anchored" data-anchor-id="diretório-de-trabalho">Diretório de trabalho</h2>
+<p>No R, o diretório de trabalho (<em>working directory</em>) é o diretório (uma pasta no computador) onde o R irá partir quando precisarmos interagir com os arquivos do computador: buscar os arquivos que queremos importar, salvar arquivos, entre outros.</p>
+<p>Para saber qual é o diretório de trabalho atual, podemos usar a função <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409"</code></pre>
+</div>
+</div>
+</section><section id="projetos-do-rstudio" class="level2"><h2 class="anchored" data-anchor-id="projetos-do-rstudio">Projetos do RStudio</h2>
+<p>O RStudio possui uma funcionalidade chamada <strong>projetos</strong>. Quando criamos um projeto no RStudio, uma nova pasta é criada no computador, e o RStudio define essa pasta como o diretório de trabalho. Além disso, o RStudio também cria um arquivo com a extensão <code>.Rproj</code> dentro dessa pasta, que contém informações sobre o projeto.</p>
+<p>É recomendado que sempre trabalhemos em projetos no RStudio, pois isso facilita a organização dos arquivos e a reprodução do código.</p>
+<p>É recomendado também salvar os arquivos referentes ao projeto (como scripts, bases de dados, resultados, etc) dentro do projeto. Isso não significa que precisamos colocar todos os arquivos dentro da pasta principal do projeto: podemos criar sub-pastas para organizar os arquivos.</p>
+<p>Para criar um projeto no RStudio, primeiro precisamos acessar o menu de criação de projetos (<em>New project Wizard</em>). Podemos fazer isso de três formas:</p>
+<ul>
+<li><p>No menu superior, clicando em <code>File &gt; New Project...</code></p></li>
+<li><p>Clicando no ícone de novo projeto na barra de ferramentas do RStudio: <img src="images/01_icone_novo_proj.png" class="img-fluid"></p></li>
+<li><p>No canto superior esquerdo, clicando no botão referente à projetos, e depois em <code>New Project...</code>:</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/01_botao_projetos.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio: Menu de projetos</figcaption></figure>
+</div>
+<p>Depois, escolhemos o tipo de projeto que queremos criar. No geral, escolhemos a opção <code>New Directory</code>, para criar uma nova pasta no computador:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/01_new_project.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio: Criando um projeto</figcaption></figure>
+</div>
+<p>Depois, escolhemos o tipo de projeto que queremos criar. Cada tipo de projeto apresenta arquivos específicos de template. O RStudio apresenta algumas opções de projeto, porém é possível adicionar novos tipos de projeto instalandos pacotes específicos.</p>
+<p>No geral, escolhemos a opção <code>New Project</code>, para criar um projeto simples:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/01_new_project_type.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio: Escolhendo o tipo de projeto</figcaption></figure>
+</div>
+<p>Na tela seguinte, precisamos informar o nome do projeto (no campo <em>Directory name</em>) e o diretório onde ele será criado (no campo <em>Create project as subdirectory of</em>):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/01_new_project_name_dir.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio: Nomeando o projeto</figcaption></figure>
+</div>
+<p>Após preencher as informações solicitadas, clicamos em <code>Create Project</code>. O RStudio criará o projeto e o abrirá:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/01_projeto_criado.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio: projeto criado</figcaption></figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aviso
+Dica
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Página em construção! Em breve.</p>
+<p><strong>Note que o nome do projeto que criamos aparece no canto superior direito do RStudio.</strong></p>
 </div>
 </div>
-<!-- ## Working directory e Rproject -->
-<!-- No R, o working directory é o diretório em que os arquivos serão salvos e lidos.  -->
-<!-- Mas o uso de Rprojects é ainda mais eficiente. Sempre que criar um novo projeto no RStudio, ele criará um arquivo .Rproj na pasta do projeto e definirá o diretório automaticamente. -->
+</section><section id="abrindo-um-projeto" class="level2"><h2 class="anchored" data-anchor-id="abrindo-um-projeto">Abrindo um projeto</h2>
+<p><strong>Sempre que abrir o RStudio, verifique se você está com o projeto correto aberto</strong>. Se não estiver, abra o projeto clicando no ícone de projetos e depois em <code>Open Project</code>.</p>
+<div class="quarto-figure quarto-figure-&quot;center">
+<figure class="figure"><p><img src="images/01_abrir_projeto.png" class="img-fluid quarto-figure quarto-figure-&quot;center figure-img"></p>
+</figure>
+</div>
+<p>Você também pode abrir um projeto encontrando-o no seu computador e clicando duas vezes no arquivo <code>.Rproj</code>.</p>
+</section><section id="criando-um-projeto-para-o-curso" class="level2"><h2 class="anchored" data-anchor-id="criando-um-projeto-para-o-curso">Criando um projeto para o curso</h2>
+<p>Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso. Esse projeto será usado em todas as aulas.</p>
+<ol type="1">
+<li><p>Crie um projeto no RStudio, seguindo os passos acima. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.</p></li>
+<li><p>Verifique se está no projeto correto. Para isso, verifique se o nome do projeto criado aparece no canto superior direito do RStudio.</p></li>
+<li>
+<p>Vamos criar algumas pastas para manter o conteúdo organizado. Essas pastas devem ser criadas dentro do projeto que acabamos de criar. Você pode criar as pastas diretamente no seu computador, ou pode criar as pastas usando a função <code>dir.create("nome_da_pasta")</code>.</p>
+<ul>
+<li>
+<code>dados/</code>: bases de dados brutas que usaremos no curso.</li>
+<li>
+<code>dados-output/</code>: bases de dados que criaremos no curso (ex: bases de dados arrumadas).</li>
+<li>
+<code>scripts/</code>: scripts que criaremos no curso.</li>
+<li>
+<code>graficos/</code>: gráficos que criaremos no curso.</li>
+</ul>
+</li>
+</ol></section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
+<ul>
+<li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
+<ul>
+<li><a href="https://cienciadedatos.github.io/pt-r4ds/workflow-scripts.html">Fluxo de Trabalho: scripts e projetos</a></li>
+</ul>
+</li>
+<li>Livro <a href="https://curso-r.github.io/zen-do-r/index.html">Zen do R</a>:
+<ul>
+<li><a href="https://curso-r.github.io/zen-do-r/rproj-dir.html">Capítulo Rproj e Diretórios</a></li>
+</ul>
+</li>
+</ul>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -710,10 +824,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./01_r_rstudio.html" class="pagination-link  aria-label=" conhecendo="" o="" r="" e="" rstudio"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./01_r_rstudio.html" class="pagination-link  aria-label=" conhecendo="" o="" r="" e="" rstudio="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conhecendo o R e o RStudio</span>
       </a>          
   </div>
@@ -724,7 +836,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
