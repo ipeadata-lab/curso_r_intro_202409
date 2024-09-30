@@ -390,22 +390,40 @@ Dica
 </section><section id="criando-um-projeto-para-o-curso" class="level2"><h2 class="anchored" data-anchor-id="criando-um-projeto-para-o-curso">Criando um projeto para o curso</h2>
 <p>Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso. Esse projeto será usado em todas as aulas.</p>
 <ol type="1">
-<li><p>Crie um projeto no RStudio, seguindo os passos acima. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.</p></li>
+<li><p>Crie um projeto no RStudio, seguindo os passos acima. Use um nome que descreva o conteúdo do projeto, por exemplo: <code>curso_r_intro_ipea_2024</code>. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.</p></li>
 <li><p>Verifique se está no projeto correto. Para isso, verifique se o nome do projeto criado aparece no canto superior direito do RStudio.</p></li>
 <li>
-<p>Vamos criar algumas pastas para manter o conteúdo organizado. Essas pastas devem ser criadas dentro do projeto que acabamos de criar. Você pode criar as pastas diretamente no seu computador, ou pode criar as pastas usando a função <code>dir.create("nome_da_pasta")</code>.</p>
+<p>Vamos criar algumas pastas para manter o conteúdo organizado. Essas pastas devem ser criadas dentro do projeto que acabamos de criar.</p>
 <ul>
 <li>
 <code>dados/</code>: bases de dados brutas que usaremos no curso.</li>
 <li>
-<code>dados-output/</code>: bases de dados que criaremos no curso (ex: bases de dados arrumadas).</li>
+<code>dados_output/</code>: bases de dados que criaremos no curso (ex: bases de dados arrumadas).</li>
 <li>
 <code>scripts/</code>: scripts que criaremos no curso.</li>
 <li>
 <code>graficos/</code>: gráficos que criaremos no curso.</li>
 </ul>
 </li>
-</ol></section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
+</ol>
+<p>Você pode criar as pastas diretamente no seu computador, ou pode criar as pastas usando a função <code>dir.create("nome_da_pasta")</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"dados"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"dados_output"</span><span class="op">)</span> <span class="co"># atenção: não use espaços nos nomes das pastas</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"scripts"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"graficos"</span><span class="op">)</span> <span class="co"># atenção: não use acentos ou caracteres especiais nos nomes das pastas</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Após criar as pastas, o seu projeto deve ter uma estrutura parecida com essa:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>.
+├── curso_r_intro_ipea_2024.Rproj
+├── dados
+├── dados_output
+├── scripts
+└── graficos</code></pre>
+</section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
 <li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
 <ul>

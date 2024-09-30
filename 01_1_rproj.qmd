@@ -91,16 +91,43 @@ Você também pode abrir um projeto encontrando-o no seu computador e clicando d
 
 Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso. Esse projeto será usado em todas as aulas.
 
-1. Crie um projeto no RStudio, seguindo os passos acima. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.
+1. Crie um projeto no RStudio, seguindo os passos acima. Use um nome que descreva o conteúdo do projeto, por exemplo: `curso_r_intro_ipea_2024`. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.
 
 2. Verifique se está no projeto correto. Para isso, verifique se o nome do projeto criado aparece no canto superior direito do RStudio.
 
-3. Vamos criar algumas pastas para manter o conteúdo organizado. Essas pastas devem ser criadas dentro do projeto que acabamos de criar. Você pode criar as pastas diretamente no seu computador, ou pode criar as pastas usando a função `dir.create("nome_da_pasta")`.
+3. Vamos criar algumas pastas para manter o conteúdo organizado. Essas pastas devem ser criadas dentro do projeto que acabamos de criar. 
     - `dados/`: bases de dados brutas que usaremos no curso.
-    - `dados-output/`: bases de dados que criaremos no curso (ex: bases de dados arrumadas).
+    - `dados_output/`: bases de dados que criaremos no curso (ex: bases de dados arrumadas).
     - `scripts/`: scripts que criaremos no curso.
     - `graficos/`: gráficos que criaremos no curso.
 
+
+Você pode criar as pastas diretamente no seu computador, ou pode criar as pastas usando a função `dir.create("nome_da_pasta")`:
+
+```{r}
+#| eval: false
+dir.create("dados")
+dir.create("dados_output") # atenção: não use espaços nos nomes das pastas
+dir.create("scripts")
+dir.create("graficos") # atenção: não use acentos ou caracteres especiais nos nomes das pastas
+```
+
+Após criar as pastas, o seu projeto deve ter uma estrutura parecida com essa:
+
+
+```{r}
+#| eval: false
+fs::dir_tree()
+```
+
+```
+.
+├── curso_r_intro_ipea_2024.Rproj
+├── dados
+├── dados_output
+├── scripts
+└── graficos
+```
 
 
 ## Sugestões de materiais
