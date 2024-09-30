@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Introdução à análise de dados no R - Microdados do Censo</title>
 <style>
 code{white-space: pre-wrap;}
@@ -73,6 +76,7 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -90,7 +94,8 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -116,12 +121,18 @@ div.csl-indent {
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script><link rel="stylesheet" href="styles.css">
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -132,9 +143,13 @@ div.csl-indent {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -149,7 +164,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -157,8 +172,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -177,7 +192,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -186,8 +201,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -236,7 +251,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -245,8 +260,8 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explorando o Censo Demográfico</span></a>
@@ -277,7 +292,7 @@ div.csl-indent {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -286,44 +301,46 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-<li><a href="#dados-dispon%C3%ADveis-no-censobr" id="toc-dados-disponíveis-no-censobr" class="nav-link active" data-scroll-target="#dados-dispon%C3%ADveis-no-censobr">Dados disponíveis no {censobr}</a></li>
+  <li><a href="#dados-disponíveis-no-censobr" id="toc-dados-disponíveis-no-censobr" class="nav-link active" data-scroll-target="#dados-disponíveis-no-censobr">Dados disponíveis no {censobr}</a></li>
   <li><a href="#trabalhando-com-dados-maior-do-que-a-ram" id="toc-trabalhando-com-dados-maior-do-que-a-ram" class="nav-link" data-scroll-target="#trabalhando-com-dados-maior-do-que-a-ram">Trabalhando com dados maior do que a RAM</a></li>
-  <li><a href="#dados-de-popula%C3%A7%C3%A3o" id="toc-dados-de-população" class="nav-link" data-scroll-target="#dados-de-popula%C3%A7%C3%A3o">Dados de população</a></li>
-  <li>
-<a href="#dados-de-domic%C3%ADlios" id="toc-dados-de-domicílios" class="nav-link" data-scroll-target="#dados-de-domic%C3%ADlios">Dados de domicílios</a>
+  <li><a href="#dados-de-população" id="toc-dados-de-população" class="nav-link" data-scroll-target="#dados-de-população">Dados de população</a></li>
+  <li><a href="#dados-de-domicílios" id="toc-dados-de-domicílios" class="nav-link" data-scroll-target="#dados-de-domicílios">Dados de domicílios</a>
   <ul>
-<li><a href="#saneamento" id="toc-saneamento" class="nav-link" data-scroll-target="#saneamento">Saneamento:</a></li>
-  </ul>
-</li>
-  <li><a href="#an%C3%A1lise-espacial-com-geobr" id="toc-análise-espacial-com-geobr" class="nav-link" data-scroll-target="#an%C3%A1lise-espacial-com-geobr">Análise espacial com {geobr}</a></li>
-  <li>
-<a href="#integra%C3%A7%C3%A3o-entre-censobr-e-geobr" id="toc-integração-entre-censobr-e-geobr" class="nav-link" data-scroll-target="#integra%C3%A7%C3%A3o-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</a>
+  <li><a href="#saneamento" id="toc-saneamento" class="nav-link" data-scroll-target="#saneamento">Saneamento:</a></li>
+  </ul></li>
+  <li><a href="#análise-espacial-com-geobr" id="toc-análise-espacial-com-geobr" class="nav-link" data-scroll-target="#análise-espacial-com-geobr">Análise espacial com {geobr}</a></li>
+  <li><a href="#integração-entre-censobr-e-geobr" id="toc-integração-entre-censobr-e-geobr" class="nav-link" data-scroll-target="#integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</a>
   <ul>
-<li><a href="#distribui%C3%A7%C3%A3o-espacial-do-valor-do-aluguel" id="toc-distribuição-espacial-do-valor-do-aluguel" class="nav-link" data-scroll-target="#distribui%C3%A7%C3%A3o-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</a></li>
-  </ul>
-</li>
+  <li><a href="#distribuição-espacial-do-valor-do-aluguel" id="toc-distribuição-espacial-do-valor-do-aluguel" class="nav-link" data-scroll-target="#distribuição-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</a></li>
+  </ul></li>
   <li><a href="#data-cache" id="toc-data-cache" class="nav-link" data-scroll-target="#data-cache">Data cache</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./11_censobr_microdados.html">Microdados do Censo</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./11_censobr_microdados.html">Microdados do Censo</a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title">Microdados do Censo</h1>
 </div>
 
@@ -338,7 +355,11 @@ div.csl-indent {
   
 
 
-</header><section id="dados-disponíveis-no-censobr" class="level2"><h2 class="anchored" data-anchor-id="dados-disponíveis-no-censobr">Dados disponíveis no {censobr}</h2>
+</header>
+
+
+<section id="dados-disponíveis-no-censobr" class="level2">
+<h2 class="anchored" data-anchor-id="dados-disponíveis-no-censobr">Dados disponíveis no {censobr}</h2>
 <p>A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o <strong>{censobr}</strong>.</p>
 <p><strong>Tabela 1. Funções de dados disponíveis no {censobr}</strong></p>
 
@@ -347,7 +368,7 @@ div.csl-indent {
   <!-- <meta charset="UTF-8"> -->
   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
+    <style>
         table {
             width: 100%;
             border-collapse: collapse;
@@ -360,6 +381,10 @@ div.csl-indent {
             text-align: center;
         }
     </style>
+
+
+
+
 <table data-quarto-postprocess="true" data-border="1" data-cellpadding="5" data-cellspacing="0" class="table">
 <thead>
 <tr class="header">
@@ -460,16 +485,20 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
+
+
+
+
 <p>Todas as funções do <strong>{censobr}</strong> para leitura de microdados possuem a mesma estrutra (sintaxe), o que permite o usuário baixar os dados de maneira fácil e intuitiva com um único comando. As funções possuem os seguintes parâmetros:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">read_households</span><span class="op">(</span></span>
-<span>  <span class="va">year</span>,          <span class="co"># ano de referência do censo</span></span>
-<span>  <span class="va">columns</span>,       <span class="co"># seleciona colunas que devem ser lidas</span></span>
-<span>  <span class="va">add_labels</span>,    <span class="co"># adiciona os 'labels' das variáveis categóricas</span></span>
-<span>  <span class="va">as_data_frame</span>, <span class="co"># retorna resultado como um `Arrow DataSet` ou `data.frame`</span></span>
-<span>  <span class="va">showProgress</span>,  <span class="co"># mostra barra de progresso do download</span></span>
-<span>  <span class="va">cache</span>          <span class="co"># salva arquivo em cache para rapida leitura posteriormente</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_households</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  year,          <span class="co"># ano de referência do censo</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  columns,       <span class="co"># seleciona colunas que devem ser lidas</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  add_labels,    <span class="co"># adiciona os 'labels' das variáveis categóricas</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  as_data_frame, <span class="co"># retorna resultado como um `Arrow DataSet` ou `data.frame`</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  showProgress,  <span class="co"># mostra barra de progresso do download</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  cache          <span class="co"># salva arquivo em cache para rapida leitura posteriormente</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -484,34 +513,39 @@ Cache local dos dados
 <p>A primeira vez que o usuário executa uma função, o <strong>{censobr}</strong> fará o download dos dados e os armazenará localmente numa pasta do pacote. Dessa forma, os dados precisam ser baixados apenas uma vez. Mais informações na seção <em>Cache de Dados</em> abaixo.</p>
 </div>
 </div>
-</section><section id="trabalhando-com-dados-maior-do-que-a-ram" class="level2"><h2 class="anchored" data-anchor-id="trabalhando-com-dados-maior-do-que-a-ram">Trabalhando com dados maior do que a RAM</h2>
+</section>
+<section id="trabalhando-com-dados-maior-do-que-a-ram" class="level2">
+<h2 class="anchored" data-anchor-id="trabalhando-com-dados-maior-do-que-a-ram">Trabalhando com dados maior do que a RAM</h2>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
+<figure class="figure">
+<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
 </figure>
 </div>
 <p>É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM do usuário. Para resolver esse problema, o <strong>{censobr}</strong> foi construído sobre a plataforma <a href="https://arrow.apache.org/docs/r/">Arrow</a> e arquivos em formato <code>.parquet</code>, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote <a href="https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr">{dplyr}</a>.</p>
 <p>Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que usamos.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># carrega bibliotecas</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/censobr">censobr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/">arrow</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carrega bibliotecas</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censobr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="dados-de-população" class="level2"><h2 class="anchored" data-anchor-id="dados-de-população">Dados de população</h2>
-<p>Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função <code><a href="https://ipeagit.github.io/censobr/reference/read_population.html">read_population()</a></code> para carregar os microdados de população.</p>
+</section>
+<section id="dados-de-população" class="level2">
+<h2 class="anchored" data-anchor-id="dados-de-população">Dados de população</h2>
+<p>Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função <code>read_population()</code> para carregar os microdados de população.</p>
 <p>O comportamento padrão das funções do <strong>{censobr}</strong> é retornar <em>todas</em> as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar. Neste caso, usaremos somente as variáveis de peso amostral, sexo e idade (códigos <code>"V0010"</code>, <code>"V0601"</code> e <code>"V6036"</code>, respectivamente). No último capítulo do curso a gente vai ver como baixar os dicionários variáveis dos censos.</p>
 <div class="cell">
-<div class="sourceCode" id="annotated-cell-3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipeagit.github.io/censobr/reference/read_population.html">read_population</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">2010</span>,</span>
-<span>  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'V0010'</span>, <span class="st">'V0601'</span>, <span class="st">'V6036'</span><span class="op">)</span>,</span>
-<span>  add_labels <span class="op">=</span> <span class="st">'pt'</span>,</span>
-<span>  showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">read_population</span>(</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">'V0010'</span>, <span class="st">'V0601'</span>, <span class="st">'V6036'</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">add_labels =</span> <span class="st">'pt'</span>,</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">showProgress =</span> <span class="cn">FALSE</span></span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(pop)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
-<dl>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">Aumentando eficiência ao ler apenas as colunas que vamos usar</span>
@@ -527,11 +561,11 @@ Cache local dos dados
 </div>
 </div>
 <p>Ao rodar o comando <code>nrow(pop)</code>, você verá que a tabela de microdados de população do Censo de 2010 tinha mais de vinte milhões de observações (<code>20.635.472</code>), mas essas observações não estão carregadas na sua memória RAM. Isso porque, por padrão, a saída da função é um <code>"arrow_dplyr_query"</code> ou <code>"ArrowObject"</code>. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Note que se você passar o parâmetro <code>as_data_frame = TRUE</code>, a função carregará os dados como um <code>data.frame</code> na memória RAM. <strong><em>Atenção</em></strong>: isso pode fazer com que a sessão do R trave em ambientes com pouca memória.</p>
-<p>Esse output em arrow pode ser analisado de maneira similar a como se analisaria um <code>data.frame</code> utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas e resultados extraídos quando o usuário roda a função <code><a href="https://dplyr.tidyverse.org/reference/compute.html">dplyr::collect()</a></code>.</p>
-<p>Neste exemplo, abaixo, nós visualizamos as primeiras linhas 6 da tabela de dados com <code>head(pop)</code>, e somente essas poucas observações são carregas para memória com o commando <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>:</p>
+<p>Esse output em arrow pode ser analisado de maneira similar a como se analisaria um <code>data.frame</code> utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas e resultados extraídos quando o usuário roda a função <code>dplyr::collect()</code>.</p>
+<p>Neste exemplo, abaixo, nós visualizamos as primeiras linhas 6 da tabela de dados com <code>head(pop)</code>, e somente essas poucas observações são carregas para memória com o commando <code>collect()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     V0010     V0601 V6036
 1 4.281183  Feminino    31
@@ -544,28 +578,28 @@ Cache local dos dados
 </div>
 <p>O próximo passo para criamos nossa pirâmide populacional é criar um variável categória com grupos de idade. No exemplo abaix, nós utilizadmos grupos de 5 anos.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    age_group <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>      <span class="va">V6036</span> <span class="op">&lt;=</span> <span class="fl">04</span>              <span class="op">~</span> <span class="st">"00-05"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">05</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">10</span> <span class="op">~</span> <span class="st">"05-10"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">10</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">15</span> <span class="op">~</span> <span class="st">"10-15"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">15</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">20</span> <span class="op">~</span> <span class="st">"15-20"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">20</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">25</span> <span class="op">~</span> <span class="st">"20-25"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">25</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">30</span> <span class="op">~</span> <span class="st">"25-30"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">30</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">35</span> <span class="op">~</span> <span class="st">"30-35"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">35</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">40</span> <span class="op">~</span> <span class="st">"35-40"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">40</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">45</span> <span class="op">~</span> <span class="st">"40-45"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">45</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">50</span> <span class="op">~</span> <span class="st">"45-50"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">50</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">55</span> <span class="op">~</span> <span class="st">"50-55"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">55</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">60</span> <span class="op">~</span> <span class="st">"55-60"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">60</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">65</span> <span class="op">~</span> <span class="st">"60-65"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">65</span> <span class="op">&amp;</span> <span class="va">V6036</span> <span class="op">&lt;</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"65-70"</span>,</span>
-<span>      <span class="va">V6036</span> <span class="op">&gt;=</span> <span class="fl">70</span>              <span class="op">~</span> <span class="st">"70+"</span></span>
-<span>      <span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&lt;=</span> <span class="dv">04</span>              <span class="sc">~</span> <span class="st">"00-05"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">05</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"05-10"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"10-15"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"15-20"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"20-25"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"25-30"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"30-35"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">35</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">40</span> <span class="sc">~</span> <span class="st">"35-40"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">40</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">"40-45"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"45-50"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">55</span> <span class="sc">~</span> <span class="st">"50-55"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">55</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"55-60"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"60-65"</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"65-70"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">70</span>              <span class="sc">~</span> <span class="st">"70+"</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      ))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      V0010     V0601 V6036 age_group
 1 13.207337 Masculino    16     15-20
@@ -576,15 +610,15 @@ Cache local dos dados
 6  9.683377 Masculino     1     00-05</code></pre>
 </div>
 </div>
-<p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada grupo. Repare que ao chamarmos a função <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>, o código é executado e retorna um <code>data.frame</code> com a contagem de pessoas por sexo e faixa de idade. Repare que nós processamos todos os mais de 20 milhões de registro do censo, mas só precisamos carregar na memória essa tabela com 30 observações.</p>
+<p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada grupo. Repare que ao chamarmos a função <code>collect()</code>, o código é executado e retorna um <code>data.frame</code> com a contagem de pessoas por sexo e faixa de idade. Repare que nós processamos todos os mais de 20 milhões de registro do censo, mas só precisamos carregar na memória essa tabela com 30 observações.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># cacula tabela de contagem de pessoas por idade</span></span>
-<span><span class="va">piramide_df</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op">|&gt;</span></span>
-<span>               <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">V0601</span>, <span class="va">age_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>               <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>pop_count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">V0010</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>               <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">piramide_df</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cacula tabela de contagem de pessoas por idade</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(V0601, age_group) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarise</span>(<span class="at">pop_count =</span> <span class="fu">sum</span>(V0010)) <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">collect</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(piramide_df)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   V0601 [2]
@@ -600,56 +634,64 @@ Cache local dos dados
 </div>
 <p>Pronto, no último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove grupo com idade missing `NA`</span></span>
-<span><span class="va">piramide_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">piramide_df</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># transforma a contagem de mulheres para valores negativos</span></span>
-<span><span class="va">piramide_df</span> <span class="op">&lt;-</span> <span class="va">piramide_df</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>pop_count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">V0601</span> <span class="op">==</span> <span class="st">"Masculino"</span>, <span class="va">pop_count</span>, <span class="op">-</span><span class="va">pop_count</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># figura</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">piramide_df</span>,</span>
-<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pop_count</span> <span class="op">/</span> <span class="fl">1000</span>,</span>
-<span>           y <span class="op">=</span> <span class="va">age_group</span>,</span>
-<span>           fill <span class="op">=</span> <span class="va">V0601</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>name<span class="op">=</span><span class="st">""</span>, type<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#ffcb69"</span>,<span class="st">"#437297"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">}</span>,</span>
-<span>                     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8000</span>, <span class="op">-</span><span class="fl">4000</span>,<span class="fl">0</span>,<span class="fl">4000</span>, <span class="fl">8000</span><span class="op">)</span>,</span>
-<span>                     name <span class="op">=</span> <span class="st">"População (em milhares)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
-<span>    legend.position <span class="op">=</span> <span class="st">"top"</span>,</span>
-<span>    axis.title.y<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    panel.grid.major.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove grupo com idade missing `NA`</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> <span class="fu">filter</span>(piramide_df, <span class="sc">!</span><span class="fu">is.na</span>(age_group))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># transforma a contagem de mulheres para valores negativos</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> piramide_df <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_count =</span> <span class="fu">if_else</span>(V0601 <span class="sc">==</span> <span class="st">"Masculino"</span>, pop_count, <span class="sc">-</span>pop_count))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># figura</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> piramide_df,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> pop_count <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> age_group,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> V0601)) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name=</span><span class="st">""</span>, <span class="at">type=</span><span class="fu">c</span>(<span class="st">"#ffcb69"</span>,<span class="st">"#437297"</span>)) <span class="sc">+</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x){scales<span class="sc">::</span><span class="fu">comma</span>(<span class="fu">abs</span>(x))},</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">8000</span>, <span class="sc">-</span><span class="dv">4000</span>,<span class="dv">0</span>,<span class="dv">4000</span>, <span class="dv">8000</span>),</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"População (em milhares)"</span>) <span class="sc">+</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"grey90"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="11_censobr_microdados_files/figure-html/pop-pyramid-ggplot-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Pirâmide demográfica, Brasil, 2010</figcaption></figure>
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/pop-pyramid-ggplot-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Pirâmide demográfica, Brasil, 2010</figcaption>
+</figure>
 </div>
 </div>
 </div>
-</section><section id="dados-de-domicílios" class="level2"><h2 class="anchored" data-anchor-id="dados-de-domicílios">Dados de domicílios</h2>
-<section id="saneamento" class="level3"><h3 class="anchored" data-anchor-id="saneamento">Saneamento:</h3>
-<p>Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual a proporção de domicílios que estavam conectados à rede de esgoto nos municípios de cada região do Brasil. O primeiro passo é baixar os dados utilizando a função <code><a href="https://ipeagit.github.io/censobr/reference/read_households.html">read_households()</a></code>.</p>
+</section>
+<section id="dados-de-domicílios" class="level2">
+<h2 class="anchored" data-anchor-id="dados-de-domicílios">Dados de domicílios</h2>
+<section id="saneamento" class="level3">
+<h3 class="anchored" data-anchor-id="saneamento">Saneamento:</h3>
+<p>Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual a proporção de domicílios que estavam conectados à rede de esgoto nos municípios de cada região do Brasil. O primeiro passo é baixar os dados utilizando a função <code>read_households()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipeagit.github.io/censobr/reference/read_households.html">read_households</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>, </span>
-<span>                      showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dom <span class="ot">&lt;-</span> <span class="fu">read_households</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Agora vamos (1) agrupar as observações por região e município, (2) obter o número de domicílios conectados à rede de esgoto, (3) obter o número total de domicílios, (4) calcular a proporção de domicílios conectados e (5) coletar os resultados.</p>
 <div class="cell">
-<div class="sourceCode" id="annotated-cell-9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">esg</span> <span class="op">&lt;-</span> <span class="va">dom</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">compute</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name_region</span>, <span class="va">code_muni</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>rede <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">V0010</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">V0207</span><span class="op">==</span><span class="st">'1'</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                  total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">V0010</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cobertura <span class="op">=</span> <span class="va">rede</span> <span class="op">/</span> <span class="va">total</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">esg</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a>esg <span class="ot">&lt;-</span> dom <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">compute</span>() <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(name_region, code_muni) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">rede =</span> <span class="fu">sum</span>(V0010[<span class="fu">which</span>(V0207<span class="sc">==</span><span class="st">'1'</span>)]),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">total =</span> <span class="fu">sum</span>(V0010)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4">4</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">cobertura =</span> rede <span class="sc">/</span> total) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5">5</button><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">collect</span>()</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(esg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
-<dl>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="1">Agrupar as observações por região e município</span>
@@ -687,40 +729,46 @@ Cache local dos dados
 </div>
 <p>Uma rápida análise da dispersão dos valores com o <em>box-plot</em> abaixo já revela um dos retratos da desigualdade regional brasileira. Em todos municípios da região Norte e quase metade dos municípios da região Nordeste, a gente encontra que menos de 50% dos domicílios estavam conectados à rede de esgoto em 2010. No próximo bloco, nós vamos visualizar como essas diferenças se distribuem espacialmente.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">esg</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">name_region</span>, <span class="op">-</span><span class="va">cobertura</span><span class="op">)</span>, y<span class="op">=</span><span class="va">cobertura</span>, </span>
-<span>                   weight  <span class="op">=</span> <span class="va">rede</span>, color<span class="op">=</span><span class="va">name_region</span><span class="op">)</span>, </span>
-<span>               show.legend <span class="op">=</span> <span class="cn">F</span>, outlier.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"Região"</span>, y<span class="op">=</span><span class="st">"Quantidade de domicílios\nconectados à rede de esgoto"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(esg) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(name_region, <span class="sc">-</span>cobertura), <span class="at">y=</span>cobertura, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weight  =</span> rede, <span class="at">color=</span>name_region), </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">show.legend =</span> F, <span class="at">outlier.alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Região"</span>, <span class="at">y=</span><span class="st">"Quantidade de domicílios</span><span class="sc">\n</span><span class="st">conectados à rede de esgoto"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="11_censobr_microdados_files/figure-html/plot-sewage-regions-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/plot-sewage-regions-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section></section><section id="análise-espacial-com-geobr" class="level2"><h2 class="anchored" data-anchor-id="análise-espacial-com-geobr">Análise espacial com {geobr}</h2>
+</section>
+</section>
+<section id="análise-espacial-com-geobr" class="level2">
+<h2 class="anchored" data-anchor-id="análise-espacial-com-geobr">Análise espacial com {geobr}</h2>
 <p>O <strong>{geobr}</strong> é um pacote para baixar dados espaciais oficiais do Brasil <span class="citation" data-cites="pereira2019geobr">(<a href="#ref-pereira2019geobr" role="doc-biblioref">Pereira e Gonçalves 2019</a>)</span>. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a <a href="https://ipeagit.github.io/geobr/">lista completa no site do pacote</a>).</p>
-</section><section id="integração-entre-censobr-e-geobr" class="level2"><h2 class="anchored" data-anchor-id="integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</h2>
+</section>
+<section id="integração-entre-censobr-e-geobr" class="level2">
+<h2 class="anchored" data-anchor-id="integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</h2>
 <div style="display: flex; justify-content: space-around;">
-<p><img src="images/censobr_logo.png" class="img-fluid quarto-figure quarto-figure-center" width="160" alt="Image 1"><img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-center" width="160" alt="Image 2"></p>
+<p><img src="images/censobr_logo.png" class="img-fluid quarto-figure quarto-figure-center" width="160" alt="Image 1"> <img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-center" width="160" alt="Image 2"></p>
 </div>
 <div class="callout-information" data-appearance="default">
 <p>Todos os dados do <strong>{censobr}</strong> são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote <strong>{geobr}</strong> para facilitar a manipulação e a integração de dados espaciais dos censos demográficos do Brasil. As colunas adicionadas são: <code>c('code_muni', 'code_state', 'abbrev_state', 'name_state', 'code_region', 'name_region', 'code_weighting', 'code_tract')</code>.</p>
 </div>
 <p>Para criarmos uma mapa com a distribuição espacial da cobertura da rede de esgoto no Brasil, nós vamos primeiro usar o pacote <strong>{geobr}</strong> para baixar as geometrias dos municípios brasileiros no ano de 2010. Vamos também sobrepor os limites das grandes regiões do país para dar um pouco mais de contexto à figura.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ipeagit.github.io/geobr/">geobr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">regioes_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_region.html">read_region</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>,</span>
-<span>                          showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">muni_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_municipality.html">read_municipality</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>,</span>
-<span>                             showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">muni_sf</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>regioes_df <span class="ot">&lt;-</span> <span class="fu">read_region</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>muni_sf <span class="ot">&lt;-</span> <span class="fu">read_municipality</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(muni_sf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 6 features and 4 fields
 Geometry type: MULTIPOLYGON
@@ -745,45 +793,47 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <p>Agora nós só precisamos unir os dados espaciais com nossas estimativas utilizando a variável chave <code>code_muni</code> e mapear os resultados.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge data</span></span>
-<span><span class="va">esg_sf</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">muni_sf</span>, <span class="va">esg</span>, by <span class="op">=</span> <span class="st">'code_muni'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># plot map</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">esg_sf</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">cobertura</span><span class="op">)</span>, color<span class="op">=</span><span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">regioes_df</span>, color <span class="op">=</span> <span class="st">'gray20'</span>, fill<span class="op">=</span><span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Quantidade de domicílios conectados à rede de esgoto"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Greens"</span>, direction <span class="op">=</span> <span class="fl">1</span>, </span>
-<span>                       name<span class="op">=</span><span class="st">'Proporção de\ndomicílios'</span>, </span>
-<span>                       labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'bottom'</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>esg_sf <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(muni_sf, esg, <span class="at">by =</span> <span class="st">'code_muni'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot map</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> esg_sf, <span class="fu">aes</span>(<span class="at">fill =</span> cobertura), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> regioes_df, <span class="at">color =</span> <span class="st">'gray20'</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Quantidade de domicílios conectados à rede de esgoto"</span>) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Greens"</span>, <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name=</span><span class="st">'Proporção de</span><span class="sc">\n</span><span class="st">domicílios'</span>, </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'bottom'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="11_censobr_microdados_files/figure-html/merge-geobr-censobr-plot-map-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/merge-geobr-censobr-plot-map-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="distribuição-espacial-do-valor-do-aluguel" class="level3"><h3 class="anchored" data-anchor-id="distribuição-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</h3>
+<section id="distribuição-espacial-do-valor-do-aluguel" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</h3>
 <p>No exemplo anterior, nós agregamos os microdados do censo no nível de municípios. Neste próximo exemplo, faremos uma análise espacial no nível de áreas de ponderação. Aqui nós vamos visualizar como o valor do aluguel varia espacialmente na região metropolitana de São Paulo.</p>
 <p>Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o <strong>{geobr}</strong>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">metro_sp</span> <span class="op">&lt;-</span> <span class="fu">geobr</span><span class="fu">::</span><span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_metro_area.html">read_metro_area</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2010</span>,</span>
-<span>                                     showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>              <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name_metro</span> <span class="op">==</span> <span class="st">"RM São Paulo"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>metro_sp <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_metro_area</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">showProgress =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(name_metro <span class="sc">==</span> <span class="st">"RM São Paulo"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Também precisamos dos polígonos das áreas de ponderação. Com o código abaixo, baixamos todas as áreas de ponderação do estado de São Paulo e, em seguida, mantemos apenas aquelas na região metropolitana de São Paulo.</p>
 <div class="cell">
-<div class="sourceCode" id="annotated-cell-14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wt_areas</span> <span class="op">&lt;-</span> <span class="fu">geobr</span><span class="fu">::</span><span class="fu"><a href="https://ipeagit.github.io/geobr/reference/read_weighting_area.html">read_weighting_area</a></span><span class="op">(</span>code_weighting <span class="op">=</span> <span class="st">"SP"</span>,</span>
-<span>                                       year <span class="op">=</span> <span class="fl">2010</span>,</span>
-<span>                                       simplified <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                                       showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">wt_areas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">wt_areas</span>, <span class="va">code_muni</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">metro_sp</span><span class="op">$</span><span class="va">code_muni</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">wt_areas</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>wt_areas <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_weighting_area</span>(<span class="at">code_weighting =</span> <span class="st">"SP"</span>,</span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">simplified =</span> <span class="cn">FALSE</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>wt_areas <span class="ot">&lt;-</span> <span class="fu">filter</span>(wt_areas, code_muni <span class="sc">%in%</span> metro_sp<span class="sc">$</span>code_muni)</span>
+<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wt_areas)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
-<dl>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="1">O comportamento padrão do {geobr} é baixar uma versão da malha espacial com geometrias ligeiramente simplificadas (<code>simplified = TRUE</code>) para agilizar o processamento e visualização de dados. Aqui, nós baixamos os dados com geometrias originais devido à escala espacial da visualização dos resultados.</span>
@@ -814,16 +864,16 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <p>Agora voltamos para a base de dados de domicílios do censo de 2010. Com essa base, nós precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Note que para isso nós usamos a média do aluguel (variável <code>V2011</code>) ponderada pelo peso do domicílio (variável <code>V0010</code>). Para encontrar esses valores, o código abaixo (1) filtra apenas as observações nos nossos municípios de interesse, (2) computa temporariamente o resultado, (3) agrupa as observações por área de ponderação, (4) calcula o valor médio do aluguel e (5) coleta os resultados.</p>
 <div class="cell">
-<div class="sourceCode" id="annotated-cell-15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rent</span> <span class="op">&lt;-</span> <span class="va">dom</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">code_muni</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">metro_sp</span><span class="op">$</span><span class="va">code_muni</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">compute</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">code_weighting</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>avgrent<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">V2011</span>, w<span class="op">=</span><span class="va">V0010</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">rent</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>rent <span class="ot">&lt;-</span> dom <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(code_muni <span class="sc">%in%</span> metro_sp<span class="sc">$</span>code_muni) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">compute</span>() <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(code_weighting) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4">4</button><span id="annotated-cell-15-5" class="code-annotation-target"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">avgrent=</span><span class="fu">weighted.mean</span>(<span class="at">x=</span>V2011, <span class="at">w=</span>V0010, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5">5</button><span id="annotated-cell-15-6" class="code-annotation-target"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">collect</span>()</span>
+<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rent)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
-<dl>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="1">Filtra apenas as observações nos nossos municípios de interesse</span>
@@ -860,53 +910,60 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <p>Por fim, basta unirmos os dados espaciais com nossas estimativas de aluguel pela variável chave de código da área de ponderação (<code>code_weighting</code>), e mapear os resultados.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rent_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wt_areas</span>, <span class="va">rent</span>, by <span class="op">=</span> <span class="st">'code_weighting'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rent_sf</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">avgrent</span><span class="op">)</span>, color<span class="op">=</span><span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metro_sp</span>, color<span class="op">=</span><span class="st">'gray'</span>, fill<span class="op">=</span><span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Valor médio do aluguel por área de ponderação"</span>,</span>
-<span>       subtitle <span class="op">=</span> <span class="st">"Região Metropolitana de São Paulo, 2010"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Purples"</span>, direction <span class="op">=</span> <span class="fl">1</span>, </span>
-<span>                       name<span class="op">=</span><span class="st">'Valores\nem R$'</span>,</span>
-<span>                       labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">number_format</a></span><span class="op">(</span>big.mark <span class="op">=</span> <span class="st">"."</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rent_sf <span class="ot">&lt;-</span> <span class="fu">left_join</span>(wt_areas, rent, <span class="at">by =</span> <span class="st">'code_weighting'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rent_sf, <span class="fu">aes</span>(<span class="at">fill =</span> avgrent), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> metro_sp, <span class="at">color=</span><span class="st">'gray'</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Valor médio do aluguel por área de ponderação"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Região Metropolitana de São Paulo, 2010"</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Purples"</span>, <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name=</span><span class="st">'Valores</span><span class="sc">\n</span><span class="st">em R$'</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>)) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="11_censobr_microdados_files/figure-html/plot-alugel-areapond-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/plot-alugel-areapond-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section></section><section id="data-cache" class="level2"><h2 class="anchored" data-anchor-id="data-cache">Data cache</h2>
+</section>
+</section>
+<section id="data-cache" class="level2">
+<h2 class="anchored" data-anchor-id="data-cache">Data cache</h2>
 <p>Na primeira vez que o usuário executa uma função, o <strong>{censobr}</strong> fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro <code>cache</code> está configurado como <code>TRUE</code> (que é o comportamento padrão do pacote), a função lerá os dados que já estão armanezados em cache, o que é praticamente instantâneo.</p>
-<p>Os usuários podem gerenciar os conjuntos de dados em cache usando a função <code><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache()</a></code>. Por exemplo, os usuários podem:</p>
+<p>Os usuários podem gerenciar os conjuntos de dados em cache usando a função <code>censobr_cache()</code>. Por exemplo, os usuários podem:</p>
 <p>Listar arquivos em cache:</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>list_files <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">list_files =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Deletar um arquivo específico:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>delete_file <span class="op">=</span> <span class="st">"2010_emigration"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"2010_emigration"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Deletar todos arquivos do cache:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/censobr_cache.html">censobr_cache</a></span><span class="op">(</span>delete_file <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"all"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Por padrão, os arquivos do <strong>{censobr}</strong> são salvos no diretório ‘User’. No entanto, os usuários podem executar a função <code><a href="https://ipeagit.github.io/censobr/reference/set_censobr_cache_dir.html">set_censobr_cache_dir()</a></code> para definir um diretório de cache personalizado. Note que essa definição personalizada precisa ser definida a cada nova sessão do R.</p>
+<p>Por padrão, os arquivos do <strong>{censobr}</strong> são salvos no diretório ‘User’. No entanto, os usuários podem executar a função <code>set_censobr_cache_dir()</code> para definir um diretório de cache personalizado. Note que essa definição personalizada precisa ser definida a cada nova sessão do R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tempf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ipeagit.github.io/censobr/reference/set_censobr_cache_dir.html">set_censobr_cache_dir</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">tempf</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tempf <span class="ot">&lt;-</span> <span class="fu">tempdir</span>()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set_censobr_cache_dir</span>(<span class="at">path =</span> tempf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-pereira2019geobr" class="csl-entry" role="listitem">
 Pereira, Rafael H. M., e Caio N. Gonçalves. 2019. <em>geobr: Download Official Spatial Data Sets of Brazil</em>. CRAN. <a href="https://doi.org/10.32614/CRAN.package.geobr">https://doi.org/10.32614/CRAN.package.geobr</a>.
 </div>
-</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1349,8 +1406,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./10_censobr_conceitos.html" class="pagination-link  aria-label=" conceitos="" iniciais="" do="" censo="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10_censobr_conceitos.html" class="pagination-link  aria-label=" conceitos="" iniciais="" do="" censo"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conceitos iniciais do Censo</span>
       </a>          
   </div>
@@ -1361,6 +1420,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

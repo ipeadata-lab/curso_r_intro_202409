@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Introdução à análise de dados no R - Conhecendo o R e o RStudio</title>
 <style>
 code{white-space: pre-wrap;}
@@ -53,6 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -70,7 +74,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,12 +101,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Procurar"
   }
-}</script><link rel="stylesheet" href="styles.css">
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -112,9 +123,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introdução à análise de dados no R</a> 
         <div class="sidebar-tools-main">
@@ -129,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Pré-curso</span></a>
@@ -137,8 +152,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução à análise de dados no R</span></a>
@@ -157,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -166,8 +181,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Conhecendo o R e o RStudio</span></a>
@@ -216,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -225,8 +240,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Explorando o Censo Demográfico</span></a>
@@ -257,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -266,50 +281,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-<li><a href="#linguagem-r" id="toc-linguagem-r" class="nav-link active" data-scroll-target="#linguagem-r">Linguagem R</a></li>
+  <li><a href="#linguagem-r" id="toc-linguagem-r" class="nav-link active" data-scroll-target="#linguagem-r">Linguagem R</a></li>
   <li><a href="#ide-rstudio-desktop" id="toc-ide-rstudio-desktop" class="nav-link" data-scroll-target="#ide-rstudio-desktop">IDE RStudio Desktop</a></li>
-  <li>
-<a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a>
   <ul>
-<li><a href="#coment%C3%A1rios" id="toc-comentários" class="nav-link" data-scroll-target="#coment%C3%A1rios">Comentários</a></li>
-  </ul>
-</li>
-  <li><a href="#fun%C3%A7%C3%B5es" id="toc-funções" class="nav-link" data-scroll-target="#fun%C3%A7%C3%B5es">Funções</a></li>
-  <li>
-<a href="#pacotes" id="toc-pacotes" class="nav-link" data-scroll-target="#pacotes">Pacotes</a>
+  <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários">Comentários</a></li>
+  </ul></li>
+  <li><a href="#funções" id="toc-funções" class="nav-link" data-scroll-target="#funções">Funções</a></li>
+  <li><a href="#pacotes" id="toc-pacotes" class="nav-link" data-scroll-target="#pacotes">Pacotes</a>
   <ul>
-<li><a href="#instala%C3%A7%C3%A3o-de-pacotes-necess%C3%A1rios-no-curso" id="toc-instalação-de-pacotes-necessários-no-curso" class="nav-link" data-scroll-target="#instala%C3%A7%C3%A3o-de-pacotes-necess%C3%A1rios-no-curso">Instalação de pacotes necessários no curso</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#documenta%C3%A7%C3%A3o" id="toc-documentação" class="nav-link" data-scroll-target="#documenta%C3%A7%C3%A3o">Documentação</a>
+  <li><a href="#instalação-de-pacotes-necessários-no-curso" id="toc-instalação-de-pacotes-necessários-no-curso" class="nav-link" data-scroll-target="#instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</a></li>
+  </ul></li>
+  <li><a href="#documentação" id="toc-documentação" class="nav-link" data-scroll-target="#documentação">Documentação</a>
   <ul>
-<li><a href="#documenta%C3%A7%C3%A3o-no-rstudio" id="toc-documentação-no-rstudio" class="nav-link" data-scroll-target="#documenta%C3%A7%C3%A3o-no-rstudio">Documentação no RStudio</a></li>
-  <li><a href="#documenta%C3%A7%C3%A3o-online" id="toc-documentação-online" class="nav-link" data-scroll-target="#documenta%C3%A7%C3%A3o-online">Documentação online</a></li>
+  <li><a href="#documentação-no-rstudio" id="toc-documentação-no-rstudio" class="nav-link" data-scroll-target="#documentação-no-rstudio">Documentação no RStudio</a></li>
+  <li><a href="#documentação-online" id="toc-documentação-online" class="nav-link" data-scroll-target="#documentação-online">Documentação online</a></li>
+  </ul></li>
+  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
-</li>
-  <li><a href="#sugest%C3%B5es-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugest%C3%B5es-de-materiais">Sugestões de materiais</a></li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Conhecendo o R e o RStudio</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Materiais</a></li><li class="breadcrumb-item"><a href="./01_r_rstudio.html">Conhecendo o R e o RStudio</a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title">Conhecendo o R e o RStudio</h1>
 </div>
 
@@ -324,7 +339,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="callout callout-style-simple callout-none no-icon">
+</header>
+
+
+<div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -338,17 +356,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="linguagem-r" class="level2"><h2 class="anchored" data-anchor-id="linguagem-r">Linguagem R</h2>
+<section id="linguagem-r" class="level2">
+<h2 class="anchored" data-anchor-id="linguagem-r">Linguagem R</h2>
 <p>R é uma linguagem de programação com o foco em estatística, análise e visualização de dados.</p>
 <p>Ela é uma linguagem de código aberto, o que significa que qualquer pessoa pode utilizá-la gratuitamente. Além disso, as pessoas com mais experiência na linguagem podem contribuir com o desenvolvimento de novas funcionalidades e pacotes.</p>
 <p>Caso queira saber mais sobre a linguagem R, <a href="https://www.r-project.org/about.html">acesse o site oficial (R-Project)</a>.</p>
 <p>Ao instalar o R, você terá acesso a um programa chamado “R Console” que permite escrever e executar códigos em R:</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/01_R.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela do R Console</figcaption></figure>
+<figure class="figure">
+<p><img src="images/01_R.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do R Console</figcaption>
+</figure>
 </div>
 <p>Porém o <code>R Console</code> não é muito amigável para escrever códigos complexos ou realizar análises de dados. Por isso, é recomendado utilizar um ambiente de desenvolvimento integrado (IDE). Existem várias IDEs que podemos utilizar com o R, como: RStudio, Visual Studio Code, Positron, entre outros. A IDE mais utilizada por pessoas que programam em R é o RStudio.</p>
-</section><section id="ide-rstudio-desktop" class="level2"><h2 class="anchored" data-anchor-id="ide-rstudio-desktop">IDE RStudio Desktop</h2>
+</section>
+<section id="ide-rstudio-desktop" class="level2">
+<h2 class="anchored" data-anchor-id="ide-rstudio-desktop">IDE RStudio Desktop</h2>
 <p>O RStudio é um IDE focada em programação em R, e é desenvolvido pela <a href="https://posit.co/">Posit</a>. Ele facilita a escrita de códigos, execução de scripts, e visualização dos resultados.</p>
 <p>Existem algumas versões do RStudio. Neste curso, utilizaremos o <a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a>, pois é a versão de código aberto (portanto é gratuita). Daqui em diante, sempre que mencionarmos “RStudio”, estaremos nos referindo ao RStudio Desktop.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -370,7 +393,10 @@ Dica
 <li><p><strong>Console</strong>: painel onde os códigos são executados. É similar ao “R Console”, citado anteriormente.</p></li>
 <li><p><strong>Environment</strong>: painel onde as variáveis e dados carregados ficam listados.</p></li>
 <li><p><strong>Files</strong>: painel onde podemos navegar por arquivos no computador. A página inicial é o diretório de trabalho: esse conceito será explicado mais adiante.</p></li>
-</ul></section><section id="scripts" class="level2"><h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
+</ul>
+</section>
+<section id="scripts" class="level2">
+<h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
 <p>No RStudio, podemos escrever e executar códigos no Console, porém os códigos são perdidos quando fechamos o programa. Para salvar os códigos e reutilizá-los posteriormente, utilizamos scripts.</p>
 <p>Os scripts são arquivos de texto onde podemos escrever códigos R e salvá-los para utilizar posteriormente. É recomendado que qualquer código que você deseje reutilizar ou que seja importante para a análise que você fizer seja salvo em um script.</p>
 <p>Existem algumas formas de criar um novo script:</p>
@@ -380,13 +406,17 @@ Dica
 <li><p>Clicando no ícone de um arquivo com um sinal de <code>+</code> no canto superior esquerdo do RStudio e selecionando <code>R Script</code>:</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/01_rstudio_new_script.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela do RStudio: Opção para criar novo Script</figcaption></figure>
+<figure class="figure">
+<p><img src="images/01_rstudio_new_script.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio: Opção para criar novo Script</figcaption>
+</figure>
 </div>
 <p>Após abrir um script, o RStudio exibirá 4 paineis:</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/01_rstudio_4_paineis.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela do RStudio</figcaption></figure>
+<figure class="figure">
+<p><img src="images/01_rstudio_4_paineis.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio</figcaption>
+</figure>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -407,26 +437,30 @@ Dica
 </ul>
 </div>
 </div>
-<section id="comentários" class="level3"><h3 class="anchored" data-anchor-id="comentários">Comentários</h3>
+<section id="comentários" class="level3">
+<h3 class="anchored" data-anchor-id="comentários">Comentários</h3>
 <p>Comentários são textos que não são executados pelo R. Podemos usar comentários para explicar o que um bloco de código faz, para anotar ideias e explicar escolhas feitas, ou para desativar temporariamente um trecho de código.</p>
 <p>No R, todo texto em uma linha após um hashtag (<code>#</code>) é um comentário. Por exemplo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Este é um comentário</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Este é um comentário</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="funções" class="level2"><h2 class="anchored" data-anchor-id="funções">Funções</h2>
+</section>
+</section>
+<section id="funções" class="level2">
+<h2 class="anchored" data-anchor-id="funções">Funções</h2>
 <p>Agora que já sabemos onde escrever nossos códigos em R (no Console ou em um script), é importante entender o conceito de funções.</p>
 <p>Uma função é tipo de objeto no R, que quando executado, executa um bloco de código específico. As funções são úteis para evitar repetição de códigos e organizar o nosso trabalho.</p>
-<p>No R, existem muitas funções prontas que podemos utilizar. Por exemplo, a função <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> retorna a data atual do sistema:</p>
+<p>No R, existem muitas funções prontas que podemos utilizar. Por exemplo, a função <code>Sys.Date()</code> retorna a data atual do sistema:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2024-09-29"</code></pre>
 </div>
 </div>
 <p>Para utilizar uma função, escrevemos o nome dela seguido de parênteses. Dentro dos parênteses, podemos colocar dados e informações úteis para a função executar a tarefa desejada, e são chamados de <strong>argumentos</strong>.</p>
-<p>Por exemplo, a função <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> calcula a raiz quadrada de um número. Para utilizá-la, podemos escrever <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> e informar esse número entre parênteses:</p>
+<p>Por exemplo, a função <code>sqrt()</code> calcula a raiz quadrada de um número. Para utilizá-la, podemos escrever <code>mean()</code> e informar esse número entre parênteses:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
@@ -444,17 +478,19 @@ Dica
 <p>Ao adquirir experiência com o R, podemos criar nossas próprias funções. Isso é útil para automatizar tarefas repetitivas e para organizar o código.</p>
 </div>
 </div>
-</section><section id="pacotes" class="level2"><h2 class="anchored" data-anchor-id="pacotes">Pacotes</h2>
+</section>
+<section id="pacotes" class="level2">
+<h2 class="anchored" data-anchor-id="pacotes">Pacotes</h2>
 <p>Pacotes do R são coleções de funções, dados e documentação que estendem a funcionalidade básica da linguagem.</p>
 <p>O <a href="https://cran.r-project.org/">CRAN (<em>Comprehensive R Archive Network</em>)</a> é o repositório oficial de pacotes do R. Ele contém milhares de pacotes que podem ser instalados e utilizados gratuitamente. Em setembro de 2024, o CRAN continha mais de 21.000 pacotes disponíveis.</p>
-<p>Para instalar um pacote, utilizamos a função <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> e informando o nome do pacote como texto entre aspas. Por exemplo, para instalar o pacote <a href="https://tidyverse.tidyverse.org">tidyverse</a>, utilizamos o seguinte comando:</p>
+<p>Para instalar um pacote, utilizamos a função <code>install.packages()</code> e informando o nome do pacote como texto entre aspas. Por exemplo, para instalar o pacote <code>{tidyverse}</code>, utilizamos o seguinte comando:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span>  <span class="co"># Instala o pacote tidyverse</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)  <span class="co"># Instala o pacote tidyverse</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Apenas precisamos instalar um pacote uma vez.</p>
-<p>Depois de instalado, podemos carregá-lo com a função <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>, para que as funções do pacote fiquem disponíveis para uso:</p>
+<p>Depois de instalado, podemos carregá-lo com a função <code>library()</code>, para que as funções do pacote fiquem disponíveis para uso:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>  <span class="co"># Carrega o pacote tidyverse</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># Carrega o pacote tidyverse</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -479,68 +515,79 @@ Cuidado
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Uma outra forma de acessar uma função é utilizando o operador <code>::</code>. Por exemplo, para acessar a função <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> do pacote <a href="https://readr.tidyverse.org">readr</a>, podemos escrever <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code>.</p>
+<p>Uma outra forma de acessar uma função é utilizando o operador <code>::</code>. Por exemplo, para acessar a função <code>read_csv()</code> do pacote <code>{readr}</code>, podemos escrever <code>readr::read_csv()</code>.</p>
 <p>Essa sintaxe é menos frequente, porém útil para evitar problemas de conflito de funções com o mesmo nome em pacotes diferentes. Esse problema acontece mais frequentemente quando carregamos muitos pacotes em um mesmo script.</p>
-<p>Por exemplo: o pacote <a href="https://dplyr.tidyverse.org">dplyr</a> apresenta uma função <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, e o pacote <code>{stats}</code> também apresenta uma função <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. Se não usarmos o operador <code>::</code>, a função utilizada será a do pacote que foi carregado por último. Usando o operador <code>::</code>, podemos escolher qual função queremos utilizar.</p>
+<p>Por exemplo: o pacote <code>{dplyr}</code> apresenta uma função <code>filter()</code>, e o pacote <code>{stats}</code> também apresenta uma função <code>filter()</code>. Se não usarmos o operador <code>::</code>, a função utilizada será a do pacote que foi carregado por último. Usando o operador <code>::</code>, podemos escolher qual função queremos utilizar.</p>
 </div>
 </div>
-<section id="instalação-de-pacotes-necessários-no-curso" class="level3"><h3 class="anchored" data-anchor-id="instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</h3>
+<section id="instalação-de-pacotes-necessários-no-curso" class="level3">
+<h3 class="anchored" data-anchor-id="instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</h3>
 <p>Durante o curso, utilizaremos diversos pacotes do R.</p>
-<p>Para instalar os pacotes necessários, podemos indicar um conjunto com o nome de todos os pacotes que desejamos instalar, e então utilizar a função <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>.</p>
+<p>Para instalar os pacotes necessários, podemos indicar um conjunto com o nome de todos os pacotes que desejamos instalar, e então utilizar a função <code>install.packages()</code>.</p>
 <p>Copie e cole o código abaixo no Console do RStudio e execute-o para instalar os pacotes necessários:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pacotes_necessarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>  <span class="st">"tidyverse"</span>,</span>
-<span>  <span class="st">"janitor"</span>,</span>
-<span>  <span class="st">"sidrar"</span>,</span>
-<span>  <span class="st">"sf"</span>,</span>
-<span>  <span class="st">"geobr"</span>,</span>
-<span>  <span class="st">"readxl"</span>,</span>
-<span>  <span class="st">"writexl"</span>,</span>
-<span>  <span class="st">"fs"</span>,</span>
-<span>  <span class="st">"naniar"</span>,</span>
-<span>  <span class="st">"skimr"</span>,</span>
-<span>  <span class="st">"censobr"</span>,</span>
-<span>  <span class="st">"arrow"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">pacotes_necessarios</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pacotes_necessarios <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"janitor"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sidrar"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sf"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"geobr"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"readxl"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"writexl"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fs"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"naniar"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"skimr"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"censobr"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"arrow"</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pacotes_necessarios)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="documentação" class="level2"><h2 class="anchored" data-anchor-id="documentação">Documentação</h2>
+</section>
+</section>
+<section id="documentação" class="level2">
+<h2 class="anchored" data-anchor-id="documentação">Documentação</h2>
 <p>As funções e pacotes do R apresentam textos com explicações e exemplos de uso, chamados de <strong>documentação</strong>.</p>
 <p>As documentações podem ser acessadas online, ou diretamente no RStudio.</p>
-<section id="documentação-no-rstudio" class="level3"><h3 class="anchored" data-anchor-id="documentação-no-rstudio">Documentação no RStudio</h3>
+<section id="documentação-no-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="documentação-no-rstudio">Documentação no RStudio</h3>
 <p>No RStudio, podemos acessar a documentação de uma função ou pacote das seguintes formas:</p>
 <ul>
-<li>Para buscar informações sobre funções de pacotes já carregados (com <code>library</code>), podemos utilizar a função <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code>, informando o nome da função que queremos buscar como argumento (ex: <code><a href="https://rdrr.io/r/base/mean.html">help(mean)</a></code>), ou utilizar o operador <code>?</code>, seguido do nome da função (ex: <code><a href="https://rdrr.io/r/base/mean.html">?mean</a></code>).</li>
+<li>Para buscar informações sobre funções de pacotes já carregados (com <code>library</code>), podemos utilizar a função <code>help()</code>, informando o nome da função que queremos buscar como argumento (ex: <code>help(mean)</code>), ou utilizar o operador <code>?</code>, seguido do nome da função (ex: <code>?mean</code>).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span>  <span class="co"># Abre a documentação da função mean()</span></span>
-<span><span class="op">?</span><span class="va">mean</span>  <span class="co"># Abre a documentação da função mean()</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)  <span class="co"># Abre a documentação da função mean()</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>?mean  <span class="co"># Abre a documentação da função mean()</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Para fazer uma por funções presentes em todos os pacotes instalados no computador, podemos utilizar o operador <code>??</code>, seguido pelo termo que queremos buscar (ex: <code>??mean</code>). Essa é uma busca mais ampla, que procura pelo termo no nome e na descrição das funções.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="op">?</span><span class="va">mean</span>  <span class="co"># Busca por funções que contenham o termo "mean"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>??mean  <span class="co"># Busca por funções que contenham o termo "mean"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Podemos utilizar o painel Help para buscar informações sobre funções e pacotes:</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/01_rstudio_help.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela do RStudio: Painel Help</figcaption></figure>
+<figure class="figure">
+<p><img src="images/01_rstudio_help.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do RStudio: Painel Help</figcaption>
+</figure>
 </div>
 <p>Além disso, a maioria dos pacotes vem com textos explicativos sobre como usá-los, chamadas de <em>vignettes</em>. Elas estão disponíveis online, mas também podem ser acessadas diretamente no RStudio.</p>
-<p>Para acessar no RStudio, podemos usar a função <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes()</a></code> para listar as <em>vignettes</em> disponíveis para um pacote específico. A lista será apresentada em uma janela do navegador (ex: Google Chrome, Firefox, Safari, etc):</p>
+<p>Para acessar no RStudio, podemos usar a função <code>browseVignettes()</code> para listar as <em>vignettes</em> disponíveis para um pacote específico. A lista será apresentada em uma janela do navegador (ex: Google Chrome, Firefox, Safari, etc):</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/01_vignettes.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela: Lista de Vignettes do pacote dplyr</figcaption></figure>
+<figure class="figure">
+<p><img src="images/01_vignettes.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela: Lista de Vignettes do pacote dplyr</figcaption>
+</figure>
 </div>
-</section><section id="documentação-online" class="level3"><h3 class="anchored" data-anchor-id="documentação-online">Documentação online</h3>
+</section>
+<section id="documentação-online" class="level3">
+<h3 class="anchored" data-anchor-id="documentação-online">Documentação online</h3>
 <p>Como citado anteriormente, é possível acessar a documentação dos pacotes diretamente no RStudio e também online. No geral, o conteúdo disponível online é igual ao disponível no RStudio, mas pode ser mais fácil de buscar e navegar.</p>
 <p>As documentações podem ser acessadas online, nos seguintes sites:</p>
 <ul>
@@ -548,34 +595,43 @@ Cuidado
 <li><a href="https://rdrr.io/">R Package Documentation</a></li>
 <li><a href="https://www.rdocumentation.org/">R Documentation</a></li>
 </ul>
-<p>Alguns pacotes apresentam também sites próprios com documentações e <em>vignettes</em>. Por exemplo, o pacote <a href="https://dplyr.tidyverse.org">dplyr</a> (que usaremos no curso) tem um <a href="https://dplyr.tidyverse.org/index.html">site próprio</a> onde conseguimos acessar a documentação.</p>
+<p>Alguns pacotes apresentam também sites próprios com documentações e <em>vignettes</em>. Por exemplo, o pacote <code>{dplyr}</code> (que usaremos no curso) tem um <a href="https://dplyr.tidyverse.org/index.html">site próprio</a> onde conseguimos acessar a documentação.</p>
 <ul>
 <li><p>Em <em><a href="https://dplyr.tidyverse.org/articles/dplyr.html">Get started</a></em> encontramos uma introdução ao pacote, e exemplos de uso para quem quer aprender a usá-lo.</p></li>
 <li><p>Em <em><a href="https://dplyr.tidyverse.org/reference/index.html">Reference</a></em>, encontramos a lista de funções disponíveis no pacote, e podemos acessar a documentação de cada uma delas:</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/01_reference_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela: Site do pacote dplyr - Reference</figcaption></figure>
+<figure class="figure">
+<p><img src="images/01_reference_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela: Site do pacote dplyr - Reference</figcaption>
+</figure>
 </div>
 <ul>
 <li>Em <em><a href="https://dplyr.tidyverse.org/articles/index.html">Articles</a></em> podemos acessar as <em>vignettes</em>:</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/01_vignettes_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela: Site do pacote dplyr - Vignettes</figcaption></figure>
+<figure class="figure">
+<p><img src="images/01_vignettes_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela: Site do pacote dplyr - Vignettes</figcaption>
+</figure>
 </div>
-</section></section><section id="sugestões-de-materiais" class="level2"><h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
+</section>
+</section>
+<section id="sugestões-de-materiais" class="level2">
+<h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
 <li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
 <ul>
 <li><a href="https://cienciadedatos.github.io/pt-r4ds/intro.html#pr%C3%A9-requisitos">Introdução &gt; Pré-requisitos em diante</a></li>
 <li><a href="https://cienciadedatos.github.io/pt-r4ds/workflow-help.html">Fluxo de Trabalho: obtendo ajuda</a></li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -979,8 +1035,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./00_projeto_eda.html" class="pagination-link  aria-label=" projeto="" de="" an="" explorat="" dados="" com="" r="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./00_projeto_eda.html" class="pagination-link  aria-label=" projeto="" de="" análise="" exploratória="" dados="" com="" r"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Projeto de Análise Exploratória de Dados com R</span>
       </a>          
   </div>
@@ -991,6 +1049,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

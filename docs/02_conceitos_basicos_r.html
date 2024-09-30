@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -266,7 +300,36 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link active" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
+  <li><a href="#objetos" id="toc-objetos" class="nav-link active" data-scroll-target="#objetos">Objetos</a>
+  <ul>
+  <li><a href="#objetos-existentes-no-r" id="toc-objetos-existentes-no-r" class="nav-link" data-scroll-target="#objetos-existentes-no-r">Objetos existentes no R</a></li>
+  <li><a href="#criando-um-objeto" id="toc-criando-um-objeto" class="nav-link" data-scroll-target="#criando-um-objeto">Criando um objeto</a></li>
+  <li><a href="#consultando-os-objetos-criados" id="toc-consultando-os-objetos-criados" class="nav-link" data-scroll-target="#consultando-os-objetos-criados">Consultando os objetos criados</a></li>
+  <li><a href="#removendo-objetos" id="toc-removendo-objetos" class="nav-link" data-scroll-target="#removendo-objetos">Removendo objetos</a></li>
+  <li><a href="#nomeando-objetos" id="toc-nomeando-objetos" class="nav-link" data-scroll-target="#nomeando-objetos">Nomeando objetos</a>
+  <ul>
+  <li><a href="#regras-para-nomear-objetos-no-r" id="toc-regras-para-nomear-objetos-no-r" class="nav-link" data-scroll-target="#regras-para-nomear-objetos-no-r">Regras para nomear objetos no R</a></li>
+  </ul></li>
+  <li><a href="#boas-práticas-para-nomear-objetos-no-r" id="toc-boas-práticas-para-nomear-objetos-no-r" class="nav-link" data-scroll-target="#boas-práticas-para-nomear-objetos-no-r">Boas práticas para nomear objetos no R</a></li>
+  </ul></li>
+  <li><a href="#tipos-de-dados" id="toc-tipos-de-dados" class="nav-link" data-scroll-target="#tipos-de-dados">Tipos de dados</a>
+  <ul>
+  <li><a href="#numérico" id="toc-numérico" class="nav-link" data-scroll-target="#numérico">Numérico</a></li>
+  <li><a href="#lógico-binário" id="toc-lógico-binário" class="nav-link" data-scroll-target="#lógico-binário">Lógico (binário)</a></li>
+  <li><a href="#character-texto" id="toc-character-texto" class="nav-link" data-scroll-target="#character-texto">Character (texto)</a></li>
+  <li><a href="#fator-categórico" id="toc-fator-categórico" class="nav-link" data-scroll-target="#fator-categórico">Fator (categórico)</a></li>
+  <li><a href="#datas" id="toc-datas" class="nav-link" data-scroll-target="#datas">Datas</a></li>
+  </ul></li>
+  <li><a href="#conversões-entre-tipos-de-dados" id="toc-conversões-entre-tipos-de-dados" class="nav-link" data-scroll-target="#conversões-entre-tipos-de-dados">Conversões entre tipos de dados</a></li>
+  <li><a href="#valores-faltantes-na" id="toc-valores-faltantes-na" class="nav-link" data-scroll-target="#valores-faltantes-na">Valores faltantes (<code>NA</code>)</a></li>
+  <li><a href="#tipos-de-objetos" id="toc-tipos-de-objetos" class="nav-link" data-scroll-target="#tipos-de-objetos">Tipos de objetos</a>
+  <ul>
+  <li><a href="#vetores" id="toc-vetores" class="nav-link" data-scroll-target="#vetores">Vetores</a></li>
+  <li><a href="#matrizes" id="toc-matrizes" class="nav-link" data-scroll-target="#matrizes">Matrizes</a></li>
+  <li><a href="#data.frames" id="toc-data.frames" class="nav-link" data-scroll-target="#data.frames">Data.frames</a></li>
+  <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas">Listas</a></li>
+  </ul></li>
+  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
 </nav>
     </div>
@@ -292,25 +355,450 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
+<p>Existem muitos conceitos básicos que são fundamentais para quem está começando a programar em R.</p>
+<p>Nesta aula, vamos abordar algun conceitos considerados mais importantes para as próximas aulas.</p>
+<section id="objetos" class="level2">
+<h2 class="anchored" data-anchor-id="objetos">Objetos</h2>
+<p>No R, um objeto é uma estrutura de dados que armazena valores: podemos armazenar um valor único, um conjunto de valores, uma base de dados, entre outros.</p>
+<p>É muito útil armazenar valores em objetos, pois podemos reutilizá-los em diferentes partes do código, sem precisar digitar o valor novamente.</p>
+<section id="objetos-existentes-no-r" class="level3">
+<h3 class="anchored" data-anchor-id="objetos-existentes-no-r">Objetos existentes no R</h3>
+<p>Existem alguns objetos já criados no R, como por exemplo: <code>pi</code>, que armazena o valor de π (com um número limitado de casas decimais), <code>letters</code>, que armazena as letras do alfabeto, entre outros:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.141593</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>letters</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+[20] "t" "u" "v" "w" "x" "y" "z"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>LETTERS</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S"
+[20] "T" "U" "V" "W" "X" "Y" "Z"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>month.abb</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>month.name</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "January"   "February"  "March"     "April"     "May"       "June"     
+ [7] "July"      "August"    "September" "October"   "November"  "December" </code></pre>
+</div>
+</div>
+</section>
+<section id="criando-um-objeto" class="level3">
+<h3 class="anchored" data-anchor-id="criando-um-objeto">Criando um objeto</h3>
+<p>Para criar um objeto, precisamos definir um nome, e atribuir um valor à este nome. Para isso, usamos o operador de atribuição: <code>&lt;-</code>. Um atalho para esse operador é o <code>Ctrl</code> + <code>-</code> no Windows, ou <code>Option</code> + <code>-</code> no Mac .</p>
+<p>No exemplo a seguir, criamos um objeto chamado <code>nome_do_curso</code> e atribuímos a ele o texto <code>"Introdução à análise de dados no R"</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nome_do_curso <span class="ot">&lt;-</span> <span class="st">"Introdução à análise de dados no R"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Podemos acessar o valor armazenado em um objeto digitando o nome do objeto:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nome_do_curso</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Introdução à análise de dados no R"</code></pre>
+</div>
+</div>
+<p>O objeto apenas será alterado se utilizarmos o operador de atribuição novamente. Por exemplo, a função <code>tolower()</code> transforma todas as letras de um texto em minúsculas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(nome_do_curso)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "introdução à análise de dados no r"</code></pre>
+</div>
+</div>
+<p>Mas como não utilizamos a atribuição, o objeto <code>nome_do_curso</code> não foi alterado:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>nome_do_curso</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Introdução à análise de dados no R"</code></pre>
+</div>
+</div>
+<p>Para alterar o objeto, precisamos atribuir o resultado da função <code>tolower()</code> ao objeto <code>nome_do_curso</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nome_do_curso <span class="ot">&lt;-</span> <span class="fu">tolower</span>(nome_do_curso)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora, o objeto <code>nome_do_curso</code> foi alterado:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nome_do_curso</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "introdução à análise de dados no r"</code></pre>
+</div>
+</div>
+<p>Portanto, cuidado: ao criar um objeto com nome igual à outro objeto existente, o objeto anterior será substituído pelo novo objeto.</p>
+</section>
+<section id="consultando-os-objetos-criados" class="level3">
+<h3 class="anchored" data-anchor-id="consultando-os-objetos-criados">Consultando os objetos criados</h3>
+<p>Para consultar os objetos criados, podemos usar a função <code>ls()</code> (<em>list objects</em>), que lista todos os objetos criados no ambiente de trabalho (<em>global environment</em>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "nome_do_curso"</code></pre>
+</div>
+</div>
+<p>Outra forma é consultar o <em>Painel Environment</em> no RStudio, que exibe todos os objetos criados, e permite acessar o valor de cada objeto:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/02_environment.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Captura de tela do RStudio: Painel Environment</figcaption>
+</figure>
+</div>
+</section>
+<section id="removendo-objetos" class="level3">
+<h3 class="anchored" data-anchor-id="removendo-objetos">Removendo objetos</h3>
+<p>Caso queira remover um objeto, podemos usar a função <code>rm()</code> (<em>remove objects</em>). Por exemplo, para remover o objeto <code>pkgs</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(nome_do_curso)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Podemos consultar novamente os objetos existentes e verificar se o objeto <code>pkgs</code> foi removido:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "nome_do_curso"</code></pre>
+</div>
+</div>
+<p>Caso queira remover todos os objetos carregados, podemos reiniciar a sessão do R (clicando em <em>Session</em> &gt; <em>Restart R</em> no menu superior do RStudio), ou usar a função <code>rm(list = ls())</code>. Mas atenção: reiniciar a sessão do RStudio também irá “descarregar” todos os pacotes carregados; portanto, será necessário carregar os pacotes novamente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># remover todos os objetos do Global Environment</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nomeando-objetos" class="level3">
+<h3 class="anchored" data-anchor-id="nomeando-objetos">Nomeando objetos</h3>
+<p>Existem regras e boas práticas para nomear objetos no R. As regras são obrigatórias: se não seguirmos, o código irá gerar um erro. As boas práticas são recomendações, com o objetivo de evitar erros futuros, e facilitar a leitura do código.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aviso
+Dica
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Página em construção! Em breve.</p>
+<p>Recomendamos seguir essas recomendações não apenas para o nome dos objetos, mas também para nome de pastas e arquivos, nome de colunas, entre outros.</p>
 </div>
 </div>
-<!-- ## Objetos: breve conceito -->
-<!-- ## Tipos de objetos: vetores, matrizes, listas, data frames -->
-<!-- ## Tipologia dos dados (lógico, numérico, caracter, fator) -->
-<!-- ## Tipo de dados e conversões -->
-<!-- Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`,  etc. -->
-<!-- ## Valores faltantes (NA) -->
+<section id="regras-para-nomear-objetos-no-r" class="level4">
+<h4 class="anchored" data-anchor-id="regras-para-nomear-objetos-no-r">Regras para nomear objetos no R</h4>
+<ul>
+<li>O nome não deve começar com um número. Ex: <code>1objeto</code> não é um nome válido.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>objeto <span class="ot">&lt;-</span> <span class="st">"exemplo"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:1:2: unexpected symbol
+1: 1objeto
+     ^</code></pre>
+</div>
+</div>
+<ul>
+<li>O nome não deve começar com underline (<code>_</code>). Ex: <code>_objeto</code> não é um nome válido.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>_objeto <span class="ot">&lt;-</span> <span class="st">"exemplo"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:1:2: unexpected symbol
+1: _objeto
+     ^</code></pre>
+</div>
+</div>
+<ul>
+<li>O nome do objeto não deve conter traços (<code>-</code>), pois o R interpreta o traço como um operador de subtração. Ex: <code>meu-objeto</code> não é um nome válido.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>objeto<span class="dv">-1</span> <span class="ot">&lt;-</span> <span class="st">"exemplo"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'objeto' not found</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="boas-práticas-para-nomear-objetos-no-r" class="level3">
+<h3 class="anchored" data-anchor-id="boas-práticas-para-nomear-objetos-no-r">Boas práticas para nomear objetos no R</h3>
+<ul>
+<li><p>O nome não deve começar com um ponto. Isso não gerará um erro, porém é contra-indicado pois essa sintaxe é utilizada para nomear objetos ocultos no R (portanto, não aparecerá no <em>Painel Environment</em>), e isso pode dificultar o acesso posteriormente. Ex: <code>.objeto</code> não deve ser usado.</p></li>
+<li><p>Não utilizar acentos, cedilhas, ou outros caracteres especiais. Isso pode gerar problemas de compatibilidade com outros sistemas (chamamos de <em>encoding</em>). Ex: <code>aviões</code> não é um nome recomendado.</p></li>
+<li><p>Não utilizar espaços, pois dificulta o acesso ao objeto posteriormente: precisaremos utilizar a crase em volta do nome do objeto para acessá-lo.</p></li>
+<li><p>Existem diferentes estilos para nomear objetos<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, como <em>snake_case</em>, onde todas as letras devem ser minúsculas, e as palavras separadas por underline. O importante é escolher um estilo e manter a consistência.</p></li>
+</ul>
+<ul>
+<li>Utilizar nomes descritivos, que indiquem o conteúdo do objeto. Isso facilita a leitura do código, e a manutenção do código por outras pessoas.</li>
+</ul>
+</section>
+</section>
+<section id="tipos-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-dados">Tipos de dados</h2>
+<p>Existem diferentes tipos de dados que podemos armazenar em objetos no R, como números, textos, lógicos, fatores, datas, entre outros.</p>
+<p>É muito importante identificar o tipo de dado que estamos trabalhando, pois cada tipo de dado permite usar funções específicas.</p>
+<p>A função <code>class()</code> permite verificar a classe de um objeto. Por exemplo, podemos verificar a classe do objeto <code>pi</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(pi)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+<section id="numérico" class="level3">
+<h3 class="anchored" data-anchor-id="numérico">Numérico</h3>
+<p>Os objetos numéricos no R podem ser de dois tipos:</p>
+<ul>
+<li><p>inteiros (<em>integer</em>): armazena apenas números inteiros, ou seja, sem casas decimais. Ex: 1, 2, 3, 4, 5.</p></li>
+<li><p>numéricos (<em>numeric</em> ou <em>double</em>): armazena números que podem conter casas decimais. Ex: 1, 2, <strong>3.14</strong>, 4, 5.</p></li>
+</ul>
+<p>Na maioria dos casos, utilizamos o tipo <em>numeric</em> para armazenar números, pois ele é mais flexível.</p>
+<p>Por exemplo, para criar um objeto que armazena o número 42:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>exemplo_numero <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(exemplo_numero)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+<p>Para criar um objeto que armazena um valor usado para converter dólar em reais (R$), podemos usar o tipo <code>numeric</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>conversao_dolar <span class="ot">&lt;-</span> <span class="fl">5.45</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(conversao_dolar)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+</section>
+<section id="lógico-binário" class="level3">
+<h3 class="anchored" data-anchor-id="lógico-binário">Lógico (binário)</h3>
+<p>O tipo lógico (<em>logical</em>) armazena valores binários: <code>TRUE</code> (verdadeiro) ou <code>FALSE</code> (falso). Os valores binários podem ser convertidos para números, onde <code>TRUE</code> será 1, e <code>FALSE</code> será 0.</p>
+<p>Por exemplo, para criar objetos com os valores lógicos <code>TRUE</code> e <code>FALSE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>exemplo_logico_verdadeiro <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(exemplo_logico_verdadeiro)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>exemplo_logico_falso <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(exemplo_logico_falso)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+</section>
+<section id="character-texto" class="level3">
+<h3 class="anchored" data-anchor-id="character-texto">Character (texto)</h3>
+<p>O tipo texto (<em>character</em>, ou também conhecido como <em>string</em>) armazena textos. Para criar um objeto com um texto, precisamos colocar o texto entre aspas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>nome_do_curso <span class="ot">&lt;-</span> <span class="st">"Introdução à análise de dados no R"</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(nome_do_curso)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</section>
+<section id="fator-categórico" class="level3">
+<h3 class="anchored" data-anchor-id="fator-categórico">Fator (categórico)</h3>
+<p>O tipo fator (<em>factor</em>) armazena variáveis categóricas, ou seja, variáveis que possuem um número limitado de categorias. Os valores possíveis de categoria são chamados de <em>levels</em>. Os fatores podem ser ordenados ou não ordenados.</p>
+<p>Os fatores são muito úteis para a visualização de dados e para alguns modelos usados em análise de dados.</p>
+<p>Neste momento, não vamos aprofundar no conceito de fatores: falaremos mais sobre eles nas próximas aulas.</p>
+</section>
+<section id="datas" class="level3">
+<h3 class="anchored" data-anchor-id="datas">Datas</h3>
+<p>O tipo data (<em>date</em>) armazena datas no formato <code>aaaa-mm-dd</code> (ano-mês-dia).</p>
+<p>Para criar um objeto com uma data, podemos usar a função <code>as.Date()</code>, que converte um texto para o tipo <em>date</em>. Por exemplo, para criar um objeto com a data de início do curso:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>data_inicio_curso <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2024-10-01"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data_inicio_curso)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+</div>
+<p>A função <code>Sys.Date()</code> retorna a data atual do sistema:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>data_sistema <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data_sistema)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+</div>
+<p>Podemos fazer operações com datas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>data_inicio_curso <span class="sc">-</span> data_sistema</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 1 days</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="conversões-entre-tipos-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="conversões-entre-tipos-de-dados">Conversões entre tipos de dados</h2>
+<p>Existem várias funções que podemos usar para transformar variáveis de um tipo para outro. Essas funções tem começam com <code>as.</code> seguido pelo tipo de dado que queremos que seja convertido. Por exemplo:</p>
+<ul>
+<li><code>as.character()</code>: converte valores para texto</li>
+<li><code>as.numeric()</code>: converte valores para número</li>
+<li><code>as.logical()</code>: converte valores para lógico</li>
+<li><code>as.factor()</code>: converte valores para fator</li>
+<li><code>as.Date()</code>: converte valores para data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># número para texto</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(<span class="dv">2024</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lógico para número</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># texto para data</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2024-10-01"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2024-10-01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># texto para lógico</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(<span class="st">"TRUE"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Porém, nem toda conversão fará sentido. Por exemplo, podemos converter um número para texto, porém nem toda conversão de texto para número funcionará como esperado:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># texto para número</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="st">"2024"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2024</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="st">"Curso de R"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<p>Quando a conversão não é possível, o R irá retornar um valor <code>NA</code> (Not Available), que indica um valor faltante. Falaremos mais sobre valores faltantes na próxima seção.</p>
+</section>
+<section id="valores-faltantes-na" class="level2">
+<h2 class="anchored" data-anchor-id="valores-faltantes-na">Valores faltantes (<code>NA</code>)</h2>
+<p>Valores faltantes são valores que não estão disponíveis, ou que não foram informados. No R, esses valores são representados pelo valor <code>NA</code> (Not Available).</p>
+<p>Podemos testar se um valor é <code>NA</code> usando a função <code>is.na()</code>: essa função retornará <code>TRUE</code> se o valor for <code>NA</code>, e <code>FALSE</code> caso contrário.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="cn">NA</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Algo importante é que o R não consegue fazer operações matemáticas com valores <code>NA</code>. Por exemplo, se tentarmos realizar qualquer operação matemática com <code>NA</code>, o resultado será <code>NA</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">+</span> <span class="cn">NA</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<p>É importante identificar os valores NA em nossos dados, pois eles podem afetar o resultado de nossas análises. Por exemplo, se tentarmos calcular a média de um conjunto com valores <code>NA</code>, o resultado será <code>NA</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>numeros_com_na <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(numeros_com_na)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<p>Em aulas futuras falaremos sobre como identificar os <code>NA</code> em nossos dados, e algumas estratégias para lidar com eles.</p>
+</section>
+<section id="tipos-de-objetos" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-objetos">Tipos de objetos</h2>
+<p>Existem diferentes tipos de objetos no R, e cada tipo de objeto possui diferentes propriedades. Os principais tipos de objetos são: vetores, matrizes, <em>data.frames</em> e listas.</p>
+<section id="vetores" class="level3">
+<h3 class="anchored" data-anchor-id="vetores">Vetores</h3>
+<p>Vetores armazenam um conjunto de valores de uma dimensão. Eles podem ser criados com a função <code>c()</code>, que significa <em>combine</em> (combinar). Por exemplo, para criar um vetor com os números de 1 a 5:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>vetor_de_numeros <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Os vetores podem armazenar diferentes tipos de dados, como números, textos, fatores, entre outros. Porém cada vetor pode armazenar apenas um tipo de dado. Por exemplo, se tentarmos criar um vetor que armazena números e textos, o R irá converter todos os valores para texto. Essa propriedade é chamada de <strong>coerção</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>vetor_misto <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"três"</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vetor_misto)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>vetor_misto</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1"    "2"    "três" "4"    "5"   </code></pre>
+</div>
+</div>
+</section>
+<section id="matrizes" class="level3">
+<h3 class="anchored" data-anchor-id="matrizes">Matrizes</h3>
+<p>As matrizes são conjunto de valores com duas dimensões: linhas e colunas. Assim como os vetores, as matrizes podem armazenar apenas um tipo de dado.</p>
+<p>Para criar uma matriz, usamos a função <code>matrix()</code>. Por exemplo, para criar uma matriz com 2 linhas e 3 colunas, armazenando os números de 1 a 6, podemos usar o seguinte código:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>matriz</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6</code></pre>
+</div>
+</div>
+<p>Não utilizaremos matrizes nesse curso, portanto não vamos aprofundar nesse tipo de objeto.</p>
+</section>
+<section id="data.frames" class="level3">
+<h3 class="anchored" data-anchor-id="data.frames">Data.frames</h3>
+<p>Os <em>data.frames</em> são conjuntos de valores com duas dimensões: linhas e colunas. Porém, diferente do que vimos para as matrizes, os <em>data.frames</em> podem armazenar diferentes tipos de dados em cada coluna.</p>
+<p>Esse é o principal tipo de objeto que utilizaremos nesse curso, pois ele é muito útil para armazenar dados tabulares.</p>
+<p>Existem alguns <em>data.frames</em> já criados no R, como o <code>airquality</code>, que armazena dados sobre a qualidade do ar na cidade de Nova York, em 1973. Essas são as primeiras linhas do <em>data.frame</em> <code>airquality</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Ozone Solar.R Wind Temp Month Day
+1    41     190  7.4   67     5   1
+2    36     118  8.0   72     5   2
+3    12     149 12.6   74     5   3
+4    18     313 11.5   62     5   4
+5    NA      NA 14.3   56     5   5
+6    28      NA 14.9   66     5   6</code></pre>
+</div>
+</div>
+<p>Para criar um data.frame, podemos usar a função <code>data.frame()</code>. Entretanto, o mais comum é importar dados de arquivos, como CSV, Excel, ou de bancos de dados. Falaremos sobre como importar dados na <a href="./03_importacao.html">próxima aula</a>.</p>
+</section>
+<section id="listas" class="level3">
+<h3 class="anchored" data-anchor-id="listas">Listas</h3>
+<p>As listas são objetos os objetos mais flexíveis do R: podemos armazenar diferentes tipos de objetos dentro de uma mesma lista. Por exemplo, podemos armazenar um vetor, uma matriz, um <em>data.frame</em>, e até mesmo outra lista dentro de uma lista.</p>
+<p>Podemos criar uma lista com a função <code>list()</code>. Os elementos da lista podem ser nomeados ou não. Vamos criar uma lista nomeada, com três elementos: o número π, o <em>data.frame</em> <code>airquality</code>, e o vetor <code>letters</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>lista_exemplo <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">numero_pi =</span> pi,</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">df_qualidade_do_ar =</span> airquality,</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">letras =</span> letters)</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lista_exemplo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<p>A função <code>str()</code> (<em>structure</em>) exibe a estrutura da lista, mostrando os elementos e seus tipos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lista_exemplo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 3
+ $ numero_pi         : num 3.14
+ $ df_qualidade_do_ar:'data.frame': 153 obs. of  6 variables:
+  ..$ Ozone  : int [1:153] 41 36 12 18 NA 28 23 19 8 NA ...
+  ..$ Solar.R: int [1:153] 190 118 149 313 NA NA 299 99 19 194 ...
+  ..$ Wind   : num [1:153] 7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
+  ..$ Temp   : int [1:153] 67 72 74 62 56 66 65 59 61 69 ...
+  ..$ Month  : int [1:153] 5 5 5 5 5 5 5 5 5 5 ...
+  ..$ Day    : int [1:153] 1 2 3 4 5 6 7 8 9 10 ...
+ $ letras            : chr [1:26] "a" "b" "c" "d" ...</code></pre>
+</div>
+</div>
+</section>
+</section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
@@ -323,7 +811,13 @@ Aviso
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas de rodapé</h2>
+
+<ol>
+<li id="fn1"><p>A documentação da função <code>snakecase::to_any_case()</code> fornece uma lista de estilos de nomenclatura disponíveis no pacote <code>snakecase</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
