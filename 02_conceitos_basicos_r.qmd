@@ -311,34 +311,71 @@ Em aulas futuras falaremos sobre como identificar os `NA` em nossos dados, e alg
 
 ## Tipos de objetos
 
-Existem diferentes tipos de objetos no R, e cada tipo de objeto possui diferentes propriedades. Os principais tipos de objetos são: vetores, matrizes, data.frames e listas. 
+Existem diferentes tipos de objetos no R, e cada tipo de objeto possui diferentes propriedades. Os principais tipos de objetos são: vetores, matrizes, *data.frames* e listas. 
 
 
 ### Vetores
 
-Vetores armazenam um conjunto de valores. Eles podem ser criados com a função `c()`, que significa *combine* (combinar). Por exemplo, para criar um vetor com os números de 1 a 5:
+Vetores armazenam um conjunto de valores de uma dimensão. Eles podem ser criados com a função `c()`, que significa *combine* (combinar). Por exemplo, para criar um vetor com os números de 1 a 5:
 
 ```{r}
 vetor_de_numeros <- c(1, 2, 3, 4, 5)
 ```
 
-Os vetores podem armazenar diferentes tipos de valores, como números, textos, fatores, entre outros. Por exemplo, para criar um vetor com números e textos:
+Os vetores podem armazenar diferentes tipos de dados, como números, textos, fatores, entre outros. Porém cada vetor pode armazenar apenas um tipo de dado. Por exemplo, se tentarmos criar um vetor que armazena números e textos, o R irá converter todos os valores para texto. Essa propriedade é chamada de **coerção**.
+
+```{r}
+vetor_misto <- c(1, 2, "três", 4, 5)
+class(vetor_misto)
+vetor_misto
+```
 
 ### Matrizes
 
-...
+As matrizes são conjunto de valores com duas dimensões: linhas e colunas. Assim como os vetores, as matrizes podem armazenar apenas um tipo de dado.
+
+Para criar uma matriz, usamos a função `matrix()`. Por exemplo, para criar uma matriz com 2 linhas e 3 colunas, armazenando os números de 1 a 6, podemos usar o seguinte código:
+
+```{r}
+matriz <- matrix(data = 1:6, nrow = 2, ncol = 3)
+matriz
+```
+Não utilizaremos matrizes nesse curso, portanto não vamos aprofundar nesse tipo de objeto.
 
 ### Data.frames
 
+Os *data.frames* são conjuntos de valores com duas dimensões: linhas e colunas. Porém, diferente do que vimos para as matrizes, os *data.frames* podem armazenar diferentes tipos de dados em cada coluna.
 
-...
+Esse é o principal tipo de objeto que utilizaremos nesse curso, pois ele é muito útil para armazenar dados tabulares.
+
+Existem alguns *data.frames* já criados no R, como o `airquality`, que armazena dados sobre a qualidade do ar na cidade de Nova York, em 1973. Essas são as primeiras linhas do *data.frame* `airquality`: 
+
+```{r}
+head(airquality)
+```
+
+
+Para criar um data.frame, podemos usar a função `data.frame()`. Entretanto, o mais comum é importar dados de arquivos, como CSV, Excel, ou de bancos de dados. Falaremos sobre como importar dados na [próxima aula](03_importacao.qmd).
 
 
 ### Listas
 
-...
+As listas são objetos os objetos mais flexíveis do R: podemos armazenar diferentes tipos de objetos dentro de uma mesma lista. Por exemplo, podemos armazenar um vetor, uma matriz, um *data.frame*, e até mesmo outra lista dentro de uma lista.
 
+Podemos criar uma lista com a função `list()`. Os elementos da lista podem ser nomeados ou não. Vamos criar uma lista nomeada, com três elementos: o número π, o *data.frame* `airquality`, e o vetor `letters`:
 
+```{r}
+lista_exemplo <- list(numero_pi = pi,
+                      df_qualidade_do_ar = airquality,
+                      letras = letters)
+class(lista_exemplo)
+```
+
+A função `str()` (*structure*) exibe a estrutura da lista, mostrando os elementos e seus tipos:
+
+```{r}
+str(lista_exemplo)
+```
 
 
 ## Sugestões de materiais
