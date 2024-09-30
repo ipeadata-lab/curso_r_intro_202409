@@ -122,11 +122,11 @@ fs::dir_tree()
 
 ```
 .
-├── curso_r_intro_ipea_2024.Rproj
 ├── dados
 ├── dados_output
-├── scripts
-└── graficos
+├── graficos
+├── nome_do_projeto.Rproj
+└── scripts
 ```
 
 
