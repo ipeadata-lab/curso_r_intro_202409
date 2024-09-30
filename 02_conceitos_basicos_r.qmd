@@ -249,9 +249,65 @@ data_inicio_curso - data_sistema
 
 ## Conversões entre tipos de dados
 
-...
+Existem várias funções que podemos usar para transformar variáveis de um tipo para outro. Essas funções tem começam com `as.` seguido pelo tipo de dado que queremos que seja convertido. Por exemplo: 
 
-Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`, etc.
+- `as.character()`: converte valores para texto
+- `as.numeric()`:  converte valores para número
+- `as.logical()`:  converte valores para lógico
+- `as.factor()`:  converte valores para fator
+- `as.Date()`:  converte valores para data
+
+```{r}
+# número para texto
+as.character(2024)
+
+# lógico para número
+as.numeric(TRUE)
+
+# texto para data
+as.Date("2024-10-01")
+
+# texto para lógico
+as.logical("TRUE")
+```
+Porém, nem toda conversão fará sentido. Por exemplo, podemos converter um número para texto, porém nem toda conversão de texto para número funcionará como esperado:
+
+```{r}
+# texto para número
+as.numeric("2024")
+as.numeric("Curso de R")
+```
+Quando a conversão não é possível, o R irá retornar um valor `NA` (Not Available), que indica um valor faltante. Falaremos mais sobre valores faltantes na próxima seção.
+
+
+## Valores faltantes (`NA`)
+
+Valores faltantes são valores que não estão disponíveis, ou que não foram informados. No R, esses valores são representados pelo valor `NA` (Not Available).
+
+Podemos testar se um valor é `NA` usando a função `is.na()`: essa função retornará `TRUE` se o valor for `NA`, e `FALSE` caso contrário.
+
+```{r}
+is.na(NA)
+```
+Algo importante é que o R não consegue fazer operações matemáticas com valores `NA`. Por exemplo, se tentarmos realizar qualquer operação matemática com `NA`, o resultado será `NA`:
+
+```{r}
+NA + 1
+
+NA + NA
+
+NA * 2
+```
+
+É importante identificar os valores NA em nossos dados, pois eles podem afetar o resultado de nossas análises. Por exemplo, se tentarmos calcular a média de um conjunto com valores `NA`, o resultado será `NA`:
+
+```{r}
+numeros_com_na <- c(1, 2, NA, 4, 5)
+mean(numeros_com_na)
+```
+
+Em aulas futuras falaremos sobre como identificar os `NA` em nossos dados, e algumas estratégias para lidar com eles.
+
 
 ## Tipos de objetos
 
@@ -283,9 +339,7 @@ Os vetores podem armazenar diferentes tipos de valores, como números, textos, f
 ...
 
 
-## Valores faltantes (`NA`)
 
-...
 
 ## Sugestões de materiais
 
