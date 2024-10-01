@@ -7,6 +7,32 @@ Existem muitos conceitos básicos que são fundamentais para quem está começan
 
 Nesta aula, vamos abordar algun conceitos considerados mais importantes para as próximas aulas.
 
+## Operações matemáticas
+
+O R permite realizar operações matemáticas básicas, como soma, subtração, multiplicação, divisão, potenciação, entre outras.
+
+```{r}
+1 + 1 # Soma
+1 - 1 # Subtração
+2 * 3 # Multiplicação
+10 / 2 # Divisão
+2 ^ 3 # Potenciação
+```
+
+A ordem matemática das operações também vale no R. Por exemplo, a expressão `2 + 3 * 4` será calculada como `2 + (3 * 4)`:
+
+```{r}
+2 + 3 * 4
+```
+
+###  Exercício
+
+1. Vamos usar o R para descorir a temperatura atual em Fahrenheit. Converta a temperatura de Celsius para Fahrenheit, usando a segunte fórmula: 
+
+$$T_F =  T_C * 1.8 + 32$$
+
+
+
 ## Objetos
 
 No R, um objeto é uma estrutura de dados que armazena valores: podemos armazenar um valor único, um conjunto de valores, uma base de dados, entre outros.
@@ -69,7 +95,7 @@ Portanto, cuidado: ao criar um objeto com nome igual à outro objeto existente, 
 
 ### Consultando os objetos criados
 
-Para consultar os objetos criados, podemos usar a função `ls()` (*list objects*), que lista todos os objetos criados no ambiente de trabalho (*global environment*):
+Para consultar os objetos criados, podemos usar a função `ls()` (*list objects*), que lista todos os objetos criados no *Painel Environment*:
 
 ```{r}
 ls()
@@ -81,14 +107,14 @@ Outra forma é consultar o *Painel Environment* no RStudio, que exibe todos os o
 
 ### Removendo objetos
 
-Caso queira remover um objeto, podemos usar a função `rm()` (*remove objects*). Por exemplo, para remover o objeto `pkgs`:
+Caso queira remover um objeto, podemos usar a função `rm()` (*remove objects*). Por exemplo, para remover o objeto `nome_do_curso`:
 
 ```{r}
 #| eval: false
 rm(nome_do_curso)
 ```
 
-Podemos consultar novamente os objetos existentes e verificar se o objeto `pkgs` foi removido:
+Podemos consultar novamente os objetos existentes e verificar se o objeto foi removido:
 
 ```{r}
 ls()
@@ -133,7 +159,7 @@ _objeto <- "exemplo"
 objeto-1 <- "exemplo"
 ```
 
-### Boas práticas para nomear objetos no R
+#### Boas práticas para nomear objetos no R
 
 -   O nome não deve começar com um ponto. Isso não gerará um erro, porém é contra-indicado pois essa sintaxe é utilizada para nomear objetos ocultos no R (portanto, não aparecerá no *Painel Environment*), e isso pode dificultar o acesso posteriormente. Ex: `.objeto` não deve ser usado.
 
@@ -144,10 +170,6 @@ objeto-1 <- "exemplo"
 -   Existem diferentes estilos para nomear objetos[^1], como *snake_case*, onde todas as letras devem ser minúsculas, e as palavras separadas por underline. O importante é escolher um estilo e manter a consistência.
 
 [^1]: A documentação da função `snakecase::to_any_case()` fornece uma lista de estilos de nomenclatura disponíveis no pacote `snakecase`.
-
--   Utilizar nomes descritivos, que indiquem o conteúdo do objeto. Isso facilita a leitura do código, e a manutenção do código por outras pessoas.
-
-
 
 ## Tipos de dados
 
@@ -185,9 +207,9 @@ conversao_dolar <- 5.45
 class(conversao_dolar)
 ```
 
-### Lógico (binário)
+### Lógico (booleano)
 
-O tipo lógico (*logical*) armazena valores binários: `TRUE` (verdadeiro) ou `FALSE` (falso). Os valores binários podem ser convertidos para números, onde `TRUE` será 1, e `FALSE` será 0.
+O tipo lógico (*logical*) armazena valores booleanos: `TRUE` (verdadeiro) ou `FALSE` (falso). Os valores binários podem ser convertidos para números, onde `TRUE` será 1, e `FALSE` será 0.
 
 
 Por exemplo, para criar objetos com os valores lógicos `TRUE` e `FALSE`:
@@ -223,9 +245,9 @@ Neste momento, não vamos aprofundar no conceito de fatores: falaremos mais sobr
 
 ### Datas
 
-O tipo data (*date*) armazena datas no formato `aaaa-mm-dd` (ano-mês-dia). 
+O tipo data (*Date*) armazena datas no formato `aaaa-mm-dd` (ano-mês-dia). 
 
-Para criar um objeto com uma data, podemos usar a função `as.Date()`, que converte um texto para o tipo *date*. Por exemplo, para criar um objeto com a data de início do curso:
+Para criar um objeto com uma data, podemos usar a função `as.Date()`, que converte um texto para o tipo *Date*. Por exemplo, para criar um objeto com a data de início do curso:
 
 ```{r}
 data_inicio_curso <- as.Date("2024-10-01")
@@ -311,7 +333,7 @@ Em aulas futuras falaremos sobre como identificar os `NA` em nossos dados, e alg
 
 ## Tipos de objetos
 
-Existem diferentes tipos de objetos no R, e cada tipo de objeto possui diferentes propriedades. Os principais tipos de objetos são: vetores, matrizes, *data.frames* e listas. 
+Existem diferentes tipos de objetos no R, e cada tipo de objeto possui diferentes propriedades. Os principais tipos de objetos que utilizaremos ao longo do curso são: vetores, *data.frames* e listas. 
 
 
 ### Vetores
@@ -330,17 +352,18 @@ class(vetor_misto)
 vetor_misto
 ```
 
-### Matrizes
+<!-- ### Matrizes -->
 
-As matrizes são conjunto de valores com duas dimensões: linhas e colunas. Assim como os vetores, as matrizes podem armazenar apenas um tipo de dado.
+<!-- As matrizes são conjunto de valores com duas dimensões: linhas e colunas. Assim como os vetores, as matrizes podem armazenar apenas um tipo de dado. -->
 
-Para criar uma matriz, usamos a função `matrix()`. Por exemplo, para criar uma matriz com 2 linhas e 3 colunas, armazenando os números de 1 a 6, podemos usar o seguinte código:
+<!-- Para criar uma matriz, usamos a função `matrix()`. Por exemplo, para criar uma matriz com 2 linhas e 3 colunas, armazenando os números de 1 a 6, podemos usar o seguinte código: -->
 
-```{r}
-matriz <- matrix(data = 1:6, nrow = 2, ncol = 3)
-matriz
-```
-Não utilizaremos matrizes nesse curso, portanto não vamos aprofundar nesse tipo de objeto.
+<!-- ```{r} -->
+<!-- matriz <- matrix(data = 1:6, nrow = 2, ncol = 3) -->
+<!-- matriz -->
+<!-- ``` -->
+
+<!-- Não utilizaremos matrizes nesse curso, portanto não vamos aprofundar nesse tipo de objeto. -->
 
 ### Data.frames
 
@@ -360,7 +383,7 @@ Para criar um data.frame, podemos usar a função `data.frame()`. Entretanto, o 
 
 ### Listas
 
-As listas são objetos os objetos mais flexíveis do R: podemos armazenar diferentes tipos de objetos dentro de uma mesma lista. Por exemplo, podemos armazenar um vetor, uma matriz, um *data.frame*, e até mesmo outra lista dentro de uma lista.
+As listas são os objetos mais flexíveis do R: podemos armazenar diferentes tipos de objetos dentro de uma mesma lista. Por exemplo, podemos armazenar um vetor, uma matriz, um *data.frame*, e até mesmo outra lista dentro de uma lista.
 
 Podemos criar uma lista com a função `list()`. Os elementos da lista podem ser nomeados ou não. Vamos criar uma lista nomeada, com três elementos: o número π, o *data.frame* `airquality`, e o vetor `letters`:
 
@@ -382,3 +405,5 @@ str(lista_exemplo)
 
 -   Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
     -   [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
+    
+- [Guia de estilo do tidyverse](https://style.tidyverse.org/)    
