@@ -30,6 +30,10 @@ Nesta etapa, vamos aprender:
 
 Ao final, teremos também uma lista com sugestão de materiais extras, caso queira aprofundar mais sobre o assunto.
 
+::: callout-important
+Atenção: Nessa aula o conceito de caminho relativo será muito importante. Caso esteja com dúvidas sobre o tema, [revise a aula sobre "Diretório de trabalho e Projetos"](01_1_rproj.qmd).
+:::
+
 ## Arquivos que utilizaremos
 
 Para os exemplos de importação de dados, vamos utilizar alguns arquivos que estão disponíveis no repositório do curso.
@@ -106,6 +110,8 @@ Ao importar, uma mensagem aparecerá no console apresentando algumas informaçõ
 
 ![Captura de tela do console do RStudio, mostrando a mensagem apresentada pela função read_csv()](images/03_output_read_csv.png){fig-align="center"}
 
+
+
 #### Arquivo de texto separado por vírgula (`,`)
 
 ```{r}
@@ -146,7 +152,9 @@ dados_excel <- read_excel("dados/sidrar_4092_bruto.xlsx", sheet = "Sheet1")
 
 ### Arquivo binário do R (`.rds`)
 
-A função `read_rds()` do pacote `{readr}` permite importar um arquivo binário do R.
+A função `read_rds()` do pacote `{readr}` permite importar um arquivo binário do R. Um arquivo binário do R é um formato que preserva a integridade dos tipos de dados ao salvar e carregar objetos[^arquivos-binarios].
+
+[^arquivos-binarios]: O formato `.rds` não é o único formato de arquivo binário do R; outro exemplo é o `.Rdata`. Existem também formatos externos, como o `.parquet`, um formato eficiente para grandes volumes de dados e que podem ser lidos no R com o pacote `{arrow}`. Isso será abordado nos exemplos com o pacote `{censobr}`.
 
 
 ```{r}
