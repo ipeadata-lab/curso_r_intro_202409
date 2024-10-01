@@ -120,12 +120,37 @@ Podemos consultar novamente os objetos existentes e verificar se o objeto foi re
 ls()
 ```
 
-Caso queira remover todos os objetos carregados, podemos reiniciar a sessão do R (clicando em *Session* \> *Restart R* no menu superior do RStudio), ou usar a função `rm(list = ls())`. Mas atenção: reiniciar a sessão do RStudio também irá "descarregar" todos os pacotes carregados; portanto, será necessário carregar os pacotes novamente.
+Caso queira remover todos os objetos carregados, podemos usar a função `rm(list = ls())`.
 
 ```{r}
 #| eval: false
 rm(list = ls()) # remover todos os objetos do Global Environment
 ```
+
+### Destivando o .RData
+
+A configuração padrão do RStudio define que, quando fechamos o RStudio, o R salva todos os objetos criados em um arquivo chamado `.RData`[^r-data]. Na próxima vez que o RStudio for aberto, os objetos serão carregados automaticamente.
+
+[^r-data]: Leia mais sobre o arquivo `.RData` no [Zen do R](https://curso-r.github.io/zen-do-r/rdata-rhistory.html).
+
+Porém isso **não é uma boa prática**. O importante é desenvolver um script que tenha todos os passos necessários para reproduzir os resultados, e não depender de objetos salvos em um arquivo como o `.RData`. 
+
+Para desabilitar essas configurações, no menu *Tools* \> *Global Options* \> *General*:
+
+  - Desmarcar a opção *Restore .RData into workspace at startup*;
+
+  - Em *Save workspace to .RData on exit*, selecionar *Never*.
+  
+  - Desmarcar a opção *Always save history (even when not saving .RData)*.
+
+
+![Captura de tela do RStudio: Global Options > General](images/02_rdata.png){fig-align="center" width="50%"}
+
+
+Após desativar essa opção, o RStudio não carregará os objetos salvos no `.RData` na próxima vez que for aberto. Dessa forma, se quisermos apagar todos os objetos, podemos reiniciar a sessão do R (clicando em *Session* \> *Restart R* no menu superior do RStudio).
+
+
+
 
 ### Nomeando objetos
 
@@ -265,8 +290,12 @@ class(data_sistema)
 Podemos fazer operações com datas:
 
 ```{r}
-data_inicio_curso - data_sistema
+data_inicio_curso - data_sistema # diferença entre datas
+data_sistema + 1  # somar um dia
+as.Date("2024-02-29") + 1 # somar um dia
 ```
+
+
 
 
 ## Conversões entre tipos de dados
@@ -299,12 +328,12 @@ Porém, nem toda conversão fará sentido. Por exemplo, podemos converter um nú
 as.numeric("2024")
 as.numeric("Curso de R")
 ```
-Quando a conversão não é possível, o R irá retornar um valor `NA` (Not Available), que indica um valor faltante. Falaremos mais sobre valores faltantes na próxima seção.
+Quando a conversão não é possível, o R irá retornar um valor `NA` (*Not Available*), que indica um valor faltante. Falaremos mais sobre valores faltantes na próxima seção.
 
 
 ## Valores faltantes (`NA`)
 
-Valores faltantes são valores que não estão disponíveis, ou que não foram informados. No R, esses valores são representados pelo valor `NA` (Not Available).
+Valores faltantes são valores que não estão disponíveis, ou que não foram informados. No R, esses valores são representados pelo valor `NA` (*Not Available*).
 
 Podemos testar se um valor é `NA` usando a função `is.na()`: essa função retornará `TRUE` se o valor for `NA`, e `FALSE` caso contrário.
 
@@ -351,6 +380,10 @@ vetor_misto <- c(1, 2, "três", 4, 5)
 class(vetor_misto)
 vetor_misto
 ```
+
+
+No geral, podemos converter dados sem perder informação seguindo essa ordem: Lógico > Inteiro > Numérico > Texto.
+
 
 <!-- ### Matrizes -->
 
@@ -403,7 +436,10 @@ str(lista_exemplo)
 
 ## Sugestões de materiais
 
+- Livro [Zen do R](https://curso-r.github.io/zen-do-r/index.html):
+  - [Capítulo .RData e .Rhistory](https://curso-r.github.io/zen-do-r/rdata-rhistory.html)
+
 -   Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
     -   [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
-    
+
 - [Guia de estilo do tidyverse](https://style.tidyverse.org/)    
