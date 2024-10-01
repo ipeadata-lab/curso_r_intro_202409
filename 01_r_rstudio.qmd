@@ -22,7 +22,10 @@ Caso queira saber mais sobre a linguagem R, [acesse o site oficial (R-Project)](
 
 Ao instalar o R, você terá acesso a um programa chamado "R Console" que permite escrever e executar códigos em R:
 
-![Captura de tela do R Console](images/01_R.png){fig-align="center"}
+![Captura de tela do R Console no MacOS](images/01_R.png){fig-align="center"}
+
+![Captura de tela do R Console no Windows](images/01_r_console_windows.jpg){fig-align="center"}
+
 
 Porém o `R Console` não é muito amigável para escrever códigos complexos ou realizar análises de dados. Por isso, é recomendado utilizar um ambiente de desenvolvimento integrado (IDE). Existem várias IDEs que podemos utilizar com o R, como: RStudio, Visual Studio Code, Positron, entre outros. A IDE mais utilizada por pessoas que programam em R é o RStudio.
 
@@ -149,34 +152,6 @@ Por exemplo: o pacote `{dplyr}` apresenta uma função `filter()`, e o pacote `{
 ::: 
 
 
-### Instalação de pacotes necessários no curso
-
-Durante o curso, utilizaremos diversos pacotes do R.
-
-Para instalar os pacotes necessários, podemos indicar um conjunto com o nome de todos os pacotes que desejamos instalar, e então utilizar a função `install.packages()`. 
-
-Copie e cole o código abaixo no Console do RStudio e execute-o para instalar os pacotes necessários:
-
-```{r}
-#| eval: false
-pacotes_necessarios <- c(
-  "tidyverse",
-  "janitor",
-  "sidrar",
-  "sf",
-  "geobr",
-  "readxl",
-  "writexl",
-  "fs",
-  "naniar",
-  "skimr",
-  "censobr",
-  "arrow"
-)
-
-install.packages(pacotes_necessarios)
-```
-
 
 
 ## Documentação
@@ -222,16 +197,14 @@ browseVignettes("dplyr")
 
 ### Documentação online
 
-Como citado anteriormente, é possível acessar a documentação dos pacotes diretamente no RStudio e também online. No geral, o conteúdo disponível online é igual ao disponível no RStudio, mas pode ser mais fácil de buscar e navegar.
+Como citado anteriormente, é possível acessar a documentação dos pacotes diretamente no RStudio e também online. No geral, o conteúdo disponível online é igual ao disponível no RStudio, mas pode ser mais fácil de buscar e navegar. 
 
-As documentações podem ser acessadas online, nos seguintes sites:
-
-- [CRAN - Available CRAN Packages By Name](https://cran.r-project.org/web/packages/available_packages_by_name.html)
-- [R Package Documentation](https://rdrr.io/)
-- [R Documentation](https://www.rdocumentation.org/)
+Uma forma de acessar a documentação online é fazendo uma busca no Google com os termos "`R documentation {nome da função}`". Por exemplo: "`R documentation mean()`".
 
 
-Alguns pacotes apresentam também sites próprios com documentações e *vignettes*. Por exemplo, o pacote `{dplyr}` (que usaremos no curso) tem um [site próprio](https://dplyr.tidyverse.org/index.html) onde conseguimos acessar a documentação.
+Alguns pacotes apresentam também sites próprios com documentações e *vignettes*.
+
+Por exemplo, o pacote `{dplyr}` (que usaremos no curso) tem um [site próprio](https://dplyr.tidyverse.org/index.html) onde conseguimos acessar a documentação. Os pacotes do tidyverse apresentam sites similares, com páginas com os seguintes conteúdos:
 
 - Em *[Get started](https://dplyr.tidyverse.org/articles/dplyr.html)* encontramos uma introdução ao pacote, e exemplos de uso para quem quer aprender a usá-lo.
 
@@ -243,6 +216,49 @@ Alguns pacotes apresentam também sites próprios com documentações e *vignett
 - Em *[Articles](https://dplyr.tidyverse.org/articles/index.html)* podemos acessar as *vignettes*:
 
 ![Captura de tela: Site do pacote dplyr - Vignettes](images/01_vignettes_dplyr.png){fig-align="center"}
+
+### Cheatsheets
+
+As *cheatsheets* (ou folhas de cola) são documentos resumidos com informações sobre funções e pacotes. Elas são úteis para consulta rápida.
+
+A Posit (empresa que desenvolve o RStudio) disponibiliza *cheatsheets* para diversos pacotes e tópicos. Elas podem ser acessadas no site [Posit Cheatsheets](https://posit.co/resources/cheatsheets/).
+
+A lista a seguir apresenta algumas *cheatsheets* sobre temas que serão abordados ao longo do curso:
+
+- [RStudio IDE](https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf)
+
+- [Importação de dados com o tidyverse](https://github.com/rstudio/cheatsheets/blob/main/data-import.pdf)
+
+- [Transformação de dados com dplyr](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf)
+
+- [Visualização de dados com ggplot2](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf)
+
+- [Arrumando dados com tidyr](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf)
+
+- [Arrow](https://github.com/rstudio/cheatsheets/blob/main/arrow.pdf)
+
+
+## Instalação de pacotes necessários no curso
+
+Durante o curso, utilizaremos diversos pacotes do R.
+
+Vamos instalar os pacotes ao longo das aulas. Neste momento, vamos instalar os pacotes que utilizaremos nas primeiras aulas do curso. Copie o código abaixo no console, e execute-o para instalar os pacotes necessários:
+
+```{r}
+#| eval: false
+pacotes_necessarios <- c(
+  "tidyverse",
+  "janitor",
+  "sidrar",
+  "readxl",
+  "writexl",
+  "fs",
+  "naniar",
+  "skimr"
+)
+
+install.packages(pacotes_necessarios)
+```
 
 
 ## Sugestões de materiais

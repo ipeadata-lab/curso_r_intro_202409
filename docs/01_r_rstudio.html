@@ -307,15 +307,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários">Comentários</a></li>
   </ul></li>
   <li><a href="#funções" id="toc-funções" class="nav-link" data-scroll-target="#funções">Funções</a></li>
-  <li><a href="#pacotes" id="toc-pacotes" class="nav-link" data-scroll-target="#pacotes">Pacotes</a>
-  <ul>
-  <li><a href="#instalação-de-pacotes-necessários-no-curso" id="toc-instalação-de-pacotes-necessários-no-curso" class="nav-link" data-scroll-target="#instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</a></li>
-  </ul></li>
+  <li><a href="#pacotes" id="toc-pacotes" class="nav-link" data-scroll-target="#pacotes">Pacotes</a></li>
   <li><a href="#documentação" id="toc-documentação" class="nav-link" data-scroll-target="#documentação">Documentação</a>
   <ul>
   <li><a href="#documentação-no-rstudio" id="toc-documentação-no-rstudio" class="nav-link" data-scroll-target="#documentação-no-rstudio">Documentação no RStudio</a></li>
   <li><a href="#documentação-online" id="toc-documentação-online" class="nav-link" data-scroll-target="#documentação-online">Documentação online</a></li>
+  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets">Cheatsheets</a></li>
   </ul></li>
+  <li><a href="#instalação-de-pacotes-necessários-no-curso" id="toc-instalação-de-pacotes-necessários-no-curso" class="nav-link" data-scroll-target="#instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</a></li>
   <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
 </nav>
@@ -365,7 +364,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/01_R.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Captura de tela do R Console</figcaption>
+<figcaption>Captura de tela do R Console no MacOS</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/01_r_console_windows.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela do R Console no Windows</figcaption>
 </figure>
 </div>
 <p>Porém o <code>R Console</code> não é muito amigável para escrever códigos complexos ou realizar análises de dados. Por isso, é recomendado utilizar um ambiente de desenvolvimento integrado (IDE). Existem várias IDEs que podemos utilizar com o R, como: RStudio, Visual Studio Code, Positron, entre outros. A IDE mais utilizada por pessoas que programam em R é o RStudio.</p>
@@ -454,7 +459,7 @@ Dica
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-09-29"</code></pre>
+<pre><code>[1] "2024-09-30"</code></pre>
 </div>
 </div>
 <p>Para utilizar uma função, escrevemos o nome dela seguido de parênteses. Dentro dos parênteses, podemos colocar dados e informações úteis para a função executar a tarefa desejada, e são chamados de <strong>argumentos</strong>.</p>
@@ -520,30 +525,6 @@ Cuidado
 <p>Por exemplo: o pacote <code>{dplyr}</code> apresenta uma função <code>filter()</code>, e o pacote <code>{stats}</code> também apresenta uma função <code>filter()</code>. Se não usarmos o operador <code>::</code>, a função utilizada será a do pacote que foi carregado por último. Usando o operador <code>::</code>, podemos escolher qual função queremos utilizar.</p>
 </div>
 </div>
-<section id="instalação-de-pacotes-necessários-no-curso" class="level3">
-<h3 class="anchored" data-anchor-id="instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</h3>
-<p>Durante o curso, utilizaremos diversos pacotes do R.</p>
-<p>Para instalar os pacotes necessários, podemos indicar um conjunto com o nome de todos os pacotes que desejamos instalar, e então utilizar a função <code>install.packages()</code>.</p>
-<p>Copie e cole o código abaixo no Console do RStudio e execute-o para instalar os pacotes necessários:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pacotes_necessarios <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"janitor"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sidrar"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sf"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"geobr"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"readxl"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"writexl"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fs"</span>,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"naniar"</span>,</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"skimr"</span>,</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"censobr"</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"arrow"</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pacotes_necessarios)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 </section>
 <section id="documentação" class="level2">
 <h2 class="anchored" data-anchor-id="documentação">Documentação</h2>
@@ -556,14 +537,14 @@ Cuidado
 <li>Para buscar informações sobre funções de pacotes já carregados (com <code>library</code>), podemos utilizar a função <code>help()</code>, informando o nome da função que queremos buscar como argumento (ex: <code>help(mean)</code>), ou utilizar o operador <code>?</code>, seguido do nome da função (ex: <code>?mean</code>).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)  <span class="co"># Abre a documentação da função mean()</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>?mean  <span class="co"># Abre a documentação da função mean()</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)  <span class="co"># Abre a documentação da função mean()</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>?mean  <span class="co"># Abre a documentação da função mean()</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Para fazer uma por funções presentes em todos os pacotes instalados no computador, podemos utilizar o operador <code>??</code>, seguido pelo termo que queremos buscar (ex: <code>??mean</code>). Essa é uma busca mais ampla, que procura pelo termo no nome e na descrição das funções.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>??mean  <span class="co"># Busca por funções que contenham o termo "mean"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>??mean  <span class="co"># Busca por funções que contenham o termo "mean"</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Podemos utilizar o painel Help para buscar informações sobre funções e pacotes:</li>
@@ -577,7 +558,7 @@ Cuidado
 <p>Além disso, a maioria dos pacotes vem com textos explicativos sobre como usá-los, chamadas de <em>vignettes</em>. Elas estão disponíveis online, mas também podem ser acessadas diretamente no RStudio.</p>
 <p>Para acessar no RStudio, podemos usar a função <code>browseVignettes()</code> para listar as <em>vignettes</em> disponíveis para um pacote específico. A lista será apresentada em uma janela do navegador (ex: Google Chrome, Firefox, Safari, etc):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -589,13 +570,9 @@ Cuidado
 <section id="documentação-online" class="level3">
 <h3 class="anchored" data-anchor-id="documentação-online">Documentação online</h3>
 <p>Como citado anteriormente, é possível acessar a documentação dos pacotes diretamente no RStudio e também online. No geral, o conteúdo disponível online é igual ao disponível no RStudio, mas pode ser mais fácil de buscar e navegar.</p>
-<p>As documentações podem ser acessadas online, nos seguintes sites:</p>
-<ul>
-<li><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN - Available CRAN Packages By Name</a></li>
-<li><a href="https://rdrr.io/">R Package Documentation</a></li>
-<li><a href="https://www.rdocumentation.org/">R Documentation</a></li>
-</ul>
-<p>Alguns pacotes apresentam também sites próprios com documentações e <em>vignettes</em>. Por exemplo, o pacote <code>{dplyr}</code> (que usaremos no curso) tem um <a href="https://dplyr.tidyverse.org/index.html">site próprio</a> onde conseguimos acessar a documentação.</p>
+<p>Uma forma de acessar a documentação online é fazendo uma busca no Google com os termos “<code>R documentation {nome da função}</code>”. Por exemplo: “<code>R documentation mean()</code>”.</p>
+<p>Alguns pacotes apresentam também sites próprios com documentações e <em>vignettes</em>.</p>
+<p>Por exemplo, o pacote <code>{dplyr}</code> (que usaremos no curso) tem um <a href="https://dplyr.tidyverse.org/index.html">site próprio</a> onde conseguimos acessar a documentação. Os pacotes do tidyverse apresentam sites similares, com páginas com os seguintes conteúdos:</p>
 <ul>
 <li><p>Em <em><a href="https://dplyr.tidyverse.org/articles/dplyr.html">Get started</a></em> encontramos uma introdução ao pacote, e exemplos de uso para quem quer aprender a usá-lo.</p></li>
 <li><p>Em <em><a href="https://dplyr.tidyverse.org/reference/index.html">Reference</a></em>, encontramos a lista de funções disponíveis no pacote, e podemos acessar a documentação de cada uma delas:</p></li>
@@ -616,6 +593,39 @@ Cuidado
 </figure>
 </div>
 </section>
+<section id="cheatsheets" class="level3">
+<h3 class="anchored" data-anchor-id="cheatsheets">Cheatsheets</h3>
+<p>As <em>cheatsheets</em> (ou folhas de cola) são documentos resumidos com informações sobre funções e pacotes. Elas são úteis para consulta rápida.</p>
+<p>A Posit (empresa que desenvolve o RStudio) disponibiliza <em>cheatsheets</em> para diversos pacotes e tópicos. Elas podem ser acessadas no site <a href="https://posit.co/resources/cheatsheets/">Posit Cheatsheets</a>.</p>
+<p>A lista a seguir apresenta algumas <em>cheatsheets</em> sobre temas que serão abordados ao longo do curso:</p>
+<ul>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf">RStudio IDE</a></p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/main/data-import.pdf">Importação de dados com o tidyverse</a></p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf">Transformação de dados com dplyr</a></p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf">Visualização de dados com ggplot2</a></p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf">Arrumando dados com tidyr</a></p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/main/arrow.pdf">Arrow</a></p></li>
+</ul>
+</section>
+</section>
+<section id="instalação-de-pacotes-necessários-no-curso" class="level2">
+<h2 class="anchored" data-anchor-id="instalação-de-pacotes-necessários-no-curso">Instalação de pacotes necessários no curso</h2>
+<p>Durante o curso, utilizaremos diversos pacotes do R.</p>
+<p>Vamos instalar os pacotes ao longo das aulas. Neste momento, vamos instalar os pacotes que utilizaremos nas primeiras aulas do curso. Copie o código abaixo no console, e execute-o para instalar os pacotes necessários:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pacotes_necessarios <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"janitor"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sidrar"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"readxl"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"writexl"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fs"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"naniar"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"skimr"</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pacotes_necessarios)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
