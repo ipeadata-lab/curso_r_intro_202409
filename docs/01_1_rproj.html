@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#diretório-de-trabalho" id="toc-diretório-de-trabalho" class="nav-link" data-scroll-target="#diretório-de-trabalho">Diretório de trabalho</a></li>
   <li><a href="#projetos-do-rstudio" id="toc-projetos-do-rstudio" class="nav-link" data-scroll-target="#projetos-do-rstudio">Projetos do RStudio</a></li>
   <li><a href="#abrindo-um-projeto" id="toc-abrindo-um-projeto" class="nav-link" data-scroll-target="#abrindo-um-projeto">Abrindo um projeto</a></li>
-  <li><a href="#criando-um-projeto-para-o-curso" id="toc-criando-um-projeto-para-o-curso" class="nav-link" data-scroll-target="#criando-um-projeto-para-o-curso">Criando um projeto para o curso</a></li>
+  <li><a href="#preparando-o-projeto-para-o-curso" id="toc-preparando-o-projeto-para-o-curso" class="nav-link" data-scroll-target="#preparando-o-projeto-para-o-curso">Preparando o projeto para o curso</a></li>
   <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
 </nav>
@@ -447,9 +447,9 @@ Dica
 </div>
 <p>Você também pode abrir um projeto encontrando-o no seu computador e clicando duas vezes no arquivo <code>.Rproj</code>.</p>
 </section>
-<section id="criando-um-projeto-para-o-curso" class="level2">
-<h2 class="anchored" data-anchor-id="criando-um-projeto-para-o-curso">Criando um projeto para o curso</h2>
-<p>Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso. Esse projeto será usado em todas as aulas.</p>
+<section id="preparando-o-projeto-para-o-curso" class="level2">
+<h2 class="anchored" data-anchor-id="preparando-o-projeto-para-o-curso">Preparando o projeto para o curso</h2>
+<p>Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso e salvar os materiais necessários. Esse projeto será usado em todas as aulas.</p>
 <ol type="1">
 <li><p>Crie um projeto no RStudio, seguindo os passos acima. Use um nome que descreva o conteúdo do projeto, por exemplo: <code>curso_r_intro_ipea_2024</code>. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.</p></li>
 <li><p>Verifique se está no projeto correto. Para isso, verifique se o nome do projeto criado aparece no canto superior direito do RStudio.</p></li>
@@ -475,6 +475,34 @@ Dica
 ├── graficos
 ├── nome_do_projeto.Rproj
 └── scripts</code></pre>
+<ol start="4" type="1">
+<li>Para os exemplos de importação de dados, vamos utilizar alguns arquivos que estão disponíveis no repositório do curso. Para fazer download dos arquivos, verifique se está no projeto criado para o curso, e se sim, copie o código e abaixo, cole e execute-o no console:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto_2.csv"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.csv"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx"</span>, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.xlsx"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds"</span>, </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função <code>dir()</code> para listar os arquivos no diretório <code>dados</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">"dados"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>"sidrar_4092_bruto_2.csv" 
+"sidrar_4092_bruto.csv"
+"sidrar_4092_bruto.rds"  
+"sidrar_4092_bruto.xlsx"</code></pre>
 </section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>

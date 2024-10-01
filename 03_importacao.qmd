@@ -34,45 +34,7 @@ Ao final, teremos também uma lista com sugestão de materiais extras, caso quei
 Atenção: Nessa aula o conceito de caminho relativo será muito importante. Caso esteja com dúvidas sobre o tema, [revise a aula sobre "Diretório de trabalho e Projetos"](01_1_rproj.qmd).
 :::
 
-## Arquivos que utilizaremos
-
-Para os exemplos de importação de dados, vamos utilizar alguns arquivos que estão disponíveis no repositório do curso.
-
-Para fazer download dos arquivos, verifique se está no projeto criado para o curso, e se sim, copie o código e abaixo, cole e execute-o no console:
-
-```{r}
-#| eval: false
-#| collapse: true
-download.file(
-  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv",
-  destfile = "dados/sidrar_4092_bruto_2.csv")
-
-download.file(
-  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv",
-  destfile = "dados/sidrar_4092_bruto.csv")
-
-download.file(
-  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx", 
-  destfile = "dados/sidrar_4092_bruto.xlsx")
-
-download.file(
-  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds", 
-  destfile = "dados/sidrar_4092_bruto.rds")
-```
-
-É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função `dir()` para listar os arquivos no diretório `dados`:
-
-```{r}
-#| eval: false
-dir("dados")
-```
-
-```
-"sidrar_4092_bruto_2.csv" 
-"sidrar_4092_bruto.csv"
-"sidrar_4092_bruto.rds"  
-"sidrar_4092_bruto.xlsx"
-```
+Nesta aula, utilizaremos alguns arquivos baixados na aula [Diretórios de trabalho e projetos > Preparando o projeto para o curso](01_1_rproj.qmd#preparando-o-projeto-para-o-curso).
 
 ## Importando dados de um arquivo local
 

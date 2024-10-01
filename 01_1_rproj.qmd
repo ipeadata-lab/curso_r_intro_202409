@@ -87,9 +87,9 @@ Após preencher as informações solicitadas, clicamos em `Create Project`. O RS
 Você também pode abrir um projeto encontrando-o no seu computador e clicando duas vezes no arquivo `.Rproj`.
 
 
-## Criando um projeto para o curso
+## Preparando o projeto para o curso
 
-Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso. Esse projeto será usado em todas as aulas.
+Agora que já sabemos como criar um projeto no RStudio, vamos criar um projeto para o curso e salvar os materiais necessários. Esse projeto será usado em todas as aulas.
 
 1. Crie um projeto no RStudio, seguindo os passos acima. Use um nome que descreva o conteúdo do projeto, por exemplo: `curso_r_intro_ipea_2024`. Salve o projeto em uma pasta onde seja fácil de encontrar o projeto depois.
 
@@ -122,6 +122,43 @@ Após criar as pastas, o seu projeto deve ter uma estrutura parecida com essa:
 ├── nome_do_projeto.Rproj
 └── scripts
 ```
+
+4. Para os exemplos de importação de dados, vamos utilizar alguns arquivos que estão disponíveis no repositório do curso. Para fazer download dos arquivos, verifique se está no projeto criado para o curso, e se sim, copie o código e abaixo, cole e execute-o no console:
+
+```{r}
+#| eval: false
+#| collapse: true
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv",
+  destfile = "dados/sidrar_4092_bruto_2.csv")
+
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv",
+  destfile = "dados/sidrar_4092_bruto.csv")
+
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx", 
+  destfile = "dados/sidrar_4092_bruto.xlsx")
+
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds", 
+  destfile = "dados/sidrar_4092_bruto.rds")
+```
+
+É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função `dir()` para listar os arquivos no diretório `dados`:
+
+```{r}
+#| eval: false
+dir("dados")
+```
+
+```
+"sidrar_4092_bruto_2.csv" 
+"sidrar_4092_bruto.csv"
+"sidrar_4092_bruto.rds"  
+"sidrar_4092_bruto.xlsx"
+```
+
 
 
 ## Sugestões de materiais
