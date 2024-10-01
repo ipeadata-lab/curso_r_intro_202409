@@ -1,6 +1,6 @@
 ---
 # Conhecendo conceitos básicos do R
-title: "Conceitos básicos do R"
+title: "Linguagem R"
 ---
 
 Existem muitos conceitos básicos que são fundamentais para quem está começando a programar em R.

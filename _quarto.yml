@@ -27,11 +27,15 @@ website:
         - index.qmd
         - 00_instrucoes_pre_curso.qmd      
         - 00_projeto_eda.qmd
-      - section: "Materiais"
+      - section: "Conceitos básicos"
         contents:      
         - 01_r_rstudio.qmd
         - 01_1_rproj.qmd        
         - 02_conceitos_basicos_r.qmd
+        
+      - section: "Etapas em uma análise de dados"
+        contents:           
+        - 00_intro_etapas_analise.qmd
         - 03_importacao.qmd
         - 04_conhecendo.qmd
         - 05_transformacao.qmd

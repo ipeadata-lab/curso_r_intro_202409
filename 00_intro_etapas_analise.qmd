@@ -1,0 +1,29 @@
+---
+title: "Introdução"
+subtitle: "Etapas de uma análise de dados"
+---
+
+Na seção "Conceitos básicos", abordamos alguns conceitos importantes para começar a programar em R.
+
+Nesta seção, cada aula apresentará uma etapa comum quando realizamos uma análise de dados.
+
+A figura abaixo ilustra algumas etapas comuns em uma análise de dados, conforme apresentado no livro ["R para Ciência de Dados"](https://cienciadedatos.github.io/pt-r4ds/intro.html):
+
+![Processo de ciência de dados, por Wickham, Çetinkaya-Rundel e Grolemund](images/00_ciclo.png){fig-align="center" width="50%"}
+
+O principal pacote que utilizaremos é o [tidyverse](https://www.tidyverse.org/). O tidyverse é uma coleção de pacotes em R desenvolvidos com o objetivo de facilitar etapas de análise de dados. Os pacotes do tidyverse compartilham uma filosofia comum e são projetados para funcionar bem juntos.
+
+[![Pacotes principais (*core packages*) do tidyverse. Fonte: Site do tidyverse.](images/00_tidyverse-core.jpg){fig-align="center" width="50%"}](https://www.tidyverse.org/)
+
+Portanto, é importante checar se o tidyverse está instalado e carregá-lo no início de cada aula:
+
+```{r}
+library("tidyverse")
+```
+
+
+O livro ["R para Ciência de Dados"](https://cienciadedatos.github.io/pt-r4ds/) foi escrito por pessoas que trabalham (ou trabalharam) no desenvolvimento do tidyverse, e é uma excelente referência para estudar mais. Para cada aula, indicaremos seções do livro que podem ser úteis para aprofundar o conteúdo.
+
+
+
+

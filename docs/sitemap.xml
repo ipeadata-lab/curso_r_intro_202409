@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/02_conceitos_basicos_r.html</loc>
-    <lastmod>2024-10-01T01:11:11.601Z</lastmod>
+    <lastmod>2024-10-01T01:18:15.178Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/11_censobr_microdados.html</loc>
@@ -21,40 +21,44 @@
     <lastmod>2024-09-29T14:23:11.033Z</lastmod>
   </url>
   <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/index.html</loc>
-    <lastmod>2024-09-29T22:42:37.012Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/07_analise.html</loc>
-    <lastmod>2024-09-24T18:24:37.787Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/01_1_rproj.html</loc>
-    <lastmod>2024-10-01T00:18:07.166Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/LICENSE.html</loc>
-    <lastmod>2024-09-26T11:51:47.564Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/12_censobr_agregados_setores.html</loc>
-    <lastmod>2024-09-29T14:23:11.033Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/10_censobr_conceitos.html</loc>
-    <lastmod>2024-09-29T14:23:11.033Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/09_censobr_intro.html</loc>
-    <lastmod>2024-09-30T16:26:20.069Z</lastmod>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/05_transformacao.html</loc>
+    <lastmod>2024-09-29T23:31:08.248Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/08_visualizacao.html</loc>
     <lastmod>2024-09-17T13:15:09.764Z</lastmod>
   </url>
   <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/05_transformacao.html</loc>
-    <lastmod>2024-09-29T23:31:08.248Z</lastmod>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/09_censobr_intro.html</loc>
+    <lastmod>2024-09-30T16:26:20.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/10_censobr_conceitos.html</loc>
+    <lastmod>2024-09-29T14:23:11.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/12_censobr_agregados_setores.html</loc>
+    <lastmod>2024-09-29T14:23:11.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/LICENSE.html</loc>
+    <lastmod>2024-09-26T11:51:47.564Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/01_1_rproj.html</loc>
+    <lastmod>2024-10-01T00:18:07.166Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/07_analise.html</loc>
+    <lastmod>2024-09-24T18:24:37.787Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/index.html</loc>
+    <lastmod>2024-09-29T22:42:37.012Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/00_intro_etapas_analise.html</loc>
+    <lastmod>2024-10-01T01:33:12.800Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/04_conhecendo.html</loc>
@@ -70,6 +74,6 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/01_r_rstudio.html</loc>
-    <lastmod>2024-10-01T00:16:27.245Z</lastmod>
+    <lastmod>2024-10-01T01:16:19.971Z</lastmod>
   </url>
 </urlset>
