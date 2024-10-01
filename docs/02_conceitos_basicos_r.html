@@ -103,35 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -329,10 +300,7 @@ window.Quarto = {
     <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#operações-matemáticas" id="toc-operações-matemáticas" class="nav-link active" data-scroll-target="#operações-matemáticas">Operações matemáticas</a>
-  <ul>
-  <li><a href="#exercício" id="toc-exercício" class="nav-link" data-scroll-target="#exercício">Exercício</a></li>
-  </ul></li>
+  <li><a href="#operações-matemáticas" id="toc-operações-matemáticas" class="nav-link active" data-scroll-target="#operações-matemáticas">Operações matemáticas</a></li>
   <li><a href="#objetos" id="toc-objetos" class="nav-link" data-scroll-target="#objetos">Objetos</a>
   <ul>
   <li><a href="#objetos-existentes-no-r" id="toc-objetos-existentes-no-r" class="nav-link" data-scroll-target="#objetos-existentes-no-r">Objetos existentes no R</a></li>
@@ -422,13 +390,6 @@ window.Quarto = {
 <pre><code>[1] 14</code></pre>
 </div>
 </div>
-<section id="exercício" class="level3">
-<h3 class="anchored" data-anchor-id="exercício">Exercício</h3>
-<ol type="1">
-<li>Vamos usar o R para descorir a temperatura atual em Fahrenheit. Converta a temperatura de Celsius para Fahrenheit, usando a segunte fórmula:</li>
-</ol>
-<p><span class="math display">\[T_F =  T_C * 1.8 + 32\]</span></p>
-</section>
 </section>
 <section id="objetos" class="level2">
 <h2 class="anchored" data-anchor-id="objetos">Objetos</h2>

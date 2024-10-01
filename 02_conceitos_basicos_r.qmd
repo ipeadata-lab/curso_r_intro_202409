@@ -25,14 +25,6 @@ A ordem matemática das operações também vale no R. Por exemplo, a expressão
 2 + 3 * 4
 ```
 
-###  Exercício
-
-1. Vamos usar o R para descorir a temperatura atual em Fahrenheit. Converta a temperatura de Celsius para Fahrenheit, usando a segunte fórmula: 
-
-$$T_F =  T_C * 1.8 + 32$$
-
-
-
 ## Objetos
 
 No R, um objeto é uma estrutura de dados que armazena valores: podemos armazenar um valor único, um conjunto de valores, uma base de dados, entre outros.

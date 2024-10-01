@@ -924,7 +924,7 @@
     "href": "02_conceitos_basicos_r.html#operações-matemáticas",
     "title": "Conceitos básicos do R",
     "section": "Operações matemáticas",
-    "text": "Operações matemáticas\nO R permite realizar operações matemáticas básicas, como soma, subtração, multiplicação, divisão, potenciação, entre outras.\n\n1 + 1 # Soma\n\n[1] 2\n\n1 - 1 # Subtração\n\n[1] 0\n\n2 * 3 # Multiplicação\n\n[1] 6\n\n10 / 2 # Divisão\n\n[1] 5\n\n2 ^ 3 # Potenciação\n\n[1] 8\n\n\nA ordem matemática das operações também vale no R. Por exemplo, a expressão 2 + 3 * 4 será calculada como 2 + (3 * 4):\n\n2 + 3 * 4\n\n[1] 14\n\n\n\nExercício\n\nVamos usar o R para descorir a temperatura atual em Fahrenheit. Converta a temperatura de Celsius para Fahrenheit, usando a segunte fórmula:\n\n\\[T_F =  T_C * 1.8 + 32\\]",
+    "text": "Operações matemáticas\nO R permite realizar operações matemáticas básicas, como soma, subtração, multiplicação, divisão, potenciação, entre outras.\n\n1 + 1 # Soma\n\n[1] 2\n\n1 - 1 # Subtração\n\n[1] 0\n\n2 * 3 # Multiplicação\n\n[1] 6\n\n10 / 2 # Divisão\n\n[1] 5\n\n2 ^ 3 # Potenciação\n\n[1] 8\n\n\nA ordem matemática das operações também vale no R. Por exemplo, a expressão 2 + 3 * 4 será calculada como 2 + (3 * 4):\n\n2 + 3 * 4\n\n[1] 14",
     "crumbs": [
       "Materiais",
       "Conceitos básicos do R"
