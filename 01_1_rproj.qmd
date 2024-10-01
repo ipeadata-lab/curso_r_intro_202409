@@ -81,7 +81,7 @@ Após preencher as informações solicitadas, clicamos em `Create Project`. O RS
 **Sempre que abrir o RStudio, verifique se você está com o projeto correto aberto**. Se não estiver, abra o projeto clicando no ícone de projetos e depois em `Open Project`.
 
 
-![](images/01_abrir_projeto.png){fig-align="center}
+![](images/01_abrir_projeto.png){fig-align="center"}
 
 
 Você também pode abrir um projeto encontrando-o no seu computador e clicando duas vezes no arquivo `.Rproj`.
@@ -113,12 +113,6 @@ dir.create("graficos") # atenção: não use acentos ou caracteres especiais nos
 ```
 
 Após criar as pastas, o seu projeto deve ter uma estrutura parecida com essa:
-
-
-```{r}
-#| eval: false
-fs::dir_tree()
-```
 
 ```
 .
