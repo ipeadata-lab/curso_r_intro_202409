@@ -308,7 +308,7 @@ A função `get_sidra()` do pacote `{sidrar}` permite importar dados do SIDRA.
 #| eval: false
 dados_brutos_4092 <- sidrar::get_sidra(
   x = 4092,                      # <1>
-  period = periodos_disponiveis, # <2>
+  period = c("201402", "201702", "202002", "202302"), # <2>
   geo = "State"                  # <3>
 )
 
@@ -323,13 +323,7 @@ Lembrando que é importante salvar uma cópia local dos dados após o download. 
 ```{r}
 #| eval: false
 # Salvar localmente essa base de dados
-write_rds(dados_brutos_4092, "dados/sidrar_4092_bruto.rds")
-```
-
-```{r}
-#| eval: false
-# Importando os dados salvos localmente
-dados_brutos_4092 <- read_rds("dados/sidrar_4092_bruto.rds")
+write_rds(dados_brutos_4092, "dados_output/sidrar_4092_bruto.rds")
 ```
 
 
