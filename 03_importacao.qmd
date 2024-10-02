@@ -181,7 +181,7 @@ A função `write_xlsx()` do pacote `{writexl}` permite a escrita de arquivos do
 ```{r}
 #| eval: false
 library(writexl)
-write_xlsx(dados, "dados_output/sidrar_4092_bruto.csv")
+write_xlsx(dados, "dados_output/sidrar_4092_bruto.xlsx")
 ```
 
 ### Arquivo binário do R (`.rds`)
