@@ -433,5 +433,3 @@ str(lista_exemplo)
 
 -   Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
     -   [Fluxo de Trabalho: básico](https://cienciadedatos.github.io/pt-r4ds/workflow-basics.html)
-
-- [Guia de estilo do tidyverse](https://style.tidyverse.org/)    
