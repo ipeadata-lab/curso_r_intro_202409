@@ -38,9 +38,6 @@ Existem alguns objetos já criados no R, como por exemplo: `pi`, que armazena o 
 ```{r}
 pi
 letters
-LETTERS
-month.abb
-month.name
 ```
 
 ### Criando um objeto
@@ -325,7 +322,7 @@ Quando a conversão não é possível, o R irá retornar um valor `NA` (*Not Ava
 
 ## Valores faltantes (`NA`)
 
-Valores faltantes são valores que não estão disponíveis, ou que não foram informados. No R, esses valores são representados pelo valor `NA` (*Not Available*).
+Valores faltantes, conhecidos também como ***missing values***, são valores que não estão disponíveis, ou que não foram informados. No R, esses valores são representados pelo valor `NA` (*Not Available*).
 
 Podemos testar se um valor é `NA` usando a função `is.na()`: essa função retornará `TRUE` se o valor for `NA`, e `FALSE` caso contrário.
 
@@ -349,7 +346,11 @@ numeros_com_na <- c(1, 2, NA, 4, 5)
 mean(numeros_com_na)
 ```
 
-Em aulas futuras falaremos sobre como identificar os `NA` em nossos dados, e algumas estratégias para lidar com eles.
+Em aulas futuras falaremos sobre como identificar os `NA` em nossos dados, e algumas estratégias para lidar com eles. Neste momento, podemos utilizar o argumento `na.rm = TRUE` para que os `NA` sejam removidos antes de executar a função que calcula a média:
+
+```{r}
+mean(numeros_com_na, na.rm = TRUE)
+```
 
 
 ## Tipos de objetos
