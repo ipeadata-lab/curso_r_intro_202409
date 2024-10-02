@@ -130,19 +130,23 @@ Após criar as pastas, o seu projeto deve ter uma estrutura parecida com essa:
 #| collapse: true
 download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv",
-  destfile = "dados/sidrar_4092_bruto_2.csv")
+  destfile = "dados/sidrar_4092_bruto_2.csv",
+  mode = "wb")
 
 download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv",
-  destfile = "dados/sidrar_4092_bruto.csv")
+  destfile = "dados/sidrar_4092_bruto.csv",
+  mode = "wb")
 
 download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx", 
-  destfile = "dados/sidrar_4092_bruto.xlsx")
+  destfile = "dados/sidrar_4092_bruto.xlsx",
+  mode = "wb")
 
 download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds", 
-  destfile = "dados/sidrar_4092_bruto.rds")
+  destfile = "dados/sidrar_4092_bruto.rds",
+  mode = "wb")
 ```
 
 É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função `dir()` para listar os arquivos no diretório `dados`:
