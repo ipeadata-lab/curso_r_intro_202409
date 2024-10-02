@@ -314,7 +314,7 @@ dados_brutos_4092 <- sidrar::get_sidra(
 
 ```
 1. Qual é o código da tabela que vamos usar?
-2. Períodos: trimestres, vamos usar o vetor criado anteriormente
+2. Períodos: trimestres, podemos indicar um vetor
 3. Nível territorial: Dados por UF
 
 
