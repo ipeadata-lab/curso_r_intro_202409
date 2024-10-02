@@ -574,7 +574,7 @@ Aviso
 <p>A função <code>write_xlsx()</code> do pacote <code>{writexl}</code> permite a escrita de arquivos do Excel.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(dados, <span class="st">"dados_output/sidrar_4092_bruto.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(dados, <span class="st">"dados_output/sidrar_4092_bruto.xlsx"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="arquivo-binário-do-r-.rds-1" class="level3">
@@ -753,7 +753,7 @@ Importante
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-22-1"><a href="#annotated-cell-22-1" aria-hidden="true" tabindex="-1"></a>dados_brutos_4092 <span class="ot">&lt;-</span> sidrar<span class="sc">::</span><span class="fu">get_sidra</span>(</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-2" class="code-annotation-target"><a href="#annotated-cell-22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">4092</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2">2</button><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">period =</span> periodos_disponiveis,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2">2</button><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">period =</span> <span class="fu">c</span>(<span class="st">"201402"</span>, <span class="st">"201702"</span>, <span class="st">"202002"</span>, <span class="st">"202302"</span>),</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3">3</button><span id="annotated-cell-22-4" class="code-annotation-target"><a href="#annotated-cell-22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geo =</span> <span class="st">"State"</span></span>
 <span id="annotated-cell-22-5"><a href="#annotated-cell-22-5" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
@@ -776,11 +776,7 @@ Importante
 <p>Lembrando que é importante salvar uma cópia local dos dados após o download. Assim, quando você for trabalhar com esses dados, não precisará baixá-los novamente.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar localmente essa base de dados</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_brutos_4092, <span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando os dados salvos localmente</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>dados_brutos_4092 <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_brutos_4092, <span class="st">"dados_output/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
