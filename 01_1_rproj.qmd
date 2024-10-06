@@ -152,6 +152,12 @@ download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds", 
   destfile = "dados/sidrar_4092_bruto.rds",
   mode = "wb")
+
+# Arquivo .dta (Stata)
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.dta", 
+  destfile = "dados/sidrar_4092_bruto.dta",
+  mode = "wb")
 ```
 
 Caso tenha dificuldades baixando os arquivos utilizando os códigos acima, você também pode baixar os arquivos manualmente, clicando nos links abaixo, e copiar e colar para a pasta `dados` do seu projeto:
@@ -164,6 +170,8 @@ Caso tenha dificuldades baixando os arquivos utilizando os códigos acima, você
 
 - [sidrar_4092_bruto.rds](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds)
 
+- [sidrar_4092_bruto.dta](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.dta)
+
 É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função `dir()` para listar os arquivos no diretório `dados`:
 
 ```{r}
@@ -174,6 +182,7 @@ dir("dados")
 ```
 "sidrar_4092_bruto_2.csv" 
 "sidrar_4092_bruto.csv"
+"sidrar_4092_bruto.dta"
 "sidrar_4092_bruto.rds"  
 "sidrar_4092_bruto.xlsx"
 ```

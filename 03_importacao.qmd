@@ -123,6 +123,16 @@ A função `read_rds()` do pacote `{readr}` permite importar um arquivo binário
 dados <- read_rds("dados/sidrar_4092_bruto.rds")
 ```
 
+### Arquivos do Stata, SPSS, SAS
+
+Para importar arquivos do Stata, SPSS e SAS, podemos usar o pacote [`{haven}`](https://haven.tidyverse.org/). Esse pacote é instalado junto com o `{tidyverse}`.
+
+Por exemplo, função `read_dta()` do pacote `{haven}` permite a leitura de arquivos do Stata:
+
+```{r}
+library(haven)
+dados_dta <- read_dta("dados/sidrar_4092_bruto.dta")
+```
 
 ### Import Dataset do RStudio
 
