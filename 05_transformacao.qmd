@@ -3,7 +3,6 @@
 title: "Transformando dados"
 ---
 
-
 ## Introdução
 
 Primeiramente, precisamos carregar o pacote `tidyverse` e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre "pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação", e foi baixada previamente (em [Importando dados](03_importacao.html#pacote-sidrar)).
@@ -214,7 +213,8 @@ dados_com_proporcao <- mutate(
   dados_tipo,
   # nova variável: 
   # nome_da_coluna = o que queremos calcular
-  prop_desocupacao = (mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho)*100,
+  prop_desocupacao = (mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho),
+  perc_desocupacao = prop_desocupacao * 100
 )
 ```
 
@@ -263,61 +263,6 @@ Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, 
 Nos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador *pipe* (`%>%` ou `|>`). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.
 
 Podemos reescrever os códigos anteriores usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: `dados_renomeados`, `dados_filtrados`, `dados_selecionados`, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.
-
-No exemplo abaixo, criamos menos objetos intermediários, e encadeamos as funções usadas anteriormente usando o pipe: 
-
-```{r}
-dados_filtrados_selecionados <- dados_brutos |>
-  # limpando os nomes das colunas
-  clean_names() |>
-  # filtrando as linhas
-  filter(variavel == "Pessoas de 14 anos ou mais de idade") |>
-  # selecionando as colunas
-  select(
-    unidade_da_federacao,
-    unidade_da_federacao_codigo,
-    trimestre,
-    trimestre_codigo,
-    condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
-    valor
-  ) |>
-  # renomeando as colunas
-  rename(
-    condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
-    valor_mil_pessoas = valor,
-    uf = unidade_da_federacao,
-    uf_codigo = unidade_da_federacao_codigo
-  )
-
-dados_largos <- dados_filtrados_selecionados |>
-  # transformando para formato largo
-  pivot_wider(
-    names_from = condicao,
-    values_from = valor_mil_pessoas,
-    names_prefix = "mil_pessoas_"
-  ) |>
-  # limpando o nome das colunas novamente
-  clean_names()
-
-  
-  
-dados_preparados <- dados_largos |>  
-  # transformando as variáveis 
-  mutate(
-    uf_codigo = as.factor(uf_codigo),
-    trimestre_codigo = as.factor(trimestre_codigo),
-    prop_desocupacao = (
-      mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho
-    ) * 100,
-  ) |>
-  # ordenando a base de dados
-  arrange(trimestre_codigo, desc(prop_desocupacao))
-```
-
-```{r}
-glimpse(dados_preparados)
-```
-
 
 
 ## Unindo duas bases de dados
@@ -386,11 +331,11 @@ Não falaremos nesse momento sobre como criar visualizações e mapas, pois isso
 dados_geo |> 
   filter(trimestre_codigo == "202402") |>
   ggplot() +
-  geom_sf(aes(fill = prop_desocupacao)) +
+  geom_sf(aes(fill = perc_desocupacao)) +
   theme_light() +
   scale_fill_viridis_c() +
-  labs(title = "Proporção de desocupação por UF no 2º trimestre de 2024",
-       fill = "Proporção de desocupação (%)") +
+  labs(title = "Percentual de desocupação por UF no 2º trimestre de 2024",
+       fill = "Desocupação (%)") +
   theme(legend.position = "bottom")
 ```
 
@@ -403,8 +348,6 @@ Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas
 
 ```{r}
 #| eval: false
-# Criando a pasta "dados_output" caso ela ainda não exista
-fs::dir_create("dados_output")
 # Salvando os dados preparados
 write_rds(dados_preparados, "dados_output/sidra_4092_arrumado.rds")
 ```
@@ -412,6 +355,11 @@ write_rds(dados_preparados, "dados_output/sidra_4092_arrumado.rds")
 
 ## Sugestões de materiais
 
+- [IBGE: Desemprego](https://www.ibge.gov.br/explica/desemprego.php)
+
+- [IBGE: PNAD Contínua - Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?edicao=41004)
+
 - Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
   - [Transformação de dados](https://cienciadedatos.github.io/pt-r4ds/data-transform.html)
   - [Organização de dados](https://cienciadedatos.github.io/pt-r4ds/data-tidy.html)
+  
