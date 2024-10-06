@@ -237,14 +237,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_analise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Analisando dados</span></a>
+  <a href="./07_analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise exploratória de dados</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualizando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_regressao_linear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressão linear</span></a>
   </div>
 </li>
       </ul>
@@ -303,6 +309,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Anexos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_erros_frequentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erros e <em>warnings</em> frequentes</span></a>
   </div>
 </li>
       </ul>
@@ -495,7 +518,7 @@ Aviso
 <li><p>Várias colunas numéricas representam o código de uma categoria, e não faz sentido calcular a média desses códigos.</p></li>
 <li><p>A variável <code>valor</code> está relacionada com a variável <code>Unidade de Medida</code>. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.</p></li>
 </ul>
-<p>Falaremos sobre o cálculo de estatísticas descritivas no capítulo <a href="./07_analise.html">Analisando dados</a>.</p>
+<p>Falaremos sobre o cálculo de estatísticas descritivas no capítulo <a href="./07_analise_exploratoria.html">Análise Exploratória de Dados</a>.</p>
 </div>
 </div>
 <section id="summary" class="level3">
@@ -1003,47 +1026,47 @@ Aviso
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_sample</span>(dados_com_n_linha, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
-1   21089                          3 Unidade da Federação
-2   10553                          3 Unidade da Federação
-3   19984                          3 Unidade da Federação
-4   19562                          3 Unidade da Federação
-5   11725                          3 Unidade da Federação
+1    3618                          3 Unidade da Federação
+2   19821                          3 Unidade da Federação
+3   12687                          3 Unidade da Federação
+4   19155                          3 Unidade da Federação
+5   26186                          3 Unidade da Federação
   Unidade de Medida (Código) Unidade de Medida   Valor
-1                          2                 %     4.6
-2                          2                 %    47.8
-3                       1572       Mil pessoas  1674.0
-4                       1572       Mil pessoas 25832.0
-5                       1572       Mil pessoas  1535.0
+1                          2                 %     2.0
+2                       1572       Mil pessoas 38723.0
+3                          2                 %     1.5
+4                          2                 %    34.9
+5                          2                 %     0.6
   Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
-1                            42       Santa Catarina             201301
-2                            24  Rio Grande do Norte             201804
-3                            35            São Paulo             202402
-4                            35            São Paulo             201901
-5                            25              Paraíba             202101
+1                            14              Roraima             201903
+2                            35            São Paulo             202202
+3                            26           Pernambuco             202003
+4                            35            São Paulo             201304
+5                            53     Distrito Federal             201402
           Trimestre Variável (Código)
-1 1º trimestre 2013              4087
-2 4º trimestre 2018              4104
-3 2º trimestre 2024              1641
-4 1º trimestre 2019              1641
-5 1º trimestre 2021              1641
-                                                         Variável
-1   Coeficiente de variação - Pessoas de 14 anos ou mais de idade
-2 Distribuição percentual das pessoas de 14 anos ou mais de idade
-3                             Pessoas de 14 anos ou mais de idade
-4                             Pessoas de 14 anos ou mais de idade
-5                             Pessoas de 14 anos ou mais de idade
+1 3º trimestre 2019              4105
+2 2º trimestre 2022              1641
+3 3º trimestre 2020              4087
+4 4º trimestre 2013              4104
+5 2º trimestre 2014              4087
+                                                                                   Variável
+1 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+2                                                       Pessoas de 14 anos ou mais de idade
+3                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+4                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+5                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
   Condição em relação à força de trabalho e condição de ocupação (Código)
-1                                                                   32446
-2                                                                   32387
-3                                                                   32446
-4                                                                   32386
-5                                                                   32447
+1                                                                   32387
+2                                                                   32385
+3                                                                   32386
+4                                                                   32447
+5                                                                   32385
   Condição em relação à força de trabalho e condição de ocupação
-1                                 Força de trabalho - desocupada
-2                                    Força de trabalho - ocupada
-3                                 Força de trabalho - desocupada
-4                                              Força de trabalho
-5                                      Fora da força de trabalho</code></pre>
+1                                    Força de trabalho - ocupada
+2                                                          Total
+3                                              Força de trabalho
+4                                      Fora da força de trabalho
+5                                                          Total</code></pre>
 </div>
 </div>
 </section>

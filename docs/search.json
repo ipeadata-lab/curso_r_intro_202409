@@ -257,230 +257,142 @@
     "href": "00_projeto_eda.html",
     "title": "Projeto de Análise Exploratória de Dados com R",
     "section": "",
-    "text": "Com o objetivo de praticar os conceitos apresentados no curso, recomendamos que as pessoas participantes realizem um projeto de análise exploratória de dados paralelamente às aulas. Este projeto permitirá que você consolide o aprendizado adquirido, explorando dados reais e aplicando as ferramentas de análise discutidas em aula.\nAproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas para os monitores. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.\nOs passos a seguir podem te ajudar a organizar o projeto de análise exploratória de dados:\n\nEscolha um conjunto de dados: Você pode escolher um conjunto de dados de sua preferência. Caso não tenha um conjunto de dados em mente, sugerimos que escolha um dos conjuntos de dados disponíveis nos seguintes pacotes:\n\nsidrar: Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.\ncensobr: Dados de censos demográficos brasileiros.\nipeadatar: Acesso aos dados disponibilizados no Ipeadata.\nflightsbr: Dados de vôos no Brasil.\nPNADcIBGE: Dados da PNAD Contínua do IBGE.\nmicrodatasus: Acesso aos microdados do DataSUS.\n\nCrie um projeto no RStudio: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula Conhecendo o R e o RStudio.\nImporte os dados: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula Importando dados.\nObjetivo da análise: Defina o objetivo da análise exploratória de dados. Quais são as perguntas que você deseja responder a partir desta base de dados?\nDescreva o conjunto de dados brutos: Faça uma breve descrição do conjunto de dados escolhido. Qual é a unidade amostral (o que cada linha significa)? Quais são as variáveis presentes? Quais são os tipos de variáveis? Você pode incluir tabelas ou gráficos para facilitar a visualização das variáveis e sua distribuição. O que precisa ser feito para deixar a tabela “limpa”, ou seja, pronta para a análise?\nLimpeza dos dados: Utilize o que você aprendeu na etapa passada para limpar o conjunto de dados. Isso pode incluir lidar com dados ausentes, remover outliers ou inconsistências. A aula Transformando dados será útil nessa etapa.\nRealize a análise exploratória de dados: Utilize os conceitos apresentados no curso para realizar a análise exploratória de dados do conjunto escolhido. Lembre-se do objetivo que você definiu anteriormente e busque responder às perguntas que você levantou. Inclua gráficos e tabelas para apresentar os resultados e escreva suas interpretações ao longo do processo. As aulas Analisando dados e Visualizando dados serão úteis nessa etapa.\nPróximos passos: Você pode apresentar os resultados para outras pessoas envolvidas no curso (participantes, ministrantes, monitores) e solicitar feedbacks.",
+    "text": "Com o objetivo de praticar os conceitos apresentados no curso, recomendamos que as pessoas participantes realizem um projeto de análise exploratória de dados paralelamente às aulas. Este projeto permitirá que você consolide o aprendizado adquirido, explorando dados reais e aplicando as ferramentas de análise discutidas em aula.\nAproveite o projeto para aplicar os conceitos apresentados no curso e para explorar novas funcionalidades do R. Ao se deparar com uma dúvida, não esqueça de anotar e perguntar durante as aulas para os monitores. A equipe do curso está disponível para auxiliar com dúvidas sobre o projeto até a data final do curso.\nOs passos a seguir podem te ajudar a organizar o projeto de análise exploratória de dados:\n\nEscolha um conjunto de dados: Você pode escolher um conjunto de dados de sua preferência. Caso não tenha um conjunto de dados em mente, sugerimos que escolha um dos conjuntos de dados disponíveis nos seguintes pacotes:\n\nsidrar: Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.\ncensobr: Dados de censos demográficos brasileiros.\nipeadatar: Acesso aos dados disponibilizados no Ipeadata.\nflightsbr: Dados de vôos no Brasil.\nPNADcIBGE: Dados da PNAD Contínua do IBGE.\nmicrodatasus: Acesso aos microdados do DataSUS.\n\nCrie um projeto no RStudio: Crie um projeto no RStudio para armazenar os códigos e arquivos do projeto. Esse procedimento será descrito na aula Conhecendo o R e o RStudio.\nImporte os dados: Importe o conjunto de dados escolhido para o R. Esse procedimento será descrito na aula Importando dados.\nObjetivo da análise: Defina o objetivo da análise exploratória de dados. Quais são as perguntas que você deseja responder a partir desta base de dados?\nDescreva o conjunto de dados brutos: Faça uma breve descrição do conjunto de dados escolhido. Qual é a unidade amostral (o que cada linha significa)? Quais são as variáveis presentes? Quais são os tipos de variáveis? Você pode incluir tabelas ou gráficos para facilitar a visualização das variáveis e sua distribuição. O que precisa ser feito para deixar a tabela “limpa”, ou seja, pronta para a análise?\nLimpeza dos dados: Utilize o que você aprendeu na etapa passada para limpar o conjunto de dados. Isso pode incluir lidar com dados ausentes, remover outliers ou inconsistências. A aula Transformando dados será útil nessa etapa.\nRealize a análise exploratória de dados: Utilize os conceitos apresentados no curso para realizar a análise exploratória de dados do conjunto escolhido. Lembre-se do objetivo que você definiu anteriormente e busque responder às perguntas que você levantou. Inclua gráficos e tabelas para apresentar os resultados e escreva suas interpretações ao longo do processo. As aulas Análise exploratória de dados e Visualizando dados serão úteis nessa etapa.\nPróximos passos: Você pode apresentar os resultados para outras pessoas envolvidas no curso (participantes, ministrantes, monitores) e solicitar feedbacks.",
     "crumbs": [
       "Pré-curso",
       "Projeto de Análise Exploratória de Dados com R"
     ]
   },
   {
-    "objectID": "13_censobr_documentacao.html",
-    "href": "13_censobr_documentacao.html",
-    "title": "Documentação dos Censos",
-    "section": "",
-    "text": "Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conjunto de funções que permitem rápido acesso à documentação dos censos demográficos, incluindo os dicionários de variáveis, questionários e manual do entrevistador para entrevistas.\nTabela 2. Funções de documentação disponíveis no {censobr}\n\n\n\n    \n    \n    \n\n\n\n\n\n\n\nFunção\nDocumentação\nTipo\nDisponibilidade\n\n\n1960\n70\n80\n91\n2000\n10\n22\n\n\n\n\ndata_dictionary()\nDicionário de variáveis\nMicrodados\nX\nX\nX\nX\nX\nX\nem breve\n\n\nAgregados de setores censitários\n\n\n\n\nX\nX\nem breve\n\n\nquestionnaire()\nQuestionários\nLongo e curto\nX\nX\nX\nX\nX\nX\nX\n\n\ninterview_manual()\nManual do entrevistador\n-\nX\nX\nX\nX\nX\nX\nX\n\n\n\n\n\n\n\n\nTodas funções de documentação baixam os arquivos em formato .html ou .pdf, e abrem o documento no navegador (browser). Assim como as funções de leitura de dados do {censobr}, essas funções de documentação também salvam os arquivos num cache local na primeira vez que a função é rodada. Assim, quando o usuário roda a função novamente, o pacote simplesmente carrega o arquivo local de maneira quase instantânea.\n\n\n\nA função data_dictionary() carrega o dicionário de variáveis, apontando a definição de cada variável e o significado de suas categorias no caso de variáveis categóricas. Atualmente, a função abrange os dicionários dos microdados da amostra para todos os censos brasileiros desde 1960: c(1960, 1970, 1980, 1991, 2000 e 2010). Além disso, a função também inclui atualmente os dicionários dos dados do universo agregados em setores censitário para os anos 2000 e 2010.\n\nlibrary(censobr)\n\n# dicionário de variáveis de pessoas (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'population')\n\n# dicionário de variáveis de domicílios (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'households')\n\n\n# dicionário de variáveis de setores censitários (agregados do universo)\ndata_dictionary(year = 2010, \n                dataset = 'tracts')\n\n\n\n\nCom frequência, é importante se entender a estrutura e fluxo do questionário utilizado em pesquisas de coleta de dados. A função questionnaire() inclui os questionários utilizados na coleta de dados de todos os censos brasileiros desde 1960.\nAlém de passar o parâmetro year, o usuário precisa indicar o tipo de questionário de interesse, se o questionário curto do universo (type = 'short') ou o questionário longo utilizado na pesquisa amostral (type = 'long').\n\n# questionário curto da pesquisa do universo\nquestionnaire(year = 2022, \n              type = 'short')\n\n# questionário longo da pesquisa amostral\nquestionnaire(year = 2022, \n              type = 'long')\n\n\n\n\nPor fim, a função interview_manual() faz o download e abre no navegador o “Manual do Recenseador”, ou seja, o manual de instruções para os recenseadores do IBGE sobre como coletar os dados do censo. Estão disponíveis os manuais de todos os censos desde 1960.\n\n# Censo de 2010\ninterview_manual(year = 2022)\n\n# Censo de 1970\ninterview_manual(year = 1960)",
-    "crumbs": [
-      "Explorando o Censo Demográfico",
-      "Documentação dos Censos"
-    ]
-  },
-  {
-    "objectID": "13_censobr_documentacao.html#documentação-do-censo-disponível-no-censobr",
-    "href": "13_censobr_documentacao.html#documentação-do-censo-disponível-no-censobr",
-    "title": "Documentação dos Censos",
-    "section": "",
-    "text": "Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conjunto de funções que permitem rápido acesso à documentação dos censos demográficos, incluindo os dicionários de variáveis, questionários e manual do entrevistador para entrevistas.\nTabela 2. Funções de documentação disponíveis no {censobr}\n\n\n\n    \n    \n    \n\n\n\n\n\n\n\nFunção\nDocumentação\nTipo\nDisponibilidade\n\n\n1960\n70\n80\n91\n2000\n10\n22\n\n\n\n\ndata_dictionary()\nDicionário de variáveis\nMicrodados\nX\nX\nX\nX\nX\nX\nem breve\n\n\nAgregados de setores censitários\n\n\n\n\nX\nX\nem breve\n\n\nquestionnaire()\nQuestionários\nLongo e curto\nX\nX\nX\nX\nX\nX\nX\n\n\ninterview_manual()\nManual do entrevistador\n-\nX\nX\nX\nX\nX\nX\nX\n\n\n\n\n\n\n\n\nTodas funções de documentação baixam os arquivos em formato .html ou .pdf, e abrem o documento no navegador (browser). Assim como as funções de leitura de dados do {censobr}, essas funções de documentação também salvam os arquivos num cache local na primeira vez que a função é rodada. Assim, quando o usuário roda a função novamente, o pacote simplesmente carrega o arquivo local de maneira quase instantânea.",
-    "crumbs": [
-      "Explorando o Censo Demográfico",
-      "Documentação dos Censos"
-    ]
-  },
-  {
-    "objectID": "13_censobr_documentacao.html#dicionário-de-dados",
-    "href": "13_censobr_documentacao.html#dicionário-de-dados",
-    "title": "Documentação dos Censos",
-    "section": "",
-    "text": "A função data_dictionary() carrega o dicionário de variáveis, apontando a definição de cada variável e o significado de suas categorias no caso de variáveis categóricas. Atualmente, a função abrange os dicionários dos microdados da amostra para todos os censos brasileiros desde 1960: c(1960, 1970, 1980, 1991, 2000 e 2010). Além disso, a função também inclui atualmente os dicionários dos dados do universo agregados em setores censitário para os anos 2000 e 2010.\n\nlibrary(censobr)\n\n# dicionário de variáveis de pessoas (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'population')\n\n# dicionário de variáveis de domicílios (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'households')\n\n\n# dicionário de variáveis de setores censitários (agregados do universo)\ndata_dictionary(year = 2010, \n                dataset = 'tracts')",
-    "crumbs": [
-      "Explorando o Censo Demográfico",
-      "Documentação dos Censos"
-    ]
-  },
-  {
-    "objectID": "13_censobr_documentacao.html#questionários",
-    "href": "13_censobr_documentacao.html#questionários",
-    "title": "Documentação dos Censos",
-    "section": "",
-    "text": "Com frequência, é importante se entender a estrutura e fluxo do questionário utilizado em pesquisas de coleta de dados. A função questionnaire() inclui os questionários utilizados na coleta de dados de todos os censos brasileiros desde 1960.\nAlém de passar o parâmetro year, o usuário precisa indicar o tipo de questionário de interesse, se o questionário curto do universo (type = 'short') ou o questionário longo utilizado na pesquisa amostral (type = 'long').\n\n# questionário curto da pesquisa do universo\nquestionnaire(year = 2022, \n              type = 'short')\n\n# questionário longo da pesquisa amostral\nquestionnaire(year = 2022, \n              type = 'long')",
-    "crumbs": [
-      "Explorando o Censo Demográfico",
-      "Documentação dos Censos"
-    ]
-  },
-  {
-    "objectID": "13_censobr_documentacao.html#manual-do-entrevistador",
-    "href": "13_censobr_documentacao.html#manual-do-entrevistador",
-    "title": "Documentação dos Censos",
-    "section": "",
-    "text": "Por fim, a função interview_manual() faz o download e abre no navegador o “Manual do Recenseador”, ou seja, o manual de instruções para os recenseadores do IBGE sobre como coletar os dados do censo. Estão disponíveis os manuais de todos os censos desde 1960.\n\n# Censo de 2010\ninterview_manual(year = 2022)\n\n# Censo de 1970\ninterview_manual(year = 1960)",
-    "crumbs": [
-      "Explorando o Censo Demográfico",
-      "Documentação dos Censos"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html",
-    "href": "05_transformacao.html",
-    "title": "Transformando dados",
-    "section": "",
-    "text": "Primeiramente, precisamos carregar o pacote tidyverse e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, e foi baixada previamente (em Importando dados).\n\nlibrary(tidyverse)\ndados_brutos &lt;- read_rds(\"dados/sidrar_4092_bruto.rds\")",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#introdução",
-    "href": "05_transformacao.html#introdução",
-    "title": "Transformando dados",
-    "section": "",
-    "text": "Primeiramente, precisamos carregar o pacote tidyverse e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, e foi baixada previamente (em Importando dados).\n\nlibrary(tidyverse)\ndados_brutos &lt;- read_rds(\"dados/sidrar_4092_bruto.rds\")",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#padronizar-nome-das-colunas",
-    "href": "05_transformacao.html#padronizar-nome-das-colunas",
-    "title": "Transformando dados",
-    "section": "Padronizar nome das colunas",
-    "text": "Padronizar nome das colunas\nÉ uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas de encoding, facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.\nO pacote janitor possui a função clean_names(), que padroniza os nomes das colunas de um data frame. Ele substitui espaços por underline (_), remove caracteres especiais, e transforma o texto em minúsculo, garantindo maior consistência ao lidar com os dados. Isso evita erros ao acessar colunas.\n\nlibrary(janitor)\n\n\n# checar nome das colunas da base de dados\nnames(dados_brutos)\n\n [1] \"Nível Territorial (Código)\"                                             \n [2] \"Nível Territorial\"                                                      \n [3] \"Unidade de Medida (Código)\"                                             \n [4] \"Unidade de Medida\"                                                      \n [5] \"Valor\"                                                                  \n [6] \"Unidade da Federação (Código)\"                                          \n [7] \"Unidade da Federação\"                                                   \n [8] \"Trimestre (Código)\"                                                     \n [9] \"Trimestre\"                                                              \n[10] \"Variável (Código)\"                                                      \n[11] \"Variável\"                                                               \n[12] \"Condição em relação à força de trabalho e condição de ocupação (Código)\"\n[13] \"Condição em relação à força de trabalho e condição de ocupação\"         \n\n# limpar nomes das colunas da base de dados, e salvar em um novo objeto\ndados_renomeados &lt;- clean_names(dados_brutos)\n\n# checar nome das colunas da base de dados renomeada\nnames(dados_renomeados)\n\n [1] \"nivel_territorial_codigo\"                                             \n [2] \"nivel_territorial\"                                                    \n [3] \"unidade_de_medida_codigo\"                                             \n [4] \"unidade_de_medida\"                                                    \n [5] \"valor\"                                                                \n [6] \"unidade_da_federacao_codigo\"                                          \n [7] \"unidade_da_federacao\"                                                 \n [8] \"trimestre_codigo\"                                                     \n [9] \"trimestre\"                                                            \n[10] \"variavel_codigo\"                                                      \n[11] \"variavel\"                                                             \n[12] \"condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao_codigo\"\n[13] \"condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao\"",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#linhas-colunas-e-objetivo-de-análise",
-    "href": "05_transformacao.html#linhas-colunas-e-objetivo-de-análise",
-    "title": "Transformando dados",
-    "section": "Linhas, colunas e objetivo de análise",
-    "text": "Linhas, colunas e objetivo de análise\nUma pergunta que é sempre importante ter em mente ao analisar dados é: O que cada linha representa? Na estatística, esse é o conceito da unidade amostral, ou unidade observacional.\nO objeto dados_brutos apresenta uma linha para cada combinação das seguintes variáveis:\n\nTrimestre (Código) / Trimestre\nUnidade da Federação / Unidade da Federação (Código)\nVariável / Variável (Código)\nCondição em relação à força de trabalho e condição de ocupação e Condição em relação à força de trabalho e condição de ocupação (Código)\n\nPodemos consultar os valores distintos possíveis no R, para garantir que estamos selecionando corretamente os valores de interesse.\nAs variáveis disponíveis na base de dados, e suas unidades de medida são:\n\ndistinct(\n  # base de dados\n  dados_renomeados, \n  # colunas que queremos bucar os valores distintos \n  variavel, unidade_de_medida\n)\n\n                                                                                   variavel\n1                                                       Pessoas de 14 anos ou mais de idade\n2                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade\n3                           Distribuição percentual das pessoas de 14 anos ou mais de idade\n4 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n  unidade_de_medida\n1       Mil pessoas\n2                 %\n3                 %\n4                 %\n\n\nPodemos observar, cada linha representa uma combinação de trimestre, unidade da federação e variável.\nOutras perguntas relevantes ao analisar dados são:\n\nQual é a pergunta que eu quero responder com esses dados?\nQuais são as variáveis que eu preciso para responder essa pergunta?\n\nNeste capítulo, vamos explorar as funções de transformação de dados do pacote dplyr, a partir da pergunta norteadora abaixo:\n\nConsiderando que a tabela 4092 apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#filtrando-linhas",
-    "href": "05_transformacao.html#filtrando-linhas",
-    "title": "Transformando dados",
-    "section": "Filtrando linhas",
-    "text": "Filtrando linhas\nPara responder à pergunta norteadora, não precisamos de todas as variáveis presentes na base de dados. Podemos filtrar as linhas que são relevantes para a análise, escolhendo as variáveis de interesse.\nNesse caso, podemos filtrar os dados onde a variável é igual à \"Pessoas de 14 anos ou mais de idade\".\n\ndados_filtrados &lt;- filter(\n  # base de dados\n  dados_renomeados,\n  # condição de filtro\n  variavel == \"Pessoas de 14 anos ou mais de idade\"\n)\n\nPara verificar se o filtro foi feito corretamente, podemos checar o número de linhas de cada base de dados:\n\nnrow(dados_renomeados)\n\n[1] 27000\n\nnrow(dados_filtrados)\n\n[1] 6750\n\n\nPodemos verificar também os valores distintos para as colunas variavel e unidade_de_medida na base de dados dados_filtrados:\n\ndistinct(\n  # base de dados\n  dados_filtrados, \n  # colunas que queremos bucar os valores distintos \n  variavel, unidade_de_medida\n)\n\n                             variavel unidade_de_medida\n1 Pessoas de 14 anos ou mais de idade       Mil pessoas\n\n\nAgora sabemos que a base de dados dados_filtrados contém apenas dados sobre a variável \"Pessoas de 14 anos ou mais de idade\", e que a unidade de medida da coluna valor é mil pessoas.",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#selecionando-colunas",
-    "href": "05_transformacao.html#selecionando-colunas",
-    "title": "Transformando dados",
-    "section": "Selecionando colunas",
-    "text": "Selecionando colunas\nAlgumas colunas não são relevantes para responder à pergunta norteadora. Podemos selecionar apenas as colunas que vamos utilizar através da função select():\n\ndados_selecionados &lt;- select(\n  # base de dados\n  dados_filtrados, \n  # colunas que queremos manter\n  unidade_da_federacao,\n  unidade_da_federacao_codigo,\n  trimestre,\n  trimestre_codigo,\n  condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,\n  valor\n)\n\nglimpse(dados_selecionados)\n\nRows: 6,750\nColumns: 6\n$ unidade_da_federacao                                           &lt;chr&gt; \"Rondôn…\n$ unidade_da_federacao_codigo                                    &lt;chr&gt; \"11\", \"…\n$ trimestre                                                      &lt;chr&gt; \"1º tri…\n$ trimestre_codigo                                               &lt;chr&gt; \"201201…\n$ condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao &lt;chr&gt; \"Total\"…\n$ valor                                                          &lt;dbl&gt; 1210, 7…\n\n\nPodemos renomear colunas com a função rename(). Vamos renomear algumas colunas para facilitar o uso posteriormente:\n\ndados_renomeados_2 &lt;- rename(\n  # base de dados\n  dados_selecionados, \n  # colunas que queremos renomear: novo_nome = nome_atual\n  condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,\n  valor_mil_pessoas = valor,\n  uf = unidade_da_federacao,\n  uf_codigo = unidade_da_federacao_codigo\n)\n\nglimpse(dados_renomeados_2)\n\nRows: 6,750\nColumns: 6\n$ uf                &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rondônia\", \"Rondônia\", \"Ron…\n$ uf_codigo         &lt;chr&gt; \"11\", \"11\", \"11\", \"11\", \"11\", \"11\", \"11\", \"11\", \"11\"…\n$ trimestre         &lt;chr&gt; \"1º trimestre 2012\", \"1º trimestre 2012\", \"1º trimes…\n$ trimestre_codigo  &lt;chr&gt; \"201201\", \"201201\", \"201201\", \"201201\", \"201201\", \"2…\n$ condicao          &lt;chr&gt; \"Total\", \"Força de trabalho\", \"Força de trabalho - o…\n$ valor_mil_pessoas &lt;dbl&gt; 1210, 765, 703, 62, 446, 1217, 782, 733, 49, 434, 12…",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#transformando-a-tabela",
-    "href": "05_transformacao.html#transformando-a-tabela",
-    "title": "Transformando dados",
-    "section": "Transformando a tabela",
-    "text": "Transformando a tabela\nAinda considerando nossa pergunta norteadora, queremos calcular a taxa de desocupação de cada estado e região do Brasil ao longo do tempo. Para isso, é mais fácil trabalhar com a tabela onde cada linha represente uma UF por trimestre, e as categorias da variável condicao sejam transformadas em colunas.\nPara fazer essa transformação, podemos usar a função pivot_wider().\nA função pivot_wider() é útil quando queremos reorganizar uma tabela, transformando variáveis categóricas em novas colunas. Essa estrutura facilita cálculos comparativos e análises entre as diferentes categorias.\nPor exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos pivot_wider(), vamos transformar a tabela para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas.\n\ndados_largos &lt;- pivot_wider(\n  # base de dados\n  dados_renomeados_2, \n  # nome da coluna de onde os nomes das novas colunas serão extraídos\n  names_from = condicao, \n  # nome da coluna de onde os valores das novas colunas serão extraídos \n  values_from = valor_mil_pessoas, \n  # podemos adicionar um texto como prefixo. nesse caso, isso é opcional, \n  # mas é útil para ficar claro qual é a unidade de medida das variáveis\n  names_prefix = \"mil_pessoas_\"\n)\n\n\nglimpse(dados_largos)\n\nRows: 1,350\nColumns: 9\n$ uf                                           &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"…\n$ uf_codigo                                    &lt;chr&gt; \"11\", \"11\", \"11\", \"11\", \"…\n$ trimestre                                    &lt;chr&gt; \"1º trimestre 2012\", \"2º …\n$ trimestre_codigo                             &lt;chr&gt; \"201201\", \"201202\", \"2012…\n$ mil_pessoas_Total                            &lt;dbl&gt; 1210, 1217, 1226, 1219, 1…\n$ `mil_pessoas_Força de trabalho`              &lt;dbl&gt; 765, 782, 784, 805, 796, …\n$ `mil_pessoas_Força de trabalho - ocupada`    &lt;dbl&gt; 703, 733, 738, 762, 746, …\n$ `mil_pessoas_Força de trabalho - desocupada` &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 3…\n$ `mil_pessoas_Fora da força de trabalho`      &lt;dbl&gt; 446, 434, 441, 415, 437, …\n\n\nAgora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável condicao se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função clean_names().\n\ndados_largos_renomeados &lt;- clean_names(dados_largos)\nglimpse(dados_largos_renomeados)\n\nRows: 1,350\nColumns: 9\n$ uf                                       &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rond…\n$ uf_codigo                                &lt;chr&gt; \"11\", \"11\", \"11\", \"11\", \"11\",…\n$ trimestre                                &lt;chr&gt; \"1º trimestre 2012\", \"2º trim…\n$ trimestre_codigo                         &lt;chr&gt; \"201201\", \"201202\", \"201203\",…\n$ mil_pessoas_total                        &lt;dbl&gt; 1210, 1217, 1226, 1219, 1233,…\n$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 765, 782, 784, 805, 796, 800,…\n$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 703, 733, 738, 762, 746, 761,…\n$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 36, 3…\n$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 443,…\n\n\n\nAs funções pivot_longer() e pivot_wider() são usadas para alternar entre dados ‘longos’ e ‘largos’. Normalmente, dados longos são mais fáceis de visualizar, enquanto dados largos são melhores para realizar cálculos comparativos entre categorias. Para cada análise, sempre existe um formato mais apropriado a considerar.",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#criando-e-transformando-colunas",
-    "href": "05_transformacao.html#criando-e-transformando-colunas",
-    "title": "Transformando dados",
-    "section": "Criando e transformando colunas",
-    "text": "Criando e transformando colunas\nPara criar novas colunas, ou transformar colunas que já existem, podemos usar a função mutate().\nAs variáveis uf_codigo e trimestre_codigo estão armazenadas como valores numéricos. No entanto, como não realizaremos operações matemáticas com esses valores, é mais apropriado transformá-los em fatores, o que facilita a análise e previne erros em cálculos futuros.\nExistem várias funções para transformar variáveis de um tipo para outro, como as.factor(), as.character(), as.numeric(), as.Date(), etc.\n\ndados_tipo &lt;- mutate(\n  # base de dados\n  dados_largos_renomeados,\n  # nova variável: \n  # nome_da_coluna = o que queremos calcular\n  uf_codigo = as.factor(uf_codigo),\n  trimestre_codigo = as.factor(trimestre_codigo)\n)\n\nPara calcular a taxa de desocupação, precisamos criar uma nova variável representando a proporção de pessoas desocupadas em relação ao total de pessoas economicamente ativas.\n\ndados_com_proporcao &lt;- mutate(\n  # base de dados\n  dados_tipo,\n  # nova variável: \n  # nome_da_coluna = o que queremos calcular\n  prop_desocupacao = (mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho)*100,\n)",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#ordenando-as-linhas",
-    "href": "05_transformacao.html#ordenando-as-linhas",
-    "title": "Transformando dados",
-    "section": "Ordenando as linhas",
-    "text": "Ordenando as linhas\nA base atual está ordada por trimestre e código da unidade da federação. Para facilitar a análise, podemos ordenar as linhas segundo a proporção de desocupação calculada no passo anterior, usando a função arrange():\n\narrange(\n  # base de dados\n  dados_com_proporcao,\n  # colunas que queremos usar ordenar\n  prop_desocupacao\n)\n\n# A tibble: 1,350 × 10\n   uf             uf_codigo trimestre         trimestre_codigo mil_pessoas_total\n   &lt;chr&gt;          &lt;fct&gt;     &lt;chr&gt;             &lt;fct&gt;                        &lt;dbl&gt;\n 1 Rondônia       11        3º trimestre 2023 202303                        1486\n 2 Rondônia       11        2º trimestre 2023 202302                        1483\n 3 Mato Grosso    51        3º trimestre 2023 202303                        2827\n 4 Santa Catarina 42        4º trimestre 2013 201304                        5371\n 5 Santa Catarina 42        4º trimestre 2012 201204                        5283\n 6 Santa Catarina 42        4º trimestre 2014 201404                        5478\n 7 Santa Catarina 42        2º trimestre 2014 201402                        5429\n 8 Santa Catarina 42        3º trimestre 2013 201303                        5343\n 9 Santa Catarina 42        3º trimestre 2014 201403                        5459\n10 Mato Grosso    51        2º trimestre 2023 202302                        2799\n# ℹ 1,340 more rows\n# ℹ 5 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_ocupada &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt;,\n#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;\n\n\nA função arrange() ordena, por padrão, de forma crescente. Podemos ordenar de forma decrescente, utilizando a função desc() junto à coluna que queremos ordenar de forma decrescente:\n\narrange(\n  # base de dados\n  dados_com_proporcao,\n  # colunas que queremos usar ordenar\n  desc(prop_desocupacao)\n)\n\n# A tibble: 1,350 × 10\n   uf         uf_codigo trimestre         trimestre_codigo mil_pessoas_total\n   &lt;chr&gt;      &lt;fct&gt;     &lt;chr&gt;             &lt;fct&gt;                        &lt;dbl&gt;\n 1 Pernambuco 26        2º trimestre 2021 202102                        7570\n 2 Amapá      16        2º trimestre 2018 201802                         602\n 3 Bahia      29        1º trimestre 2021 202101                       11965\n 4 Amapá      16        1º trimestre 2018 201801                         597\n 5 Pernambuco 26        1º trimestre 2021 202101                        7548\n 6 Bahia      29        3º trimestre 2020 202003                       11993\n 7 Sergipe    28        3º trimestre 2020 202003                        1835\n 8 Bahia      29        4º trimestre 2020 202004                       12004\n 9 Sergipe    28        1º trimestre 2021 202101                        1848\n10 Bahia      29        2º trimestre 2020 202002                       11870\n# ℹ 1,340 more rows\n# ℹ 5 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_ocupada &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt;,\n#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;\n\n\nNesse caso, as linhas ficaram ordenadas de forma decrescente, de acordo com a proporção de desocupação. Porém os trimestres não estão ordenados! A função arrange() permite que ordenemos por mais de uma coluna, e a ordem de prioridade é dada pela ordem em que as colunas são passadas para a função:\n\ndados_ordenados &lt;- arrange(\n  # base de dados\n  dados_com_proporcao,\n  # colunas que queremos usar ordenar\n  trimestre_codigo, desc(prop_desocupacao)\n)\n\nglimpse(dados_ordenados)\n\nRows: 1,350\nColumns: 10\n$ uf                                       &lt;chr&gt; \"Amapá\", \"Bahia\", \"Rio Grande…\n$ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…\n$ trimestre                                &lt;chr&gt; \"1º trimestre 2012\", \"1º trim…\n$ trimestre_codigo                         &lt;fct&gt; 201201, 201201, 201201, 20120…\n$ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…\n$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …\n$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …\n$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…\n$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…\n$ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…\n\n\nAgora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#pipe---encadeando-funções",
-    "href": "05_transformacao.html#pipe---encadeando-funções",
-    "title": "Transformando dados",
-    "section": "Pipe - Encadeando funções",
-    "text": "Pipe - Encadeando funções\nNos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador pipe (%&gt;% ou |&gt;). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.\nPodemos reescrever os códigos anteriores usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: dados_renomeados, dados_filtrados, dados_selecionados, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.\nNo exemplo abaixo, criamos menos objetos intermediários, e encadeamos as funções usadas anteriormente usando o pipe:\n\ndados_filtrados_selecionados &lt;- dados_brutos |&gt;\n  # limpando os nomes das colunas\n  clean_names() |&gt;\n  # filtrando as linhas\n  filter(variavel == \"Pessoas de 14 anos ou mais de idade\") |&gt;\n  # selecionando as colunas\n  select(\n    unidade_da_federacao,\n    unidade_da_federacao_codigo,\n    trimestre,\n    trimestre_codigo,\n    condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,\n    valor\n  ) |&gt;\n  # renomeando as colunas\n  rename(\n    condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,\n    valor_mil_pessoas = valor,\n    uf = unidade_da_federacao,\n    uf_codigo = unidade_da_federacao_codigo\n  )\n\ndados_largos &lt;- dados_filtrados_selecionados |&gt;\n  # transformando para formato largo\n  pivot_wider(\n    names_from = condicao,\n    values_from = valor_mil_pessoas,\n    names_prefix = \"mil_pessoas_\"\n  ) |&gt;\n  # limpando o nome das colunas novamente\n  clean_names()\n\n  \n  \ndados_preparados &lt;- dados_largos |&gt;  \n  # transformando as variáveis \n  mutate(\n    uf_codigo = as.factor(uf_codigo),\n    trimestre_codigo = as.factor(trimestre_codigo),\n    prop_desocupacao = (\n      mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho\n    ) * 100,\n  ) |&gt;\n  # ordenando a base de dados\n  arrange(trimestre_codigo, desc(prop_desocupacao))\n\n\nglimpse(dados_preparados)\n\nRows: 1,350\nColumns: 10\n$ uf                                       &lt;chr&gt; \"Amapá\", \"Bahia\", \"Rio Grande…\n$ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…\n$ trimestre                                &lt;chr&gt; \"1º trimestre 2012\", \"1º trim…\n$ trimestre_codigo                         &lt;fct&gt; 201201, 201201, 201201, 20120…\n$ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…\n$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …\n$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …\n$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…\n$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…\n$ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#unindo-duas-bases-de-dados",
-    "href": "05_transformacao.html#unindo-duas-bases-de-dados",
-    "title": "Transformando dados",
-    "section": "Unindo duas bases de dados",
-    "text": "Unindo duas bases de dados\nUnir duas tabelas é algo comum em análises de dados. Usamos operações do tipo join para combinar duas tabelas, utilizando uma ou mais colunas como “chave”. As colunas do tipo chave têm valores comuns nas duas tabelas e são usadas para identificar as linhas correspondentes entre elas.\nO pacote {dplyr} fornece um conjunto de funções para realizar diferentes tipos de uniões, como left_join(), inner_join(), full_join(), entre outras.\nA função left_join() é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.\nUm exemplo comum de uso é quando temos dados por município ou estado, e desejamos visualizar esses dados em um mapa. Para isso, precisamos de informações geoespaciais, como a delimitação geográfica de cada município ou estado. Podemos usar o left_join() para combinar esses dados geoespaciais com os dados que queremos visualizar.\nVamos usar o pacote {geobr} para carregar as geometrias dos estados brasileiros.\n\n\n\n\n\n\nDica\n\n\n\nO pacote {geobr} facilita o acesso a dados geoespaciais do Brasil, como estados, municípios e outras divisões administrativas. Ele é muito útil quando queremos fazer análises geoespaciais, já que oferece dados geográficos prontos para uso.\nPodemos utilizar a função read_state() para carregar as geometrias dos estados brasileiros. Isso nos permite combinar essas geometrias com outros dados, como taxas de desocupação, e criar mapas que facilitam a visualização de padrões regionais.\n\n\n\nlibrary(geobr)\ngeo_estados &lt;- read_state(showProgress = FALSE)\nglimpse(geo_estados)\n\nRows: 27\nColumns: 6\n$ code_state   &lt;dbl&gt; 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27, 2…\n$ abbrev_state &lt;chr&gt; \"RO\", \"AC\", \"AM\", \"RR\", \"PA\", \"AP\", \"TO\", \"MA\", \"PI\", \"CE…\n$ name_state   &lt;chr&gt; \"Rondônia\", \"Acre\", \"Amazonas\", \"Roraima\", \"Pará\", \"Amapá…\n$ code_region  &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, …\n$ name_region  &lt;chr&gt; \"Norte\", \"Norte\", \"Norte\", \"Norte\", \"Norte\", \"Norte\", \"No…\n$ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPOLYGON…\n\n\nO left_join() é usado aqui para combinar os dados do SIDRA com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as proporções de desocupação por UF em um mapa. Esse tipo de operação é comum quando queremos identificar padrões regionais.\nÉ importante garantir que as colunas usadas na combinação de tabelas (o argumento by do left_join()) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função class():\n\nclass(geo_estados$code_state)\n\n[1] \"numeric\"\n\nclass(dados_ordenados$uf_codigo)\n\n[1] \"factor\"\n\n\nNeste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O left_join() não conseguirá fazer a correspondência corretamente, e a função gerará um erro:\n\nleft_join(geo_estados, dados_ordenados, by = join_by(code_state == uf_codigo))\n\nError in `sf_column %in% names(g)`:\n! Can't join `x$code_state` with `y$uf_codigo` due to incompatible\n  types.\nℹ `x$code_state` is a &lt;double&gt;.\nℹ `y$uf_codigo` is a &lt;factor&lt;48524&gt;&gt;.\n\n\nNo exemplo, podemos transformar a coluna code_state em fator usando mutate(). Assim, garantimos que as colunas usadas no argumento by sejam do mesmo tipo e possam ser corretamente combinados.\n\ndados_geo &lt;- geo_estados |&gt; \n  mutate(code_state = as.factor(code_state)) |&gt; \n  left_join(dados_ordenados, by = join_by(code_state == uf_codigo))\n\nglimpse(dados_geo)\n\nRows: 1,350\nColumns: 15\n$ code_state                               &lt;fct&gt; 11, 11, 11, 11, 11, 11, 11, 1…\n$ abbrev_state                             &lt;chr&gt; \"RO\", \"RO\", \"RO\", \"RO\", \"RO\",…\n$ name_state                               &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rond…\n$ code_region                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ name_region                              &lt;chr&gt; \"Norte\", \"Norte\", \"Norte\", \"N…\n$ uf                                       &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rond…\n$ trimestre                                &lt;chr&gt; \"1º trimestre 2012\", \"2º trim…\n$ trimestre_codigo                         &lt;fct&gt; 201201, 201202, 201203, 20120…\n$ mil_pessoas_total                        &lt;dbl&gt; 1210, 1217, 1226, 1219, 1233,…\n$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 765, 782, 784, 805, 796, 800,…\n$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 703, 733, 738, 762, 746, 761,…\n$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 36, 3…\n$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 443,…\n$ prop_desocupacao                         &lt;dbl&gt; 8.104575, 6.265985, 5.867347,…\n$ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((…\n\n\nAgora temos uma base de dados que combina os dados do SIDRA com as geometrias dos estados brasileiros.\nCombinar dados dessa forma nos permite fazer visualizações geoespaciais, como um mapa de calor das taxas de desocupação por estado. Isso facilita a identificação de padrões regionais, ajudando na interpretação dos dados.\nNão falaremos nesse momento sobre como criar visualizações e mapas, pois isso será abordado em aulas futuras. Mas podemos adiantar um exemplo de como criar um mapa apresentando as proporções de desocupação por estado:\n\n\nCódigo\ndados_geo |&gt; \n  filter(trimestre_codigo == \"202402\") |&gt;\n  ggplot() +\n  geom_sf(aes(fill = prop_desocupacao)) +\n  theme_light() +\n  scale_fill_viridis_c() +\n  labs(title = \"Proporção de desocupação por UF no 2º trimestre de 2024\",\n       fill = \"Proporção de desocupação (%)\") +\n  theme(legend.position = \"bottom\")",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#salvando-a-base-de-dados-preparada",
-    "href": "05_transformacao.html#salvando-a-base-de-dados-preparada",
-    "title": "Transformando dados",
-    "section": "Salvando a base de dados preparada",
-    "text": "Salvando a base de dados preparada\nPor fim, podemos salvar a base de dados preparada para usar nas próximas etapas. Assim não precisamos repetir todo o processo de limpeza e transformação de dados a cada vez que quisermos fazer uma análise.\nÉ recomendável salvar a base de dados em um formato que preserve a estrutura dos dados, como .rds.\n\n# Criando a pasta \"dados_output\" caso ela ainda não exista\nfs::dir_create(\"dados_output\")\n# Salvando os dados preparados\nwrite_rds(dados_preparados, \"dados_output/sidra_4092_arrumado.rds\")",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "05_transformacao.html#sugestões-de-materiais",
-    "href": "05_transformacao.html#sugestões-de-materiais",
-    "title": "Transformando dados",
-    "section": "Sugestões de materiais",
-    "text": "Sugestões de materiais\n\nLivro R para Ciência de Dados 2ed:\n\nTransformação de dados\nOrganização de dados",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Transformando dados"
-    ]
-  },
-  {
-    "objectID": "08_visualizacao.html",
-    "href": "08_visualizacao.html",
-    "title": "Visualizando dados",
+    "objectID": "07_regressao_linear.html",
+    "href": "07_regressao_linear.html",
+    "title": "Regressão linear",
     "section": "",
     "text": "Aviso\n\n\n\nPágina em construção! Em breve.",
     "crumbs": [
       "Etapas em uma análise de dados",
-      "Visualizando dados"
+      "Regressão linear"
     ]
   },
   {
-    "objectID": "08_visualizacao.html#sugestões-de-materiais",
-    "href": "08_visualizacao.html#sugestões-de-materiais",
-    "title": "Visualizando dados",
-    "section": "Sugestões de materiais",
-    "text": "Sugestões de materiais\n\nLivro R para Ciência de Dados 2ed:\n\nVisualização de dados\nVsualizar\nVisualizar: Camadas\nVisualizar: Análise exploratória de dados\nVisualizar: Comunicação\n\nLivro: Metodologia de Pesquisa Jurimétrica:\n\nCapítulo 4 - Visualização",
+    "objectID": "04_conhecendo.html",
+    "href": "04_conhecendo.html",
+    "title": "Conhecendo a base de dados",
+    "section": "",
+    "text": "Conceitos prévios importantes:\n\nComo importar bases de dados?\nTipos de variáveis\nValores faltantes (NA)\nNesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.\nEssa etapa é importante para:\nVamos começar importando a base de dados que utilizaremos:\nlibrary(tidyverse)\ndados &lt;- read_rds(\"dados/sidrar_4092_bruto.rds\")",
     "crumbs": [
       "Etapas em uma análise de dados",
-      "Visualizando dados"
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "04_conhecendo.html#estrutura-da-base-de-dados",
+    "href": "04_conhecendo.html#estrutura-da-base-de-dados",
+    "title": "Conhecendo a base de dados",
+    "section": "Estrutura da base de dados",
+    "text": "Estrutura da base de dados\nVamos começar conhecendo a estrutura da base de dados. Para isso, existem algumas funções para saber o número de colunas e linhas, os nomes das colunas, entre outras informações. Algumas delas apresentam as mesmas informações, mas de formas diferentes.\n\n# Número de colunas\nncol(dados)\n\n[1] 13\n\n# Número de linhas\nnrow(dados)\n\n[1] 27000\n\n# Número de linhas e colunas\ndim(dados)\n\n[1] 27000    13\n\n# Nomes das colunas\nnames(dados)\n\n [1] \"Nível Territorial (Código)\"                                             \n [2] \"Nível Territorial\"                                                      \n [3] \"Unidade de Medida (Código)\"                                             \n [4] \"Unidade de Medida\"                                                      \n [5] \"Valor\"                                                                  \n [6] \"Unidade da Federação (Código)\"                                          \n [7] \"Unidade da Federação\"                                                   \n [8] \"Trimestre (Código)\"                                                     \n [9] \"Trimestre\"                                                              \n[10] \"Variável (Código)\"                                                      \n[11] \"Variável\"                                                               \n[12] \"Condição em relação à força de trabalho e condição de ocupação (Código)\"\n[13] \"Condição em relação à força de trabalho e condição de ocupação\"         \n\n\nA função glimpse() do pacote {dplyr} apresenta informações como: número de linhas, número de colunas, nome e tipo de cada coluna, e os primeiros valores de cada coluna. Porém o texto resultante dependerá da largura do Console:\n\nglimpse(dados)\n\n\n\n\nCaptura de tela: Resultado da função glimpse()\n\n\n\nView\nUma outra função que é interessante é a View(). Ela nos permite visualizar a base de dados em uma nova janela, em formato de tabela. Porém, é importante tomar cuidado ao usá-la com bases de dados grandes, pois pode travar o RStudio dependendo.\n\n\n\n\n\n\nDica\n\n\n\nObservação: Se você estiver com o {tidyverse} carregado, a função view() (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função View(), e tem algumas funcionalidades a mais. Para os fins dessa aula, podemos usar qualquer uma das duas.\n\n\nOutra forma de acessar o View é clicando na linha do objeto no painel Environment do RStudio:\n\n\n\nCaptura de tela: Onde clicamos para abrir o View\n\n\n\nView(dados)\n\n\n\n\nGravação da tela - Usando o View",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "04_conhecendo.html#sumário-das-variáveis",
+    "href": "04_conhecendo.html#sumário-das-variáveis",
+    "title": "Conhecendo a base de dados",
+    "section": "Sumário das variáveis",
+    "text": "Sumário das variáveis\nEm funções apresentadas anteriormente, como a names(), já conseguimos ter uma ideia de quais são as variáveis da base de dados. Mas é interessante ter mais informações, como: tipo de variável, quantidade de valores faltantes, entre outros.\nNessa etapa, conheceremos algumas funções que nos ajudarão a ter essas informações. Algumas apresentam as mesmas informações, mas de formas diferentes. Portanto, é interessante conhecer algumas delas, e escolher qual é a que melhor atende às nossas necessidades.\n\n\n\n\n\n\nAviso\n\n\n\nCuidado: as funções apresentadas a seguir calculam algumas estatísticas descritivas (como a média, mediana, desvio padrão, valor mínimo, valor máximo, entre outras) em variáveis numéricas. Porém, ainda não “arrumamos” a base de dados (faremos isso no capítulo Transformando dados), e os dados ainda não estão adequados para esses cálculos.\nAlguns exemplos:\n\nVárias colunas numéricas representam o código de uma categoria, e não faz sentido calcular a média desses códigos.\nA variável valor está relacionada com a variável Unidade de Medida. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.\n\nFalaremos sobre o cálculo de estatísticas descritivas no capítulo Análise Exploratória de Dados.\n\n\n\nsummary()\nA função summary() é uma função do R base (ou seja, não precisamos carregar nenhum pacote para usá-la), e ela nos dá um sumário das variáveis da base de dados.\n\nsummary(dados)\n\n Nível Territorial (Código) Nível Territorial  Unidade de Medida (Código)\n Length:27000               Length:27000       Length:27000              \n Class :character           Class :character   Class :character          \n Mode  :character           Mode  :character   Mode  :character          \n                                                                         \n                                                                         \n                                                                         \n                                                                         \n Unidade de Medida      Valor         Unidade da Federação (Código)\n Length:27000       Min.   :    0.3   Length:27000                 \n Class :character   1st Qu.:    1.5   Class :character             \n Mode  :character   Median :    7.8   Mode  :character             \n                    Mean   :  862.0                                \n                    3rd Qu.:  105.8                                \n                    Max.   :39480.0                                \n                    NA's   :1350                                   \n Unidade da Federação Trimestre (Código)  Trimestre         Variável (Código) \n Length:27000         Length:27000       Length:27000       Length:27000      \n Class :character     Class :character   Class :character   Class :character  \n Mode  :character     Mode  :character   Mode  :character   Mode  :character  \n                                                                              \n                                                                              \n                                                                              \n                                                                              \n   Variável        \n Length:27000      \n Class :character  \n Mode  :character  \n                   \n                   \n                   \n                   \n Condição em relação à força de trabalho e condição de ocupação (Código)\n Length:27000                                                           \n Class :character                                                       \n Mode  :character                                                       \n                                                                        \n                                                                        \n                                                                        \n                                                                        \n Condição em relação à força de trabalho e condição de ocupação\n Length:27000                                                  \n Class :character                                              \n Mode  :character                                              \n                                                               \n                                                               \n                                                               \n                                                               \n\n\n\n\nskimr::skim()\nO pacote {skimr} tem uma função chamada skim() que nos dá um sumário das variáveis da base de dados.\nÉ interesante salvar o resultado da função em um objeto, para que possamos acessar as informações posteriormente, em formato de tabela.\n\nlibrary(skimr)\nskim_dados &lt;- skim(dados)\n\nA seguir, podemos ver o resultado da função skim():\n\nskim_dados\n\n\nData summary\n\n\nName\ndados\n\n\nNumber of rows\n27000\n\n\nNumber of columns\n13\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n12\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nNível Territorial (Código)\n0\n1\n1\n1\n0\n1\n0\n\n\nNível Territorial\n0\n1\n20\n20\n0\n1\n0\n\n\nUnidade de Medida (Código)\n0\n1\n1\n4\n0\n2\n0\n\n\nUnidade de Medida\n0\n1\n1\n11\n0\n2\n0\n\n\nUnidade da Federação (Código)\n0\n1\n2\n2\n0\n27\n0\n\n\nUnidade da Federação\n0\n1\n4\n19\n0\n27\n0\n\n\nTrimestre (Código)\n0\n1\n6\n6\n0\n50\n0\n\n\nTrimestre\n0\n1\n17\n17\n0\n50\n0\n\n\nVariável (Código)\n0\n1\n4\n4\n0\n4\n0\n\n\nVariável\n0\n1\n35\n89\n0\n4\n0\n\n\nCondição em relação à força de trabalho e condição de ocupação (Código)\n0\n1\n5\n5\n0\n5\n0\n\n\nCondição em relação à força de trabalho e condição de ocupação\n0\n1\n5\n30\n0\n5\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nValor\n1350\n0.95\n862.03\n2896.64\n0.3\n1.5\n7.8\n105.75\n39480\n▇▁▁▁▁\n\n\n\n\n\nO resultado da função skim() é dividido em duas partes:\n\nData summary: informações gerais sobre a base de dados, como: nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável1.\nVariable type: para cada tipo de variável presente na base de dados, temos informações como:\n\nskim_variable: nome da variável.\nn_missing: número de valores faltantes.\ncomplete_rate: proporção de valores não faltantes (está relacionada com a n_missing).\nOutras colunas específicas segundo o tipo de variável.\n\n\nA seguir, estão as informações que a função skim() retorna para os tipos de variáveis mais frequentes:\n\ncharacter (dados de texto):\n\nmin: número mínimo de caracteres.\nmax: número máximo de caracteres.\nempty: número de linhas contendo valores vazios (um valor vazio é um valor que contém apenas \"\").\nn_unique: número de valores únicos.\nwhitespace: número de linhas contendo apenas espaços em branco.\n\nnumeric (dados numéricos):\n\nmean: média.\nsd: desvio padrão.\np0: valor mínimo.\np25: primeiro quartil.\np50: mediana.\np75: terceiro quartil.\np100: valor máximo.\nhist: histograma dos valores.\n\ndate (datas):\n\nmin: data mínima.\nmax: data máxima.\nmedian: data mediana.\nn_unique: número de datas únicas.\n\nfactor (dados categóricos):\n\nordered: os níveis do fator estão ordenados?\nn_unique: número de valores únicos do fator.\ntop_counts: os valores mais frequentes do fator.\n\nlogical (dados booleanos):\n\nmean: média dos valores, considerando que TRUE é 1 e FALSE é 0.\ncount: contagem dos valores TRUE e FALSE.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "04_conhecendo.html#valores-faltantes-na",
+    "href": "04_conhecendo.html#valores-faltantes-na",
+    "title": "Conhecendo a base de dados",
+    "section": "Valores faltantes (NA)",
+    "text": "Valores faltantes (NA)\nA presença de valores faltantes é algo comum em bases de dados. Eles podem ocorrer por diversos motivos, como: não temos a informação, erros de digitação, entre outros.\nÉ importante identificar onde estão esses valores, para que possamos nos atentar em análises futuras.\nExistem algumas funções que nos ajudam a identificar a presença de valores faltantes na base de dados. O pacote {naniar} apresenta funções úteis para isso: a função gg_miss_var() cria uma visualição apresentando o nome das variáveis da base de dados, assim como a quantidade de valores faltantes em cada uma delas.\n\nlibrary(naniar)\n# Valores absolutos\ngg_miss_var(dados)\n\n\n\n\n\n\n\n# Valores relativos\ngg_miss_var(dados, show_pct = TRUE)",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "04_conhecendo.html#section",
+    "href": "04_conhecendo.html#section",
+    "title": "Conhecendo a base de dados",
+    "section": "",
+    "text": "Em situações onde trabalharmos com dados que possuem um número de linhas muito grande, não podemos utilizar a função View() para ver a tabela inteira.\nNesse caso, podemos ser interessante usar funções que retornam apenas algumas linhas da base de dados, como head(), tail(), slice_sample(), entre outras.\nAntes de usá-las, vamos adicionar uma coluna que represente o número da linha, para que seja mais fácil identificar as linhas que estamos selecionando:\n\ndados_com_n_linha &lt;- rowid_to_column(dados, \"n_linha\")\n\nAgora podemos usar as funções para retornar algumas linhas da base de dados. Observe os resultados apresentados, e os valores na coluna n_linha:\n\n# Exibindo as primeiras linhas\nhead(dados_com_n_linha)\n\n  n_linha Nível Territorial (Código)    Nível Territorial\n1       1                          3 Unidade da Federação\n2       2                          3 Unidade da Federação\n3       3                          3 Unidade da Federação\n4       4                          3 Unidade da Federação\n5       5                          3 Unidade da Federação\n6       6                          3 Unidade da Federação\n  Unidade de Medida (Código) Unidade de Medida  Valor\n1                       1572       Mil pessoas 1210.0\n2                       1572       Mil pessoas  765.0\n3                       1572       Mil pessoas  703.0\n4                       1572       Mil pessoas   62.0\n5                       1572       Mil pessoas  446.0\n6                          2                 %    0.7\n  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)\n1                            11             Rondônia             201201\n2                            11             Rondônia             201201\n3                            11             Rondônia             201201\n4                            11             Rondônia             201201\n5                            11             Rondônia             201201\n6                            11             Rondônia             201201\n          Trimestre Variável (Código)\n1 1º trimestre 2012              1641\n2 1º trimestre 2012              1641\n3 1º trimestre 2012              1641\n4 1º trimestre 2012              1641\n5 1º trimestre 2012              1641\n6 1º trimestre 2012              4087\n                                                       Variável\n1                           Pessoas de 14 anos ou mais de idade\n2                           Pessoas de 14 anos ou mais de idade\n3                           Pessoas de 14 anos ou mais de idade\n4                           Pessoas de 14 anos ou mais de idade\n5                           Pessoas de 14 anos ou mais de idade\n6 Coeficiente de variação - Pessoas de 14 anos ou mais de idade\n  Condição em relação à força de trabalho e condição de ocupação (Código)\n1                                                                   32385\n2                                                                   32386\n3                                                                   32387\n4                                                                   32446\n5                                                                   32447\n6                                                                   32385\n  Condição em relação à força de trabalho e condição de ocupação\n1                                                          Total\n2                                              Força de trabalho\n3                                    Força de trabalho - ocupada\n4                                 Força de trabalho - desocupada\n5                                      Fora da força de trabalho\n6                                                          Total\n\n# Exibindo as últimas linhas\ntail(dados_com_n_linha)\n\n      n_linha Nível Territorial (Código)    Nível Territorial\n26995   26995                          3 Unidade da Federação\n26996   26996                          3 Unidade da Federação\n26997   26997                          3 Unidade da Federação\n26998   26998                          3 Unidade da Federação\n26999   26999                          3 Unidade da Federação\n27000   27000                          3 Unidade da Federação\n      Unidade de Medida (Código) Unidade de Medida Valor\n26995                          2                 %  31.6\n26996                          2                 %    NA\n26997                          2                 %   1.1\n26998                          2                 %   1.3\n26999                          2                 %   7.4\n27000                          2                 %   2.3\n      Unidade da Federação (Código) Unidade da Federação Trimestre (Código)\n26995                            53     Distrito Federal             202402\n26996                            53     Distrito Federal             202402\n26997                            53     Distrito Federal             202402\n26998                            53     Distrito Federal             202402\n26999                            53     Distrito Federal             202402\n27000                            53     Distrito Federal             202402\n              Trimestre Variável (Código)\n26995 2º trimestre 2024              4104\n26996 2º trimestre 2024              4105\n26997 2º trimestre 2024              4105\n26998 2º trimestre 2024              4105\n26999 2º trimestre 2024              4105\n27000 2º trimestre 2024              4105\n                                                                                       Variável\n26995                           Distribuição percentual das pessoas de 14 anos ou mais de idade\n26996 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n26997 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n26998 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n26999 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n27000 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n      Condição em relação à força de trabalho e condição de ocupação (Código)\n26995                                                                   32447\n26996                                                                   32385\n26997                                                                   32386\n26998                                                                   32387\n26999                                                                   32446\n27000                                                                   32447\n      Condição em relação à força de trabalho e condição de ocupação\n26995                                      Fora da força de trabalho\n26996                                                          Total\n26997                                              Força de trabalho\n26998                                    Força de trabalho - ocupada\n26999                                 Força de trabalho - desocupada\n27000                                      Fora da força de trabalho\n\n# \"Sorteando\" linhas\nslice_sample(dados_com_n_linha, n = 5)\n\n  n_linha Nível Territorial (Código)    Nível Territorial\n1    3618                          3 Unidade da Federação\n2   19821                          3 Unidade da Federação\n3   12687                          3 Unidade da Federação\n4   19155                          3 Unidade da Federação\n5   26186                          3 Unidade da Federação\n  Unidade de Medida (Código) Unidade de Medida   Valor\n1                          2                 %     2.0\n2                       1572       Mil pessoas 38723.0\n3                          2                 %     1.5\n4                          2                 %    34.9\n5                          2                 %     0.6\n  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)\n1                            14              Roraima             201903\n2                            35            São Paulo             202202\n3                            26           Pernambuco             202003\n4                            35            São Paulo             201304\n5                            53     Distrito Federal             201402\n          Trimestre Variável (Código)\n1 3º trimestre 2019              4105\n2 2º trimestre 2022              1641\n3 3º trimestre 2020              4087\n4 4º trimestre 2013              4104\n5 2º trimestre 2014              4087\n                                                                                   Variável\n1 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n2                                                       Pessoas de 14 anos ou mais de idade\n3                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade\n4                           Distribuição percentual das pessoas de 14 anos ou mais de idade\n5                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade\n  Condição em relação à força de trabalho e condição de ocupação (Código)\n1                                                                   32387\n2                                                                   32385\n3                                                                   32386\n4                                                                   32447\n5                                                                   32385\n  Condição em relação à força de trabalho e condição de ocupação\n1                                    Força de trabalho - ocupada\n2                                                          Total\n3                                              Força de trabalho\n4                                      Fora da força de trabalho\n5                                                          Total",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "04_conhecendo.html#conhecendo-os-valores-únicos-de-uma-coluna",
+    "href": "04_conhecendo.html#conhecendo-os-valores-únicos-de-uma-coluna",
+    "title": "Conhecendo a base de dados",
+    "section": "Conhecendo os valores únicos de uma coluna",
+    "text": "Conhecendo os valores únicos de uma coluna\nPara variáveis categóricas ou de texto, é interessante conhecer os valores únicos presentes.\nPara acessar uma coluna específica, utilize o $. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: dados$ano.\n\n\n\n\n\n\nDica\n\n\n\nDica: após escrever o nome_do_dataframe$, aperte tab para que o RStudio faça sugestões de colunas da base.\n\n\nA função unique() retorna os valores únicos de um vetor. Exemplo:\n\nunique(dados$`Unidade de Medida`)\n\n[1] \"Mil pessoas\" \"%\"          \n\n\nNote que, nesse caso, foi necessário colocar uma crase para identificar o nome da coluna. Isso acontece porque a coluna contém espaços em branco e, por isso, o R entenderia que o nome da coluna é Unidade e de e Medida. Com a crase, o R entende que o nome da coluna é Unidade de Medida.\n\n\n\n\n\n\nDica\n\n\n\nÉ uma boa prática evitar espaços em branco e caracteres especiais nos nomes das colunas. Em Transformando dados &gt; Padronizar nome das colunas apresentaremos uma forma de fazer isso!\n\n\nOutra forma de extrair o conteúdo de uma coluna é utilizando o operador [[:\n\nunique(dados[[\"Unidade de Medida\"]])\n\n[1] \"Mil pessoas\" \"%\"          \n\n\nO resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "04_conhecendo.html#footnotes",
+    "href": "04_conhecendo.html#footnotes",
+    "title": "Conhecendo a base de dados",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nAinda não abordamos o conceito de grupos, então isso ficará mais claro posteriormente.↩︎",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "00_intro_etapas_analise.html",
+    "href": "00_intro_etapas_analise.html",
+    "title": "Introdução",
+    "section": "",
+    "text": "Na seção “Conceitos básicos”, abordamos alguns conceitos importantes para começar a programar em R.\nNesta seção, cada aula apresentará uma etapa comum quando realizamos uma análise de dados.\nA figura abaixo ilustra algumas etapas comuns em uma análise de dados, conforme apresentado no livro “R para Ciência de Dados”:\n\n\n\nProcesso de ciência de dados, por Wickham, Çetinkaya-Rundel e Grolemund\n\n\nO principal pacote que utilizaremos é o tidyverse. O tidyverse é uma coleção de pacotes em R desenvolvidos com o objetivo de facilitar etapas de análise de dados. Os pacotes do tidyverse compartilham uma filosofia comum e são projetados para funcionar bem juntos.\n\n\n\nPacotes principais (core packages) do tidyverse. Fonte: Site do tidyverse.\n\n\nPortanto, é importante checar se o tidyverse está instalado e carregá-lo no início de cada aula:\n\nlibrary(\"tidyverse\")\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nO livro “R para Ciência de Dados” foi escrito por pessoas que trabalham (ou trabalharam) no desenvolvimento do tidyverse, e é uma excelente referência para estudar mais. Para cada aula, indicaremos seções do livro que podem ser úteis para aprofundar o conteúdo.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Introdução"
+    ]
+  },
+  {
+    "objectID": "index.html#introdução-ao-material",
+    "href": "index.html#introdução-ao-material",
+    "title": "Introdução à análise de dados no R",
+    "section": "Introdução ao material",
+    "text": "Introdução ao material\nEste site apresenta o material de apoio para o curso “Introdução à análise de dados no R”, oferecido em 2024 para servidores do Instituto de Pesquisa Econômica Aplicada (Ipea). O curso será realizado de forma remota híbrida, com aulas ao vivo e atividades práticas.\n\n\n\n\n\n\nImportante\n\n\n\nRecomendamos que todas as pessoas participantes instalem o R e o RStudio antes do início do curso. Para isso, siga as instruções disponíveis na página Instruções de instalação.\nCaso tenha alguma dificuldade, entre em contato com a equipe do curso o quanto antes.",
+    "crumbs": [
+      "Pré-curso",
+      "Introdução à análise de dados no R"
+    ]
+  },
+  {
+    "objectID": "index.html#equipe-do-curso",
+    "href": "index.html#equipe-do-curso",
+    "title": "Introdução à análise de dados no R",
+    "section": "Equipe do curso",
+    "text": "Equipe do curso\nBeatriz Milz  Pesquisadora Colaboradora | Estágio pós-doutoral  Laboratório de Planejamento Territorial (LaPlan) - Universidade Federal do ABC (UFABC)  Email | GitHub | LinkedIn | ResearchGate | Currículo Lattes | Orcid\nPedro Cavalcanti Gonçalves Ferreira  Coordenação de Ciência de Dados - COCD  Instituto de Pesquisa Econômica Aplicada (Ipea)  GitHub | LinkedIn | Currículo Lattes | Orcid\nRafael H. M. Pereira  Coordenador de Ciência de Dados  Instituto de Pesquisa Econômica Aplicada (Ipea)  Website | Google Scholar | Linkedin |",
+    "crumbs": [
+      "Pré-curso",
+      "Introdução à análise de dados no R"
+    ]
+  },
+  {
+    "objectID": "index.html#sobre-este-material",
+    "href": "index.html#sobre-este-material",
+    "title": "Introdução à análise de dados no R",
+    "section": "Sobre este material",
+    "text": "Sobre este material\n\nContribuidores\nAlém da equipe do curso, esse material recebeu contribuições de:\n\nJulio Trecenti\n\n\n\nLicença\nEsse material está disponível sob a licença CC BY-SA 4.0.",
+    "crumbs": [
+      "Pré-curso",
+      "Introdução à análise de dados no R"
     ]
   },
   {
@@ -667,146 +579,300 @@
     ]
   },
   {
-    "objectID": "07_analise.html",
-    "href": "07_analise.html",
-    "title": "Analisando dados",
+    "objectID": "08_visualizacao.html",
+    "href": "08_visualizacao.html",
+    "title": "Visualizando dados",
     "section": "",
     "text": "Aviso\n\n\n\nPágina em construção! Em breve.",
     "crumbs": [
       "Etapas em uma análise de dados",
-      "Analisando dados"
+      "Visualizando dados"
     ]
   },
   {
-    "objectID": "07_analise.html#sugestões-de-materiais",
-    "href": "07_analise.html#sugestões-de-materiais",
-    "title": "Analisando dados",
+    "objectID": "08_visualizacao.html#sugestões-de-materiais",
+    "href": "08_visualizacao.html#sugestões-de-materiais",
+    "title": "Visualizando dados",
+    "section": "Sugestões de materiais",
+    "text": "Sugestões de materiais\n\nLivro R para Ciência de Dados 2ed:\n\nVisualização de dados\nVsualizar\nVisualizar: Camadas\nVisualizar: Análise exploratória de dados\nVisualizar: Comunicação\n\nLivro: Metodologia de Pesquisa Jurimétrica:\n\nCapítulo 4 - Visualização",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Visualizando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html",
+    "href": "05_transformacao.html",
+    "title": "Transformando dados",
+    "section": "",
+    "text": "Primeiramente, precisamos carregar o pacote tidyverse e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, e foi baixada previamente (em Importando dados).\n\nlibrary(tidyverse)\ndados_brutos &lt;- read_rds(\"dados/sidrar_4092_bruto.rds\")",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#introdução",
+    "href": "05_transformacao.html#introdução",
+    "title": "Transformando dados",
+    "section": "",
+    "text": "Primeiramente, precisamos carregar o pacote tidyverse e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, e foi baixada previamente (em Importando dados).\n\nlibrary(tidyverse)\ndados_brutos &lt;- read_rds(\"dados/sidrar_4092_bruto.rds\")",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#padronizar-nome-das-colunas",
+    "href": "05_transformacao.html#padronizar-nome-das-colunas",
+    "title": "Transformando dados",
+    "section": "Padronizar nome das colunas",
+    "text": "Padronizar nome das colunas\nÉ uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas de encoding, facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.\nO pacote janitor possui a função clean_names(), que padroniza os nomes das colunas de um data frame. Ele substitui espaços por underline (_), remove caracteres especiais, e transforma o texto em minúsculo, garantindo maior consistência ao lidar com os dados. Isso evita erros ao acessar colunas.\n\nlibrary(janitor)\n\n\n# checar nome das colunas da base de dados\nnames(dados_brutos)\n\n [1] \"Nível Territorial (Código)\"                                             \n [2] \"Nível Territorial\"                                                      \n [3] \"Unidade de Medida (Código)\"                                             \n [4] \"Unidade de Medida\"                                                      \n [5] \"Valor\"                                                                  \n [6] \"Unidade da Federação (Código)\"                                          \n [7] \"Unidade da Federação\"                                                   \n [8] \"Trimestre (Código)\"                                                     \n [9] \"Trimestre\"                                                              \n[10] \"Variável (Código)\"                                                      \n[11] \"Variável\"                                                               \n[12] \"Condição em relação à força de trabalho e condição de ocupação (Código)\"\n[13] \"Condição em relação à força de trabalho e condição de ocupação\"         \n\n# limpar nomes das colunas da base de dados, e salvar em um novo objeto\ndados_renomeados &lt;- clean_names(dados_brutos)\n\n# checar nome das colunas da base de dados renomeada\nnames(dados_renomeados)\n\n [1] \"nivel_territorial_codigo\"                                             \n [2] \"nivel_territorial\"                                                    \n [3] \"unidade_de_medida_codigo\"                                             \n [4] \"unidade_de_medida\"                                                    \n [5] \"valor\"                                                                \n [6] \"unidade_da_federacao_codigo\"                                          \n [7] \"unidade_da_federacao\"                                                 \n [8] \"trimestre_codigo\"                                                     \n [9] \"trimestre\"                                                            \n[10] \"variavel_codigo\"                                                      \n[11] \"variavel\"                                                             \n[12] \"condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao_codigo\"\n[13] \"condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao\"",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#linhas-colunas-e-objetivo-de-análise",
+    "href": "05_transformacao.html#linhas-colunas-e-objetivo-de-análise",
+    "title": "Transformando dados",
+    "section": "Linhas, colunas e objetivo de análise",
+    "text": "Linhas, colunas e objetivo de análise\nUma pergunta que é sempre importante ter em mente ao analisar dados é: O que cada linha representa? Na estatística, esse é o conceito da unidade amostral, ou unidade observacional.\nO objeto dados_brutos apresenta uma linha para cada combinação das seguintes variáveis:\n\nTrimestre (Código) / Trimestre\nUnidade da Federação / Unidade da Federação (Código)\nVariável / Variável (Código)\nCondição em relação à força de trabalho e condição de ocupação e Condição em relação à força de trabalho e condição de ocupação (Código)\n\nPodemos consultar os valores distintos possíveis no R, para garantir que estamos selecionando corretamente os valores de interesse.\nAs variáveis disponíveis na base de dados, e suas unidades de medida são:\n\ndistinct(\n  # base de dados\n  dados_renomeados, \n  # colunas que queremos bucar os valores distintos \n  variavel, unidade_de_medida\n)\n\n                                                                                   variavel\n1                                                       Pessoas de 14 anos ou mais de idade\n2                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade\n3                           Distribuição percentual das pessoas de 14 anos ou mais de idade\n4 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n  unidade_de_medida\n1       Mil pessoas\n2                 %\n3                 %\n4                 %\n\n\nPodemos observar, cada linha representa uma combinação de trimestre, unidade da federação e variável.\nOutras perguntas relevantes ao analisar dados são:\n\nQual é a pergunta que eu quero responder com esses dados?\nQuais são as variáveis que eu preciso para responder essa pergunta?\n\nNeste capítulo, vamos explorar as funções de transformação de dados do pacote dplyr, a partir da pergunta norteadora abaixo:\n\nConsiderando que a tabela 4092 apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#filtrando-linhas",
+    "href": "05_transformacao.html#filtrando-linhas",
+    "title": "Transformando dados",
+    "section": "Filtrando linhas",
+    "text": "Filtrando linhas\nPara responder à pergunta norteadora, não precisamos de todas as variáveis presentes na base de dados. Podemos filtrar as linhas que são relevantes para a análise, escolhendo as variáveis de interesse.\nNesse caso, podemos filtrar os dados onde a variável é igual à \"Pessoas de 14 anos ou mais de idade\".\n\ndados_filtrados &lt;- filter(\n  # base de dados\n  dados_renomeados,\n  # condição de filtro\n  variavel == \"Pessoas de 14 anos ou mais de idade\"\n)\n\nPara verificar se o filtro foi feito corretamente, podemos checar o número de linhas de cada base de dados:\n\nnrow(dados_renomeados)\n\n[1] 27000\n\nnrow(dados_filtrados)\n\n[1] 6750\n\n\nPodemos verificar também os valores distintos para as colunas variavel e unidade_de_medida na base de dados dados_filtrados:\n\ndistinct(\n  # base de dados\n  dados_filtrados, \n  # colunas que queremos bucar os valores distintos \n  variavel, unidade_de_medida\n)\n\n                             variavel unidade_de_medida\n1 Pessoas de 14 anos ou mais de idade       Mil pessoas\n\n\nAgora sabemos que a base de dados dados_filtrados contém apenas dados sobre a variável \"Pessoas de 14 anos ou mais de idade\", e que a unidade de medida da coluna valor é mil pessoas.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#selecionando-colunas",
+    "href": "05_transformacao.html#selecionando-colunas",
+    "title": "Transformando dados",
+    "section": "Selecionando colunas",
+    "text": "Selecionando colunas\nAlgumas colunas não são relevantes para responder à pergunta norteadora. Podemos selecionar apenas as colunas que vamos utilizar através da função select():\n\ndados_selecionados &lt;- select(\n  # base de dados\n  dados_filtrados, \n  # colunas que queremos manter\n  unidade_da_federacao,\n  unidade_da_federacao_codigo,\n  trimestre,\n  trimestre_codigo,\n  condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,\n  valor\n)\n\nglimpse(dados_selecionados)\n\nRows: 6,750\nColumns: 6\n$ unidade_da_federacao                                           &lt;chr&gt; \"Rondôn…\n$ unidade_da_federacao_codigo                                    &lt;chr&gt; \"11\", \"…\n$ trimestre                                                      &lt;chr&gt; \"1º tri…\n$ trimestre_codigo                                               &lt;chr&gt; \"201201…\n$ condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao &lt;chr&gt; \"Total\"…\n$ valor                                                          &lt;dbl&gt; 1210, 7…\n\n\nPodemos renomear colunas com a função rename(). Vamos renomear algumas colunas para facilitar o uso posteriormente:\n\ndados_renomeados_2 &lt;- rename(\n  # base de dados\n  dados_selecionados, \n  # colunas que queremos renomear: novo_nome = nome_atual\n  condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,\n  valor_mil_pessoas = valor,\n  uf = unidade_da_federacao,\n  uf_codigo = unidade_da_federacao_codigo\n)\n\nglimpse(dados_renomeados_2)\n\nRows: 6,750\nColumns: 6\n$ uf                &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rondônia\", \"Rondônia\", \"Ron…\n$ uf_codigo         &lt;chr&gt; \"11\", \"11\", \"11\", \"11\", \"11\", \"11\", \"11\", \"11\", \"11\"…\n$ trimestre         &lt;chr&gt; \"1º trimestre 2012\", \"1º trimestre 2012\", \"1º trimes…\n$ trimestre_codigo  &lt;chr&gt; \"201201\", \"201201\", \"201201\", \"201201\", \"201201\", \"2…\n$ condicao          &lt;chr&gt; \"Total\", \"Força de trabalho\", \"Força de trabalho - o…\n$ valor_mil_pessoas &lt;dbl&gt; 1210, 765, 703, 62, 446, 1217, 782, 733, 49, 434, 12…",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#transformando-a-tabela",
+    "href": "05_transformacao.html#transformando-a-tabela",
+    "title": "Transformando dados",
+    "section": "Transformando a tabela",
+    "text": "Transformando a tabela\nAinda considerando nossa pergunta norteadora, queremos calcular a taxa de desocupação de cada estado e região do Brasil ao longo do tempo. Para isso, é mais fácil trabalhar com a tabela onde cada linha represente uma UF por trimestre, e as categorias da variável condicao sejam transformadas em colunas.\nPara fazer essa transformação, podemos usar a função pivot_wider().\nA função pivot_wider() é útil quando queremos reorganizar uma tabela, transformando variáveis categóricas em novas colunas. Essa estrutura facilita cálculos comparativos e análises entre as diferentes categorias.\nPor exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos pivot_wider(), vamos transformar a tabela para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas.\n\ndados_largos &lt;- pivot_wider(\n  # base de dados\n  dados_renomeados_2, \n  # nome da coluna de onde os nomes das novas colunas serão extraídos\n  names_from = condicao, \n  # nome da coluna de onde os valores das novas colunas serão extraídos \n  values_from = valor_mil_pessoas, \n  # podemos adicionar um texto como prefixo. nesse caso, isso é opcional, \n  # mas é útil para ficar claro qual é a unidade de medida das variáveis\n  names_prefix = \"mil_pessoas_\"\n)\n\n\nglimpse(dados_largos)\n\nRows: 1,350\nColumns: 9\n$ uf                                           &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"…\n$ uf_codigo                                    &lt;chr&gt; \"11\", \"11\", \"11\", \"11\", \"…\n$ trimestre                                    &lt;chr&gt; \"1º trimestre 2012\", \"2º …\n$ trimestre_codigo                             &lt;chr&gt; \"201201\", \"201202\", \"2012…\n$ mil_pessoas_Total                            &lt;dbl&gt; 1210, 1217, 1226, 1219, 1…\n$ `mil_pessoas_Força de trabalho`              &lt;dbl&gt; 765, 782, 784, 805, 796, …\n$ `mil_pessoas_Força de trabalho - ocupada`    &lt;dbl&gt; 703, 733, 738, 762, 746, …\n$ `mil_pessoas_Força de trabalho - desocupada` &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 3…\n$ `mil_pessoas_Fora da força de trabalho`      &lt;dbl&gt; 446, 434, 441, 415, 437, …\n\n\nAgora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável condicao se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função clean_names().\n\ndados_largos_renomeados &lt;- clean_names(dados_largos)\nglimpse(dados_largos_renomeados)\n\nRows: 1,350\nColumns: 9\n$ uf                                       &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rond…\n$ uf_codigo                                &lt;chr&gt; \"11\", \"11\", \"11\", \"11\", \"11\",…\n$ trimestre                                &lt;chr&gt; \"1º trimestre 2012\", \"2º trim…\n$ trimestre_codigo                         &lt;chr&gt; \"201201\", \"201202\", \"201203\",…\n$ mil_pessoas_total                        &lt;dbl&gt; 1210, 1217, 1226, 1219, 1233,…\n$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 765, 782, 784, 805, 796, 800,…\n$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 703, 733, 738, 762, 746, 761,…\n$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 36, 3…\n$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 443,…\n\n\n\nAs funções pivot_longer() e pivot_wider() são usadas para alternar entre dados ‘longos’ e ‘largos’. Normalmente, dados longos são mais fáceis de visualizar, enquanto dados largos são melhores para realizar cálculos comparativos entre categorias. Para cada análise, sempre existe um formato mais apropriado a considerar.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#criando-e-transformando-colunas",
+    "href": "05_transformacao.html#criando-e-transformando-colunas",
+    "title": "Transformando dados",
+    "section": "Criando e transformando colunas",
+    "text": "Criando e transformando colunas\nPara criar novas colunas, ou transformar colunas que já existem, podemos usar a função mutate().\nAs variáveis uf_codigo e trimestre_codigo estão armazenadas como valores numéricos. No entanto, como não realizaremos operações matemáticas com esses valores, é mais apropriado transformá-los em fatores, o que facilita a análise e previne erros em cálculos futuros.\nExistem várias funções para transformar variáveis de um tipo para outro, como as.factor(), as.character(), as.numeric(), as.Date(), etc.\n\ndados_tipo &lt;- mutate(\n  # base de dados\n  dados_largos_renomeados,\n  # nova variável: \n  # nome_da_coluna = o que queremos calcular\n  uf_codigo = as.factor(uf_codigo),\n  trimestre_codigo = as.factor(trimestre_codigo)\n)\n\nPara calcular a taxa de desocupação, precisamos criar uma nova variável representando a proporção de pessoas desocupadas em relação ao total de pessoas economicamente ativas.\n\ndados_com_proporcao &lt;- mutate(\n  # base de dados\n  dados_tipo,\n  # nova variável: \n  # nome_da_coluna = o que queremos calcular\n  prop_desocupacao = (mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho),\n  perc_desocupacao = prop_desocupacao * 100\n)",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#ordenando-as-linhas",
+    "href": "05_transformacao.html#ordenando-as-linhas",
+    "title": "Transformando dados",
+    "section": "Ordenando as linhas",
+    "text": "Ordenando as linhas\nA base atual está ordada por trimestre e código da unidade da federação. Para facilitar a análise, podemos ordenar as linhas segundo a proporção de desocupação calculada no passo anterior, usando a função arrange():\n\narrange(\n  # base de dados\n  dados_com_proporcao,\n  # colunas que queremos usar ordenar\n  prop_desocupacao\n)\n\n# A tibble: 1,350 × 11\n   uf             uf_codigo trimestre         trimestre_codigo mil_pessoas_total\n   &lt;chr&gt;          &lt;fct&gt;     &lt;chr&gt;             &lt;fct&gt;                        &lt;dbl&gt;\n 1 Rondônia       11        3º trimestre 2023 202303                        1486\n 2 Rondônia       11        2º trimestre 2023 202302                        1483\n 3 Mato Grosso    51        3º trimestre 2023 202303                        2827\n 4 Santa Catarina 42        4º trimestre 2013 201304                        5371\n 5 Santa Catarina 42        4º trimestre 2012 201204                        5283\n 6 Santa Catarina 42        4º trimestre 2014 201404                        5478\n 7 Santa Catarina 42        2º trimestre 2014 201402                        5429\n 8 Santa Catarina 42        3º trimestre 2013 201303                        5343\n 9 Santa Catarina 42        3º trimestre 2014 201403                        5459\n10 Mato Grosso    51        2º trimestre 2023 202302                        2799\n# ℹ 1,340 more rows\n# ℹ 6 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_ocupada &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt;,\n#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;,\n#   perc_desocupacao &lt;dbl&gt;\n\n\nA função arrange() ordena, por padrão, de forma crescente. Podemos ordenar de forma decrescente, utilizando a função desc() junto à coluna que queremos ordenar de forma decrescente:\n\narrange(\n  # base de dados\n  dados_com_proporcao,\n  # colunas que queremos usar ordenar\n  desc(prop_desocupacao)\n)\n\n# A tibble: 1,350 × 11\n   uf         uf_codigo trimestre         trimestre_codigo mil_pessoas_total\n   &lt;chr&gt;      &lt;fct&gt;     &lt;chr&gt;             &lt;fct&gt;                        &lt;dbl&gt;\n 1 Pernambuco 26        2º trimestre 2021 202102                        7570\n 2 Amapá      16        2º trimestre 2018 201802                         602\n 3 Bahia      29        1º trimestre 2021 202101                       11965\n 4 Amapá      16        1º trimestre 2018 201801                         597\n 5 Pernambuco 26        1º trimestre 2021 202101                        7548\n 6 Bahia      29        3º trimestre 2020 202003                       11993\n 7 Sergipe    28        3º trimestre 2020 202003                        1835\n 8 Bahia      29        4º trimestre 2020 202004                       12004\n 9 Sergipe    28        1º trimestre 2021 202101                        1848\n10 Bahia      29        2º trimestre 2020 202002                       11870\n# ℹ 1,340 more rows\n# ℹ 6 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_ocupada &lt;dbl&gt;,\n#   mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt;,\n#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;,\n#   perc_desocupacao &lt;dbl&gt;\n\n\nNesse caso, as linhas ficaram ordenadas de forma decrescente, de acordo com a proporção de desocupação. Porém os trimestres não estão ordenados! A função arrange() permite que ordenemos por mais de uma coluna, e a ordem de prioridade é dada pela ordem em que as colunas são passadas para a função:\n\ndados_ordenados &lt;- arrange(\n  # base de dados\n  dados_com_proporcao,\n  # colunas que queremos usar ordenar\n  trimestre_codigo, desc(prop_desocupacao)\n)\n\nglimpse(dados_ordenados)\n\nRows: 1,350\nColumns: 11\n$ uf                                       &lt;chr&gt; \"Amapá\", \"Bahia\", \"Rio Grande…\n$ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…\n$ trimestre                                &lt;chr&gt; \"1º trimestre 2012\", \"1º trim…\n$ trimestre_codigo                         &lt;fct&gt; 201201, 201201, 201201, 20120…\n$ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…\n$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …\n$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …\n$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…\n$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…\n$ prop_desocupacao                         &lt;dbl&gt; 0.12578616, 0.11643438, 0.116…\n$ perc_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…\n\n\nAgora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#pipe---encadeando-funções",
+    "href": "05_transformacao.html#pipe---encadeando-funções",
+    "title": "Transformando dados",
+    "section": "Pipe - Encadeando funções",
+    "text": "Pipe - Encadeando funções\nNos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador pipe (%&gt;% ou |&gt;). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.\nPodemos reescrever os códigos anteriores usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: dados_renomeados, dados_filtrados, dados_selecionados, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#unindo-duas-bases-de-dados",
+    "href": "05_transformacao.html#unindo-duas-bases-de-dados",
+    "title": "Transformando dados",
+    "section": "Unindo duas bases de dados",
+    "text": "Unindo duas bases de dados\nUnir duas tabelas é algo comum em análises de dados. Usamos operações do tipo join para combinar duas tabelas, utilizando uma ou mais colunas como “chave”. As colunas do tipo chave têm valores comuns nas duas tabelas e são usadas para identificar as linhas correspondentes entre elas.\nO pacote {dplyr} fornece um conjunto de funções para realizar diferentes tipos de uniões, como left_join(), inner_join(), full_join(), entre outras.\nA função left_join() é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.\nUm exemplo comum de uso é quando temos dados por município ou estado, e desejamos visualizar esses dados em um mapa. Para isso, precisamos de informações geoespaciais, como a delimitação geográfica de cada município ou estado. Podemos usar o left_join() para combinar esses dados geoespaciais com os dados que queremos visualizar.\nVamos usar o pacote {geobr} para carregar as geometrias dos estados brasileiros.\n\n\n\n\n\n\nDica\n\n\n\nO pacote {geobr} facilita o acesso a dados geoespaciais do Brasil, como estados, municípios e outras divisões administrativas. Ele é muito útil quando queremos fazer análises geoespaciais, já que oferece dados geográficos prontos para uso.\nPodemos utilizar a função read_state() para carregar as geometrias dos estados brasileiros. Isso nos permite combinar essas geometrias com outros dados, como taxas de desocupação, e criar mapas que facilitam a visualização de padrões regionais.\n\n\n\nlibrary(geobr)\ngeo_estados &lt;- read_state(showProgress = FALSE)\nglimpse(geo_estados)\n\nRows: 27\nColumns: 6\n$ code_state   &lt;dbl&gt; 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27, 2…\n$ abbrev_state &lt;chr&gt; \"RO\", \"AC\", \"AM\", \"RR\", \"PA\", \"AP\", \"TO\", \"MA\", \"PI\", \"CE…\n$ name_state   &lt;chr&gt; \"Rondônia\", \"Acre\", \"Amazonas\", \"Roraima\", \"Pará\", \"Amapá…\n$ code_region  &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, …\n$ name_region  &lt;chr&gt; \"Norte\", \"Norte\", \"Norte\", \"Norte\", \"Norte\", \"Norte\", \"No…\n$ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPOLYGON…\n\n\nO left_join() é usado aqui para combinar os dados do SIDRA com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as proporções de desocupação por UF em um mapa. Esse tipo de operação é comum quando queremos identificar padrões regionais.\nÉ importante garantir que as colunas usadas na combinação de tabelas (o argumento by do left_join()) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função class():\n\nclass(geo_estados$code_state)\n\n[1] \"numeric\"\n\nclass(dados_ordenados$uf_codigo)\n\n[1] \"factor\"\n\n\nNeste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O left_join() não conseguirá fazer a correspondência corretamente, e a função gerará um erro:\n\nleft_join(geo_estados, dados_ordenados, by = join_by(code_state == uf_codigo))\n\nError in `sf_column %in% names(g)`:\n! Can't join `x$code_state` with `y$uf_codigo` due to incompatible\n  types.\nℹ `x$code_state` is a &lt;double&gt;.\nℹ `y$uf_codigo` is a &lt;factor&lt;48524&gt;&gt;.\n\n\nNo exemplo, podemos transformar a coluna code_state em fator usando mutate(). Assim, garantimos que as colunas usadas no argumento by sejam do mesmo tipo e possam ser corretamente combinados.\n\ndados_geo &lt;- geo_estados |&gt; \n  mutate(code_state = as.factor(code_state)) |&gt; \n  left_join(dados_ordenados, by = join_by(code_state == uf_codigo))\n\nglimpse(dados_geo)\n\nRows: 1,350\nColumns: 16\n$ code_state                               &lt;fct&gt; 11, 11, 11, 11, 11, 11, 11, 1…\n$ abbrev_state                             &lt;chr&gt; \"RO\", \"RO\", \"RO\", \"RO\", \"RO\",…\n$ name_state                               &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rond…\n$ code_region                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ name_region                              &lt;chr&gt; \"Norte\", \"Norte\", \"Norte\", \"N…\n$ uf                                       &lt;chr&gt; \"Rondônia\", \"Rondônia\", \"Rond…\n$ trimestre                                &lt;chr&gt; \"1º trimestre 2012\", \"2º trim…\n$ trimestre_codigo                         &lt;fct&gt; 201201, 201202, 201203, 20120…\n$ mil_pessoas_total                        &lt;dbl&gt; 1210, 1217, 1226, 1219, 1233,…\n$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 765, 782, 784, 805, 796, 800,…\n$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 703, 733, 738, 762, 746, 761,…\n$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 36, 3…\n$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 443,…\n$ prop_desocupacao                         &lt;dbl&gt; 0.08104575, 0.06265985, 0.058…\n$ perc_desocupacao                         &lt;dbl&gt; 8.104575, 6.265985, 5.867347,…\n$ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((…\n\n\nAgora temos uma base de dados que combina os dados do SIDRA com as geometrias dos estados brasileiros.\nCombinar dados dessa forma nos permite fazer visualizações geoespaciais, como um mapa de calor das taxas de desocupação por estado. Isso facilita a identificação de padrões regionais, ajudando na interpretação dos dados.\nNão falaremos nesse momento sobre como criar visualizações e mapas, pois isso será abordado em aulas futuras. Mas podemos adiantar um exemplo de como criar um mapa apresentando as proporções de desocupação por estado:\n\n\nCódigo\ndados_geo |&gt; \n  filter(trimestre_codigo == \"202402\") |&gt;\n  ggplot() +\n  geom_sf(aes(fill = perc_desocupacao)) +\n  theme_light() +\n  scale_fill_viridis_c() +\n  labs(title = \"Percentual de desocupação por UF no 2º trimestre de 2024\",\n       fill = \"Desocupação (%)\") +\n  theme(legend.position = \"bottom\")",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#salvando-a-base-de-dados-preparada",
+    "href": "05_transformacao.html#salvando-a-base-de-dados-preparada",
+    "title": "Transformando dados",
+    "section": "Salvando a base de dados preparada",
+    "text": "Salvando a base de dados preparada\nPor fim, podemos salvar a base de dados preparada para usar nas próximas etapas. Assim não precisamos repetir todo o processo de limpeza e transformação de dados a cada vez que quisermos fazer uma análise.\nÉ recomendável salvar a base de dados em um formato que preserve a estrutura dos dados, como .rds.\n\n# Salvando os dados preparados\nwrite_rds(dados_preparados, \"dados_output/sidra_4092_arrumado.rds\")",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "05_transformacao.html#sugestões-de-materiais",
+    "href": "05_transformacao.html#sugestões-de-materiais",
+    "title": "Transformando dados",
+    "section": "Sugestões de materiais",
+    "text": "Sugestões de materiais\n\nIBGE: Desemprego\nIBGE: PNAD Contínua - Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral\nLivro R para Ciência de Dados 2ed:\n\nTransformação de dados\nOrganização de dados",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Transformando dados"
+    ]
+  },
+  {
+    "objectID": "13_censobr_documentacao.html",
+    "href": "13_censobr_documentacao.html",
+    "title": "Documentação dos Censos",
+    "section": "",
+    "text": "Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conjunto de funções que permitem rápido acesso à documentação dos censos demográficos, incluindo os dicionários de variáveis, questionários e manual do entrevistador para entrevistas.\nTabela 2. Funções de documentação disponíveis no {censobr}\n\n\n\n    \n    \n    \n\n\n\n\n\n\n\nFunção\nDocumentação\nTipo\nDisponibilidade\n\n\n1960\n70\n80\n91\n2000\n10\n22\n\n\n\n\ndata_dictionary()\nDicionário de variáveis\nMicrodados\nX\nX\nX\nX\nX\nX\nem breve\n\n\nAgregados de setores censitários\n\n\n\n\nX\nX\nem breve\n\n\nquestionnaire()\nQuestionários\nLongo e curto\nX\nX\nX\nX\nX\nX\nX\n\n\ninterview_manual()\nManual do entrevistador\n-\nX\nX\nX\nX\nX\nX\nX\n\n\n\n\n\n\n\n\nTodas funções de documentação baixam os arquivos em formato .html ou .pdf, e abrem o documento no navegador (browser). Assim como as funções de leitura de dados do {censobr}, essas funções de documentação também salvam os arquivos num cache local na primeira vez que a função é rodada. Assim, quando o usuário roda a função novamente, o pacote simplesmente carrega o arquivo local de maneira quase instantânea.\n\n\n\nA função data_dictionary() carrega o dicionário de variáveis, apontando a definição de cada variável e o significado de suas categorias no caso de variáveis categóricas. Atualmente, a função abrange os dicionários dos microdados da amostra para todos os censos brasileiros desde 1960: c(1960, 1970, 1980, 1991, 2000 e 2010). Além disso, a função também inclui atualmente os dicionários dos dados do universo agregados em setores censitário para os anos 2000 e 2010.\n\nlibrary(censobr)\n\n# dicionário de variáveis de pessoas (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'population')\n\n# dicionário de variáveis de domicílios (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'households')\n\n\n# dicionário de variáveis de setores censitários (agregados do universo)\ndata_dictionary(year = 2010, \n                dataset = 'tracts')\n\n\n\n\nCom frequência, é importante se entender a estrutura e fluxo do questionário utilizado em pesquisas de coleta de dados. A função questionnaire() inclui os questionários utilizados na coleta de dados de todos os censos brasileiros desde 1960.\nAlém de passar o parâmetro year, o usuário precisa indicar o tipo de questionário de interesse, se o questionário curto do universo (type = 'short') ou o questionário longo utilizado na pesquisa amostral (type = 'long').\n\n# questionário curto da pesquisa do universo\nquestionnaire(year = 2022, \n              type = 'short')\n\n# questionário longo da pesquisa amostral\nquestionnaire(year = 2022, \n              type = 'long')\n\n\n\n\nPor fim, a função interview_manual() faz o download e abre no navegador o “Manual do Recenseador”, ou seja, o manual de instruções para os recenseadores do IBGE sobre como coletar os dados do censo. Estão disponíveis os manuais de todos os censos desde 1960.\n\n# Censo de 2010\ninterview_manual(year = 2022)\n\n# Censo de 1970\ninterview_manual(year = 1960)",
+    "crumbs": [
+      "Explorando o Censo Demográfico",
+      "Documentação dos Censos"
+    ]
+  },
+  {
+    "objectID": "13_censobr_documentacao.html#documentação-do-censo-disponível-no-censobr",
+    "href": "13_censobr_documentacao.html#documentação-do-censo-disponível-no-censobr",
+    "title": "Documentação dos Censos",
+    "section": "",
+    "text": "Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conjunto de funções que permitem rápido acesso à documentação dos censos demográficos, incluindo os dicionários de variáveis, questionários e manual do entrevistador para entrevistas.\nTabela 2. Funções de documentação disponíveis no {censobr}\n\n\n\n    \n    \n    \n\n\n\n\n\n\n\nFunção\nDocumentação\nTipo\nDisponibilidade\n\n\n1960\n70\n80\n91\n2000\n10\n22\n\n\n\n\ndata_dictionary()\nDicionário de variáveis\nMicrodados\nX\nX\nX\nX\nX\nX\nem breve\n\n\nAgregados de setores censitários\n\n\n\n\nX\nX\nem breve\n\n\nquestionnaire()\nQuestionários\nLongo e curto\nX\nX\nX\nX\nX\nX\nX\n\n\ninterview_manual()\nManual do entrevistador\n-\nX\nX\nX\nX\nX\nX\nX\n\n\n\n\n\n\n\n\nTodas funções de documentação baixam os arquivos em formato .html ou .pdf, e abrem o documento no navegador (browser). Assim como as funções de leitura de dados do {censobr}, essas funções de documentação também salvam os arquivos num cache local na primeira vez que a função é rodada. Assim, quando o usuário roda a função novamente, o pacote simplesmente carrega o arquivo local de maneira quase instantânea.",
+    "crumbs": [
+      "Explorando o Censo Demográfico",
+      "Documentação dos Censos"
+    ]
+  },
+  {
+    "objectID": "13_censobr_documentacao.html#dicionário-de-dados",
+    "href": "13_censobr_documentacao.html#dicionário-de-dados",
+    "title": "Documentação dos Censos",
+    "section": "",
+    "text": "A função data_dictionary() carrega o dicionário de variáveis, apontando a definição de cada variável e o significado de suas categorias no caso de variáveis categóricas. Atualmente, a função abrange os dicionários dos microdados da amostra para todos os censos brasileiros desde 1960: c(1960, 1970, 1980, 1991, 2000 e 2010). Além disso, a função também inclui atualmente os dicionários dos dados do universo agregados em setores censitário para os anos 2000 e 2010.\n\nlibrary(censobr)\n\n# dicionário de variáveis de pessoas (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'population')\n\n# dicionário de variáveis de domicílios (microdados da amostra)\ndata_dictionary(year = 2010, \n                dataset = 'households')\n\n\n# dicionário de variáveis de setores censitários (agregados do universo)\ndata_dictionary(year = 2010, \n                dataset = 'tracts')",
+    "crumbs": [
+      "Explorando o Censo Demográfico",
+      "Documentação dos Censos"
+    ]
+  },
+  {
+    "objectID": "13_censobr_documentacao.html#questionários",
+    "href": "13_censobr_documentacao.html#questionários",
+    "title": "Documentação dos Censos",
+    "section": "",
+    "text": "Com frequência, é importante se entender a estrutura e fluxo do questionário utilizado em pesquisas de coleta de dados. A função questionnaire() inclui os questionários utilizados na coleta de dados de todos os censos brasileiros desde 1960.\nAlém de passar o parâmetro year, o usuário precisa indicar o tipo de questionário de interesse, se o questionário curto do universo (type = 'short') ou o questionário longo utilizado na pesquisa amostral (type = 'long').\n\n# questionário curto da pesquisa do universo\nquestionnaire(year = 2022, \n              type = 'short')\n\n# questionário longo da pesquisa amostral\nquestionnaire(year = 2022, \n              type = 'long')",
+    "crumbs": [
+      "Explorando o Censo Demográfico",
+      "Documentação dos Censos"
+    ]
+  },
+  {
+    "objectID": "13_censobr_documentacao.html#manual-do-entrevistador",
+    "href": "13_censobr_documentacao.html#manual-do-entrevistador",
+    "title": "Documentação dos Censos",
+    "section": "",
+    "text": "Por fim, a função interview_manual() faz o download e abre no navegador o “Manual do Recenseador”, ou seja, o manual de instruções para os recenseadores do IBGE sobre como coletar os dados do censo. Estão disponíveis os manuais de todos os censos desde 1960.\n\n# Censo de 2010\ninterview_manual(year = 2022)\n\n# Censo de 1970\ninterview_manual(year = 1960)",
+    "crumbs": [
+      "Explorando o Censo Demográfico",
+      "Documentação dos Censos"
+    ]
+  },
+  {
+    "objectID": "00_erros_frequentes.html",
+    "href": "00_erros_frequentes.html",
+    "title": "Erros e warnings frequentes",
+    "section": "",
+    "text": "A lista a seguir apresenta alguns erros e warnings que apareceram na aula (seja por dúvida presencial, seja no chat do Google Meet).",
+    "crumbs": [
+      "Anexos",
+      "Erros e *warnings* frequentes"
+    ]
+  },
+  {
+    "objectID": "00_erros_frequentes.html#instalação",
+    "href": "00_erros_frequentes.html#instalação",
+    "title": "Erros e warnings frequentes",
+    "section": "Instalação",
+    "text": "Instalação\n\nRTools\nPara pessoas que utilizam o sistema operacional Windows, a aviso (warning) abaixo pode aparecer em alguns contextos:\nWARNING: Rtools is required to build R packages but is not currently installed.\nPlease download and install the appropriate version of Rtools before proceeding:\n\nhttps://cran.rstudio.com/bin/windows/Rtools/\nInstalando pacote em ‘C:/Users/.../AppData/Local/R/win-library/4.4’\n(como ‘lib’ não foi especificado)\nPara que esse aviso não apareça mais, você pode instalar o Rtools no seu computador. O RTools é um software (não é um pacote do R), portanto você precisa fazer o download da versão compatível com a versão do R que você está utilizando, e instalar no seu computador.\nPara fazer o download, acesse o link https://cran.rstudio.com/bin/windows/Rtools/, e escolha a versão do RTools compatível com a versão do R que você está utilizando:\n\n\n\nCaptura de tela: página de download do RTools\n\n\nPara consultar a versão do R que você está utilizando, você pode rodar o seguinte comando no console do R:\n\nR.version.string\n\n[1] \"R version 4.4.1 (2024-06-14)\"",
+    "crumbs": [
+      "Anexos",
+      "Erros e *warnings* frequentes"
+    ]
+  },
+  {
+    "objectID": "00_erros_frequentes.html#conceitos-básicos",
+    "href": "00_erros_frequentes.html#conceitos-básicos",
+    "title": "Erros e warnings frequentes",
+    "section": "Conceitos básicos",
+    "text": "Conceitos básicos\n\nInstalando pacotes\nO erro a seguir ocorre quando o usuário tenta instalar um pacote sem aspas. O correto é colocar o nome do pacote entre aspas.\n\n# O código abaixo gerará um erro:\ninstall.packages(janitor)\n\nError in eval(call, envir = parent.frame()): object 'janitor' not found\n\n\nA função deve receber o nome do pacote entre aspas, pois é um texto:\n\n# O código abaixo funcionará:\ninstall.packages(\"janitor\")\n\n\n\nPacote não encontrado\nO erro a seguir ocorre quando tentamos carregar um pacote que não foi instalado anteriormente. Para resolver, precisamos instalar o pacote.\n\n# O código abaixo gerará um erro:\nlibrary(nome_pacote)\n\nError in library(nome_pacote): there is no package called 'nome_pacote'\n\n\nPara que consiga acessar, é necessário instalar o pacote, e depois carregá-lo:\n\ninstall.packages(\"nome_pacote\")\nlibrary(nome_pacote)\n\n\n\nObjeto não encontrado\nO erro a seguir ocorre quando tentamos acessar um objeto que não consta no painel Environment. Existe alguns motivos para isso acontecer:\n\nO objeto não foi criado (provavelmente precisa executar o código que cria o objeto);\nO objeto existe no painel Environment, mas estamos tentando acessá-lo com o nome incorreto.\n\nNo exemplo a seguir, o código gerará um erro pois o objeto que estamos tentando acessar ainda não foi criado:\n\n# O código abaixo gerará um erro:\nlength(estados_sudeste)\n\nError: object 'estados_sudeste' not found\n\n\nApós criar o objeto, conseguimos utilizá-lo:\n\nestados_sudeste &lt;- c(\"SP\", \"RJ\", \"MG\", \"ES\")\nlength(estados_sudeste)\n\n[1] 4\n\n\n\n\nFunção não encontrada\nO erro could not find function ocorre quando tentamos acessar uma função que não está sendo encontrada. Isso pode acontecer por alguns motivos:\n\nA função faz parte de um pacote que não foi carregado (precisamos carregar o pacote antes);\nA função foi escrita de forma incorreta (por exemplo, com letras maiúsculas ou minúsculas incorretas).\n\n\nPacote não carregado\nNo exemplo a seguir, queremos limpar o nome das colunas do data frame iris:\n\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\nO código a seguir gerará um erro pois a função clean_names() faz parte do pacote janitor, mas o pacote não foi carregado:\n\nclean_names(iris)\n\nError in clean_names(iris): could not find function \"clean_names\"\n\n\nPara corrigir, precisamos carregar o pacote janitor:\n\nlibrary(janitor)\niris_nome_limpo &lt;- clean_names(iris)\nhead(iris_nome_limpo)\n\n  sepal_length sepal_width petal_length petal_width species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\n\nErro de digitação\nNo exemplo a seguir, o código gerará um erro pois a função length() está escrito de forma incorreta:\n\n# O código abaixo gerará um erro:\nlenght(letters)\n\nError in lenght(letters): could not find function \"lenght\"\n\n\nPara corrigir, precisamos escrever a função corretamente:\n\nlength(letters)\n\n[1] 26",
+    "crumbs": [
+      "Anexos",
+      "Erros e *warnings* frequentes"
+    ]
+  },
+  {
+    "objectID": "00_erros_frequentes.html#importação",
+    "href": "00_erros_frequentes.html#importação",
+    "title": "Erros e warnings frequentes",
+    "section": "Importação",
+    "text": "Importação\n\nArquivo não encontrado\nAo importar um arquivo, é importante que o caminho esteja correto. Caso contrário, o código gerará um erro.\n\nlibrary(tidyverse)\n\n\n# O caminho abaixo está incorreto, esse arquivo não existe\n# no nosso projeto:\nsidra_4092 &lt;- read_csv(\"SIDRAR.csv\")\n\nError: 'SIDRAR.csv' does not exist in current working directory ('/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409').\n\n\nCorrigindo o arquivo, o código funcionará:\n\nsidra_4092 &lt;- read_csv(\"dados/sidrar_4092_bruto.csv\")\nglimpse(sidra_4092)\n\nRows: 27,000\nColumns: 13\n$ `Nível Territorial (Código)`                                              &lt;dbl&gt; …\n$ `Nível Territorial`                                                       &lt;chr&gt; …\n$ `Unidade de Medida (Código)`                                              &lt;dbl&gt; …\n$ `Unidade de Medida`                                                       &lt;chr&gt; …\n$ Valor                                                                     &lt;dbl&gt; …\n$ `Unidade da Federação (Código)`                                           &lt;dbl&gt; …\n$ `Unidade da Federação`                                                    &lt;chr&gt; …\n$ `Trimestre (Código)`                                                      &lt;dbl&gt; …\n$ Trimestre                                                                 &lt;chr&gt; …\n$ `Variável (Código)`                                                       &lt;dbl&gt; …\n$ Variável                                                                  &lt;chr&gt; …\n$ `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt; …\n$ `Condição em relação à força de trabalho e condição de ocupação`          &lt;chr&gt; …",
+    "crumbs": [
+      "Anexos",
+      "Erros e *warnings* frequentes"
+    ]
+  },
+  {
+    "objectID": "00_erros_frequentes.html#arquivo-corrompido",
+    "href": "00_erros_frequentes.html#arquivo-corrompido",
+    "title": "Erros e warnings frequentes",
+    "section": "Arquivo corrompido",
+    "text": "Arquivo corrompido\nO erro a seguir ocorre quando tentamos importar um arquivo que está corrompido. Nesse caso, precisamos baixar o arquivo novamente.\n\nlibrary(readxl)\nexcel_sheets(\"dados/sidrar_4092_bruto.xlsx\")\n# Error in readBin(con, raw(), n = size) : \n#   error reading from the connection",
+    "crumbs": [
+      "Anexos",
+      "Erros e *warnings* frequentes"
+    ]
+  },
+  {
+    "objectID": "07_analise_exploratoria.html",
+    "href": "07_analise_exploratoria.html",
+    "title": "Análise exploratória de dados",
+    "section": "",
+    "text": "Aviso\n\n\n\nPágina em construção! Em breve.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Análise exploratória de dados"
+    ]
+  },
+  {
+    "objectID": "07_analise_exploratoria.html#sugestões-de-materiais",
+    "href": "07_analise_exploratoria.html#sugestões-de-materiais",
+    "title": "Análise exploratória de dados",
     "section": "Sugestões de materiais",
     "text": "Sugestões de materiais\n\nLivro Metodologia de Pesquisa Jurimétrica:\n\nCapítulo 3 - Estatísticas",
     "crumbs": [
       "Etapas em uma análise de dados",
-      "Analisando dados"
-    ]
-  },
-  {
-    "objectID": "index.html#introdução-ao-material",
-    "href": "index.html#introdução-ao-material",
-    "title": "Introdução à análise de dados no R",
-    "section": "Introdução ao material",
-    "text": "Introdução ao material\nEste site apresenta o material de apoio para o curso “Introdução à análise de dados no R”, oferecido em 2024 para servidores do Instituto de Pesquisa Econômica Aplicada (Ipea). O curso será realizado de forma remota híbrida, com aulas ao vivo e atividades práticas.\n\n\n\n\n\n\nImportante\n\n\n\nRecomendamos que todas as pessoas participantes instalem o R e o RStudio antes do início do curso. Para isso, siga as instruções disponíveis na página Instruções de instalação.\nCaso tenha alguma dificuldade, entre em contato com a equipe do curso o quanto antes.",
-    "crumbs": [
-      "Pré-curso",
-      "Introdução à análise de dados no R"
-    ]
-  },
-  {
-    "objectID": "index.html#equipe-do-curso",
-    "href": "index.html#equipe-do-curso",
-    "title": "Introdução à análise de dados no R",
-    "section": "Equipe do curso",
-    "text": "Equipe do curso\nBeatriz Milz  Pesquisadora Colaboradora | Estágio pós-doutoral  Laboratório de Planejamento Territorial (LaPlan) - Universidade Federal do ABC (UFABC)  Email | GitHub | LinkedIn | ResearchGate | Currículo Lattes | Orcid\nPedro Cavalcanti Gonçalves Ferreira  Coordenação de Ciência de Dados - COCD  Instituto de Pesquisa Econômica Aplicada (Ipea)  GitHub | LinkedIn | Currículo Lattes | Orcid\nRafael H. M. Pereira  Coordenador de Ciência de Dados  Instituto de Pesquisa Econômica Aplicada (Ipea)  Website | Google Scholar | Linkedin |",
-    "crumbs": [
-      "Pré-curso",
-      "Introdução à análise de dados no R"
-    ]
-  },
-  {
-    "objectID": "index.html#sobre-este-material",
-    "href": "index.html#sobre-este-material",
-    "title": "Introdução à análise de dados no R",
-    "section": "Sobre este material",
-    "text": "Sobre este material\n\nContribuidores\nAlém da equipe do curso, esse material recebeu contribuições de:\n\nJulio Trecenti\n\n\n\nLicença\nEsse material está disponível sob a licença CC BY-SA 4.0.",
-    "crumbs": [
-      "Pré-curso",
-      "Introdução à análise de dados no R"
-    ]
-  },
-  {
-    "objectID": "00_intro_etapas_analise.html",
-    "href": "00_intro_etapas_analise.html",
-    "title": "Introdução",
-    "section": "",
-    "text": "Na seção “Conceitos básicos”, abordamos alguns conceitos importantes para começar a programar em R.\nNesta seção, cada aula apresentará uma etapa comum quando realizamos uma análise de dados.\nA figura abaixo ilustra algumas etapas comuns em uma análise de dados, conforme apresentado no livro “R para Ciência de Dados”:\n\n\n\nProcesso de ciência de dados, por Wickham, Çetinkaya-Rundel e Grolemund\n\n\nO principal pacote que utilizaremos é o tidyverse. O tidyverse é uma coleção de pacotes em R desenvolvidos com o objetivo de facilitar etapas de análise de dados. Os pacotes do tidyverse compartilham uma filosofia comum e são projetados para funcionar bem juntos.\n\n\n\nPacotes principais (core packages) do tidyverse. Fonte: Site do tidyverse.\n\n\nPortanto, é importante checar se o tidyverse está instalado e carregá-lo no início de cada aula:\n\nlibrary(\"tidyverse\")\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nO livro “R para Ciência de Dados” foi escrito por pessoas que trabalham (ou trabalharam) no desenvolvimento do tidyverse, e é uma excelente referência para estudar mais. Para cada aula, indicaremos seções do livro que podem ser úteis para aprofundar o conteúdo.",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Introdução"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html",
-    "href": "04_conhecendo.html",
-    "title": "Conhecendo a base de dados",
-    "section": "",
-    "text": "Conceitos prévios importantes:\n\nComo importar bases de dados?\nTipos de variáveis\nValores faltantes (NA)\nNesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.\nEssa etapa é importante para:\nVamos começar importando a base de dados que utilizaremos:\nlibrary(tidyverse)\ndados &lt;- read_rds(\"dados/sidrar_4092_bruto.rds\")",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html#estrutura-da-base-de-dados",
-    "href": "04_conhecendo.html#estrutura-da-base-de-dados",
-    "title": "Conhecendo a base de dados",
-    "section": "Estrutura da base de dados",
-    "text": "Estrutura da base de dados\nVamos começar conhecendo a estrutura da base de dados. Para isso, existem algumas funções para saber o número de colunas e linhas, os nomes das colunas, entre outras informações. Algumas delas apresentam as mesmas informações, mas de formas diferentes.\n\n# Número de colunas\nncol(dados)\n\n[1] 13\n\n# Número de linhas\nnrow(dados)\n\n[1] 27000\n\n# Número de linhas e colunas\ndim(dados)\n\n[1] 27000    13\n\n# Nomes das colunas\nnames(dados)\n\n [1] \"Nível Territorial (Código)\"                                             \n [2] \"Nível Territorial\"                                                      \n [3] \"Unidade de Medida (Código)\"                                             \n [4] \"Unidade de Medida\"                                                      \n [5] \"Valor\"                                                                  \n [6] \"Unidade da Federação (Código)\"                                          \n [7] \"Unidade da Federação\"                                                   \n [8] \"Trimestre (Código)\"                                                     \n [9] \"Trimestre\"                                                              \n[10] \"Variável (Código)\"                                                      \n[11] \"Variável\"                                                               \n[12] \"Condição em relação à força de trabalho e condição de ocupação (Código)\"\n[13] \"Condição em relação à força de trabalho e condição de ocupação\"         \n\n\nA função glimpse() do pacote {dplyr} apresenta informações como: número de linhas, número de colunas, nome e tipo de cada coluna, e os primeiros valores de cada coluna. Porém o texto resultante dependerá da largura do Console:\n\nglimpse(dados)\n\n\n\n\nCaptura de tela: Resultado da função glimpse()\n\n\n\nView\nUma outra função que é interessante é a View(). Ela nos permite visualizar a base de dados em uma nova janela, em formato de tabela. Porém, é importante tomar cuidado ao usá-la com bases de dados grandes, pois pode travar o RStudio dependendo.\n\n\n\n\n\n\nDica\n\n\n\nObservação: Se você estiver com o {tidyverse} carregado, a função view() (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função View(), e tem algumas funcionalidades a mais. Para os fins dessa aula, podemos usar qualquer uma das duas.\n\n\nOutra forma de acessar o View é clicando na linha do objeto no painel Environment do RStudio:\n\n\n\nCaptura de tela: Onde clicamos para abrir o View\n\n\n\nView(dados)\n\n\n\n\nGravação da tela - Usando o View",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html#sumário-das-variáveis",
-    "href": "04_conhecendo.html#sumário-das-variáveis",
-    "title": "Conhecendo a base de dados",
-    "section": "Sumário das variáveis",
-    "text": "Sumário das variáveis\nEm funções apresentadas anteriormente, como a names(), já conseguimos ter uma ideia de quais são as variáveis da base de dados. Mas é interessante ter mais informações, como: tipo de variável, quantidade de valores faltantes, entre outros.\nNessa etapa, conheceremos algumas funções que nos ajudarão a ter essas informações. Algumas apresentam as mesmas informações, mas de formas diferentes. Portanto, é interessante conhecer algumas delas, e escolher qual é a que melhor atende às nossas necessidades.\n\n\n\n\n\n\nAviso\n\n\n\nCuidado: as funções apresentadas a seguir calculam algumas estatísticas descritivas (como a média, mediana, desvio padrão, valor mínimo, valor máximo, entre outras) em variáveis numéricas. Porém, ainda não “arrumamos” a base de dados (faremos isso no capítulo Transformando dados), e os dados ainda não estão adequados para esses cálculos.\nAlguns exemplos:\n\nVárias colunas numéricas representam o código de uma categoria, e não faz sentido calcular a média desses códigos.\nA variável valor está relacionada com a variável Unidade de Medida. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.\n\nFalaremos sobre o cálculo de estatísticas descritivas no capítulo Analisando dados.\n\n\n\nsummary()\nA função summary() é uma função do R base (ou seja, não precisamos carregar nenhum pacote para usá-la), e ela nos dá um sumário das variáveis da base de dados.\n\nsummary(dados)\n\n Nível Territorial (Código) Nível Territorial  Unidade de Medida (Código)\n Length:27000               Length:27000       Length:27000              \n Class :character           Class :character   Class :character          \n Mode  :character           Mode  :character   Mode  :character          \n                                                                         \n                                                                         \n                                                                         \n                                                                         \n Unidade de Medida      Valor         Unidade da Federação (Código)\n Length:27000       Min.   :    0.3   Length:27000                 \n Class :character   1st Qu.:    1.5   Class :character             \n Mode  :character   Median :    7.8   Mode  :character             \n                    Mean   :  862.0                                \n                    3rd Qu.:  105.8                                \n                    Max.   :39480.0                                \n                    NA's   :1350                                   \n Unidade da Federação Trimestre (Código)  Trimestre         Variável (Código) \n Length:27000         Length:27000       Length:27000       Length:27000      \n Class :character     Class :character   Class :character   Class :character  \n Mode  :character     Mode  :character   Mode  :character   Mode  :character  \n                                                                              \n                                                                              \n                                                                              \n                                                                              \n   Variável        \n Length:27000      \n Class :character  \n Mode  :character  \n                   \n                   \n                   \n                   \n Condição em relação à força de trabalho e condição de ocupação (Código)\n Length:27000                                                           \n Class :character                                                       \n Mode  :character                                                       \n                                                                        \n                                                                        \n                                                                        \n                                                                        \n Condição em relação à força de trabalho e condição de ocupação\n Length:27000                                                  \n Class :character                                              \n Mode  :character                                              \n                                                               \n                                                               \n                                                               \n                                                               \n\n\n\n\nskimr::skim()\nO pacote {skimr} tem uma função chamada skim() que nos dá um sumário das variáveis da base de dados.\nÉ interesante salvar o resultado da função em um objeto, para que possamos acessar as informações posteriormente, em formato de tabela.\n\nlibrary(skimr)\nskim_dados &lt;- skim(dados)\n\nA seguir, podemos ver o resultado da função skim():\n\nskim_dados\n\n\nData summary\n\n\nName\ndados\n\n\nNumber of rows\n27000\n\n\nNumber of columns\n13\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n12\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nNível Territorial (Código)\n0\n1\n1\n1\n0\n1\n0\n\n\nNível Territorial\n0\n1\n20\n20\n0\n1\n0\n\n\nUnidade de Medida (Código)\n0\n1\n1\n4\n0\n2\n0\n\n\nUnidade de Medida\n0\n1\n1\n11\n0\n2\n0\n\n\nUnidade da Federação (Código)\n0\n1\n2\n2\n0\n27\n0\n\n\nUnidade da Federação\n0\n1\n4\n19\n0\n27\n0\n\n\nTrimestre (Código)\n0\n1\n6\n6\n0\n50\n0\n\n\nTrimestre\n0\n1\n17\n17\n0\n50\n0\n\n\nVariável (Código)\n0\n1\n4\n4\n0\n4\n0\n\n\nVariável\n0\n1\n35\n89\n0\n4\n0\n\n\nCondição em relação à força de trabalho e condição de ocupação (Código)\n0\n1\n5\n5\n0\n5\n0\n\n\nCondição em relação à força de trabalho e condição de ocupação\n0\n1\n5\n30\n0\n5\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nValor\n1350\n0.95\n862.03\n2896.64\n0.3\n1.5\n7.8\n105.75\n39480\n▇▁▁▁▁\n\n\n\n\n\nO resultado da função skim() é dividido em duas partes:\n\nData summary: informações gerais sobre a base de dados, como: nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável1.\nVariable type: para cada tipo de variável presente na base de dados, temos informações como:\n\nskim_variable: nome da variável.\nn_missing: número de valores faltantes.\ncomplete_rate: proporção de valores não faltantes (está relacionada com a n_missing).\nOutras colunas específicas segundo o tipo de variável.\n\n\nA seguir, estão as informações que a função skim() retorna para os tipos de variáveis mais frequentes:\n\ncharacter (dados de texto):\n\nmin: número mínimo de caracteres.\nmax: número máximo de caracteres.\nempty: número de linhas contendo valores vazios (um valor vazio é um valor que contém apenas \"\").\nn_unique: número de valores únicos.\nwhitespace: número de linhas contendo apenas espaços em branco.\n\nnumeric (dados numéricos):\n\nmean: média.\nsd: desvio padrão.\np0: valor mínimo.\np25: primeiro quartil.\np50: mediana.\np75: terceiro quartil.\np100: valor máximo.\nhist: histograma dos valores.\n\ndate (datas):\n\nmin: data mínima.\nmax: data máxima.\nmedian: data mediana.\nn_unique: número de datas únicas.\n\nfactor (dados categóricos):\n\nordered: os níveis do fator estão ordenados?\nn_unique: número de valores únicos do fator.\ntop_counts: os valores mais frequentes do fator.\n\nlogical (dados booleanos):\n\nmean: média dos valores, considerando que TRUE é 1 e FALSE é 0.\ncount: contagem dos valores TRUE e FALSE.",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html#valores-faltantes-na",
-    "href": "04_conhecendo.html#valores-faltantes-na",
-    "title": "Conhecendo a base de dados",
-    "section": "Valores faltantes (NA)",
-    "text": "Valores faltantes (NA)\nA presença de valores faltantes é algo comum em bases de dados. Eles podem ocorrer por diversos motivos, como: não temos a informação, erros de digitação, entre outros.\nÉ importante identificar onde estão esses valores, para que possamos nos atentar em análises futuras.\nExistem algumas funções que nos ajudam a identificar a presença de valores faltantes na base de dados. O pacote {naniar} apresenta funções úteis para isso: a função gg_miss_var() cria uma visualição apresentando o nome das variáveis da base de dados, assim como a quantidade de valores faltantes em cada uma delas.\n\nlibrary(naniar)\n# Valores absolutos\ngg_miss_var(dados)\n\n\n\n\n\n\n\n# Valores relativos\ngg_miss_var(dados, show_pct = TRUE)",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html#section",
-    "href": "04_conhecendo.html#section",
-    "title": "Conhecendo a base de dados",
-    "section": "",
-    "text": "Em situações onde trabalharmos com dados que possuem um número de linhas muito grande, não podemos utilizar a função View() para ver a tabela inteira.\nNesse caso, podemos ser interessante usar funções que retornam apenas algumas linhas da base de dados, como head(), tail(), slice_sample(), entre outras.\nAntes de usá-las, vamos adicionar uma coluna que represente o número da linha, para que seja mais fácil identificar as linhas que estamos selecionando:\n\ndados_com_n_linha &lt;- rowid_to_column(dados, \"n_linha\")\n\nAgora podemos usar as funções para retornar algumas linhas da base de dados. Observe os resultados apresentados, e os valores na coluna n_linha:\n\n# Exibindo as primeiras linhas\nhead(dados_com_n_linha)\n\n  n_linha Nível Territorial (Código)    Nível Territorial\n1       1                          3 Unidade da Federação\n2       2                          3 Unidade da Federação\n3       3                          3 Unidade da Federação\n4       4                          3 Unidade da Federação\n5       5                          3 Unidade da Federação\n6       6                          3 Unidade da Federação\n  Unidade de Medida (Código) Unidade de Medida  Valor\n1                       1572       Mil pessoas 1210.0\n2                       1572       Mil pessoas  765.0\n3                       1572       Mil pessoas  703.0\n4                       1572       Mil pessoas   62.0\n5                       1572       Mil pessoas  446.0\n6                          2                 %    0.7\n  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)\n1                            11             Rondônia             201201\n2                            11             Rondônia             201201\n3                            11             Rondônia             201201\n4                            11             Rondônia             201201\n5                            11             Rondônia             201201\n6                            11             Rondônia             201201\n          Trimestre Variável (Código)\n1 1º trimestre 2012              1641\n2 1º trimestre 2012              1641\n3 1º trimestre 2012              1641\n4 1º trimestre 2012              1641\n5 1º trimestre 2012              1641\n6 1º trimestre 2012              4087\n                                                       Variável\n1                           Pessoas de 14 anos ou mais de idade\n2                           Pessoas de 14 anos ou mais de idade\n3                           Pessoas de 14 anos ou mais de idade\n4                           Pessoas de 14 anos ou mais de idade\n5                           Pessoas de 14 anos ou mais de idade\n6 Coeficiente de variação - Pessoas de 14 anos ou mais de idade\n  Condição em relação à força de trabalho e condição de ocupação (Código)\n1                                                                   32385\n2                                                                   32386\n3                                                                   32387\n4                                                                   32446\n5                                                                   32447\n6                                                                   32385\n  Condição em relação à força de trabalho e condição de ocupação\n1                                                          Total\n2                                              Força de trabalho\n3                                    Força de trabalho - ocupada\n4                                 Força de trabalho - desocupada\n5                                      Fora da força de trabalho\n6                                                          Total\n\n# Exibindo as últimas linhas\ntail(dados_com_n_linha)\n\n      n_linha Nível Territorial (Código)    Nível Territorial\n26995   26995                          3 Unidade da Federação\n26996   26996                          3 Unidade da Federação\n26997   26997                          3 Unidade da Federação\n26998   26998                          3 Unidade da Federação\n26999   26999                          3 Unidade da Federação\n27000   27000                          3 Unidade da Federação\n      Unidade de Medida (Código) Unidade de Medida Valor\n26995                          2                 %  31.6\n26996                          2                 %    NA\n26997                          2                 %   1.1\n26998                          2                 %   1.3\n26999                          2                 %   7.4\n27000                          2                 %   2.3\n      Unidade da Federação (Código) Unidade da Federação Trimestre (Código)\n26995                            53     Distrito Federal             202402\n26996                            53     Distrito Federal             202402\n26997                            53     Distrito Federal             202402\n26998                            53     Distrito Federal             202402\n26999                            53     Distrito Federal             202402\n27000                            53     Distrito Federal             202402\n              Trimestre Variável (Código)\n26995 2º trimestre 2024              4104\n26996 2º trimestre 2024              4105\n26997 2º trimestre 2024              4105\n26998 2º trimestre 2024              4105\n26999 2º trimestre 2024              4105\n27000 2º trimestre 2024              4105\n                                                                                       Variável\n26995                           Distribuição percentual das pessoas de 14 anos ou mais de idade\n26996 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n26997 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n26998 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n26999 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n27000 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade\n      Condição em relação à força de trabalho e condição de ocupação (Código)\n26995                                                                   32447\n26996                                                                   32385\n26997                                                                   32386\n26998                                                                   32387\n26999                                                                   32446\n27000                                                                   32447\n      Condição em relação à força de trabalho e condição de ocupação\n26995                                      Fora da força de trabalho\n26996                                                          Total\n26997                                              Força de trabalho\n26998                                    Força de trabalho - ocupada\n26999                                 Força de trabalho - desocupada\n27000                                      Fora da força de trabalho\n\n# \"Sorteando\" linhas\nslice_sample(dados_com_n_linha, n = 5)\n\n  n_linha Nível Territorial (Código)    Nível Territorial\n1   21089                          3 Unidade da Federação\n2   10553                          3 Unidade da Federação\n3   19984                          3 Unidade da Federação\n4   19562                          3 Unidade da Federação\n5   11725                          3 Unidade da Federação\n  Unidade de Medida (Código) Unidade de Medida   Valor\n1                          2                 %     4.6\n2                          2                 %    47.8\n3                       1572       Mil pessoas  1674.0\n4                       1572       Mil pessoas 25832.0\n5                       1572       Mil pessoas  1535.0\n  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)\n1                            42       Santa Catarina             201301\n2                            24  Rio Grande do Norte             201804\n3                            35            São Paulo             202402\n4                            35            São Paulo             201901\n5                            25              Paraíba             202101\n          Trimestre Variável (Código)\n1 1º trimestre 2013              4087\n2 4º trimestre 2018              4104\n3 2º trimestre 2024              1641\n4 1º trimestre 2019              1641\n5 1º trimestre 2021              1641\n                                                         Variável\n1   Coeficiente de variação - Pessoas de 14 anos ou mais de idade\n2 Distribuição percentual das pessoas de 14 anos ou mais de idade\n3                             Pessoas de 14 anos ou mais de idade\n4                             Pessoas de 14 anos ou mais de idade\n5                             Pessoas de 14 anos ou mais de idade\n  Condição em relação à força de trabalho e condição de ocupação (Código)\n1                                                                   32446\n2                                                                   32387\n3                                                                   32446\n4                                                                   32386\n5                                                                   32447\n  Condição em relação à força de trabalho e condição de ocupação\n1                                 Força de trabalho - desocupada\n2                                    Força de trabalho - ocupada\n3                                 Força de trabalho - desocupada\n4                                              Força de trabalho\n5                                      Fora da força de trabalho",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html#conhecendo-os-valores-únicos-de-uma-coluna",
-    "href": "04_conhecendo.html#conhecendo-os-valores-únicos-de-uma-coluna",
-    "title": "Conhecendo a base de dados",
-    "section": "Conhecendo os valores únicos de uma coluna",
-    "text": "Conhecendo os valores únicos de uma coluna\nPara variáveis categóricas ou de texto, é interessante conhecer os valores únicos presentes.\nPara acessar uma coluna específica, utilize o $. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: dados$ano.\n\n\n\n\n\n\nDica\n\n\n\nDica: após escrever o nome_do_dataframe$, aperte tab para que o RStudio faça sugestões de colunas da base.\n\n\nA função unique() retorna os valores únicos de um vetor. Exemplo:\n\nunique(dados$`Unidade de Medida`)\n\n[1] \"Mil pessoas\" \"%\"          \n\n\nNote que, nesse caso, foi necessário colocar uma crase para identificar o nome da coluna. Isso acontece porque a coluna contém espaços em branco e, por isso, o R entenderia que o nome da coluna é Unidade e de e Medida. Com a crase, o R entende que o nome da coluna é Unidade de Medida.\n\n\n\n\n\n\nDica\n\n\n\nÉ uma boa prática evitar espaços em branco e caracteres especiais nos nomes das colunas. Em Transformando dados &gt; Padronizar nome das colunas apresentaremos uma forma de fazer isso!\n\n\nOutra forma de extrair o conteúdo de uma coluna é utilizando o operador [[:\n\nunique(dados[[\"Unidade de Medida\"]])\n\n[1] \"Mil pessoas\" \"%\"          \n\n\nO resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html#footnotes",
-    "href": "04_conhecendo.html#footnotes",
-    "title": "Conhecendo a base de dados",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nAinda não abordamos o conceito de grupos, então isso ficará mais claro posteriormente.↩︎",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
+      "Análise exploratória de dados"
     ]
   },
   {

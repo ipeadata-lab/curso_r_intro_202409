@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introdução à análise de dados no R - Analisando dados</title>
+<title>Introdução à análise de dados no R - Análise exploratória de dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./07_analise.html">Analisando dados</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./07_analise_exploratoria.html">Análise exploratória de dados</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -203,14 +203,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_analise.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Analisando dados</span></a>
+  <a href="./07_analise_exploratoria.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Análise exploratória de dados</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualizando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_regressao_linear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressão linear</span></a>
   </div>
 </li>
       </ul>
@@ -273,6 +279,23 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Anexos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_erros_frequentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erros e <em>warnings</em> frequentes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -290,9 +313,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./07_analise.html">Analisando dados</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./07_analise_exploratoria.html">Análise exploratória de dados</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Analisando dados</h1>
+<h1 class="title">Análise exploratória de dados</h1>
 </div>
 
 
@@ -323,6 +346,8 @@ Aviso
 </div>
 </div>
 <!-- ## Estatísticas descritivas -->
+<!-- |  `summary()` |  Raíz quadrada | -->
+<!-- |  `skimmer()` |  Raíz quadrada | -->
 <!-- Funções básicas: -->
 <!-- |  Função |  O que retorna? | -->
 <!-- |--:|--:| -->
@@ -348,8 +373,6 @@ Aviso
 <!-- mean(vetor_com_na, na.rm = TRUE) -->
 <!-- ``` -->
 <!-- - Estatísticas agregadas (summarize) -->
-<!-- - Regressão Linear -->
-<!-- - Extraindo tabelas de regressão (broom, stargazer) -->
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>

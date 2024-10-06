@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07_analise.html" rel="next">
+<link href="./07_analise_exploratoria.html" rel="next">
 <link href="./04_conhecendo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -237,14 +237,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_analise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Analisando dados</span></a>
+  <a href="./07_analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise exploratória de dados</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualizando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_regressao_linear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressão linear</span></a>
   </div>
 </li>
       </ul>
@@ -303,6 +309,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Anexos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_erros_frequentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erros e <em>warnings</em> frequentes</span></a>
   </div>
 </li>
       </ul>
@@ -622,8 +645,9 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  dados_tipo,</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nova variável: </span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nome_da_coluna = o que queremos calcular</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_desocupacao =</span> (mil_pessoas_forca_de_trabalho_desocupada <span class="sc">/</span> mil_pessoas_forca_de_trabalho)<span class="sc">*</span><span class="dv">100</span>,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_desocupacao =</span> (mil_pessoas_forca_de_trabalho_desocupada <span class="sc">/</span> mil_pessoas_forca_de_trabalho),</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">perc_desocupacao =</span> prop_desocupacao <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ordenando-as-linhas" class="level2">
@@ -637,7 +661,7 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  prop_desocupacao</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,350 × 10
+<pre><code># A tibble: 1,350 × 11
    uf             uf_codigo trimestre         trimestre_codigo mil_pessoas_total
    &lt;chr&gt;          &lt;fct&gt;     &lt;chr&gt;             &lt;fct&gt;                        &lt;dbl&gt;
  1 Rondônia       11        3º trimestre 2023 202303                        1486
@@ -651,10 +675,11 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
  9 Santa Catarina 42        3º trimestre 2014 201403                        5459
 10 Mato Grosso    51        2º trimestre 2023 202302                        2799
 # ℹ 1,340 more rows
-# ℹ 5 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,
+# ℹ 6 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,
 #   mil_pessoas_forca_de_trabalho_ocupada &lt;dbl&gt;,
 #   mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt;,
-#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;</code></pre>
+#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;,
+#   perc_desocupacao &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>A função <code>arrange()</code> ordena, por padrão, de forma crescente. Podemos ordenar de forma decrescente, utilizando a função <code>desc()</code> junto à coluna que queremos ordenar de forma decrescente:</p>
@@ -666,7 +691,7 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">desc</span>(prop_desocupacao)</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,350 × 10
+<pre><code># A tibble: 1,350 × 11
    uf         uf_codigo trimestre         trimestre_codigo mil_pessoas_total
    &lt;chr&gt;      &lt;fct&gt;     &lt;chr&gt;             &lt;fct&gt;                        &lt;dbl&gt;
  1 Pernambuco 26        2º trimestre 2021 202102                        7570
@@ -680,10 +705,11 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
  9 Sergipe    28        1º trimestre 2021 202101                        1848
 10 Bahia      29        2º trimestre 2020 202002                       11870
 # ℹ 1,340 more rows
-# ℹ 5 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,
+# ℹ 6 more variables: mil_pessoas_forca_de_trabalho &lt;dbl&gt;,
 #   mil_pessoas_forca_de_trabalho_ocupada &lt;dbl&gt;,
 #   mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt;,
-#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;</code></pre>
+#   mil_pessoas_fora_da_forca_de_trabalho &lt;dbl&gt;, prop_desocupacao &lt;dbl&gt;,
+#   perc_desocupacao &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>Nesse caso, as linhas ficaram ordenadas de forma decrescente, de acordo com a proporção de desocupação. Porém os trimestres não estão ordenados! A função <code>arrange()</code> permite que ordenemos por mais de uma coluna, e a ordem de prioridade é dada pela ordem em que as colunas são passadas para a função:</p>
@@ -698,7 +724,7 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_ordenados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
-Columns: 10
+Columns: 11
 $ uf                                       &lt;chr&gt; "Amapá", "Bahia", "Rio Grande…
 $ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…
 $ trimestre                                &lt;chr&gt; "1º trimestre 2012", "1º trim…
@@ -708,7 +734,8 @@ $ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 15
 $ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …
 $ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…
 $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…
-$ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…</code></pre>
+$ prop_desocupacao                         &lt;dbl&gt; 0.12578616, 0.11643438, 0.116…
+$ perc_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…</code></pre>
 </div>
 </div>
 <p>Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).</p>
@@ -717,71 +744,6 @@ $ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.
 <h2 class="anchored" data-anchor-id="pipe---encadeando-funções">Pipe - Encadeando funções</h2>
 <p>Nos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador <em>pipe</em> (<code>%&gt;%</code> ou <code>|&gt;</code>). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.</p>
 <p>Podemos reescrever os códigos anteriores usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: <code>dados_renomeados</code>, <code>dados_filtrados</code>, <code>dados_selecionados</code>, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.</p>
-<p>No exemplo abaixo, criamos menos objetos intermediários, e encadeamos as funções usadas anteriormente usando o pipe:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dados_filtrados_selecionados <span class="ot">&lt;-</span> dados_brutos <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># limpando os nomes das colunas</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filtrando as linhas</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variavel <span class="sc">==</span> <span class="st">"Pessoas de 14 anos ou mais de idade"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># selecionando as colunas</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    unidade_da_federacao,</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    unidade_da_federacao_codigo,</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    trimestre,</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    trimestre_codigo,</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    valor</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># renomeando as colunas</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">condicao =</span> condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_mil_pessoas =</span> valor,</span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf =</span> unidade_da_federacao,</span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf_codigo =</span> unidade_da_federacao_codigo</span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>dados_largos <span class="ot">&lt;-</span> dados_filtrados_selecionados <span class="sc">|&gt;</span></span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># transformando para formato largo</span></span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> condicao,</span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> valor_mil_pessoas,</span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"mil_pessoas_"</span></span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># limpando o nome das colunas novamente</span></span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>dados_preparados <span class="ot">&lt;-</span> dados_largos <span class="sc">|&gt;</span>  </span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># transformando as variáveis </span></span>
-<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf_codigo =</span> <span class="fu">as.factor</span>(uf_codigo),</span>
-<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_codigo =</span> <span class="fu">as.factor</span>(trimestre_codigo),</span>
-<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_desocupacao =</span> (</span>
-<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>      mil_pessoas_forca_de_trabalho_desocupada <span class="sc">/</span> mil_pessoas_forca_de_trabalho</span>
-<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ordenando a base de dados</span></span>
-<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(trimestre_codigo, <span class="fu">desc</span>(prop_desocupacao))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_preparados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,350
-Columns: 10
-$ uf                                       &lt;chr&gt; "Amapá", "Bahia", "Rio Grande…
-$ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…
-$ trimestre                                &lt;chr&gt; "1º trimestre 2012", "1º trim…
-$ trimestre_codigo                         &lt;fct&gt; 201201, 201201, 201201, 20120…
-$ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…
-$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …
-$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …
-$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…
-$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…
-$ prop_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…</code></pre>
-</div>
-</div>
 </section>
 <section id="unindo-duas-bases-de-dados" class="level2">
 <h2 class="anchored" data-anchor-id="unindo-duas-bases-de-dados">Unindo duas bases de dados</h2>
@@ -805,9 +767,9 @@ Dica
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>geo_estados <span class="ot">&lt;-</span> <span class="fu">read_state</span>(<span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(geo_estados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>geo_estados <span class="ot">&lt;-</span> <span class="fu">read_state</span>(<span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(geo_estados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 27
 Columns: 6
@@ -822,18 +784,18 @@ $ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPO
 <p>O <code>left_join()</code> é usado aqui para combinar os dados do SIDRA com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as proporções de desocupação por UF em um mapa. Esse tipo de operação é comum quando queremos identificar padrões regionais.</p>
 <p>É importante garantir que as colunas usadas na combinação de tabelas (o argumento <code>by</code> do <code>left_join()</code>) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função <code>class()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(geo_estados<span class="sc">$</span>code_state)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(geo_estados<span class="sc">$</span>code_state)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dados_ordenados<span class="sc">$</span>uf_codigo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dados_ordenados<span class="sc">$</span>uf_codigo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
 </div>
 <p>Neste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O <code>left_join()</code> não conseguirá fazer a correspondência corretamente, e a função gerará um erro:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(geo_estados, dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(geo_estados, dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `sf_column %in% names(g)`:
 ! Can't join `x$code_state` with `y$uf_codigo` due to incompatible
@@ -844,14 +806,14 @@ $ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPO
 </div>
 <p>No exemplo, podemos transformar a coluna <code>code_state</code> em fator usando <code>mutate()</code>. Assim, garantimos que as colunas usadas no argumento <code>by</code> sejam do mesmo tipo e possam ser corretamente combinados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="ot">&lt;-</span> geo_estados <span class="sc">|&gt;</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code_state =</span> <span class="fu">as.factor</span>(code_state)) <span class="sc">|&gt;</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_geo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="ot">&lt;-</span> geo_estados <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code_state =</span> <span class="fu">as.factor</span>(code_state)) <span class="sc">|&gt;</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_geo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
-Columns: 15
+Columns: 16
 $ code_state                               &lt;fct&gt; 11, 11, 11, 11, 11, 11, 11, 1…
 $ abbrev_state                             &lt;chr&gt; "RO", "RO", "RO", "RO", "RO",…
 $ name_state                               &lt;chr&gt; "Rondônia", "Rondônia", "Rond…
@@ -865,7 +827,8 @@ $ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 765, 782, 784, 805, 796, 
 $ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 703, 733, 738, 762, 746, 761,…
 $ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 62, 49, 46, 42, 49, 39, 36, 3…
 $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 443,…
-$ prop_desocupacao                         &lt;dbl&gt; 8.104575, 6.265985, 5.867347,…
+$ prop_desocupacao                         &lt;dbl&gt; 0.08104575, 0.06265985, 0.058…
+$ perc_desocupacao                         &lt;dbl&gt; 8.104575, 6.265985, 5.867347,…
 $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((…</code></pre>
 </div>
 </div>
@@ -875,15 +838,15 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="sc">|&gt;</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> prop_desocupacao)) <span class="sc">+</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Proporção de desocupação por UF no 2º trimestre de 2024"</span>,</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Proporção de desocupação (%)"</span>) <span class="sc">+</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="sc">|&gt;</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> perc_desocupacao)) <span class="sc">+</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percentual de desocupação por UF no 2º trimestre de 2024"</span>,</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Desocupação (%)"</span>) <span class="sc">+</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -899,16 +862,16 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 <p>Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas. Assim não precisamos repetir todo o processo de limpeza e transformação de dados a cada vez que quisermos fazer uma análise.</p>
 <p>É recomendável salvar a base de dados em um formato que preserve a estrutura dos dados, como <code>.rds</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando a pasta "dados_output" caso ela ainda não exista</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_create</span>(<span class="st">"dados_output"</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando os dados preparados</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_preparados, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando os dados preparados</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_preparados, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
-<li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
+<li><p><a href="https://www.ibge.gov.br/explica/desemprego.php">IBGE: Desemprego</a></p></li>
+<li><p><a href="https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?edicao=41004">IBGE: PNAD Contínua - Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral</a></p></li>
+<li><p>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:</p>
 <ul>
 <li><a href="https://cienciadedatos.github.io/pt-r4ds/data-transform.html">Transformação de dados</a></li>
 <li><a href="https://cienciadedatos.github.io/pt-r4ds/data-tidy.html">Organização de dados</a></li>
@@ -1331,8 +1294,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_analise.html" class="pagination-link" aria-label="Analisando dados">
-        <span class="nav-page-text">Analisando dados</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07_analise_exploratoria.html" class="pagination-link" aria-label="Análise exploratória de dados">
+        <span class="nav-page-text">Análise exploratória de dados</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

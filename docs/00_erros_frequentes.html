@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introdução à análise de dados no R - Visualizando dados</title>
+<title>Introdução à análise de dados no R - Erros e warnings frequentes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07_regressao_linear.html" rel="next">
-<link href="./07_analise_exploratoria.html" rel="prev">
+<link href="./20_ipeadatalake.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./08_visualizacao.html">Visualizando dados</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_erros_frequentes.html">Anexos</a></li><li class="breadcrumb-item"><a href="./00_erros_frequentes.html">Erros e <em>warnings</em> frequentes</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link active">
+  <a href="./08_visualizacao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualizando dados</span></a>
   </div>
 </li>
@@ -290,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00_erros_frequentes.html" class="sidebar-item-text sidebar-link">
+  <a href="./00_erros_frequentes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Erros e <em>warnings</em> frequentes</span></a>
   </div>
 </li>
@@ -306,16 +339,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link active" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
+  <li><a href="#instalação" id="toc-instalação" class="nav-link active" data-scroll-target="#instalação">Instalação</a>
+  <ul>
+  <li><a href="#rtools" id="toc-rtools" class="nav-link" data-scroll-target="#rtools">RTools</a></li>
+  </ul></li>
+  <li><a href="#conceitos-básicos" id="toc-conceitos-básicos" class="nav-link" data-scroll-target="#conceitos-básicos">Conceitos básicos</a>
+  <ul>
+  <li><a href="#instalando-pacotes" id="toc-instalando-pacotes" class="nav-link" data-scroll-target="#instalando-pacotes">Instalando pacotes</a></li>
+  <li><a href="#pacote-não-encontrado" id="toc-pacote-não-encontrado" class="nav-link" data-scroll-target="#pacote-não-encontrado">Pacote não encontrado</a></li>
+  <li><a href="#objeto-não-encontrado" id="toc-objeto-não-encontrado" class="nav-link" data-scroll-target="#objeto-não-encontrado">Objeto não encontrado</a></li>
+  <li><a href="#função-não-encontrada" id="toc-função-não-encontrada" class="nav-link" data-scroll-target="#função-não-encontrada">Função não encontrada</a>
+  <ul>
+  <li><a href="#pacote-não-carregado" id="toc-pacote-não-carregado" class="nav-link" data-scroll-target="#pacote-não-carregado">Pacote não carregado</a></li>
+  <li><a href="#erro-de-digitação" id="toc-erro-de-digitação" class="nav-link" data-scroll-target="#erro-de-digitação">Erro de digitação</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#importação" id="toc-importação" class="nav-link" data-scroll-target="#importação">Importação</a>
+  <ul>
+  <li><a href="#arquivo-não-encontrado" id="toc-arquivo-não-encontrado" class="nav-link" data-scroll-target="#arquivo-não-encontrado">Arquivo não encontrado</a></li>
+  </ul></li>
+  <li><a href="#arquivo-corrompido" id="toc-arquivo-corrompido" class="nav-link" data-scroll-target="#arquivo-corrompido">Arquivo corrompido</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./08_visualizacao.html">Visualizando dados</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_erros_frequentes.html">Anexos</a></li><li class="breadcrumb-item"><a href="./00_erros_frequentes.html">Erros e <em>warnings</em> frequentes</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Visualizando dados</h1>
+<h1 class="title">Erros e <em>warnings</em> frequentes</h1>
 </div>
 
 
@@ -332,42 +384,207 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>A lista a seguir apresenta alguns erros e <em>warnings</em> que apareceram na aula (seja por dúvida presencial, seja no chat do Google Meet).</p>
+<section id="instalação" class="level2">
+<h2 class="anchored" data-anchor-id="instalação">Instalação</h2>
+<section id="rtools" class="level3">
+<h3 class="anchored" data-anchor-id="rtools">RTools</h3>
+<p><strong>Para pessoas que utilizam o sistema operacional Windows</strong>, a aviso (<em>warning</em>) abaixo pode aparecer em alguns contextos:</p>
+<pre><code>WARNING: Rtools is required to build R packages but is not currently installed.
+Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+Instalando pacote em ‘C:/Users/.../AppData/Local/R/win-library/4.4’
+(como ‘lib’ não foi especificado)</code></pre>
+<p>Para que esse aviso não apareça mais, você pode instalar o Rtools no seu computador. O RTools é um software (<strong>não</strong> é um pacote do R), portanto você precisa fazer o download da versão compatível com a versão do R que você está utilizando, e instalar no seu computador.</p>
+<p>Para fazer o download, acesse o link <a href="https://cran.rstudio.com/bin/windows/Rtools/">https://cran.rstudio.com/bin/windows/Rtools/</a>, e escolha a versão do RTools compatível com a versão do R que você está utilizando:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/00_rtools.png" class="img-fluid figure-img"></p>
+<figcaption>Captura de tela: página de download do RTools</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Aviso
+<p>Para consultar a versão do R que você está utilizando, você pode rodar o seguinte comando no console do R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "R version 4.4.1 (2024-06-14)"</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Página em construção! Em breve.</p>
+</section>
+</section>
+<section id="conceitos-básicos" class="level2">
+<h2 class="anchored" data-anchor-id="conceitos-básicos">Conceitos básicos</h2>
+<section id="instalando-pacotes" class="level3">
+<h3 class="anchored" data-anchor-id="instalando-pacotes">Instalando pacotes</h3>
+<p>O erro a seguir ocorre quando o usuário tenta instalar um pacote sem aspas. O correto é colocar o nome do pacote entre aspas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O código abaixo gerará um erro:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(janitor)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(call, envir = parent.frame()): object 'janitor' not found</code></pre>
 </div>
 </div>
-<!-- - Vocabulário ggplot2 -->
-<!-- - Gráficos de dispersão -->
-<!-- - Gráficos de linha -->
-<!-- - Gráficos de barra/coluna -->
-<!-- - Gráficos por subgrupos por color/fill ou facet -->
-<!-- - Salvando os gráficos -->
-<!-- - Mudanças de layout com ggthemes e ipeaplot -->
-<section id="sugestões-de-materiais" class="level2">
-<h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
+<p>A função deve receber o nome do pacote <strong>entre aspas</strong>, pois <strong>é um texto</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O código abaixo funcionará:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"janitor"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pacote-não-encontrado" class="level3">
+<h3 class="anchored" data-anchor-id="pacote-não-encontrado">Pacote não encontrado</h3>
+<p>O erro a seguir ocorre quando tentamos carregar um pacote que não foi instalado anteriormente. Para resolver, precisamos instalar o pacote.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O código abaixo gerará um erro:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nome_pacote)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in library(nome_pacote): there is no package called 'nome_pacote'</code></pre>
+</div>
+</div>
+<p>Para que consiga acessar, é necessário instalar o pacote, e depois carregá-lo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"nome_pacote"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nome_pacote)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="objeto-não-encontrado" class="level3">
+<h3 class="anchored" data-anchor-id="objeto-não-encontrado">Objeto não encontrado</h3>
+<p>O erro a seguir ocorre quando tentamos acessar um objeto que não consta no painel <em>Environment</em>. Existe alguns motivos para isso acontecer:</p>
 <ul>
-<li>Livro <a href="https://cienciadedatos.github.io/pt-r4ds/">R para Ciência de Dados 2ed</a>:
-<ul>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/data-visualize.html">Visualização de dados</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/visualize.html">Vsualizar</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/layers.html">Visualizar: Camadas</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/EDA.html">Visualizar: Análise exploratória de dados</a></li>
-<li><a href="https://cienciadedatos.github.io/pt-r4ds/communication.html">Visualizar: Comunicação</a></li>
-</ul></li>
-<li>Livro: <a href="https://livro.abj.org.br/">Metodologia de Pesquisa Jurimétrica</a>:
-<ul>
-<li><a href="https://livro.abj.org.br/04-visualizacao.html">Capítulo 4 - Visualização</a></li>
-</ul></li>
+<li><p>O objeto não foi criado (provavelmente precisa executar o código que cria o objeto);</p></li>
+<li><p>O objeto existe no painel <em>Environment</em>, mas estamos tentando acessá-lo com o nome incorreto.</p></li>
 </ul>
+<p>No exemplo a seguir, o código gerará um erro pois o objeto que estamos tentando acessar ainda não foi criado:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O código abaixo gerará um erro:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(estados_sudeste)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'estados_sudeste' not found</code></pre>
+</div>
+</div>
+<p>Após criar o objeto, conseguimos utilizá-lo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>estados_sudeste <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SP"</span>, <span class="st">"RJ"</span>, <span class="st">"MG"</span>, <span class="st">"ES"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(estados_sudeste)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</section>
+<section id="função-não-encontrada" class="level3">
+<h3 class="anchored" data-anchor-id="função-não-encontrada">Função não encontrada</h3>
+<p>O erro <code>could not find function</code> ocorre quando tentamos acessar uma função que não está sendo encontrada. Isso pode acontecer por alguns motivos:</p>
+<ul>
+<li><p>A função faz parte de um pacote que não foi carregado (precisamos carregar o pacote antes);</p></li>
+<li><p>A função foi escrita de forma incorreta (por exemplo, com letras maiúsculas ou minúsculas incorretas).</p></li>
+</ul>
+<section id="pacote-não-carregado" class="level4">
+<h4 class="anchored" data-anchor-id="pacote-não-carregado">Pacote não carregado</h4>
+<p>No exemplo a seguir, queremos limpar o nome das colunas do <em>data frame</em> <code>iris</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
+<p>O código a seguir gerará um erro pois a função <code>clean_names()</code> faz parte do pacote <code>janitor</code>, mas o pacote não foi carregado:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clean_names</span>(iris)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in clean_names(iris): could not find function "clean_names"</code></pre>
+</div>
+</div>
+<p>Para corrigir, precisamos carregar o pacote <code>janitor</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>iris_nome_limpo <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(iris)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris_nome_limpo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sepal_length sepal_width petal_length petal_width species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
+</section>
+<section id="erro-de-digitação" class="level4">
+<h4 class="anchored" data-anchor-id="erro-de-digitação">Erro de digitação</h4>
+<p>No exemplo a seguir, o código gerará um erro pois a função <code>length()</code> está escrito de forma incorreta:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O código abaixo gerará um erro:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lenght</span>(letters)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in lenght(letters): could not find function "lenght"</code></pre>
+</div>
+</div>
+<p>Para corrigir, precisamos escrever a função corretamente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(letters)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="importação" class="level2">
+<h2 class="anchored" data-anchor-id="importação">Importação</h2>
+<section id="arquivo-não-encontrado" class="level3">
+<h3 class="anchored" data-anchor-id="arquivo-não-encontrado">Arquivo não encontrado</h3>
+<p>Ao importar um arquivo, é importante que o caminho esteja correto. Caso contrário, o código gerará um erro.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O caminho abaixo está incorreto, esse arquivo não existe</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># no nosso projeto:</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>sidra_4092 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"SIDRAR.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: 'SIDRAR.csv' does not exist in current working directory ('/Users/beatrizmilz/Documents/IPEA-DATALAB/curso_r_intro_202409').</code></pre>
+</div>
+</div>
+<p>Corrigindo o arquivo, o código funcionará:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sidra_4092 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/sidrar_4092_bruto.csv"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sidra_4092)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 27,000
+Columns: 13
+$ `Nível Territorial (Código)`                                              &lt;dbl&gt; …
+$ `Nível Territorial`                                                       &lt;chr&gt; …
+$ `Unidade de Medida (Código)`                                              &lt;dbl&gt; …
+$ `Unidade de Medida`                                                       &lt;chr&gt; …
+$ Valor                                                                     &lt;dbl&gt; …
+$ `Unidade da Federação (Código)`                                           &lt;dbl&gt; …
+$ `Unidade da Federação`                                                    &lt;chr&gt; …
+$ `Trimestre (Código)`                                                      &lt;dbl&gt; …
+$ Trimestre                                                                 &lt;chr&gt; …
+$ `Variável (Código)`                                                       &lt;dbl&gt; …
+$ Variável                                                                  &lt;chr&gt; …
+$ `Condição em relação à força de trabalho e condição de ocupação (Código)` &lt;dbl&gt; …
+$ `Condição em relação à força de trabalho e condição de ocupação`          &lt;chr&gt; …</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="arquivo-corrompido" class="level2">
+<h2 class="anchored" data-anchor-id="arquivo-corrompido">Arquivo corrompido</h2>
+<p>O erro a seguir ocorre quando tentamos importar um arquivo que está corrompido. Nesse caso, precisamos baixar o arquivo novamente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">"dados/sidrar_4092_bruto.xlsx"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in readBin(con, raw(), n = size) : </span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   error reading from the connection</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -780,14 +997,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./07_analise_exploratoria.html" class="pagination-link  aria-label=" análise="" exploratória="" de="" dados"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Análise exploratória de dados</span>
+      <a href="./20_ipeadatalake.html" class="pagination-link  aria-label=" infraestrutura="" de="" pesquisa="" do="" ipea"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Infraestrutura de pesquisa do Ipea</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_regressao_linear.html" class="pagination-link" aria-label="Regressão linear">
-        <span class="nav-page-text">Regressão linear</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
