@@ -1,5 +1,5 @@
 ---
-title: "Analisando dados"
+title: "Análise exploratória de dados"
 ---
 
 :::callout-warning
@@ -7,6 +7,11 @@ Página em construção! Em breve.
 :::
 
 <!-- ## Estatísticas descritivas -->
+
+<!-- |  `summary()` |  Raíz quadrada | -->
+<!-- |  `skimmer()` |  Raíz quadrada | -->
+
+
 
 <!-- Funções básicas: -->
 
@@ -22,6 +27,7 @@ Página em construção! Em breve.
 <!-- |  `min()` |  Valor mínimo | -->
 <!-- |  `round()` |  Valor arredondado | -->
 <!-- |  `sqrt()` |  Raíz quadrada | -->
+
 
 
 <!-- - Argumento importante: `na.rm = TRUE` -->
@@ -41,10 +47,6 @@ Página em construção! Em breve.
 
 
 <!-- - Estatísticas agregadas (summarize) -->
-
-<!-- - Regressão Linear -->
-
-<!-- - Extraindo tabelas de regressão (broom, stargazer) -->
 
 ## Sugestões de materiais
 

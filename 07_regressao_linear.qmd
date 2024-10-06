@@ -1,0 +1,13 @@
+---
+title: "Regressão linear"
+---
+
+:::callout-warning
+Página em construção! Em breve. 
+:::
+
+
+
+<!-- - Regressão Linear -->
+
+<!-- - Extraindo tabelas de regressão (broom, stargazer) -->
