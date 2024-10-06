@@ -1,0 +1,178 @@
+---
+title: "Erros e *warnings* frequentes"
+---
+
+A lista a seguir apresenta alguns erros e *warnings* que apareceram na aula (seja por dúvida presencial, seja no chat do Google Meet).
+
+## Instalação
+
+### RTools
+
+**Para pessoas que utilizam o sistema operacional Windows**, a aviso (*warning*) abaixo pode aparecer em alguns contextos:
+
+```
+WARNING: Rtools is required to build R packages but is not currently installed.
+Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+Instalando pacote em ‘C:/Users/.../AppData/Local/R/win-library/4.4’
+(como ‘lib’ não foi especificado)
+```
+Para que esse aviso não apareça mais, você pode instalar o Rtools no seu computador. O RTools é um software (**não** é um pacote do R), portanto você precisa fazer o download da versão compatível com a versão do R que você está utilizando, e instalar no seu computador. 
+
+Para fazer o download, acesse o link [https://cran.rstudio.com/bin/windows/Rtools/](https://cran.rstudio.com/bin/windows/Rtools/), e escolha a versão do RTools compatível com a versão do R que você está utilizando:
+
+![Captura de tela: página de download do RTools](images/00_rtools.png)
+
+Para consultar a versão do R que você está utilizando, você pode rodar o seguinte comando no console do R:
+
+```{r}
+R.version.string
+```
+
+## Conceitos básicos
+
+### Instalando pacotes
+
+O erro a seguir ocorre quando o usuário tenta instalar um pacote sem aspas. O correto é colocar o nome do pacote entre aspas.
+
+```{r}
+#| error: true
+# O código abaixo gerará um erro:
+install.packages(janitor)
+```
+
+A função deve receber o nome do pacote **entre aspas**, pois **é um texto**:
+
+```{r}
+#| eval: false
+# O código abaixo funcionará:
+install.packages("janitor")
+```
+
+### Pacote não encontrado
+
+O erro a seguir ocorre quando tentamos carregar um pacote que não foi instalado anteriormente. Para resolver, precisamos instalar o pacote.
+
+```{r}
+#| error: true
+# O código abaixo gerará um erro:
+library(nome_pacote)
+```
+Para que consiga acessar, é necessário instalar o pacote, e depois carregá-lo:
+
+```{r}
+#| eval: false
+install.packages("nome_pacote")
+library(nome_pacote)
+```
+
+
+### Objeto não encontrado
+
+O erro a seguir ocorre quando tentamos acessar um objeto que não consta no painel *Environment*. Existe alguns motivos para isso acontecer:
+
+  - O objeto não foi criado (provavelmente precisa executar o código que cria o objeto);
+  
+  - O objeto existe no painel *Environment*, mas estamos tentando acessá-lo com o nome incorreto.
+  
+No exemplo a seguir, o código gerará um erro pois o objeto que estamos tentando acessar ainda não foi criado:
+
+```{r}
+#| error: true
+# O código abaixo gerará um erro:
+length(estados_sudeste)
+```
+Após criar o objeto, conseguimos utilizá-lo:
+
+```{r}
+estados_sudeste <- c("SP", "RJ", "MG", "ES")
+length(estados_sudeste)
+```
+
+
+### Função não encontrada
+
+O erro `could not find function` ocorre quando tentamos acessar uma função que não está sendo encontrada. Isso pode acontecer por alguns motivos:
+
+- A função faz parte de um pacote que não foi carregado (precisamos carregar o pacote antes);
+
+- A função foi escrita de forma incorreta (por exemplo, com letras maiúsculas ou minúsculas incorretas).
+
+#### Pacote não carregado
+
+No exemplo a seguir, queremos limpar o nome das colunas do *data frame* `iris`:
+```{r}
+head(iris)
+```
+
+
+O código a seguir gerará um erro pois a função `clean_names()` faz parte do pacote `janitor`, mas o pacote não foi carregado:
+
+```{r}
+#| error: true
+clean_names(iris)
+```
+
+Para corrigir, precisamos carregar o pacote `janitor`:
+
+```{r}
+#| message: false
+library(janitor)
+iris_nome_limpo <- clean_names(iris)
+head(iris_nome_limpo)
+```
+
+#### Erro de digitação
+
+No exemplo a seguir, o código gerará um erro pois a função `length()` está escrito de forma incorreta:
+
+```{r}
+#| error: true
+# O código abaixo gerará um erro:
+lenght(letters)
+```
+Para corrigir, precisamos escrever a função corretamente:
+
+```{r}
+length(letters)
+```
+
+## Importação
+
+### Arquivo não encontrado
+
+Ao importar um arquivo, é importante que o caminho esteja correto. Caso contrário, o código gerará um erro.
+```{r}
+#| message: false
+library(tidyverse)
+```
+
+```{r}
+#| error: true
+# O caminho abaixo está incorreto, esse arquivo não existe
+# no nosso projeto:
+sidra_4092 <- read_csv("SIDRAR.csv")
+```
+Corrigindo o arquivo, o código funcionará:
+
+```{r}
+#| message: false
+sidra_4092 <- read_csv("dados/sidrar_4092_bruto.csv")
+glimpse(sidra_4092)
+```
+
+## Arquivo corrompido
+
+O erro a seguir ocorre quando tentamos importar um arquivo que está corrompido. Nesse caso, precisamos baixar o arquivo novamente.
+
+```{r}
+#| eval: false
+library(readxl)
+excel_sheets("dados/sidrar_4092_bruto.xlsx")
+# Error in readBin(con, raw(), n = size) : 
+#   error reading from the connection
+```
+
+
+

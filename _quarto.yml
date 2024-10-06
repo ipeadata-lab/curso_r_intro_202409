@@ -51,6 +51,9 @@ website:
       - section: "Data Lake do Ipea"
         contents:
         - 20_ipeadatalake.qmd
+      - section: "Anexos"
+        contents:        
+        - 00_erros_frequentes.qmd
 
 page-navigation: true
 
