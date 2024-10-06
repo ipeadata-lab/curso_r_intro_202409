@@ -501,7 +501,13 @@ Dica
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds"</span>, </span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.rds"</span>,</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Arquivo .dta (Stata)</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.dta"</span>, </span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados/sidrar_4092_bruto.dta"</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Caso tenha dificuldades baixando os arquivos utilizando os códigos acima, você também pode baixar os arquivos manualmente, clicando nos links abaixo, e copiar e colar para a pasta <code>dados</code> do seu projeto:</p>
 <ul>
@@ -509,6 +515,7 @@ Dica
 <li><p><a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv">sidrar_4092_bruto_2.csv</a></p></li>
 <li><p><a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx">sidrar_4092_bruto.xlsx</a></p></li>
 <li><p><a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds">sidrar_4092_bruto.rds</a></p></li>
+<li><p><a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.dta">sidrar_4092_bruto.dta</a></p></li>
 </ul>
 <p>É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função <code>dir()</code> para listar os arquivos no diretório <code>dados</code>:</p>
 <div class="cell">
@@ -516,6 +523,7 @@ Dica
 </div>
 <pre><code>"sidrar_4092_bruto_2.csv" 
 "sidrar_4092_bruto.csv"
+"sidrar_4092_bruto.dta"
 "sidrar_4092_bruto.rds"  
 "sidrar_4092_bruto.xlsx"</code></pre>
 <div class="callout callout-style-default callout-warning callout-titled">

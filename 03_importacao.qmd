@@ -36,6 +36,15 @@ Atenção: Nessa aula o conceito de caminho relativo será muito importante. Cas
 
 Nesta aula, utilizaremos alguns arquivos baixados na aula [Diretórios de trabalho e projetos > Preparando o projeto para o curso](01_1_rproj.qmd#preparando-o-projeto-para-o-curso).
 
+
+::: callout-tip
+## Dúvida
+**Como verificar se a importação deu certo?**
+
+Para verificar se a importação deu certo, você pode verificar se o nome do objeto aparece no Painel *Environment* do RStudio, ou também tentar interagir com o objeto, como por exemplo usar a função `head(nome_objeto)` para retornar as primeiras linhas da tabela importada.
+
+:::
+
 ## Importando dados de um arquivo local
 
 Para importar dados de um arquivo local, você pode usar funções com o prefixo `read_` de pacotes como `{readr}` e `{readxl}`.
@@ -198,15 +207,29 @@ write_xlsx(dados, "dados_output/sidrar_4092_bruto.xlsx")
 
 A função `write_rds()` do pacote `{readr}` permite salvar um objeto do R em um arquivo binário do R, preservando a estrutura dos objetos.
 
-Esse tipo de arquivo é útil para salvar objetos do R, como dataframes, listas, vetores, sem perder a estrutura do objeto. 
+Existem algumas vantagens em salvar arquivos no formato `.rds`:
+  - Podemos salvar qualquer tipo de objeto do R, como dataframes, listas, vetores, etc.
 
+  - Não perdemos a estrutura do objeto, como a classe, os tipos das colunas, nível de fatores, etc.
+  
+  - É um arquivo compacto (o arquivo salvo não é grande) e de rápida leitura no R (a importação não demora).
+  
 ```{r}
 write_rds(dados, "dados_output/sidrar_4092_bruto.rds")
 ```
 
+
+
 ## Importando dados usando pacotes de dados
 
-Existem pacotes no R que permitem a importação de dados, como por exemplo: `{sidrar}`, `{geobr}`, `{censobr}`, entre outros.
+Existem pacotes no R que permitem a importação de dados, como por exemplo: 
+
+- [sidrar](https://cran.r-project.org/web/packages/sidrar/vignettes/Introduction_to_sidrar.html): Acesso aos dados disponíveis no SIDRA - Sistema IBGE de Recuperação Automática.
+- [censobr](https://ipeagit.github.io/censobr/): Dados de censos demográficos brasileiros.
+- [ipeadatar](https://cran.r-project.org/web/packages/ipeadatar/index.html): Acesso aos dados disponibilizados no [Ipeadata](http://www.ipeadata.gov.br/Default.aspx).
+- [flightsbr](https://github.com/ipeaGIT/flightsbr): Dados de vôos no Brasil.
+- [PNADcIBGE](https://cran.r-project.org/web/packages/PNADcIBGE/index.html): Dados da PNAD Contínua do IBGE.
+- [microdatasus](https://rfsaldanha.github.io/microdatasus/): Acesso aos microdados do DataSUS.
 
 A parte boa de usar esses pacotes é que eles já possuem funções prontas para importar os dados. 
 
