@@ -31,14 +31,34 @@ No R, um objeto é uma estrutura de dados que armazena valores: podemos armazena
 
 É muito útil armazenar valores em objetos, pois podemos reutilizá-los em diferentes partes do código, sem precisar digitar o valor novamente.
 
+
 ### Objetos existentes no R
 
-Existem alguns objetos já criados no R, como por exemplo: `pi`, que armazena o valor de π (com um número limitado de casas decimais), `letters`, que armazena as letras do alfabeto, entre outros:
+Existem alguns objetos já criados no R, como por exemplo o objeto `letters`, que armazena as letras do alfabeto:
 
 ```{r}
 pi
 letters
 ```
+
+
+::: callout-warning
+O R é *case-sensitive*, ou seja, ele diferencia letras maiúsculas de minúsculas. Portanto, `nome` é diferente de `Nome`.
+
+Por exemplo, o objeto `pi` armazena o valor de π (com um número limitado de casas decimais). O nome do objeto é escrito em minúsculas:
+
+```{r}
+pi
+```
+
+Se tentarmos acessar o objeto com o nome em maiúsculas, o R irá retornar um erro, pois esse objeto não existe:
+
+```{r}
+#| error: true
+Pi
+```
+:::
+
 
 ### Criando um objeto
 
