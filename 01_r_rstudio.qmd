@@ -86,6 +86,19 @@ Podemos salvar um script de algumas formas, como:
 - Utilizando o atalho `Ctrl + S` (Windows) ou `Cmd + S` (Mac).
 :::
 
+### Como executar os códigos?
+
+Podemos escrever e executar códigos no Console ou em um script.
+
+No Console, escrevemos o código diretamente e pressionamos `Enter` para executá-lo.
+
+Em um Script, escrevemos o código e podemos executá-lo de algumas formas:
+
+  - Selecionando o trecho de código que queremos executar e clicando no botão `Run` do RStudio, ou utilizando o atalho `Ctrl + Enter` (Windows) ou `Cmd + Enter` (Mac).
+  
+  - Clicando no trecho que queremos executar e clicando no botão `Run` do RStudio, ou utilizando o atalho `Ctrl + Enter` (Windows) ou `Cmd + Enter` (Mac).
+
+
 ### Comentários
 
 Comentários são textos que não são executados pelo R. Podemos usar comentários para explicar o que um bloco de código faz, para anotar ideias e explicar escolhas feitas, ou para desativar temporariamente um trecho de código.

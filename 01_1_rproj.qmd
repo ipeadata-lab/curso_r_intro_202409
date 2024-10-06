@@ -128,26 +128,41 @@ Após criar as pastas, o seu projeto deve ter uma estrutura parecida com essa:
 ```{r}
 #| eval: false
 #| collapse: true
-download.file(
-  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv",
-  destfile = "dados/sidrar_4092_bruto_2.csv",
-  mode = "wb")
 
+# Arquivo .csv (texto separado por  vírgula)
 download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv",
   destfile = "dados/sidrar_4092_bruto.csv",
   mode = "wb")
 
+# Arquivo .csv (texto separado por ponto e vírgula)
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv",
+  destfile = "dados/sidrar_4092_bruto_2.csv",
+  mode = "wb")
+
+# Arquivo .xlsx (Excel)
 download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx", 
   destfile = "dados/sidrar_4092_bruto.xlsx",
   mode = "wb")
 
+# Arquivo .rds (binário do R)
 download.file(
   url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds", 
   destfile = "dados/sidrar_4092_bruto.rds",
   mode = "wb")
 ```
+
+Caso tenha dificuldades baixando os arquivos utilizando os códigos acima, você também pode baixar os arquivos manualmente, clicando nos links abaixo, e copiar e colar para a pasta `dados` do seu projeto:
+
+- [sidrar_4092_bruto.csv](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.csv)
+
+- [sidrar_4092_bruto_2.csv](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto_2.csv)
+
+- [sidrar_4092_bruto.xlsx](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.xlsx)
+
+- [sidrar_4092_bruto.rds](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados/sidrar_4092_bruto.rds)
 
 É importante verificar se os arquivos foram baixados corretamente. Para isso, você pode usar a função `dir()` para listar os arquivos no diretório `dados`:
 
@@ -163,6 +178,10 @@ dir("dados")
 "sidrar_4092_bruto.xlsx"
 ```
 
+
+::: callout-warning
+Além de criar o projeto e salvar os arquivos que utilizaremos, também é importante instalar os pacotes necessários para o curso. Para isso, você pode seguir as instruções que estão na aula anterior: [Instalação de pacotes necessários no curso](01_r_rstudio.qmd#instalação-de-pacotes-necessários-no-curso).
+:::
 
 
 ## Sugestões de materiais
