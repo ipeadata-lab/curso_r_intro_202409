@@ -5,17 +5,20 @@ title: "Transformando dados"
 
 ## Introdução
 
-Primeiramente, precisamos carregar o pacote `tidyverse` e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre "pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação", e foi baixada previamente (em [Importando dados](03_importacao.html#pacote-sidrar)).
+Primeiramente, precisamos carregar o pacote `tidyverse` e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre "pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação"[^transformacao-dados], e foi baixada previamente (em [Importando dados](03_importacao.html#pacote-sidrar)).
+
+[^transformacao-dados]: É interessante conhecer mais sobre a base de dados que estamos utilizando. O IBGE apresenta alguns conteúdos interessantes, como a página com informações sobre a [PNAD Contínua Trimestral](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?edicao=41004), e também a [página sobre desemprego](https://www.ibge.gov.br/explica/desemprego.php) que nos ajuda a entender as variáveis presentes.
+
 
 ```{r}
 #| message: false
 library(tidyverse)
-dados_brutos <- read_rds("dados/sidrar_4092_bruto.rds")
+dados_brutos <- read_rds("dados/sidrar_4092_bruto.rds") 
 ```
 
 ## Padronizar nome das colunas
 
-É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas de encoding, facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.
+É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas de codificação de caracteres (*encoding*), facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.
 
 O pacote `janitor` possui a função `clean_names()`, que padroniza os nomes das colunas de um *data frame*. Ele substitui espaços por *underline* (`_`), remove caracteres especiais, e transforma o texto em minúsculo, garantindo maior consistência ao lidar com os dados. Isso evita erros ao acessar colunas.
 
@@ -73,6 +76,12 @@ Neste capítulo, vamos explorar as funções de transformação de dados do paco
 
 > Considerando que a tabela 4092 apresenta dados sobre "pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação", qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?
 
+## Pipe - Encadeando funções
+
+Nos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador *pipe* (`%>%` ou `|>`). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.
+
+Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.
+
 
 ## Filtrando linhas
 
@@ -108,6 +117,40 @@ distinct(
 ```
 
 Agora sabemos que a base de dados `dados_filtrados` contém apenas dados sobre a variável `"Pessoas de 14 anos ou mais de idade"`, e que a unidade de medida da coluna `valor` é mil pessoas.
+
+::: callout-tip
+## Várias formas de filtrar as linhas
+Como citamos anteriormente, em algumas situações existem várias formas diferentes de realizar uma tarefa.
+
+No caso da função `filter()`, podemos utilizar diferentes operadores lógicos ou funções auxiliares para fazer filtros.
+
+Os exemplos abaixo podem ser úteis para consulta futura!
+
+Para esses exemplos, vamos utilizar a tabela `starwars` do pacote `dplyr`. Nessa tabela, cada linha representa um personagem de Star Wars, e as colunas representam diferentes características desses personagens.
+
+#### Exemplos de operadores lógicos:
+
+| Operador | Descrição | Exemplo | Interpretação |
+|----|-------|--------|-----------|
+| `==`     | Igual à  | `species == "Human"` | Todas as linhas cuja espécie é "Human" |
+| `!=`     | Diferente de | `species != "Human"` | Todas as linhas cuja espécie **não é** "Human"|
+| `>`      | Maior que | `height > 180` | Todas as linhas cuja altura é maior que 180 |
+| `>=`     | Maior ou igual a | `height >= 180` | Todas as linhas cuja altura é maior ou igual a 180 |
+| `<`      | Menor que | `height < 180` | Todas as linhas cuja altura é menor que 180 |
+| `<=`     | Menor ou igual a | `height <= 180` | Todas as linhas cuja altura é menor ou igual a 180 |
+| `%in%`   | Está em um conjunto | `species %in% c("Human", "Droid")` | Todas as linhas cuja espécie é "Human" ou "Droid" |
+| `!`      | Negação | `!is.na(height)` | Todas as linhas cuja altura **não é** `NA` |
+|`!` e `%in%` | Negação de um conjunto | `!(species %in% c("Human", "Droid"))` | Todas as linhas cuja espécie **não é** "Human" ou "Droid" |
+
+#### Exemplos de funções auxiliares:
+
+| Função | Descrição | Exemplo | Interpretação |
+|----|-------|--------|-----------|
+| `str_detect()` | Detecta padrões em textos | `str_detect(name, "Skywalker")` | Todas as linhas cujo nome contém "Skywalker" |
+| `str_starts()` | Detecta padrões no início de textos | `str_starts(name, "Luke")` | Todas as linhas cujo nome começa com "Luke" |
+| `str_ends()` | Detecta padrões no final de textos | `str_ends(name, "Vader")` | Todas as linhas cujo nome termina com "Vader" |
+:::
+
 
 ## Selecionando colunas
 
@@ -145,7 +188,35 @@ dados_renomeados_2 <- rename(
 glimpse(dados_renomeados_2)
 ```
 
-## Transformando a tabela
+
+::: callout-tip
+## Várias formas de selecionar colunas
+
+Os exemplos abaixo podem ser úteis para consulta futura!
+
+Para esses exemplos, vamos utilizar a tabela `starwars` do pacote `dplyr`:
+
+#### Exemplos de seleção de colunas:
+| Operador | Descrição | Exemplo | Interpretação |
+|----|-------|--------|-----------|
+| `:` | Seleciona um intervalo de colunas | `name:mass` | Todas as colunas entre `name` e `mass` |
+| `c()` | Seleciona colunas específicas | `c(name, height, mass)` | Apenas as colunas `name`, `height` e `mass` |
+| `-c()` | Exclui colunas específicas | `-c(name, height, mass)` | Todas as colunas, exceto `name`, `height` e `mass` |
+
+#### Exemplos de funções auxiliares:
+| Função | Descrição | Exemplo | Interpretação |
+|----|-------|--------|-----------|
+| `starts_with()` | Seleciona colunas que começam com um prefixo | `starts_with("h")` | Todas as colunas que começam com "h" |
+| `ends_with()` | Seleciona colunas que terminam com um sufixo | `ends_with("color")` | Todas as colunas que terminam com "color" |
+| `contains()` | Seleciona colunas que contêm um padrão | `contains("e")` | Todas as colunas que contêm "e" |
+
+
+:::
+
+
+
+
+## Transformando a estrutura da tabela
 
 Ainda considerando nossa pergunta norteadora, queremos calcular a taxa de desocupação de cada estado e região do Brasil ao longo do tempo. Para isso, é mais fácil trabalhar com a tabela onde cada linha represente uma UF por trimestre, e as categorias da variável `condicao` sejam transformadas em colunas. 
 
@@ -189,7 +260,9 @@ As funções `pivot_longer()` e `pivot_wider()` são usadas para alternar entre 
 
 Para criar novas colunas, ou transformar colunas que já existem, podemos usar a função `mutate()`.
 
-As variáveis `uf_codigo` e `trimestre_codigo` estão armazenadas como valores numéricos. No entanto, como não realizaremos operações matemáticas com esses valores, é mais apropriado transformá-los em fatores, o que facilita a análise e previne erros em cálculos futuros.
+### Alterando os tipos de variáveis
+
+A variável `uf_codigo` está armazenada como valor numérico. No entanto, como não realizaremos operações matemáticas com esses valores, é mais apropriado transformá-los em fatores, o que facilita a análise e previne erros em cálculos futuros.
 
 Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`,  etc.
 
@@ -199,11 +272,11 @@ dados_tipo <- mutate(
   dados_largos_renomeados,
   # nova variável: 
   # nome_da_coluna = o que queremos calcular
-  uf_codigo = as.factor(uf_codigo),
-  trimestre_codigo = as.factor(trimestre_codigo)
+  uf_codigo = as.factor(uf_codigo)
 )
 ```
 
+### Calculando a taxa de desocupação
 
 Para calcular a taxa de desocupação, precisamos criar uma nova variável representando a proporção de pessoas desocupadas em relação ao total de pessoas economicamente ativas.
 
@@ -213,10 +286,64 @@ dados_com_proporcao <- mutate(
   dados_tipo,
   # nova variável: 
   # nome_da_coluna = o que queremos calcular
-  prop_desocupacao = (mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho),
+  prop_desocupacao = mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho,
   perc_desocupacao = prop_desocupacao * 100
 )
 ```
+
+
+### Criando uma variável **trimestre_inicio**
+
+Podemos criar uma nova variável chamada `trimestre_inicio` para  representar a data de início de cada trimestre. Para isso, precisaremos criar algumas outras variáveis "auxiliares" a partir da variável `trimestre_codigo`: `ano`, `trimestre_numero` e `trimestre_mes_inicio`.
+
+```{r}
+dados_com_trimestre <- dados_com_proporcao |>
+  mutate(
+    # extrair os 4 primeiros caracteres do código do trimestre
+    ano = str_sub(trimestre_codigo, 1, 4),
+    # extrair os 2 últimos caracteres do código do trimestre
+    trimestre_numero = str_sub(trimestre_codigo, 5, 6),
+    # converter o texto do número trimestre para número
+    trimestre_numero = as.numeric(trimestre_numero),
+    # criar variável com o mês de início do trimestre
+    trimestre_mes_inicio = case_when(
+      trimestre_numero == 1 ~ 1,
+      trimestre_numero == 2 ~ 4,
+      trimestre_numero == 3 ~ 7,
+      trimestre_numero == 4 ~ 10
+    ),
+    # criar variável com o texto de data de início do trimestre
+    trimestre_inicio = paste0(ano, "-", trimestre_mes_inicio, "-01"),
+    # converter a variável para o formato de data
+    trimestre_inicio = as.Date(trimestre_inicio),
+    # queremos adicionar as colunas novas 
+    # após a coluna trimestre_codigo
+    .after = trimestre_codigo
+  ) |> 
+  select(-trimestre_mes_inicio, -trimestre_numero)
+```
+
+
+
+### Criando uma variável *dummy*
+
+Uma variável *dummy* é uma variável binária que indica a presença ou ausência de algum atributo.
+
+Podemos criar uma variável dummy para identificar os trimestres que ocorreram durante o período de emergência em saúde pública de importância nacional de COVID-19. Para isso, vamos criar uma nova variável chamada `periodo_pandemia`, que será `1` para os trimestres que ocorreram durante a pandemia, e `0` para os demais trimestres. A função que utilizaremos é a `case_when()` do pacote `{dplyr}`.
+
+- Começo: [Fevereiro de 2020](https://bvsms.saude.gov.br/bvs/saudelegis/gm/2020/prt0188_04_02_2020.html)
+- Final: [Abril de 2022](https://bvsms.saude.gov.br/bvs/saudelegis/gm/2022/prt0913_22_04_2022.html)
+
+```{r}
+dados_com_dummy <- dados_com_trimestre |> 
+  mutate(periodo_pandemia = case_when(
+    trimestre_codigo %in% c("202002", "202003", "202004",
+                            "202101", "202102", "202103", "202104",
+                            "202201") ~ 1,
+    .default = 0
+  ))
+```
+
 
 
 ## Ordenando as linhas
@@ -224,23 +351,25 @@ dados_com_proporcao <- mutate(
 A base atual está ordada por trimestre e código da unidade da federação. Para facilitar a análise, podemos ordenar as linhas segundo a proporção de desocupação calculada no passo anterior, usando a função `arrange()`:
 
 ```{r}
-arrange(
-  # base de dados
-  dados_com_proporcao,
-  # colunas que queremos usar ordenar
-  prop_desocupacao
-)
+# base de dados
+dados_com_dummy |>
+  # selecionando colunas relevantes
+  select(trimestre_codigo, uf, perc_desocupacao) |>
+  # ordenar linhas usando a coluna perc_desocupacao
+  # de forma crescente
+  arrange(perc_desocupacao)
 ```
 
 A função `arrange()` ordena, por padrão, de forma crescente. Podemos ordenar de forma decrescente, utilizando a função `desc()` junto à coluna que queremos ordenar de forma decrescente:
 
 ```{r}
-arrange(
-  # base de dados
-  dados_com_proporcao,
-  # colunas que queremos usar ordenar
-  desc(prop_desocupacao)
-)
+# base de dados
+dados_com_dummy |>
+  # selecionando colunas relevantes
+  select(trimestre_codigo, uf, perc_desocupacao) |>
+  # ordenar linhas usando a coluna perc_desocupacao
+  # de forma decrescente
+  arrange(desc(perc_desocupacao))
 ```
 
 Nesse caso, as linhas ficaram ordenadas de forma decrescente, de acordo com a proporção de desocupação. Porém os trimestres não estão ordenados! A função `arrange()` permite que ordenemos por mais de uma coluna, e a ordem de prioridade é dada pela ordem em que as colunas são passadas para a função:
@@ -248,7 +377,7 @@ Nesse caso, as linhas ficaram ordenadas de forma decrescente, de acordo com a pr
 ```{r}
 dados_ordenados <- arrange(
   # base de dados
-  dados_com_proporcao,
+  dados_com_dummy,
   # colunas que queremos usar ordenar
   trimestre_codigo, desc(prop_desocupacao)
 )
@@ -258,11 +387,6 @@ glimpse(dados_ordenados)
 
 Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).
 
-## Pipe - Encadeando funções
-
-Nos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador *pipe* (`%>%` ou `|>`). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.
-
-Podemos reescrever os códigos anteriores usando o operador pipe para encadear as funções. Isso permite que criemos menos objetos intermediários (como os que criamos anteriormente: `dados_renomeados`, `dados_filtrados`, `dados_selecionados`, etc.). Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.
 
 
 ## Unindo duas bases de dados
@@ -349,15 +473,11 @@ Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas
 ```{r}
 #| eval: false
 # Salvando os dados preparados
-write_rds(dados_preparados, "dados_output/sidra_4092_arrumado.rds")
+write_rds(dados_ordenados, "dados_output/sidra_4092_arrumado.rds")
 ```
 
 
 ## Sugestões de materiais
-
-- [IBGE: Desemprego](https://www.ibge.gov.br/explica/desemprego.php)
-
-- [IBGE: PNAD Contínua - Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?edicao=41004)
 
 - Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
   - [Transformação de dados](https://cienciadedatos.github.io/pt-r4ds/data-transform.html)

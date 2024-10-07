@@ -267,7 +267,8 @@ pacotes_necessarios <- c(
   "writexl",
   "fs",
   "naniar",
-  "skimr"
+  "skimr",
+  "esquisse"
 )
 
 install.packages(pacotes_necessarios)
