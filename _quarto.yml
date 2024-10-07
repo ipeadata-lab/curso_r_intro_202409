@@ -39,9 +39,9 @@ website:
         - 03_importacao.qmd
         - 04_conhecendo.qmd
         - 05_transformacao.qmd
-        - 07_analise_exploratoria.qmd
-        - 08_visualizacao.qmd
-        - 07_regressao_linear.qmd        
+        - 06_analise_exploratoria.qmd
+        - 07_visualizacao.qmd
+        - 08_regressao_linear.qmd        
       - section: "Explorando o Censo Demográfico"
         contents:
         - 09_censobr_intro.qmd

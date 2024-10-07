@@ -96,7 +96,7 @@ Alguns exemplos:
 -   A variável `valor` está relacionada com a variável `Unidade de Medida`. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.
 
 
-Falaremos sobre o cálculo de estatísticas descritivas no capítulo [Análise Exploratória de Dados](07_analise_exploratoria.qmd).
+Falaremos sobre o cálculo de estatísticas descritivas no capítulo [Análise Exploratória de Dados](06_analise_exploratoria.qmd).
 :::
 
 ### summary()
