@@ -301,6 +301,8 @@ dados_com_trimestre <- dados_com_proporcao |>
   mutate(
     # extrair os 4 primeiros caracteres do código do trimestre
     ano = str_sub(trimestre_codigo, 1, 4),
+    # convertendo o "texto" ano para número
+    ano = as.numeric(ano),
     # extrair os 2 últimos caracteres do código do trimestre
     trimestre_numero = str_sub(trimestre_codigo, 5, 6),
     # converter o texto do número trimestre para número

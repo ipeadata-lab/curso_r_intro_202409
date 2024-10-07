@@ -11,3 +11,8 @@ Página em construção! Em breve.
 <!-- - Regressão Linear -->
 
 <!-- - Extraindo tabelas de regressão (broom, stargazer) -->
+
+## Sugestões de materiais
+
+- [Livro *Introduction to Modern Statistics*](https://openintro-ims.netlify.app) de Mine Çetinkaya-Rundel e Johanna Hardin. 
+  - [Regression Modeling](https://openintro-ims.netlify.app/regression-modeling)

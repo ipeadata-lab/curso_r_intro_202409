@@ -6,47 +6,96 @@ title: "Análise exploratória de dados"
 Página em construção! Em breve. 
 :::
 
-<!-- ## Estatísticas descritivas -->
+Na etapa de análise exploratória de dados, o objetivo é conhecer melhor os dados, entender suas características e identificar padrões e relações entre as variáveis.
 
-<!-- |  `summary()` |  Raíz quadrada | -->
-<!-- |  `skimmer()` |  Raíz quadrada | -->
+Conheceremos funções para calcular estatísticas descritivas, como média, mediana, variância, desvio padrão, entre outras. Além disso, veremos como agrupar dados e calcular estatísticas descritivas para cada grupo. 
+
+Uma etapa importante da análise exploratória de dados envolve visualizar dados. Porém isso será apresentado na próxima aula.
+
+## Importando dados
+
+Nesta aula, utilizaremos a tabela preparada na [aula anterior](05_transformacao): `"dados_output/sidra_4092_arrumado.rds"`.
+
+::: callout-important
+Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar [aqui](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds), e copiar o arquivo para a pasta `dados_output` do seu projeto.
+
+Outra opção é executar o código abaixo:
+
+```{r}
+#| eval: false
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds", 
+  destfile = "sidra_4092_arrumado.rds",
+  mode = "wb")
+```
+
+:::
+
+Vamos carregar a base de dados com a função `read_rds()`:
+
+```{r}
+#| message: false
+# Carregando o pacote tidyverse
+library(tidyverse)
+# Importando os dados
+dados <- read_rds("dados_output/sidra_4092_arrumado.rds")
+# Espiando a tabela
+glimpse(dados)
+```
+## Tabelas de frequência
+
+**Em breve!**
 
 
 
-<!-- Funções básicas: -->
+## Estatísticas descritivas
 
 
-<!-- |  Função |  O que retorna? | -->
-<!-- |--:|--:| -->
-<!-- |  `sum()` |  Soma  |  -->
-<!-- |  `mean()` |  Média | -->
-<!-- |  `median()` |  Mediana | -->
-<!-- |  `var()` |  Variância (simples) | -->
-<!-- |  `sd()` |  Desvio Padrão | -->
-<!-- |  `max()` |  Valor máximo  | -->
-<!-- |  `min()` |  Valor mínimo | -->
-<!-- |  `round()` |  Valor arredondado | -->
-<!-- |  `sqrt()` |  Raíz quadrada | -->
+Na aula [conhecendo os dados](04_conhecendo.qmd), vimos algumas funções que são interessantes para ver estatísticas descritivas de todas as variáveis de uma vez, como a `summary()` e a `skim()`.
+
+Podemos utilizar também funções específicas para calcular estatísticas descritivas de uma variável.
+
+Por exemplo, para calcular a média da variável `prop_desocupacao`:
+
+```{r}
+mean(dados$prop_desocupacao)
+```
+
+Nesse caso, estamos fazendo a média de TODOS os valores da variável `prop_desocupacao`, incluindo proporções de períodos diferentes. Veremos em breve como podemos calcular a média considerando grupos (por exemplo, qual é a média em cada período?).
 
 
+A seguir, temos uma lista de funções que podem ser utilizadas para calcular estatísticas descritivas de uma variável:
 
-<!-- - Argumento importante: `na.rm = TRUE` -->
-
-<!-- Somando do `vetor_com_na`: -->
-<!-- ```{r} -->
-<!-- vetor_com_na <- c(NA, 1, 5, 2, 5, NA) -->
-<!-- sum(vetor_com_na) -->
-<!-- sum(vetor_com_na, na.rm = TRUE) -->
-<!-- ``` -->
-
-<!-- Calculando a média do `vetor_com_na`: -->
-<!-- ```{r} -->
-<!-- mean(vetor_com_na) -->
-<!-- mean(vetor_com_na, na.rm = TRUE) -->
-<!-- ``` -->
+|  Função |  O que retorna? |
+|--:|--:|
+|  `min()` |  Valor mínimo |
+|  `max()` |  Valor máximo  |
+|  `sum()` |  Soma  |
+|  `mean()` |  Média |
+|  `median()` |  Mediana |
+|  `var()` |  Variância (simples) |
+|  `sd()` |  Desvio Padrão |
 
 
-<!-- - Estatísticas agregadas (summarize) -->
+::: callout-warning
+
+As variáveis que estamos trabalhando não possuem valores faltantes (`NA`). Caso a variável que você esteja trabalhando possua valores faltantes, é importante considerar o argumento `na.rm = TRUE` nas funções de estatísticas descritivas, para que os valores faltantes sejam ignorados ao realizar os cálculos.
+
+:::
+
+
+## Estatísticas agregadas (summarize) 
+
+**Em breve!**
+
+## Agrupando dados
+
+**Em breve!**
+
+
+## Estatísticas agregadas utilizando grupos
+
+**Em breve!**
 
 ## Sugestões de materiais
 

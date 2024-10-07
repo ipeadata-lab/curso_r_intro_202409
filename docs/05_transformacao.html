@@ -895,26 +895,28 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extrair os 4 primeiros caracteres do código do trimestre</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ano =</span> <span class="fu">str_sub</span>(trimestre_codigo, <span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extrair os 2 últimos caracteres do código do trimestre</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> <span class="fu">str_sub</span>(trimestre_codigo, <span class="dv">5</span>, <span class="dv">6</span>),</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># converter o texto do número trimestre para número</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> <span class="fu">as.numeric</span>(trimestre_numero),</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># criar variável com o mês de início do trimestre</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_mes_inicio =</span> <span class="fu">case_when</span>(</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="dv">7</span>,</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">10</span></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># criar variável com o texto de data de início do trimestre</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">paste0</span>(ano, <span class="st">"-"</span>, trimestre_mes_inicio, <span class="st">"-01"</span>),</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># converter a variável para o formato de data</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">as.Date</span>(trimestre_inicio),</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># queremos adicionar as colunas novas </span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># após a coluna trimestre_codigo</span></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> trimestre_codigo</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>trimestre_mes_inicio, <span class="sc">-</span>trimestre_numero)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># convertendo o "texto" ano para número</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ano =</span> <span class="fu">as.numeric</span>(ano),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extrair os 2 últimos caracteres do código do trimestre</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> <span class="fu">str_sub</span>(trimestre_codigo, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># converter o texto do número trimestre para número</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> <span class="fu">as.numeric</span>(trimestre_numero),</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># criar variável com o mês de início do trimestre</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_mes_inicio =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="dv">7</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">10</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># criar variável com o texto de data de início do trimestre</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">paste0</span>(ano, <span class="st">"-"</span>, trimestre_mes_inicio, <span class="st">"-01"</span>),</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># converter a variável para o formato de data</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">as.Date</span>(trimestre_inicio),</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># queremos adicionar as colunas novas </span></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># após a coluna trimestre_codigo</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> trimestre_codigo</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>trimestre_mes_inicio, <span class="sc">-</span>trimestre_numero)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="criando-uma-variável-dummy" class="level3">
@@ -1007,7 +1009,7 @@ $ uf                                       &lt;chr&gt; "Amapá", "Bahia", "Rio G
 $ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…
 $ trimestre                                &lt;chr&gt; "1º trimestre 2012", "1º trim…
 $ trimestre_codigo                         &lt;chr&gt; "201201", "201201", "201201",…
-$ ano                                      &lt;chr&gt; "2012", "2012", "2012", "2012…
+$ ano                                      &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012,…
 $ trimestre_inicio                         &lt;date&gt; 2012-01-01, 2012-01-01, 2012…
 $ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…
 $ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …
@@ -1098,7 +1100,7 @@ $ name_region                              &lt;chr&gt; "Norte", "Norte", "Norte"
 $ uf                                       &lt;chr&gt; "Rondônia", "Rondônia", "Rond…
 $ trimestre                                &lt;chr&gt; "1º trimestre 2012", "2º trim…
 $ trimestre_codigo                         &lt;chr&gt; "201201", "201202", "201203",…
-$ ano                                      &lt;chr&gt; "2012", "2012", "2012", "2012…
+$ ano                                      &lt;dbl&gt; 2012, 2012, 2012, 2012, 2013,…
 $ trimestre_inicio                         &lt;date&gt; 2012-01-01, 2012-04-01, 2012…
 $ mil_pessoas_total                        &lt;dbl&gt; 1210, 1217, 1226, 1219, 1233,…
 $ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 765, 782, 784, 805, 796, 800,…
