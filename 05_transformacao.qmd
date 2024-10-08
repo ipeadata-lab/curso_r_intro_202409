@@ -392,6 +392,56 @@ O  pacote `{dplyr}` fornece um conjunto de funções para realizar diferentes ti
 
 A função `left_join()` é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.
 
+### Exemplo 1: Introdutório
+
+A base de dados que temos apresenta o nome e o código da UF, mas seria interessante ter a região, para futuramente usar essa variável em análises. 
+
+A base de dados importada abaixo é um arquivo `.csv` preparado com as informações necessárias:
+
+```{r}
+uf_regiao <- readr::read_csv("https://raw.githubusercontent.com/ipeadata-lab/curso_r_intro_202409/refs/heads/main/dados/uf_regiao.csv")
+```
+
+Vamos verificar a estrutura da base de dados `uf_regiao`:
+```{r}
+glimpse(uf_regiao)
+```
+Podemos tentar unir as tabelas, sem informar a chave. Quando não informamos a chave, a função buscará os **nomes de colunas em comum** para utilizar essas colunas como chave:
+
+```{r}
+#| error: true
+dados_ordenados |> 
+  left_join(uf_regiao)
+```
+
+No exemplo acima, a função `left_join()` tentou unir as tabelas com a coluna `uf_codigo`, presente nas duas tabelas. 
+
+Porém essas colunas apresentam tipos diferentes (fator e numérico). Precisamos deixá-las com o mesmo tipo para que a função `left_join()` consiga fazer a união corretamente. Vamos então transformar a coluna `uf_codigo` da tabela `uf_regiao` em fator:
+
+```{r}
+uf_regiao_fct <- uf_regiao |> 
+  mutate(uf_codigo = as.factor(uf_codigo)) 
+```
+
+Agora podemos unir as tabelas `dados_ordenados` e `uf_regiao_fct`:
+
+```{r}
+dados_com_regiao <- dados_ordenados |>
+  left_join(uf_regiao_fct) |> # <1>
+  relocate(uf_sigla, regiao, .after = uf_codigo) # <2>
+```
+1. Unindo a tabela `dados ordenados` e `uf_regiao_fct` usando como chave a coluna `uf_codigo`.
+2. Mover as colunas `uf_sigla` e `regiao` para após a coluna `uf_codigo`.
+
+A nova tabela `dados_com_regiao` contém as colunas de uf_sigla e regiao, que foram adicionadas a partir da tabela `uf_regiao_fct`:
+
+```{r}
+glimpse(dados_com_regiao)
+```
+
+
+### Exemplo 2: Intermediário
+
 Um exemplo comum de uso é quando temos dados por município ou estado, e desejamos visualizar esses dados em um mapa. Para isso, precisamos de informações geoespaciais, como a delimitação geográfica de cada município ou estado. Podemos usar o `left_join()` para combinar esses dados geoespaciais com os dados que queremos visualizar.
 
 Vamos usar o pacote `{geobr}` para carregar as geometrias dos estados brasileiros.
@@ -416,14 +466,14 @@ O `left_join()` é usado aqui para combinar os dados do SIDRA com os dados das d
 
 ```{r}
 class(geo_estados$code_state)
-class(dados_ordenados$uf_codigo)
+class(dados_com_regiao$uf_codigo)
 ```
 
 Neste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O `left_join()` não conseguirá fazer a correspondência corretamente, e a função gerará um erro:
 
 ```{r}
 #| error: true
-left_join(geo_estados, dados_ordenados, by = join_by(code_state == uf_codigo))
+left_join(geo_estados, dados_com_regiao, by = join_by(code_state == uf_codigo))
 ```
 
 No exemplo, podemos transformar a coluna `code_state` em fator usando `mutate()`. Assim, garantimos que as colunas usadas no argumento `by` sejam do mesmo tipo e possam ser corretamente combinados.
@@ -431,7 +481,7 @@ No exemplo, podemos transformar a coluna `code_state` em fator usando `mutate()`
 ```{r}
 dados_geo <- geo_estados |> 
   mutate(code_state = as.factor(code_state)) |> 
-  left_join(dados_ordenados, by = join_by(code_state == uf_codigo))
+  left_join(dados_com_regiao, by = join_by(code_state == uf_codigo))
 
 glimpse(dados_geo)
 ```
@@ -468,7 +518,7 @@ Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas
 ```{r}
 #| eval: false
 # Salvando os dados preparados
-readr::write_rds(dados_ordenados, "dados_output/sidra_4092_arrumado.rds")
+readr::write_rds(dados_com_regiao, "dados_output/sidra_4092_arrumado.rds")
 ```
 
 ## Exercícios sugeridos
