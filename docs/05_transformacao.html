@@ -238,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_analise_exploratoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Análise exploratória</span></a>
+ <span class="menu-text">Análise exploratória de dados</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1364,8 +1364,34 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 </ol></li>
 </ul>
 <ol start="3" type="1">
-<li>Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?</li>
+<li><p>Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?</p></li>
+<li><p>Considerando o trimestre mais recente disponível, quais são os 5 estados com as maiores taxas de desocupação?</p></li>
+<li><p>Utilizando a função <code>tidyr::pivot_wider()</code>, como podemos criar uma tabela onde cada linha apresente dados de um estado, e cada trimestre esteja em uma coluna? Veja o exemplo abaixo:</p></li>
 </ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 51
+   uf                `1º trimestre 2012` `2º trimestre 2012` `3º trimestre 2012`
+   &lt;chr&gt;                           &lt;dbl&gt;               &lt;dbl&gt;               &lt;dbl&gt;
+ 1 Amapá                           12.6                14.6                14.3 
+ 2 Bahia                           11.6                11.4                10.8 
+ 3 Rio Grande do No…               11.6                11.4                11.5 
+ 4 Alagoas                         11.3                11.7                11.6 
+ 5 Amazonas                        11.1                 9.06                9.51
+ 6 Sergipe                         10.5                11.0                10.6 
+ 7 Paraíba                         10.0                 9.41                8.61
+ 8 Pernambuco                       9.58                8.30                9.38
+ 9 Acre                             9.27                9.12                7.69
+10 Distrito Federal                 8.80                8.49                8.69
+# ℹ 17 more rows
+# ℹ 47 more variables: `4º trimestre 2012` &lt;dbl&gt;, `1º trimestre 2013` &lt;dbl&gt;,
+#   `2º trimestre 2013` &lt;dbl&gt;, `3º trimestre 2013` &lt;dbl&gt;,
+#   `4º trimestre 2013` &lt;dbl&gt;, `1º trimestre 2014` &lt;dbl&gt;,
+#   `2º trimestre 2014` &lt;dbl&gt;, `3º trimestre 2014` &lt;dbl&gt;,
+#   `4º trimestre 2014` &lt;dbl&gt;, `1º trimestre 2015` &lt;dbl&gt;,
+#   `2º trimestre 2015` &lt;dbl&gt;, `3º trimestre 2015` &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
 </section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
@@ -1838,8 +1864,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_analise_exploratoria.html" class="pagination-link" aria-label="Análise exploratória">
-        <span class="nav-page-text">Análise exploratória</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06_analise_exploratoria.html" class="pagination-link" aria-label="Análise exploratória de dados">
+        <span class="nav-page-text">Análise exploratória de dados</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

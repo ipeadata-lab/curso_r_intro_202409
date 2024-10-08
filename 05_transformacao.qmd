@@ -527,7 +527,6 @@ Utilizando a base de dados que criamos nessa aula (com a taxa de desocupação c
 
 ```{r}
 #| echo: false
-#| eval: false
 dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
 ```
 
@@ -538,6 +537,18 @@ dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
   - b) Fora do período de pandemia?
   
 3. Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?
+
+4. Considerando o trimestre mais recente disponível, quais são os 5 estados com as maiores taxas de desocupação?
+
+5. Utilizando a função `tidyr::pivot_wider()`, como podemos criar uma tabela onde cada linha apresente dados de um estado, e cada trimestre esteja em uma coluna? Veja o exemplo abaixo:
+
+```{r}
+#| echo: false
+dados |>
+  select(uf, trimestre, perc_desocupacao) |> 
+  tidyr::pivot_wider(names_from = trimestre, values_from = perc_desocupacao)
+```
+
 
 
 ## Sugestões de materiais
