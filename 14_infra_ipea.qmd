@@ -8,7 +8,7 @@ subtitle: "Módulo ministrado pela COCD"
 
 No Ipea, existe um conjunto de servidores (máquinas virtuais) de alta capacidade, com softwares estatísticos instalados e que estão disponíveis para todos os nossos pesquisadores e colaboradores (e.g. bolsistas, etc.). Estes servidores (que chamamos de “servidores estatísticos”) são parte fundamental da ciência de dados do Ipea. Isso porque nós temos muitos pesquisadores e colaboradores trabalhando simultaneamente em projetos por vezes muito complexos. Além disso, é muito comum nos nossos trabalhos a gente ter que lidar com grandes volumes de dados (vários anos de RAIS, Cadastro Único, etc.), o que seria é inviável ou muito demorado em computadores comuns (limitação de memória RAM, capacidade de processamento, instabilidade da conexão de rede, etc., mesmo com o auxílio de pacotes para lidar com grandes bases de dados como `{arrow}` ou `{duckdb}`.
 
-A capacidade destes servidores em Out/20204 é apresentada na figura abaixo:
+A capacidade destes servidores (em Out/20204) é apresentada na figura abaixo:
 
 ![](images/servidores.png){width=50% fig-align="center"}
 
@@ -22,7 +22,7 @@ A capacidade destes servidores em Out/20204 é apresentada na figura abaixo:
 
 2. Solicitar permissão por **e-pedidos de TI**
 
-3. Uma vez que  você recebeu acesso, você pode se conectar ao servidor abrindo no seu computador a **Área de Trabalho Remota** do Windows. 
+3. Uma vez que  você recebeu acesso, você pode se conectar ao servidor abrindo no seu computador a **Área de Trabalho Remota** do Windows.
 
 :::
 
@@ -32,11 +32,11 @@ Os recursos computacionais nestes servidores, no entanto, não são ilimiados. P
 
 1. Usar a memória RAM com parcimônia;
 
-2. Prototipar o código com amostras de dados e não com a base inteira;
+2. Prototipar todo o código do projeto com amostras de dados e não com a base inteira;
 
 3. Procurar sempre o servidor menos congestionado (**Task Manager**);
 
-4. Utilizar pacotes boas práticas de código e pacotes eficientes, como `{arrow}` e `{duckdb}` para leitura e manipulação de dados, e `{fixest}` para modelos econométricos.
+4. Utilizar boas práticas de código além de pacotes eficientes, como `{arrow}` e `{duckdb}` para leitura e manipulação de dados, e `{fixest}` para modelos econométricos.
 
 :::
 
@@ -45,36 +45,25 @@ Veja mais informações na nossa [cheatsheet de boas práticas](images/cheat_she
 
 # Bases de dados
 
-O Instituto disponibiliza diversas bases de microdados estatísticos e registros administrativos (identificados ou não), como:
+O Ipea disponibiliza diversas bases de microdados estatísticos e registros administrativos (identificados ou não), como:
 
-* PNADC
-
+* PNADc
+* Censo escolar
 * CAGED Identificado
-
 * RAIS Identificada
-
 * Cadatro Único
+* etc.
 
-::: {.callout-note}
-**Quem é reponsável pelas bases de dados no Ipea?**
+A lista completa das bases de dados disponíveis pode ser consultada na intranet no [catálogo de bases de dados](intranet.gov.br/bases).
 
-A Coordenação de Gestão de Dados (COGD) da CGDTI é responsável por:
-
-* Negociar basesde dados com outras instituições.
-
-* Padronizar, documentar, catalogar e guardar os dados.
-
-* Controlar e disciplinar o acesso às bases.
-
-**mais informações:** [intranet.gov.br/bases](intranet.gov.br/bases)
-
-:::
-
-As bases de dados do Ipea são armazenadas em difentes formatos, em diretórios da rede (STORAGE6) ou em bancos de dados relacionais (SQL Server): 
+As bases de dados do Ipea são armazenadas em difentes formatos, em alguns diretórios da rede (tabela abaixo) ou em bancos de dados relacionais (SQL Server). 
 
 ![](images/storages.png){width=50% fig-align="left"}
 
-Atualmente, a maior parte estão em diretórios na rede do Ipea, em especial no Storage6. No Storage6, essas bases estão organizadas em duas subpastas: documentação (totalmente acessível, mesmo a documentação das bases restritas) e dados (públicos ou restritos, para os quais o acesso  depende de autorização):
+Atualmente, a maior parte dos dados estão em diretórios na rede do Ipea, em especial no `Storage6`. No `Storage6`, essas bases estão organizadas a partir de duas pastas e suas subpastas: 
+- `"documentação"`. Os arquivos nesta pasta e subpastas são totalmente acessível, mesmo a documentação das bases restritas.
+- `"dados"`. Suas subpastas incluem tanto os dados públicos quanto restritos. No caso dos dados restritos, o acesso a leitura dos dados requer autorização (detalhes abaixo):
+
 
 ```{mermaid}
 flowchart TD
@@ -92,28 +81,15 @@ flowchart TD
 
 **Como ter acesso a bases de dados restritas?**
 
-1. Antes de solicitar permissão para uma base de dados, leia a respectiva documentação;
+1. Antes de solicitar permissão para uma base de dados, leia a documentação da base;
 
-2. O acesso a qualquer base de dados restrita (RAIS Identificada, Cadastro Único, CAGED Identificado, etc.) é sempre por um período definido e deve ser motivado, no âmbito de um projeto de pesquisa específico; 
+2. A concessão de acesso a qualquer base de dados restrita é sempre por um período definido e deve ser motivado, no âmbito de um projeto de pesquisa específico; 
 
-3. O pedido de acesso é  feito à Coordenação de Gestão de Dados (COGD), por meio de processo que tramita no **SEI**; 
+3. O pedido de acesso é  feito à Coordenação de Gestão de Dados (COGD), por meio de processo que tramita no **SEI** e envolve a assinatura de termos de compromisso sobre sigilo do dado;
 
-4. Algumas bases de dados são consideradas sigilosas e estão disponíveis apenas em ambientes de sigilo (sala ou servidor de sigilo). 
-
-5. O acesso a esses ambientes também deve ser solicitado à COGD.
+4. Algumas bases de dados sigilosas estão disponíveis apenas em ambientes de sigilo (sala ou servidor de sigilo). O acesso a esses ambientes também deve ser solicitado à COGD.
 
 :::
 
 Veja mais detalhes na nossa [cheatsheet sobre as bases de dados](images/cheat_sheet_dados_v3.pdf).
-<!-- overview do ipeadatalake -->
-
-
-
-<!-- ipeadatalake: rapadia analise da PNADc + ipeaplot -->
-
-
-
-<!-- ipeadatalake: rapadia analise da RAIS ou CADunico geocode + ipeaplot -->
-
-
 

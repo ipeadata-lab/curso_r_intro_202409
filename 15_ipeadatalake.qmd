@@ -1,0 +1,19 @@
+---
+# Usar a infraestrutura de pesquisa do Ipea (módulo ministrado pela COCD)
+title: "Acessando dados com o {ipeadatalake}"
+subtitle: "Módulo ministrado pela COCD"
+---
+
+
+<!-- overview do ipeadatalake -->
+
+
+
+<!-- ipeadatalake: rapadia analise da PNADc + ipeaplot -->
+
+
+
+<!-- ipeadatalake: rapadia analise da RAIS ou CADunico geocode + ipeaplot -->
+
+
+
