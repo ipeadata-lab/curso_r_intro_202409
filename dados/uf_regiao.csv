@@ -1,0 +1,28 @@
+uf,uf_sigla,uf_codigo,regiao
+Rondônia,RO,11,Norte
+Acre,AC,12,Norte
+Amazônas,AM,13,Norte
+Roraima,RR,14,Norte
+Pará,PA,15,Norte
+Amapá,AP,16,Norte
+Tocantins,TO,17,Norte
+Maranhão,MA,21,Nordeste
+Piauí,PI,22,Nordeste
+Ceará,CE,23,Nordeste
+Rio Grande do Norte,RN,24,Nordeste
+Paraíba,PB,25,Nordeste
+Pernambuco,PE,26,Nordeste
+Alagoas,AL,27,Nordeste
+Sergipe,SE,28,Nordeste
+Bahia,BA,29,Nordeste
+Minas Gerais,MG,31,Sudeste
+Espírito Santo,ES,32,Sudeste
+Rio de Janeiro,RJ,33,Sudeste
+São Paulo,SP,35,Sudeste
+Paraná,PR,41,Sul
+Santa Catarina,SC,42,Sul
+Rio Grande do Sul,RS,43,Sul
+Mato Grosso do Sul,MS,50,Centro Oeste
+Mato Grosso,MT,51,Centro Oeste
+Goiás,GO,52,Centro Oeste
+Distrito Federal,DF,53,Centro Oeste
