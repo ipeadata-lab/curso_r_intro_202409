@@ -1,5 +1,6 @@
 ---
 title: "Explorando o Censo Demográfico"
+subtitle: "Módulo ministrado pela COCD"
 from: markdown+emoji
 code-annotations: hover
 ---

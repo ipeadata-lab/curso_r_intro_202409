@@ -1,5 +1,6 @@
 ---
 title: "Microdados do Censo"
+subtitle: "Módulo ministrado pela COCD"
 from: markdown+emoji
 code-annotations: hover
 ---
