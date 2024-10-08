@@ -350,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#skimrskim" id="toc-skimrskim" class="nav-link" data-scroll-target="#skimrskim">skimr::skim()</a></li>
   </ul></li>
   <li><a href="#valores-faltantes-na" id="toc-valores-faltantes-na" class="nav-link" data-scroll-target="#valores-faltantes-na">Valores faltantes (<code>NA</code>)</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#retornar-algumas-linhas-da-base-de-dados" id="toc-retornar-algumas-linhas-da-base-de-dados" class="nav-link" data-scroll-target="#retornar-algumas-linhas-da-base-de-dados">Retornar algumas linhas da base de dados</a></li>
   <li><a href="#conhecendo-os-valores-únicos-de-uma-coluna" id="toc-conhecendo-os-valores-únicos-de-uma-coluna" class="nav-link" data-scroll-target="#conhecendo-os-valores-únicos-de-uma-coluna">Conhecendo os valores únicos de uma coluna</a></li>
   </ul>
 </nav>
@@ -906,8 +906,8 @@ Aviso
 </div>
 </div>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
+<section id="retornar-algumas-linhas-da-base-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="retornar-algumas-linhas-da-base-de-dados">Retornar algumas linhas da base de dados</h2>
 <p>Em situações onde trabalharmos com dados que possuem um número de linhas muito grande, não podemos utilizar a função <code>View()</code> para ver a tabela inteira.</p>
 <p>Nesse caso, podemos ser interessante usar funções que retornam apenas algumas linhas da base de dados, como <code>head()</code>, <code>tail()</code>, <code>slice_sample()</code>, entre outras.</p>
 <p>Antes de usá-las, vamos adicionar uma coluna que represente o número da linha, para que seja mais fácil identificar as linhas que estamos selecionando:</p>
@@ -1026,46 +1026,46 @@ Aviso
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_sample</span>(dados_com_n_linha, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
-1   15950                          3 Unidade da Federação
-2   12812                          3 Unidade da Federação
-3    2088                          3 Unidade da Federação
-4   20049                          3 Unidade da Federação
-5   10020                          3 Unidade da Federação
+1   23315                          3 Unidade da Federação
+2   12084                          3 Unidade da Federação
+3   21994                          3 Unidade da Federação
+4   25226                          3 Unidade da Federação
+5    6230                          3 Unidade da Federação
   Unidade de Medida (Código) Unidade de Medida Valor
-1                          2                 %   1.7
-2                          2                 %  55.6
-3                          2                 %   1.2
-4                          2                 %   4.9
-5                          2                 %   1.7
+1                          2                 %  33.4
+2                       1572       Mil pessoas 412.0
+3                          2                 %   2.2
+4                          2                 %   0.5
+5                          2                 %   2.3
   Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
-1                            29                Bahia             202304
-2                            26           Pernambuco             202201
-3                            13             Amazonas             201301
-4                            41               Paraná             201203
-5                            24  Rio Grande do Norte             201201
+1                            50   Mato Grosso do Sul             201504
+2                            26           Pernambuco             201301
+3                            42       Santa Catarina             202402
+4                            52                Goiás             201404
+5                            17            Tocantins             201404
           Trimestre Variável (Código)
-1 4º trimestre 2023              4087
-2 1º trimestre 2022              4104
-3 1º trimestre 2013              4087
-4 3º trimestre 2012              4087
-5 1º trimestre 2012              4105
-                                                                                   Variável
-1                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
-2                           Distribuição percentual das pessoas de 14 anos ou mais de idade
-3                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
-4                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
-5 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+1 4º trimestre 2015              4104
+2 1º trimestre 2013              1641
+3 2º trimestre 2024              4104
+4 4º trimestre 2014              4087
+5 4º trimestre 2014              4087
+                                                         Variável
+1 Distribuição percentual das pessoas de 14 anos ou mais de idade
+2                             Pessoas de 14 anos ou mais de idade
+3 Distribuição percentual das pessoas de 14 anos ou mais de idade
+4   Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+5   Coeficiente de variação - Pessoas de 14 anos ou mais de idade
   Condição em relação à força de trabalho e condição de ocupação (Código)
 1                                                                   32447
-2                                                                   32386
-3                                                                   32387
-4                                                                   32446
+2                                                                   32446
+3                                                                   32446
+4                                                                   32385
 5                                                                   32447
   Condição em relação à força de trabalho e condição de ocupação
 1                                      Fora da força de trabalho
-2                                              Força de trabalho
-3                                    Força de trabalho - ocupada
-4                                 Força de trabalho - desocupada
+2                                 Força de trabalho - desocupada
+3                                 Força de trabalho - desocupada
+4                                                          Total
 5                                      Fora da força de trabalho</code></pre>
 </div>
 </div>

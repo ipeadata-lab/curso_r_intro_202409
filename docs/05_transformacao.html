@@ -341,21 +341,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução">Introdução</a></li>
-  <li><a href="#padronizar-nome-das-colunas" id="toc-padronizar-nome-das-colunas" class="nav-link" data-scroll-target="#padronizar-nome-das-colunas">Padronizar nome das colunas</a></li>
   <li><a href="#linhas-colunas-e-objetivo-de-análise" id="toc-linhas-colunas-e-objetivo-de-análise" class="nav-link" data-scroll-target="#linhas-colunas-e-objetivo-de-análise">Linhas, colunas e objetivo de análise</a></li>
+  <li><a href="#padronizar-nome-das-colunas" id="toc-padronizar-nome-das-colunas" class="nav-link" data-scroll-target="#padronizar-nome-das-colunas">Padronizar nome das colunas</a></li>
   <li><a href="#pipe---encadeando-funções" id="toc-pipe---encadeando-funções" class="nav-link" data-scroll-target="#pipe---encadeando-funções">Pipe - Encadeando funções</a></li>
-  <li><a href="#filtrando-linhas" id="toc-filtrando-linhas" class="nav-link" data-scroll-target="#filtrando-linhas">Filtrando linhas</a></li>
-  <li><a href="#selecionando-colunas" id="toc-selecionando-colunas" class="nav-link" data-scroll-target="#selecionando-colunas">Selecionando colunas</a></li>
-  <li><a href="#transformando-a-estrutura-da-tabela" id="toc-transformando-a-estrutura-da-tabela" class="nav-link" data-scroll-target="#transformando-a-estrutura-da-tabela">Transformando a estrutura da tabela</a></li>
-  <li><a href="#criando-e-transformando-colunas" id="toc-criando-e-transformando-colunas" class="nav-link" data-scroll-target="#criando-e-transformando-colunas">Criando e transformando colunas</a>
+  <li><a href="#filtrando-linhas-filter" id="toc-filtrando-linhas-filter" class="nav-link" data-scroll-target="#filtrando-linhas-filter">Filtrando linhas (<code>filter()</code>)</a></li>
+  <li><a href="#selecionando-colunas-select" id="toc-selecionando-colunas-select" class="nav-link" data-scroll-target="#selecionando-colunas-select">Selecionando colunas (<code>select()</code>)</a></li>
+  <li><a href="#renomeando-colunas-rename" id="toc-renomeando-colunas-rename" class="nav-link" data-scroll-target="#renomeando-colunas-rename">Renomeando colunas (<code>rename()</code>)</a></li>
+  <li><a href="#transformando-a-estrutura-da-tabela-pivot_wider-e-pivot_longer" id="toc-transformando-a-estrutura-da-tabela-pivot_wider-e-pivot_longer" class="nav-link" data-scroll-target="#transformando-a-estrutura-da-tabela-pivot_wider-e-pivot_longer">Transformando a estrutura da tabela (<code>pivot_wider()</code> e <code>pivot_longer()</code>)</a></li>
+  <li><a href="#criando-e-transformando-colunas-mutate" id="toc-criando-e-transformando-colunas-mutate" class="nav-link" data-scroll-target="#criando-e-transformando-colunas-mutate">Criando e transformando colunas (<code>mutate()</code>)</a>
   <ul>
   <li><a href="#alterando-os-tipos-de-variáveis" id="toc-alterando-os-tipos-de-variáveis" class="nav-link" data-scroll-target="#alterando-os-tipos-de-variáveis">Alterando os tipos de variáveis</a></li>
   <li><a href="#calculando-a-taxa-de-desocupação" id="toc-calculando-a-taxa-de-desocupação" class="nav-link" data-scroll-target="#calculando-a-taxa-de-desocupação">Calculando a taxa de desocupação</a></li>
   <li><a href="#criando-uma-variável-trimestre_inicio" id="toc-criando-uma-variável-trimestre_inicio" class="nav-link" data-scroll-target="#criando-uma-variável-trimestre_inicio">Criando uma variável <strong>trimestre_inicio</strong></a></li>
   <li><a href="#criando-uma-variável-dummy" id="toc-criando-uma-variável-dummy" class="nav-link" data-scroll-target="#criando-uma-variável-dummy">Criando uma variável <em>dummy</em></a></li>
   </ul></li>
-  <li><a href="#ordenando-as-linhas" id="toc-ordenando-as-linhas" class="nav-link" data-scroll-target="#ordenando-as-linhas">Ordenando as linhas</a></li>
-  <li><a href="#unindo-duas-bases-de-dados" id="toc-unindo-duas-bases-de-dados" class="nav-link" data-scroll-target="#unindo-duas-bases-de-dados">Unindo duas bases de dados</a></li>
+  <li><a href="#ordenando-as-linhas-arrange" id="toc-ordenando-as-linhas-arrange" class="nav-link" data-scroll-target="#ordenando-as-linhas-arrange">Ordenando as linhas (<code>arrange()</code>)</a></li>
+  <li><a href="#unindo-duas-bases-de-dados-left_join" id="toc-unindo-duas-bases-de-dados-left_join" class="nav-link" data-scroll-target="#unindo-duas-bases-de-dados-left_join">Unindo duas bases de dados (<code>left_join()</code>)</a></li>
   <li><a href="#salvando-a-base-de-dados-preparada" id="toc-salvando-a-base-de-dados-preparada" class="nav-link" data-scroll-target="#salvando-a-base-de-dados-preparada">Salvando a base de dados preparada</a></li>
   <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
@@ -386,21 +387,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introdução" class="level2">
 <h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
 <p>Primeiramente, precisamos carregar o pacote <code>tidyverse</code> e a base de dados que vamos utilizar. A base de dados é a tabela 4092 do SIDRA, que apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, e foi baixada previamente (em <a href="03_importacao.html#pacote-sidrar">Importando dados</a>).</p>
+<p>Neste capítulo, vamos explorar as funções de transformação de dados do pacote <code>dplyr</code>, a partir da pergunta norteadora abaixo:</p>
+<blockquote class="blockquote">
+<p>Considerando que a tabela 4092 apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, <strong>qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?</strong></p>
+</blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dados_brutos <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"dados/sidrar_4092_bruto.rds"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dados_brutos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/sidrar_4092_bruto.rds"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="linhas-colunas-e-objetivo-de-análise" class="level2">
+<h2 class="anchored" data-anchor-id="linhas-colunas-e-objetivo-de-análise">Linhas, colunas e objetivo de análise</h2>
+<p>Uma pergunta que é sempre importante ter em mente ao analisar dados é: O que cada linha representa? Na estatística, esse é o conceito da <strong>unidade observacional</strong>.</p>
+<p>O objeto <code>dados_brutos</code> apresenta uma linha para cada combinação das seguintes variáveis:</p>
+<ul>
+<li><p><code>Trimestre (Código)</code> / <code>Trimestre</code></p></li>
+<li><p><code>Unidade da Federação</code> / <code>Unidade da Federação (Código)</code></p></li>
+<li><p><code>Variável</code> / <code>Variável (Código)</code></p></li>
+<li><p><code>Condição em relação à força de trabalho e condição de ocupação</code> e <code>Condição em relação à força de trabalho e condição de ocupação (Código)</code></p></li>
+</ul>
+<p>Podemos consultar os valores distintos possíveis no R, para garantir que estamos selecionando corretamente os valores de interesse.</p>
+<p>As variáveis disponíveis na base de dados, e suas unidades de medida são:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>dados_brutos <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(<span class="st">`</span><span class="at">Variável</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unidade de Medida</span><span class="st">`</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1">Colunas que queremos buscar os valores distintos</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                   Variável
+1                                                       Pessoas de 14 anos ou mais de idade
+2                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+3                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+4 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+  Unidade de Medida
+1       Mil pessoas
+2                 %
+3                 %
+4                 %</code></pre>
+</div>
+</div>
+<p>Podemos observar, cada linha representa uma combinação de trimestre, unidade da federação e variável.</p>
+<p>Outras perguntas relevantes ao analisar dados são:</p>
+<ul>
+<li>Qual é a pergunta que eu quero responder com esses dados?</li>
+<li>Quais são as variáveis que eu preciso para responder essa pergunta?</li>
+</ul>
 </section>
 <section id="padronizar-nome-das-colunas" class="level2">
 <h2 class="anchored" data-anchor-id="padronizar-nome-das-colunas">Padronizar nome das colunas</h2>
 <p>É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas de codificação de caracteres (<em>encoding</em>), facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.</p>
 <p>O pacote <code>janitor</code> possui a função <code>clean_names()</code>, que padroniza os nomes das colunas de um <em>data frame</em>. Ele substitui espaços por <em>underline</em> (<code>_</code>), remove caracteres especiais, e transforma o texto em minúsculo, garantindo maior consistência ao lidar com os dados. Isso evita erros ao acessar colunas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados_brutos)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Checar o nome das colunas da base de dados</span>
+</dd>
+</dl>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checar nome das colunas da base de dados</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados_brutos)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Nível Territorial (Código)"                                             
  [2] "Nível Territorial"                                                      
@@ -416,11 +468,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [12] "Condição em relação à força de trabalho e condição de ocupação (Código)"
 [13] "Condição em relação à força de trabalho e condição de ocupação"         </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># limpar nomes das colunas da base de dados, e salvar em um novo objeto</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dados_renomeados <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(dados_brutos)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># checar nome das colunas da base de dados renomeada</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados_renomeados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>dados_renomeados <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(dados_brutos)</span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados_renomeados)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Limpar nomes das colunas da base de dados, e salvar em um novo objeto chamado <code>dados_renomeados</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">Checar o nome das colunas da base de dados renomeada</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "nivel_territorial_codigo"                                             
  [2] "nivel_territorial"                                                    
@@ -438,85 +502,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="linhas-colunas-e-objetivo-de-análise" class="level2">
-<h2 class="anchored" data-anchor-id="linhas-colunas-e-objetivo-de-análise">Linhas, colunas e objetivo de análise</h2>
-<p>Uma pergunta que é sempre importante ter em mente ao analisar dados é: O que cada linha representa? Na estatística, esse é o conceito da <strong>unidade amostral</strong>, ou <strong>unidade observacional</strong>.</p>
-<p>O objeto <code>dados_brutos</code> apresenta uma linha para cada combinação das seguintes variáveis:</p>
-<ul>
-<li><p><code>Trimestre (Código)</code> / <code>Trimestre</code></p></li>
-<li><p><code>Unidade da Federação</code> / <code>Unidade da Federação (Código)</code></p></li>
-<li><p><code>Variável</code> / <code>Variável (Código)</code></p></li>
-<li><p><code>Condição em relação à força de trabalho e condição de ocupação</code> e <code>Condição em relação à força de trabalho e condição de ocupação (Código)</code></p></li>
-</ul>
-<p>Podemos consultar os valores distintos possíveis no R, para garantir que estamos selecionando corretamente os valores de interesse.</p>
-<p>As variáveis disponíveis na base de dados, e suas unidades de medida são:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  dados_renomeados, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># colunas que queremos bucar os valores distintos </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  variavel, unidade_de_medida</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                                                                                   variavel
-1                                                       Pessoas de 14 anos ou mais de idade
-2                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
-3                           Distribuição percentual das pessoas de 14 anos ou mais de idade
-4 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
-  unidade_de_medida
-1       Mil pessoas
-2                 %
-3                 %
-4                 %</code></pre>
-</div>
-</div>
-<p>Podemos observar, cada linha representa uma combinação de trimestre, unidade da federação e variável.</p>
-<p>Outras perguntas relevantes ao analisar dados são:</p>
-<ul>
-<li>Qual é a pergunta que eu quero responder com esses dados?</li>
-<li>Quais são as variáveis que eu preciso para responder essa pergunta?</li>
-</ul>
-<p>Neste capítulo, vamos explorar as funções de transformação de dados do pacote <code>dplyr</code>, a partir da pergunta norteadora abaixo:</p>
-<blockquote class="blockquote">
-<p>Considerando que a tabela 4092 apresenta dados sobre “pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação”, qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?</p>
-</blockquote>
-</section>
 <section id="pipe---encadeando-funções" class="level2">
 <h2 class="anchored" data-anchor-id="pipe---encadeando-funções">Pipe - Encadeando funções</h2>
 <p>Nos exemplos anteriores, utilizamos uma função por vez, para facilitar a compreensão de cada etapa. No entanto, à medida que nos familiarizamos com as funções, podemos encadear várias delas em um único fluxo de código usando o operador <em>pipe</em> (<code>%&gt;%</code> ou <code>|&gt;</code>). Isso torna o código mais conciso e elimina a criação de objetos intermediários desnecessários.</p>
 <p>Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.</p>
 </section>
-<section id="filtrando-linhas" class="level2">
-<h2 class="anchored" data-anchor-id="filtrando-linhas">Filtrando linhas</h2>
+<section id="filtrando-linhas-filter" class="level2">
+<h2 class="anchored" data-anchor-id="filtrando-linhas-filter">Filtrando linhas (<code>filter()</code>)</h2>
 <p>Para responder à pergunta norteadora, não precisamos de todas as variáveis presentes na base de dados. Podemos <strong>filtrar</strong> as linhas que são relevantes para a análise, escolhendo as variáveis de interesse.</p>
 <p>Nesse caso, podemos filtrar os dados onde a variável é igual à <code>"Pessoas de 14 anos ou mais de idade"</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dados_filtrados <span class="ot">&lt;-</span> <span class="fu">filter</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  dados_renomeados,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># condição de filtro</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  variavel <span class="sc">==</span> <span class="st">"Pessoas de 14 anos ou mais de idade"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dados_filtrados <span class="ot">&lt;-</span> dados_renomeados <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variavel <span class="sc">==</span> <span class="st">"Pessoas de 14 anos ou mais de idade"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para verificar se o filtro foi feito corretamente, podemos checar o número de linhas de cada base de dados:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dados_renomeados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dados_renomeados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 27000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dados_filtrados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dados_filtrados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6750</code></pre>
 </div>
 </div>
 <p>Podemos verificar também os valores distintos para as colunas <code>variavel</code> e <code>unidade_de_medida</code> na base de dados <code>dados_filtrados</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  dados_filtrados, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># colunas que queremos bucar os valores distintos </span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  variavel, unidade_de_medida</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dados_filtrados <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(variavel, unidade_de_medida)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                             variavel unidade_de_medida
 1 Pessoas de 14 anos ou mais de idade       Mil pessoas</code></pre>
@@ -654,23 +667,23 @@ Várias formas de filtrar as linhas
 </div>
 </div>
 </section>
-<section id="selecionando-colunas" class="level2">
-<h2 class="anchored" data-anchor-id="selecionando-colunas">Selecionando colunas</h2>
+<section id="selecionando-colunas-select" class="level2">
+<h2 class="anchored" data-anchor-id="selecionando-colunas-select">Selecionando colunas (<code>select()</code>)</h2>
 <p>Algumas colunas não são relevantes para responder à pergunta norteadora. Podemos <strong>selecionar</strong> apenas as colunas que vamos utilizar através da função <code>select()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dados_selecionados <span class="ot">&lt;-</span> <span class="fu">select</span>(</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  dados_filtrados, </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># colunas que queremos manter</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  unidade_da_federacao,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  unidade_da_federacao_codigo,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  trimestre,</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  trimestre_codigo,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  valor</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_selecionados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dados_selecionados <span class="ot">&lt;-</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  dados_filtrados <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># colunas que queremos manter</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    unidade_da_federacao,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    unidade_da_federacao_codigo,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    trimestre,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    trimestre_codigo,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    valor</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_selecionados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6,750
 Columns: 6
@@ -680,30 +693,6 @@ $ trimestre                                                      &lt;chr&gt; "1�
 $ trimestre_codigo                                               &lt;chr&gt; "201201…
 $ condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao &lt;chr&gt; "Total"…
 $ valor                                                          &lt;dbl&gt; 1210, 7…</code></pre>
-</div>
-</div>
-<p>Podemos renomear colunas com a função <code>rename()</code>. Vamos renomear algumas colunas para facilitar o uso posteriormente:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dados_renomeados_2 <span class="ot">&lt;-</span> <span class="fu">rename</span>(</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  dados_selecionados, </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># colunas que queremos renomear: novo_nome = nome_atual</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">condicao =</span> condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">valor_mil_pessoas =</span> valor,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">uf =</span> unidade_da_federacao,</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">uf_codigo =</span> unidade_da_federacao_codigo</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_renomeados_2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6,750
-Columns: 6
-$ uf                &lt;chr&gt; "Rondônia", "Rondônia", "Rondônia", "Rondônia", "Ron…
-$ uf_codigo         &lt;chr&gt; "11", "11", "11", "11", "11", "11", "11", "11", "11"…
-$ trimestre         &lt;chr&gt; "1º trimestre 2012", "1º trimestre 2012", "1º trimes…
-$ trimestre_codigo  &lt;chr&gt; "201201", "201201", "201201", "201201", "201201", "2…
-$ condicao          &lt;chr&gt; "Total", "Força de trabalho", "Força de trabalho - o…
-$ valor_mil_pessoas &lt;dbl&gt; 1210, 765, 703, 62, 446, 1217, 782, 733, 49, 434, 12…</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -799,27 +788,64 @@ Várias formas de selecionar colunas
 </div>
 </div>
 </section>
-<section id="transformando-a-estrutura-da-tabela" class="level2">
-<h2 class="anchored" data-anchor-id="transformando-a-estrutura-da-tabela">Transformando a estrutura da tabela</h2>
+<section id="renomeando-colunas-rename" class="level2">
+<h2 class="anchored" data-anchor-id="renomeando-colunas-rename">Renomeando colunas (<code>rename()</code>)</h2>
+<p>Podemos renomear colunas com a função <code>rename()</code>. Vamos renomear algumas colunas para facilitar o uso posteriormente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dados_renomeados_2 <span class="ot">&lt;-</span> dados_selecionados <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># colunas que queremos renomear: novo_nome = nome_atual</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">condicao =</span> condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_mil_pessoas =</span> valor,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf =</span> unidade_da_federacao,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf_codigo =</span> unidade_da_federacao_codigo</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_renomeados_2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 6,750
+Columns: 6
+$ uf                &lt;chr&gt; "Rondônia", "Rondônia", "Rondônia", "Rondônia", "Ron…
+$ uf_codigo         &lt;chr&gt; "11", "11", "11", "11", "11", "11", "11", "11", "11"…
+$ trimestre         &lt;chr&gt; "1º trimestre 2012", "1º trimestre 2012", "1º trimes…
+$ trimestre_codigo  &lt;chr&gt; "201201", "201201", "201201", "201201", "201201", "2…
+$ condicao          &lt;chr&gt; "Total", "Força de trabalho", "Força de trabalho - o…
+$ valor_mil_pessoas &lt;dbl&gt; 1210, 765, 703, 62, 446, 1217, 782, 733, 49, 434, 12…</code></pre>
+</div>
+</div>
+</section>
+<section id="transformando-a-estrutura-da-tabela-pivot_wider-e-pivot_longer" class="level2">
+<h2 class="anchored" data-anchor-id="transformando-a-estrutura-da-tabela-pivot_wider-e-pivot_longer">Transformando a estrutura da tabela (<code>pivot_wider()</code> e <code>pivot_longer()</code>)</h2>
 <p>Ainda considerando nossa pergunta norteadora, queremos calcular a taxa de desocupação de cada estado e região do Brasil ao longo do tempo. Para isso, é mais fácil trabalhar com a tabela onde cada linha represente uma UF por trimestre, e as categorias da variável <code>condicao</code> sejam transformadas em colunas.</p>
-<p>Para fazer essa transformação, podemos usar a função <code>pivot_wider()</code>.</p>
+<p>Para fazer essa transformação, podemos usar a função <code>pivot_wider()</code>, do pacote <code>{tidyr}</code>.</p>
 <p>A função <code>pivot_wider()</code> é útil quando queremos reorganizar uma tabela, transformando variáveis categóricas em novas colunas. Essa estrutura facilita cálculos comparativos e análises entre as diferentes categorias.</p>
 <p>Por exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos <code>pivot_wider()</code>, vamos transformar a tabela para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dados_largos <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  dados_renomeados_2, </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nome da coluna de onde os nomes das novas colunas serão extraídos</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> condicao, </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nome da coluna de onde os valores das novas colunas serão extraídos </span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> valor_mil_pessoas, </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># podemos adicionar um texto como prefixo. nesse caso, isso é opcional, </span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mas é útil para ficar claro qual é a unidade de medida das variáveis</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_prefix =</span> <span class="st">"mil_pessoas_"</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>dados_largos <span class="ot">&lt;-</span> dados_renomeados_2 <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> condicao,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-4" class="code-annotation-target"><a href="#annotated-cell-11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> valor_mil_pessoas,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-5" class="code-annotation-target"><a href="#annotated-cell-11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_prefix =</span> <span class="st">"mil_pessoas_"</span></span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="3" data-code-annotation="1"><code>names_from =</code>: Nome da coluna de onde os <strong>nomes</strong> das novas colunas serão extraídos</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="2"><code>values_from =</code>: Nome da coluna de onde os <strong>valores</strong> para preencher as novas colunas serão extraídos</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="3"><code>names_prefix =</code>: Podemos adicionar um texto como prefixo. Nesse caso, isso é opcional, mas é útil para ficar claro qual é a unidade de medida das variáveis.</span>
+</dd>
+</dl>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_largos)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_largos)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
 Columns: 9
@@ -836,8 +862,8 @@ $ `mil_pessoas_Fora da força de trabalho`      &lt;dbl&gt; 446, 434, 441, 415, 
 </div>
 <p>Agora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável <code>condicao</code> se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função <code>clean_names()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dados_largos_renomeados <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(dados_largos)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_largos_renomeados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dados_largos_renomeados <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(dados_largos)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_largos_renomeados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
 Columns: 9
@@ -856,67 +882,110 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 <p>As funções <code>pivot_longer()</code> e <code>pivot_wider()</code> são usadas para alternar entre dados ‘longos’ e ‘largos’. Normalmente, dados longos são mais fáceis de visualizar, enquanto dados largos são melhores para realizar cálculos comparativos entre categorias. Para cada análise, sempre existe um formato mais apropriado a considerar.</p>
 </div>
 </section>
-<section id="criando-e-transformando-colunas" class="level2">
-<h2 class="anchored" data-anchor-id="criando-e-transformando-colunas">Criando e transformando colunas</h2>
+<section id="criando-e-transformando-colunas-mutate" class="level2">
+<h2 class="anchored" data-anchor-id="criando-e-transformando-colunas-mutate">Criando e transformando colunas (<code>mutate()</code>)</h2>
 <p>Para criar novas colunas, ou transformar colunas que já existem, podemos usar a função <code>mutate()</code>.</p>
 <section id="alterando-os-tipos-de-variáveis" class="level3">
 <h3 class="anchored" data-anchor-id="alterando-os-tipos-de-variáveis">Alterando os tipos de variáveis</h3>
 <p>A variável <code>uf_codigo</code> está armazenada como valor numérico. No entanto, como não realizaremos operações matemáticas com esses valores, é mais apropriado transformá-los em fatores, o que facilita a análise e previne erros em cálculos futuros.</p>
 <p>Existem várias funções para transformar variáveis de um tipo para outro, como <code>as.factor()</code>, <code>as.character()</code>, <code>as.numeric()</code>, <code>as.Date()</code>, etc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dados_tipo <span class="ot">&lt;-</span> <span class="fu">mutate</span>(</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  dados_largos_renomeados,</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nova variável: </span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nome_da_coluna = o que queremos calcular</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">uf_codigo =</span> <span class="fu">as.factor</span>(uf_codigo)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dados_tipo <span class="ot">&lt;-</span> dados_largos_renomeados <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nova variável:</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nome_da_coluna = o que queremos calcular</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf_codigo =</span> <span class="fu">as.factor</span>(uf_codigo)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calculando-a-taxa-de-desocupação" class="level3">
 <h3 class="anchored" data-anchor-id="calculando-a-taxa-de-desocupação">Calculando a taxa de desocupação</h3>
 <p>Para calcular a taxa de desocupação, precisamos criar uma nova variável representando a proporção de pessoas desocupadas em relação ao total de pessoas economicamente ativas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dados_com_proporcao <span class="ot">&lt;-</span> <span class="fu">mutate</span>(</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  dados_tipo,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nova variável: </span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nome_da_coluna = o que queremos calcular</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_desocupacao =</span> mil_pessoas_forca_de_trabalho_desocupada <span class="sc">/</span> mil_pessoas_forca_de_trabalho,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">perc_desocupacao =</span> prop_desocupacao <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>dados_com_proporcao <span class="ot">&lt;-</span> dados_tipo <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_desocupacao =</span> mil_pessoas_forca_de_trabalho_desocupada <span class="sc">/</span> mil_pessoas_forca_de_trabalho,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">perc_desocupacao =</span> prop_desocupacao <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="3" data-code-annotation="1">Calculando a proporção da desocupação: para cada linha, vamos dividir o valor <code>mil_pessoas_forca_de_trabalho_desocupada</code> por <code>mil_pessoas_forca_de_trabalho</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="4" data-code-annotation="2">Multiplicando por 100 para transformar em percentual.</span>
+</dd>
+</dl>
+</div>
 </div>
 </section>
 <section id="criando-uma-variável-trimestre_inicio" class="level3">
 <h3 class="anchored" data-anchor-id="criando-uma-variável-trimestre_inicio">Criando uma variável <strong>trimestre_inicio</strong></h3>
 <p>Podemos criar uma nova variável chamada <code>trimestre_inicio</code> para representar a data de início de cada trimestre. Para isso, precisaremos criar algumas outras variáveis “auxiliares” a partir da variável <code>trimestre_codigo</code>: <code>ano</code>, <code>trimestre_numero</code> e <code>trimestre_mes_inicio</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dados_com_trimestre <span class="ot">&lt;-</span> dados_com_proporcao <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extrair os 4 primeiros caracteres do código do trimestre</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ano =</span> <span class="fu">str_sub</span>(trimestre_codigo, <span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># convertendo o "texto" ano para número</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ano =</span> <span class="fu">as.numeric</span>(ano),</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extrair os 2 últimos caracteres do código do trimestre</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> <span class="fu">str_sub</span>(trimestre_codigo, <span class="dv">5</span>, <span class="dv">6</span>),</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># converter o texto do número trimestre para número</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> <span class="fu">as.numeric</span>(trimestre_numero),</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># criar variável com o mês de início do trimestre</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_mes_inicio =</span> <span class="fu">case_when</span>(</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="dv">7</span>,</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">10</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># criar variável com o texto de data de início do trimestre</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">paste0</span>(ano, <span class="st">"-"</span>, trimestre_mes_inicio, <span class="st">"-01"</span>),</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># converter a variável para o formato de data</span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">as.Date</span>(trimestre_inicio),</span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># queremos adicionar as colunas novas </span></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># após a coluna trimestre_codigo</span></span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> trimestre_codigo</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>trimestre_mes_inicio, <span class="sc">-</span>trimestre_numero)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>dados_com_trimestre <span class="ot">&lt;-</span> dados_com_proporcao <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">ano =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(trimestre_codigo, <span class="dv">1</span>, <span class="dv">4</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2">2</button><span id="annotated-cell-16-4" class="code-annotation-target"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ano =</span> <span class="fu">as.numeric</span>(ano),</span>
+<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3">3</button><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(trimestre_codigo, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="4">4</button><span id="annotated-cell-16-7" class="code-annotation-target"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_numero =</span> <span class="fu">as.numeric</span>(trimestre_numero),</span>
+<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="5">5</button><span id="annotated-cell-16-9" class="code-annotation-target"><a href="#annotated-cell-16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_mes_inicio =</span> <span class="fu">case_when</span>(</span>
+<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="dv">7</span>,</span>
+<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13" aria-hidden="true" tabindex="-1"></a>      trimestre_numero <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">10</span></span>
+<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="annotated-cell-16-15"><a href="#annotated-cell-16-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="6">6</button><span id="annotated-cell-16-16" class="code-annotation-target"><a href="#annotated-cell-16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">paste0</span>(ano, <span class="st">"-"</span>, trimestre_mes_inicio, <span class="st">"-01"</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="7">7</button><span id="annotated-cell-16-17" class="code-annotation-target"><a href="#annotated-cell-16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">trimestre_inicio =</span> <span class="fu">as.Date</span>(trimestre_inicio),</span>
+<span id="annotated-cell-16-18"><a href="#annotated-cell-16-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="8">8</button><span id="annotated-cell-16-19" class="code-annotation-target"><a href="#annotated-cell-16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> trimestre_codigo</span>
+<span id="annotated-cell-16-20"><a href="#annotated-cell-16-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="9">9</button><span id="annotated-cell-16-21" class="code-annotation-target"><a href="#annotated-cell-16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>trimestre_mes_inicio, <span class="sc">-</span>trimestre_numero)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="3" data-code-annotation="1">Extrair os 4 primeiros caracteres do código do trimestre</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="4" data-code-annotation="2">Convertendo a coluna <code>ano</code> de texto para numérico</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="6" data-code-annotation="3">Extrair os 2 últimos caracteres do código do trimestre</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="7" data-code-annotation="4">Convertendo a coluna <code>trimestre_numero</code> de texto para numérico</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="9" data-code-annotation="5">Criar variável com o mês de início do trimestre</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="16" data-code-annotation="6">Criar variável com data de início do trimestre (neste momento, com tipo texto), colando os valores do mês e ano.</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="17" data-code-annotation="7">Convertendo a coluna <code>trimestre_inicio</code> de texto para Data</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="19" data-code-annotation="8">Queremos adicionar as colunas novas após a coluna <code>trimestre_codigo</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="21" data-code-annotation="9">Removendo colunas que não serão necessárias</span>
+</dd>
+</dl>
+</div>
 </div>
 </section>
 <section id="criando-uma-variável-dummy" class="level3">
@@ -928,27 +997,48 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 <li>Final: <a href="https://bvsms.saude.gov.br/bvs/saudelegis/gm/2022/prt0913_22_04_2022.html">Abril de 2022</a></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dados_com_dummy <span class="ot">&lt;-</span> dados_com_trimestre <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">periodo_pandemia =</span> <span class="fu">case_when</span>(</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    trimestre_codigo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"202002"</span>, <span class="st">"202003"</span>, <span class="st">"202004"</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"202101"</span>, <span class="st">"202102"</span>, <span class="st">"202103"</span>, <span class="st">"202104"</span>,</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"202201"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="dv">0</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>dados_com_dummy <span class="ot">&lt;-</span> dados_com_trimestre <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">periodo_pandemia =</span> <span class="fu">case_when</span>(</span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>    trimestre_codigo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"202002"</span>, <span class="st">"202003"</span>, <span class="st">"202004"</span>,</span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"202101"</span>, <span class="st">"202102"</span>, <span class="st">"202103"</span>, <span class="st">"202104"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-6" class="code-annotation-target"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"202201"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-7" class="code-annotation-target"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="dv">0</span></span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a>  ))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="6" data-code-annotation="1">Caso o <code>trimestre_codigo</code> sejam um dos listados dentro do vetor, queremos salvar o valor <code>1</code> na coluna <code>periodo_pandemia</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="7" data-code-annotation="2">O valor padrão é <code>0</code>. Se nenhuma regra listada contemplar alguma linha, a coluna criada (<code>periodo_pandemia</code>) receberá o valor padrão (<code>0</code>). Ou seja, as linhas cujo período que não estão no vetor listado receberão o valor <code>0</code>.</span>
+</dd>
+</dl>
+</div>
 </div>
 </section>
 </section>
-<section id="ordenando-as-linhas" class="level2">
-<h2 class="anchored" data-anchor-id="ordenando-as-linhas">Ordenando as linhas</h2>
+<section id="ordenando-as-linhas-arrange" class="level2">
+<h2 class="anchored" data-anchor-id="ordenando-as-linhas-arrange">Ordenando as linhas (<code>arrange()</code>)</h2>
 <p>A base atual está ordada por trimestre e código da unidade da federação. Para facilitar a análise, podemos ordenar as linhas segundo a proporção de desocupação calculada no passo anterior, usando a função <code>arrange()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base de dados</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dados_com_dummy <span class="sc">|&gt;</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># selecionando colunas relevantes</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trimestre_codigo, uf, perc_desocupacao) <span class="sc">|&gt;</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ordenar linhas usando a coluna perc_desocupacao</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># de forma crescente</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(perc_desocupacao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>dados_com_dummy <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-2" class="code-annotation-target"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trimestre_codigo, uf, perc_desocupacao) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-3" class="code-annotation-target"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(perc_desocupacao)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="2" data-code-annotation="1">Selecionando colunas relevantes, para facilitar ver o resultado</span>
+</dd>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="3" data-code-annotation="2">Ordenar linhas usando a coluna <code>perc_desocupacao</code>, de forma crescente</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,350 × 3
    trimestre_codigo uf             perc_desocupacao
@@ -968,13 +1058,21 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 </div>
 <p>A função <code>arrange()</code> ordena, por padrão, de forma crescente. Podemos ordenar de forma decrescente, utilizando a função <code>desc()</code> junto à coluna que queremos ordenar de forma decrescente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base de dados</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dados_com_dummy <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># selecionando colunas relevantes</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trimestre_codigo, uf, perc_desocupacao) <span class="sc">|&gt;</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ordenar linhas usando a coluna perc_desocupacao</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># de forma decrescente</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(perc_desocupacao))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a>dados_com_dummy <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-2" class="code-annotation-target"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trimestre_codigo, uf, perc_desocupacao) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2">2</button><span id="annotated-cell-19-3" class="code-annotation-target"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(perc_desocupacao))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="2" data-code-annotation="1">Selecionando colunas relevantes, para facilitar ver o resultado</span>
+</dd>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="3" data-code-annotation="2">Ordenar linhas usando a coluna <code>perc_desocupacao</code>, de forma decrescente</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,350 × 3
    trimestre_codigo uf         perc_desocupacao
@@ -994,14 +1092,13 @@ $ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 446, 434, 441, 415, 437, 
 </div>
 <p>Nesse caso, as linhas ficaram ordenadas de forma decrescente, de acordo com a proporção de desocupação. Porém os trimestres não estão ordenados! A função <code>arrange()</code> permite que ordenemos por mais de uma coluna, e a ordem de prioridade é dada pela ordem em que as colunas são passadas para a função:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dados_ordenados <span class="ot">&lt;-</span> <span class="fu">arrange</span>(</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base de dados</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  dados_com_dummy,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># colunas que queremos usar ordenar</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  trimestre_codigo, <span class="fu">desc</span>(prop_desocupacao)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_ordenados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dados_ordenados <span class="ot">&lt;-</span> dados_com_dummy <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># colunas que queremos usar ordenar</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  trimestre_codigo, <span class="fu">desc</span>(prop_desocupacao)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_ordenados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
 Columns: 14
@@ -1023,8 +1120,8 @@ $ periodo_pandemia                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0
 </div>
 <p>Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).</p>
 </section>
-<section id="unindo-duas-bases-de-dados" class="level2">
-<h2 class="anchored" data-anchor-id="unindo-duas-bases-de-dados">Unindo duas bases de dados</h2>
+<section id="unindo-duas-bases-de-dados-left_join" class="level2">
+<h2 class="anchored" data-anchor-id="unindo-duas-bases-de-dados-left_join">Unindo duas bases de dados (<code>left_join()</code>)</h2>
 <p>Unir duas tabelas é algo comum em análises de dados. Usamos operações do tipo <em>join</em> para combinar duas tabelas, utilizando uma ou mais colunas como “chave”. As colunas do tipo chave têm valores comuns nas duas tabelas e são usadas para identificar as linhas correspondentes entre elas.</p>
 <p>O pacote <code>{dplyr}</code> fornece um conjunto de funções para realizar diferentes tipos de uniões, como <code>left_join()</code>, <code>inner_join()</code>, <code>full_join()</code>, entre outras.</p>
 <p>A função <code>left_join()</code> é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.</p>
@@ -1045,9 +1142,8 @@ Dica
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>geo_estados <span class="ot">&lt;-</span> <span class="fu">read_state</span>(<span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(geo_estados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>geo_estados <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_state</span>(<span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(geo_estados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 27
 Columns: 6
@@ -1062,18 +1158,18 @@ $ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPO
 <p>O <code>left_join()</code> é usado aqui para combinar os dados do SIDRA com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as proporções de desocupação por UF em um mapa. Esse tipo de operação é comum quando queremos identificar padrões regionais.</p>
 <p>É importante garantir que as colunas usadas na combinação de tabelas (o argumento <code>by</code> do <code>left_join()</code>) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função <code>class()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(geo_estados<span class="sc">$</span>code_state)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(geo_estados<span class="sc">$</span>code_state)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dados_ordenados<span class="sc">$</span>uf_codigo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dados_ordenados<span class="sc">$</span>uf_codigo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
 </div>
 <p>Neste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O <code>left_join()</code> não conseguirá fazer a correspondência corretamente, e a função gerará um erro:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(geo_estados, dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(geo_estados, dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `sf_column %in% names(g)`:
 ! Can't join `x$code_state` with `y$uf_codigo` due to incompatible
@@ -1084,11 +1180,11 @@ $ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPO
 </div>
 <p>No exemplo, podemos transformar a coluna <code>code_state</code> em fator usando <code>mutate()</code>. Assim, garantimos que as colunas usadas no argumento <code>by</code> sejam do mesmo tipo e possam ser corretamente combinados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="ot">&lt;-</span> geo_estados <span class="sc">|&gt;</span> </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code_state =</span> <span class="fu">as.factor</span>(code_state)) <span class="sc">|&gt;</span> </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_geo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="ot">&lt;-</span> geo_estados <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code_state =</span> <span class="fu">as.factor</span>(code_state)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_geo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
 Columns: 19
@@ -1119,15 +1215,16 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="sc">|&gt;</span> </span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> perc_desocupacao)) <span class="sc">+</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percentual de desocupação por UF no 2º trimestre de 2024"</span>,</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Desocupação (%)"</span>) <span class="sc">+</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> perc_desocupacao)) <span class="sc">+</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percentual de desocupação por UF no 2º trimestre de 2024"</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Desocupação (%)"</span>) <span class="sc">+</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1143,8 +1240,8 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 <p>Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas. Assim não precisamos repetir todo o processo de limpeza e transformação de dados a cada vez que quisermos fazer uma análise.</p>
 <p>É recomendável salvar a base de dados em um formato que preserve a estrutura dos dados, como <code>.rds</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando os dados preparados</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_ordenados, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando os dados preparados</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_ordenados, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sugestões-de-materiais" class="level2">
@@ -1513,25 +1610,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       };
     }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
           }
-        });
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
       }
   const findCites = (el) => {
     const parentEl = el.parentElement;
