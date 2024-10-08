@@ -2,9 +2,8 @@ install.packages("abjData")
 
 
 uf_regiao <- abjData::muni |> 
-  dplyr::distinct(uf_nm, uf_sigla, uf_id, regiao_nm) |> 
+  dplyr::distinct(uf_sigla, uf_id, regiao_nm) |> 
   dplyr::rename(
-    uf = uf_nm,
     uf_codigo = uf_id,
     regiao = regiao_nm
   )
