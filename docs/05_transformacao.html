@@ -358,6 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ordenando-as-linhas-arrange" id="toc-ordenando-as-linhas-arrange" class="nav-link" data-scroll-target="#ordenando-as-linhas-arrange">Ordenando as linhas (<code>arrange()</code>)</a></li>
   <li><a href="#unindo-duas-bases-de-dados-left_join" id="toc-unindo-duas-bases-de-dados-left_join" class="nav-link" data-scroll-target="#unindo-duas-bases-de-dados-left_join">Unindo duas bases de dados (<code>left_join()</code>)</a></li>
   <li><a href="#salvando-a-base-de-dados-preparada" id="toc-salvando-a-base-de-dados-preparada" class="nav-link" data-scroll-target="#salvando-a-base-de-dados-preparada">Salvando a base de dados preparada</a></li>
+  <li><a href="#exercícios-sugeridos" id="toc-exercícios-sugeridos" class="nav-link" data-scroll-target="#exercícios-sugeridos">Exercícios sugeridos</a></li>
   <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
   </ul>
 </nav>
@@ -1241,8 +1242,27 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 <p>É recomendável salvar a base de dados em um formato que preserve a estrutura dos dados, como <code>.rds</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando os dados preparados</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dados_ordenados, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(dados_ordenados, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="exercícios-sugeridos" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios-sugeridos">Exercícios sugeridos</h2>
+<p>Utilizando a base de dados que criamos nessa aula (com a taxa de desocupação calculada), responda as perguntas abaixo.</p>
+<ol type="1">
+<li><p>Crie uma nova tabela com apenas as colunas <code>uf</code>, <code>trimestre</code>, <code>perc_desocupacao</code> e <code>periodo_pandemia</code>.</p></li>
+<li><p>Qual foi a combinação de Estado/Trimestre que teve a maior taxa de desocupação…</p></li>
+</ol>
+<ul>
+<li><ol type="a">
+<li>Durante a pandemia?</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Fora do período de pandemia?</li>
+</ol></li>
+</ul>
+<ol start="3" type="1">
+<li>Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?</li>
+</ol>
 </section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
