@@ -188,7 +188,7 @@ gg_miss_var(dados)
 gg_miss_var(dados, show_pct = TRUE)
 ```
 
-## 
+## Retornar algumas linhas da base de dados
 
 Em situações onde trabalharmos com dados que possuem um número de linhas muito grande, não podemos utilizar a função `View()` para ver a tabela inteira.
 
