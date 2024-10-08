@@ -471,6 +471,24 @@ Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas
 readr::write_rds(dados_ordenados, "dados_output/sidra_4092_arrumado.rds")
 ```
 
+## Exercícios sugeridos
+
+Utilizando a base de dados que criamos nessa aula (com a taxa de desocupação calculada), responda as perguntas abaixo.
+
+```{r}
+#| echo: false
+#| eval: false
+dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
+```
+
+1. Crie uma nova tabela com apenas as colunas `uf`, `trimestre`, `perc_desocupacao` e `periodo_pandemia`.
+
+2. Qual foi a combinação de Estado/Trimestre que teve a maior taxa de desocupação...
+  - a) Durante a pandemia?
+  - b) Fora do período de pandemia?
+  
+3. Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?
+
 
 ## Sugestões de materiais
 
