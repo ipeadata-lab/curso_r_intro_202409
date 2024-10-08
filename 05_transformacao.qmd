@@ -1,6 +1,7 @@
 ---
 # Manipulando dados com dplyr
 title: "Transformando dados"
+code-annotations: hover
 ---
 
 ## Introdução
@@ -10,37 +11,21 @@ Primeiramente, precisamos carregar o pacote `tidyverse` e a base de dados que va
 [^transformacao-dados]: É interessante conhecer mais sobre a base de dados que estamos utilizando. O IBGE apresenta alguns conteúdos interessantes, como a página com informações sobre a [PNAD Contínua Trimestral](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?edicao=41004), e também a [página sobre desemprego](https://www.ibge.gov.br/explica/desemprego.php) que nos ajuda a entender as variáveis presentes.
 
 
-```{r}
-#| message: false
-library(tidyverse)
-dados_brutos <- read_rds("dados/sidrar_4092_bruto.rds") 
-```
+Neste capítulo, vamos explorar as funções de transformação de dados do pacote `dplyr`, a partir da pergunta norteadora abaixo:
 
-## Padronizar nome das colunas
+> Considerando que a tabela 4092 apresenta dados sobre "pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação", **qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?**
 
-É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas de codificação de caracteres (*encoding*), facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.
-
-O pacote `janitor` possui a função `clean_names()`, que padroniza os nomes das colunas de um *data frame*. Ele substitui espaços por *underline* (`_`), remove caracteres especiais, e transforma o texto em minúsculo, garantindo maior consistência ao lidar com os dados. Isso evita erros ao acessar colunas.
 
 ```{r}
 #| message: false
-library(janitor)
+library(dplyr)
+dados_brutos <- readr::read_rds("dados/sidrar_4092_bruto.rds") 
 ```
 
-```{r}
-# checar nome das colunas da base de dados
-names(dados_brutos)
-
-# limpar nomes das colunas da base de dados, e salvar em um novo objeto
-dados_renomeados <- clean_names(dados_brutos)
-
-# checar nome das colunas da base de dados renomeada
-names(dados_renomeados)
-```
 
 ## Linhas, colunas e objetivo de análise
 
-Uma pergunta que é sempre importante ter em mente ao analisar dados é: O que cada linha representa? Na estatística, esse é o conceito da **unidade amostral**, ou **unidade observacional**.
+Uma pergunta que é sempre importante ter em mente ao analisar dados é: O que cada linha representa? Na estatística, esse é o conceito da **unidade observacional**.
 
 O objeto `dados_brutos` apresenta uma linha para cada combinação das seguintes variáveis:
 
@@ -57,13 +42,10 @@ Podemos consultar os valores distintos possíveis no R, para garantir que estamo
 As variáveis disponíveis na base de dados, e suas unidades de medida são:
 
 ```{r}
-distinct(
-  # base de dados
-  dados_renomeados, 
-  # colunas que queremos bucar os valores distintos 
-  variavel, unidade_de_medida
-)
+dados_brutos |>
+  distinct(`Variável`, `Unidade de Medida`) # <1>
 ```
+1. Colunas que queremos buscar os valores distintos
 
 Podemos observar, cada linha representa uma combinação de trimestre, unidade da federação e variável. 
 
@@ -72,9 +54,27 @@ Outras perguntas relevantes ao analisar dados são:
   - Qual é a pergunta que eu quero responder com esses dados?
   - Quais são as variáveis que eu preciso para responder essa pergunta?
 
-Neste capítulo, vamos explorar as funções de transformação de dados do pacote `dplyr`, a partir da pergunta norteadora abaixo:
 
-> Considerando que a tabela 4092 apresenta dados sobre "pessoas de 14 anos ou mais de idade por condição em relação à força de trabalho e condição de ocupação", qual é a taxa de desocupação de cada estado e região do Brasil ao longo do tempo?
+## Padronizar nome das colunas
+
+É uma boa prática padronizar o nome das colunas de um data frame. Assim evitamos problemas de codificação de caracteres (*encoding*), facilitamos a legibilidade do código e evitamos possíveis erros ao acessar as colunas.
+
+O pacote `janitor` possui a função `clean_names()`, que padroniza os nomes das colunas de um *data frame*. Ele substitui espaços por *underline* (`_`), remove caracteres especiais, e transforma o texto em minúsculo, garantindo maior consistência ao lidar com os dados. Isso evita erros ao acessar colunas.
+
+```{r}
+names(dados_brutos) # <1>
+```
+1. Checar o nome das colunas da base de dados
+
+
+```{r}
+dados_renomeados <- janitor::clean_names(dados_brutos)  # <1>
+
+names(dados_renomeados)  # <2>
+```
+1. Limpar nomes das colunas da base de dados, e salvar em um novo objeto chamado `dados_renomeados`
+2. Checar o nome das colunas da base de dados renomeada
+
 
 ## Pipe - Encadeando funções
 
@@ -83,20 +83,17 @@ Nos exemplos anteriores, utilizamos uma função por vez, para facilitar a compr
 Porém, é importante ter cuidado para não criar sequências muito longas e difíceis de entender.
 
 
-## Filtrando linhas
+## Filtrando linhas (`filter()`)
 
 Para responder à pergunta norteadora, não precisamos de todas as variáveis presentes na base de dados. Podemos **filtrar** as linhas que são relevantes para a análise, escolhendo as variáveis de interesse.
 
 Nesse caso, podemos filtrar os dados onde a variável é igual à `"Pessoas de 14 anos ou mais de idade"`.
 
 ```{r}
-dados_filtrados <- filter(
-  # base de dados
-  dados_renomeados,
-  # condição de filtro
-  variavel == "Pessoas de 14 anos ou mais de idade"
-)
+dados_filtrados <- dados_renomeados |>
+  filter(variavel == "Pessoas de 14 anos ou mais de idade")
 ```
+
 
 Para verificar se o filtro foi feito corretamente, podemos checar o número de linhas de cada base de dados:
 
@@ -108,12 +105,8 @@ nrow(dados_filtrados)
 Podemos verificar também os valores distintos para as colunas `variavel` e `unidade_de_medida` na base de dados `dados_filtrados`:
 
 ```{r}
-distinct(
-  # base de dados
-  dados_filtrados, 
-  # colunas que queremos bucar os valores distintos 
-  variavel, unidade_de_medida
-)
+dados_filtrados |>
+  distinct(variavel, unidade_de_medida)
 ```
 
 Agora sabemos que a base de dados `dados_filtrados` contém apenas dados sobre a variável `"Pessoas de 14 anos ou mais de idade"`, e que a unidade de medida da coluna `valor` é mil pessoas.
@@ -152,40 +145,24 @@ Para esses exemplos, vamos utilizar a tabela `starwars` do pacote `dplyr`. Nessa
 :::
 
 
-## Selecionando colunas
+## Selecionando colunas (`select()`)
 
 Algumas colunas não são relevantes para responder à pergunta norteadora. Podemos **selecionar** apenas as colunas que vamos utilizar através da função `select()`:
 
 ```{r}
-dados_selecionados <- select(
-  # base de dados
-  dados_filtrados, 
-  # colunas que queremos manter
-  unidade_da_federacao,
-  unidade_da_federacao_codigo,
-  trimestre,
-  trimestre_codigo,
-  condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
-  valor
-)
+dados_selecionados <-
+  dados_filtrados |>
+  select(
+    # colunas que queremos manter
+    unidade_da_federacao,
+    unidade_da_federacao_codigo,
+    trimestre,
+    trimestre_codigo,
+    condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
+    valor
+  )
 
 glimpse(dados_selecionados)
-```
-
-Podemos renomear colunas com a função `rename()`. Vamos renomear algumas colunas para facilitar o uso posteriormente:
-
-```{r}
-dados_renomeados_2 <- rename(
-  # base de dados
-  dados_selecionados, 
-  # colunas que queremos renomear: novo_nome = nome_atual
-  condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
-  valor_mil_pessoas = valor,
-  uf = unidade_da_federacao,
-  uf_codigo = unidade_da_federacao_codigo
-)
-
-glimpse(dados_renomeados_2)
 ```
 
 
@@ -209,36 +186,53 @@ Para esses exemplos, vamos utilizar a tabela `starwars` do pacote `dplyr`:
 | `starts_with()` | Seleciona colunas que começam com um prefixo | `starts_with("h")` | Todas as colunas que começam com "h" |
 | `ends_with()` | Seleciona colunas que terminam com um sufixo | `ends_with("color")` | Todas as colunas que terminam com "color" |
 | `contains()` | Seleciona colunas que contêm um padrão | `contains("e")` | Todas as colunas que contêm "e" |
-
-
 :::
 
 
 
+## Renomeando colunas (`rename()`)
 
-## Transformando a estrutura da tabela
+Podemos renomear colunas com a função `rename()`. Vamos renomear algumas colunas para facilitar o uso posteriormente:
+
+```{r}
+dados_renomeados_2 <- dados_selecionados |>
+  rename(
+    # colunas que queremos renomear: novo_nome = nome_atual
+    condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
+    valor_mil_pessoas = valor,
+    uf = unidade_da_federacao,
+    uf_codigo = unidade_da_federacao_codigo
+  )
+
+glimpse(dados_renomeados_2)
+```
+
+
+
+
+
+## Transformando a estrutura da tabela (`pivot_wider()` e `pivot_longer()`)
 
 Ainda considerando nossa pergunta norteadora, queremos calcular a taxa de desocupação de cada estado e região do Brasil ao longo do tempo. Para isso, é mais fácil trabalhar com a tabela onde cada linha represente uma UF por trimestre, e as categorias da variável `condicao` sejam transformadas em colunas. 
 
-Para fazer essa transformação, podemos usar a função `pivot_wider()`.
+Para fazer essa transformação, podemos usar a função `pivot_wider()`, do pacote `{tidyr}`.
 
 A função `pivot_wider()` é útil quando queremos reorganizar uma tabela, transformando variáveis categóricas em novas colunas. Essa estrutura facilita cálculos comparativos e análises entre as diferentes categorias.
 
 Por exemplo, no formato atual (dados longos), temos uma linha para cada combinação de UF, trimestre e condição de ocupação. Ao usarmos `pivot_wider()`, vamos transformar a tabela para que cada linha represente uma UF por trimestre, e as diferentes condições de ocupação (empregado, desocupado, etc.) se tornem colunas.
 
 ```{r}
-dados_largos <- pivot_wider(
-  # base de dados
-  dados_renomeados_2, 
-  # nome da coluna de onde os nomes das novas colunas serão extraídos
-  names_from = condicao, 
-  # nome da coluna de onde os valores das novas colunas serão extraídos 
-  values_from = valor_mil_pessoas, 
-  # podemos adicionar um texto como prefixo. nesse caso, isso é opcional, 
-  # mas é útil para ficar claro qual é a unidade de medida das variáveis
-  names_prefix = "mil_pessoas_"
+dados_largos <- dados_renomeados_2 |> 
+  tidyr::pivot_wider(
+  names_from = condicao, # <1>
+  values_from = valor_mil_pessoas, # <2>
+  names_prefix = "mil_pessoas_" # <3>
 )
 ```
+1. `names_from = `: Nome da coluna de onde os **nomes** das novas colunas serão extraídos
+2. `values_from = `: Nome da coluna de onde os **valores** para preencher as novas colunas serão extraídos 
+3. `names_prefix = `: Podemos adicionar um texto como prefixo. Nesse caso, isso é opcional, mas é útil para ficar claro qual é a unidade de medida das variáveis.
+
 
 ```{r}
 glimpse(dados_largos)
@@ -247,7 +241,7 @@ glimpse(dados_largos)
 Agora temos uma tabela onde cada linha representa uma UF por trimestre, e as categorias da variável `condicao` se tornaram colunas. Porém agora temos colunas com nomes que estão com caracteres especiais, e podemos arrumar isso com a função `clean_names()`.
 
 ```{r}
-dados_largos_renomeados <- clean_names(dados_largos)
+dados_largos_renomeados <- janitor::clean_names(dados_largos)
 glimpse(dados_largos_renomeados)
 ```
 
@@ -256,7 +250,7 @@ As funções `pivot_longer()` e `pivot_wider()` são usadas para alternar entre 
 :::
 
 
-## Criando e transformando colunas
+## Criando e transformando colunas (`mutate()`)
 
 Para criar novas colunas, ou transformar colunas que já existem, podemos usar a função `mutate()`.
 
@@ -267,13 +261,12 @@ A variável `uf_codigo` está armazenada como valor numérico. No entanto, como 
 Existem várias funções para transformar variáveis de um tipo para outro, como `as.factor()`, `as.character()`, `as.numeric()`, `as.Date()`,  etc.
 
 ```{r}
-dados_tipo <- mutate(
-  # base de dados
-  dados_largos_renomeados,
-  # nova variável: 
-  # nome_da_coluna = o que queremos calcular
-  uf_codigo = as.factor(uf_codigo)
-)
+dados_tipo <- dados_largos_renomeados |>
+  mutate(
+    # nova variável:
+    # nome_da_coluna = o que queremos calcular
+    uf_codigo = as.factor(uf_codigo)
+    )
 ```
 
 ### Calculando a taxa de desocupação
@@ -281,15 +274,14 @@ dados_tipo <- mutate(
 Para calcular a taxa de desocupação, precisamos criar uma nova variável representando a proporção de pessoas desocupadas em relação ao total de pessoas economicamente ativas.
 
 ```{r}
-dados_com_proporcao <- mutate(
-  # base de dados
-  dados_tipo,
-  # nova variável: 
-  # nome_da_coluna = o que queremos calcular
-  prop_desocupacao = mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho,
-  perc_desocupacao = prop_desocupacao * 100
-)
+dados_com_proporcao <- dados_tipo |>
+  mutate(
+    prop_desocupacao = mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho, # <1>
+    perc_desocupacao = prop_desocupacao * 100 # <2>
+  )
 ```
+1. Calculando a proporção da desocupação: para cada linha, vamos dividir o valor `mil_pessoas_forca_de_trabalho_desocupada` por `mil_pessoas_forca_de_trabalho`. 
+2. Multiplicando por 100 para transformar em percentual.
 
 
 ### Criando uma variável **trimestre_inicio**
@@ -299,32 +291,35 @@ Podemos criar uma nova variável chamada `trimestre_inicio` para  representar a 
 ```{r}
 dados_com_trimestre <- dados_com_proporcao |>
   mutate(
-    # extrair os 4 primeiros caracteres do código do trimestre
-    ano = str_sub(trimestre_codigo, 1, 4),
-    # convertendo o "texto" ano para número
-    ano = as.numeric(ano),
-    # extrair os 2 últimos caracteres do código do trimestre
-    trimestre_numero = str_sub(trimestre_codigo, 5, 6),
-    # converter o texto do número trimestre para número
-    trimestre_numero = as.numeric(trimestre_numero),
-    # criar variável com o mês de início do trimestre
-    trimestre_mes_inicio = case_when(
+    ano = stringr::str_sub(trimestre_codigo, 1, 4), # <1>
+    ano = as.numeric(ano), # <2>
+    
+    trimestre_numero = stringr::str_sub(trimestre_codigo, 5, 6),  # <3>
+    trimestre_numero = as.numeric(trimestre_numero), # <4>
+    
+    trimestre_mes_inicio = case_when( # <5>
       trimestre_numero == 1 ~ 1,
       trimestre_numero == 2 ~ 4,
       trimestre_numero == 3 ~ 7,
       trimestre_numero == 4 ~ 10
     ),
-    # criar variável com o texto de data de início do trimestre
-    trimestre_inicio = paste0(ano, "-", trimestre_mes_inicio, "-01"),
-    # converter a variável para o formato de data
-    trimestre_inicio = as.Date(trimestre_inicio),
-    # queremos adicionar as colunas novas 
-    # após a coluna trimestre_codigo
-    .after = trimestre_codigo
+    
+    trimestre_inicio = paste0(ano, "-", trimestre_mes_inicio, "-01"),  # <6>
+    trimestre_inicio = as.Date(trimestre_inicio),  # <7>
+    
+    .after = trimestre_codigo # <8>
   ) |> 
-  select(-trimestre_mes_inicio, -trimestre_numero)
+  select(-trimestre_mes_inicio, -trimestre_numero) # <9>
 ```
-
+1. Extrair os 4 primeiros caracteres do código do trimestre
+2. Convertendo a coluna `ano` de texto para numérico
+3. Extrair os 2 últimos caracteres do código do trimestre
+4. Convertendo a coluna `trimestre_numero` de texto para numérico
+5. Criar variável com o mês de início do trimestre
+6. Criar variável com data de início do trimestre (neste momento, com tipo texto), colando os valores do mês e ano.
+7. Convertendo a coluna `trimestre_inicio` de texto para Data
+8. Queremos adicionar as colunas novas após a coluna `trimestre_codigo`
+9. Removendo colunas que não serão necessárias
 
 
 ### Criando uma variável *dummy*
@@ -338,48 +333,47 @@ Podemos criar uma variável dummy para identificar os trimestres que ocorreram d
 
 ```{r}
 dados_com_dummy <- dados_com_trimestre |> 
-  mutate(periodo_pandemia = case_when(
+  mutate(
+    periodo_pandemia = case_when(
     trimestre_codigo %in% c("202002", "202003", "202004",
                             "202101", "202102", "202103", "202104",
-                            "202201") ~ 1,
-    .default = 0
+                            "202201") ~ 1, # <1>
+    .default = 0 # <2>
   ))
 ```
+1. Caso o `trimestre_codigo` sejam um dos listados dentro do vetor, queremos salvar o valor `1` na coluna `periodo_pandemia`.
+2. O valor padrão é `0`. Se nenhuma regra listada contemplar alguma linha, a coluna criada (`periodo_pandemia`) receberá o valor padrão (`0`). Ou seja, as linhas cujo período que não estão no vetor listado receberão o valor `0`. 
 
 
-
-## Ordenando as linhas
+## Ordenando as linhas (`arrange()`)
 
 A base atual está ordada por trimestre e código da unidade da federação. Para facilitar a análise, podemos ordenar as linhas segundo a proporção de desocupação calculada no passo anterior, usando a função `arrange()`:
 
 ```{r}
-# base de dados
 dados_com_dummy |>
-  # selecionando colunas relevantes
-  select(trimestre_codigo, uf, perc_desocupacao) |>
-  # ordenar linhas usando a coluna perc_desocupacao
-  # de forma crescente
-  arrange(perc_desocupacao)
+  select(trimestre_codigo, uf, perc_desocupacao) |> # <1>
+  arrange(perc_desocupacao) # <2>
 ```
+1. Selecionando colunas relevantes, para facilitar ver o resultado
+2. Ordenar linhas usando a coluna `perc_desocupacao`, de forma crescente
+
 
 A função `arrange()` ordena, por padrão, de forma crescente. Podemos ordenar de forma decrescente, utilizando a função `desc()` junto à coluna que queremos ordenar de forma decrescente:
 
 ```{r}
-# base de dados
 dados_com_dummy |>
-  # selecionando colunas relevantes
-  select(trimestre_codigo, uf, perc_desocupacao) |>
-  # ordenar linhas usando a coluna perc_desocupacao
-  # de forma decrescente
-  arrange(desc(perc_desocupacao))
+  select(trimestre_codigo, uf, perc_desocupacao) |> # <1>
+  arrange(desc(perc_desocupacao)) # <2>
 ```
+1. Selecionando colunas relevantes, para facilitar ver o resultado
+2. Ordenar linhas usando a coluna `perc_desocupacao`, de forma decrescente
+
 
 Nesse caso, as linhas ficaram ordenadas de forma decrescente, de acordo com a proporção de desocupação. Porém os trimestres não estão ordenados! A função `arrange()` permite que ordenemos por mais de uma coluna, e a ordem de prioridade é dada pela ordem em que as colunas são passadas para a função:
 
 ```{r}
-dados_ordenados <- arrange(
-  # base de dados
-  dados_com_dummy,
+dados_ordenados <- dados_com_dummy |> 
+  arrange(
   # colunas que queremos usar ordenar
   trimestre_codigo, desc(prop_desocupacao)
 )
@@ -390,8 +384,7 @@ glimpse(dados_ordenados)
 Agora temos a base de dados ordenada por trimestre, e dentro de cada trimestre, por proporção de desocupação (de forma descrecente).
 
 
-
-## Unindo duas bases de dados
+## Unindo duas bases de dados (`left_join()`)
 
 Unir duas tabelas é algo comum em análises de dados. Usamos operações do tipo *join* para combinar duas tabelas, utilizando uma ou mais colunas como "chave". As colunas do tipo chave têm valores comuns nas duas tabelas e são usadas para identificar as linhas correspondentes entre elas.
 
@@ -411,8 +404,7 @@ Podemos utilizar a função `read_state()` para carregar as geometrias dos estad
 
 ```{r}
 #| message: false
-library(geobr)
-geo_estados <- read_state(showProgress = FALSE)
+geo_estados <- geobr::read_state(showProgress = FALSE)
 glimpse(geo_estados)
 ```
 
@@ -454,6 +446,7 @@ Não falaremos nesse momento sobre como criar visualizações e mapas, pois isso
 #| label: geobr-mapa
 #| echo: true
 #| code-fold: true
+library(ggplot2)
 dados_geo |> 
   filter(trimestre_codigo == "202402") |>
   ggplot() +
@@ -475,7 +468,7 @@ Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas
 ```{r}
 #| eval: false
 # Salvando os dados preparados
-write_rds(dados_ordenados, "dados_output/sidra_4092_arrumado.rds")
+readr::write_rds(dados_ordenados, "dados_output/sidra_4092_arrumado.rds")
 ```
 
 
