@@ -1,5 +1,6 @@
 ---
 title: "Erros e *warnings* frequentes"
+code-annotations: hover
 ---
 
 A lista a seguir apresenta alguns erros e *warnings* que apareceram na aula (seja por dúvida presencial, seja no chat do Google Meet).
@@ -57,14 +58,16 @@ O erro a seguir ocorre quando tentamos carregar um pacote que não foi instalado
 ```{r}
 #| error: true
 # O código abaixo gerará um erro:
-library(nome_pacote)
+library(quarto)                      # <1>
 ```
+1. Nome do pacote
+
 Para que consiga acessar, é necessário instalar o pacote, e depois carregá-lo:
 
 ```{r}
 #| eval: false
-install.packages("nome_pacote")
-library(nome_pacote)
+install.packages("quarto")
+library(quarto)
 ```
 
 
