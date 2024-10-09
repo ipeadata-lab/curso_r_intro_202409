@@ -10,7 +10,7 @@ No Ipea, existe um conjunto de servidores (máquinas virtuais) de alta capacidad
 
 A capacidade destes servidores (em Out/20204) é apresentada na figura abaixo:
 
-![](images/servidores.png){width=50% fig-align="center"}
+![](images/servidores.png){width=80% fig-align="center"}
 
 
 
