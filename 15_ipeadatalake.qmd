@@ -1,15 +1,8 @@
 ---
 # Usar a infraestrutura de pesquisa do Ipea (módulo ministrado pela COCD)
-title: "Infraestrutura de pesquisa do Ipea"
+title: "Acessando dados com o {ipeadatalake}"
 subtitle: "Módulo ministrado pela COCD"
 ---
-
-:::callout-warning
-Página em construção! Em breve. 
-:::
-
-<!-- - Storages e bases de dados -->
-
 
 
 <!-- overview do ipeadatalake -->

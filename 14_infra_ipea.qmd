@@ -1,0 +1,95 @@
+---
+# Usar a infraestrutura de pesquisa do Ipea (módulo ministrado pela COCD)
+title: "Infraestrutura de pesquisa do Ipea"
+subtitle: "Módulo ministrado pela COCD"
+---
+
+# Servidores estatísticos
+
+No Ipea, existe um conjunto de servidores (máquinas virtuais) de alta capacidade, com softwares estatísticos instalados e que estão disponíveis para todos os nossos pesquisadores e colaboradores (e.g. bolsistas, etc.). Estes servidores (que chamamos de “servidores estatísticos”) são parte fundamental da ciência de dados do Ipea. Isso porque nós temos muitos pesquisadores e colaboradores trabalhando simultaneamente em projetos por vezes muito complexos. Além disso, é muito comum nos nossos trabalhos a gente ter que lidar com grandes volumes de dados (vários anos de RAIS, Cadastro Único, etc.), o que seria é inviável ou muito demorado em computadores comuns (limitação de memória RAM, capacidade de processamento, instabilidade da conexão de rede, etc., mesmo com o auxílio de pacotes para lidar com grandes bases de dados como `{arrow}` ou `{duckdb}`.
+
+A capacidade destes servidores (em Out/20204) é apresentada na figura abaixo:
+
+![](images/servidores.png){width=50% fig-align="center"}
+
+
+
+::: {.callout-note}
+
+**Como ter acesso aos servidores estatísticos?**
+
+1. Entrar na rede do Ipea (PC ou **Conexao VPN**) 
+
+2. Solicitar permissão por **e-pedidos de TI**
+
+3. Uma vez que  você recebeu acesso, você pode se conectar ao servidor abrindo no seu computador a **Área de Trabalho Remota** do Windows.
+
+:::
+
+Os recursos computacionais nestes servidores, no entanto, não são ilimiados. Para evitarmos uma situação de *tragédia dos comuns*, que leve ao esgotamento dos recursos compartilhados sugerimos a adoção de algumas boas práticas na utilização dos servidores:
+
+:::{.callout-important}
+
+1. Usar a memória RAM com parcimônia;
+
+2. Prototipar todo o código do projeto com amostras de dados e não com a base inteira;
+
+3. Procurar sempre o servidor menos congestionado (**Task Manager**);
+
+4. Utilizar boas práticas de código além de pacotes eficientes, como `{arrow}` e `{duckdb}` para leitura e manipulação de dados, e `{fixest}` para modelos econométricos.
+
+:::
+
+Veja mais informações na nossa [cheatsheet de boas práticas](images/cheat_sheet_servidores_v2.pdf).
+
+
+# Bases de dados
+
+O Ipea disponibiliza diversas bases de microdados estatísticos e registros administrativos (identificados ou não), como:
+
+* PNADc
+* Censo escolar
+* CAGED Identificado
+* RAIS Identificada
+* Cadatro Único
+* etc.
+
+A lista completa das bases de dados disponíveis pode ser consultada na intranet no [catálogo de bases de dados](intranet.gov.br/bases).
+
+As bases de dados do Ipea são armazenadas em difentes formatos, em alguns diretórios da rede (tabela abaixo) ou em bancos de dados relacionais (SQL Server). 
+
+![](images/storages.png){width=50% fig-align="left"}
+
+Atualmente, a maior parte dos dados estão em diretórios na rede do Ipea, em especial no `Storage6`. No `Storage6`, essas bases estão organizadas a partir de duas pastas e suas subpastas: 
+- `"documentação"`. Os arquivos nesta pasta e subpastas são totalmente acessível, mesmo a documentação das bases restritas.
+- `"dados"`. Suas subpastas incluem tanto os dados públicos quanto restritos. No caso dos dados restritos, o acesso a leitura dos dados requer autorização (detalhes abaixo):
+
+
+```{mermaid}
+flowchart TD
+    A[STORAGE6] --> B(Bases)
+    B --> C(Documentação)
+    B --> E(Dados)
+    C --> F(Público)
+    C --> G(Restrito)
+    E --> H(Público)
+    E --> id1(Restrito)
+    style id1 fill:#FF0000
+```
+
+::: {.callout-note}
+
+**Como ter acesso a bases de dados restritas?**
+
+1. Antes de solicitar permissão para uma base de dados, leia a documentação da base;
+
+2. A concessão de acesso a qualquer base de dados restrita é sempre por um período definido e deve ser motivado, no âmbito de um projeto de pesquisa específico; 
+
+3. O pedido de acesso é  feito à Coordenação de Gestão de Dados (COGD), por meio de processo que tramita no **SEI** e envolve a assinatura de termos de compromisso sobre sigilo do dado;
+
+4. Algumas bases de dados sigilosas estão disponíveis apenas em ambientes de sigilo (sala ou servidor de sigilo). O acesso a esses ambientes também deve ser solicitado à COGD.
+
+:::
+
+Veja mais detalhes na nossa [cheatsheet sobre as bases de dados](images/cheat_sheet_dados_v3.pdf).
+
