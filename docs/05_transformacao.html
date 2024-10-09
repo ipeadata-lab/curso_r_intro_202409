@@ -356,7 +356,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#criando-uma-variável-dummy" id="toc-criando-uma-variável-dummy" class="nav-link" data-scroll-target="#criando-uma-variável-dummy">Criando uma variável <em>dummy</em></a></li>
   </ul></li>
   <li><a href="#ordenando-as-linhas-arrange" id="toc-ordenando-as-linhas-arrange" class="nav-link" data-scroll-target="#ordenando-as-linhas-arrange">Ordenando as linhas (<code>arrange()</code>)</a></li>
-  <li><a href="#unindo-duas-bases-de-dados-left_join" id="toc-unindo-duas-bases-de-dados-left_join" class="nav-link" data-scroll-target="#unindo-duas-bases-de-dados-left_join">Unindo duas bases de dados (<code>left_join()</code>)</a></li>
+  <li><a href="#unindo-duas-bases-de-dados-left_join" id="toc-unindo-duas-bases-de-dados-left_join" class="nav-link" data-scroll-target="#unindo-duas-bases-de-dados-left_join">Unindo duas bases de dados (<code>left_join()</code>)</a>
+  <ul>
+  <li><a href="#exemplo-1-introdutório" id="toc-exemplo-1-introdutório" class="nav-link" data-scroll-target="#exemplo-1-introdutório">Exemplo 1: Introdutório</a></li>
+  <li><a href="#exemplo-2-intermediário" id="toc-exemplo-2-intermediário" class="nav-link" data-scroll-target="#exemplo-2-intermediário">Exemplo 2: Intermediário</a></li>
+  </ul></li>
   <li><a href="#salvando-a-base-de-dados-preparada" id="toc-salvando-a-base-de-dados-preparada" class="nav-link" data-scroll-target="#salvando-a-base-de-dados-preparada">Salvando a base de dados preparada</a></li>
   <li><a href="#exercícios-sugeridos" id="toc-exercícios-sugeridos" class="nav-link" data-scroll-target="#exercícios-sugeridos">Exercícios sugeridos</a></li>
   <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
@@ -1126,6 +1130,102 @@ $ periodo_pandemia                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0
 <p>Unir duas tabelas é algo comum em análises de dados. Usamos operações do tipo <em>join</em> para combinar duas tabelas, utilizando uma ou mais colunas como “chave”. As colunas do tipo chave têm valores comuns nas duas tabelas e são usadas para identificar as linhas correspondentes entre elas.</p>
 <p>O pacote <code>{dplyr}</code> fornece um conjunto de funções para realizar diferentes tipos de uniões, como <code>left_join()</code>, <code>inner_join()</code>, <code>full_join()</code>, entre outras.</p>
 <p>A função <code>left_join()</code> é a mais frequentemente usada: ela mantém todas as linhas da primeira tabela e adiciona colunas da segunda tabela onde houver correspondência.</p>
+<section id="exemplo-1-introdutório" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-1-introdutório">Exemplo 1: Introdutório</h3>
+<p>A base de dados que temos apresenta o nome e o código da UF, mas seria interessante ter a região, para futuramente usar essa variável em análises.</p>
+<p>A base de dados importada abaixo é um arquivo <code>.csv</code> preparado com as informações necessárias:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>uf_regiao <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/ipeadata-lab/curso_r_intro_202409/refs/heads/main/dados/uf_regiao.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 27 Columns: 3
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): uf_sigla, regiao
+dbl (1): uf_codigo
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Vamos verificar a estrutura da base de dados <code>uf_regiao</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(uf_regiao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 27
+Columns: 3
+$ uf_sigla  &lt;chr&gt; "RO", "AC", "AM", "RR", "PA", "AP", "TO", "MA", "PI", "CE", …
+$ uf_codigo &lt;dbl&gt; 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27, 28, …
+$ regiao    &lt;chr&gt; "Norte", "Norte", "Norte", "Norte", "Norte", "Norte", "Norte…</code></pre>
+</div>
+</div>
+<p>Podemos tentar unir as tabelas, sem informar a chave. Quando não informamos a chave, a função buscará os <strong>nomes de colunas em comum</strong> para utilizar essas colunas como chave:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dados_ordenados <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(uf_regiao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(uf_codigo)`</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `left_join()`:
+! Can't join `x$uf_codigo` with `y$uf_codigo` due to incompatible types.
+ℹ `x$uf_codigo` is a &lt;factor&lt;48524&gt;&gt;.
+ℹ `y$uf_codigo` is a &lt;double&gt;.</code></pre>
+</div>
+</div>
+<p>No exemplo acima, a função <code>left_join()</code> tentou unir as tabelas com a coluna <code>uf_codigo</code>, presente nas duas tabelas.</p>
+<p>Porém essas colunas apresentam tipos diferentes (fator e numérico). Precisamos deixá-las com o mesmo tipo para que a função <code>left_join()</code> consiga fazer a união corretamente. Vamos então transformar a coluna <code>uf_codigo</code> da tabela <code>uf_regiao</code> em fator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>uf_regiao_fct <span class="ot">&lt;-</span> uf_regiao <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">uf_codigo =</span> <span class="fu">as.factor</span>(uf_codigo)) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora podemos unir as tabelas <code>dados_ordenados</code> e <code>uf_regiao_fct</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1" aria-hidden="true" tabindex="-1"></a>dados_com_regiao <span class="ot">&lt;-</span> dados_ordenados <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(uf_regiao_fct) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-3" class="code-annotation-target"><a href="#annotated-cell-25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(uf_sigla, regiao, <span class="at">.after =</span> uf_codigo)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="1">Unindo a tabela <code>dados ordenados</code> e <code>uf_regiao_fct</code> usando como chave a coluna <code>uf_codigo</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="3" data-code-annotation="2">Mover as colunas <code>uf_sigla</code> e <code>regiao</code> para após a coluna <code>uf_codigo</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(uf_codigo)`</code></pre>
+</div>
+</div>
+<p>A nova tabela <code>dados_com_regiao</code> contém as colunas de uf_sigla e regiao, que foram adicionadas a partir da tabela <code>uf_regiao_fct</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_com_regiao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,350
+Columns: 16
+$ uf                                       &lt;chr&gt; "Amapá", "Bahia", "Rio Grande…
+$ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…
+$ uf_sigla                                 &lt;chr&gt; "AP", "BA", "RN", "AL", "AM",…
+$ regiao                                   &lt;chr&gt; "Norte", "Nordeste", "Nordest…
+$ trimestre                                &lt;chr&gt; "1º trimestre 2012", "1º trim…
+$ trimestre_codigo                         &lt;chr&gt; "201201", "201201", "201201",…
+$ ano                                      &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012,…
+$ trimestre_inicio                         &lt;date&gt; 2012-01-01, 2012-01-01, 2012…
+$ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…
+$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …
+$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …
+$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…
+$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…
+$ prop_desocupacao                         &lt;dbl&gt; 0.12578616, 0.11643438, 0.116…
+$ perc_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…
+$ periodo_pandemia                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+</div>
+</div>
+</section>
+<section id="exemplo-2-intermediário" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-2-intermediário">Exemplo 2: Intermediário</h3>
 <p>Um exemplo comum de uso é quando temos dados por município ou estado, e desejamos visualizar esses dados em um mapa. Para isso, precisamos de informações geoespaciais, como a delimitação geográfica de cada município ou estado. Podemos usar o <code>left_join()</code> para combinar esses dados geoespaciais com os dados que queremos visualizar.</p>
 <p>Vamos usar o pacote <code>{geobr}</code> para carregar as geometrias dos estados brasileiros.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1143,8 +1243,8 @@ Dica
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>geo_estados <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_state</span>(<span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(geo_estados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>geo_estados <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_state</span>(<span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(geo_estados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 27
 Columns: 6
@@ -1159,18 +1259,18 @@ $ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPO
 <p>O <code>left_join()</code> é usado aqui para combinar os dados do SIDRA com os dados das delimitações das UFs. Cada linha do nosso dataset de desocupação será associada à respectiva geometria da UF, permitindo visualizarmos as proporções de desocupação por UF em um mapa. Esse tipo de operação é comum quando queremos identificar padrões regionais.</p>
 <p>É importante garantir que as colunas usadas na combinação de tabelas (o argumento <code>by</code> do <code>left_join()</code>) tenham o mesmo tipo de dado. Podemos verificar o tipo de dado de cada coluna com a função <code>class()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(geo_estados<span class="sc">$</span>code_state)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(geo_estados<span class="sc">$</span>code_state)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dados_ordenados<span class="sc">$</span>uf_codigo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dados_com_regiao<span class="sc">$</span>uf_codigo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
 </div>
 <p>Neste caso, as colunas que queremos usar como chave são de tipos diferentes (numérico e fator), O <code>left_join()</code> não conseguirá fazer a correspondência corretamente, e a função gerará um erro:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(geo_estados, dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(geo_estados, dados_com_regiao, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `sf_column %in% names(g)`:
 ! Can't join `x$code_state` with `y$uf_codigo` due to incompatible
@@ -1181,20 +1281,22 @@ $ geom         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-63.32721 -..., MULTIPO
 </div>
 <p>No exemplo, podemos transformar a coluna <code>code_state</code> em fator usando <code>mutate()</code>. Assim, garantimos que as colunas usadas no argumento <code>by</code> sejam do mesmo tipo e possam ser corretamente combinados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="ot">&lt;-</span> geo_estados <span class="sc">|&gt;</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code_state =</span> <span class="fu">as.factor</span>(code_state)) <span class="sc">|&gt;</span> </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dados_ordenados, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_geo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="ot">&lt;-</span> geo_estados <span class="sc">|&gt;</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code_state =</span> <span class="fu">as.factor</span>(code_state)) <span class="sc">|&gt;</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dados_com_regiao, <span class="at">by =</span> <span class="fu">join_by</span>(code_state <span class="sc">==</span> uf_codigo))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_geo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,350
-Columns: 19
+Columns: 21
 $ code_state                               &lt;fct&gt; 11, 11, 11, 11, 11, 11, 11, 1…
 $ abbrev_state                             &lt;chr&gt; "RO", "RO", "RO", "RO", "RO",…
 $ name_state                               &lt;chr&gt; "Rondônia", "Rondônia", "Rond…
 $ code_region                              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
 $ name_region                              &lt;chr&gt; "Norte", "Norte", "Norte", "N…
 $ uf                                       &lt;chr&gt; "Rondônia", "Rondônia", "Rond…
+$ uf_sigla                                 &lt;chr&gt; "RO", "RO", "RO", "RO", "RO",…
+$ regiao                                   &lt;chr&gt; "Norte", "Norte", "Norte", "N…
 $ trimestre                                &lt;chr&gt; "1º trimestre 2012", "2º trim…
 $ trimestre_codigo                         &lt;chr&gt; "201201", "201202", "201203",…
 $ ano                                      &lt;dbl&gt; 2012, 2012, 2012, 2012, 2013,…
@@ -1216,16 +1318,16 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="sc">|&gt;</span> </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> perc_desocupacao)) <span class="sc">+</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percentual de desocupação por UF no 2º trimestre de 2024"</span>,</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Desocupação (%)"</span>) <span class="sc">+</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>dados_geo <span class="sc">|&gt;</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> perc_desocupacao)) <span class="sc">+</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percentual de desocupação por UF no 2º trimestre de 2024"</span>,</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Desocupação (%)"</span>) <span class="sc">+</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1236,13 +1338,14 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 </div>
 </div>
 </section>
+</section>
 <section id="salvando-a-base-de-dados-preparada" class="level2">
 <h2 class="anchored" data-anchor-id="salvando-a-base-de-dados-preparada">Salvando a base de dados preparada</h2>
 <p>Por fim, podemos salvar a base de dados preparada para usar nas próximas etapas. Assim não precisamos repetir todo o processo de limpeza e transformação de dados a cada vez que quisermos fazer uma análise.</p>
 <p>É recomendável salvar a base de dados em um formato que preserve a estrutura dos dados, como <code>.rds</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando os dados preparados</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(dados_ordenados, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando os dados preparados</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(dados_com_regiao, <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercícios-sugeridos" class="level2">
@@ -1261,8 +1364,34 @@ $ geom                                     &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGO
 </ol></li>
 </ul>
 <ol start="3" type="1">
-<li>Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?</li>
+<li><p>Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?</p></li>
+<li><p>Considerando o trimestre mais recente disponível, quais são os 5 estados com as maiores taxas de desocupação?</p></li>
+<li><p>Utilizando a função <code>tidyr::pivot_wider()</code>, como podemos criar uma tabela onde cada linha apresente dados de um estado, e cada trimestre esteja em uma coluna? Veja o exemplo abaixo:</p></li>
 </ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 51
+   uf                `1º trimestre 2012` `2º trimestre 2012` `3º trimestre 2012`
+   &lt;chr&gt;                           &lt;dbl&gt;               &lt;dbl&gt;               &lt;dbl&gt;
+ 1 Amapá                           12.6                14.6                14.3 
+ 2 Bahia                           11.6                11.4                10.8 
+ 3 Rio Grande do No…               11.6                11.4                11.5 
+ 4 Alagoas                         11.3                11.7                11.6 
+ 5 Amazonas                        11.1                 9.06                9.51
+ 6 Sergipe                         10.5                11.0                10.6 
+ 7 Paraíba                         10.0                 9.41                8.61
+ 8 Pernambuco                       9.58                8.30                9.38
+ 9 Acre                             9.27                9.12                7.69
+10 Distrito Federal                 8.80                8.49                8.69
+# ℹ 17 more rows
+# ℹ 47 more variables: `4º trimestre 2012` &lt;dbl&gt;, `1º trimestre 2013` &lt;dbl&gt;,
+#   `2º trimestre 2013` &lt;dbl&gt;, `3º trimestre 2013` &lt;dbl&gt;,
+#   `4º trimestre 2013` &lt;dbl&gt;, `1º trimestre 2014` &lt;dbl&gt;,
+#   `2º trimestre 2014` &lt;dbl&gt;, `3º trimestre 2014` &lt;dbl&gt;,
+#   `4º trimestre 2014` &lt;dbl&gt;, `1º trimestre 2015` &lt;dbl&gt;,
+#   `2º trimestre 2015` &lt;dbl&gt;, `3º trimestre 2015` &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
 </section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>

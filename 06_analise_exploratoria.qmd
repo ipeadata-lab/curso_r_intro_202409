@@ -1,16 +1,17 @@
 ---
 title: "Análise exploratória de dados"
+code-annotations: "hover"
 ---
 
-:::callout-warning
-Página em construção! Em breve. 
-:::
+Nesta aula:
 
-Na etapa de análise exploratória de dados, o objetivo é conhecer melhor os dados, entender suas características e identificar padrões e relações entre as variáveis.
+- Conheceremos funções para calcular estatísticas descritivas, como média, mediana, variância, desvio padrão, entre outras. 
 
-Conheceremos funções para calcular estatísticas descritivas, como média, mediana, variância, desvio padrão, entre outras. Além disso, veremos como agrupar dados e calcular estatísticas descritivas para cada grupo. 
+- Discutiremos como agrupar dados e calcular estatísticas descritivas para cada grupo.
 
-Uma etapa importante da análise exploratória de dados envolve visualizar dados. Porém isso será apresentado na próxima aula.
+- Aprenderemos a elaborar tabelas de frequência.
+
+Uma etapa importante da análise exploratória de dados envolve visualizar dados. Isso será apresentado na próxima aula!
 
 ## Importando dados
 
@@ -24,27 +25,28 @@ Outra opção é executar o código abaixo:
 ```{r}
 #| eval: false
 download.file(
-  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds", 
-  destfile = "sidra_4092_arrumado.rds",
-  mode = "wb")
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds",  # <1>
+  destfile = "dados_output/sidra_4092_arrumado.rds", # <2>
+  mode = "wb" # <3>
+  )
 ```
-
+1. URL que desejamos baixar
+2. Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)
+3. Configuração que evita corromper arquivos binários.
 :::
 
 Vamos carregar a base de dados com a função `read_rds()`:
 
 ```{r}
 #| message: false
-# Carregando o pacote tidyverse
-library(tidyverse)
-# Importando os dados
-dados <- read_rds("dados_output/sidra_4092_arrumado.rds")
-# Espiando a tabela
-glimpse(dados)
+library(dplyr) # <1>
+dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds") # <2>
+glimpse(dados) # <3>
 ```
-## Tabelas de frequência
+1. Carregando o pacote dplyr
+2. Importando os dados
+3. Espiando a tabela
 
-**Em breve!**
 
 
 
@@ -53,12 +55,12 @@ glimpse(dados)
 
 Na aula [conhecendo os dados](04_conhecendo.qmd), vimos algumas funções que são interessantes para ver estatísticas descritivas de todas as variáveis de uma vez, como a `summary()` e a `skim()`.
 
-Podemos utilizar também funções específicas para calcular estatísticas descritivas de uma variável.
+Podemos utilizar também funções do R para calcular estatísticas descritivas de uma variável.
 
-Por exemplo, para calcular a média da variável `prop_desocupacao`:
+Por exemplo, para calcular a média da variável `perc_desocupacao`, podemos usar a função `mean()`:
 
 ```{r}
-mean(dados$prop_desocupacao)
+mean(dados$perc_desocupacao)
 ```
 
 Nesse caso, estamos fazendo a média de TODOS os valores da variável `prop_desocupacao`, incluindo proporções de períodos diferentes. Veremos em breve como podemos calcular a média considerando grupos (por exemplo, qual é a média em cada período?).
@@ -76,26 +78,237 @@ A seguir, temos uma lista de funções que podem ser utilizadas para calcular es
 |  `var()` |  Variância (simples) |
 |  `sd()` |  Desvio Padrão |
 
+Vamos calcular algumas dessas estatísticas para a variável `perc_desocupacao`:
+
+```{r}
+min(dados$perc_desocupacao)
+max(dados$perc_desocupacao)
+mean(dados$perc_desocupacao)
+median(dados$perc_desocupacao)
+var(dados$perc_desocupacao)
+sd(dados$perc_desocupacao)
+```
+
+
+
 
 ::: callout-warning
 
 As variáveis que estamos trabalhando não possuem valores faltantes (`NA`). Caso a variável que você esteja trabalhando possua valores faltantes, é importante considerar o argumento `na.rm = TRUE` nas funções de estatísticas descritivas, para que os valores faltantes sejam ignorados ao realizar os cálculos.
 
+Por exemplo:
+
+```{r}
+altura_personagens_starwars <- dplyr::starwars$height # <1>
+mean(altura_personagens_starwars) # <2>
+```
+1. Atribuindo a variável `height` (altura) da base `starwars` ao objeto `altura_personagens_starwars`.
+2. Tentando calcular a média da altura dos personagens de Star Wars. O resultado será `NA` pois temos `NA` na variável `altura_personagens_starwars`.
+
+```{r}
+mean(altura_personagens_starwars, na.rm = TRUE) # <1>
+```
+1. Calculando a média da altura dos personagens de Star Wars, ignorando os valores faltantes (`NA`).
+
+
+
 :::
 
 
-## Estatísticas agregadas (summarize) 
+## Estatísticas agregadas (`summarise()`) 
 
-**Em breve!**
+Uma função importante do pacote `dplyr` é a `summarise()`. Ela permite calcular estatísticas descritivas de variáveis de uma base de dados, usando as funções que vimos anteriormente. A diferença é que retornará um novo data frame com as estatísticas calculadas.
 
-## Agrupando dados
+```{r}
+tabela_resumo_perc_desocupacao <- dados |> 
+  summarise(
+    minimo = min(perc_desocupacao),
+    maximo = max(perc_desocupacao),
+    media = mean(perc_desocupacao),
+    mediana = median(perc_desocupacao),
+    variancia = var(perc_desocupacao),
+    desvio_padrao = sd(perc_desocupacao)
+  )
 
-**Em breve!**
+tabela_resumo_perc_desocupacao
+```
+
+Porém isso não é muito diferente de usar as funções do R diretamente, como fizemos anteriormente. 
 
 
-## Estatísticas agregadas utilizando grupos
+A grande vantagem da função `summarise()` é que podemos calcular estatísticas descritivas para grupos de dados, o que veremos a seguir.
 
-**Em breve!**
+## Agrupando dados (`group_by()`)
+
+Imagine que queremos calcular a média da taxa de desemprego para cada estado. Para isso, precisaríamos agrupar a base de dados por cada estado.
+
+A função `group_by()` do pacote `dplyr` permite agrupar dados usando uma ou mais variáveis. Ela não faz alterações nas linhas e colunas da base de dados, porém ela cria um atributo que indica que a base de dados está agrupada. Assim, **as etapas seguintes que utilizarem a base de dados agrupada irão considerar os grupos criados**.
+
+
+Veja o exemplo a seguir: ao agrupar a base `dados` por `uf`, estamos criando grupos de dados para cada estado. Veja que o resultado é uma tibble, mas a diferença é que agora temos um grupo para cada estado (`# Groups:   uf [27]`):
+
+
+```{r}
+dados |> 
+  group_by(uf)
+```
+
+
+Podemos agrupar também usando mais que uma variável. Neste exemplo, vamos agrupar por `uf` e `ano`: `uf, ano [351]`. Isso significa que temos um grupo para cada combinação de estado (27) e ano (13), totalizando 351 grupos. 
+
+```{r}
+dados |> 
+  group_by(uf, ano)
+```
+
+
+Podemos usar função `ungroup()` para remover os grupos criados. Porém as funções que utilizaremos muitas vezes já remove os grupos. Veremos exemplos a seguir.
+
+
+## Estatísticas agregadas utilizando grupos (`group_by()` + `summarise()`)
+
+Agora que sabemos como agrupar dados, podemos calcular estatísticas descritivas para cada grupo.
+
+### Exemplo com um grupo
+
+```{r}
+dados |> 
+  group_by(uf) |>
+  summarise(
+    minimo = min(perc_desocupacao),
+    media = mean(perc_desocupacao),
+    mediana = median(perc_desocupacao),
+    maximo = max(perc_desocupacao),
+    amplitude = maximo - minimo
+  )
+```
+**Importante:** A função `summarise()` retorna um novo data frame com as colunas utilizadas para agrupar os dados e as estatísticas calculadas. 
+
+### Exemplo com mais de um grupo
+
+Podemos utilizar mais que uma variável para agrupar. No exemplo a seguir, vamos agrupar por `uf` e `ano`:
+
+```{r}
+dados |> 
+  group_by(uf, ano) |>
+  summarise(
+    media = mean(perc_desocupacao)
+  )
+```
+A função retornou o seguinte warning:
+
+```
+`summarise()` has grouped output by 'uf'. You can override using the `.groups` argument.
+```
+Isso significa que a função `summarise()` retornou um data frame agrupado por `uf`. Se quisermos remover o agrupamento, podemos usar o argumento `.groups = "drop"`:
+
+```{r}
+dados |> 
+  group_by(uf, ano) |>
+  summarise(
+    media = mean(perc_desocupacao),
+    .groups = "drop" # <1>
+  )
+```
+1. O argumento `.groups = "drop"` retorna uma tibble sem grupos.
+
+
+
+Outra opção é usar a função `ungroup()`:
+
+```{r}
+dados |> 
+  group_by(uf, ano) |>
+  summarise(
+    media = mean(perc_desocupacao)
+  ) |> 
+  ungroup()
+```
+
+
+## Filtros com grupos (`group_by()` + `filter()`)
+
+Podemos combinar a função `group_by()` com a função `filter()` para realizar filtros que respeitem o agrupamento dos dados.
+
+Por exemplo, queremos responder a pergunta: **Qual foi período (trimestre) para cada estado onde a taxa de desocupação foi maior?**
+
+Para isso, primeiro precisamos agrupar com o estado. A primeira coisa que vem em mente é utilizar a função `summarise()` e buscar o valor máximo:
+
+```{r}
+dados |> 
+  group_by(uf) |> 
+  summarise(maximo = max(perc_desocupacao))
+```
+
+Porém como o `summarise()` apenas retorna as colunas de grupo e as colunas criadas, não temos a informação do trimestre. 
+
+
+Para isso, podemos utilizar a função `filter()` para filtrar os dados por estado, filtrando a linha que apresenta o maior valor encontrado (`max(perc_desocupacao)`) na coluna `perc_desocupacao`:
+
+```{r}
+dados |>
+  group_by(uf) |> # <1>
+  filter(perc_desocupacao == max(perc_desocupacao)) |>  # <2>
+  arrange(desc(perc_desocupacao)) |> # <3>
+  select(uf, trimestre, perc_desocupacao) # <4>
+```
+1. Agrupando por estado (`uf`).
+2. Filtrando as linhas que apresentam o maior valor encontrado na coluna `perc_desocupacao`.
+3. Ordenando os dados de forma decrescente, segundo o `perc_desocupacao`.
+4. Selecionando apenas as colunas relevantes para a pergunta.
+
+### Criando colunas utilizando grupos (`group_by()` + `mutate()`)
+
+Podemos criar novas colunas utilizando a função `mutate()`.
+
+Podemos utilizar essa pergunta como exemplo:
+- Qual é a média da taxa de desocupação para cada trimestre? 
+
+Podemos fazer calcular a média com a função `summarise()`:
+
+```{r}
+dados |>
+  group_by(trimestre) |>
+  summarise(media = mean(perc_desocupacao)) 
+```
+A média foi calculada, porém o resultado é apenas uma tabela contendo o trimestre (a coluna de agrupamento), e a média (a coluna criada dentro do `summarise()`). Porém, se quisermos ter essa média como uma coluna da tabela, podemos fazer esse cálculo utilizando o `mutate()` 
+
+```{r}
+dados_media_trimestre <- dados |> 
+  group_by(trimestre) |> 
+  mutate(media_desocupacao_trimestre = mean(perc_desocupacao)) 
+```
+
+
+
+
+## Tabelas de frequência
+
+Utilizamos tabelas de frequência para representar a quantidade de ocorrências de linhas segundo um grupo de variáveis.
+
+
+A função `count()` do pacote `dplyr` é uma forma simples de criar tabelas de frequência.
+
+Por exemplo: Se queremos saber quantos estados temos em cada região, podemos filtrar para apenas um período (para que não haja duplicações), e contar a quantidade de linhas em cada categoria da coluna `regiao`, usando a função `count()`:
+
+```{r}
+dados |> 
+  filter(trimestre_codigo == "202402") |> # <1>
+  count(regiao) # <2>
+```
+1. Filtrando o trimestre mais recente
+2. Contando a quantidade de linhas para cada região (nesse caso, quantos estados tem por região).
+
+
+
+## Exercícios sugeridos
+
+
+1. Calcule média da taxa de desocupação nos dois primeiros trimestres de 2024, por região.
+
+2. Qual foi o período (trimestre) para cada estado onde a taxa de desocupação foi menor?
+
+3. Qual foi a mediana da taxa de desocupação para cada estado, durante o período da pandemia?
 
 ## Sugestões de materiais
 
