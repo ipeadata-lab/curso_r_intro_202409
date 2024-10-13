@@ -304,11 +304,62 @@ dados |>
 ## Exercícios sugeridos
 
 
-1. Calcule média da taxa de desocupação nos dois primeiros trimestres de 2024, por região.
+1. Calcule a média da taxa de desocupação nos dois primeiros trimestres de 2024, por região.
 
-2. Qual foi o período (trimestre) para cada estado onde a taxa de desocupação foi menor?
+::: {.callout-tip collapse="true"}
+## Dicas
 
-3. Qual foi a mediana da taxa de desocupação para cada estado, durante o período da pandemia?
+O resultado esperado é:
+
+```{r}
+#| echo: false
+dados |> 
+  filter(trimestre_codigo %in% c("202401", "202402")) |>
+  group_by(regiao) |>
+  summarise(media = mean(perc_desocupacao)) |> 
+  ungroup()
+```
+:::
+
+
+2. Qual foi o período (trimestre) para cada estado onde a taxa de desocupação foi menor? Ordene o resultado de forma crescente.
+
+::: {.callout-tip collapse="true"}
+## Dicas
+
+Lembre-se de que podemos fazer filtros agrupados!
+
+O resultado esperado é:
+
+```{r}
+#| echo: false
+dados |> 
+  group_by(uf) |> 
+  filter(perc_desocupacao == min(perc_desocupacao)) |> 
+  arrange(perc_desocupacao) |> 
+  select(uf, trimestre, perc_desocupacao)  |> 
+  ungroup()
+```
+:::
+
+3. Qual foi a mediana da taxa de desocupação para cada estado, durante o período da pandemia? Ordene o resultado de forma decrescente.
+
+
+::: {.callout-tip collapse="true"}
+## Dicas
+
+O resultado esperado é:
+
+```{r}
+#| echo: false
+dados |> 
+  filter(periodo_pandemia == 1) |> 
+  group_by(uf) |> 
+  summarise(mediana = median(perc_desocupacao)) |> 
+  arrange(desc(mediana)) |> 
+  ungroup()
+```
+:::
 
 ## Sugestões de materiais
 

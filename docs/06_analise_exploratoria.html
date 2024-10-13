@@ -249,6 +249,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./07_visualizacao_exemplo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exemplo prático: Visualização</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./08_regressao_linear.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regressão linear</span></a>
   </div>
@@ -963,10 +969,111 @@ argument.</code></pre>
 <section id="exercícios-sugeridos" class="level2">
 <h2 class="anchored" data-anchor-id="exercícios-sugeridos">Exercícios sugeridos</h2>
 <ol type="1">
-<li><p>Calcule média da taxa de desocupação nos dois primeiros trimestres de 2024, por região.</p></li>
-<li><p>Qual foi o período (trimestre) para cada estado onde a taxa de desocupação foi menor?</p></li>
-<li><p>Qual foi a mediana da taxa de desocupação para cada estado, durante o período da pandemia?</p></li>
+<li>Calcule a média da taxa de desocupação nos dois primeiros trimestres de 2024, por região.</li>
 </ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dicas
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O resultado esperado é:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  regiao       media
+  &lt;chr&gt;        &lt;dbl&gt;
+1 Centro Oeste  5.80
+2 Nordeste      9.60
+3 Norte         7.24
+4 Sudeste       6.96
+5 Sul           4.66</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Qual foi o período (trimestre) para cada estado onde a taxa de desocupação foi menor? Ordene o resultado de forma crescente.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dicas
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Lembre-se de que podemos fazer filtros agrupados!</p>
+<p>O resultado esperado é:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 3
+   uf                 trimestre         perc_desocupacao
+   &lt;chr&gt;              &lt;chr&gt;                        &lt;dbl&gt;
+ 1 Rondônia           3º trimestre 2023             2.34
+ 2 Mato Grosso        3º trimestre 2023             2.42
+ 3 Santa Catarina     4º trimestre 2013             2.57
+ 4 Mato Grosso do Sul 4º trimestre 2022             3.35
+ 5 Paraná             4º trimestre 2014             3.75
+ 6 Goiás              4º trimestre 2013             3.95
+ 7 Tocantins          2º trimestre 2024             4.31
+ 8 Rio Grande do Sul  4º trimestre 2012             4.39
+ 9 Roraima            4º trimestre 2022             4.49
+10 Espírito Santo     2º trimestre 2024             4.50
+# ℹ 17 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Qual foi a mediana da taxa de desocupação para cada estado, durante o período da pandemia? Ordene o resultado de forma decrescente.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dicas
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O resultado esperado é:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 2
+   uf                  mediana
+   &lt;chr&gt;                 &lt;dbl&gt;
+ 1 Bahia                  20.3
+ 2 Pernambuco             19.3
+ 3 Sergipe                18.8
+ 4 Alagoas                18.7
+ 5 Rio de Janeiro         17.3
+ 6 Amazonas               15.8
+ 7 Maranhão               15.7
+ 8 Amapá                  15.6
+ 9 Rio Grande do Norte    15.4
+10 Acre                   15.4
+# ℹ 17 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
