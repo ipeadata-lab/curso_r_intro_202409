@@ -327,8 +327,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_infra_ipea.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_ipeadatalake.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acessando dados com o {ipeadatalake}</span></a>
   </div>
 </li>
       </ul>
@@ -382,6 +388,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./11_censobr_microdados.html">Microdados do Censo</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Microdados do Censo</h1>
+<p class="subtitle lead">Módulo ministrado pela COCD</p>
 </div>
 
 
@@ -607,13 +614,13 @@ Cache local dos dados
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     V0010     V0601 V6036
-1 4.281183  Feminino    31
-2 4.665780 Masculino    80
-3 4.665780  Feminino    77
-4 4.665780  Feminino    38
-5 4.665780 Masculino     8
-6 4.665780 Masculino    14</code></pre>
+<pre><code>      V0010     V0601 V6036
+1 11.996452  Feminino    14
+2 11.996452 Masculino    45
+3 11.996452  Feminino     3
+4 10.298796  Feminino    57
+5 10.298796 Masculino    53
+6  7.872739  Feminino    29</code></pre>
 </div>
 </div>
 <p>O próximo passo para criamos nossa pirâmide populacional é criar um variável categória com grupos de idade. No exemplo abaix, nós utilizadmos grupos de 5 anos.</p>
@@ -641,13 +648,13 @@ Cache local dos dados
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> </span>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      V0010     V0601 V6036 age_group
-1 13.207337 Masculino    16     15-20
-2 13.207337  Feminino    22     20-25
-3 13.207337  Feminino    48     45-50
-4 13.207337  Feminino    18     15-20
-5 13.207337  Feminino    22     20-25
-6  9.683377 Masculino     1     00-05</code></pre>
+<pre><code>     V0010     V0601 V6036 age_group
+1 8.083000 Masculino     8     05-10
+2 9.718624 Masculino    28     25-30
+3 9.718624  Feminino    19     15-20
+4 9.718624  Feminino     3     00-05
+5 9.513442  Feminino    61     60-65
+6 9.513442 Masculino    58     55-60</code></pre>
 </div>
 </div>
 <p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada grupo. Repare que ao chamarmos a função <code>collect()</code>, o código é executado e retorna um <code>data.frame</code> com a contagem de pessoas por sexo e faixa de idade. Repare que nós processamos todos os mais de 20 milhões de registro do censo, mas só precisamos carregar na memória essa tabela com 30 observações.</p>
@@ -664,12 +671,12 @@ Cache local dos dados
 # Groups:   V0601 [2]
   V0601     age_group pop_count
   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
-1 Masculino 05-10      7623609.
-2 Masculino 25-30      8458790.
-3 Feminino  15-20      8429180.
-4 Feminino  00-05      6781032.
-5 Feminino  60-65      3470156.
-6 Masculino 55-60      3912544.</code></pre>
+1 Masculino 20-25      8627665.
+2 Feminino  15-20      8429180.
+3 Masculino 35-40      6767177.
+4 Feminino  40-45      6688525.
+5 Masculino 10-15      8727095.
+6 Masculino 15-20      8557608.</code></pre>
 </div>
 </div>
 <p>Pronto, no último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>

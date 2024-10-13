@@ -13,12 +13,12 @@
     <lastmod>2024-09-29T22:40:50.559Z</lastmod>
   </url>
   <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/20_ipeadatalake.html</loc>
-    <lastmod>2024-09-29T14:23:11.034Z</lastmod>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/08_regressao_linear.html</loc>
+    <lastmod>2024-10-07T01:23:49.279Z</lastmod>
   </url>
   <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/00_projeto_eda.html</loc>
-    <lastmod>2024-10-08T18:16:40.040Z</lastmod>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/15_ipeadatalake.html</loc>
+    <lastmod>2024-10-09T13:33:22.176Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/04_conhecendo.html</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/07_visualizacao.html</loc>
-    <lastmod>2024-09-17T13:15:09.764Z</lastmod>
+    <lastmod>2024-10-13T11:59:05.027Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/10_censobr_conceitos.html</loc>
@@ -43,6 +43,10 @@
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/12_censobr_agregados_setores.html</loc>
     <lastmod>2024-09-29T14:23:11.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/14_infra_ipea.html</loc>
+    <lastmod>2024-10-13T12:01:28.206Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/LICENSE.html</loc>
@@ -54,7 +58,7 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/09_censobr_intro.html</loc>
-    <lastmod>2024-09-30T16:26:20.069Z</lastmod>
+    <lastmod>2024-10-09T13:33:22.176Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/05_transformacao.html</loc>
@@ -66,11 +70,11 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/00_erros_frequentes.html</loc>
-    <lastmod>2024-10-06T23:35:47.662Z</lastmod>
+    <lastmod>2024-10-13T10:50:51.175Z</lastmod>
   </url>
   <url>
-    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/08_regressao_linear.html</loc>
-    <lastmod>2024-10-07T01:23:49.279Z</lastmod>
+    <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/00_projeto_eda.html</loc>
+    <lastmod>2024-10-08T18:16:40.040Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/03_importacao.html</loc>
@@ -78,7 +82,7 @@
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/11_censobr_microdados.html</loc>
-    <lastmod>2024-09-30T13:57:10.838Z</lastmod>
+    <lastmod>2024-10-09T13:33:22.176Z</lastmod>
   </url>
   <url>
     <loc>https://ipeadata-lab.github.io/curso_r_intro_202409/01_r_rstudio.html</loc>

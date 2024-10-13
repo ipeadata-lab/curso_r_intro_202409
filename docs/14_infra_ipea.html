@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00_erros_frequentes.html" rel="next">
+<link href="./15_ipeadatalake.html" rel="next">
 <link href="./13_censobr_documentacao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -68,6 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Procurar"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -82,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./20_ipeadatalake.html">Data Lake do Ipea</a></li><li class="breadcrumb-item"><a href="./20_ipeadatalake.html">Infraestrutura de pesquisa do Ipea</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14_infra_ipea.html">Data Lake do Ipea</a></li><li class="breadcrumb-item"><a href="./14_infra_ipea.html">Infraestrutura de pesquisa do Ipea</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -273,8 +276,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link active">
+  <a href="./14_infra_ipea.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_ipeadatalake.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acessando dados com o {ipeadatalake}</span></a>
   </div>
 </li>
       </ul>
@@ -302,12 +311,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#servidores-estatísticos" id="toc-servidores-estatísticos" class="nav-link active" data-scroll-target="#servidores-estatísticos">Servidores estatísticos</a></li>
+  <li><a href="#bases-de-dados" id="toc-bases-de-dados" class="nav-link" data-scroll-target="#bases-de-dados">Bases de dados</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./20_ipeadatalake.html">Data Lake do Ipea</a></li><li class="breadcrumb-item"><a href="./20_ipeadatalake.html">Infraestrutura de pesquisa do Ipea</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14_infra_ipea.html">Data Lake do Ipea</a></li><li class="breadcrumb-item"><a href="./14_infra_ipea.html">Infraestrutura de pesquisa do Ipea</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Infraestrutura de pesquisa do Ipea</h1>
 <p class="subtitle lead">Módulo ministrado pela COCD</p>
@@ -327,25 +343,116 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
+<section id="servidores-estatísticos" class="level1">
+<h1>Servidores estatísticos</h1>
+<p>No Ipea, existe um conjunto de servidores (máquinas virtuais) de alta capacidade, com softwares estatísticos instalados e que estão disponíveis para todos os nossos pesquisadores e colaboradores (e.g.&nbsp;bolsistas, etc.). Estes servidores (que chamamos de “servidores estatísticos”) são parte fundamental da ciência de dados do Ipea. Isso porque nós temos muitos pesquisadores e colaboradores trabalhando simultaneamente em projetos por vezes muito complexos. Além disso, é muito comum nos nossos trabalhos a gente ter que lidar com grandes volumes de dados (vários anos de RAIS, Cadastro Único, etc.), o que seria é inviável ou muito demorado em computadores comuns (limitação de memória RAM, capacidade de processamento, instabilidade da conexão de rede, etc., mesmo com o auxílio de pacotes para lidar com grandes bases de dados como <code>{arrow}</code> ou <code>{duckdb}</code>.</p>
+<p>A capacidade destes servidores (em Out/20204) é apresentada na figura abaixo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/servidores.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aviso
+Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Página em construção! Em breve.</p>
+<p><strong>Como ter acesso aos servidores estatísticos?</strong></p>
+<ol type="1">
+<li><p>Entrar na rede do Ipea (PC ou <strong>Conexao VPN</strong>)</p></li>
+<li><p>Solicitar permissão por <strong>e-pedidos de TI</strong></p></li>
+<li><p>Uma vez que você recebeu acesso, você pode se conectar ao servidor abrindo no seu computador a <strong>Área de Trabalho Remota</strong> do Windows.</p></li>
+</ol>
 </div>
 </div>
-<!-- - Storages e bases de dados -->
-<!-- overview do ipeadatalake -->
-<!-- ipeadatalake: rapadia analise da PNADc + ipeaplot -->
-<!-- ipeadatalake: rapadia analise da RAIS ou CADunico geocode + ipeaplot -->
+<p>Os recursos computacionais nestes servidores, no entanto, não são ilimiados. Para evitarmos uma situação de <em>tragédia dos comuns</em>, que leve ao esgotamento dos recursos compartilhados sugerimos a adoção de algumas boas práticas na utilização dos servidores:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Usar a memória RAM com parcimônia;</p></li>
+<li><p>Prototipar todo o código do projeto com amostras de dados e não com a base inteira;</p></li>
+<li><p>Procurar sempre o servidor menos congestionado (<strong>Task Manager</strong>);</p></li>
+<li><p>Utilizar boas práticas de código além de pacotes eficientes, como <code>{arrow}</code> e <code>{duckdb}</code> para leitura e manipulação de dados, e <code>{fixest}</code> para modelos econométricos.</p></li>
+</ol>
+</div>
+</div>
+<p>Veja mais informações na nossa <a href="images/cheat_sheet_servidores_v2.pdf">cheatsheet de boas práticas</a>.</p>
+</section>
+<section id="bases-de-dados" class="level1">
+<h1>Bases de dados</h1>
+<p>O Ipea disponibiliza diversas bases de microdados estatísticos e registros administrativos (identificados ou não), como:</p>
+<ul>
+<li>PNADc</li>
+<li>Censo escolar</li>
+<li>CAGED Identificado</li>
+<li>RAIS Identificada</li>
+<li>Cadatro Único</li>
+<li>etc.</li>
+</ul>
+<p>A lista completa das bases de dados disponíveis pode ser consultada na intranet no <a href="intranet.gov.br/bases">catálogo de bases de dados</a>.</p>
+<p>As bases de dados do Ipea são armazenadas em difentes formatos, em alguns diretórios da rede (tabela abaixo) ou em bancos de dados relacionais (SQL Server).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/storages.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Atualmente, a maior parte dos dados estão em diretórios na rede do Ipea, em especial no <code>Storage6</code>. No <code>Storage6</code>, essas bases estão organizadas a partir de duas pastas e suas subpastas: - <code>"documentação"</code>. Os arquivos nesta pasta e subpastas são totalmente acessível, mesmo a documentação das bases restritas. - <code>"dados"</code>. Suas subpastas incluem tanto os dados públicos quanto restritos. No caso dos dados restritos, o acesso a leitura dos dados requer autorização (detalhes abaixo):</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    A[STORAGE6] --&gt; B(Bases)
+    B --&gt; C(Documentação)
+    B --&gt; E(Dados)
+    C --&gt; F(Público)
+    C --&gt; G(Restrito)
+    E --&gt; H(Público)
+    E --&gt; id1(Restrito)
+    style id1 fill:#FF0000
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Como ter acesso a bases de dados restritas?</strong></p>
+<ol type="1">
+<li><p>Antes de solicitar permissão para uma base de dados, leia a documentação da base;</p></li>
+<li><p>A concessão de acesso a qualquer base de dados restrita é sempre por um período definido e deve ser motivado, no âmbito de um projeto de pesquisa específico;</p></li>
+<li><p>O pedido de acesso é feito à Coordenação de Gestão de Dados (COGD), por meio de processo que tramita no <strong>SEI</strong> e envolve a assinatura de termos de compromisso sobre sigilo do dado;</p></li>
+<li><p>Algumas bases de dados sigilosas estão disponíveis apenas em ambientes de sigilo (sala ou servidor de sigilo). O acesso a esses ambientes também deve ser solicitado à COGD.</p></li>
+</ol>
+</div>
+</div>
+<p>Veja mais detalhes na nossa <a href="images/cheat_sheet_dados_v3.pdf">cheatsheet sobre as bases de dados</a>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -760,8 +867,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00_erros_frequentes.html" class="pagination-link" aria-label="Erros e *warnings* frequentes">
-        <span class="nav-page-text">Erros e <em>warnings</em> frequentes</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./15_ipeadatalake.html" class="pagination-link" aria-label="Acessando dados com o {ipeadatalake}">
+        <span class="nav-page-text">Acessando dados com o {ipeadatalake}</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
