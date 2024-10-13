@@ -1,25 +1,448 @@
 ---
 # Criar visualizações de dados com ggplot2 e ipeaplot
 title: "Visualizando dados"
+code-annotations: "hover"
 ---
 
-:::callout-warning
-Página em construção! Em breve. 
+## Objetivos
+
+Nesta aula:
+
+- Conheceremos o pacote `ggplot2` para visualização de dados
+
+- Aprenderemos a criar diferentes tipos de gráficos como: de dispersão, linha, barra/coluna, entre outros
+
+- Veremos como salvar os gráficos criados
+
+- Exploraremos funções para customizar a aparência dos gráficos
+
+<!-- As perguntas que buscaremos explorar são: -->
+
+<!-- - Como a taxa de desocupação dos estados tem variado ao longo do tempo? -->
+
+<!-- - Atualmente (para o trimestre mais recente), quais são os estados com as maiores taxas de desocupação? -->
+
+
+Nesta aula, utilizaremos principalmente os pacotes `{ggplot2}` e `{dplyr}`. Vamos carregá-los:
+
+```{r}
+#| message: false
+library(ggplot2) # <1>
+library(dplyr) # <2>
+```
+1. Pacote para visualização de dados
+2. Pacote para transformação de dados
+
+
+
+## Importando dados
+
+Nesta aula, utilizaremos a tabela preparada na [aula sobre transformação de dados](05_transformacao): `"dados_output/sidra_4092_arrumado.rds"`.
+
+::: {.callout-important collapse="true"}
+
+### Expanda para fazer download da base de dados
+
+Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar [aqui](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds), e copiar o arquivo para a pasta `dados_output` do seu projeto.
+
+Outra opção é executar o código abaixo:
+
+```{r}
+#| eval: false
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds",  # <1>
+  destfile = "dados_output/sidra_4092_arrumado.rds", # <2>
+  mode = "wb" # <3>
+  )
+```
+1. URL que desejamos baixar
+2. Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)
+3. Configuração que evita corromper arquivos binários.
 :::
 
-<!-- - Vocabulário ggplot2 -->
+Vamos carregar a base de dados com a função `read_rds()`:
 
-<!-- - Gráficos de dispersão -->
+```{r}
+#| message: false
+dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds") # <1>
+glimpse(dados) # <2>
+```
+1. Importando os dados
+2. Espiando a tabela: quantas colunas tem? quantas linhas? quais são as variáveis?
 
-<!-- - Gráficos de linha -->
+Vamos criar também um objeto contendo apenas aos dados referentes ao trimestre mais recente, para usar em alguns exemplos:
 
-<!-- - Gráficos de barra/coluna -->
+```{r}
+dados_tri_recente <- dados |>  
+  filter(trimestre_inicio == max(trimestre_inicio)) # <1>
+```
+1. Filtrando os dados para o trimestre mais recente
 
-<!-- - Gráficos por subgrupos por color/fill ou facet -->
 
-<!-- - Salvando os gráficos -->
+## O que é o ggplot2?
 
-<!-- - Mudanças de layout com ggthemes e ipeaplot -->
+O `ggplot2` é o principal pacote para criação de gráficos em R. Ele é baseado na [gramática de gráficos](https://link.springer.com/book/10.1007/0-387-28695-0), uma teoria que apresenta uma forma de descrever os componentes de um gráfico. 
+
+O `ggplot2` faz parte do [tidyverse](https://www.tidyverse.org/).
+
+
+## Vocabulário do ggplot2
+
+A gramática de gráficos é composta por alguns elementos, sendo os seguintes principais para iniciar:
+
+- **Dados**: um data frame que contém os dados que serão apresentados
+
+- ***Aesthetics* (atributos estéticos)**: mapeamento dos dados para propriedades visuais do gráfico, como eixos, cor, forma e tamanho
+
+- **Geometrias**: formas geométricas que representam os dados, como pontos, linhas e barras.
+
+Vamos fazer um exemplo simples, explorando cada um desses elementos. Para iniciar o gráfico, podemos informar os dados para a função `ggplot()`:
+
+
+```{r}
+#| label: exemplo-ggplot2-1
+#| code-annotations: below
+dados_tri_recente |>
+  ggplot()
+```
+
+A função `ggplot()` cria um objeto gráfico vazio. Para informar quais são as variáveis que serão mapeadas nos eixos `x` e `y`, utilizamos a função `aes()`:
+
+```{r}
+#| label: exemplo-ggplot2-2
+#| code-annotations: below
+dados_tri_recente |>
+  ggplot() + 
+  aes(x = perc_desocupacao, y = uf)
+```
+O gráfico criado apresenta os eixos, e os valores possíveis. Porém ainda não tem nenhuma geometria para representar os dados. Para adicionar uma geometria ao gráfico, utilizamos funções da família `geom_*`. Nesse caso, vamos utilizar a função `geom_col()` para criar um gráfico de colunas:
+
+```{r}
+#| label: exemplo-ggplot2-3
+#| code-annotations: below
+dados_tri_recente |> # <1>
+  ggplot() + # <2>
+  aes(x = perc_desocupacao, y = uf) + # <3>
+  geom_col() # <4>
+```
+1. **Dados:** dados que serão utilizados
+2. `ggplot()`: função para iniciar o gráfico
+3. ***Aesthetics* (atributos estéticos)**: informando quais variáveis serão utilizadas nos eixos x e y
+4. **Geometria do gráfico:** informando que faremos um gráfico de colunas
+
+::: callout-tip
+**Atenção:** Observe que a cada linha de código, adicionamos um `+` para adicionar um novo elemento ao gráfico. 
+
+A partir da função `ggplot()`, sempre utilizamos `+` para adicionar novos elementos ao gráfico.
+:::
+
+## Criando gráficos exploratórios
+
+Vamos criar alguns gráficos exploratórios com os dados de desocupação por trimestre e por estado. 
+
+Gráficos exploratórios são utilizados para entender melhor os dados, identificar padrões e tendências, e verificar a presença de outliers. Neste momento, não estamos preocupados com a estética do gráfico, mas sim com a interpretação dos dados.
+
+Falaremos como [customizar os gráficos mais adiante](#customizando-gr%C3%A1ficos).
+
+### Tipos de gráficos
+
+#### Gráficos de dispersão
+
+Vamos começar criando um gráfico de dispersão (conhecido também como gráfico de pontos). Para isso, utilizaremos a função `ggplot()` e a função `geom_point()`.
+
+O gráfico de dispersão é utilizado para visualizar a relação entre duas variáveis quantitativas.
+
+```{r}
+dados |>
+  filter(uf_sigla == "BA") |>
+  ggplot() +
+  aes(x = trimestre_inicio, y = perc_desocupacao) +
+  geom_point()
+```
+
+#### Gráficos de linha
+
+Gráficos de linha são muito utilizados para representar uma variável ao longo do tempo. A função de geometria utilizada é a `geom_line()`.
+
+Vamos criar um gráfico de linha para visualizar a evolução da taxa de desocupação ao longo dos trimestres para apenas um estado:
+
+```{r}
+#| label: exemplo-ggplot2-linha
+dados |> 
+  filter(uf_sigla == "BA") |> 
+  ggplot() + 
+  aes(x = trimestre_inicio, y = perc_desocupacao) + 
+  geom_line()
+```
+E se quisermos ver para todos os estados? Nesse caso, é importante usar um argumento adicional na função `aes()`, o `group`, para que o `ggplot2` saiba que queremos uma linha para cada estado.
+
+```{r}
+dados |> 
+  ggplot() + 
+  aes(x = trimestre_inicio, y = perc_desocupacao) + 
+  geom_line(aes(group = uf))
+```
+
+
+
+
+
+#### Gráficos de barras/colunas
+
+Para os gráficos de barras/colunas, podemos utilizar duas funções: `geom_bar()` e `geom_col()`. A diferença entre elas é que `geom_bar()` é utilizada quando queremos contar a frequência de uma variável categórica, enquanto `geom_col()` é utilizada quando queremos visualizar uma variável numérica.
+
+
+Vamos criar um gráfico de colunas para visualizar a taxa de desocupação dos estados no trimestre mais recente. Como já temos a coluna com o valor numérico que queremos visualizar (`perc_desocupacao`), utilizaremos a função `geom_col()`:
+
+```{r}
+#| label: exemplo-ggplot2-geom-col
+dados_tri_recente |> 
+  ggplot() + 
+  aes(y = uf, x = perc_desocupacao) + 
+  geom_col()
+```
+A função `geom_bar()` é utilizada para representar **contagens**. Vamos responder a seguinte pergunta de exemplo: quantas vezes cada estado apresentou uma taxa de desocupação maior ou igual à 20%? Para isso, precisamos filtrar os dados **antes** de criar o gráfico, e a função `geom_bar()` será utilizada para contar a frequência de cada estado. Os estados que não aparecerem no gráfico é porque não tiveram nenhuma taxa de desocupação maior ou igual à 20%, no período que temos dados.
+
+```{r}
+#| label: exemplo-ggplot2-geom-bar
+dados |> 
+  filter(perc_desocupacao >= 20) |>
+  ggplot() + 
+  aes(x = uf) + 
+  geom_bar()
+```
+
+
+
+
+#### Gráfico de histograma
+
+O histograma é um gráfico que mostra a distribuição de uma variável numérica. A função de geometria utilizada é a `geom_histogram()`.
+
+Podemos visualizar a distribuição da variável `perc_desocupacao`, considerando todos os trimestres:
+
+```{r}
+#| label: exemplo-ggplot2-histogram
+dados |> 
+  ggplot() + 
+  aes(x = perc_desocupacao) + 
+  geom_histogram(binwidth = 1)
+```
+
+Outro tipo de gráfico que pode ser utilizado para visualizar a distribuição de uma variável numérica é o gráfico de densidade. A função de geometria utilizada é a `geom_density()`.
+
+```{r}
+#| label: exemplo-ggplot2-density
+dados |> 
+  ggplot() + 
+  aes(x = perc_desocupacao) + 
+  geom_density()
+```
+
+
+#### Gráficos de caixa (*boxplot*)
+
+O gráfico de caixa[^1] (mais conhecido como *boxplot*) é utilizado para visualizar a distribuição de uma variável numérica. Esse é um tipo de gráfico que não é muito comum vermos no dia-a-dia, mas é muito usado em pesquisas e análises estatísticas.
+
+Este gráfico apresenta informações como a mediana, quartis, valores mínimos e máximos, e possíveis outliers.
+
+Para criar um boxplot, utilizaremos a função de geometria `geom_boxplot()`
+
+[^1]: Caso queira saber mais sobre o gráfico de caixa / *boxplot*, [recomendo a leitura deste texto escrito pela Fernanda Peres, sobre como interpretar o boxplot](https://fernandafperes.com.br/blog/interpretacao-boxplot/).
+
+
+
+```{r}
+#| label: exemplo-ggplot2-boxplot
+dados |> 
+  ggplot() + 
+  aes(y = regiao, x = perc_desocupacao) + 
+  geom_boxplot()
+```
+
+
+### Gráficos por subgrupos
+
+#### Subgrupos por Cor
+
+Podemos adicionar mais uma variável ao gráfico, utilizando a cor para representá-la. Para isso, utilizamos os argumentos `fill` ou `color` dentro da função `aes()`:
+
+   - `fill`: preenche a área com a cor. Útil para gráficos de barras e colunas, por exemplo.
+   - `color`: adiciona a cor ao contorno. Útil para gráficos de linhas e pontos, por exemplo.
+
+Vamos ver um exemplo de gráfico de colunas apresentado anteriormente, com preenchimento (`fill`) por região:
+
+```{r}
+#| label: exemplo-ggplot2-fill
+dados_tri_recente |>
+  ggplot() + 
+  aes(x = perc_desocupacao, y = uf) + 
+  geom_col(aes(fill = regiao))
+```
+
+Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, usando a cor para representar o período que consideramos como pandemia (`color`):
+
+```{r}
+#| label: exemplo-ggplot2-linha-color
+dados |> 
+  filter(uf_sigla == "BA") |> 
+  mutate(periodo_pandemia = as.character(periodo_pandemia)) |>
+  ggplot() + 
+  aes(x = trimestre_inicio, y = perc_desocupacao) + 
+  geom_line(aes(color = periodo_pandemia, group = "none"))
+```
+
+
+#### Subgrupos por Facetas (*facet*)
+
+```{r}
+dados |> 
+  ggplot() + 
+  aes(x = trimestre_inicio, y = perc_desocupacao) + 
+  geom_line(aes(group = uf)) + 
+  facet_wrap(~regiao)
+```
+
+### Revisão
+
+A partir dos exemplos apresentados, podemos listar alguns pontos importantes sobre o `ggplot2`:
+
+- A função `ggplot()` cria um objeto gráfico vazio
+
+- Podemos usar o pipe (`%>%` ou `|>`) para encadear as funções **até** a função `ggplot()`.
+
+- A partir da função `ggplot()`, não usamos mais o pipe (`%>%` ou `|>`), e sim o `+`.
+
+- A função `aes()` define o mapeamento estético (aesthetics mapping) entre as colunas da base de dados (variáveis) e os elementos visuais do gráfico (eixo, posição, cor, tamanho, etc).
+
+- Os atributos estéticos (`aes`) `x` e `y` representam os eixos `x` e `y` do gráfico.
+
+- Para adicionar uma geometria ao gráfico, usamos alguma função da família `geom_*`.
+
+- Podemos usar mais do que uma geometria no mesmo gráfico, e a ordem importa!
+
+
+### Preparação dos dados
+
+Os exemplos que utilizamos mostram um padrão no uso do `ggplot2`: a base de dados é passada para a função `ggplot()`, definimos quais variáveis serão mapeadas com a função `aes()`, e adicionamos uma (ou mais) geometria ao gráfico.
+
+Porém, algo que pode ser trabalhoso é preparar os dados para o gráfico. Nos exemplos que fizemos anteriormente, utilizamos uma tabela já preparada. 
+
+No entanto, em muitos casos, precisamos preparar os dados antes de criar o gráfico. Neste caso, muitas funções já vistas em aulas anteriores serão úteis (como `filter()`, `select()`, `mutate()`, `group_by()`, `summarise()`, `pivot_longer()`, `pivot_wider()`, entre outras). Caso necessário, consulte as aulas [Transformando dados](05_transformacao.qmd) e [Análise exploratória de dados](06_analise_exploratoria.qmd).
+
+
+#### Exemplo prático
+
+Nesse exemplo, o objetivo é criar um gráfico de colunas para visualizar a proporção de pessoas por categoria de ocupação para cada estado, em um trimestre específico (nesse caso, utilizaremos os dados do trimestre mais recente).
+
+Para isso, precisamos calcular a proporção de pessoas por categoria de ocupação, em cada estado. Depois, representaremos esses valores em um gráfico de colunas. 
+
+
+É importante entender as categorias de ocupação que temos disponíveis na base de dados, se não podemos correr o risco de contar valores mais de uma vez:
+
+
+![](images/07_categorias_ocupacao.png)
+
+Portanto, para obter o total, precisaremos apenas das seguinte categorias de ocupação:
+
+- `mil_pessoas_forca_de_trabalho_ocupada`: Pessoas dentro da força de trabalho, que estão ocupadas.
+
+- `mil_pessoas_forca_de_trabalho_desocupada`: Pessoas dentro da força de trabalho, que estão desocupadas.
+
+- `mil_pessoas_fora_da_forca_de_trabalho`: Pessoas fora da força de trabalho.
+
+Primeiro, vamos selecionar as colunas que utilizaremos para esse gráfico, para facilitar a preparação dos dados:
+
+```{r}
+dados_selecionados <- dados_tri_recente |> # <1>
+  select( # <2>
+    regiao,
+    uf,
+    trimestre_inicio,
+    mil_pessoas_forca_de_trabalho_ocupada,
+    mil_pessoas_forca_de_trabalho_desocupada,
+    mil_pessoas_fora_da_forca_de_trabalho,
+  )
+
+head(dados_selecionados) # <3>
+```
+1. Utilizando os dados já filtrados para o trimestre mais recente.
+2. Selecionando as colunas que utilizaremos.
+3. Primeiras linhas da tabela resultante
+
+Para calcular a proporção de pessoas por categoria de ocupação em cada estado, precisamos usar os valores que estão nas colunas `mil_pessoas_forca_de_trabalho_ocupada`, `mil_pessoas_forca_de_trabalho_desocupada` e `mil_pessoas_fora_da_forca_de_trabalho`. Porém, para fazer isso, precisamos transformar a tabela em formato longo.
+
+Vamos transformar a tabela em formato longo, utilizando a função `pivot_longer()`:
+
+
+```{r}
+dados_longos <- dados_selecionados |> # <1>
+  tidyr::pivot_longer( # <2>
+    cols = tidyselect::starts_with("mil_pessoas"), # <3>
+    names_to = "categoria", # <4>
+    values_to = "mil_pessoas", # <5>
+    names_prefix = "mil_pessoas_" # <6>
+  )
+
+head(dados_longos) # <7>
+```
+1. Utilizando os dados já filtrados para o trimestre mais recente, e selecionados com colunas relevantes
+2. Vamos transformar em formato longo para facilitar a criação do gráfico.
+3. Selecionando as colunas que começam com "mil_pessoas" para transformar em formato longo.
+4. Nome da nova coluna que conterá as categorias.
+5. Nome da nova coluna que conterá os valores.
+6. Prefixo que será removido do nome das colunas.
+7. Primeiras linhas da tabela resultante
+
+
+Agora, podemos calcular a proporção de pessoas por categoria de ocupação em cada estado:
+
+```{r}
+dados_preparados <- dados_longos |> 
+  group_by(regiao, uf, trimestre_inicio) |> # <1>
+  mutate(perc = mil_pessoas / sum(mil_pessoas) * 100) |>  # <2>
+  ungroup() # <3>
+
+head(dados_preparados)
+```
+1. Agrupando os dados por região, estado e trimestre. 
+2. Calculando a proporção de pessoas por grupo (categoria).
+3. Removendo o agrupamento dos dados.
+4. Primeiras linhas da tabela resultante
+
+
+
+Com os dados preparados, podemos criar o gráfico de colunas:
+
+```{r}
+#| label: exemplo-ggplot2-perc
+dados_preparados |> 
+  ggplot() + 
+  aes(y = uf, x = perc) + 
+  geom_col(aes(fill = categoria))
+```
+
+## Customizando gráficos
+
+Em breve!
+
+### Mudanças de layout com ggthemes e ipeaplot
+
+Em breve!
+
+## Salvando os gráficos
+
+Em breve!
+
+## Sugestões de exercícios
+
+###  Criando gráficos exploratórios
+
+Em breve!
+
+### Customizando gráficos
+
+Em breve!
 
 ## Sugestões de materiais
 
@@ -34,3 +457,12 @@ Página em construção! Em breve.
 
 - Livro: [Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
   - [Capítulo 4 - Visualização](https://livro.abj.org.br/04-visualizacao.html)
+  
+  
+  
+### Extras: Curiosidades e Referências
+
+
+- [Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0) - livro de Leland Wilkinson, cuja teoria é a base do `ggplot2`  
+
+- [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) - livro de Hadley Wickham, criador do `ggplot2`, Danielle Navarro e Thomas Lin Pedersen (em inglês)
