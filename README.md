@@ -16,6 +16,6 @@ Elaboração do material
 | [03_importacao.qmd](https://github.com/ipeadata-lab/curso_r_intro_202409/blob/main/03_importacao.qmd) | OK | OK | OK | 
 | [04_conhecendo.qmd](https://github.com/ipeadata-lab/curso_r_intro_202409/blob/main/04_conhecendo.qmd) | OK | OK |    | 
 | [05_transformacao.qmd](https://github.com/ipeadata-lab/curso_r_intro_202409/blob/main/05_transformacao.qmd) | OK | OK |    | 
-| [06_analise_exploratoria.qmd](https://github.com/ipeadata-lab/curso_r_intro_202409/blob/main/06_analise_exploratoria.qmd) |    |    |    |
+| [06_analise_exploratoria.qmd](https://github.com/ipeadata-lab/curso_r_intro_202409/blob/main/06_analise_exploratoria.qmd) | OK |    |    |
 | [07_visualizacao.qmd](https://github.com/ipeadata-lab/curso_r_intro_202409/blob/main/07_visualizacao.qmd) |    |    |    |
 | [08_regressao_linear.qmd](https://github.com/ipeadata-lab/curso_r_intro_202409/blob/main/08s_regressao_linear.qmd) |    |    |    |
