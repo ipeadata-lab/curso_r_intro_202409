@@ -1,0 +1,193 @@
+---
+title: "Exemplo prático: Visualização"
+subtitle: "Gráfico de colunas com proporção de pessoas por categoria de ocupação em cada estado"
+code-annotations: hover
+---
+
+
+## Objetivo
+
+Nesse exemplo, o objetivo é criar um gráfico de colunas para visualizar a proporção de pessoas por categoria de ocupação para cada estado, em um trimestre específico (nesse caso, utilizaremos os dados do trimestre mais recente)
+
+Para isso, precisamos calcular a proporção de pessoas por categoria de ocupação, em cada estado. Depois, representaremos esses valores em um gráfico de colunas.
+
+Esse é o gráfico que queremos criar:
+
+![](graficos/grafico_proporcao_categoria_ocupacao.png)
+
+
+
+
+## Importando os dados
+
+```{r}
+#| message: false
+library(ggplot2) # <1>
+library(dplyr) # <2>
+```
+1. Pacote para visualização de dados
+2. Pacote para transformação de dados
+
+```{r}
+#| message: false
+dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
+
+dados_tri_recente <- dados |>  
+  filter(trimestre_inicio == max(trimestre_inicio)) # <1>
+```
+1. Filtrando os dados para o trimestre mais recente
+
+
+## Preparando os dados
+
+É importante entender as categorias de ocupação que temos disponíveis na base de dados, se não podemos correr o risco de contar valores mais de uma vez:
+
+
+![](images/07_categorias_ocupacao.png)
+
+Portanto, para obter o total, precisaremos apenas das seguinte categorias de ocupação:
+
+- `mil_pessoas_forca_de_trabalho_ocupada`: Pessoas dentro da força de trabalho, que estão ocupadas.
+
+- `mil_pessoas_forca_de_trabalho_desocupada`: Pessoas dentro da força de trabalho, que estão desocupadas.
+
+- `mil_pessoas_fora_da_forca_de_trabalho`: Pessoas fora da força de trabalho.
+
+Primeiro, vamos selecionar as colunas que utilizaremos para esse gráfico, para facilitar a preparação dos dados:
+
+```{r}
+dados_selecionados <- dados_tri_recente |> # <1>
+  select( # <2>
+    regiao,
+    uf,
+    trimestre,
+    mil_pessoas_forca_de_trabalho_ocupada,
+    mil_pessoas_forca_de_trabalho_desocupada,
+    mil_pessoas_fora_da_forca_de_trabalho,
+  )
+
+head(dados_selecionados) # <3>
+```
+1. Utilizando os dados já filtrados para o trimestre mais recente.
+2. Selecionando as colunas que utilizaremos.
+3. Primeiras linhas da tabela resultante
+
+Para calcular a proporção de pessoas por categoria de ocupação em cada estado, precisamos usar os valores que estão nas colunas `mil_pessoas_forca_de_trabalho_ocupada`, `mil_pessoas_forca_de_trabalho_desocupada` e `mil_pessoas_fora_da_forca_de_trabalho`. Porém, para fazer isso, precisamos transformar a tabela em formato longo.
+
+Vamos transformar a tabela em formato longo, utilizando a função `pivot_longer()`:
+
+
+```{r}
+dados_longos <- dados_selecionados |> # <1>
+  tidyr::pivot_longer( # <2>
+    cols = tidyselect::starts_with("mil_pessoas"), # <3>
+    names_to = "categoria", # <4>
+    values_to = "mil_pessoas", # <5>
+    names_prefix = "mil_pessoas_" # <6>
+  )
+
+head(dados_longos) # <7>
+```
+1. Utilizando os dados já filtrados para o trimestre mais recente, e selecionados com colunas relevantes
+2. Vamos transformar em formato longo para facilitar a criação do gráfico.
+3. Selecionando as colunas que começam com "mil_pessoas" para transformar em formato longo.
+4. Nome da nova coluna que conterá as categorias.
+5. Nome da nova coluna que conterá os valores.
+6. Prefixo que será removido do nome das colunas.
+7. Primeiras linhas da tabela resultante
+
+
+Agora, podemos calcular a proporção de pessoas por categoria de ocupação em cada estado:
+
+```{r}
+dados_preparados <- dados_longos |> 
+  group_by(regiao, uf, trimestre) |> # <1>
+  mutate(perc = mil_pessoas / sum(mil_pessoas) * 100) |>  # <2>
+  ungroup() # <3>
+
+head(dados_preparados) # <4>
+```
+1. Agrupando os dados por região, estado e trimestre. 
+2. Calculando a proporção de pessoas por grupo (categoria).
+3. Removendo o agrupamento dos dados.
+4. Primeiras linhas da tabela resultante
+
+
+## Criando o gráfico
+
+Com os dados preparados, podemos criar o gráfico de colunas. Vamos primeiro criar um gráfico simples:
+
+```{r}
+#| label: exemplo-ggplot2-perc-exploratorio
+dados_preparados |>  # <1>
+  ggplot() + # <2>
+  aes(y = uf, x = perc) + # <3>
+  geom_col(aes(fill = categoria)) # <4>
+```
+1. Vamos utilizar os dados preparados nas etapas anteriores.
+2. Iniciando um gráfico.
+3. Definindo o eixo y como os estados e o eixo x como a proporção.
+4. Adicionando as colunas ao gráfico, com a cor de preenchimento de acordo com a categoria de ocupação.
+
+```{r}
+#| label: exemplo-ggplot2-perc-customizado
+trimestre_referencia <- unique(dados_preparados$trimestre) # <1>
+
+grafico_prop <- dados_preparados |> 
+  mutate( 
+    categoria_label = case_match( # <2>
+      categoria,
+       "forca_de_trabalho_ocupada" ~ "Força de trabalho ocupada",
+      "forca_de_trabalho_desocupada" ~ "Força de trabalho desocupada",
+      "fora_da_forca_de_trabalho" ~ "Fora da força de trabalho"
+    ),
+    categoria_fct = factor( # <3>
+      categoria_label,
+      levels = c(
+        "Fora da força de trabalho",
+        "Força de trabalho ocupada",
+        "Força de trabalho desocupada"
+      )),
+    uf_fct = forcats::fct_reorder(uf, perc, min) # <4>
+    ) |> 
+  ggplot() + 
+  aes(y = uf_fct, x = perc) + 
+  geom_col(aes(fill = categoria_fct)) +
+  scale_fill_manual(values = c( "#5b5e62", "gray", "#cc1e00")) + # <5>
+  labs( # <6>
+    x = "Proporção (%)",
+    y = "Estado",
+    title = "Proporção por categoria de ocupação em cada estado",
+    subtitle = paste0("Período: ", trimestre_referencia),
+    fill = "Categoria",
+    caption = "Dados da PNAD Contínua Trimestral - IBGE, obtidos no SIDRA."
+  ) +
+   theme_minimal()  # <7>
+
+grafico_prop
+```
+1. Criando um objeto com o trimestre de referência. Isso será utilizado para adicionar informações ao gráfico.
+2. Usando a função `case_math()` (similar ao `case_when()`), criamos uma nova coluna com os nomes das categorias de ocupação por extenso.
+3. Transformando as categorias em fator, para que sigam a ordem que definimos ao serem apresentadas (e não em ordem alfabética).
+4. Reordenamos a coluna estados de acordo com a proporção de pessoas em cada categoria. Isso faz com que o gráfico fique com aspecto "ordenado".
+4. Usamos uma escala de cores manual, onde podemos definir as cores usadas para cada categoria.
+5. Adicionando títulos e legendas ao gráfico.
+6. Aplicando um tema ao gráfico.
+
+Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente:
+
+```{r}
+ggsave( # <1>
+  filename = "graficos/grafico_proporcao_categoria_ocupacao.png", # <2>
+  plot = grafico_prop, # <3>
+  width = 10, # <4>
+  height = 8, # <5> 
+  dpi = 300 # <6>
+)
+```
+1. Função para salvar o gráfico.
+2. Nome do arquivo onde o gráfico será salvo.
+3. Objeto contendo o gráfico que será salvo.
+4. Largura do gráfico.
+5. Altura do gráfico.
+6. Resolução do gráfico.

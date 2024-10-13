@@ -41,6 +41,7 @@ website:
         - 05_transformacao.qmd
         - 06_analise_exploratoria.qmd
         - 07_visualizacao.qmd
+        - 07_visualizacao_exemplo.qmd
         - 08_regressao_linear.qmd        
       - section: "Explorando o Censo Demográfico"
         contents:

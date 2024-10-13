@@ -277,31 +277,57 @@ Vamos ver um exemplo de gráfico de colunas apresentado anteriormente, com preen
 dados_tri_recente |>
   ggplot() + 
   aes(x = perc_desocupacao, y = uf) + 
-  geom_col(aes(fill = regiao))
+  geom_col(aes(fill = regiao)) # <1>
 ```
+1. Adicionando a cor de preenchimento utilizando a coluna `regiao`, com o argumento `fill`. Isso precisa estar **DENTRO** do `aes()`.
 
 Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, usando a cor para representar o período que consideramos como pandemia (`color`):
 
 ```{r}
 #| label: exemplo-ggplot2-linha-color
 dados |> 
-  filter(uf_sigla == "BA") |> 
+  filter(uf_sigla == "BA") |> # <1>
   mutate(periodo_pandemia = as.character(periodo_pandemia)) |>
   ggplot() + 
   aes(x = trimestre_inicio, y = perc_desocupacao) + 
-  geom_line(aes(color = periodo_pandemia, group = "none"))
+  geom_line(aes(color = periodo_pandemia, group = "none")) # <2>
 ```
-
+1. Filtrando dados para representar apenas a Bahia.
+2. Adicionando a cor da linha utilizando a coluna `periodo_pandemia`, com o argumento `color`. Isso precisa estar **DENTRO** do `aes()`.
 
 #### Subgrupos por Facetas (*facet*)
 
+As facetas (ou *facet*) são utilizadas para dividir o gráfico em subgráficos, com base nos valores de uma ou duas variáveis categóricas. 
+
+Existem duas funções principais para criar facetas: `facet_wrap()` ou `facet_grid()`.
+
+A função `facet_wrap()` cria uma faceta para cada categoria da variável: 
+
 ```{r}
+#| label: exemplo-ggplot2-facet-wrap
 dados |> 
   ggplot() + 
   aes(x = trimestre_inicio, y = perc_desocupacao) + 
   geom_line(aes(group = uf)) + 
-  facet_wrap(~regiao)
+  facet_wrap(~regiao) # <1>
 ```
+1. Adicionando a função `facet_wrap()` para criar um gráfico para cada categoria da variável `regiao`. 
+
+Veja que o gráfico é dividido em 5 subgráficos, um para cada região do Brasil. Os valores dos eixos `x` e `y` são os mesmos para todos os subgráficos, possibilitando a comparação entre eles.
+
+
+Já a função `facet_grid()` cria um gráfico para cada combinação de categorias de duas variáveis.
+
+```{r}
+#| label: exemplo-ggplot2-facet-grid
+dados |> 
+  ggplot() + 
+  aes(y = perc_desocupacao) + 
+  geom_boxplot() + 
+  facet_grid(regiao ~ periodo_pandemia) # <1>
+```
+1. Adicionando a função `facet_grid()` para criar um gráfico para cada combinação de categorias das variáveis `regiao` e `periodo_pandemia`.
+
 
 ### Revisão
 
@@ -322,7 +348,86 @@ A partir dos exemplos apresentados, podemos listar alguns pontos importantes sob
 - Podemos usar mais do que uma geometria no mesmo gráfico, e a ordem importa!
 
 
-### Preparação dos dados
+## Customizando gráficos
+
+Em breve!
+
+
+### Títulos e rótulos
+
+Em breve!
+
+### Escalas
+
+Em breve!
+
+
+### Temas
+Em breve!
+
+<!-- falar sobre mudanças de layout com ggthemes e ipeaplot -->
+
+### Ordenando as colunas
+
+## Salvando os gráficos
+
+Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente. 
+Para isso, criamos um objeto contendo o gráfico que queremos salvar, e utilizamos a função `ggsave()`.
+
+A função `ggsave()` salva o gráfico em um arquivo, e apresenta dois argumentos principais:
+
+  - `filename`: nome do arquivo onde o gráfico será salvo
+  
+  - `plot`: objeto contendo o gráfico que será salvo
+  
+Essa função também apresenta alguns argumentos para customizar como o gráfico será salvo, como:
+
+  - `width`: largura do gráfico
+  
+  - `height`: altura do gráfico
+  
+  - `units`: unidade de medida para a largura e altura do gráfico
+  
+  - `dpi`: resolução do gráfico (quanto maior o valor, melhor a qualidade da imagem)
+
+Vamos reproduzir o gráfico apresentado na seção [Gráficos de caixa (*boxplot*)](#gr%C3%A1ficos-de-caixa-boxplot), e salvar o gráfico em um objeto (usando a atribuição `<-`):
+
+```{r}
+#| label: boxplot-exemplo
+boxplot_exemplo <- dados |> 
+  ggplot() +  
+  aes(y = regiao, x = perc_desocupacao) + 
+  geom_boxplot()
+
+boxplot_exemplo
+```
+
+Agora podemos salvar o gráfico em um arquivo, utilizando a função `ggsave()`:
+
+```{r}
+ggsave( # <1>
+  filename = "graficos/boxplot_exemplo.png", # <2>
+  plot = boxplot_exemplo, # <3>
+  width = 10, # <4>
+  height = 8, # <5> 
+  dpi = 300 # <6>
+)
+```
+1. Função para salvar o gráfico.
+2. Nome do arquivo onde o gráfico será salvo.
+3. Objeto contendo o gráfico que será salvo.
+4. Largura do gráfico.
+5. Altura do gráfico.
+6. Resolução do gráfico.
+
+Podemos verificar se o gráfico foi salvo corretamente, utilizando a função `file.exists()`:
+
+```{r}
+file.exists("graficos/boxplot_exemplo.png")
+```
+
+
+## Preparação dos dados
 
 Os exemplos que utilizamos mostram um padrão no uso do `ggplot2`: a base de dados é passada para a função `ggplot()`, definimos quais variáveis serão mapeadas com a função `aes()`, e adicionamos uma (ou mais) geometria ao gráfico.
 
@@ -330,115 +435,43 @@ Porém, algo que pode ser trabalhoso é preparar os dados para o gráfico. Nos e
 
 No entanto, em muitos casos, precisamos preparar os dados antes de criar o gráfico. Neste caso, muitas funções já vistas em aulas anteriores serão úteis (como `filter()`, `select()`, `mutate()`, `group_by()`, `summarise()`, `pivot_longer()`, `pivot_wider()`, entre outras). Caso necessário, consulte as aulas [Transformando dados](05_transformacao.qmd) e [Análise exploratória de dados](06_analise_exploratoria.qmd).
 
-
-#### Exemplo prático
-
-Nesse exemplo, o objetivo é criar um gráfico de colunas para visualizar a proporção de pessoas por categoria de ocupação para cada estado, em um trimestre específico (nesse caso, utilizaremos os dados do trimestre mais recente).
-
-Para isso, precisamos calcular a proporção de pessoas por categoria de ocupação, em cada estado. Depois, representaremos esses valores em um gráfico de colunas. 
-
-
-É importante entender as categorias de ocupação que temos disponíveis na base de dados, se não podemos correr o risco de contar valores mais de uma vez:
-
-
-![](images/07_categorias_ocupacao.png)
-
-Portanto, para obter o total, precisaremos apenas das seguinte categorias de ocupação:
-
-- `mil_pessoas_forca_de_trabalho_ocupada`: Pessoas dentro da força de trabalho, que estão ocupadas.
-
-- `mil_pessoas_forca_de_trabalho_desocupada`: Pessoas dentro da força de trabalho, que estão desocupadas.
-
-- `mil_pessoas_fora_da_forca_de_trabalho`: Pessoas fora da força de trabalho.
-
-Primeiro, vamos selecionar as colunas que utilizaremos para esse gráfico, para facilitar a preparação dos dados:
-
-```{r}
-dados_selecionados <- dados_tri_recente |> # <1>
-  select( # <2>
-    regiao,
-    uf,
-    trimestre_inicio,
-    mil_pessoas_forca_de_trabalho_ocupada,
-    mil_pessoas_forca_de_trabalho_desocupada,
-    mil_pessoas_fora_da_forca_de_trabalho,
-  )
-
-head(dados_selecionados) # <3>
-```
-1. Utilizando os dados já filtrados para o trimestre mais recente.
-2. Selecionando as colunas que utilizaremos.
-3. Primeiras linhas da tabela resultante
-
-Para calcular a proporção de pessoas por categoria de ocupação em cada estado, precisamos usar os valores que estão nas colunas `mil_pessoas_forca_de_trabalho_ocupada`, `mil_pessoas_forca_de_trabalho_desocupada` e `mil_pessoas_fora_da_forca_de_trabalho`. Porém, para fazer isso, precisamos transformar a tabela em formato longo.
-
-Vamos transformar a tabela em formato longo, utilizando a função `pivot_longer()`:
-
-
-```{r}
-dados_longos <- dados_selecionados |> # <1>
-  tidyr::pivot_longer( # <2>
-    cols = tidyselect::starts_with("mil_pessoas"), # <3>
-    names_to = "categoria", # <4>
-    values_to = "mil_pessoas", # <5>
-    names_prefix = "mil_pessoas_" # <6>
-  )
-
-head(dados_longos) # <7>
-```
-1. Utilizando os dados já filtrados para o trimestre mais recente, e selecionados com colunas relevantes
-2. Vamos transformar em formato longo para facilitar a criação do gráfico.
-3. Selecionando as colunas que começam com "mil_pessoas" para transformar em formato longo.
-4. Nome da nova coluna que conterá as categorias.
-5. Nome da nova coluna que conterá os valores.
-6. Prefixo que será removido do nome das colunas.
-7. Primeiras linhas da tabela resultante
-
-
-Agora, podemos calcular a proporção de pessoas por categoria de ocupação em cada estado:
-
-```{r}
-dados_preparados <- dados_longos |> 
-  group_by(regiao, uf, trimestre_inicio) |> # <1>
-  mutate(perc = mil_pessoas / sum(mil_pessoas) * 100) |>  # <2>
-  ungroup() # <3>
-
-head(dados_preparados)
-```
-1. Agrupando os dados por região, estado e trimestre. 
-2. Calculando a proporção de pessoas por grupo (categoria).
-3. Removendo o agrupamento dos dados.
-4. Primeiras linhas da tabela resultante
-
-
-
-Com os dados preparados, podemos criar o gráfico de colunas:
-
-```{r}
-#| label: exemplo-ggplot2-perc
-dados_preparados |> 
-  ggplot() + 
-  aes(y = uf, x = perc) + 
-  geom_col(aes(fill = categoria))
-```
-
-## Customizando gráficos
-
-Em breve!
-
-### Mudanças de layout com ggthemes e ipeaplot
-
-Em breve!
-
-## Salvando os gráficos
-
-Em breve!
+Em [Exemplo prático: Visualização](07_visualizacao_exemplo.qmd), é apresentado um exemplo prático de visualização de dados, onde é feita a preparação dos dados antes de criar o gráfico.
 
 ## Sugestões de exercícios
 
 ###  Criando gráficos exploratórios
 
-Em breve!
+1. Observe o gráfico abaixo, criado com o objeto `dados_tri_recente`, e responda:
+   - Quais são as variáveis mapeadas nos eixos x e y?
+   - Qual é a geometria utilizada?
+   - Existe algum outro atributo estético mapeado no gráfico?
+   
+```{r}
+#| label: exercicio-exploratoria-1
+#| echo: false
+dados_tri_recente |> 
+  mutate(
+    percentual_forca_de_trabalho_ocupada = mil_pessoas_forca_de_trabalho_ocupada / mil_pessoas_total * 100,
+    uf = forcats::fct_reorder(uf, percentual_forca_de_trabalho_ocupada)
+  ) |> 
+  ggplot() + 
+  aes(x = percentual_forca_de_trabalho_ocupada, y = uf) + 
+  geom_col(aes(fill = regiao)) +
+  theme_light()
+```
+  
+2. Observe os gráficos abaixo, e tente identificar qual é o problema em cada um deles. Sugira uma solução para corrigir o problema.
+
+```{r}
+#| label: exercicio-exploratoria-2
+
+dados_tri_recente |>
+  ggplot() + 
+  aes(x = perc_desocupacao, y = uf) + 
+  geom_col(aes(fill = "regiao"))
+```
+
+
 
 ### Customizando gráficos
 
