@@ -58,7 +58,7 @@ A lista completa das bases de dados disponíveis pode ser consultada na intranet
 
 As bases de dados do Ipea são armazenadas em difentes formatos, em alguns diretórios da rede (tabela abaixo) ou em bancos de dados relacionais (SQL Server). 
 
-![](images/storages.png){width=50% fig-align="left"}
+![](images/storages.png){width=50% fig-align="center"}
 
 Atualmente, a maior parte dos dados estão em diretórios na rede do Ipea, em especial no `Storage6`. No `Storage6`, essas bases estão organizadas a partir de duas pastas e suas subpastas: 
 - `"documentação"`. Os arquivos nesta pasta e subpastas são totalmente acessível, mesmo a documentação das bases restritas.
@@ -66,6 +66,7 @@ Atualmente, a maior parte dos dados estão em diretórios na rede do Ipea, em es
 
 
 ```{mermaid}
+%%| fig-align: center
 flowchart TD
     A[STORAGE6] --> B(Bases)
     B --> C(Documentação)
