@@ -530,24 +530,165 @@ Utilizando a base de dados que criamos nessa aula (com a taxa de desocupação c
 dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
 ```
 
-1. Crie uma nova tabela com apenas as colunas `uf`, `trimestre`, `perc_desocupacao` e `periodo_pandemia`.
+1. Crie uma nova tabela com apenas as colunas `uf`, `trimestre`, `perc_desocupacao` e `periodo_pandemia`. 
+
+::: {.callout-tip collapse="true"}
+## Dica 1
+
+O resultado esperado é:
+
+```{r}
+#| echo: false
+dados |> 
+  select(uf, trimestre, perc_desocupacao, periodo_pandemia) 
+```
+:::
 
 2. Qual foi a combinação de Estado/Trimestre que teve a maior taxa de desocupação...
   - a) Durante a pandemia?
   - b) Fora do período de pandemia?
   
+::: {.callout-tip collapse="true"}
+## Dica 1
+
+Para cada pergunta (durante ou fora do período de pandemia), precisamos fazer dois filtros:
+
+  - 1) Filtrar as linhas que correspondem ao período de pandemia (ou fora dele)
+
+  - 2) Filtrar a linha com a maior taxa de desocupação
+
+:::
+
+
+::: {.callout-tip collapse="true"}
+## Dica 2
+
+Para buscar o maior valor de uma coluna, podemos usar a função `max()`. 
+
+Por exemplo: o código abaixo retorna a linha com o personagem de Star Wars com o maior valor de massa (`mass`). Nesse caso, precisamos usar o argumento `na.rm = TRUE` para ignorar valores `NA`, pois a coluna `mass` tem valores faltantes.
+
+```{r}
+starwars |> 
+  filter(mass == max(mass, na.rm = TRUE))
+```
+:::
+
+::: {.callout-tip collapse="true"}
+## Dica 3
+
+O resultado esperado é:
+
+```{r}
+#| echo: false
+dados |> 
+  select(uf, trimestre, perc_desocupacao, periodo_pandemia) |> 
+  filter(periodo_pandemia == 1) |> 
+  filter(perc_desocupacao == max(perc_desocupacao)) |> 
+  knitr::kable()
+```
+:::
+  
 3. Considerando o trimestre mais recente disponível, qual é o estado com a maior taxa de desocupação? E a maior?
+
+::: {.callout-tip collapse="true"}
+## Dica 1
+
+Para cada pergunta (durante ou fora do período de pandemia), precisamos fazer dois filtros:
+
+  - 1) Filtrar as linhas que correspondem ao trimestre mais recente
+
+  - 2) Filtrar a linha com a maior **OU** menor taxa de desocupação
+  
+:::
+
+::: {.callout-tip collapse="true"}
+## Dica 2
+
+Podemos fazer o filtro usando o operador **OU** (`|`), para filtrar as linhas que correspondem ao estado com a maior OU menor taxa de desocupação.
+
+Por exemplo:  o código abaixo retorna a linha com o personagem de Star Wars com o maior e o menor valor de massa (`mass`). Nesse caso, precisamos usar o argumento `na.rm = TRUE` para ignorar valores `NA`, pois a coluna `mass` tem valores faltantes.
+
+```{r}
+starwars |> 
+  filter(mass == max(mass, na.rm = TRUE) | mass == min(mass, na.rm = TRUE))
+```
+  
+:::
+
+
+
+::: {.callout-tip collapse="true"}
+## Dica 3
+
+O resultado esperado é:
+
+```{r}
+#| echo: false
+dados |> 
+  select(uf, trimestre, perc_desocupacao) |> 
+  filter(trimestre == "2º trimestre 2024") |> 
+  filter(perc_desocupacao == max(perc_desocupacao) | perc_desocupacao == min(perc_desocupacao)) |> 
+  knitr::kable()
+```
+:::
+
+
 
 4. Considerando o trimestre mais recente disponível, quais são os 5 estados com as maiores taxas de desocupação?
 
-5. Utilizando a função `tidyr::pivot_wider()`, como podemos criar uma tabela onde cada linha apresente dados de um estado, e cada trimestre esteja em uma coluna? Veja o exemplo abaixo:
+::: {.callout-tip collapse="true"}
+## Dica 1
+
+A função `head()` retorna as primeiras linhas de um data frame. Podemos usar essa função para retornar as primeiras linhas de um data frame ordenado, usando o número de linhas desejadas como argumento:
+
+```{r}
+#| echo: false
+starwars |> 
+  arrange(desc(mass)) |> 
+  head(5) 
+```
+:::
+
+::: {.callout-tip collapse="true"}
+## Dica 2
+
+O resultado esperado é:
+
+```{r}
+#| echo: false
+dados |> 
+  select(uf, trimestre, perc_desocupacao) |> 
+  filter(trimestre == "2º trimestre 2024") |> 
+  arrange(desc(perc_desocupacao)) |>
+  head(5) |> 
+  knitr::kable()
+```
+:::
+
+5. Utilizando a função `tidyr::pivot_wider()`, como podemos criar uma tabela onde cada linha apresente dados de um estado, e cada trimestre esteja em uma coluna preenchida com os valores de percentual de desocupação?
+
+
+Veja o exemplo abaixo:
 
 ```{r}
 #| echo: false
 dados |>
   select(uf, trimestre, perc_desocupacao) |> 
-  tidyr::pivot_wider(names_from = trimestre, values_from = perc_desocupacao)
+  tidyr::pivot_wider(names_from = trimestre, values_from = perc_desocupacao) |> 
+  knitr::kable()
 ```
+
+::: {.callout-tip collapse="true"}
+
+### Dica 1
+
+Para usar a função `pivot_wider()`, precisamos indicar os argumentos `names_from` e `values_from`.
+
+O argumento `names_from` é a coluna que queremos usar para nomear as novas colunas. No caso, queremos que cada opção de trimestre seja uma nova coluna.
+
+O argumento `values_from` é a coluna que queremos usar para preencher os valores das novas colunas. No caso, queremos preencher as novas colunas com a taxa de desocupação.
+:::
+
 
 
 
