@@ -51,7 +51,8 @@ website:
         - 13_censobr_documentacao.qmd
       - section: "Data Lake do Ipea"
         contents:
-        - 20_ipeadatalake.qmd
+        - 14_infra_ipea.qmd
+        - 15_ipeadatalake.qmd
       - section: "Anexos"
         contents:        
         - 00_erros_frequentes.qmd
