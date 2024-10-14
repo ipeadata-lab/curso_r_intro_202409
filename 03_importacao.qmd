@@ -86,39 +86,34 @@ Ao importar, uma mensagem aparecerá no console apresentando algumas informaçõ
 #### Arquivo de texto separado por vírgula (`,`)
 
 ```{r}
-# Importando dados de um arquivo .csv
-dados_csv <- read_csv("dados/sidrar_4092_bruto.csv")
+dados_csv <- read_csv("dados/sidrar_4092_bruto.csv") # <1>
 ```
+1. Importando dados de um arquivo .csv, com separador vírgula (`,`)
 
 #### Arquivo de texto separado por ponto e vírgula (`;`)
 
 ```{r}
-# Importando dados de um arquivo .csv
-# Com separador ponto e vírgula
-dados_csv_2 <- read_csv2("dados/sidrar_4092_bruto_2.csv")
+dados_csv_2 <- read_csv2("dados/sidrar_4092_bruto_2.csv") # <1>
 ```
+1. Importando dados de um arquivo .csv, com separador ponto e vírgula (`;`)
 
 ### Arquivos Excel (ex: `.xlsx`)
 
 O pacote `{readxl}` permite a leitura de arquivos do Excel.
 
-```{r}
-# Carregando o pacote readxl
-library(readxl)
-```
-
 A função `excel_sheets()` do pacote `{readxl}` retorna o nome das planilhas (*Sheets*) disponíveis em um arquivo Excel:
 
 ```{r}
-excel_sheets("dados/sidrar_4092_bruto.xlsx")
+readxl::excel_sheets("dados/sidrar_4092_bruto.xlsx") # <1>
 ```
+1. Consultando as planilhas disponíveis no arquivo Excel
 
 A função `read_excel()` do pacote `{readxl}` permite a leitura de uma planilha específica de um arquivo Excel, utilizando o argumento `sheet` para especificar o nome da planilha. Caso o argumento `sheet` não seja fornecido, a função importará a primeira planilha do arquivo.
 
 ```{r}
-# Importando dados de uma planilha do Excel
-dados_excel <- read_excel("dados/sidrar_4092_bruto.xlsx", sheet = "Sheet1")
+dados_excel <- readxl::read_excel("dados/sidrar_4092_bruto.xlsx", sheet = "Sheet1") # <1> 
 ```
+1. Importando dados de uma planilha do Excel chamada "Sheet1"
 
 
 ### Arquivo binário do R (`.rds`)
@@ -139,8 +134,7 @@ Para importar arquivos do Stata, SPSS e SAS, podemos usar o pacote [`{haven}`](h
 Por exemplo, função `read_dta()` do pacote `{haven}` permite a leitura de arquivos do Stata:
 
 ```{r}
-library(haven)
-dados_dta <- read_dta("dados/sidrar_4092_bruto.dta")
+dados_dta <- haven::read_dta("dados/sidrar_4092_bruto.dta")
 ```
 
 ### Import Dataset do RStudio
@@ -169,8 +163,7 @@ Antes de salvar os dados, vamos criar um diretório onde salvaremos os arquivos.
 
 ```{r}
 #| eval: false
-library(fs)
-dir_create("dados_output")
+fs::dir_create("dados_output")
 ```
 
 ::: callout-warning
@@ -199,8 +192,7 @@ A função `write_xlsx()` do pacote `{writexl}` permite a escrita de arquivos do
 
 ```{r}
 #| eval: false
-library(writexl)
-write_xlsx(dados, "dados_output/sidrar_4092_bruto.xlsx")
+writexl::write_xlsx(dados, "dados_output/sidrar_4092_bruto.xlsx")
 ```
 
 ### Arquivo binário do R (`.rds`)
@@ -249,11 +241,7 @@ Alguns pacotes, como o `{censobr}`, apresentam funções preparadas para salvar 
 
 O pacote `{sidrar}` permite a importação de dados do Sistema IBGE de Recuperação Automática (SIDRA).
 
-```{r}
-library(sidrar)
-```
-
-Para importar dados do SIDRA, você precisa saber o **código da tabela** que deseja importar. Uma forma de fazer isso é buscar no site do SIDRA, no IBGE: <https://sidra.ibge.gov.br/>.
+Para importar dados do SIDRA, precisamos saber o **código da tabela** que desejamos importar. Uma forma de fazer isso é buscar no site do SIDRA, no IBGE: <https://sidra.ibge.gov.br/>.
 
 #### Buscando tabelas no SIDRA
 
@@ -262,9 +250,9 @@ Outra forma é buscar por palavras-chave no próprio R, utilizando a função `s
 ```{r}
 # Exemplo de busca por palavras-chave: 
 # Tabelas com resultados da PNAD Contínua Trimestral
-search_sidra("PNADCT")
+sidrar::search_sidra("PNADCT") #<1>
 ```
-
+1. Exemplo de busca por palavras-chave: tabelas com resultados da PNAD Contínua Trimestral
 
 Neste curso, utilizaremos na maioria das aulas a [Tabela 4092 - Pessoas de 14 anos ou mais de idade, por condição em relação à força de trabalho e condição e ocupação](https://sidra.ibge.gov.br/Tabela/4092), proveniente da Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T).
 
@@ -273,7 +261,7 @@ Neste curso, utilizaremos na maioria das aulas a [Tabela 4092 - Pessoas de 14 an
 Sabendo o código da tabela, você pode buscar informações sobre a tabela com a função `info_sidra()`. 
 
 ```{r}
-info_4092 <- info_sidra("4092")
+info_4092 <- sidrar::info_sidra("4092")
 ```
 
 O resultado dessa função é uma lista, portanto podemos acessar os elementos da lista utilizando o operador `$`, seguido pelo nome do elemento.
@@ -355,9 +343,13 @@ Lembrando que é importante salvar uma cópia local dos dados após o download. 
 
 ```{r}
 #| eval: false
-# Salvar localmente essa base de dados
-write_rds(dados_brutos_4092, "dados_output/sidrar_4092_bruto.rds")
+write_rds(dados_brutos_4092, "dados_output/sidrar_4092_bruto.rds") # <1>
 ```
+1. Salvar o objeto `dados_brutos_4092` em um arquivo `.rds`, no arquivo `"dados_output/sidrar_4092_bruto.rds"`.
+
+## Sugestões de exercícios
+
+Em breve!
 
 
 ## Sugestões de materiais
