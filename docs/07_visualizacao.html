@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./08_regressao_linear.html" rel="next">
+<link href="./07_visualizacao_exemplo.html" rel="next">
 <link href="./06_analise_exploratoria.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -215,6 +249,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./07_visualizacao_exemplo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exemplo prático: Visualização</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./08_regressao_linear.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regressão linear</span></a>
   </div>
@@ -273,8 +313,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_ipeadatalake.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_infra_ipea.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_ipeadatalake.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acessando dados com o {ipeadatalake}</span></a>
   </div>
 </li>
       </ul>
@@ -306,7 +352,63 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link active" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link active" data-scroll-target="#objetivos">Objetivos</a></li>
+  <li><a href="#importando-dados" id="toc-importando-dados" class="nav-link" data-scroll-target="#importando-dados">Importando dados</a></li>
+  <li><a href="#o-que-é-o-ggplot2" id="toc-o-que-é-o-ggplot2" class="nav-link" data-scroll-target="#o-que-é-o-ggplot2">O que é o ggplot2?</a></li>
+  <li><a href="#vocabulário-do-ggplot2" id="toc-vocabulário-do-ggplot2" class="nav-link" data-scroll-target="#vocabulário-do-ggplot2">Vocabulário do ggplot2</a></li>
+  <li><a href="#criando-gráficos-exploratórios" id="toc-criando-gráficos-exploratórios" class="nav-link" data-scroll-target="#criando-gráficos-exploratórios">Criando gráficos exploratórios</a>
+  <ul>
+  <li><a href="#tipos-de-gráficos" id="toc-tipos-de-gráficos" class="nav-link" data-scroll-target="#tipos-de-gráficos">Tipos de gráficos</a>
+  <ul>
+  <li><a href="#gráficos-de-dispersão" id="toc-gráficos-de-dispersão" class="nav-link" data-scroll-target="#gráficos-de-dispersão">Gráficos de dispersão</a></li>
+  <li><a href="#gráficos-de-linha" id="toc-gráficos-de-linha" class="nav-link" data-scroll-target="#gráficos-de-linha">Gráficos de linha</a></li>
+  </ul></li>
+  <li><a href="#combinando-geometrias" id="toc-combinando-geometrias" class="nav-link" data-scroll-target="#combinando-geometrias">Combinando geometrias</a>
+  <ul>
+  <li><a href="#gráficos-de-barrascolunas" id="toc-gráficos-de-barrascolunas" class="nav-link" data-scroll-target="#gráficos-de-barrascolunas">Gráficos de barras/colunas</a></li>
+  <li><a href="#gráfico-de-histograma" id="toc-gráfico-de-histograma" class="nav-link" data-scroll-target="#gráfico-de-histograma">Gráfico de histograma</a></li>
+  <li><a href="#gráficos-de-caixa-boxplot" id="toc-gráficos-de-caixa-boxplot" class="nav-link" data-scroll-target="#gráficos-de-caixa-boxplot">Gráficos de caixa (<em>boxplot</em>)</a></li>
+  </ul></li>
+  <li><a href="#gráficos-por-subgrupos" id="toc-gráficos-por-subgrupos" class="nav-link" data-scroll-target="#gráficos-por-subgrupos">Gráficos por subgrupos</a>
+  <ul>
+  <li><a href="#subgrupos-por-cor" id="toc-subgrupos-por-cor" class="nav-link" data-scroll-target="#subgrupos-por-cor">Subgrupos por Cor</a></li>
+  <li><a href="#subgrupos-por-facetas-facet" id="toc-subgrupos-por-facetas-facet" class="nav-link" data-scroll-target="#subgrupos-por-facetas-facet">Subgrupos por Facetas (<em>facet</em>)</a></li>
+  </ul></li>
+  <li><a href="#revisão" id="toc-revisão" class="nav-link" data-scroll-target="#revisão">Revisão</a></li>
+  </ul></li>
+  <li><a href="#customizando-gráficos" id="toc-customizando-gráficos" class="nav-link" data-scroll-target="#customizando-gráficos">Customizando gráficos</a>
+  <ul>
+  <li><a href="#ordenando-as-barras" id="toc-ordenando-as-barras" class="nav-link" data-scroll-target="#ordenando-as-barras">Ordenando as barras</a>
+  <ul>
+  <li><a href="#fatores-factors" id="toc-fatores-factors" class="nav-link" data-scroll-target="#fatores-factors">Fatores / <em>factors</em></a></li>
+  <li><a href="#voltando-ao-exemplo-do-gráfico-de-colunas" id="toc-voltando-ao-exemplo-do-gráfico-de-colunas" class="nav-link" data-scroll-target="#voltando-ao-exemplo-do-gráfico-de-colunas">Voltando ao exemplo do gráfico de colunas</a></li>
+  </ul></li>
+  <li><a href="#títulos-e-rótulos" id="toc-títulos-e-rótulos" class="nav-link" data-scroll-target="#títulos-e-rótulos">Títulos e rótulos</a></li>
+  <li><a href="#escalas" id="toc-escalas" class="nav-link" data-scroll-target="#escalas">Escalas</a>
+  <ul>
+  <li><a href="#escalas-de-cores" id="toc-escalas-de-cores" class="nav-link" data-scroll-target="#escalas-de-cores">Escalas de cores</a></li>
+  <li><a href="#escalas-de-eixos-datas" id="toc-escalas-de-eixos-datas" class="nav-link" data-scroll-target="#escalas-de-eixos-datas">Escalas de eixos: datas</a></li>
+  <li><a href="#escalas-de-eixos-numérico" id="toc-escalas-de-eixos-numérico" class="nav-link" data-scroll-target="#escalas-de-eixos-numérico">Escalas de eixos: numérico</a></li>
+  </ul></li>
+  <li><a href="#temas" id="toc-temas" class="nav-link" data-scroll-target="#temas">Temas</a>
+  <ul>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><code>{ggplot2}</code></a></li>
+  <li><a href="#ggthemes" id="toc-ggthemes" class="nav-link" data-scroll-target="#ggthemes"><code>{ggthemes}</code></a></li>
+  <li><a href="#ipeaplot" id="toc-ipeaplot" class="nav-link" data-scroll-target="#ipeaplot"><code>{ipeaplot}</code></a></li>
+  </ul></li>
+  <li><a href="#usando-as-funções-de-customização" id="toc-usando-as-funções-de-customização" class="nav-link" data-scroll-target="#usando-as-funções-de-customização">Usando as funções de customização</a></li>
+  </ul></li>
+  <li><a href="#salvando-os-gráficos" id="toc-salvando-os-gráficos" class="nav-link" data-scroll-target="#salvando-os-gráficos">Salvando os gráficos</a></li>
+  <li><a href="#preparação-dos-dados" id="toc-preparação-dos-dados" class="nav-link" data-scroll-target="#preparação-dos-dados">Preparação dos dados</a></li>
+  <li><a href="#sugestões-de-exercícios" id="toc-sugestões-de-exercícios" class="nav-link" data-scroll-target="#sugestões-de-exercícios">Sugestões de exercícios</a>
+  <ul>
+  <li><a href="#criando-gráficos-exploratórios-1" id="toc-criando-gráficos-exploratórios-1" class="nav-link" data-scroll-target="#criando-gráficos-exploratórios-1">Criando gráficos exploratórios</a></li>
+  <li><a href="#customizando-gráficos-1" id="toc-customizando-gráficos-1" class="nav-link" data-scroll-target="#customizando-gráficos-1">Customizando gráficos</a></li>
+  </ul></li>
+  <li><a href="#sugestões-de-materiais" id="toc-sugestões-de-materiais" class="nav-link" data-scroll-target="#sugestões-de-materiais">Sugestões de materiais</a>
+  <ul>
+  <li><a href="#extras-curiosidades-e-referências" id="toc-extras-curiosidades-e-referências" class="nav-link" data-scroll-target="#extras-curiosidades-e-referências">Extras: Curiosidades e Referências</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -332,26 +434,1340 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
+<section id="objetivos" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos">Objetivos</h2>
+<p>Nesta aula:</p>
+<ul>
+<li><p>Conheceremos o pacote <code>ggplot2</code> para visualização de dados</p></li>
+<li><p>Aprenderemos a criar diferentes tipos de gráficos como: de dispersão, linha, barra/coluna, entre outros</p></li>
+<li><p>Veremos como salvar os gráficos criados</p></li>
+<li><p>Exploraremos funções para customizar a aparência dos gráficos</p></li>
+</ul>
+<p>Esse é um exemplo de gráfico que criaremos ao longo da aula:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graficos/grafico_customizado.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<p>Nesta aula, utilizaremos principalmente os pacotes <code>{ggplot2}</code> e <code>{dplyr}</code>. Vamos carregá-los:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Pacote para visualização de dados</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Pacote para transformação de dados</span>
+</dd>
+</dl>
+</div>
+</div>
+</section>
+<section id="importando-dados" class="level2">
+<h2 class="anchored" data-anchor-id="importando-dados">Importando dados</h2>
+<p>Nesta aula, utilizaremos a tabela preparada na <a href="05_transformacao">aula sobre transformação de dados</a>: <code>"dados_output/sidra_4092_arrumado.rds"</code>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expanda para fazer download da base de dados
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar <a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds">aqui</a>, e copiar o arquivo para a pasta <code>dados_output</code> do seu projeto.</p>
+<p>Outra opção é executar o código abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-42"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-42-1"><a href="#annotated-cell-42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="1">1</button><span id="annotated-cell-42-2" class="code-annotation-target"><a href="#annotated-cell-42-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="2">2</button><span id="annotated-cell-42-3" class="code-annotation-target"><a href="#annotated-cell-42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="3">3</button><span id="annotated-cell-42-4" class="code-annotation-target"><a href="#annotated-cell-42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="annotated-cell-42-5"><a href="#annotated-cell-42-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-42" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-42" data-code-lines="2" data-code-annotation="1">URL que desejamos baixar</span>
+</dd>
+<dt data-target-cell="annotated-cell-42" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-42" data-code-lines="3" data-code-annotation="2">Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)</span>
+</dd>
+<dt data-target-cell="annotated-cell-42" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-42" data-code-lines="4" data-code-annotation="3">Configuração que evita corromper arquivos binários.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Vamos carregar a base de dados com a função <code>read_rds()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados_output/sidra_4092_arrumado.rds"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Importando os dados</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">Espiando a tabela: quantas colunas tem? quantas linhas? quais são as variáveis?</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,350
+Columns: 16
+$ uf                                       &lt;chr&gt; "Amapá", "Bahia", "Rio Grande…
+$ uf_codigo                                &lt;fct&gt; 16, 29, 24, 27, 13, 28, 25, 2…
+$ uf_sigla                                 &lt;chr&gt; "AP", "BA", "RN", "AL", "AM",…
+$ regiao                                   &lt;chr&gt; "Norte", "Nordeste", "Nordest…
+$ trimestre                                &lt;chr&gt; "1º trimestre 2012", "1º trim…
+$ trimestre_codigo                         &lt;chr&gt; "201201", "201201", "201201",…
+$ ano                                      &lt;dbl&gt; 2012, 2012, 2012, 2012, 2012,…
+$ trimestre_inicio                         &lt;date&gt; 2012-01-01, 2012-01-01, 2012…
+$ mil_pessoas_total                        &lt;dbl&gt; 487, 10986, 2540, 2383, 2463,…
+$ mil_pessoas_forca_de_trabalho            &lt;dbl&gt; 318, 6888, 1370, 1173, 1558, …
+$ mil_pessoas_forca_de_trabalho_ocupada    &lt;dbl&gt; 278, 6086, 1211, 1041, 1386, …
+$ mil_pessoas_forca_de_trabalho_desocupada &lt;dbl&gt; 40, 802, 159, 133, 173, 99, 1…
+$ mil_pessoas_fora_da_forca_de_trabalho    &lt;dbl&gt; 170, 4098, 1170, 1210, 905, 6…
+$ prop_desocupacao                         &lt;dbl&gt; 0.12578616, 0.11643438, 0.116…
+$ perc_desocupacao                         &lt;dbl&gt; 12.578616, 11.643438, 11.6058…
+$ periodo_pandemia                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+</div>
+</div>
+<p>Vamos criar também um objeto contendo apenas aos dados referentes ao trimestre mais recente, para usar em alguns exemplos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span>  </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_inicio <span class="sc">==</span> <span class="fu">max</span>(trimestre_inicio))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="1">Filtrando os dados para o trimestre mais recente</span>
+</dd>
+</dl>
+</div>
+</div>
+</section>
+<section id="o-que-é-o-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-é-o-ggplot2">O que é o ggplot2?</h2>
+<p>O <code>ggplot2</code> é o principal pacote para criação de gráficos em R. Ele é baseado na <a href="https://link.springer.com/book/10.1007/0-387-28695-0">gramática de gráficos</a>, uma teoria que apresenta uma forma de descrever os componentes de um gráfico.</p>
+<p>O <code>ggplot2</code> faz parte do <a href="https://www.tidyverse.org/">tidyverse</a>.</p>
+</section>
+<section id="vocabulário-do-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="vocabulário-do-ggplot2">Vocabulário do ggplot2</h2>
+<p>A gramática de gráficos é composta por alguns elementos, sendo os seguintes principais para iniciar:</p>
+<ul>
+<li><p><strong>Dados</strong>: um data frame que contém os dados que serão apresentados</p></li>
+<li><p><strong><em>Aesthetics</em></strong> <strong>(atributos estéticos)</strong>: mapeamento dos dados para propriedades visuais do gráfico, como eixos, cor, forma e tamanho</p></li>
+<li><p><strong>Geometrias</strong>: formas geométricas que representam os dados, como pontos, linhas e barras.</p></li>
+</ul>
+<p>Vamos fazer um exemplo simples, explorando cada um desses elementos. Para iniciar o gráfico, podemos informar os dados para a função <code>ggplot()</code>:</p>
+<div class="cell" data-code-annotations="below">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A função <code>ggplot()</code> cria um objeto gráfico vazio. Para informar quais são as variáveis que serão mapeadas nos eixos <code>x</code> e <code>y</code>, utilizamos a função <code>aes()</code>:</p>
+<div class="cell" data-code-annotations="below">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> perc_desocupacao, <span class="at">y =</span> uf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O gráfico criado apresenta os eixos, e os valores possíveis. Porém ainda não tem nenhuma geometria para representar os dados. Para adicionar uma geometria ao gráfico, utilizamos funções da família <code>geom_*</code>. Nesse caso, vamos utilizar a função <code>geom_col()</code> para criar um gráfico de colunas:</p>
+<div class="cell" data-code-annotations="below">
+<div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> perc_desocupacao, <span class="at">y =</span> uf) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1"><strong>Dados:</strong> dados que serão utilizados</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2"><code>ggplot()</code>: função para iniciar o gráfico</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="3"><strong><em>Aesthetics</em></strong> <strong>(atributos estéticos)</strong>: informando quais variáveis serão utilizadas nos eixos x e y</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="4"><strong>Geometria do gráfico:</strong> informando que faremos um gráfico de colunas</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aviso
+Dica
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Página em construção! Em breve.</p>
+<p><strong>Atenção:</strong> Observe que a cada linha de código, adicionamos um <code>+</code> para adicionar um novo elemento ao gráfico.</p>
+<p>A partir da função <code>ggplot()</code>, sempre utilizamos <code>+</code> para adicionar novos elementos ao gráfico.</p>
 </div>
 </div>
-<!-- - Vocabulário ggplot2 -->
-<!-- - Gráficos de dispersão -->
-<!-- - Gráficos de linha -->
-<!-- - Gráficos de barra/coluna -->
-<!-- - Gráficos por subgrupos por color/fill ou facet -->
-<!-- - Salvando os gráficos -->
-<!-- - Mudanças de layout com ggthemes e ipeaplot -->
+</section>
+<section id="criando-gráficos-exploratórios" class="level2">
+<h2 class="anchored" data-anchor-id="criando-gráficos-exploratórios">Criando gráficos exploratórios</h2>
+<p>Vamos criar alguns gráficos exploratórios com os dados de desocupação por trimestre e por estado.</p>
+<p>Gráficos exploratórios são utilizados para entender melhor os dados, identificar padrões e tendências, e verificar a presença de outliers. Neste momento, não estamos preocupados com a estética do gráfico, mas sim com a interpretação dos dados.</p>
+<p>Falaremos como <a href="#customizando-gr%C3%A1ficos">customizar os gráficos mais adiante</a>.</p>
+<section id="tipos-de-gráficos" class="level3">
+<h3 class="anchored" data-anchor-id="tipos-de-gráficos">Tipos de gráficos</h3>
+<section id="gráficos-de-dispersão" class="level4">
+<h4 class="anchored" data-anchor-id="gráficos-de-dispersão">Gráficos de dispersão</h4>
+<p>Vamos começar criando um gráfico de dispersão (conhecido também como gráfico de pontos). Para isso, utilizaremos a função <code>ggplot()</code> e a função <code>geom_point()</code>.</p>
+<p>O gráfico de dispersão é utilizado para visualizar a relação entre duas variáveis quantitativas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-dispersao-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gráficos-de-linha" class="level4">
+<h4 class="anchored" data-anchor-id="gráficos-de-linha">Gráficos de linha</h4>
+<p>Gráficos de linha são muito utilizados para representar uma variável ao longo do tempo. A função de geometria utilizada é a <code>geom_line()</code>.</p>
+<p>Vamos criar um gráfico de linha para visualizar a evolução da taxa de desocupação ao longo dos trimestres para apenas um estado:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-linha-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>E se quisermos ver para todos os estados? Nesse caso, é importante usar um argumento adicional na função <code>aes()</code>, o <code>group</code>, para que o <code>ggplot2</code> saiba que queremos uma linha para cada estado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> uf))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-linha-todos-estados-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="combinando-geometrias" class="level3">
+<h3 class="anchored" data-anchor-id="combinando-geometrias">Combinando geometrias</h3>
+<p>Podemos combinar diferentes geometrias no mesmo gráfico. Por exemplo, podemos adicionar um gráfico de pontos ao gráfico de linhas que criamos anteriormente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-linha-ponto-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Outro ponto importante é que a <strong>ordem das geometrias importa</strong>! No exemplo acima, a linha é desenhada primeiro, e os pontos são adicionados por cima da linha. Se trocarmos a ordem das geometrias, os pontos serão desenhados primeiro, e a linha será desenhada por cima dos pontos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-ponto-linha-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="gráficos-de-barrascolunas" class="level4">
+<h4 class="anchored" data-anchor-id="gráficos-de-barrascolunas">Gráficos de barras/colunas</h4>
+<p>Para os gráficos de barras/colunas, podemos utilizar duas funções: <code>geom_bar()</code> e <code>geom_col()</code>. A diferença entre elas é que <code>geom_bar()</code> é utilizada quando queremos contar a frequência de uma variável categórica, enquanto <code>geom_col()</code> é utilizada quando queremos visualizar uma variável numérica.</p>
+<p>Vamos criar um gráfico de colunas para visualizar a taxa de desocupação dos estados no trimestre mais recente. Como já temos a coluna com o valor numérico que queremos visualizar (<code>perc_desocupacao</code>), utilizaremos a função <code>geom_col()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf, <span class="at">x =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-geom-col-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A função <code>geom_bar()</code> é utilizada para representar <strong>contagens</strong>. Vamos responder a seguinte pergunta de exemplo: quantas vezes cada estado apresentou uma taxa de desocupação maior ou igual à 20%? Para isso, precisamos filtrar os dados <strong>antes</strong> de criar o gráfico, e a função <code>geom_bar()</code> será utilizada para contar a frequência de cada estado. Os estados que não aparecerem no gráfico é porque não tiveram nenhuma taxa de desocupação maior ou igual à 20%, no período que temos dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(perc_desocupacao <span class="sc">&gt;=</span> <span class="dv">20</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> uf) <span class="sc">+</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-geom-bar-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gráfico-de-histograma" class="level4">
+<h4 class="anchored" data-anchor-id="gráfico-de-histograma">Gráfico de histograma</h4>
+<p>O histograma é um gráfico que mostra a distribuição de uma variável numérica. A função de geometria utilizada é a <code>geom_histogram()</code>.</p>
+<p>Podemos visualizar a distribuição da variável <code>perc_desocupacao</code>, considerando todos os trimestres:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-histogram-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Outro tipo de gráfico que pode ser utilizado para visualizar a distribuição de uma variável numérica é o gráfico de densidade. A função de geometria utilizada é a <code>geom_density()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-density-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gráficos-de-caixa-boxplot" class="level4">
+<h4 class="anchored" data-anchor-id="gráficos-de-caixa-boxplot">Gráficos de caixa (<em>boxplot</em>)</h4>
+<p>O gráfico de caixa<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (mais conhecido como <em>boxplot</em>) é utilizado para visualizar a distribuição de uma variável numérica. Esse é um tipo de gráfico que não é muito comum vermos no dia-a-dia, mas é muito usado em pesquisas e análises estatísticas.</p>
+<p>Este gráfico apresenta informações como a mediana, quartis, valores mínimos e máximos, e possíveis outliers.</p>
+<p>Para criar um boxplot, utilizaremos a função de geometria <code>geom_boxplot()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> regiao, <span class="at">x =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-boxplot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="gráficos-por-subgrupos" class="level3">
+<h3 class="anchored" data-anchor-id="gráficos-por-subgrupos">Gráficos por subgrupos</h3>
+<section id="subgrupos-por-cor" class="level4">
+<h4 class="anchored" data-anchor-id="subgrupos-por-cor">Subgrupos por Cor</h4>
+<p>Podemos adicionar mais uma variável ao gráfico, utilizando a cor para representá-la. Para isso, utilizamos os argumentos <code>fill</code> ou <code>color</code> dentro da função <code>aes()</code>:</p>
+<ul>
+<li><code>fill</code>: preenche a área com a cor. Útil para gráficos de barras e colunas, por exemplo.</li>
+<li><code>color</code>: adiciona a cor ao contorno. Útil para gráficos de linhas e pontos, por exemplo.</li>
+</ul>
+<p>Vamos ver um exemplo de gráfico de colunas apresentado anteriormente, com preenchimento (<code>fill</code>) por região:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> perc_desocupacao, <span class="at">y =</span> uf) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> regiao))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="1">Adicionando a cor de preenchimento utilizando a coluna <code>regiao</code>, com o argumento <code>fill</code>. Isso precisa estar <strong>DENTRO</strong> do <code>aes()</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-fill-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, usando a cor para representar o período que consideramos como pandemia (<code>color</code>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-2" class="code-annotation-target"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">periodo_pandemia =</span> <span class="fu">as.character</span>(periodo_pandemia)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-6" class="code-annotation-target"><a href="#annotated-cell-18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> periodo_pandemia, <span class="at">group =</span> <span class="st">"none"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="2" data-code-annotation="1">Filtrando dados para representar apenas a Bahia.</span>
+</dd>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="6" data-code-annotation="2">Adicionando a cor da linha utilizando a coluna <code>periodo_pandemia</code>, com o argumento <code>color</code>. Isso precisa estar <strong>DENTRO</strong> do <code>aes()</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-linha-color-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="subgrupos-por-facetas-facet" class="level4">
+<h4 class="anchored" data-anchor-id="subgrupos-por-facetas-facet">Subgrupos por Facetas (<em>facet</em>)</h4>
+<p>As facetas (ou <em>facet</em>) são utilizadas para dividir o gráfico em subgráficos, com base nos valores de uma ou duas variáveis categóricas.</p>
+<p>Existem duas funções principais para criar facetas: <code>facet_wrap()</code> ou <code>facet_grid()</code>.</p>
+<p>A função <code>facet_wrap()</code> cria uma faceta para cada categoria da variável:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> uf)) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-5" class="code-annotation-target"><a href="#annotated-cell-19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>regiao)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="5" data-code-annotation="1">Adicionando a função <code>facet_wrap()</code> para criar um gráfico para cada categoria da variável <code>regiao</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-facet-wrap-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Veja que o gráfico é dividido em 5 subgráficos, um para cada região do Brasil. Os valores dos eixos <code>x</code> e <code>y</code> são os mesmos para todos os subgráficos, possibilitando a comparação entre eles.</p>
+<p>Já a função <code>facet_grid()</code> cria um gráfico para cada combinação de categorias de duas variáveis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1">1</button><span id="annotated-cell-20-5" class="code-annotation-target"><a href="#annotated-cell-20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(regiao <span class="sc">~</span> periodo_pandemia)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-20" data-code-lines="5" data-code-annotation="1">Adicionando a função <code>facet_grid()</code> para criar um gráfico para cada combinação de categorias das variáveis <code>regiao</code> e <code>periodo_pandemia</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exemplo-ggplot2-facet-grid-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="revisão" class="level3">
+<h3 class="anchored" data-anchor-id="revisão">Revisão</h3>
+<p>A partir dos exemplos apresentados, podemos listar alguns pontos importantes sobre o <code>ggplot2</code>:</p>
+<ul>
+<li><p>A função <code>ggplot()</code> cria um objeto gráfico vazio</p></li>
+<li><p>Podemos usar o pipe (<code>%&gt;%</code> ou <code>|&gt;</code>) para encadear as funções <strong>até</strong> a função <code>ggplot()</code>.</p></li>
+<li><p>A partir da função <code>ggplot()</code>, não usamos mais o pipe (<code>%&gt;%</code> ou <code>|&gt;</code>), e sim o <code>+</code>.</p></li>
+<li><p>A função <code>aes()</code> define o mapeamento estético (aesthetics mapping) entre as colunas da base de dados (variáveis) e os elementos visuais do gráfico (eixo, posição, cor, tamanho, etc).</p></li>
+<li><p>Os atributos estéticos (<code>aes</code>) <code>x</code> e <code>y</code> representam os eixos <code>x</code> e <code>y</code> do gráfico.</p></li>
+<li><p>Para adicionar uma geometria ao gráfico, usamos alguma função da família <code>geom_*</code>.</p></li>
+<li><p>Podemos usar mais do que uma geometria no mesmo gráfico, e a ordem importa!</p></li>
+</ul>
+</section>
+</section>
+<section id="customizando-gráficos" class="level2">
+<h2 class="anchored" data-anchor-id="customizando-gráficos">Customizando gráficos</h2>
+<p>Até aqui, discutimos como criar gráficos exploratórios, e vimos que o <code>ggplot2</code> nos permite criar gráficos de forma simples e rápida.</p>
+<p>Após criar um gráfico exploratório que nos ajuda a entender os dados, podemos customizá-lo para apresentar a outras pessoas, ou para publicar em relatórios e artigos.</p>
+<p>Vamos ver algumas formas de customizar os gráficos criados, partindo do gráfico a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>grafico_base <span class="ot">&lt;-</span> dados_tri_recente <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf, <span class="at">x =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>grafico_base</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-base-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="ordenando-as-barras" class="level3">
+<h3 class="anchored" data-anchor-id="ordenando-as-barras">Ordenando as barras</h3>
+<p>O ggplot ordena variáveis de texto em ordem alfabética. No exemplo acima, as barras estão ordenadas de acordo com a ordem alfabética dos estados: o Acre aparece primeiro, e o Tocantins, por último.</p>
+<p>Podemos ordenar as barras do gráfico de colunas de acordo com o valor da variável numérica utilizada (neste caso, <code>perc_desocupacao</code>).</p>
+<p>Para isso, precisaremos transformar a variável de texto <code>uf</code> em uma variável categórica ordenada (ou seja, um fator/<em>factor</em>).</p>
+<section id="fatores-factors" class="level4">
+<h4 class="anchored" data-anchor-id="fatores-factors">Fatores / <em>factors</em></h4>
+<p>Os fatores são utilizados para representar variáveis categóricas no R. Essas variáveis podem ser ordenadas ou não.</p>
+<p>Eles são úteis para controlar a ordem de exibição de variáveis categóricas em gráficos, tabelas e modelos estatísticos.</p>
+<p>Vamos criar um exemplo simples, criando uma tabela com a escolaridade de um grupo de pessoas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>escolaridade <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">nome =</span> <span class="fu">c</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Maria"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"João"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Pedro"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ana"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"José"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Carlos"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mariana"</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Lucas"</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">escolaridade_concluida =</span> <span class="fu">c</span>(</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Pós-graduação"</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ensino Médio"</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ensino Fundamental II"</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ensino Fundamental I"</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ensino Fundamental I"</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sem instrução"</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ensino Técnico"</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Graduação"</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se ordenarmos a tabela pela variável <code>escolaridade_concluida</code>, veremos que a ordem é alfabética:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>escolaridade <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(escolaridade_concluida)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  nome    escolaridade_concluida
+  &lt;chr&gt;   &lt;chr&gt;                 
+1 Ana     Ensino Fundamental I  
+2 José    Ensino Fundamental I  
+3 Pedro   Ensino Fundamental II 
+4 João    Ensino Médio          
+5 Mariana Ensino Técnico        
+6 Lucas   Graduação             
+7 Maria   Pós-graduação         
+8 Carlos  Sem instrução         </code></pre>
+</div>
+</div>
+<p>Para que, por exemplo, a variável <code>escolaridade_concluida</code> seja ordenada de acordo com a ordem de escolaridade, podemos transformá-la em um fator ordenado, utilizando a função <code>factor()</code>, e indicando quais são os níveis (<em>levels</em>) de escolaridade, na ordem que queremos que apareçam:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-24"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1" aria-hidden="true" tabindex="-1"></a>escolaridade <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-24-2"><a href="#annotated-cell-24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1">1</button><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">escolaridade_concluida_fct =</span> <span class="fu">factor</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2">2</button><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4" aria-hidden="true" tabindex="-1"></a>    escolaridade_concluida,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3">3</button><span id="annotated-cell-24-5" class="code-annotation-target"><a href="#annotated-cell-24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Sem instrução"</span>, </span>
+<span id="annotated-cell-24-7"><a href="#annotated-cell-24-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Ensino Fundamental I"</span>, </span>
+<span id="annotated-cell-24-8"><a href="#annotated-cell-24-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Ensino Fundamental II"</span>, </span>
+<span id="annotated-cell-24-9"><a href="#annotated-cell-24-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Ensino Médio"</span>, </span>
+<span id="annotated-cell-24-10"><a href="#annotated-cell-24-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Ensino Técnico"</span>, </span>
+<span id="annotated-cell-24-11"><a href="#annotated-cell-24-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Graduação"</span>, </span>
+<span id="annotated-cell-24-12"><a href="#annotated-cell-24-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Pós-graduação"</span> </span>
+<span id="annotated-cell-24-13"><a href="#annotated-cell-24-13" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="annotated-cell-24-14"><a href="#annotated-cell-24-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="annotated-cell-24-15"><a href="#annotated-cell-24-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="4">4</button><span id="annotated-cell-24-16" class="code-annotation-target"><a href="#annotated-cell-24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(escolaridade_concluida_fct)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="3,14" data-code-annotation="1">Criando uma nova variável <code>escolaridade_concluida_fct</code> usando a função <code>factor()</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="4" data-code-annotation="2">Variável que será transformada em fator</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="5,13" data-code-annotation="3">Níveis de escolaridade, na ordem que queremos que apareçam</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="16" data-code-annotation="4">Ordenando a tabela pela variável <code>escolaridade_concluida_fct</code></span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+  nome    escolaridade_concluida escolaridade_concluida_fct
+  &lt;chr&gt;   &lt;chr&gt;                  &lt;fct&gt;                     
+1 Carlos  Sem instrução          Sem instrução             
+2 Ana     Ensino Fundamental I   Ensino Fundamental I      
+3 José    Ensino Fundamental I   Ensino Fundamental I      
+4 Pedro   Ensino Fundamental II  Ensino Fundamental II     
+5 João    Ensino Médio           Ensino Médio              
+6 Mariana Ensino Técnico         Ensino Técnico            
+7 Lucas   Graduação              Graduação                 
+8 Maria   Pós-graduação          Pós-graduação             </code></pre>
+</div>
+</div>
+<p>A função <code>factor()</code> é do R base, ou seja, não precisamos carregar nenhum pacote adicional para utilizá-la. Porém o pacote <code>{forcats}</code> (que faz parte do <code>{tidyverse}</code>) apresenta funções mais avançadas para trabalhar com fatores, como a função <code>fct_reorder()</code> que veremos a seguir.</p>
+</section>
+<section id="voltando-ao-exemplo-do-gráfico-de-colunas" class="level4">
+<h4 class="anchored" data-anchor-id="voltando-ao-exemplo-do-gráfico-de-colunas">Voltando ao exemplo do gráfico de colunas</h4>
+<p>Para isso, precisamos fazer uma transformação na variável <code>uf</code>, para que ela seja ordenada de acordo com o valor de <code>perc_desocupacao</code>. Isso deve ser feito <strong>antes</strong> de criar o gráfico.</p>
+<p>Vamos ordenar as barras do gráfico anterior, de acordo com o valor de <code>perc_desocupacao</code>. Para isso, utilizamos a função <code>fct_reorder()</code> do pacote <code>{forcats}</code>.</p>
+<p>A função <code>fct_reorder()</code> recebe dois argumentos:</p>
+<ul>
+<li>A variável que queremos ordenar (a variável <strong>categórica</strong> que é representada em cada coluna)</li>
+<li>A variável que será utilizada para ordenar a primeira variável (a variável <strong>numérica</strong> que será utilizada para ordenar a variável categórica)</li>
+</ul>
+<p>No caso do nosso exemplo, queremos ordenar as barras de acordo com o valor de <code>perc_desocupacao</code>, e a variável categórica que queremos ordenar é <code>uf</code>. Portanto, usaremos <code>fct_reorder(uf, perc_desocupacao)</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1" aria-hidden="true" tabindex="-1"></a>grafico_ordenado <span class="ot">&lt;-</span> dados_tri_recente <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">uf_fct =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(uf, perc_desocupacao)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-25-3"><a href="#annotated-cell-25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-25-4"><a href="#annotated-cell-25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf_fct, <span class="at">x =</span> perc_desocupacao) <span class="sc">+</span> </span>
+<span id="annotated-cell-25-5"><a href="#annotated-cell-25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="annotated-cell-25-6"><a href="#annotated-cell-25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-25-7"><a href="#annotated-cell-25-7" aria-hidden="true" tabindex="-1"></a>grafico_ordenado</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="1">Como explicado acima, criamos uma nova variável <code>uf_fct</code> que será utilizada para ordenar as barras de acordo com o valor de <code>perc_desocupacao</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-ordenacao-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="títulos-e-rótulos" class="level3">
+<h3 class="anchored" data-anchor-id="títulos-e-rótulos">Títulos e rótulos</h3>
+<p>Por padrão, o gráfico está sem título, e com o nome das colunas nos eixos <code>x</code> e <code>y</code> e legendas.</p>
+<p>O <code>ggplot2</code> permite adicionar títulos e rótulos aos gráficos, utilizando a função <code>labs()</code>. Essa função apresenta vários argumentos, que podem ser divididos em dois grupos:</p>
+<ul>
+<li><p>Elementos com informações do gráficos: sempre estão disponíveis. Ex: <code>title</code>, <code>subtitle</code>, <code>caption</code>…</p></li>
+<li><p>Elementos relacionados aos atributos estéticos: dependem dos mapeamentos feitos com a função <code>aes()</code>. Ex: <code>x</code>, <code>y</code>, <code>fill</code>, <code>color</code>…</p></li>
+</ul>
+<p>Vamos adicionar um título ao gráfico anterior, e rótulos para os eixos <code>x</code> e <code>y</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-26"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-26-1"><a href="#annotated-cell-26-1" aria-hidden="true" tabindex="-1"></a>grafico_com_labels <span class="ot">&lt;-</span> grafico_ordenado <span class="sc">+</span> </span>
+<span id="annotated-cell-26-2"><a href="#annotated-cell-26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1">1</button><span id="annotated-cell-26-3" class="code-annotation-target"><a href="#annotated-cell-26-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Taxa de desocupação por estado"</span>,</span>
+<span id="annotated-cell-26-4"><a href="#annotated-cell-26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Dados para o 2º trimestre 2024"</span>,</span>
+<span id="annotated-cell-26-5"><a href="#annotated-cell-26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Fonte: Dados referentes à PNAD Contínua Trimestral, obtidos no SIDRA/IBGE."</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="2">2</button><span id="annotated-cell-26-6" class="code-annotation-target"><a href="#annotated-cell-26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Taxa de desocupação (%)"</span>,</span>
+<span id="annotated-cell-26-7"><a href="#annotated-cell-26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Estado"</span>,</span>
+<span id="annotated-cell-26-8"><a href="#annotated-cell-26-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-26-9"><a href="#annotated-cell-26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-26-10"><a href="#annotated-cell-26-10" aria-hidden="true" tabindex="-1"></a>grafico_com_labels</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-26" data-code-lines="3,4,5" data-code-annotation="1">Informações sobre o gráfico</span>
+</dd>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-26" data-code-lines="6,7" data-code-annotation="2">Atributos estéticos utilizados</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="escalas" class="level3">
+<h3 class="anchored" data-anchor-id="escalas">Escalas</h3>
+<p>O <code>{ggplot2}</code> apresenta várias funções para trabalhar com as escalas dos gráficos. Essas funções apresentam o prefixo <code>scale_</code>.</p>
+<p>Vamos explorar algumas dessas funções para trabalhar com escalas, mas lembre-se que existem muitas outras funções para customizar as escalas dos gráficos.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lista de funções para escalas no ggplot2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="st">"package:ggplot2"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_subset</span>(<span class="st">"^scale_"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "scale_alpha"                "scale_alpha_binned"        
+  [3] "scale_alpha_continuous"     "scale_alpha_date"          
+  [5] "scale_alpha_datetime"       "scale_alpha_discrete"      
+  [7] "scale_alpha_identity"       "scale_alpha_manual"        
+  [9] "scale_alpha_ordinal"        "scale_color_binned"        
+ [11] "scale_color_brewer"         "scale_color_continuous"    
+ [13] "scale_color_date"           "scale_color_datetime"      
+ [15] "scale_color_discrete"       "scale_color_distiller"     
+ [17] "scale_color_fermenter"      "scale_color_gradient"      
+ [19] "scale_color_gradient2"      "scale_color_gradientn"     
+ [21] "scale_color_grey"           "scale_color_hue"           
+ [23] "scale_color_identity"       "scale_color_manual"        
+ [25] "scale_color_ordinal"        "scale_color_steps"         
+ [27] "scale_color_steps2"         "scale_color_stepsn"        
+ [29] "scale_color_viridis_b"      "scale_color_viridis_c"     
+ [31] "scale_color_viridis_d"      "scale_colour_binned"       
+ [33] "scale_colour_brewer"        "scale_colour_continuous"   
+ [35] "scale_colour_date"          "scale_colour_datetime"     
+ [37] "scale_colour_discrete"      "scale_colour_distiller"    
+ [39] "scale_colour_fermenter"     "scale_colour_gradient"     
+ [41] "scale_colour_gradient2"     "scale_colour_gradientn"    
+ [43] "scale_colour_grey"          "scale_colour_hue"          
+ [45] "scale_colour_identity"      "scale_colour_manual"       
+ [47] "scale_colour_ordinal"       "scale_colour_steps"        
+ [49] "scale_colour_steps2"        "scale_colour_stepsn"       
+ [51] "scale_colour_viridis_b"     "scale_colour_viridis_c"    
+ [53] "scale_colour_viridis_d"     "scale_continuous_identity" 
+ [55] "scale_discrete_identity"    "scale_discrete_manual"     
+ [57] "scale_fill_binned"          "scale_fill_brewer"         
+ [59] "scale_fill_continuous"      "scale_fill_date"           
+ [61] "scale_fill_datetime"        "scale_fill_discrete"       
+ [63] "scale_fill_distiller"       "scale_fill_fermenter"      
+ [65] "scale_fill_gradient"        "scale_fill_gradient2"      
+ [67] "scale_fill_gradientn"       "scale_fill_grey"           
+ [69] "scale_fill_hue"             "scale_fill_identity"       
+ [71] "scale_fill_manual"          "scale_fill_ordinal"        
+ [73] "scale_fill_steps"           "scale_fill_steps2"         
+ [75] "scale_fill_stepsn"          "scale_fill_viridis_b"      
+ [77] "scale_fill_viridis_c"       "scale_fill_viridis_d"      
+ [79] "scale_linetype"             "scale_linetype_binned"     
+ [81] "scale_linetype_continuous"  "scale_linetype_discrete"   
+ [83] "scale_linetype_identity"    "scale_linetype_manual"     
+ [85] "scale_linewidth"            "scale_linewidth_binned"    
+ [87] "scale_linewidth_continuous" "scale_linewidth_date"      
+ [89] "scale_linewidth_datetime"   "scale_linewidth_discrete"  
+ [91] "scale_linewidth_identity"   "scale_linewidth_manual"    
+ [93] "scale_linewidth_ordinal"    "scale_radius"              
+ [95] "scale_shape"                "scale_shape_binned"        
+ [97] "scale_shape_continuous"     "scale_shape_discrete"      
+ [99] "scale_shape_identity"       "scale_shape_manual"        
+[101] "scale_shape_ordinal"        "scale_size"                
+[103] "scale_size_area"            "scale_size_binned"         
+[105] "scale_size_binned_area"     "scale_size_continuous"     
+[107] "scale_size_date"            "scale_size_datetime"       
+[109] "scale_size_discrete"        "scale_size_identity"       
+[111] "scale_size_manual"          "scale_size_ordinal"        
+[113] "scale_type"                 "scale_x_binned"            
+[115] "scale_x_continuous"         "scale_x_date"              
+[117] "scale_x_datetime"           "scale_x_discrete"          
+[119] "scale_x_log10"              "scale_x_reverse"           
+[121] "scale_x_sqrt"               "scale_x_time"              
+[123] "scale_y_binned"             "scale_y_continuous"        
+[125] "scale_y_date"               "scale_y_datetime"          
+[127] "scale_y_discrete"           "scale_y_log10"             
+[129] "scale_y_reverse"            "scale_y_sqrt"              
+[131] "scale_y_time"              </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="escalas-de-cores" class="level4">
+<h4 class="anchored" data-anchor-id="escalas-de-cores">Escalas de cores</h4>
+<p>O <code>{ggplot2}</code> utiliza uma paleta de cores padrão bem colorida, observada nos exemplos anteriores. Porém podemos mudar a paleta de cores, ou até mesmo criar uma paleta de cores personalizada.</p>
+<p>As funções de escalas de cores dependerão do tipo de atributo estético utilizado: <code>fill</code> ou <code>color</code>.</p>
+<p>Quando usamos o atributo <code>fill</code>, utilizamos as funções <code>scale_fill_*()</code>. Quando usamos o atributo <code>color</code>, utilizamos as funções <code>scale_color_*()</code>.</p>
+<p>Outro ponto importante é que as funções de escalas de cores dependem do <strong>tipo de variável</strong> que estamos mapeando.</p>
+<p>Por exemplo, se a variável mapeada é categórica, podemos usar a função <code>scale_fill_viridis_d()</code> para preencher as barras com uma paleta de cores viridis. Utilizando o exemplo que estamos criando, a região pode ser mapeada no atributo <code>fill</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf, <span class="at">x =</span> perc_desocupacao) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> regiao)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-cores-fill-categorico-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Mas se a variável mapeada é numérica, podemos usar a função <code>scale_fill_viridis_c()</code>. O exemplo abaixo apresenta um gráfico similar, mas mapeando a variável <code>perc_desocupacao</code> no atributo <code>fill</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf, <span class="at">x =</span> perc_desocupacao) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> perc_desocupacao)) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-cores-fill-numerico-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lista de funções para escalas de cores no ggplot2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Para o atributo <code>color</code>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="st">"package:ggplot2"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_subset</span>(<span class="st">"^scale_"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_subset</span>(<span class="st">"color"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "scale_color_binned"     "scale_color_brewer"     "scale_color_continuous"
+ [4] "scale_color_date"       "scale_color_datetime"   "scale_color_discrete"  
+ [7] "scale_color_distiller"  "scale_color_fermenter"  "scale_color_gradient"  
+[10] "scale_color_gradient2"  "scale_color_gradientn"  "scale_color_grey"      
+[13] "scale_color_hue"        "scale_color_identity"   "scale_color_manual"    
+[16] "scale_color_ordinal"    "scale_color_steps"      "scale_color_steps2"    
+[19] "scale_color_stepsn"     "scale_color_viridis_b"  "scale_color_viridis_c" 
+[22] "scale_color_viridis_d" </code></pre>
+</div>
+</div>
+<ul>
+<li>Para o atributo <code>fill</code>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="st">"package:ggplot2"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_subset</span>(<span class="st">"^scale_"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_subset</span>(<span class="st">"fill"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "scale_fill_binned"     "scale_fill_brewer"     "scale_fill_continuous"
+ [4] "scale_fill_date"       "scale_fill_datetime"   "scale_fill_discrete"  
+ [7] "scale_fill_distiller"  "scale_fill_fermenter"  "scale_fill_gradient"  
+[10] "scale_fill_gradient2"  "scale_fill_gradientn"  "scale_fill_grey"      
+[13] "scale_fill_hue"        "scale_fill_identity"   "scale_fill_manual"    
+[16] "scale_fill_ordinal"    "scale_fill_steps"      "scale_fill_steps2"    
+[19] "scale_fill_stepsn"     "scale_fill_viridis_b"  "scale_fill_viridis_c" 
+[22] "scale_fill_viridis_d" </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Um ponto a ter atenção é o tipo de paleta de cores usadas. Algumas paletas de cores são mais adequadas para representar variáveis categóricas, enquanto outras são mais adequadas para representar variáveis numéricas. Veja a imagem com exemplos de paletas categóricas, sequenciais, e divergentes:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/07_tipos_paletas.png" class="img-fluid figure-img"></p>
+<figcaption>Fonte da imagem: <a href="https://r-tmap.github.io/tmap-book">tmap book</a>.</figcaption>
+</figure>
+</div>
+</section>
+<section id="escalas-de-eixos-datas" class="level4">
+<h4 class="anchored" data-anchor-id="escalas-de-eixos-datas">Escalas de eixos: datas</h4>
+<p>Podemos customizar a escala do eixo <code>x</code> para apresentar as datas de forma personalizada. É importante que, para isso, a variável seja do tipo <code>Date</code> ou <code>Datetime</code>.</p>
+<p>Para isso, utilizamos a função <code>scale_x_date()</code>. Ela apresenta alguns argumentos importantes:</p>
+<ul>
+<li><p><code>breaks</code>: indica a frequência das marcações no eixo <code>x</code>. Alguns exemplos são: <code>"1 month"</code> (marcação a cada mês), <code>"3 months"</code> (marcação a cada 3 meses), “1 year” (marcação a cada ano), entre outros.</p></li>
+<li><p><code>date_labels</code>: formato da data que será apresentado. Alguns exemplos são: <code>"%m/%Y"</code> (mês/ano), <code>"%d/%m/%Y"</code> (dia/mês/ano), <code>"%b/%Y"</code> (mês abreviado/ano), entre outros.</p></li>
+</ul>
+<p>Vamos criar um gráfico de linhas para visualizar a evolução da taxa de desocupação desde 2022 para a Bahia, e customizar a escala do eixo <code>x</code> para apresentar as datas de forma a apresentar uma marcação cada 3 meses:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-29"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-29-1"><a href="#annotated-cell-29-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1">1</button><span id="annotated-cell-29-2" class="code-annotation-target"><a href="#annotated-cell-29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>, ano <span class="sc">&gt;=</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-29-3"><a href="#annotated-cell-29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-29-4"><a href="#annotated-cell-29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span></span>
+<span id="annotated-cell-29-5"><a href="#annotated-cell-29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-29-6"><a href="#annotated-cell-29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="2">2</button><span id="annotated-cell-29-7" class="code-annotation-target"><a href="#annotated-cell-29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="3">3</button><span id="annotated-cell-29-8" class="code-annotation-target"><a href="#annotated-cell-29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="st">"3 months"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="4">4</button><span id="annotated-cell-29-9" class="code-annotation-target"><a href="#annotated-cell-29-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_labels =</span> <span class="st">"%m/%Y"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="5">5</button><span id="annotated-cell-29-10" class="code-annotation-target"><a href="#annotated-cell-29-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">minor_breaks =</span> <span class="st">"1 month"</span></span>
+<span id="annotated-cell-29-11"><a href="#annotated-cell-29-11" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-29" data-code-lines="2" data-code-annotation="1">Filtrando os dados para a Bahia, e considerando apenas os dados a partir de 2022.</span>
+</dd>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-29" data-code-lines="7,11" data-code-annotation="2">Customizando a escala de data no eixo <code>x</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-29" data-code-lines="8" data-code-annotation="3">Queremos que a marcação apareça a cada 3 meses.</span>
+</dd>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-29" data-code-lines="9" data-code-annotation="4">Formato da data que será apresentado (mês/ano).</span>
+</dd>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-29" data-code-lines="10" data-code-annotation="5">A <em>minor break</em> é uma linha que aparece entre as marcações principais, porém sem indicar uma legenda. Neste caso, queremos que apareça a cada mês.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-escala-data-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="escalas-de-eixos-numérico" class="level4">
+<h4 class="anchored" data-anchor-id="escalas-de-eixos-numérico">Escalas de eixos: numérico</h4>
+<p>Podemos customizar a escala dos eixos <code>x</code> e/ou <code>y</code> quando estamos mapeando variáveis numéricas utilizando as funções <code>scale_x_continuous()</code> e <code>scale_y_continuous()</code>.</p>
+<p>O gráfico apresentado no exemplo anterior (onde configuramos a escala de datas) está com o eixo <code>y</code> limitado na faixa onde os dados são encontrados (11% à 18%). Porém, precisamos ter cuidado ao limitar os eixos, pois isso pode distorcer a visualização dos dados.</p>
+<p>Podemos definir que o eixo <code>y</code> comece em 0 e termine em 20%, utilizando o argumento <code>limits</code> da função <code>scale_y_continuous()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>, ano <span class="sc">&gt;=</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-escala-numerica-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="temas" class="level3">
+<h3 class="anchored" data-anchor-id="temas">Temas</h3>
+<p>Os gráficos que criamos até aqui utilizam o tema padrão do <code>{ggplot2}</code> (podemos identificar facilmente pelo fundo cinza).</p>
+<p>Porém existem funções para customizar o tema dos gráficos, alterando a cor de fundo, a cor dos textos, a fonte, entre outros elementos.</p>
+<section id="ggplot2" class="level4">
+<h4 class="anchored" data-anchor-id="ggplot2"><code>{ggplot2}</code></h4>
+<p>O <code>{ggplot2}</code> apresenta alguns temas que podem ser utilizados nos gráficos, utilizando funções com o prefixo <code>theme_*()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="st">"package:ggplot2"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_subset</span>(<span class="st">"^theme_"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "theme_bw"       "theme_classic"  "theme_dark"     "theme_get"     
+ [5] "theme_gray"     "theme_grey"     "theme_light"    "theme_linedraw"
+ [9] "theme_minimal"  "theme_replace"  "theme_set"      "theme_test"    
+[13] "theme_update"   "theme_void"    </code></pre>
+</div>
+</div>
+<p>Por exemplo, podemos alterar o tema do gráfico <code>grafico_ordenado</code> (criado anteriormente) para o tema <code>theme_minimal()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>grafico_com_labels <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-tema-ggplot2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ggthemes" class="level4">
+<h4 class="anchored" data-anchor-id="ggthemes"><code>{ggthemes}</code></h4>
+<p>O pacote <code>{ggthemes}</code> apresenta vários temas adicionais que podem ser utilizados nos gráficos criados com o <code>{ggplot2}</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-33"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="1">1</button><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggthemes"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-33" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="1" data-code-annotation="1">Caso não tenha o pacote instalado, utilize essa linha de código para instalar o pacote.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>A lista abaixo apresenta os temas disponíveis no pacote <code>{ggthemes}</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="st">"package:ggthemes"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_subset</span>(<span class="st">"^theme_"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "theme_base"            "theme_calc"            "theme_clean"          
+ [4] "theme_economist"       "theme_economist_white" "theme_excel"          
+ [7] "theme_excel_new"       "theme_few"             "theme_fivethirtyeight"
+[10] "theme_foundation"      "theme_gdocs"           "theme_hc"             
+[13] "theme_igray"           "theme_map"             "theme_pander"         
+[16] "theme_par"             "theme_solarized"       "theme_solarized_2"    
+[19] "theme_solid"           "theme_stata"           "theme_tufte"          
+[22] "theme_wsj"            </code></pre>
+</div>
+</div>
+<p>Podemos usar o tema <code>theme_economist()</code> para customizar o gráfico <code>grafico_com_labels</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>grafico_com_labels <span class="sc">+</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_economist</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-tema-ggthemes-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ipeaplot" class="level4">
+<h4 class="anchored" data-anchor-id="ipeaplot"><code>{ipeaplot}</code></h4>
+<p>O pacote <code>{ipeaplot}</code> apresenta a função <code>theme_ipea()</code> que pode ser utilizada nos gráficos criados com o <code>{ggplot2}</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-36"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="1">1</button><span id="annotated-cell-36-1" class="code-annotation-target"><a href="#annotated-cell-36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ipeaplot"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-36" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-36" data-code-lines="1" data-code-annotation="1">Caso não tenha o pacote instalado, utilize essa linha de código para instalar o pacote.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Podemos usar o tema <code>theme_ipea()</code> para customizar o gráfico abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao <span class="sc">==</span> <span class="st">"Sul"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao, <span class="at">color =</span> uf) <span class="sc">+</span> </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  ipeaplot<span class="sc">::</span><span class="fu">theme_ipea</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-tema-ipeaplot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="usando-as-funções-de-customização" class="level3">
+<h3 class="anchored" data-anchor-id="usando-as-funções-de-customização">Usando as funções de customização</h3>
+<p>Nos exemplos acima, apresentamos algumas funções para customizar os gráficos criados com o <code>{ggplot2}</code>.</p>
+<p>Vamos usar essas funções para customizar o gráfico apresentado no exemplo acima:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-38"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="1">1</button><span id="annotated-cell-38-1" class="code-annotation-target"><a href="#annotated-cell-38-1" aria-hidden="true" tabindex="-1"></a>grafico_customizado <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-38-2"><a href="#annotated-cell-38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao <span class="sc">==</span> <span class="st">"Sul"</span>) <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-38-3"><a href="#annotated-cell-38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-38-4"><a href="#annotated-cell-38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao, <span class="at">color =</span> uf) <span class="sc">+</span>  </span>
+<span id="annotated-cell-38-5"><a href="#annotated-cell-38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="2">2</button><span id="annotated-cell-38-6" class="code-annotation-target"><a href="#annotated-cell-38-6" aria-hidden="true" tabindex="-1"></a>  ipeaplot<span class="sc">::</span><span class="fu">theme_ipea</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="3">3</button><span id="annotated-cell-38-7" class="code-annotation-target"><a href="#annotated-cell-38-7" aria-hidden="true" tabindex="-1"></a>  ipeaplot<span class="sc">::</span><span class="fu">scale_color_ipea</span>(<span class="at">palette =</span> <span class="st">"Viridis"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="4">4</button><span id="annotated-cell-38-8" class="code-annotation-target"><a href="#annotated-cell-38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">breaks =</span> <span class="st">"1 year"</span>, <span class="at">date_labels =</span> <span class="st">"%Y"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="5">5</button><span id="annotated-cell-38-9" class="code-annotation-target"><a href="#annotated-cell-38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="annotated-cell-38-10"><a href="#annotated-cell-38-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Taxa de desocupação por estado na região Sul"</span>,</span>
+<span id="annotated-cell-38-11"><a href="#annotated-cell-38-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Dados da PNAD Contínua Trimestral"</span>,</span>
+<span id="annotated-cell-38-12"><a href="#annotated-cell-38-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Fonte dos dados: SIDRA/IBGE."</span>,</span>
+<span id="annotated-cell-38-13"><a href="#annotated-cell-38-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Estado"</span>,</span>
+<span id="annotated-cell-38-14"><a href="#annotated-cell-38-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Ano"</span>,</span>
+<span id="annotated-cell-38-15"><a href="#annotated-cell-38-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Taxa de desocupação (%)"</span></span>
+<span id="annotated-cell-38-16"><a href="#annotated-cell-38-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-38-17"><a href="#annotated-cell-38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-38-18"><a href="#annotated-cell-38-18" aria-hidden="true" tabindex="-1"></a>grafico_customizado</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-38" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-38" data-code-lines="1" data-code-annotation="1">Vamos salvar o resultado do gráfico em um objeto.</span>
+</dd>
+<dt data-target-cell="annotated-cell-38" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-38" data-code-lines="6" data-code-annotation="2">Utilizando o tema <code>theme_ipea()</code> do pacote <code>{ipeaplot}</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-38" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-38" data-code-lines="7" data-code-annotation="3">Utilizando a função <code>scale_color_ipea()</code> (do pacote <code>{ipeaplot}</code>) com paleta de cores <code>Orange-Blue</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-38" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-38" data-code-lines="8" data-code-annotation="4">Customizando a escala de data no eixo <code>x</code>: apresentar uma marcação a cada ano.</span>
+</dd>
+<dt data-target-cell="annotated-cell-38" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-38" data-code-lines="9,16" data-code-annotation="5">Adicionando títulos e rótulos ao gráfico.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/customizando-grafico-completo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="salvando-os-gráficos" class="level2">
+<h2 class="anchored" data-anchor-id="salvando-os-gráficos">Salvando os gráficos</h2>
+<p>Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente. Para isso, criamos um objeto contendo o gráfico que queremos salvar, e utilizamos a função <code>ggsave()</code>.</p>
+<p>A função <code>ggsave()</code> salva o gráfico em um arquivo, e apresenta dois argumentos principais:</p>
+<ul>
+<li><p><code>filename</code>: nome do arquivo onde o gráfico será salvo</p></li>
+<li><p><code>plot</code>: objeto contendo o gráfico que será salvo</p></li>
+</ul>
+<p>Essa função também apresenta alguns argumentos para customizar como o gráfico será salvo, como:</p>
+<ul>
+<li><p><code>width</code>: largura do gráfico</p></li>
+<li><p><code>height</code>: altura do gráfico</p></li>
+<li><p><code>units</code>: unidade de medida para a largura e altura do gráfico</p></li>
+<li><p><code>dpi</code>: resolução do gráfico (quanto maior o valor, melhor a qualidade da imagem)</p></li>
+</ul>
+<p>Vamos utilizar o gráfico customizado criado anteriormente (salvo no objeto <code>grafico_customizado</code>), e salvar em um arquivo utilizando a função <code>ggsave()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-39"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="1">1</button><span id="annotated-cell-39-1" class="code-annotation-target"><a href="#annotated-cell-39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="2">2</button><span id="annotated-cell-39-2" class="code-annotation-target"><a href="#annotated-cell-39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"graficos/grafico_customizado.png"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="3">3</button><span id="annotated-cell-39-3" class="code-annotation-target"><a href="#annotated-cell-39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> grafico_customizado,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="4">4</button><span id="annotated-cell-39-4" class="code-annotation-target"><a href="#annotated-cell-39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="5">5</button><span id="annotated-cell-39-5" class="code-annotation-target"><a href="#annotated-cell-39-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="6">6</button><span id="annotated-cell-39-6" class="code-annotation-target"><a href="#annotated-cell-39-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="annotated-cell-39-7"><a href="#annotated-cell-39-7" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-39" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="1" data-code-annotation="1">Função para salvar o gráfico.</span>
+</dd>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="2" data-code-annotation="2">Nome do arquivo onde o gráfico será salvo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="3" data-code-annotation="3">Objeto contendo o gráfico que será salvo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="4" data-code-annotation="4">Largura do gráfico.</span>
+</dd>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="5" data-code-annotation="5">Altura do gráfico.</span>
+</dd>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="6" data-code-annotation="6">Resolução do gráfico.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Podemos verificar se o gráfico foi salvo corretamente, utilizando a função <code>file.exists()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"graficos/grafico_customizado.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="preparação-dos-dados" class="level2">
+<h2 class="anchored" data-anchor-id="preparação-dos-dados">Preparação dos dados</h2>
+<p>Os exemplos que utilizamos mostram um padrão no uso do <code>ggplot2</code>: a base de dados é passada para a função <code>ggplot()</code>, definimos quais variáveis serão mapeadas com a função <code>aes()</code>, e adicionamos uma (ou mais) geometria ao gráfico.</p>
+<p>Porém, algo que pode ser trabalhoso é preparar os dados para o gráfico. Nos exemplos que fizemos anteriormente, utilizamos uma tabela já preparada.</p>
+<p>No entanto, em muitos casos, precisamos preparar os dados antes de criar o gráfico. Neste caso, muitas funções já vistas em aulas anteriores serão úteis (como <code>filter()</code>, <code>select()</code>, <code>mutate()</code>, <code>group_by()</code>, <code>summarise()</code>, <code>pivot_longer()</code>, <code>pivot_wider()</code>, entre outras). Caso necessário, consulte as aulas <a href="./05_transformacao.html">Transformando dados</a> e <a href="./06_analise_exploratoria.html">Análise exploratória de dados</a>.</p>
+<p>Em <a href="./07_visualizacao_exemplo.html">Exemplo prático: Visualização</a>, é apresentado um exemplo prático de visualização de dados, onde é feita a preparação dos dados antes de criar o gráfico.</p>
+</section>
+<section id="sugestões-de-exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="sugestões-de-exercícios">Sugestões de exercícios</h2>
+<section id="criando-gráficos-exploratórios-1" class="level3">
+<h3 class="anchored" data-anchor-id="criando-gráficos-exploratórios-1">Criando gráficos exploratórios</h3>
+<ol type="1">
+<li>Observe o gráfico abaixo, criado com o objeto <code>dados_tri_recente</code>, e responda:
+<ul>
+<li>Quais são as variáveis mapeadas nos eixos x e y?</li>
+<li>Qual é a geometria utilizada?</li>
+<li>Existe algum outro atributo estético mapeado no gráfico?</li>
+</ul></li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exercicio-exploratoria-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Observe o gráfico abaixo, e tente identificar qual é o problema no código. Sugira uma solução para corrigir o problema.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> perc_desocupacao, <span class="at">y =</span> uf) <span class="sc">+</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="st">"regiao"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exercicio-exploratoria-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Centro Oeste. Use as cores para representar cada estado.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dica 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O resultado esperado é:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exercicio-exploratoria-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Norte. Utilize facetas para separar os gráficos por estado.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dica 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O resultado esperado é:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_files/figure-html/exercicio-exploratoria-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="customizando-gráficos-1" class="level3">
+<h3 class="anchored" data-anchor-id="customizando-gráficos-1">Customizando gráficos</h3>
+<ol type="1">
+<li>Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Nordeste do Brasil, e salve em um objeto chamado <code>grafico_desocupacao_nordeste</code>. Mapeie os estados na cor das linhas. Com esse objeto, faça as tarefas abaixo:</li>
+</ol>
+<ul>
+<li><ol type="a">
+<li>Configure a escala do eixo x para que apareça as marcações dos anos. Isso ajudará a visualizar melhor a periodicidade dos dados.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Adicione os títulos e rótulos dos eixos no gráfico.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Experimente os temas apresentados anteriormente, e use no gráfico o que mais gostar.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Altere a escala de cores das linhas, utilizando uma paleta de cores de sua preferência. Tome cuidado pois estamos mapeando uma variável categórica.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Salve o gráfico em um arquivo chamado <code>graficos/grafico_desocupacao_nordeste.png</code>.</li>
+</ol></li>
+</ul>
+</section>
+</section>
 <section id="sugestões-de-materiais" class="level2">
 <h2 class="anchored" data-anchor-id="sugestões-de-materiais">Sugestões de materiais</h2>
 <ul>
@@ -368,11 +1784,24 @@ Aviso
 <li><a href="https://livro.abj.org.br/04-visualizacao.html">Capítulo 4 - Visualização</a></li>
 </ul></li>
 </ul>
+<section id="extras-curiosidades-e-referências" class="level3">
+<h3 class="anchored" data-anchor-id="extras-curiosidades-e-referências">Extras: Curiosidades e Referências</h3>
+<ul>
+<li><p><a href="https://link.springer.com/book/10.1007/0-387-28695-0">Grammar of Graphics</a> - livro de Leland Wilkinson, cuja teoria é a base do <code>ggplot2</code></p></li>
+<li><p><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a> - livro de Hadley Wickham, criador do <code>ggplot2</code>, Danielle Navarro e Thomas Lin Pedersen (em inglês)</p></li>
+</ul>
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas de rodapé</h2>
+
+<ol>
+<li id="fn1"><p>Caso queira saber mais sobre o gráfico de caixa / <em>boxplot</em>, <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">recomendo a leitura deste texto escrito pela Fernanda Peres, sobre como interpretar o boxplot</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -719,25 +2148,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       };
     }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
           }
-        });
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
       }
   const findCites = (el) => {
     const parentEl = el.parentElement;
@@ -785,8 +2253,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./08_regressao_linear.html" class="pagination-link" aria-label="Regressão linear">
-        <span class="nav-page-text">Regressão linear</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07_visualizacao_exemplo.html" class="pagination-link" aria-label="Exemplo prático: Visualização">
+        <span class="nav-page-text">Exemplo prático: Visualização</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
