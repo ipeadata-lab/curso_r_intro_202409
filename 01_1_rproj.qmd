@@ -1,6 +1,7 @@
 ---
 # Iniciar um trabalho com o R e o Rstudio
 title: "Diretório de trabalho e Projetos"
+code-annotations: hover
 ---
 
 Para conseguir [importar os dados](03_importacao.qmd) no R e salvar os resultados no computador, precisamos conhecer alguns conceitos importantes, como caminhos de arquivos, diretório de trabalho, e os projetos do RStudio. 
@@ -106,11 +107,13 @@ Você pode criar as pastas diretamente no seu computador, ou pode criar as pasta
 
 ```{r}
 #| eval: false
-dir.create("dados")
-dir.create("dados_output") # atenção: não use espaços nos nomes das pastas
+dir.create("dados") # <1> 
+dir.create("dados_output") 
 dir.create("scripts")
-dir.create("graficos") # atenção: não use acentos ou caracteres especiais nos nomes das pastas
+dir.create("graficos") # <1> 
 ```
+1. Atenção: não use espaços, acentos ou caracteres especiais nos nomes das pastas, pois isso pode causar problemas ao referenciar os arquivos no R.
+
 
 Após criar as pastas, o seu projeto deve ter uma estrutura parecida com essa:
 
