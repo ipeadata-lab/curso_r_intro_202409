@@ -77,6 +77,17 @@
     ]
   },
   {
+    "objectID": "02_conceitos_basicos_r.html#sugestões-de-exercícios",
+    "href": "02_conceitos_basicos_r.html#sugestões-de-exercícios",
+    "title": "Linguagem R",
+    "section": "Sugestões de exercícios",
+    "text": "Sugestões de exercícios\n\nCrie um objeto chamado meu_nome e armazene seu nome nele. Depois, use a função toupper() para converter seu nome para letras maiúsculas e salve o resultado em um novo objeto chamado nome_maiusculo. Verifique se os dois objetos foram criados corretamente, consultando o painel Environment.\nObserve os nomes a seguir, e identifique se estão adequados para nomear objetos e colunas no R. Para os nomes que não estão adequados, explique o motivo:\n\ndados_altura\n1_dados\nmedia-altura\nmedia_altura\nMédia altura\n\nTente adivinhar a classe dos objetos a seguir, e depois confira no R usando a função class():\n\n\npi\nletters\ndplyr::starwars\ndplyr::starwars$mass\ndplyr::starwars$species\ndplyr::starwars$films",
+    "crumbs": [
+      "Conceitos básicos",
+      "Linguagem R"
+    ]
+  },
+  {
     "objectID": "02_conceitos_basicos_r.html#sugestões-de-materiais",
     "href": "02_conceitos_basicos_r.html#sugestões-de-materiais",
     "title": "Linguagem R",
@@ -313,6 +324,17 @@
     "title": "Conhecendo a base de dados",
     "section": "Conhecendo os valores únicos de uma coluna",
     "text": "Conhecendo os valores únicos de uma coluna\nPara variáveis categóricas ou de texto, é interessante conhecer os valores únicos presentes.\nPara acessar uma coluna específica, utilize o $. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: dados$ano.\n\n\n\n\n\n\nDica\n\n\n\nDica: após escrever o nome_do_dataframe$, aperte tab para que o RStudio faça sugestões de colunas da base.\n\n\nA função unique() retorna os valores únicos de um vetor. Exemplo:\n\nunique(dados$`Unidade de Medida`)\n\n[1] \"Mil pessoas\" \"%\"          \n\n\nNote que, nesse caso, foi necessário colocar uma crase para identificar o nome da coluna. Isso acontece porque a coluna contém espaços em branco e, por isso, o R entenderia que o nome da coluna é Unidade e de e Medida. Com a crase, o R entende que o nome da coluna é Unidade de Medida.\n\n\n\n\n\n\nDica\n\n\n\nÉ uma boa prática evitar espaços em branco e caracteres especiais nos nomes das colunas. Em Transformando dados &gt; Padronizar nome das colunas apresentaremos uma forma de fazer isso!\n\n\nOutra forma de extrair o conteúdo de uma coluna é utilizando o operador [[:\n\nunique(dados[[\"Unidade de Medida\"]])\n\n[1] \"Mil pessoas\" \"%\"          \n\n\nO resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Conhecendo a base de dados"
+    ]
+  },
+  {
+    "objectID": "04_conhecendo.html#sugestão-de-exercícios",
+    "href": "04_conhecendo.html#sugestão-de-exercícios",
+    "title": "Conhecendo a base de dados",
+    "section": "Sugestão de exercícios",
+    "text": "Sugestão de exercícios\nNesses exercícios a seguir, vamos utilizar a tabela como deputadas e deputados que já estiveram em exercício na Câmara dos Deputados.\n\ndeputados &lt;- readr::read_csv2(\"https://dadosabertos.camara.leg.br/arquivos/deputados/csv/deputados.csv\")\n\nResponda as perguntas a seguir:\n\nConhecendo a estrutura da base de dados:\n\nQuantas colunas e linhas temos na base de dados?\nO que cada linha representa?\nQuais são as colunas presentes na colunas?\nOs nomes das colunas estão aceitáveis (por exemplo, sem espaços, acentos, caracteres especiais)?\nQual é o tipo de cada variável?\nExiste alguma variável que deveria ser de outro tipo?\n\nValores faltantes (missing values):\n\nEm quais variáveis temos valores faltantes?\nQual é a variável com a maior quantidade de valores faltantes?\nO que significa os valores faltantes na coluna dataFalecimento?\n\nConhecendo variáveis com categorias:\n\nQuais são os valores únicos para a variável siglaSexo?",
     "crumbs": [
       "Etapas em uma análise de dados",
       "Conhecendo a base de dados"
@@ -1107,6 +1129,17 @@
     ]
   },
   {
+    "objectID": "03_importacao.html#sugestões-de-exercícios",
+    "href": "03_importacao.html#sugestões-de-exercícios",
+    "title": "Importando dados",
+    "section": "Sugestões de exercícios",
+    "text": "Sugestões de exercícios\n\nFaça a importação da base de dados mananciais.csv, disponível neste link. Dica: você pode utilizar a opção Import Dataset &gt; From Text (readr) localizado no painel Environment do RStudio.\nFaça a importação da base deputados.csv, disponível neste link. Dica: você pode utilizar a opção Import Dataset &gt; From Text (readr) localizado no painel Environment do RStudio.\nBusque no Portal de Dados Abertos da Câmara dos Deputados &gt; Arquivos a tabela de proposições para o ano atual, e importe essa tabela no R.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Importando dados"
+    ]
+  },
+  {
     "objectID": "03_importacao.html#sugestões-de-materiais",
     "href": "03_importacao.html#sugestões-de-materiais",
     "title": "Importando dados",
@@ -1313,39 +1346,6 @@
     "crumbs": [
       "Conceitos básicos",
       "Conhecendo o R e o RStudio"
-    ]
-  },
-  {
-    "objectID": "03_importacao.html#sugestões-de-exercícios",
-    "href": "03_importacao.html#sugestões-de-exercícios",
-    "title": "Importando dados",
-    "section": "Sugestões de exercícios",
-    "text": "Sugestões de exercícios\n\nFaça a importação da base de dados mananciais.csv, disponível neste link. Dica: você pode utilizar a opção Import Dataset &gt; From Text (readr) localizado no painel Environment do RStudio.\nFaça a importação da base deputados.csv, disponível neste link. Dica: você pode utilizar a opção Import Dataset &gt; From Text (readr) localizado no painel Environment do RStudio.\nBusque no Portal de Dados Abertos da Câmara dos Deputados &gt; Arquivos a tabela de proposições para o ano atual, e importe essa tabela no R.",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Importando dados"
-    ]
-  },
-  {
-    "objectID": "02_conceitos_basicos_r.html#sugestões-de-exercícios",
-    "href": "02_conceitos_basicos_r.html#sugestões-de-exercícios",
-    "title": "Linguagem R",
-    "section": "Sugestões de exercícios",
-    "text": "Sugestões de exercícios\n\nCrie um objeto chamado meu_nome e armazene seu nome nele. Depois, use a função toupper() para converter seu nome para letras maiúsculas e salve o resultado em um novo objeto chamado nome_maiusculo. Verifique se os dois objetos foram criados corretamente, consultando o painel Environment.\nObserve os nomes a seguir, e identifique se estão adequados para nomear objetos e colunas no R. Para os nomes que não estão adequados, explique o motivo:\n\ndados_altura\n1_dados\nmedia-altura\nmedia_altura\nMédia altura\n\nTente adivinhar a classe dos objetos a seguir, e depois confira no R usando a função class():\n\n\npi\nletters\ndplyr::starwars\ndplyr::starwars$mass\ndplyr::starwars$species\ndplyr::starwars$films",
-    "crumbs": [
-      "Conceitos básicos",
-      "Linguagem R"
-    ]
-  },
-  {
-    "objectID": "04_conhecendo.html#sugestão-de-exercícios",
-    "href": "04_conhecendo.html#sugestão-de-exercícios",
-    "title": "Conhecendo a base de dados",
-    "section": "Sugestão de exercícios",
-    "text": "Sugestão de exercícios\nNesses exercícios a seguir, vamos utilizar a tabela como deputadas e deputados que já estiveram em exercício na Câmara dos Deputados.\n\ndeputados &lt;- readr::read_csv2(\"https://dadosabertos.camara.leg.br/arquivos/deputados/csv/deputados.csv\")\n\nResponda as perguntas a seguir:\n\nConhecendo a estrutura da base de dados:\n\nQuantas colunas e linhas temos na base de dados?\nO que cada linha representa?\nQuais são as colunas presentes na colunas?\nOs nomes das colunas estão aceitáveis (por exemplo, sem espaços, acentos, caracteres especiais)?\nQual é o tipo de cada variável?\nExiste alguma variável que deveria ser de outro tipo?\n\nValores faltantes (missing values):\n\nEm quais variáveis temos valores faltantes?\nQual é a variável com a maior quantidade de valores faltantes?\nO que significa os valores faltantes na coluna dataFalecimento?\n\nConhecendo variáveis com categorias:\n\nQuais são os valores únicos para a variável siglaSexo?",
-    "crumbs": [
-      "Etapas em uma análise de dados",
-      "Conhecendo a base de dados"
     ]
   }
 ]
