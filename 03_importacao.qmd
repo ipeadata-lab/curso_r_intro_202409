@@ -349,7 +349,11 @@ write_rds(dados_brutos_4092, "dados_output/sidrar_4092_bruto.rds") # <1>
 
 ## Sugestões de exercícios
 
-Em breve!
+1. Faça a importação da base de dados `mananciais.csv`, disponível [neste link](https://github.com/beatrizmilz/mananciais/raw/master/inst/extdata/mananciais.csv). Dica: você pode utilizar a opção `Import Dataset > From Text (readr)` localizado no painel *Environment* do RStudio.
+
+2. Faça a importação da base `deputados.csv`, disponível [neste link](https://dadosabertos.camara.leg.br/arquivos/deputados/csv/deputados.csv). Dica: você pode utilizar a opção `Import Dataset > From Text (readr)` localizado no painel *Environment* do RStudio.
+
+3. Busque no [Portal de Dados Abertos da Câmara dos Deputados > Arquivos](https://dadosabertos.camara.leg.br/swagger/api.html?tab=staticfile#api) a tabela de proposições para o ano atual, e importe essa tabela no R.
 
 
 ## Sugestões de materiais
