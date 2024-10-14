@@ -888,6 +888,24 @@ dados |>
 - e) Salve o gráfico em um arquivo chamado `graficos/grafico_desocupacao_nordeste.png`.
 
 
+## Links citados na aula
+
+
+- [Site from data to viz](https://www.data-to-viz.com/) - galeria de gráficos
+
+- [R Graph Gallery](https://r-graph-gallery.com/) - Galeria de gráficos
+
+- Boxplot:
+  - [Texto sobre interpretação do boxplot](https://fernandafperes.com.br/blog/interpretacao-boxplot/)
+  - [R Graph Gallery - exemplos de boxplot](https://r-graph-gallery.com/boxplot.html)
+
+
+- Sobre gráficos de pizza:
+  - [Texto: O que não fazer em gráficos de pizza](https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/)
+  - [Texto escrito por Julio Trecenti (Dr. em Estatística): Gráficos de pizza são ruins?](https://forum.abj.org.br/t/graficos-de-pizza-sao-ruins/41)
+  
+- Sugestão de livros:
+  - Storytelling com Dados - Cole Nussbaumer Knaflic
 
 
 ## Sugestões de materiais

@@ -1347,5 +1347,16 @@
       "Conceitos básicos",
       "Conhecendo o R e o RStudio"
     ]
+  },
+  {
+    "objectID": "07_visualizacao.html#links-citados-na-aula",
+    "href": "07_visualizacao.html#links-citados-na-aula",
+    "title": "Visualizando dados",
+    "section": "Links citados na aula",
+    "text": "Links citados na aula\n\nSite from data to viz - galeria de gráficos\nR Graph Gallery - Galeria de gráficos\nBoxplot:\n\nTexto sobre interpretação do boxplot\nR Graph Gallery - exemplos de boxplot\n\nSobre gráficos de pizza:\n\nTexto: O que não fazer em gráficos de pizza\nTexto escrito por Julio Trecenti (Dr. em Estatística): Gráficos de pizza são ruins?\n\nSugestão de livros:\n\nStorytelling com Dados - Cole Nussbaumer Knaflic",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Visualizando dados"
+    ]
   }
 ]
