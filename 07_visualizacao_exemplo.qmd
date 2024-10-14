@@ -15,10 +15,7 @@ Esse é o gráfico que queremos criar:
 
 ![](graficos/grafico_proporcao_categoria_ocupacao.png)
 
-
-
-
-## Importando os dados
+## Pacotes necessários
 
 ```{r}
 #| message: false
@@ -27,6 +24,30 @@ library(dplyr) # <2>
 ```
 1. Pacote para visualização de dados
 2. Pacote para transformação de dados
+
+
+## Importando os dados
+
+::: {.callout-important collapse="true"}
+### Expanda para fazer download da base de dados
+
+Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar [aqui](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds), e copiar o arquivo para a pasta `dados_output` do seu projeto.
+
+Outra opção é executar o código abaixo:
+
+```{r}
+#| eval: false
+download.file(
+  url = "https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds",  # <1>
+  destfile = "dados_output/sidra_4092_arrumado.rds", # <2>
+  mode = "wb" # <3>
+  )
+```
+
+1.  URL que desejamos baixar
+2.  Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)
+3.  Configuração que evita corromper arquivos binários.
+:::
 
 ```{r}
 #| message: false

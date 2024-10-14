@@ -8,20 +8,17 @@ code-annotations: "hover"
 
 Nesta aula:
 
-- Conheceremos o pacote `ggplot2` para visualização de dados
+-   Conheceremos o pacote `ggplot2` para visualização de dados
 
-- Aprenderemos a criar diferentes tipos de gráficos como: de dispersão, linha, barra/coluna, entre outros
+-   Aprenderemos a criar diferentes tipos de gráficos como: de dispersão, linha, barra/coluna, entre outros
 
-- Veremos como salvar os gráficos criados
+-   Veremos como salvar os gráficos criados
 
-- Exploraremos funções para customizar a aparência dos gráficos
+-   Exploraremos funções para customizar a aparência dos gráficos
 
-<!-- As perguntas que buscaremos explorar são: -->
+Esse é um exemplo de gráfico que criaremos ao longo da aula:
 
-<!-- - Como a taxa de desocupação dos estados tem variado ao longo do tempo? -->
-
-<!-- - Atualmente (para o trimestre mais recente), quais são os estados com as maiores taxas de desocupação? -->
-
+![](graficos/grafico_customizado.png){fig-align="center" width="80%"}
 
 Nesta aula, utilizaremos principalmente os pacotes `{ggplot2}` e `{dplyr}`. Vamos carregá-los:
 
@@ -30,17 +27,15 @@ Nesta aula, utilizaremos principalmente os pacotes `{ggplot2}` e `{dplyr}`. Vamo
 library(ggplot2) # <1>
 library(dplyr) # <2>
 ```
-1. Pacote para visualização de dados
-2. Pacote para transformação de dados
 
-
+1.  Pacote para visualização de dados
+2.  Pacote para transformação de dados
 
 ## Importando dados
 
 Nesta aula, utilizaremos a tabela preparada na [aula sobre transformação de dados](05_transformacao): `"dados_output/sidra_4092_arrumado.rds"`.
 
 ::: {.callout-important collapse="true"}
-
 ### Expanda para fazer download da base de dados
 
 Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar [aqui](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds), e copiar o arquivo para a pasta `dados_output` do seu projeto.
@@ -55,9 +50,10 @@ download.file(
   mode = "wb" # <3>
   )
 ```
-1. URL que desejamos baixar
-2. Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)
-3. Configuração que evita corromper arquivos binários.
+
+1.  URL que desejamos baixar
+2.  Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)
+3.  Configuração que evita corromper arquivos binários.
 :::
 
 Vamos carregar a base de dados com a função `read_rds()`:
@@ -67,8 +63,9 @@ Vamos carregar a base de dados com a função `read_rds()`:
 dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds") # <1>
 glimpse(dados) # <2>
 ```
-1. Importando os dados
-2. Espiando a tabela: quantas colunas tem? quantas linhas? quais são as variáveis?
+
+1.  Importando os dados
+2.  Espiando a tabela: quantas colunas tem? quantas linhas? quais são as variáveis?
 
 Vamos criar também um objeto contendo apenas aos dados referentes ao trimestre mais recente, para usar em alguns exemplos:
 
@@ -76,28 +73,26 @@ Vamos criar também um objeto contendo apenas aos dados referentes ao trimestre 
 dados_tri_recente <- dados |>  
   filter(trimestre_inicio == max(trimestre_inicio)) # <1>
 ```
-1. Filtrando os dados para o trimestre mais recente
 
+1.  Filtrando os dados para o trimestre mais recente
 
 ## O que é o ggplot2?
 
-O `ggplot2` é o principal pacote para criação de gráficos em R. Ele é baseado na [gramática de gráficos](https://link.springer.com/book/10.1007/0-387-28695-0), uma teoria que apresenta uma forma de descrever os componentes de um gráfico. 
+O `ggplot2` é o principal pacote para criação de gráficos em R. Ele é baseado na [gramática de gráficos](https://link.springer.com/book/10.1007/0-387-28695-0), uma teoria que apresenta uma forma de descrever os componentes de um gráfico.
 
 O `ggplot2` faz parte do [tidyverse](https://www.tidyverse.org/).
-
 
 ## Vocabulário do ggplot2
 
 A gramática de gráficos é composta por alguns elementos, sendo os seguintes principais para iniciar:
 
-- **Dados**: um data frame que contém os dados que serão apresentados
+-   **Dados**: um data frame que contém os dados que serão apresentados
 
-- ***Aesthetics* (atributos estéticos)**: mapeamento dos dados para propriedades visuais do gráfico, como eixos, cor, forma e tamanho
+-   ***Aesthetics*** **(atributos estéticos)**: mapeamento dos dados para propriedades visuais do gráfico, como eixos, cor, forma e tamanho
 
-- **Geometrias**: formas geométricas que representam os dados, como pontos, linhas e barras.
+-   **Geometrias**: formas geométricas que representam os dados, como pontos, linhas e barras.
 
 Vamos fazer um exemplo simples, explorando cada um desses elementos. Para iniciar o gráfico, podemos informar os dados para a função `ggplot()`:
-
 
 ```{r}
 #| label: exemplo-ggplot2-1
@@ -115,6 +110,7 @@ dados_tri_recente |>
   ggplot() + 
   aes(x = perc_desocupacao, y = uf)
 ```
+
 O gráfico criado apresenta os eixos, e os valores possíveis. Porém ainda não tem nenhuma geometria para representar os dados. Para adicionar uma geometria ao gráfico, utilizamos funções da família `geom_*`. Nesse caso, vamos utilizar a função `geom_col()` para criar um gráfico de colunas:
 
 ```{r}
@@ -125,20 +121,21 @@ dados_tri_recente |> # <1>
   aes(x = perc_desocupacao, y = uf) + # <3>
   geom_col() # <4>
 ```
-1. **Dados:** dados que serão utilizados
-2. `ggplot()`: função para iniciar o gráfico
-3. ***Aesthetics* (atributos estéticos)**: informando quais variáveis serão utilizadas nos eixos x e y
-4. **Geometria do gráfico:** informando que faremos um gráfico de colunas
+
+1.  **Dados:** dados que serão utilizados
+2.  `ggplot()`: função para iniciar o gráfico
+3.  ***Aesthetics*** **(atributos estéticos)**: informando quais variáveis serão utilizadas nos eixos x e y
+4.  **Geometria do gráfico:** informando que faremos um gráfico de colunas
 
 ::: callout-tip
-**Atenção:** Observe que a cada linha de código, adicionamos um `+` para adicionar um novo elemento ao gráfico. 
+**Atenção:** Observe que a cada linha de código, adicionamos um `+` para adicionar um novo elemento ao gráfico.
 
 A partir da função `ggplot()`, sempre utilizamos `+` para adicionar novos elementos ao gráfico.
 :::
 
 ## Criando gráficos exploratórios
 
-Vamos criar alguns gráficos exploratórios com os dados de desocupação por trimestre e por estado. 
+Vamos criar alguns gráficos exploratórios com os dados de desocupação por trimestre e por estado.
 
 Gráficos exploratórios são utilizados para entender melhor os dados, identificar padrões e tendências, e verificar a presença de outliers. Neste momento, não estamos preocupados com a estética do gráfico, mas sim com a interpretação dos dados.
 
@@ -175,9 +172,11 @@ dados |>
   aes(x = trimestre_inicio, y = perc_desocupacao) + 
   geom_line()
 ```
+
 E se quisermos ver para todos os estados? Nesse caso, é importante usar um argumento adicional na função `aes()`, o `group`, para que o `ggplot2` saiba que queremos uma linha para cada estado.
 
 ```{r}
+#| label: exemplo-ggplot2-linha-todos-estados
 dados |> 
   ggplot() + 
   aes(x = trimestre_inicio, y = perc_desocupacao) + 
@@ -197,6 +196,7 @@ dados |>
   geom_line(color = "red") +
   geom_point(color = "blue")
 ```
+
 Outro ponto importante é que a **ordem das geometrias importa**! No exemplo acima, a linha é desenhada primeiro, e os pontos são adicionados por cima da linha. Se trocarmos a ordem das geometrias, os pontos serão desenhados primeiro, e a linha será desenhada por cima dos pontos.
 
 ```{r}
@@ -209,12 +209,9 @@ dados |>
   geom_line(color = "red")
 ```
 
-
-
 #### Gráficos de barras/colunas
 
 Para os gráficos de barras/colunas, podemos utilizar duas funções: `geom_bar()` e `geom_col()`. A diferença entre elas é que `geom_bar()` é utilizada quando queremos contar a frequência de uma variável categórica, enquanto `geom_col()` é utilizada quando queremos visualizar uma variável numérica.
-
 
 Vamos criar um gráfico de colunas para visualizar a taxa de desocupação dos estados no trimestre mais recente. Como já temos a coluna com o valor numérico que queremos visualizar (`perc_desocupacao`), utilizaremos a função `geom_col()`:
 
@@ -225,6 +222,7 @@ dados_tri_recente |>
   aes(y = uf, x = perc_desocupacao) + 
   geom_col()
 ```
+
 A função `geom_bar()` é utilizada para representar **contagens**. Vamos responder a seguinte pergunta de exemplo: quantas vezes cada estado apresentou uma taxa de desocupação maior ou igual à 20%? Para isso, precisamos filtrar os dados **antes** de criar o gráfico, e a função `geom_bar()` será utilizada para contar a frequência de cada estado. Os estados que não aparecerem no gráfico é porque não tiveram nenhuma taxa de desocupação maior ou igual à 20%, no período que temos dados.
 
 ```{r}
@@ -235,9 +233,6 @@ dados |>
   aes(x = uf) + 
   geom_bar()
 ```
-
-
-
 
 #### Gráfico de histograma
 
@@ -263,18 +258,15 @@ dados |>
   geom_density()
 ```
 
-
 #### Gráficos de caixa (*boxplot*)
 
 O gráfico de caixa[^1] (mais conhecido como *boxplot*) é utilizado para visualizar a distribuição de uma variável numérica. Esse é um tipo de gráfico que não é muito comum vermos no dia-a-dia, mas é muito usado em pesquisas e análises estatísticas.
 
+[^1]: Caso queira saber mais sobre o gráfico de caixa / *boxplot*, [recomendo a leitura deste texto escrito pela Fernanda Peres, sobre como interpretar o boxplot](https://fernandafperes.com.br/blog/interpretacao-boxplot/).
+
 Este gráfico apresenta informações como a mediana, quartis, valores mínimos e máximos, e possíveis outliers.
 
 Para criar um boxplot, utilizaremos a função de geometria `geom_boxplot()`
-
-[^1]: Caso queira saber mais sobre o gráfico de caixa / *boxplot*, [recomendo a leitura deste texto escrito pela Fernanda Peres, sobre como interpretar o boxplot](https://fernandafperes.com.br/blog/interpretacao-boxplot/).
-
-
 
 ```{r}
 #| label: exemplo-ggplot2-boxplot
@@ -284,15 +276,14 @@ dados |>
   geom_boxplot()
 ```
 
-
 ### Gráficos por subgrupos
 
 #### Subgrupos por Cor
 
 Podemos adicionar mais uma variável ao gráfico, utilizando a cor para representá-la. Para isso, utilizamos os argumentos `fill` ou `color` dentro da função `aes()`:
 
-   - `fill`: preenche a área com a cor. Útil para gráficos de barras e colunas, por exemplo.
-   - `color`: adiciona a cor ao contorno. Útil para gráficos de linhas e pontos, por exemplo.
+-   `fill`: preenche a área com a cor. Útil para gráficos de barras e colunas, por exemplo.
+-   `color`: adiciona a cor ao contorno. Útil para gráficos de linhas e pontos, por exemplo.
 
 Vamos ver um exemplo de gráfico de colunas apresentado anteriormente, com preenchimento (`fill`) por região:
 
@@ -303,7 +294,8 @@ dados_tri_recente |>
   aes(x = perc_desocupacao, y = uf) + 
   geom_col(aes(fill = regiao)) # <1>
 ```
-1. Adicionando a cor de preenchimento utilizando a coluna `regiao`, com o argumento `fill`. Isso precisa estar **DENTRO** do `aes()`.
+
+1.  Adicionando a cor de preenchimento utilizando a coluna `regiao`, com o argumento `fill`. Isso precisa estar **DENTRO** do `aes()`.
 
 Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, usando a cor para representar o período que consideramos como pandemia (`color`):
 
@@ -316,16 +308,17 @@ dados |>
   aes(x = trimestre_inicio, y = perc_desocupacao) + 
   geom_line(aes(color = periodo_pandemia, group = "none")) # <2>
 ```
-1. Filtrando dados para representar apenas a Bahia.
-2. Adicionando a cor da linha utilizando a coluna `periodo_pandemia`, com o argumento `color`. Isso precisa estar **DENTRO** do `aes()`.
+
+1.  Filtrando dados para representar apenas a Bahia.
+2.  Adicionando a cor da linha utilizando a coluna `periodo_pandemia`, com o argumento `color`. Isso precisa estar **DENTRO** do `aes()`.
 
 #### Subgrupos por Facetas (*facet*)
 
-As facetas (ou *facet*) são utilizadas para dividir o gráfico em subgráficos, com base nos valores de uma ou duas variáveis categóricas. 
+As facetas (ou *facet*) são utilizadas para dividir o gráfico em subgráficos, com base nos valores de uma ou duas variáveis categóricas.
 
 Existem duas funções principais para criar facetas: `facet_wrap()` ou `facet_grid()`.
 
-A função `facet_wrap()` cria uma faceta para cada categoria da variável: 
+A função `facet_wrap()` cria uma faceta para cada categoria da variável:
 
 ```{r}
 #| label: exemplo-ggplot2-facet-wrap
@@ -335,10 +328,10 @@ dados |>
   geom_line(aes(group = uf)) + 
   facet_wrap(~regiao) # <1>
 ```
-1. Adicionando a função `facet_wrap()` para criar um gráfico para cada categoria da variável `regiao`. 
+
+1.  Adicionando a função `facet_wrap()` para criar um gráfico para cada categoria da variável `regiao`.
 
 Veja que o gráfico é dividido em 5 subgráficos, um para cada região do Brasil. Os valores dos eixos `x` e `y` são os mesmos para todos os subgráficos, possibilitando a comparação entre eles.
-
 
 Já a função `facet_grid()` cria um gráfico para cada combinação de categorias de duas variáveis.
 
@@ -350,31 +343,30 @@ dados |>
   geom_boxplot() + 
   facet_grid(regiao ~ periodo_pandemia) # <1>
 ```
-1. Adicionando a função `facet_grid()` para criar um gráfico para cada combinação de categorias das variáveis `regiao` e `periodo_pandemia`.
 
+1.  Adicionando a função `facet_grid()` para criar um gráfico para cada combinação de categorias das variáveis `regiao` e `periodo_pandemia`.
 
 ### Revisão
 
 A partir dos exemplos apresentados, podemos listar alguns pontos importantes sobre o `ggplot2`:
 
-- A função `ggplot()` cria um objeto gráfico vazio
+-   A função `ggplot()` cria um objeto gráfico vazio
 
-- Podemos usar o pipe (`%>%` ou `|>`) para encadear as funções **até** a função `ggplot()`.
+-   Podemos usar o pipe (`%>%` ou `|>`) para encadear as funções **até** a função `ggplot()`.
 
-- A partir da função `ggplot()`, não usamos mais o pipe (`%>%` ou `|>`), e sim o `+`.
+-   A partir da função `ggplot()`, não usamos mais o pipe (`%>%` ou `|>`), e sim o `+`.
 
-- A função `aes()` define o mapeamento estético (aesthetics mapping) entre as colunas da base de dados (variáveis) e os elementos visuais do gráfico (eixo, posição, cor, tamanho, etc).
+-   A função `aes()` define o mapeamento estético (aesthetics mapping) entre as colunas da base de dados (variáveis) e os elementos visuais do gráfico (eixo, posição, cor, tamanho, etc).
 
-- Os atributos estéticos (`aes`) `x` e `y` representam os eixos `x` e `y` do gráfico.
+-   Os atributos estéticos (`aes`) `x` e `y` representam os eixos `x` e `y` do gráfico.
 
-- Para adicionar uma geometria ao gráfico, usamos alguma função da família `geom_*`.
+-   Para adicionar uma geometria ao gráfico, usamos alguma função da família `geom_*`.
 
-- Podemos usar mais do que uma geometria no mesmo gráfico, e a ordem importa!
-
+-   Podemos usar mais do que uma geometria no mesmo gráfico, e a ordem importa!
 
 ## Customizando gráficos
 
-Até aqui, discutimos como criar gráficos exploratórios, e vimos que o `ggplot2` nos permite criar gráficos de forma simples e rápida. 
+Até aqui, discutimos como criar gráficos exploratórios, e vimos que o `ggplot2` nos permite criar gráficos de forma simples e rápida.
 
 Após criar um gráfico exploratório que nos ajuda a entender os dados, podemos customizá-lo para apresentar a outras pessoas, ou para publicar em relatórios e artigos.
 
@@ -390,15 +382,14 @@ grafico_base <- dados_tri_recente |>
 
 grafico_base
 ```
+
 ### Ordenando as barras
 
 O ggplot ordena variáveis de texto em ordem alfabética. No exemplo acima, as barras estão ordenadas de acordo com a ordem alfabética dos estados: o Acre aparece primeiro, e o Tocantins, por último.
 
 Podemos ordenar as barras do gráfico de colunas de acordo com o valor da variável numérica utilizada (neste caso, `perc_desocupacao`).
 
-
 Para isso, precisaremos transformar a variável de texto `uf` em uma variável categórica ordenada (ou seja, um fator/*factor*).
-
 
 #### Fatores / *factors*
 
@@ -439,6 +430,7 @@ Se ordenarmos a tabela pela variável `escolaridade_concluida`, veremos que a or
 escolaridade |> 
   arrange(escolaridade_concluida)
 ```
+
 Para que, por exemplo, a variável `escolaridade_concluida` seja ordenada de acordo com a ordem de escolaridade, podemos transformá-la em um fator ordenado, utilizando a função `factor()`, e indicando quais são os níveis (*levels*) de escolaridade, na ordem que queremos que apareçam:
 
 ```{r}
@@ -459,11 +451,11 @@ escolaridade |>
   ) |> 
   arrange(escolaridade_concluida_fct) # <4>
 ```
-1. Criando uma nova variável `escolaridade_concluida_fct` usando a função `factor()`
-2. Variável que será transformada em fator
-3. Níveis de escolaridade, na ordem que queremos que apareçam
-4. Ordenando a tabela pela variável `escolaridade_concluida_fct`
 
+1.  Criando uma nova variável `escolaridade_concluida_fct` usando a função `factor()`
+2.  Variável que será transformada em fator
+3.  Níveis de escolaridade, na ordem que queremos que apareçam
+4.  Ordenando a tabela pela variável `escolaridade_concluida_fct`
 
 A função `factor()` é do R base, ou seja, não precisamos carregar nenhum pacote adicional para utilizá-la. Porém o pacote `{forcats}` (que faz parte do `{tidyverse}`) apresenta funções mais avançadas para trabalhar com fatores, como a função `fct_reorder()` que veremos a seguir.
 
@@ -475,9 +467,9 @@ Vamos ordenar as barras do gráfico anterior, de acordo com o valor de `perc_des
 
 A função `fct_reorder()` recebe dois argumentos:
 
-  - A variável que queremos ordenar (a variável **categórica** que é representada em cada coluna)
-  - A variável que será utilizada para ordenar a primeira variável (a variável **numérica** que será utilizada para ordenar a variável categórica)
-  
+-   A variável que queremos ordenar (a variável **categórica** que é representada em cada coluna)
+-   A variável que será utilizada para ordenar a primeira variável (a variável **numérica** que será utilizada para ordenar a variável categórica)
+
 No caso do nosso exemplo, queremos ordenar as barras de acordo com o valor de `perc_desocupacao`, e a variável categórica que queremos ordenar é `uf`. Portanto, usaremos `fct_reorder(uf, perc_desocupacao)`.
 
 ```{r}
@@ -491,8 +483,9 @@ grafico_ordenado <- dados_tri_recente |>
 
 grafico_ordenado
 ```
-1. Como explicado acima, criamos uma nova variável `uf_fct` que será utilizada para ordenar as barras de acordo com o valor de `perc_desocupacao`.
-2. Utilizaremos no eixo `y` a variável criada: `uf_fct`.
+
+1.  Como explicado acima, criamos uma nova variável `uf_fct` que será utilizada para ordenar as barras de acordo com o valor de `perc_desocupacao`.
+2.  Utilizaremos no eixo `y` a variável criada: `uf_fct`.
 
 ### Títulos e rótulos
 
@@ -500,15 +493,14 @@ Por padrão, o gráfico está sem título, e com o nome das colunas nos eixos `x
 
 O `ggplot2` permite adicionar títulos e rótulos aos gráficos, utilizando a função `labs()`. Essa função apresenta vários argumentos, que podem ser divididos em dois grupos:
 
-  - Elementos com informações do gráficos: sempre estão disponíveis. Ex: `title`, `subtitle`, `caption`...
-  
-  - Elementos relacionados aos atributos estéticos: dependem dos mapeamentos feitos com a função `aes()`. Ex: `x`, `y`, `fill`, `color`...
-  
+-   Elementos com informações do gráficos: sempre estão disponíveis. Ex: `title`, `subtitle`, `caption`...
+
+-   Elementos relacionados aos atributos estéticos: dependem dos mapeamentos feitos com a função `aes()`. Ex: `x`, `y`, `fill`, `color`...
 
 Vamos adicionar um título ao gráfico anterior, e rótulos para os eixos `x` e `y`:
 
 ```{r}
-grafico_ordenado + 
+grafico_com_labels <- grafico_ordenado + 
   labs(
     title = "Taxa de desocupação por estado", # <1>
     subtitle = "Dados para o 2º trimestre 2024",  # <1>
@@ -516,10 +508,12 @@ grafico_ordenado +
     x = "Taxa de desocupação (%)",  # <2>
     y = "Estado", # <2>
   )
-```
-1. Informações sobre o gráfico
-2. Atributos estéticos utilizados 
 
+grafico_com_labels
+```
+
+1.  Informações sobre o gráfico
+2.  Atributos estéticos utilizados
 
 ### Escalas
 
@@ -527,9 +521,7 @@ O `{ggplot2}` apresenta várias funções para trabalhar com as escalas dos grá
 
 Vamos explorar algumas dessas funções para trabalhar com escalas, mas lembre-se que existem muitas outras funções para customizar as escalas dos gráficos.
 
-
 ::: {.callout-tip collapse="true"}
-
 ## Lista de funções para escalas no ggplot2
 
 ```{r}
@@ -546,7 +538,7 @@ As funções de escalas de cores dependerão do tipo de atributo estético utili
 
 Quando usamos o atributo `fill`, utilizamos as funções `scale_fill_*()`. Quando usamos o atributo `color`, utilizamos as funções `scale_color_*()`.
 
-Outro ponto importante é que as funções de escalas de cores dependem do **tipo de variável** que estamos mapeando. 
+Outro ponto importante é que as funções de escalas de cores dependem do **tipo de variável** que estamos mapeando.
 
 Por exemplo, se a variável mapeada é categórica, podemos usar a função `scale_fill_viridis_d()` para preencher as barras com uma paleta de cores viridis. Utilizando o exemplo que estamos criando, a região pode ser mapeada no atributo `fill`:
 
@@ -558,6 +550,7 @@ dados_tri_recente |>
   geom_col(aes(fill = regiao)) +
   scale_fill_viridis_d() 
 ```
+
 Mas se a variável mapeada é numérica, podemos usar a função `scale_fill_viridis_c()`. O exemplo abaixo apresenta um gráfico similar, mas mapeando a variável `perc_desocupacao` no atributo `fill`:
 
 ```{r}
@@ -570,15 +563,18 @@ dados_tri_recente |>
 ```
 
 ::: {.callout-tip collapse="true"}
-
 ## Lista de funções para escalas de cores no ggplot2
-- Para o atributo `color`:
+
+-   Para o atributo `color`:
+
 ```{r}
 ls("package:ggplot2") |> 
   stringr::str_subset("^scale_") |> 
   stringr::str_subset("color")
 ```
-- Para o atributo `fill`:
+
+-   Para o atributo `fill`:
+
 ```{r}
 ls("package:ggplot2") |> 
   stringr::str_subset("^scale_") |> 
@@ -586,16 +582,20 @@ ls("package:ggplot2") |>
 ```
 :::
 
+
+Um ponto a ter atenção é o tipo de paleta de cores usadas. Algumas paletas de cores são mais adequadas para representar variáveis categóricas, enquanto outras são mais adequadas para representar variáveis numéricas. Veja a imagem com exemplos de paletas categóricas, sequenciais, e divergentes:
+
+![Fonte da imagem: [tmap book](https://r-tmap.github.io/tmap-book).](images/07_tipos_paletas.png)
+
 #### Escalas de eixos: datas
 
-Podemos customizar a escala do eixo `x` para apresentar as datas de forma personalizada. É importante que, para isso, a variável seja do tipo `Date` ou `Datetime`. 
+Podemos customizar a escala do eixo `x` para apresentar as datas de forma personalizada. É importante que, para isso, a variável seja do tipo `Date` ou `Datetime`.
 
 Para isso, utilizamos a função `scale_x_date()`. Ela apresenta alguns argumentos importantes:
 
-  - `breaks`: indica a frequência das marcações no eixo `x`. Alguns exemplos são: `"1 month"` (marcação a cada mês), `"3 months"` (marcação a cada 3 meses), "1 year" (marcação a cada ano), entre outros.
-  
-  - `date_labels`: formato da data que será apresentado. Alguns exemplos são: `"%m/%Y"` (mês/ano), `"%d/%m/%Y"` (dia/mês/ano), `"%b/%Y"` (mês abreviado/ano),  entre outros.
-  
+-   `breaks`: indica a frequência das marcações no eixo `x`. Alguns exemplos são: `"1 month"` (marcação a cada mês), `"3 months"` (marcação a cada 3 meses), "1 year" (marcação a cada ano), entre outros.
+
+-   `date_labels`: formato da data que será apresentado. Alguns exemplos são: `"%m/%Y"` (mês/ano), `"%d/%m/%Y"` (dia/mês/ano), `"%b/%Y"` (mês abreviado/ano), entre outros.
 
 Vamos criar um gráfico de linhas para visualizar a evolução da taxa de desocupação desde 2022 para a Bahia, e customizar a escala do eixo `x` para apresentar as datas de forma a apresentar uma marcação cada 3 meses:
 
@@ -613,15 +613,16 @@ dados |>
     minor_breaks = "1 month" # <5>
   ) # <2> 
 ```
-1. Filtrando os dados para a Bahia, e considerando apenas os dados a partir de 2022.
-2. Customizando a escala de data no eixo `x`.
-3. Queremos que a marcação apareça a cada 3 meses.
-4. Formato da data que será apresentado (mês/ano).
-5. A *minor break* é uma linha que aparece entre as marcações principais, porém sem indicar uma legenda. Neste caso, queremos que apareça a cada mês.
+
+1.  Filtrando os dados para a Bahia, e considerando apenas os dados a partir de 2022.
+2.  Customizando a escala de data no eixo `x`.
+3.  Queremos que a marcação apareça a cada 3 meses.
+4.  Formato da data que será apresentado (mês/ano).
+5.  A *minor break* é uma linha que aparece entre as marcações principais, porém sem indicar uma legenda. Neste caso, queremos que apareça a cada mês.
 
 #### Escalas de eixos: numérico
 
-Podemos customizar a escala dos eixos `x` e/ou `y` quando estamos mapeando variáveis numéricas utilizando as funções `scale_x_continuous()` e `scale_y_continuous()`. 
+Podemos customizar a escala dos eixos `x` e/ou `y` quando estamos mapeando variáveis numéricas utilizando as funções `scale_x_continuous()` e `scale_y_continuous()`.
 
 O gráfico apresentado no exemplo anterior (onde configuramos a escala de datas) está com o eixo `y` limitado na faixa onde os dados são encontrados (11% à 18%). Porém, precisamos ter cuidado ao limitar os eixos, pois isso pode distorcer a visualização dos dados.
 
@@ -638,77 +639,164 @@ dados |>
   scale_y_continuous(limits = c(0, 20))
 ```
 
-
 ### Temas
 
+Os gráficos que criamos até aqui utilizam o tema padrão do `{ggplot2}` (podemos identificar facilmente pelo fundo cinza). 
 
+Porém existem funções para customizar o tema dos gráficos, alterando a cor de fundo, a cor dos textos, a fonte, entre outros elementos.
 
-<!-- falar sobre mudanças de layout com ggthemes e ipeaplot -->
+#### `{ggplot2}`
 
+O `{ggplot2}` apresenta alguns temas que podem ser utilizados nos gráficos, utilizando funções com o prefixo `theme_*()`:
+
+```{r}
+ls("package:ggplot2") |> 
+  stringr::str_subset("^theme_") 
+```
+
+Por exemplo, podemos alterar o tema do gráfico `grafico_ordenado` (criado anteriormente) para o tema `theme_minimal()`:
+
+```{r}
+#| label: customizando-tema-ggplot2
+grafico_com_labels + 
+  theme_minimal()
+```
+
+#### `{ggthemes}`
+
+O pacote `{ggthemes}` apresenta vários temas adicionais que podem ser utilizados nos gráficos criados com o `{ggplot2}`.
+
+```{r}
+#| eval: false
+install.packages("ggthemes") # <1>
+```
+
+1.  Caso não tenha o pacote instalado, utilize essa linha de código para instalar o pacote.
+
+A lista abaixo apresenta os temas disponíveis no pacote `{ggthemes}`:
+
+```{r}
+library(ggthemes)
+ls("package:ggthemes") |> 
+  stringr::str_subset("^theme_") 
+```
+
+Podemos usar o tema `theme_economist()` para customizar o gráfico `grafico_com_labels`:
+
+```{r}
+#| fig-height: 6
+#| label: customizando-tema-ggthemes
+grafico_com_labels + 
+  ggthemes::theme_economist()
+```
+
+#### `{ipeaplot}`
+
+O pacote `{ipeaplot}` apresenta a função `theme_ipea()` que pode ser utilizada nos gráficos criados com o `{ggplot2}`.
+
+```{r}
+#| eval: false
+install.packages("ipeaplot") # <1>
+```
+
+1.  Caso não tenha o pacote instalado, utilize essa linha de código para instalar o pacote.
+
+Podemos usar o tema `theme_ipea()` para customizar o gráfico abaixo:
+
+```{r}
+#| label: customizando-tema-ipeaplot
+dados |>
+  filter(regiao == "Sul") |>
+  ggplot() + 
+  aes(x = trimestre_inicio, y = perc_desocupacao, color = uf) + 
+  geom_line() + 
+  ipeaplot::theme_ipea()
+```
+
+### Usando as funções de customização
+
+Nos exemplos acima, apresentamos algumas funções para customizar os gráficos criados com o `{ggplot2}`.
+
+Vamos usar essas funções para customizar o gráfico apresentado no exemplo acima:
+
+```{r}
+#| label: customizando-grafico-completo
+grafico_customizado <- dados |> # <1>
+  filter(regiao == "Sul") |> 
+  ggplot() + 
+  aes(x = trimestre_inicio, y = perc_desocupacao, color = uf) +  
+  geom_line() + 
+  ipeaplot::theme_ipea() + # <2>
+  ipeaplot::scale_color_ipea(palette = "Viridis") + # <3>
+  scale_x_date(breaks = "1 year", date_labels = "%Y") + # <4>
+  labs( # <5>
+    title = "Taxa de desocupação por estado na região Sul",
+    subtitle = "Dados da PNAD Contínua Trimestral",
+    caption = "Fonte dos dados: SIDRA/IBGE.",
+    color = "Estado",
+    x = "Ano",
+    y = "Taxa de desocupação (%)"
+  ) # <5>
+
+grafico_customizado
+```
+
+1.  Vamos salvar o resultado do gráfico em um objeto.
+2.  Utilizando o tema `theme_ipea()` do pacote `{ipeaplot}`.
+3.  Utilizando a função `scale_color_ipea()` (do pacote `{ipeaplot}`) com paleta de cores `Orange-Blue`.
+4.  Customizando a escala de data no eixo `x`: apresentar uma marcação a cada ano.
+5.  Adicionando títulos e rótulos ao gráfico.
 
 ## Salvando os gráficos
 
-Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente. 
-Para isso, criamos um objeto contendo o gráfico que queremos salvar, e utilizamos a função `ggsave()`.
+Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente. Para isso, criamos um objeto contendo o gráfico que queremos salvar, e utilizamos a função `ggsave()`.
 
 A função `ggsave()` salva o gráfico em um arquivo, e apresenta dois argumentos principais:
 
-  - `filename`: nome do arquivo onde o gráfico será salvo
-  
-  - `plot`: objeto contendo o gráfico que será salvo
-  
+-   `filename`: nome do arquivo onde o gráfico será salvo
+
+-   `plot`: objeto contendo o gráfico que será salvo
+
 Essa função também apresenta alguns argumentos para customizar como o gráfico será salvo, como:
 
-  - `width`: largura do gráfico
-  
-  - `height`: altura do gráfico
-  
-  - `units`: unidade de medida para a largura e altura do gráfico
-  
-  - `dpi`: resolução do gráfico (quanto maior o valor, melhor a qualidade da imagem)
+-   `width`: largura do gráfico
 
-Vamos reproduzir o gráfico apresentado na seção [Gráficos de caixa (*boxplot*)](#gr%C3%A1ficos-de-caixa-boxplot), e salvar o gráfico em um objeto (usando a atribuição `<-`):
+-   `height`: altura do gráfico
 
-```{r}
-#| label: boxplot-exemplo
-boxplot_exemplo <- dados |> 
-  ggplot() +  
-  aes(y = regiao, x = perc_desocupacao) + 
-  geom_boxplot()
+-   `units`: unidade de medida para a largura e altura do gráfico
 
-boxplot_exemplo
-```
+-   `dpi`: resolução do gráfico (quanto maior o valor, melhor a qualidade da imagem)
 
-Agora podemos salvar o gráfico em um arquivo, utilizando a função `ggsave()`:
+Vamos utilizar o gráfico customizado criado anteriormente (salvo no objeto `grafico_customizado`), e salvar em um arquivo utilizando a função `ggsave()`:
 
 ```{r}
 ggsave( # <1>
-  filename = "graficos/boxplot_exemplo.png", # <2>
-  plot = boxplot_exemplo, # <3>
-  width = 10, # <4>
-  height = 8, # <5> 
+  filename = "graficos/grafico_customizado.png", # <2>
+  plot = grafico_customizado, # <3>
+  width = 7, # <4>
+  height = 5, # <5>
   dpi = 300 # <6>
 )
 ```
-1. Função para salvar o gráfico.
-2. Nome do arquivo onde o gráfico será salvo.
-3. Objeto contendo o gráfico que será salvo.
-4. Largura do gráfico.
-5. Altura do gráfico.
-6. Resolução do gráfico.
+
+1.  Função para salvar o gráfico.
+2.  Nome do arquivo onde o gráfico será salvo.
+3.  Objeto contendo o gráfico que será salvo.
+4.  Largura do gráfico.
+5.  Altura do gráfico.
+6.  Resolução do gráfico.
 
 Podemos verificar se o gráfico foi salvo corretamente, utilizando a função `file.exists()`:
 
 ```{r}
-file.exists("graficos/boxplot_exemplo.png")
+file.exists("graficos/grafico_customizado.png")
 ```
-
 
 ## Preparação dos dados
 
 Os exemplos que utilizamos mostram um padrão no uso do `ggplot2`: a base de dados é passada para a função `ggplot()`, definimos quais variáveis serão mapeadas com a função `aes()`, e adicionamos uma (ou mais) geometria ao gráfico.
 
-Porém, algo que pode ser trabalhoso é preparar os dados para o gráfico. Nos exemplos que fizemos anteriormente, utilizamos uma tabela já preparada. 
+Porém, algo que pode ser trabalhoso é preparar os dados para o gráfico. Nos exemplos que fizemos anteriormente, utilizamos uma tabela já preparada.
 
 No entanto, em muitos casos, precisamos preparar os dados antes de criar o gráfico. Neste caso, muitas funções já vistas em aulas anteriores serão úteis (como `filter()`, `select()`, `mutate()`, `group_by()`, `summarise()`, `pivot_longer()`, `pivot_wider()`, entre outras). Caso necessário, consulte as aulas [Transformando dados](05_transformacao.qmd) e [Análise exploratória de dados](06_analise_exploratoria.qmd).
 
@@ -716,13 +804,13 @@ Em [Exemplo prático: Visualização](07_visualizacao_exemplo.qmd), é apresenta
 
 ## Sugestões de exercícios
 
-###  Criando gráficos exploratórios
+### Criando gráficos exploratórios
 
-1. Observe o gráfico abaixo, criado com o objeto `dados_tri_recente`, e responda:
-   - Quais são as variáveis mapeadas nos eixos x e y?
-   - Qual é a geometria utilizada?
-   - Existe algum outro atributo estético mapeado no gráfico?
-   
+1.  Observe o gráfico abaixo, criado com o objeto `dados_tri_recente`, e responda:
+    -   Quais são as variáveis mapeadas nos eixos x e y?
+    -   Qual é a geometria utilizada?
+    -   Existe algum outro atributo estético mapeado no gráfico?
+
 ```{r}
 #| label: exercicio-exploratoria-1
 #| echo: false
@@ -736,8 +824,8 @@ dados_tri_recente |>
   geom_col(aes(fill = regiao)) +
   theme_light()
 ```
-  
-2. Observe o gráfico abaixo, e tente identificar qual é o problema no código. Sugira uma solução para corrigir o problema.
+
+2.  Observe o gráfico abaixo, e tente identificar qual é o problema no código. Sugira uma solução para corrigir o problema.
 
 ```{r}
 #| label: exercicio-exploratoria-2
@@ -748,7 +836,7 @@ dados_tri_recente |>
   geom_col(aes(fill = "regiao"))
 ```
 
-3. Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Centro Oeste. Use as cores para representar cada estado.
+3.  Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Centro Oeste. Use as cores para representar cada estado.
 
 ::: {.callout-tip collapse="true"}
 ## Dica 1
@@ -766,9 +854,7 @@ dados |>
 ```
 :::
 
-
-4. Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Norte. Utilize facetas para separar os gráficos por estado.
-
+4.  Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Norte. Utilize facetas para separar os gráficos por estado.
 
 ::: {.callout-tip collapse="true"}
 ## Dica 1
@@ -789,52 +875,34 @@ dados |>
 
 ### Customizando gráficos
 
-1. Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Sul do Brasil, mas configure a escala do eixo x para que apareça as marcações dos anos. Isso ajudará a visualizar melhor a periodicidade dos dados.
+1.  Crie um gráfico de linhas para representar a evolução da taxa de desocupação ao longo do tempo para os estados da região Nordeste do Brasil, e salve em um objeto chamado `grafico_desocupacao_nordeste`. Mapeie os estados na cor das linhas. Com esse objeto, faça as tarefas abaixo:
 
-::: {.callout-tip collapse="true"}
-## Dica 1
+- a) Configure a escala do eixo x para que apareça as marcações dos anos. Isso ajudará a visualizar melhor a periodicidade dos dados.
 
-Para configurar a escala do eixo x, utilize a função `scale_x_date()`. Consulte os argumentos da função.
-:::
-::: {.callout-tip collapse="true"}
-## Dica 2
+- b) Adicione os títulos e rótulos dos eixos no gráfico.
 
-O resultado esperado é:
+- c) Experimente os temas apresentados anteriormente, e use no gráfico o que mais gostar.
 
-```{r}
-#| label: exercicio-customizacao-1
-#| echo: false
-dados |> 
-  filter(regiao == "Sul") |>
-  ggplot() + 
-  aes(x = trimestre_inicio, y = perc_desocupacao) + 
-  geom_line(aes(color = uf)) + 
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y")
-```
-:::
+- d) Altere a escala de cores das linhas, utilizando uma paleta de cores de sua preferência. Tome cuidado pois estamos mapeando uma variável categórica.
+
+- e) Salve o gráfico em um arquivo chamado `graficos/grafico_desocupacao_nordeste.png`.
 
 
 
 
 ## Sugestões de materiais
 
-- Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
-  - [Visualização de dados](https://cienciadedatos.github.io/pt-r4ds/data-visualize.html)
-  - [Vsualizar](https://cienciadedatos.github.io/pt-r4ds/visualize.html)
-  - [Visualizar: Camadas](https://cienciadedatos.github.io/pt-r4ds/layers.html)
-  - [Visualizar: Análise exploratória de dados](https://cienciadedatos.github.io/pt-r4ds/EDA.html)
-  - [Visualizar: Comunicação](https://cienciadedatos.github.io/pt-r4ds/communication.html)
-  
-  
+-   Livro [R para Ciência de Dados 2ed](https://cienciadedatos.github.io/pt-r4ds/):
+    -   [Visualização de dados](https://cienciadedatos.github.io/pt-r4ds/data-visualize.html)
+    -   [Vsualizar](https://cienciadedatos.github.io/pt-r4ds/visualize.html)
+    -   [Visualizar: Camadas](https://cienciadedatos.github.io/pt-r4ds/layers.html)
+    -   [Visualizar: Análise exploratória de dados](https://cienciadedatos.github.io/pt-r4ds/EDA.html)
+    -   [Visualizar: Comunicação](https://cienciadedatos.github.io/pt-r4ds/communication.html)
+-   Livro: [Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
+    -   [Capítulo 4 - Visualização](https://livro.abj.org.br/04-visualizacao.html)
 
-- Livro: [Metodologia de Pesquisa Jurimétrica](https://livro.abj.org.br/):
-  - [Capítulo 4 - Visualização](https://livro.abj.org.br/04-visualizacao.html)
-  
-  
-  
 ### Extras: Curiosidades e Referências
 
+-   [Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0) - livro de Leland Wilkinson, cuja teoria é a base do `ggplot2`
 
-- [Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0) - livro de Leland Wilkinson, cuja teoria é a base do `ggplot2`  
-
-- [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) - livro de Hadley Wickham, criador do `ggplot2`, Danielle Navarro e Thomas Lin Pedersen (em inglês)
+-   [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) - livro de Hadley Wickham, criador do `ggplot2`, Danielle Navarro e Thomas Lin Pedersen (em inglês)
