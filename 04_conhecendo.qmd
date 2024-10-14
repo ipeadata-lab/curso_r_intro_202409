@@ -177,15 +177,20 @@ A presença de valores faltantes é algo comum em bases de dados. Eles podem oco
 Existem algumas funções que nos ajudam a identificar a presença de valores faltantes na base de dados. O pacote `{naniar}` apresenta funções úteis para isso: a função `gg_miss_var()` cria uma visualição apresentando o nome das variáveis da base de dados, assim como a quantidade de valores faltantes em cada uma delas.
 
 ```{r}
-#| label: exemplo-naniar
+#| label: exemplo-naniar-absoluto
 #| message: false
 
 naniar::gg_miss_var(dados) # <1>
-
-naniar::gg_miss_var(dados, show_pct = TRUE) # <2>
 ```
 1. Valores absolutos
-2. Valores relativos
+
+```{r}
+#| label: exemplo-naniar-relativo
+#| message: false
+
+naniar::gg_miss_var(dados, show_pct = TRUE) # <1>
+```
+1. Valores relativos
 
 
 ## Retornar algumas linhas da base de dados
@@ -244,4 +249,33 @@ unique(dados[["Unidade de Medida"]])
 ```
 
 O resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.
+
+## Sugestão de exercícios
+
+Nesses exercícios a seguir, vamos utilizar a tabela como [deputadas e deputados que já estiveram em exercício na Câmara dos Deputados](https://dadosabertos.camara.leg.br/swagger/api.html?tab=staticfile#api).
+
+
+```{r}
+#| cache: true
+#| message: false
+deputados <- readr::read_csv2("https://dadosabertos.camara.leg.br/arquivos/deputados/csv/deputados.csv")
+```
+Responda as perguntas a seguir:
+
+1. Conhecendo a estrutura da base de dados:
+    -   Quantas colunas e linhas temos na base de dados?
+    -   O que cada linha representa?
+    -   Quais são as colunas presentes na colunas?
+    -   Os nomes das colunas estão aceitáveis (por exemplo, sem espaços, acentos, caracteres especiais)?
+    -  Qual é o tipo de cada variável?
+    - Existe alguma variável que deveria ser de outro tipo?
+    
+2. Valores faltantes (*missing values*):
+    -   Em quais variáveis temos valores faltantes?
+    -   Qual é a variável com a maior quantidade de valores faltantes?
+    - O que significa os valores faltantes na coluna `dataFalecimento`?
+    
+3. Conhecendo variáveis com categorias:
+    - Quais são os valores únicos para a variável `siglaSexo`?
+
 

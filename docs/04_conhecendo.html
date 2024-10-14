@@ -364,6 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#valores-faltantes-na" id="toc-valores-faltantes-na" class="nav-link" data-scroll-target="#valores-faltantes-na">Valores faltantes (<code>NA</code>)</a></li>
   <li><a href="#retornar-algumas-linhas-da-base-de-dados" id="toc-retornar-algumas-linhas-da-base-de-dados" class="nav-link" data-scroll-target="#retornar-algumas-linhas-da-base-de-dados">Retornar algumas linhas da base de dados</a></li>
   <li><a href="#conhecendo-os-valores-únicos-de-uma-coluna" id="toc-conhecendo-os-valores-únicos-de-uma-coluna" class="nav-link" data-scroll-target="#conhecendo-os-valores-únicos-de-uma-coluna">Conhecendo os valores únicos de uma coluna</a></li>
+  <li><a href="#sugestão-de-exercícios" id="toc-sugestão-de-exercícios" class="nav-link" data-scroll-target="#sugestão-de-exercícios">Sugestão de exercícios</a></li>
   </ul>
 </nav>
     </div>
@@ -895,27 +896,37 @@ Aviso
 <p>É importante identificar onde estão esses valores, para que possamos nos atentar em análises futuras.</p>
 <p>Existem algumas funções que nos ajudam a identificar a presença de valores faltantes na base de dados. O pacote <code>{naniar}</code> apresenta funções úteis para isso: a função <code>gg_miss_var()</code> cria uma visualição apresentando o nome das variáveis da base de dados, assim como a quantidade de valores faltantes em cada uma delas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>naniar<span class="sc">::</span><span class="fu">gg_miss_var</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>naniar<span class="sc">::</span><span class="fu">gg_miss_var</span>(dados)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="2">Valores relativos</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Valores absolutos</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_conhecendo_files/figure-html/exemplo-naniar-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="04_conhecendo_files/figure-html/exemplo-naniar-absoluto-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>naniar<span class="sc">::</span><span class="fu">gg_miss_var</span>(dados, <span class="at">show_pct =</span> <span class="cn">TRUE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>naniar<span class="sc">::</span><span class="fu">gg_miss_var</span>(dados, <span class="at">show_pct =</span> <span class="cn">TRUE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">Valores relativos</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_conhecendo_files/figure-html/exemplo-naniar-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="04_conhecendo_files/figure-html/exemplo-naniar-relativo-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1049,47 +1060,47 @@ Aviso
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(dados_com_n_linha, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
-1   24588                          3 Unidade da Federação
-2   22680                          3 Unidade da Federação
-3   17951                          3 Unidade da Federação
-4   15830                          3 Unidade da Federação
-5   20284                          3 Unidade da Federação
+1   19938                          3 Unidade da Federação
+2    6832                          3 Unidade da Federação
+3   21174                          3 Unidade da Federação
+4    4435                          3 Unidade da Federação
+5    5625                          3 Unidade da Federação
   Unidade de Medida (Código) Unidade de Medida Valor
-1                          2                 %   1.1
-2                          2                 %   1.6
-3                          2                 % 100.0
-4                          2                 %   2.0
-5                       1572       Mil pessoas 362.0
+1                          2                 %   0.6
+2                          2                 %  61.6
+3                          2                 %   2.0
+4                          2                 %  40.0
+5                       1572       Mil pessoas 227.0
   Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
-1                            51          Mato Grosso             201902
-2                            43    Rio Grande do Sul             202002
-3                            32       Espírito Santo             202304
-4                            29                Bahia             202202
-5                            41               Paraná             201503
+1                            35            São Paulo             202303
+2                            17            Tocantins             202202
+3                            42       Santa Catarina             201401
+4                            15                 Pará             201702
+5                            16                Amapá             201904
           Trimestre Variável (Código)
-1 2º trimestre 2019              4087
-2 2º trimestre 2020              4105
-3 4º trimestre 2023              4104
-4 2º trimestre 2022              4087
-5 3º trimestre 2015              1641
+1 3º trimestre 2023              4105
+2 2º trimestre 2022              4104
+3 1º trimestre 2014              4104
+4 2º trimestre 2017              4104
+5 4º trimestre 2019              1641
                                                                                    Variável
-1                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
-2 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+1 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+2                           Distribuição percentual das pessoas de 14 anos ou mais de idade
 3                           Distribuição percentual das pessoas de 14 anos ou mais de idade
-4                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+4                           Distribuição percentual das pessoas de 14 anos ou mais de idade
 5                                                       Pessoas de 14 anos ou mais de idade
   Condição em relação à força de trabalho e condição de ocupação (Código)
 1                                                                   32387
-2                                                                   32447
-3                                                                   32385
+2                                                                   32386
+3                                                                   32446
 4                                                                   32447
-5                                                                   32446
+5                                                                   32447
   Condição em relação à força de trabalho e condição de ocupação
 1                                    Força de trabalho - ocupada
-2                                      Fora da força de trabalho
-3                                                          Total
+2                                              Força de trabalho
+3                                 Força de trabalho - desocupada
 4                                      Fora da força de trabalho
-5                                 Força de trabalho - desocupada</code></pre>
+5                                      Fora da força de trabalho</code></pre>
 </div>
 </div>
 </section>
@@ -1139,6 +1150,35 @@ Dica
 </div>
 </div>
 <p>O resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.</p>
+</section>
+<section id="sugestão-de-exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="sugestão-de-exercícios">Sugestão de exercícios</h2>
+<p>Nesses exercícios a seguir, vamos utilizar a tabela como <a href="https://dadosabertos.camara.leg.br/swagger/api.html?tab=staticfile#api">deputadas e deputados que já estiveram em exercício na Câmara dos Deputados</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>deputados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(<span class="st">"https://dadosabertos.camara.leg.br/arquivos/deputados/csv/deputados.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Responda as perguntas a seguir:</p>
+<ol type="1">
+<li>Conhecendo a estrutura da base de dados:
+<ul>
+<li>Quantas colunas e linhas temos na base de dados?</li>
+<li>O que cada linha representa?</li>
+<li>Quais são as colunas presentes na colunas?</li>
+<li>Os nomes das colunas estão aceitáveis (por exemplo, sem espaços, acentos, caracteres especiais)?</li>
+<li>Qual é o tipo de cada variável?</li>
+<li>Existe alguma variável que deveria ser de outro tipo?</li>
+</ul></li>
+<li>Valores faltantes (<em>missing values</em>):
+<ul>
+<li>Em quais variáveis temos valores faltantes?</li>
+<li>Qual é a variável com a maior quantidade de valores faltantes?</li>
+<li>O que significa os valores faltantes na coluna <code>dataFalecimento</code>?</li>
+</ul></li>
+<li>Conhecendo variáveis com categorias:
+<ul>
+<li>Quais são os valores únicos para a variável <code>siglaSexo</code>?</li>
+</ul></li>
+</ol>
 
 
 </section>
