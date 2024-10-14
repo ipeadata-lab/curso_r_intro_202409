@@ -411,7 +411,7 @@ Podemos tentar unir as tabelas, sem informar a chave. Quando não informamos a c
 ```{r}
 #| error: true
 dados_ordenados |> 
-  left_join(uf_regiao)
+  left_join(uf_regiao, by = "uf_codigo")
 ```
 
 No exemplo acima, a função `left_join()` tentou unir as tabelas com a coluna `uf_codigo`, presente nas duas tabelas. 
@@ -427,7 +427,7 @@ Agora podemos unir as tabelas `dados_ordenados` e `uf_regiao_fct`:
 
 ```{r}
 dados_com_regiao <- dados_ordenados |>
-  left_join(uf_regiao_fct) |> # <1>
+  left_join(uf_regiao_fct, by = "uf_codigo") |> # <1>
   relocate(uf_sigla, regiao, .after = uf_codigo) # <2>
 ```
 1. Unindo a tabela `dados ordenados` e `uf_regiao_fct` usando como chave a coluna `uf_codigo`.
@@ -451,6 +451,14 @@ O pacote `{geobr}` facilita o acesso a dados geoespaciais do Brasil, como estado
 
 Podemos utilizar a função `read_state()` para carregar as geometrias dos estados brasileiros. Isso nos permite combinar essas geometrias com outros dados, como taxas de desocupação, e criar mapas que facilitam a visualização de padrões regionais.
 :::
+
+Caso não tenha instalado anteriormente o pacote `{geobr}`, você pode instalar com o comando abaixo:
+
+```{r}
+#| eval: false
+install.packages("geobr")
+```
+
 
 ```{r}
 #| message: false
