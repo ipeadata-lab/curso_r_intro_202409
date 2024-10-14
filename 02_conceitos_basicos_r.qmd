@@ -451,6 +451,30 @@ A função `str()` (*structure*) exibe a estrutura da lista, mostrando os elemen
 str(lista_exemplo)
 ```
 
+## Sugestões de exercícios
+
+1. Crie um objeto chamado `meu_nome` e armazene seu nome nele. Depois, use a função `toupper()` para converter seu nome para letras maiúsculas e salve o resultado em um novo objeto chamado `nome_maiusculo`. Verifique se os dois objetos foram criados corretamente, consultando o painel *Environment*.
+
+2. Observe os nomes a seguir, e identifique se estão adequados para nomear objetos e colunas no R. Para os nomes que não estão adequados, explique o motivo:
+
+   - `dados_altura`
+   - `1_dados`
+   - `media-altura`
+   - `media_altura`
+   - `Média altura`
+
+3. Tente adivinhar a classe dos objetos a seguir, e depois confira no R usando a função `class()`:
+
+```{r}
+#| eval: false
+pi
+letters
+dplyr::starwars
+dplyr::starwars$mass
+dplyr::starwars$species
+dplyr::starwars$films
+```
+
 
 ## Sugestões de materiais
 
