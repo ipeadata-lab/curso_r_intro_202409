@@ -1,5 +1,6 @@
 ---
 title: "Conhecendo a base de dados"
+code-annotations: hover
 ---
 
 ::: callout
@@ -30,8 +31,7 @@ Vamos começar importando a base de dados que utilizaremos:
 
 ```{r}
 #| message: false
-library(tidyverse)
-dados <- read_rds("dados/sidrar_4092_bruto.rds")
+dados <- readr::read_rds("dados/sidrar_4092_bruto.rds")
 ```
 
 ## Estrutura da base de dados
@@ -56,7 +56,7 @@ A função `glimpse()` do pacote `{dplyr}` apresenta informações como: número
 
 ```{r}
 #| eval: false
-glimpse(dados)
+dplyr::glimpse(dados)
 ```
 
 ![Captura de tela: Resultado da função glimpse()](images/04_glimpse.png){fig-align="center"}
@@ -114,8 +114,7 @@ O pacote `{skimr}` tem uma função chamada `skim()` que nos dá um sumário das
 É interesante salvar o resultado da função em um objeto, para que possamos acessar as informações posteriormente, em formato de tabela.
 
 ```{r}
-library(skimr)
-skim_dados <- skim(dados)
+skim_dados <- skimr::skim(dados)
 ```
 
 A seguir, podemos ver o resultado da função `skim()`:
@@ -180,13 +179,14 @@ Existem algumas funções que nos ajudam a identificar a presença de valores fa
 ```{r}
 #| label: exemplo-naniar
 #| message: false
-library(naniar)
-# Valores absolutos
-gg_miss_var(dados)
 
-# Valores relativos
-gg_miss_var(dados, show_pct = TRUE)
+naniar::gg_miss_var(dados) # <1>
+
+naniar::gg_miss_var(dados, show_pct = TRUE) # <2>
 ```
+1. Valores absolutos
+2. Valores relativos
+
 
 ## Retornar algumas linhas da base de dados
 
@@ -197,8 +197,10 @@ Nesse caso, podemos ser interessante usar funções que retornam apenas algumas 
 Antes de usá-las, vamos adicionar uma coluna que represente o número da linha, para que seja mais fácil identificar as linhas que estamos selecionando:
 
 ```{r}
-dados_com_n_linha <- rowid_to_column(dados, "n_linha")
+dados_com_n_linha <- tibble::rowid_to_column(dados, "n_linha") #<1>
 ```
+1. A função `rowid_to_column()` adiciona uma coluna com o número da linha.
+
 
 Agora podemos usar as funções para retornar algumas linhas da base de dados. Observe os resultados apresentados, e os valores na coluna `n_linha`:
 
@@ -210,7 +212,7 @@ head(dados_com_n_linha)
 tail(dados_com_n_linha)
 
 # "Sorteando" linhas
-slice_sample(dados_com_n_linha, n = 5)
+dplyr::slice_sample(dados_com_n_linha, n = 5)
 ```
 
 ## Conhecendo os valores únicos de uma coluna
