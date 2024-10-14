@@ -17,7 +17,9 @@ Uma etapa importante da análise exploratória de dados envolve visualizar dados
 
 Nesta aula, utilizaremos a tabela preparada na [aula anterior](05_transformacao): `"dados_output/sidra_4092_arrumado.rds"`.
 
-::: callout-important
+::: {.callout-important collapse="true"}
+### Expanda para fazer download da base de dados
+
 Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar [aqui](https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds), e copiar o arquivo para a pasta `dados_output` do seu projeto.
 
 Outra opção é executar o código abaixo:
@@ -30,9 +32,10 @@ download.file(
   mode = "wb" # <3>
   )
 ```
-1. URL que desejamos baixar
-2. Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)
-3. Configuração que evita corromper arquivos binários.
+
+1.  URL que desejamos baixar
+2.  Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)
+3.  Configuração que evita corromper arquivos binários.
 :::
 
 Vamos carregar a base de dados com a função `read_rds()`:
