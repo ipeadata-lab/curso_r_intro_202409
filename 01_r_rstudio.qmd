@@ -1,6 +1,7 @@
 ---
 # Iniciar um trabalho com o R e o Rstudio
 title: "Conhecendo o R e o RStudio"
+code-annotations: hover
 ---
 
 ::: callout
@@ -142,16 +143,18 @@ Para instalar um pacote, utilizamos a função `install.packages()` e informando
 
 ```{r}
 #| eval: false
-install.packages("tidyverse")  # Instala o pacote tidyverse
+install.packages("tidyverse")  # <1>
 ```
+1. Instala o pacote tidyverse
 
 Apenas precisamos instalar um pacote uma vez. 
 
 Depois de instalado, podemos carregá-lo com a função `library()`, para que as funções do pacote fiquem disponíveis para uso:
 
 ```{r}
-library(tidyverse)  # Carrega o pacote tidyverse
+library(tidyverse)  # <1>
 ```
+1. Carrega o pacote tidyverse
 
 Precisamos carregar o pacote sempre que abrirmos um novo script, ou quando reiniciamos o RStudio. Uma pratica frequente é carregar os principais pacotes necessários no início do script.
 
@@ -163,9 +166,6 @@ Essa sintaxe é menos frequente, porém útil para evitar problemas de conflito 
 
 Por exemplo: o pacote `{dplyr}` apresenta uma função `filter()`, e o pacote `{stats}` também apresenta uma função `filter()`. Se não usarmos o operador `::`, a função utilizada será a do pacote que foi carregado por último. Usando o operador `::`, podemos escolher qual função queremos utilizar.
 ::: 
-
-
-
 
 ## Documentação
 
@@ -181,17 +181,19 @@ No RStudio, podemos acessar a documentação de uma função ou pacote das segui
 
 ```{r}
 #| eval: false
-help(mean)  # Abre a documentação da função mean()
-?mean  # Abre a documentação da função mean()
+help(mean)  # <1>
+?mean  # <1>
 ```
-
+1. Abre a documentação da função mean()
 
 - Para fazer uma por funções presentes em todos os pacotes instalados no computador, podemos utilizar o operador `??`, seguido pelo termo que queremos buscar (ex: `??mean`). Essa é uma busca mais ampla, que procura pelo termo no nome e na descrição das funções.
 
 ```{r}
 #| eval: false
-??mean  # Busca por funções que contenham o termo "mean"
+??mean  # <1>
 ```
+1. Busca por funções que contenham o termo "mean"
+
 
 - Podemos utilizar o painel Help para buscar informações sobre funções e pacotes:
 
@@ -259,7 +261,7 @@ Vamos instalar os pacotes ao longo das aulas. Neste momento, vamos instalar os p
 
 ```{r}
 #| eval: false
-pacotes_necessarios <- c(
+pacotes_necessarios <- c( # <1>
   "tidyverse",
   "janitor",
   "sidrar",
@@ -268,12 +270,16 @@ pacotes_necessarios <- c(
   "fs",
   "naniar",
   "skimr",
-  "esquisse"
-)
+  "esquisse",
+  "geobr",
+  "ipeaplot",
+  "ggthemes"
+)  # <1>
 
-install.packages(pacotes_necessarios)
+install.packages(pacotes_necessarios)  # <2>
 ```
-
+1. Criando um conjunto com o nome dos pacotes necessários
+2. Instalando os pacotes necessários
 
 ## Sugestões de materiais
 
