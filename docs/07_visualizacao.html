@@ -363,12 +363,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#gráficos-de-dispersão" id="toc-gráficos-de-dispersão" class="nav-link" data-scroll-target="#gráficos-de-dispersão">Gráficos de dispersão</a></li>
   <li><a href="#gráficos-de-linha" id="toc-gráficos-de-linha" class="nav-link" data-scroll-target="#gráficos-de-linha">Gráficos de linha</a></li>
   </ul></li>
-  <li><a href="#combinando-geometrias" id="toc-combinando-geometrias" class="nav-link" data-scroll-target="#combinando-geometrias">Combinando geometrias</a>
-  <ul>
+  <li><a href="#combinando-geometrias" id="toc-combinando-geometrias" class="nav-link" data-scroll-target="#combinando-geometrias">Combinando geometrias</a></li>
   <li><a href="#gráficos-de-barrascolunas" id="toc-gráficos-de-barrascolunas" class="nav-link" data-scroll-target="#gráficos-de-barrascolunas">Gráficos de barras/colunas</a></li>
   <li><a href="#gráfico-de-histograma" id="toc-gráfico-de-histograma" class="nav-link" data-scroll-target="#gráfico-de-histograma">Gráfico de histograma</a></li>
   <li><a href="#gráficos-de-caixa-boxplot" id="toc-gráficos-de-caixa-boxplot" class="nav-link" data-scroll-target="#gráficos-de-caixa-boxplot">Gráficos de caixa (<em>boxplot</em>)</a></li>
-  </ul></li>
   <li><a href="#gráficos-por-subgrupos" id="toc-gráficos-por-subgrupos" class="nav-link" data-scroll-target="#gráficos-por-subgrupos">Gráficos por subgrupos</a>
   <ul>
   <li><a href="#subgrupos-por-cor" id="toc-subgrupos-por-cor" class="nav-link" data-scroll-target="#subgrupos-por-cor">Subgrupos por Cor</a></li>
@@ -743,8 +741,9 @@ Dica
 </div>
 </div>
 </div>
-<section id="gráficos-de-barrascolunas" class="level4">
-<h4 class="anchored" data-anchor-id="gráficos-de-barrascolunas">Gráficos de barras/colunas</h4>
+</section>
+<section id="gráficos-de-barrascolunas" class="level3">
+<h3 class="anchored" data-anchor-id="gráficos-de-barrascolunas">Gráficos de barras/colunas</h3>
 <p>Para os gráficos de barras/colunas, podemos utilizar duas funções: <code>geom_bar()</code> e <code>geom_col()</code>. A diferença entre elas é que <code>geom_bar()</code> é utilizada quando queremos contar a frequência de uma variável categórica, enquanto <code>geom_col()</code> é utilizada quando queremos visualizar uma variável numérica.</p>
 <p>Vamos criar um gráfico de colunas para visualizar a taxa de desocupação dos estados no trimestre mais recente. Como já temos a coluna com o valor numérico que queremos visualizar (<code>perc_desocupacao</code>), utilizaremos a função <code>geom_col()</code>:</p>
 <div class="cell">
@@ -776,8 +775,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="gráfico-de-histograma" class="level4">
-<h4 class="anchored" data-anchor-id="gráfico-de-histograma">Gráfico de histograma</h4>
+<section id="gráfico-de-histograma" class="level3">
+<h3 class="anchored" data-anchor-id="gráfico-de-histograma">Gráfico de histograma</h3>
 <p>O histograma é um gráfico que mostra a distribuição de uma variável numérica. A função de geometria utilizada é a <code>geom_histogram()</code>.</p>
 <p>Podemos visualizar a distribuição da variável <code>perc_desocupacao</code>, considerando todos os trimestres:</p>
 <div class="cell">
@@ -808,8 +807,8 @@ Dica
 </div>
 </div>
 </section>
-<section id="gráficos-de-caixa-boxplot" class="level4">
-<h4 class="anchored" data-anchor-id="gráficos-de-caixa-boxplot">Gráficos de caixa (<em>boxplot</em>)</h4>
+<section id="gráficos-de-caixa-boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="gráficos-de-caixa-boxplot">Gráficos de caixa (<em>boxplot</em>)</h3>
 <p>O gráfico de caixa<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (mais conhecido como <em>boxplot</em>) é utilizado para visualizar a distribuição de uma variável numérica. Esse é um tipo de gráfico que não é muito comum vermos no dia-a-dia, mas é muito usado em pesquisas e análises estatísticas.</p>
 <p>Este gráfico apresenta informações como a mediana, quartis, valores mínimos e máximos, e possíveis outliers.</p>
 <p>Para criar um boxplot, utilizaremos a função de geometria <code>geom_boxplot()</code></p>
@@ -826,7 +825,6 @@ Dica
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="gráficos-por-subgrupos" class="level3">
 <h3 class="anchored" data-anchor-id="gráficos-por-subgrupos">Gráficos por subgrupos</h3>

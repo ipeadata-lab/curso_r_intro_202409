@@ -209,7 +209,7 @@ dados |>
   geom_line(color = "red")
 ```
 
-#### Gráficos de barras/colunas
+### Gráficos de barras/colunas
 
 Para os gráficos de barras/colunas, podemos utilizar duas funções: `geom_bar()` e `geom_col()`. A diferença entre elas é que `geom_bar()` é utilizada quando queremos contar a frequência de uma variável categórica, enquanto `geom_col()` é utilizada quando queremos visualizar uma variável numérica.
 
@@ -234,7 +234,7 @@ dados |>
   geom_bar()
 ```
 
-#### Gráfico de histograma
+### Gráfico de histograma
 
 O histograma é um gráfico que mostra a distribuição de uma variável numérica. A função de geometria utilizada é a `geom_histogram()`.
 
@@ -258,7 +258,7 @@ dados |>
   geom_density()
 ```
 
-#### Gráficos de caixa (*boxplot*)
+### Gráficos de caixa (*boxplot*)
 
 O gráfico de caixa[^1] (mais conhecido como *boxplot*) é utilizado para visualizar a distribuição de uma variável numérica. Esse é um tipo de gráfico que não é muito comum vermos no dia-a-dia, mas é muito usado em pesquisas e análises estatísticas.
 
