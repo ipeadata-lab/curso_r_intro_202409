@@ -1,6 +1,7 @@
 ---
 # Conhecendo conceitos básicos do R
 title: "Linguagem R"
+code-annotations: hover
 ---
 
 Existem muitos conceitos básicos que são fundamentais para quem está começando a programar em R.
@@ -133,8 +134,9 @@ Caso queira remover todos os objetos carregados, podemos usar a função `rm(lis
 
 ```{r}
 #| eval: false
-rm(list = ls()) # remover todos os objetos do Global Environment
+rm(list = ls()) # <1>
 ```
+1. Remover todos os objetos do *Global Environment*
 
 ### Destivando o .RData
 
@@ -299,12 +301,13 @@ class(data_sistema)
 Podemos fazer operações com datas:
 
 ```{r}
-data_inicio_curso - data_sistema # diferença entre datas
-data_sistema + 1  # somar um dia
-as.Date("2024-02-29") + 1 # somar um dia
+data_inicio_curso - data_sistema # <1>
+data_sistema + 1  # <2>
+as.Date("2024-02-29") + 1 # <3>
 ```
-
-
+1. Diferença entre duas datas
+2. Somar um dia à data em que o código foi executado
+3. Somar um dia à data de 29 de fevereiro de 2024
 
 
 ## Conversões entre tipos de dados
@@ -318,25 +321,27 @@ Existem várias funções que podemos usar para transformar variáveis de um tip
 - `as.Date()`:  converte valores para data
 
 ```{r}
-# número para texto
-as.character(2024)
+as.character(2024) #<1>
 
-# lógico para número
-as.numeric(TRUE)
+as.numeric(TRUE) #<2>
 
-# texto para data
-as.Date("2024-10-01")
+as.Date("2024-10-01") #<3>
 
-# texto para lógico
-as.logical("TRUE")
+as.logical("TRUE") #<4>
 ```
+1. Converter número para texto
+2. Converter lógico para número
+3. Converter texto para data
+4. Converter texto para lógico
+
 Porém, nem toda conversão fará sentido. Por exemplo, podemos converter um número para texto, porém nem toda conversão de texto para número funcionará como esperado:
 
 ```{r}
-# texto para número
-as.numeric("2024")
-as.numeric("Curso de R")
+as.numeric("2024") #<1>
+as.numeric("Curso de R") #<1>
 ```
+1. Converter para número
+
 Quando a conversão não é possível, o R irá retornar um valor `NA` (*Not Available*), que indica um valor faltante. Falaremos mais sobre valores faltantes na próxima seção.
 
 
