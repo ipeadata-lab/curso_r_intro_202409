@@ -335,7 +335,7 @@ Podemos criar uma variável dummy para identificar os trimestres que ocorreram d
 dados_com_dummy <- dados_com_trimestre |> 
   mutate(
     periodo_pandemia = case_when(
-    trimestre_codigo %in% c("202002", "202003", "202004",
+    trimestre_codigo %in% c("202001", "202002", "202003", "202004",
                             "202101", "202102", "202103", "202104",
                             "202201") ~ 1, # <1>
     .default = 0 # <2>
