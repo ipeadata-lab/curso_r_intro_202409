@@ -294,10 +294,9 @@ dados_tri_recente |>
   aes(x = perc_desocupacao, y = uf) + 
   geom_col(aes(fill = regiao)) # <1>
 ```
-
 1.  Adicionando a cor de preenchimento utilizando a coluna `regiao`, com o argumento `fill`. Isso precisa estar **DENTRO** do `aes()`.
 
-Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, usando a cor para representar o período que consideramos como pandemia (`color`):
+Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, adicionamos pontos e usamos a cor para representar o período que consideramos como pandemia (`color`):
 
 ```{r}
 #| label: exemplo-ggplot2-linha-color
@@ -306,11 +305,11 @@ dados |>
   mutate(periodo_pandemia = as.character(periodo_pandemia)) |>
   ggplot() + 
   aes(x = trimestre_inicio, y = perc_desocupacao) + 
-  geom_line(aes(color = periodo_pandemia, group = "none")) # <2>
+  geom_line() +
+  geom_point(aes(color = periodo_pandemia)) # <2>
 ```
-
 1.  Filtrando dados para representar apenas a Bahia.
-2.  Adicionando a cor da linha utilizando a coluna `periodo_pandemia`, com o argumento `color`. Isso precisa estar **DENTRO** do `aes()`.
+2.  Adicionando a cor do ponto utilizando a coluna `periodo_pandemia`, com o argumento `color`. Isso precisa estar **DENTRO** do `aes()`.
 
 #### Subgrupos por Facetas (*facet*)
 

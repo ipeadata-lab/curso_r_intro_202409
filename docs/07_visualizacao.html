@@ -857,14 +857,15 @@ Dica
 </div>
 </div>
 </div>
-<p>Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, usando a cor para representar o período que consideramos como pandemia (<code>color</code>):</p>
+<p>Vamos ver um exemplo de gráfico de linhas apresentado anteriormente, adicionamos pontos e usamos a cor para representar o período que consideramos como pandemia (<code>color</code>):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-2" class="code-annotation-target"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(uf_sigla <span class="sc">==</span> <span class="st">"BA"</span>) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">periodo_pandemia =</span> <span class="fu">as.character</span>(periodo_pandemia)) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-18-4"><a href="#annotated-cell-18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> trimestre_inicio, <span class="at">y =</span> perc_desocupacao) <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-6" class="code-annotation-target"><a href="#annotated-cell-18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> periodo_pandemia, <span class="at">group =</span> <span class="st">"none"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-18-6"><a href="#annotated-cell-18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-7" class="code-annotation-target"><a href="#annotated-cell-18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> periodo_pandemia))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
@@ -873,7 +874,7 @@ Dica
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="6" data-code-annotation="2">Adicionando a cor da linha utilizando a coluna <code>periodo_pandemia</code>, com o argumento <code>color</code>. Isso precisa estar <strong>DENTRO</strong> do <code>aes()</code>.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="7" data-code-annotation="2">Adicionando a cor do ponto utilizando a coluna <code>periodo_pandemia</code>, com o argumento <code>color</code>. Isso precisa estar <strong>DENTRO</strong> do <code>aes()</code>.</span>
 </dd>
 </dl>
 </div>
