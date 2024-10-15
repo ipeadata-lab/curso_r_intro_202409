@@ -4,7 +4,6 @@ subtitle: "Gráfico de colunas com proporção de pessoas por categoria de ocupa
 code-annotations: hover
 ---
 
-
 ## Objetivo
 
 Nesse exemplo, o objetivo é criar um gráfico de colunas para visualizar a proporção de pessoas por categoria de ocupação para cada estado, em um trimestre específico (nesse caso, utilizaremos os dados do trimestre mais recente)
@@ -21,10 +20,12 @@ Esse é o gráfico que queremos criar:
 #| message: false
 library(ggplot2) # <1>
 library(dplyr) # <2>
+library(ipeaplot) # <3>
 ```
-1. Pacote para visualização de dados
-2. Pacote para transformação de dados
 
+1.  Pacote para visualização de dados
+2.  Pacote para transformação de dados
+3.  Pacote para o padrão Ipea
 
 ## Importando os dados
 
@@ -56,23 +57,22 @@ dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
 dados_tri_recente <- dados |>  
   filter(trimestre_inicio == max(trimestre_inicio)) # <1>
 ```
-1. Filtrando os dados para o trimestre mais recente
 
+1.  Filtrando os dados para o trimestre mais recente
 
 ## Preparando os dados
 
 É importante entender as categorias de ocupação que temos disponíveis na base de dados, se não podemos correr o risco de contar valores mais de uma vez:
 
-
 ![](images/07_categorias_ocupacao.png)
 
 Portanto, para obter o total, precisaremos apenas das seguinte categorias de ocupação:
 
-- `mil_pessoas_forca_de_trabalho_ocupada`: Pessoas dentro da força de trabalho, que estão ocupadas.
+-   `mil_pessoas_forca_de_trabalho_ocupada`: Pessoas dentro da força de trabalho, que estão ocupadas.
 
-- `mil_pessoas_forca_de_trabalho_desocupada`: Pessoas dentro da força de trabalho, que estão desocupadas.
+-   `mil_pessoas_forca_de_trabalho_desocupada`: Pessoas dentro da força de trabalho, que estão desocupadas.
 
-- `mil_pessoas_fora_da_forca_de_trabalho`: Pessoas fora da força de trabalho.
+-   `mil_pessoas_fora_da_forca_de_trabalho`: Pessoas fora da força de trabalho.
 
 Primeiro, vamos selecionar as colunas que utilizaremos para esse gráfico, para facilitar a preparação dos dados:
 
@@ -89,14 +89,14 @@ dados_selecionados <- dados_tri_recente |> # <1>
 
 head(dados_selecionados) # <3>
 ```
-1. Utilizando os dados já filtrados para o trimestre mais recente.
-2. Selecionando as colunas que utilizaremos.
-3. Primeiras linhas da tabela resultante
+
+1.  Utilizando os dados já filtrados para o trimestre mais recente.
+2.  Selecionando as colunas que utilizaremos.
+3.  Primeiras linhas da tabela resultante
 
 Para calcular a proporção de pessoas por categoria de ocupação em cada estado, precisamos usar os valores que estão nas colunas `mil_pessoas_forca_de_trabalho_ocupada`, `mil_pessoas_forca_de_trabalho_desocupada` e `mil_pessoas_fora_da_forca_de_trabalho`. Porém, para fazer isso, precisamos transformar a tabela em formato longo.
 
 Vamos transformar a tabela em formato longo, utilizando a função `pivot_longer()`:
-
 
 ```{r}
 dados_longos <- dados_selecionados |> # <1>
@@ -109,14 +109,14 @@ dados_longos <- dados_selecionados |> # <1>
 
 head(dados_longos) # <7>
 ```
-1. Utilizando os dados já filtrados para o trimestre mais recente, e selecionados com colunas relevantes
-2. Vamos transformar em formato longo para facilitar a criação do gráfico.
-3. Selecionando as colunas que começam com "mil_pessoas" para transformar em formato longo.
-4. Nome da nova coluna que conterá as categorias.
-5. Nome da nova coluna que conterá os valores.
-6. Prefixo que será removido do nome das colunas.
-7. Primeiras linhas da tabela resultante
 
+1.  Utilizando os dados já filtrados para o trimestre mais recente, e selecionados com colunas relevantes
+2.  Vamos transformar em formato longo para facilitar a criação do gráfico.
+3.  Selecionando as colunas que começam com "mil_pessoas" para transformar em formato longo.
+4.  Nome da nova coluna que conterá as categorias.
+5.  Nome da nova coluna que conterá os valores.
+6.  Prefixo que será removido do nome das colunas.
+7.  Primeiras linhas da tabela resultante
 
 Agora, podemos calcular a proporção de pessoas por categoria de ocupação em cada estado:
 
@@ -128,11 +128,11 @@ dados_preparados <- dados_longos |>
 
 head(dados_preparados) # <4>
 ```
-1. Agrupando os dados por região, estado e trimestre. 
-2. Calculando a proporção de pessoas por grupo (categoria).
-3. Removendo o agrupamento dos dados.
-4. Primeiras linhas da tabela resultante
 
+1.  Agrupando os dados por região, estado e trimestre.
+2.  Calculando a proporção de pessoas por grupo (categoria).
+3.  Removendo o agrupamento dos dados.
+4.  Primeiras linhas da tabela resultante
 
 ## Criando o gráfico
 
@@ -145,10 +145,11 @@ dados_preparados |>  # <1>
   aes(y = uf, x = perc) + # <3>
   geom_col(aes(fill = categoria)) # <4>
 ```
-1. Vamos utilizar os dados preparados nas etapas anteriores.
-2. Iniciando um gráfico.
-3. Definindo o eixo y como os estados e o eixo x como a proporção.
-4. Adicionando as colunas ao gráfico, com a cor de preenchimento de acordo com a categoria de ocupação.
+
+1.  Vamos utilizar os dados preparados nas etapas anteriores.
+2.  Iniciando um gráfico.
+3.  Definindo o eixo y como os estados e o eixo x como a proporção.
+4.  Adicionando as colunas ao gráfico, com a cor de preenchimento de acordo com a categoria de ocupação.
 
 ```{r}
 #| label: exemplo-ggplot2-perc-customizado
@@ -187,13 +188,14 @@ grafico_prop <- dados_preparados |>
 
 grafico_prop
 ```
-1. Criando um objeto com o trimestre de referência. Isso será utilizado para adicionar informações ao gráfico.
-2. Usando a função `case_math()` (similar ao `case_when()`), criamos uma nova coluna com os nomes das categorias de ocupação por extenso.
-3. Transformando as categorias em fator, para que sigam a ordem que definimos ao serem apresentadas (e não em ordem alfabética).
-4. Reordenamos a coluna estados de acordo com a proporção de pessoas em cada categoria. Isso faz com que o gráfico fique com aspecto "ordenado".
-4. Usamos uma escala de cores manual, onde podemos definir as cores usadas para cada categoria.
-5. Adicionando títulos e legendas ao gráfico.
-6. Aplicando um tema ao gráfico.
+
+1.  Criando um objeto com o trimestre de referência. Isso será utilizado para adicionar informações ao gráfico.
+2.  Usando a função `case_math()` (similar ao `case_when()`), criamos uma nova coluna com os nomes das categorias de ocupação por extenso.
+3.  Transformando as categorias em fator, para que sigam a ordem que definimos ao serem apresentadas (e não em ordem alfabética).
+4.  Reordenamos a coluna estados de acordo com a proporção de pessoas em cada categoria. Isso faz com que o gráfico fique com aspecto "ordenado".
+5.  Usamos uma escala de cores manual, onde podemos definir as cores usadas para cada categoria.
+6.  Adicionando títulos e legendas ao gráfico.
+7.  Aplicando um tema ao gráfico.
 
 Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente:
 
@@ -206,9 +208,130 @@ ggsave( # <1>
   dpi = 300 # <6>
 )
 ```
-1. Função para salvar o gráfico.
-2. Nome do arquivo onde o gráfico será salvo.
-3. Objeto contendo o gráfico que será salvo.
-4. Largura do gráfico.
-5. Altura do gráfico.
-6. Resolução do gráfico.
+
+1.  Função para salvar o gráfico.
+2.  Nome do arquivo onde o gráfico será salvo.
+3.  Objeto contendo o gráfico que será salvo.
+4.  Largura do gráfico.
+5.  Altura do gráfico.
+6.  Resolução do gráfico.
+
+## {ipeaplot}: criando graficos no padrão editorial do Ipea
+
+O [{ipeaplot}](https://github.com/ipeadata-lab/ipeaplot) é um pacote em R desenvolvido pela equipe da Coordenação de Ciência de Dados (COCD). O objetivo é facilitar a padronização de gráficos e figuras seguindo as linhas editoriais do Ipea.
+
+Ele foi desenhado para ser usado em conjunto com o pacote [{ggplot2}](https://ggplot2.tidyverse.org/). Atualmente, o {ipeaplot} inclui três conjuntos de funções principais:
+
+1.  `theme_ipea()`: para formatação de elementos estilísticos da figura (eixos, fontes, linhas, grid, etc.);
+2.  `scale_color_ipea()` e `scale_fill_ipea()`: selecionam paleta de cores dentro de um conjunto de opções utilizadas pelo Ipea;
+3.  `save_pdf()` e `save_eps()`: salvam a figura com a extensão `.pdf` ou `.eps`, formatos possíveis de serem "modificados" durante o processo de edição das publicações pelo Editorial do Ipea.
+
+Tivemos como inspiração outras instituições que criaram ferramentas parecidas como a UNHCR [{unhcrthemes}](https://github.com/unhcr-dataviz/unhcrthemes) e a BBC [{bbplot}](https://github.com/bbc/bbplot).
+
+### Demonstração do pacote
+
+Vamos primeiro instalar e chamar o pacote:
+
+```{r}
+#| eval: false
+
+install.packages("ipeaplot") # <1>
+library("ipeaplot") # <2>
+```
+
+1.  Instalar o {ipeaplot}.
+2.  Chamar o pacote.
+
+Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do {ipeaplot}. Porém, primeiro precisamos fazer algumas pequenas modificações no código orginal do gráfico para atender à estrutura de funcionamento do pacote:
+
+```{r}
+#| label: exemplo-ipeaplor-base
+
+dados_preparados_ipeaplot <- dados_preparados |> 
+  mutate( 
+    categoria_label = case_match( 
+      categoria,
+       "forca_de_trabalho_ocupada" ~ "Força de trabalho ocupada",
+      "forca_de_trabalho_desocupada" ~ "Força de trabalho desocupada",
+      "fora_da_forca_de_trabalho" ~ "Fora da força de trabalho"
+    ),
+    categoria_fct = factor( 
+      categoria_label,
+      levels = c(
+        "Fora da força de trabalho",
+        "Força de trabalho ocupada",
+        "Força de trabalho desocupada"
+      )),
+    uf_fct = forcats::fct_reorder(uf, perc, min) 
+    ) 
+
+```
+
+```{r}
+
+grafico_ipeaplot <- dados_preparados_ipeaplot |>
+  ggplot(aes(fill = categoria_fct)) + # <1>
+  aes(y = perc, x = uf_fct ) + # <2>
+  geom_col() +
+  scale_fill_manual(values = c( "#5b5e62", "gray", "#cc1e00")) +
+  labs( # 
+    x = "Estado",
+    y = "Proporção (%)", # <3>
+    title = "Proporção por categoria de ocupação em cada estado",
+    subtitle = paste0("Período: ", trimestre_referencia),
+    fill = "Categoria",
+    caption = "Dados da PNAD Contínua Trimestral - IBGE, obtidos no SIDRA."
+  ) +
+   theme_minimal() +
+   coord_flip() # <4>
+
+grafico_ipeaplot
+
+```
+
+1.  Incluimos o `aes()` com `fill` dentro da função `ggplot()`
+2.  Trocamos a posição dos dados nos eixos
+3.  Alteramos os labels
+4.  usamos a função `coord_flip()`
+
+Notem que o resultado final ainda é examente igual ao exemplo anterior. Agora vamos começar a modificar a figura, usando o {ipeaplot} para ajustar ao "padrão do Ipea". Primeiro usamos a função `theme_ipea()` no lugar de `theme_minimal()`.
+
+```{r}
+
+grafico_ipeaplot <- grafico_ipeaplot +
+  theme_ipea() # <1>
+
+grafico_ipeaplot
+
+```
+
+1.  Adotando o tema padrão do Ipea
+
+Apesar de sutis, temos alterações nas bordas, nas fontes e nas legendas da figura. Em seguida, vamos mudar a escala de cores para adotar o padrão "Texto para Discussão do Ipea" (paleta de cores azul):
+
+```{r}
+#| message: false
+
+grafico_ipeaplot <- grafico_ipeaplot +
+  scale_fill_ipea(palette = 'Blue') # <1>
+
+grafico_ipeaplot
+
+```
+
+1.  Usando a pleta de cores azul ("TD") 
+
+Aí está, temos uma figura pronta para publicarmos nosso primeiro "Texto para Discussão" usando o R. Na verdade, nem tão pronta assim, pois o Ipea usa em títulos e legendas a família de fontes *Frutiger*. Como não é uma família com licença livre não podemos distribuir no {ipeaplot}. Porém, com o passo a seguir, o Editorial poderá, ao receber seu material para publicação, fazer os ajustes necessários na fonte dos títulos e legendas.
+
+```{r}
+#| eval: false
+
+save_eps(grafico_ipeaplot,
+         file.name = "graficos/grafico_ipeaplot.eps")
+
+save_pdf(grafico_ipeaplot,
+         file.name = "graficos/grafico_ipeaplot.pdf")
+
+```
+
+Por trás das cortinas, as duas funções acima são semelhantes à `ggsave()`, usada anteriormente nesta aula. Porém, os atributos passados garantem que os gráficos serão salvos em formatos "editáveis" (`.eps` ou `.pdf`) e com proporção e resolução recomendadas pelo Editorial do Ipea.
