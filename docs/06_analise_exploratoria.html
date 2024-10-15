@@ -418,24 +418,24 @@ Expanda para fazer download da base de dados
 <p>Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar <a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds">aqui</a>, e copiar o arquivo para a pasta <code>dados_output</code> do seu projeto.</p>
 <p>Outra opção é executar o código abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-22-1"><a href="#annotated-cell-22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-2" class="code-annotation-target"><a href="#annotated-cell-22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2">2</button><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3">3</button><span id="annotated-cell-22-4" class="code-annotation-target"><a href="#annotated-cell-22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
-<span id="annotated-cell-22-5"><a href="#annotated-cell-22-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-3" class="code-annotation-target"><a href="#annotated-cell-25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3">3</button><span id="annotated-cell-25-4" class="code-annotation-target"><a href="#annotated-cell-25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="annotated-cell-25-5"><a href="#annotated-cell-25-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="2" data-code-annotation="1">URL que desejamos baixar</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="1">URL que desejamos baixar</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="2">Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="3" data-code-annotation="2">Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="4" data-code-annotation="3">Configuração que evita corromper arquivos binários.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="4" data-code-annotation="3">Configuração que evita corromper arquivos binários.</span>
 </dd>
 </dl>
 </div>
@@ -577,17 +577,17 @@ Aviso
 <p>As variáveis que estamos trabalhando não possuem valores faltantes (<code>NA</code>). Caso a variável que você esteja trabalhando possua valores faltantes, é importante considerar o argumento <code>na.rm = TRUE</code> nas funções de estatísticas descritivas, para que os valores faltantes sejam ignorados ao realizar os cálculos.</p>
 <p>Por exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-31"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1">1</button><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1" aria-hidden="true" tabindex="-1"></a>altura_personagens_starwars <span class="ot">&lt;-</span> dplyr<span class="sc">::</span>starwars<span class="sc">$</span>height</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="2">2</button><span id="annotated-cell-31-2" class="code-annotation-target"><a href="#annotated-cell-31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(altura_personagens_starwars)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-34"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1">1</button><span id="annotated-cell-34-1" class="code-annotation-target"><a href="#annotated-cell-34-1" aria-hidden="true" tabindex="-1"></a>altura_personagens_starwars <span class="ot">&lt;-</span> dplyr<span class="sc">::</span>starwars<span class="sc">$</span>height</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2">2</button><span id="annotated-cell-34-2" class="code-annotation-target"><a href="#annotated-cell-34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(altura_personagens_starwars)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-31" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="1" data-code-annotation="1">Atribuindo a variável <code>height</code> (altura) da base <code>starwars</code> ao objeto <code>altura_personagens_starwars</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="1" data-code-annotation="1">Atribuindo a variável <code>height</code> (altura) da base <code>starwars</code> ao objeto <code>altura_personagens_starwars</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="2" data-code-annotation="2">Tentando calcular a média da altura dos personagens de Star Wars. O resultado será <code>NA</code> pois temos <code>NA</code> na variável <code>altura_personagens_starwars</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="2" data-code-annotation="2">Tentando calcular a média da altura dos personagens de Star Wars. O resultado será <code>NA</code> pois temos <code>NA</code> na variável <code>altura_personagens_starwars</code>.</span>
 </dd>
 </dl>
 </div>
@@ -596,12 +596,12 @@ Aviso
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-32"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="1">1</button><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(altura_personagens_starwars, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-35"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="1">1</button><span id="annotated-cell-35-1" class="code-annotation-target"><a href="#annotated-cell-35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(altura_personagens_starwars, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-32" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-32" data-code-lines="1" data-code-annotation="1">Calculando a média da altura dos personagens de Star Wars, ignorando os valores faltantes (<code>NA</code>).</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="1" data-code-annotation="1">Calculando a média da altura dos personagens de Star Wars, ignorando os valores faltantes (<code>NA</code>).</span>
 </dd>
 </dl>
 </div>
@@ -942,18 +942,29 @@ argument.</code></pre>
 <p>A função <code>count()</code> do pacote <code>dplyr</code> é uma forma simples de criar tabelas de frequência.</p>
 <p>Por exemplo: Se queremos saber quantos estados temos em cada região, podemos filtrar para apenas um período (para que não haja duplicações), e contar a quantidade de linhas em cada categoria da coluna <code>regiao</code>, usando a função <code>count()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-2" class="code-annotation-target"><a href="#annotated-cell-21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2">2</button><span id="annotated-cell-21-3" class="code-annotation-target"><a href="#annotated-cell-21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(regiao)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-2" class="code-annotation-target"><a href="#annotated-cell-21-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(trimestre_codigo <span class="sc">==</span> <span class="st">"202402"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-21" data-code-lines="2" data-code-annotation="1">Filtrando o trimestre mais recente</span>
 </dd>
-<dt data-target-cell="annotated-cell-21" data-target-annotation="2">2</dt>
+</dl>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1" aria-hidden="true" tabindex="-1"></a>dados_tri_recente <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2">2</button><span id="annotated-cell-22-2" class="code-annotation-target"><a href="#annotated-cell-22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(regiao)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="3" data-code-annotation="2">Contando a quantidade de linhas para cada região (nesse caso, quantos estados tem por região).</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="1" data-code-annotation="1">Usando dados filtrados para o trimestre mais recente</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="2" data-code-annotation="2">Contando a quantidade de linhas para cada região (nesse caso, quantos estados tem por região).</span>
 </dd>
 </dl>
 </div>
@@ -966,6 +977,28 @@ argument.</code></pre>
 3 Norte            7
 4 Sudeste          4
 5 Sul              3</code></pre>
+</div>
+</div>
+<p>Outras funções que podem ser utilizadas para criar tabelas de frequência são: <code>table()</code> (do R base) e <code>tabyl()</code> (do pacote <code>janitor</code>).</p>
+<p>A função <code>table()</code> retorna uma tabela de frequência em formato largo. Nesse caso, o argumento é um vetor:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados_tri_recente<span class="sc">$</span>regiao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Centro Oeste     Nordeste        Norte      Sudeste          Sul 
+           4            9            7            4            3 </code></pre>
+</div>
+</div>
+<p>A função <code>janitor::tabyl()</code> gera uma tabela de frequência com o percentual de cada categoria. Nele, o argumento é um data frame, e passamos a variável que queremos contar (podemos informar mais que uma variável):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">tabyl</span>(dados_tri_recente, regiao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       regiao n   percent
+ Centro Oeste 4 0.1481481
+     Nordeste 9 0.3333333
+        Norte 7 0.2592593
+      Sudeste 4 0.1481481
+          Sul 3 0.1111111</code></pre>
 </div>
 </div>
 </section>
@@ -1061,16 +1094,16 @@ Dicas
 <pre><code># A tibble: 27 × 2
    uf                  mediana
    &lt;chr&gt;                 &lt;dbl&gt;
- 1 Bahia                  20.3
+ 1 Bahia                  20.2
  2 Pernambuco             19.3
- 3 Sergipe                18.8
- 4 Alagoas                18.7
- 5 Rio de Janeiro         17.3
- 6 Amazonas               15.8
- 7 Maranhão               15.7
- 8 Amapá                  15.6
- 9 Rio Grande do Norte    15.4
-10 Acre                   15.4
+ 3 Sergipe                18.3
+ 4 Alagoas                18.3
+ 5 Rio de Janeiro         16.8
+ 6 Maranhão               16.3
+ 7 Amapá                  15.9
+ 8 Amazonas               15.7
+ 9 Rio Grande do Norte    15.5
+10 Acre                   14.9
 # ℹ 17 more rows</code></pre>
 </div>
 </div>

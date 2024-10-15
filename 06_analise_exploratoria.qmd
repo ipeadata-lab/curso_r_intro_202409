@@ -295,12 +295,33 @@ A função `count()` do pacote `dplyr` é uma forma simples de criar tabelas de 
 Por exemplo: Se queremos saber quantos estados temos em cada região, podemos filtrar para apenas um período (para que não haja duplicações), e contar a quantidade de linhas em cada categoria da coluna `regiao`, usando a função `count()`:
 
 ```{r}
-dados |> 
-  filter(trimestre_codigo == "202402") |> # <1>
-  count(regiao) # <2>
+dados_tri_recente <- dados |> 
+  dplyr::filter(trimestre_codigo == "202402") # <1>
 ```
 1. Filtrando o trimestre mais recente
+
+```{r}
+dados_tri_recente |> # <1>
+  count(regiao) # <2>
+```
+1. Usando dados filtrados para o trimestre mais recente
 2. Contando a quantidade de linhas para cada região (nesse caso, quantos estados tem por região).
+
+
+Outras funções que podem ser utilizadas para criar tabelas de frequência são: `table()` (do R base) e `tabyl()` (do pacote `janitor`).
+
+A função `table()` retorna uma tabela de frequência em formato largo. Nesse caso, o argumento é um vetor:
+
+```{r}
+table(dados_tri_recente$regiao)
+```
+
+A função `janitor::tabyl()` gera uma tabela de frequência com o percentual de cada categoria. Nele, o argumento é um data frame, e passamos a variável que queremos contar (podemos informar mais que uma variável):
+
+```{r}
+janitor::tabyl(dados_tri_recente, regiao)
+```
+
 
 
 
