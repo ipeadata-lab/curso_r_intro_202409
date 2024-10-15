@@ -69,6 +69,7 @@ dados_agrupados <- dados |>
 dados_agrupados
 # Groups:   regiao [5]
 
+# Atenção com os grupos!
 # Exemplo de filtro com dados agrupados:
 filter(dados_agrupados, valor_max == max(valor_max))
 
@@ -76,3 +77,73 @@ filter(dados_agrupados, valor_max == max(valor_max))
 dados_agrupados |> 
   ungroup() |> 
   filter(valor_max == max(valor_max))
+
+# função n() -----------------------------
+# conta o número de linhas
+dados |> 
+  group_by(regiao) |> 
+  summarise(
+    n_linhas = n()
+  )
+
+# weighted.mean() - média ponderada
+
+# filter() + group_by --------------------
+
+dados |> 
+  group_by(uf) |> 
+  summarise(maximo = max(perc_desocupacao))
+
+dados |> 
+  group_by(uf) |> 
+  filter(perc_desocupacao == max(perc_desocupacao)) |> 
+  select(uf, trimestre, perc_desocupacao) |> 
+  ungroup()
+
+# mutate() + group_by() ------
+
+dados_desocupacao_trimestre <- dados |> 
+  group_by(trimestre) |> 
+  # Cuidado, usar média ponderada
+  mutate(media_desocupacao_trimestre_br = mean(perc_desocupacao)) |> 
+  ungroup() 
+
+# função count() -----------------------
+# contar numero de linhas por grupos 
+
+dados |> 
+  group_by(regiao) |> 
+  summarise(
+    n_linhas = n(),
+    #. ....
+  )
+
+dados |> 
+  count(regiao)
+
+starwars |> 
+  count(species, sort = TRUE)
+
+starwars |> 
+  count(species, homeworld)
+
+dados |> 
+  filter(trimestre_codigo == "202402") |>
+  count(regiao)
+
+dados |> 
+  filter(trimestre_codigo == "202402") |>
+  count(regiao, sort = TRUE)
+
+dados |> 
+  count(regiao, ano)
+
+# resultado em formato largo
+table(dados$regiao)
+table(dados$regiao, dados$ano)
+
+# função tabyl() -----------------------
+dados |>
+  filter(trimestre_codigo == "202402") |>
+  janitor::tabyl(regiao)
+
