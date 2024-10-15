@@ -77,7 +77,9 @@ A seguir, temos uma lista de funções que podem ser utilizadas para calcular es
 |  `max()` |  Valor máximo  |
 |  `sum()` |  Soma  |
 |  `mean()` |  Média |
+|  `weighted.mean()` |  Média ponderada |
 |  `median()` |  Mediana |
+| `quantile()` |  Quantil |
 |  `var()` |  Variância (simples) |
 |  `sd()` |  Desvio Padrão |
 
@@ -127,10 +129,7 @@ tabela_resumo_perc_desocupacao <- dados |>
   summarise(
     minimo = min(perc_desocupacao),
     maximo = max(perc_desocupacao),
-    media = mean(perc_desocupacao),
-    mediana = median(perc_desocupacao),
-    variancia = var(perc_desocupacao),
-    desvio_padrao = sd(perc_desocupacao)
+    amplitude = maximo - minimo,
   )
 
 tabela_resumo_perc_desocupacao
@@ -272,16 +271,23 @@ Podemos fazer calcular a média com a função `summarise()`:
 ```{r}
 dados |>
   group_by(trimestre) |>
-  summarise(media = mean(perc_desocupacao)) 
+  summarise(
+    media_ponderada = weighted.mean(perc_desocupacao, mil_pessoas_total) # <1>
+  ) 
 ```
+1. Calculando a média ponderada da taxa de desocupação, considerando a coluna `mil_pessoas_total` como peso.
+
 A média foi calculada, porém o resultado é apenas uma tabela contendo o trimestre (a coluna de agrupamento), e a média (a coluna criada dentro do `summarise()`). Porém, se quisermos ter essa média como uma coluna da tabela, podemos fazer esse cálculo utilizando o `mutate()` 
 
 ```{r}
-dados_media_trimestre <- dados |> 
-  group_by(trimestre) |> 
-  mutate(media_desocupacao_trimestre = mean(perc_desocupacao)) 
+dados_media_trimestre <- dados |>
+  group_by(trimestre) |>
+  mutate( # <1>
+    media_ponderada = weighted.mean(perc_desocupacao, mil_pessoas_total) # <2> 
+  ) 
 ```
-
+1. Criando uma nova coluna com `mutate()`
+2. Calculando a média ponderada da taxa de desocupação, considerando a coluna `mil_pessoas_total` como peso.
 
 
 
