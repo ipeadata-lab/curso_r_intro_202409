@@ -297,7 +297,7 @@ grafico_ipeaplot <- grafico_proporcao +
 grafico_ipeaplot
 ```
 
-1.  Adotando o tema padrão do Ipea, com legenda "embaixo" (bottom)
+1.  Adotando o tema padrão do Ipea
 
 Apesar de sutis, temos alterações nas bordas, nas fontes e nas legendas da figura. Em seguida, vamos mudar a escala de cores para adotar o padrão "Texto para Discussão do Ipea" (paleta de cores azul):
 
