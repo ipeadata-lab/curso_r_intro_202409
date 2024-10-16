@@ -356,7 +356,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pacotes-necessários" id="toc-pacotes-necessários" class="nav-link" data-scroll-target="#pacotes-necessários">Pacotes necessários</a></li>
   <li><a href="#importando-os-dados" id="toc-importando-os-dados" class="nav-link" data-scroll-target="#importando-os-dados">Importando os dados</a></li>
   <li><a href="#preparando-os-dados" id="toc-preparando-os-dados" class="nav-link" data-scroll-target="#preparando-os-dados">Preparando os dados</a></li>
-  <li><a href="#criando-o-gráfico" id="toc-criando-o-gráfico" class="nav-link" data-scroll-target="#criando-o-gráfico">Criando o gráfico</a></li>
+  <li><a href="#criando-o-gráfico-exploratório" id="toc-criando-o-gráfico-exploratório" class="nav-link" data-scroll-target="#criando-o-gráfico-exploratório">Criando o gráfico exploratório</a></li>
+  <li><a href="#customizando-o-gráfico" id="toc-customizando-o-gráfico" class="nav-link" data-scroll-target="#customizando-o-gráfico">Customizando o gráfico</a></li>
+  <li><a href="#ipeaplot-criando-graficos-no-padrão-editorial-do-ipea" id="toc-ipeaplot-criando-graficos-no-padrão-editorial-do-ipea" class="nav-link" data-scroll-target="#ipeaplot-criando-graficos-no-padrão-editorial-do-ipea"><code>{ipeaplot}</code>: criando graficos no padrão editorial do Ipea</a>
+  <ul>
+  <li><a href="#demonstração-do-pacote" id="toc-demonstração-do-pacote" class="nav-link" data-scroll-target="#demonstração-do-pacote">Demonstração do pacote</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -388,13 +393,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Nesse exemplo, o objetivo é criar um gráfico de colunas para visualizar a proporção de pessoas por categoria de ocupação para cada estado, em um trimestre específico (nesse caso, utilizaremos os dados do trimestre mais recente)</p>
 <p>Para isso, precisamos calcular a proporção de pessoas por categoria de ocupação, em cada estado. Depois, representaremos esses valores em um gráfico de colunas.</p>
 <p>Esse é o gráfico que queremos criar:</p>
-<p><img src="graficos/grafico_proporcao_categoria_ocupacao.png" class="img-fluid"></p>
+<p><img src="graficos/grafico_ipeaplot.png" class="img-fluid"></p>
 </section>
 <section id="pacotes-necessários" class="level2">
 <h2 class="anchored" data-anchor-id="pacotes-necessários">Pacotes necessários</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ipeaplot)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
@@ -404,6 +410,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
 <span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Pacote para transformação de dados</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Pacote para o padrão Ipea</span>
 </dd>
 </dl>
 </div>
@@ -426,24 +436,24 @@ Expanda para fazer download da base de dados
 <p>Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar <a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds">aqui</a>, e copiar o arquivo para a pasta <code>dados_output</code> do seu projeto.</p>
 <p>Outra opção é executar o código abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
-<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3">3</button><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="1">URL que desejamos baixar</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="2" data-code-annotation="1">URL que desejamos baixar</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="2">Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="3">Configuração que evita corromper arquivos binários.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="3">Configuração que evita corromper arquivos binários.</span>
 </dd>
 </dl>
 </div>
@@ -497,7 +507,7 @@ Expanda para fazer download da base de dados
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Selecionando as colunas que utilizaremos.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="2,9" data-code-annotation="2">Selecionando as colunas que utilizaremos.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
@@ -540,7 +550,7 @@ Expanda para fazer download da base de dados
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="2">Vamos transformar em formato longo para facilitar a criação do gráfico.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="2,7" data-code-annotation="2">Vamos transformar em formato longo para facilitar a criação do gráfico.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
@@ -617,14 +627,14 @@ Expanda para fazer download da base de dados
 </div>
 </div>
 </section>
-<section id="criando-o-gráfico" class="level2">
-<h2 class="anchored" data-anchor-id="criando-o-gráfico">Criando o gráfico</h2>
+<section id="criando-o-gráfico-exploratório" class="level2">
+<h2 class="anchored" data-anchor-id="criando-o-gráfico-exploratório">Criando o gráfico exploratório</h2>
 <p>Com os dados preparados, podemos criar o gráfico de colunas. Vamos primeiro criar um gráfico simples:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>dados_preparados <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> categoria)) <span class="sc">+</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf, <span class="at">x =</span> perc) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> categoria))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
@@ -633,7 +643,7 @@ Expanda para fazer download da base de dados
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2">Iniciando um gráfico.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2">Iniciando um gráfico. Informando que queremos usar o <code>fill</code> (preenchimento) usando a categoria de ocupação.</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
@@ -641,7 +651,7 @@ Expanda para fazer download da base de dados
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="4">Adicionando as colunas ao gráfico, com a cor de preenchimento de acordo com a categoria de ocupação.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="4">Adicionando as colunas ao gráfico</span>
 </dd>
 </dl>
 </div>
@@ -653,70 +663,156 @@ Expanda para fazer download da base de dados
 </div>
 </div>
 </div>
+<p>É interessante melhorar as legendas dos eixos, pois estão no formato adequado para nomes de colunas (mas não a melhor forma de apresentar em um gráfico). <strong>Isso requer trabalhar novamente na preparação dos dados!</strong></p>
+<p>Vamos criar uma nova coluna com os nomes das categorias de ocupação por extenso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a>trimestre_referencia <span class="ot">&lt;-</span> <span class="fu">unique</span>(dados_preparados<span class="sc">$</span>trimestre)</span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a>grafico_prop <span class="ot">&lt;-</span> dados_preparados <span class="sc">|&gt;</span> </span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">categoria_label =</span> <span class="fu">case_match</span>(</span>
-<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a>      categoria,</span>
-<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a>       <span class="st">"forca_de_trabalho_ocupada"</span> <span class="sc">~</span> <span class="st">"Força de trabalho ocupada"</span>,</span>
-<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"forca_de_trabalho_desocupada"</span> <span class="sc">~</span> <span class="st">"Força de trabalho desocupada"</span>,</span>
-<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"fora_da_forca_de_trabalho"</span> <span class="sc">~</span> <span class="st">"Fora da força de trabalho"</span></span>
-<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-11" class="code-annotation-target"><a href="#annotated-cell-7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">categoria_fct =</span> <span class="fu">factor</span>(</span>
-<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12" aria-hidden="true" tabindex="-1"></a>      categoria_label,</span>
-<span id="annotated-cell-7-13"><a href="#annotated-cell-7-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(</span>
-<span id="annotated-cell-7-14"><a href="#annotated-cell-7-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Fora da força de trabalho"</span>,</span>
-<span id="annotated-cell-7-15"><a href="#annotated-cell-7-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Força de trabalho ocupada"</span>,</span>
-<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Força de trabalho desocupada"</span></span>
-<span id="annotated-cell-7-17"><a href="#annotated-cell-7-17" aria-hidden="true" tabindex="-1"></a>      )),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4">4</button><span id="annotated-cell-7-18" class="code-annotation-target"><a href="#annotated-cell-7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf_fct =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(uf, perc, min)</span>
-<span id="annotated-cell-7-19"><a href="#annotated-cell-7-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="annotated-cell-7-20"><a href="#annotated-cell-7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="annotated-cell-7-21"><a href="#annotated-cell-7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf_fct, <span class="at">x =</span> perc) <span class="sc">+</span> </span>
-<span id="annotated-cell-7-22"><a href="#annotated-cell-7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> categoria_fct)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5">5</button><span id="annotated-cell-7-23" class="code-annotation-target"><a href="#annotated-cell-7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>( <span class="st">"#5b5e62"</span>, <span class="st">"gray"</span>, <span class="st">"#cc1e00"</span>)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6">6</button><span id="annotated-cell-7-24" class="code-annotation-target"><a href="#annotated-cell-7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="annotated-cell-7-25"><a href="#annotated-cell-7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Proporção (%)"</span>,</span>
-<span id="annotated-cell-7-26"><a href="#annotated-cell-7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Estado"</span>,</span>
-<span id="annotated-cell-7-27"><a href="#annotated-cell-7-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Proporção por categoria de ocupação em cada estado"</span>,</span>
-<span id="annotated-cell-7-28"><a href="#annotated-cell-7-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"Período: "</span>, trimestre_referencia),</span>
-<span id="annotated-cell-7-29"><a href="#annotated-cell-7-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Categoria"</span>,</span>
-<span id="annotated-cell-7-30"><a href="#annotated-cell-7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Dados da PNAD Contínua Trimestral - IBGE, obtidos no SIDRA."</span></span>
-<span id="annotated-cell-7-31"><a href="#annotated-cell-7-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="7">7</button><span id="annotated-cell-7-32" class="code-annotation-target"><a href="#annotated-cell-7-32" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span>
-<span id="annotated-cell-7-33"><a href="#annotated-cell-7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-7-34"><a href="#annotated-cell-7-34" aria-hidden="true" tabindex="-1"></a>grafico_prop</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a>dados_grafico_1 <span class="ot">&lt;-</span> dados_preparados <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">categoria_label =</span> <span class="fu">case_match</span>(</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a>      categoria,</span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"forca_de_trabalho_ocupada"</span> <span class="sc">~</span> <span class="st">"Força de trabalho ocupada"</span>,</span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"forca_de_trabalho_desocupada"</span> <span class="sc">~</span> <span class="st">"Força de trabalho desocupada"</span>,</span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"fora_da_forca_de_trabalho"</span> <span class="sc">~</span> <span class="st">"Fora da força de trabalho"</span></span>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9" aria-hidden="true" tabindex="-1"></a>  ) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Criando um objeto com o trimestre de referência. Isso será utilizado para adicionar informações ao gráfico.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="3,8" data-code-annotation="1">Usando a função <code>case_math()</code> (similar ao <code>case_when()</code>), criamos uma nova coluna com os nomes das categorias de ocupação por extenso.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+</dl>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a>dados_grafico_1 <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> categoria_label)) <span class="sc">+</span></span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf, <span class="at">x =</span> perc) <span class="sc">+</span> </span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="5" data-code-annotation="2">Usando a função <code>case_math()</code> (similar ao <code>case_when()</code>), criamos uma nova coluna com os nomes das categorias de ocupação por extenso.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="1">Preenchendo a cor usando a nova coluna com os nomes das categorias de ocupação por extenso (<code>fill = categoria_label</code>).</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_exemplo_files/figure-html/exemplo-2-ggplot2-perc-exploratorio-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Está um pouco melhor! Outra coisa interessante é reordenar os estados de acordo com a variável <code>perc</code> (proporção de pessoas em cada categoria). Isso fará com que o gráfico fique com aspecto “ordenado”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a>dados_grafico_2 <span class="ot">&lt;-</span> dados_grafico_1 <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">categoria_fct =</span> <span class="fu">factor</span>(</span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a>      categoria_label,</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Fora da força de trabalho"</span>,</span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Força de trabalho ocupada"</span>,</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Força de trabalho desocupada"</span></span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9" aria-hidden="true" tabindex="-1"></a>      )),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-10" class="code-annotation-target"><a href="#annotated-cell-9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">uf_fct =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(uf, perc, min)</span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11" aria-hidden="true" tabindex="-1"></a>    ) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="11" data-code-annotation="3">Transformando as categorias em fator, para que sigam a ordem que definimos ao serem apresentadas (e não em ordem alfabética).</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="3,9" data-code-annotation="1">Transformando as categorias em fator, para que sigam a ordem que definimos ao serem apresentadas (e não em ordem alfabética).</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="18" data-code-annotation="4">Reordenamos a coluna estados de acordo com a proporção de pessoas em cada categoria. Isso faz com que o gráfico fique com aspecto “ordenado”.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="10" data-code-annotation="2">Reordenamos a coluna dos estados (<code>uf</code>) de acordo com a proporção de pessoas em cada categoria (<code>perc</code>), usando a função <code>min()</code> para ordenar usando os valores mínimos. Isso faz com que o gráfico fique com aspecto “ordenado”.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
+</dl>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>dados_grafico_2 <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> categoria_fct)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> uf_fct, <span class="at">x =</span> perc) <span class="sc">+</span></span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="23" data-code-annotation="5">Usamos uma escala de cores manual, onde podemos definir as cores usadas para cada categoria.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="1">O preenchimento da cor é feito com a nova coluna de categorias de ocupação em fator (<em>factor</em>).</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="24" data-code-annotation="6">Adicionando títulos e legendas ao gráfico.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="2">Usamos a coluna <code>uf_fct</code> no eixo <code>y</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_exemplo_files/figure-html/exemplo-3-ggplot2-perc-exploratorio-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="customizando-o-gráfico" class="level2">
+<h2 class="anchored" data-anchor-id="customizando-o-gráfico">Customizando o gráfico</h2>
+<p>Vamos adicionar títulos, legendas e personalizar as cores do gráfico:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>trimestre_referencia <span class="ot">&lt;-</span> <span class="fu">unique</span>(dados_grafico_2<span class="sc">$</span>trimestre)</span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a>grafico_proporcao <span class="ot">&lt;-</span> dados_grafico_2 <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-4" class="code-annotation-target"><a href="#annotated-cell-11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> categoria_fct)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-5" class="code-annotation-target"><a href="#annotated-cell-11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> uf_fct, <span class="at">y =</span> perc) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="4">4</button><span id="annotated-cell-11-6" class="code-annotation-target"><a href="#annotated-cell-11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="5">5</button><span id="annotated-cell-11-7" class="code-annotation-target"><a href="#annotated-cell-11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>( <span class="st">"#5b5e62"</span>, <span class="st">"gray"</span>, <span class="st">"#cc1e00"</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="6">6</button><span id="annotated-cell-11-8" class="code-annotation-target"><a href="#annotated-cell-11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Proporção (%)"</span>,</span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Estado"</span>,</span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Proporção por categoria de ocupação em cada estado"</span>,</span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"Período: "</span>, trimestre_referencia),</span>
+<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Categoria"</span>,</span>
+<span id="annotated-cell-11-14"><a href="#annotated-cell-11-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Dados da PNAD Contínua Trimestral - IBGE, obtidos no SIDRA."</span></span>
+<span id="annotated-cell-11-15"><a href="#annotated-cell-11-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="7">7</button><span id="annotated-cell-11-16" class="code-annotation-target"><a href="#annotated-cell-11-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()  <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="8">8</button><span id="annotated-cell-11-17" class="code-annotation-target"><a href="#annotated-cell-11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
+<span id="annotated-cell-11-18"><a href="#annotated-cell-11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-11-19"><a href="#annotated-cell-11-19" aria-hidden="true" tabindex="-1"></a>grafico_proporcao</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="32" data-code-annotation="7">Aplicando um tema ao gráfico.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Criando um objeto com o trimestre de referência. Isso será utilizado para adicionar informações ao gráfico.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="2">Iniciando um gráfico, e incluindo o <code>aes()</code> com <code>fill</code> dentro da função <code>ggplot()</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="3">Definindo o eixo <code>x</code> como os estados e o eixo <code>y</code> como a proporção.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="6" data-code-annotation="4">Adicionando a geometria de colunas ao gráfico, com a cor de preenchimento de acordo com a categoria de ocupação.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="7" data-code-annotation="5">Usamos uma escala de cores manual, onde podemos definir as cores usadas para cada categoria.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="8,15" data-code-annotation="6">Adicionando títulos e legendas ao gráfico.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="16" data-code-annotation="7">Aplicando um tema ao gráfico.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="17" data-code-annotation="8">Usando a função <code>coord_flip()</code> para inverter os eixos x e y.</span>
 </dd>
 </dl>
 </div>
@@ -730,44 +826,140 @@ Expanda para fazer download da base de dados
 </div>
 <p>Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"graficos/grafico_proporcao_categoria_ocupacao.png"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> grafico_prop,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4">4</button><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">10</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5">5</button><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">8</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6">6</button><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"graficos/grafico_proporcao_categoria_ocupacao.png"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3">3</button><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> grafico_proporcao,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="4">4</button><span id="annotated-cell-12-4" class="code-annotation-target"><a href="#annotated-cell-12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">10</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="5">5</button><span id="annotated-cell-12-5" class="code-annotation-target"><a href="#annotated-cell-12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">8</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="6">6</button><span id="annotated-cell-12-6" class="code-annotation-target"><a href="#annotated-cell-12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">Função para salvar o gráfico.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">Função para salvar o gráfico.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="2">Nome do arquivo onde o gráfico será salvo.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="2" data-code-annotation="2">Nome do arquivo onde o gráfico será salvo.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="3">Objeto contendo o gráfico que será salvo.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="3" data-code-annotation="3">Objeto contendo o gráfico que será salvo.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="4" data-code-annotation="4">Largura do gráfico.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="4" data-code-annotation="4">Largura do gráfico.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="5">Altura do gráfico.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="5" data-code-annotation="5">Altura do gráfico.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="6" data-code-annotation="6">Resolução do gráfico.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="6" data-code-annotation="6">Resolução do gráfico.</span>
 </dd>
 </dl>
 </div>
 </div>
+</section>
+<section id="ipeaplot-criando-graficos-no-padrão-editorial-do-ipea" class="level2">
+<h2 class="anchored" data-anchor-id="ipeaplot-criando-graficos-no-padrão-editorial-do-ipea"><code>{ipeaplot}</code>: criando graficos no padrão editorial do Ipea</h2>
+<p>O <a href="https://github.com/ipeadata-lab/ipeaplot"><code>{ipeaplot}</code></a> é um pacote em R desenvolvido pela equipe da Coordenação de Ciência de Dados (COCD). O objetivo é facilitar a padronização de gráficos e figuras seguindo as linhas editoriais do Ipea.</p>
+<p>Ele foi desenhado para ser usado em conjunto com o pacote <a href="https://ggplot2.tidyverse.org/">{ggplot2}</a>. Atualmente, o <code>{ipeaplot}</code> inclui três conjuntos de funções principais:</p>
+<ol type="1">
+<li><code>theme_ipea()</code>: para formatação de elementos estilísticos da figura (eixos, fontes, linhas, grid, etc.);</li>
+<li><code>scale_color_ipea()</code> e <code>scale_fill_ipea()</code>: selecionam paleta de cores dentro de um conjunto de opções utilizadas pelo Ipea;</li>
+<li><code>save_pdf()</code> e <code>save_eps()</code>: salvam a figura com a extensão <code>.pdf</code> ou <code>.eps</code>, formatos possíveis de serem “modificados” durante o processo de edição das publicações pelo Editorial do Ipea.</li>
+</ol>
+<p>Tivemos como inspiração outras instituições que criaram ferramentas parecidas como a UNHCR <a href="https://github.com/unhcr-dataviz/unhcrthemes">{unhcrthemes}</a> e a BBC <a href="https://github.com/bbc/bbplot">{bbplot}</a>.</p>
+<section id="demonstração-do-pacote" class="level3">
+<h3 class="anchored" data-anchor-id="demonstração-do-pacote">Demonstração do pacote</h3>
+<p>Vamos primeiro instalar e chamar o pacote:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ipeaplot"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2">2</button><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ipeaplot"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">Instalar o <code>{ipeaplot}</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="2">Chamar o pacote.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do <code>{ipeaplot}</code>. Vamos começar a modificar a figura, usando o <code>{ipeaplot}</code> para ajustar ao “padrão do Ipea”. Primeiro usamos a função <code>theme_ipea()</code> no lugar de <code>theme_minimal()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot <span class="ot">&lt;-</span> grafico_proporcao <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ipea</span>()</span>
+<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1">Adotando o tema padrão do Ipea</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_exemplo_files/figure-html/grafico-ipeaplot-theme-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Apesar de sutis, temos alterações nas bordas, nas fontes e nas legendas da figura. Em seguida, vamos mudar a escala de cores para adotar o padrão “Texto para Discussão do Ipea” (paleta de cores azul):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot <span class="ot">&lt;-</span> grafico_ipeaplot <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_ipea</span>(<span class="at">palette =</span> <span class="st">'Blue'</span>)</span>
+<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="1">Usando a paleta de cores azul (“TD”)</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_visualizacao_exemplo_files/figure-html/grafico-ipeaplot-paleta-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Aí está, temos uma figura pronta para publicarmos nosso primeiro “Texto para Discussão” usando o R. Na verdade, nem tão pronta assim, pois o Ipea usa em títulos e legendas a família de fontes <em>Frutiger</em>. Como não é uma família com licença livre não podemos distribuir no <code>{ipeaplot}</code>. Porém, com o passo a seguir, o Editorial poderá, ao receber seu material para publicação, fazer os ajustes necessários na fonte dos títulos e legendas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_eps</span>(grafico_ipeaplot,</span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">file.name =</span> <span class="st">"graficos/grafico_ipeaplot.eps"</span>)</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2">2</button><span id="annotated-cell-16-4" class="code-annotation-target"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">save_pdf</span>(grafico_ipeaplot,</span>
+<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">file.name =</span> <span class="st">"graficos/grafico_ipeaplot.pdf"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="1,2" data-code-annotation="1">Salvando o gráfico em formato <code>.eps</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="4,5" data-code-annotation="2">Salvando o gráfico em formato <code>.pdf</code></span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Por trás das cortinas, as duas funções acima são semelhantes à <code>ggsave()</code>, usada anteriormente nesta aula. Porém, os atributos passados garantem que os gráficos serão salvos em formatos “editáveis” (<code>.eps</code> ou <code>.pdf</code>) e com proporção e resolução recomendadas pelo Editorial do Ipea.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
