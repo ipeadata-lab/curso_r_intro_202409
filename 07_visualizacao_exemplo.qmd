@@ -241,7 +241,7 @@ grafico_proporcao
 5.  Usamos uma escala de cores manual, onde podemos definir as cores usadas para cada categoria.
 6.  Adicionando títulos e legendas ao gráfico.
 7.  Aplicando um tema ao gráfico.
-8.  Usando a função `coord_flip()` para inverter os eixos x e y.
+8.  Usando a função `coord_flip()` para inverter os eixos x e y. 
 
 Podemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente:
 
@@ -292,14 +292,14 @@ Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do `{ipea
 #| label: grafico-ipeaplot-theme
 
 grafico_ipeaplot <- grafico_proporcao + 
-  theme_ipea(legend.position = "bottom") # <1>
+  theme_ipea(legend.position = "bottom") + # <1>
   coord_flip(expand = FALSE) # <2>
 
 grafico_ipeaplot
 ```
 
 1.  Adotando o tema padrão do Ipea
-2.  Retirando espaços em branco
+2.  Retirando espaços em branco. O argumento `expand = FALSE` limita o gráfico à área dos dados (sem espaços em branco antes do valor 0 e depois do valor 100).
 
 Apesar de sutis, temos alterações nas bordas, nas fontes e nas legendas da figura. Em seguida, vamos mudar a escala de cores para adotar o padrão "Texto para Discussão do Ipea" (paleta de cores azul):
 

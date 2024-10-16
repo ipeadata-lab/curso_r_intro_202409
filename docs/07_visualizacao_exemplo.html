@@ -436,24 +436,24 @@ Expanda para fazer download da base de dados
 <p>Caso não tenha o arquivo da tabela que utilizaremos, você pode baixar <a href="https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds">aqui</a>, e copiar o arquivo para a pasta <code>dados_output</code> do seu projeto.</p>
 <p>Outra opção é executar o código abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3">3</button><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
-<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-2" class="code-annotation-target"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://github.com/ipeadata-lab/curso_r_intro_202409/raw/refs/heads/main/dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-3" class="code-annotation-target"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"dados_output/sidra_4092_arrumado.rds"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3">3</button><span id="annotated-cell-18-4" class="code-annotation-target"><a href="#annotated-cell-18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="2" data-code-annotation="1">URL que desejamos baixar</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="2" data-code-annotation="1">URL que desejamos baixar</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="3" data-code-annotation="2">Caminho onde queremos baixar o arquivo (diretório + nome do arquivo + extensão do arquivo)</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="3">Configuração que evita corromper arquivos binários.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="4" data-code-annotation="3">Configuração que evita corromper arquivos binários.</span>
 </dd>
 </dl>
 </div>
@@ -894,18 +894,26 @@ Expanda para fazer download da base de dados
 </div>
 <p>Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do <code>{ipeaplot}</code>. Vamos começar a modificar a figura, usando o <code>{ipeaplot}</code> para ajustar ao “padrão do Ipea”. Primeiro usamos a função <code>theme_ipea()</code> no lugar de <code>theme_minimal()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot <span class="ot">&lt;-</span> grafico_proporcao <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ipea</span>()</span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot <span class="ot">&lt;-</span> grafico_proporcao <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ipea</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1">Adotando o tema padrão do Ipea</span>
 </dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="2">Retirando espaços em branco. O argumento <code>expand = FALSE</code> limita o gráfico à área dos dados (sem espaços em branco antes do valor 0 e depois do valor 100).</span>
+</dd>
 </dl>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Coordinate system already present. Adding new coordinate system, which will
+replace the existing one.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -916,15 +924,15 @@ Expanda para fazer download da base de dados
 </div>
 <p>Apesar de sutis, temos alterações nas bordas, nas fontes e nas legendas da figura. Em seguida, vamos mudar a escala de cores para adotar o padrão “Texto para Discussão do Ipea” (paleta de cores azul):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot <span class="ot">&lt;-</span> grafico_ipeaplot <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_ipea</span>(<span class="at">palette =</span> <span class="st">'Blue'</span>)</span>
-<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot <span class="ot">&lt;-</span> grafico_ipeaplot <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_ipea</span>(<span class="at">palette =</span> <span class="st">'Blue'</span>)</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a>grafico_ipeaplot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="1">Usando a paleta de cores azul (“TD”)</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="2" data-code-annotation="1">Usando a paleta de cores azul (“TD”)</span>
 </dd>
 </dl>
 </div>
@@ -938,28 +946,28 @@ Expanda para fazer download da base de dados
 </div>
 <p>Aí está, temos uma figura pronta para publicarmos nosso primeiro “Texto para Discussão” usando o R. Na verdade, nem tão pronta assim, pois o Ipea usa em títulos e legendas a família de fontes <em>Frutiger</em>. Como não é uma família com licença livre não podemos distribuir no <code>{ipeaplot}</code>. Porém, com o passo a seguir, o Editorial poderá, ao receber seu material para publicação, fazer os ajustes necessários na fonte dos títulos e legendas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_eps</span>(grafico_ipeaplot,</span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">file.name =</span> <span class="st">"graficos/grafico_ipeaplot.eps"</span>,</span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">width =</span> <span class="dv">10</span>,</span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">height =</span> <span class="dv">8</span>,</span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2">2</button><span id="annotated-cell-16-8" class="code-annotation-target"><a href="#annotated-cell-16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">save_pdf</span>(grafico_ipeaplot,</span>
-<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">file.name =</span> <span class="st">"graficos/grafico_ipeaplot.pdf"</span>,</span>
-<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">width =</span> <span class="dv">10</span>,</span>
-<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">height =</span> <span class="dv">8</span>,</span>
-<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_eps</span>(grafico_ipeaplot,</span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">file.name =</span> <span class="st">"graficos/grafico_ipeaplot.eps"</span>,</span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">width =</span> <span class="dv">10</span>,</span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">height =</span> <span class="dv">8</span>,</span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-8" class="code-annotation-target"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">save_pdf</span>(grafico_ipeaplot,</span>
+<span id="annotated-cell-17-9"><a href="#annotated-cell-17-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">file.name =</span> <span class="st">"graficos/grafico_ipeaplot.pdf"</span>,</span>
+<span id="annotated-cell-17-10"><a href="#annotated-cell-17-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">width =</span> <span class="dv">10</span>,</span>
+<span id="annotated-cell-17-11"><a href="#annotated-cell-17-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">height =</span> <span class="dv">8</span>,</span>
+<span id="annotated-cell-17-12"><a href="#annotated-cell-17-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="annotated-cell-17-13"><a href="#annotated-cell-17-13" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="1,6" data-code-annotation="1">Salvando o gráfico em formato <code>.eps</code></span>
+<span data-code-cell="annotated-cell-17" data-code-lines="1,6" data-code-annotation="1">Salvando o gráfico em formato <code>.eps</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="8,13" data-code-annotation="2">Salvando o gráfico em formato <code>.pdf</code></span>
+<span data-code-cell="annotated-cell-17" data-code-lines="8,13" data-code-annotation="2">Salvando o gráfico em formato <code>.pdf</code></span>
 </dd>
 </dl>
 </div>
