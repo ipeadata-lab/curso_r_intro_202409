@@ -291,13 +291,15 @@ Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do `{ipea
 ```{r}
 #| label: grafico-ipeaplot-theme
 
-grafico_ipeaplot <- grafico_proporcao +
-  theme_ipea() # <1>
+grafico_ipeaplot <- grafico_proporcao + 
+  theme_ipea(legend.position = "bottom") # <1>
+  coord_flip(expand = FALSE) # <2>
 
 grafico_ipeaplot
 ```
 
 1.  Adotando o tema padrão do Ipea
+2.  Retirando espaços em branco
 
 Apesar de sutis, temos alterações nas bordas, nas fontes e nas legendas da figura. Em seguida, vamos mudar a escala de cores para adotar o padrão "Texto para Discussão do Ipea" (paleta de cores azul):
 
