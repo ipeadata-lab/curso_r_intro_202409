@@ -292,12 +292,12 @@ Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do `{ipea
 #| label: grafico-ipeaplot-theme
 
 grafico_ipeaplot <- grafico_proporcao +
-  theme_ipea() # <1>
+  theme_ipea(legend.position = "bottom") # <1>
 
 grafico_ipeaplot
 ```
 
-1.  Adotando o tema padrão do Ipea
+1.  Adotando o tema padrão do Ipea, com legenda embaixo
 
 Apesar de sutis, temos alterações nas bordas, nas fontes e nas legendas da figura. Em seguida, vamos mudar a escala de cores para adotar o padrão "Texto para Discussão do Ipea" (paleta de cores azul):
 
@@ -318,11 +318,19 @@ Aí está, temos uma figura pronta para publicarmos nosso primeiro "Texto para D
 ```{r}
 #| eval: false
 
-save_eps(grafico_ipeaplot,                            # <1>
-         file.name = "graficos/grafico_ipeaplot.eps") # <1>
+save_eps(grafico_ipeaplot, # <1>
+         file.name = "graficos/grafico_ipeaplot.eps",
+         width = 10,
+         height = 8,
+         dpi = 300
+) # <1>
 
-save_pdf(grafico_ipeaplot,                            # <2>
-         file.name = "graficos/grafico_ipeaplot.pdf") # <2>
+save_pdf(grafico_ipeaplot, # <2>
+         file.name = "grafico_ipeaplot.pdf",
+         width = 10,
+         height = 8,
+         dpi = 300
+) # <2>
 ```
 1. Salvando o gráfico em formato `.eps`
 2. Salvando o gráfico em formato `.pdf`
@@ -339,4 +347,4 @@ ggsave(
 )
 ```
 
-Por trás das cortinas, as duas funções acima são semelhantes à `ggsave()`, usada anteriormente nesta aula. Porém, os atributos passados garantem que os gráficos serão salvos em formatos "editáveis" (`.eps` ou `.pdf`) e com proporção e resolução recomendadas pelo Editorial do Ipea.
+Por trás das cortinas, as duas funções acima são semelhantes à `ggsave()`, usada anteriormente nesta aula. Porém, os atributos passados garantem que os gráficos serão salvos em formatos "editáveis" (`.eps` ou `.pdf`).
