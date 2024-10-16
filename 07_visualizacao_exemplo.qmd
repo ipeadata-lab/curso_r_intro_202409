@@ -292,7 +292,7 @@ Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do `{ipea
 #| label: grafico-ipeaplot-theme
 
 grafico_ipeaplot <- grafico_proporcao +
-  theme_ipea(legend.position = "bottom") # <1>
+  theme_ipea() # <1>
 
 grafico_ipeaplot
 ```
@@ -326,7 +326,7 @@ save_eps(grafico_ipeaplot, # <1>
 ) # <1>
 
 save_pdf(grafico_ipeaplot, # <2>
-         file.name = "grafico_ipeaplot.pdf",
+         file.name = "graficos/grafico_ipeaplot.pdf",
          width = 10,
          height = 8,
          dpi = 300
