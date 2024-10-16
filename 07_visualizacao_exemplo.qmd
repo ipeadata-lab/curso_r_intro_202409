@@ -350,3 +350,8 @@ ggsave(
 ```
 
 Por trás das cortinas, as duas funções acima são semelhantes à `ggsave()`, usada anteriormente nesta aula. Porém, os atributos passados garantem que os gráficos serão salvos em formatos "editáveis" (`.eps` ou `.pdf`).
+
+## Sugestões de materiais
+
+- [Cookbook Ipeaplot](https://ipeadata-lab.github.io/ipeaplot/articles/cookbook.html)
+

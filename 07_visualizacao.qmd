@@ -888,6 +888,7 @@ dados |>
 
 
 ## Links citados na aula
+### Parte 1 
 
 
 - [Site from data to viz](https://www.data-to-viz.com/) - galeria de gráficos
@@ -906,6 +907,11 @@ dados |>
 - Sugestão de livros:
   - Storytelling com Dados - Cole Nussbaumer Knaflic
 
+### Parte 2
+
+- [Gráficos por Bruno Mioto](https://www.brunomioto.com/charts.html)
+- [Documentação: pacote forcats](https://forcats.tidyverse.org/articles/forcats.html)
+- [Color palette finder](https://r-graph-gallery.com/color-palette-finder)
 
 ## Sugestões de materiais
 

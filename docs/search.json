@@ -1353,7 +1353,7 @@
     "href": "07_visualizacao.html#links-citados-na-aula",
     "title": "Visualizando dados",
     "section": "Links citados na aula",
-    "text": "Links citados na aula\n\nSite from data to viz - galeria de gráficos\nR Graph Gallery - Galeria de gráficos\nBoxplot:\n\nTexto sobre interpretação do boxplot\nR Graph Gallery - exemplos de boxplot\n\nSobre gráficos de pizza:\n\nTexto: O que não fazer em gráficos de pizza\nTexto escrito por Julio Trecenti (Dr. em Estatística): Gráficos de pizza são ruins?\n\nSugestão de livros:\n\nStorytelling com Dados - Cole Nussbaumer Knaflic",
+    "text": "Links citados na aula\n\nParte 1\n\nSite from data to viz - galeria de gráficos\nR Graph Gallery - Galeria de gráficos\nBoxplot:\n\nTexto sobre interpretação do boxplot\nR Graph Gallery - exemplos de boxplot\n\nSobre gráficos de pizza:\n\nTexto: O que não fazer em gráficos de pizza\nTexto escrito por Julio Trecenti (Dr. em Estatística): Gráficos de pizza são ruins?\n\nSugestão de livros:\n\nStorytelling com Dados - Cole Nussbaumer Knaflic\n\n\n\n\nParte 2\n\nGráficos por Bruno Mioto\nDocumentação: pacote forcats\nColor palette finder",
     "crumbs": [
       "Etapas em uma análise de dados",
       "Visualizando dados"
@@ -1387,6 +1387,17 @@
     "title": "Exemplo prático: Visualização",
     "section": "Customizando o gráfico",
     "text": "Customizando o gráfico\nVamos adicionar títulos, legendas e personalizar as cores do gráfico:\n\n1trimestre_referencia &lt;- unique(dados_grafico_2$trimestre)\n\ngrafico_proporcao &lt;- dados_grafico_2 |&gt; \n2  ggplot(aes(fill = categoria_fct)) +\n3  aes(x = uf_fct, y = perc) +\n4  geom_col() +\n5  scale_fill_manual(values = c( \"#5b5e62\", \"gray\", \"#cc1e00\")) +\n6  labs(\n    y = \"Proporção (%)\",\n    x = \"Estado\",\n    title = \"Proporção por categoria de ocupação em cada estado\",\n    subtitle = paste0(\"Período: \", trimestre_referencia),\n    fill = \"Categoria\",\n    caption = \"Dados da PNAD Contínua Trimestral - IBGE, obtidos no SIDRA.\"\n  ) +\n7   theme_minimal()  +\n8  coord_flip()\n\ngrafico_proporcao\n\n\n1\n\nCriando um objeto com o trimestre de referência. Isso será utilizado para adicionar informações ao gráfico.\n\n2\n\nIniciando um gráfico, e incluindo o aes() com fill dentro da função ggplot().\n\n3\n\nDefinindo o eixo x como os estados e o eixo y como a proporção.\n\n4\n\nAdicionando a geometria de colunas ao gráfico, com a cor de preenchimento de acordo com a categoria de ocupação.\n\n5\n\nUsamos uma escala de cores manual, onde podemos definir as cores usadas para cada categoria.\n\n6\n\nAdicionando títulos e legendas ao gráfico.\n\n7\n\nAplicando um tema ao gráfico.\n\n8\n\nUsando a função coord_flip() para inverter os eixos x e y.\n\n\n\n\n\n\n\n\n\n\n\nPodemos salvar o gráfico em um arquivo, para utilizá-lo posteriormente:\n\n1ggsave(\n2  filename = \"graficos/grafico_proporcao_categoria_ocupacao.png\",\n3  plot = grafico_proporcao,\n4  width = 10,\n5  height = 8,\n6  dpi = 300\n)\n\n\n1\n\nFunção para salvar o gráfico.\n\n2\n\nNome do arquivo onde o gráfico será salvo.\n\n3\n\nObjeto contendo o gráfico que será salvo.\n\n4\n\nLargura do gráfico.\n\n5\n\nAltura do gráfico.\n\n6\n\nResolução do gráfico.",
+    "crumbs": [
+      "Etapas em uma análise de dados",
+      "Exemplo prático: Visualização"
+    ]
+  },
+  {
+    "objectID": "07_visualizacao_exemplo.html#sugestões-de-materiais",
+    "href": "07_visualizacao_exemplo.html#sugestões-de-materiais",
+    "title": "Exemplo prático: Visualização",
+    "section": "Sugestões de materiais",
+    "text": "Sugestões de materiais\n\nCookbook Ipeaplot",
     "crumbs": [
       "Etapas em uma análise de dados",
       "Exemplo prático: Visualização"
