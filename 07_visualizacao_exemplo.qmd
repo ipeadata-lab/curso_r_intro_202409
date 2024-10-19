@@ -292,7 +292,7 @@ Agora aproveitaremos o exemplo anterior para demonstrar o funcionamnto do `{ipea
 #| label: grafico-ipeaplot-theme
 
 grafico_ipeaplot <- grafico_proporcao + 
-  theme_ipea(legend.position = "bottom") + # <1>
+  theme_ipea() + # <1>
   coord_flip(expand = FALSE) # <2>
 
 grafico_ipeaplot
