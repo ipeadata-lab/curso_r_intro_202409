@@ -161,15 +161,6 @@ A função `report::report()` nos fornece um relatório completo sobre o modelo 
 report::report(modelo_linear) 
 ```
 
-A tradução do relatório gerado pela função `report::report()` é:
-
-
-> Ajustamos um modelo linear (estimado usando MQO - Mínimos Quadrados Ordinários) para prever `mort5` com base em `t_agua` (fórmula: `mort5 ~ t_agua`). O modelo explica uma proporção significativa e substancial da variância (R² = 0,28, F(1, 5563) = 2209,54, p < 0,001, R² ajustado = 0,28). O intercepto do modelo, correspondente a `t_agua = 0`, é 44,23 (IC 95% [43,27, 45,19], t(5563) = 90,27, p < 0,001). Dentro deste modelo:
-
-> - O efeito de `t_agua` é estatisticamente significativo e negativo (beta = -0,27, IC 95% [-0,28, -0,25], t(5563) = -47,01, p < 0,001; Beta padronizado = -0,53, IC 95% [-0,56, -0,51]).
-
-> Os parâmetros padronizados foram obtidos ajustando o modelo a uma versão padronizada do conjunto de dados. Os intervalos de confiança de 95% (ICs) e os valores-p foram calculados usando uma aproximação da distribuição t de Wald.
-
 
 
 ### Interpretação dos resultados
@@ -360,17 +351,197 @@ stargazer::stargazer(modelo_linear, type = "html")
 
 ## Regressão linear múltipla
 
-Em breve!
+Até agora, ajustamos um modelo de regressão linear simples. No entanto, é possível ajustar um modelo de regressão linear múltipla, que inclui mais de uma variável independente.
+
+Vamos ajustar um modelo de regressão linear múltipla para investigar a relação entre a taxa de mortalidade infantil (até 5 anos de idade) (`mort5`) e o percentual da população que vive em domicílios com água encanada (`t_agua`) e a renda per capita (`rdpc`) nos municípios brasileiros em 2010.
+
+Então, temos que:
+
+- Variável dependente (`y`): `mort5`
+
+- Variáveis independentes (`x`): `t_agua` e `rdpc`
+
+
+### Ajustando o modelo de regressão linear múltipla
+
+Para ajustar um modelo de regressão linear múltipla, basta adicionar as variáveis independentes separadas por `+` na fórmula do modelo.
 
 ```{r}
-#| eval: false
-#| echo: false
-# - Água
-# - Renda
-# - Região
-# modelo_linear_multiplo <- lm(mort5 ~ t_agua + rdpc * ufn, data = pnud_muni_2010) # interação
-# summary(modelo_linear_multiplo)
+modelo_linear_multiplo <- lm(mort5 ~ t_agua + rdpc , data = pnud_muni_2010)
 ```
+
+Daqui em diante, o processo é semelhante ao que fizemos para o modelo de regressão linear simples.
+
+#### Explorando o modelo ajustado
+
+Podemos explorar o resultado do modelo ajustado com a função `summary()`:
+
+```{r}
+summary(modelo_linear_multiplo)
+```
+
+#### Visualizando o ajuste do modelo
+
+A etapa de visualização do ajuste do modelo de regressão linear múltipla é um pouco mais complexa, pois estamos lidando com mais de uma variável independente.
+
+Precisamos criar um gráfico para cada variável independente, **mantendo as outras variáveis independentes constantes**.
+
+Para isso, primeiro vamos criar uma nova tabela com os valores constantes das variáveis independentes (utilizando a média):
+
+```{r}
+pnud_muni_2010_ajustado_agua <- pnud_muni_2010 |> 
+  dplyr::mutate(
+    rdpc = mean(rdpc),
+  )
+
+pnud_muni_2010_ajustado_rdpc <- pnud_muni_2010 |>
+  dplyr::mutate(
+    t_agua = mean(t_agua)
+  )
+```
+
+Agora, vamos criar uma nova tabela com os valores ajustados para cada uma das variáveis independentes constantes (utilizando os dados criados na etapa anterior no argumento `newdata`):
+
+```{r}
+pnud_muni_2010_ajustado_multiplo <- pnud_muni_2010 |>
+  dplyr::mutate(
+    valores_ajustados_agua = predict(
+      modelo_linear_multiplo, 
+      newdata = pnud_muni_2010_ajustado_agua
+      ),
+    
+    valores_ajustados_rdpc = predict(
+      modelo_linear_multiplo, 
+      newdata = pnud_muni_2010_ajustado_rdpc
+      )
+  ) 
+```
+
+Agora, podemos criar os gráficos para visualizar o ajuste do modelo de regressão linear múltipla.
+
+O gráfico a seguir mostra a relação entre a taxa de mortalidade infantil e o percentual de acesso à água encanada, mantendo a renda per capita constante:
+
+```{r}
+pnud_muni_2010_ajustado_multiplo |> 
+  ggplot() +
+  geom_point(aes(x = t_agua, y = mort5), alpha = 0.5) +
+  geom_line(aes(x = t_agua, y = valores_ajustados_agua), color = "red") +
+  theme_light()
+```
+
+
+O gráfico a seguir mostra a relação entre a taxa de mortalidade infantil e a renda per capita, mantendo o percentual de acesso à água encanada constante:
+
+```{r}
+pnud_muni_2010_ajustado_multiplo |> 
+  ggplot() +
+  geom_point(aes(x = rdpc, y = mort5), alpha = 0.5) +
+  geom_line(aes(x = rdpc, y = valores_ajustados_rdpc), color = "red") +
+  theme_light() 
+```
+
+O gráfico acima indica que a relação entre `rdpc` e `mort5` não é linear. Nesse caso, podemos tentar transformar a variável `rdpc` e testar novamente ajustar um modelo linear.
+
+Vamos tentar ajustar um modelo de regressão linear múltipla com a variável `rdpc` transformada em logaritmo (`log()`).
+
+
+### Modelando a variável `rdpc` em logaritmo
+
+Vamos ajustar um modelo de regressão linear múltipla com a variável `rdpc` transformada em logaritmo.
+
+Para isso, primeiro vamos criar uma nova variável `rdpc_log` com a transformação logarítmica da variável `rdpc`, e salvar em um novo objeto chamado `pnud_muni_2010_com_log`:
+
+
+```{r}
+pnud_muni_2010_com_log <- pnud_muni_2010 |> 
+  dplyr::mutate(rdpc_log = log(rdpc)) 
+```
+
+Agora, vamos ajustar um modelo de regressão linear múltipla com a variável `rdpc_log`:
+
+```{r}
+modelo_linear_multiplo_log <- lm(mort5 ~ t_agua + rdpc_log , data = pnud_muni_2010_com_log)
+```
+
+Vamos explorar o resultado do modelo ajustado:
+
+```{r}
+summary(modelo_linear_multiplo_log)
+```
+
+#### Visualizando o ajuste do modelo
+
+Vamos visualizar o ajuste do modelo (similar ao que fizemos anteriormente): 
+```{r}
+
+pnud_muni_2010_ajustado_agua <- pnud_muni_2010_com_log |> 
+  dplyr::mutate(
+    rdpc_log = mean(rdpc_log),
+  )
+
+pnud_muni_2010_ajustado_rdpc <- pnud_muni_2010_com_log |>
+  dplyr::mutate(
+    t_agua = mean(t_agua)
+  )
+```
+
+```{r}
+pnud_muni_2010_ajustado_multiplo_log <- pnud_muni_2010_com_log |>
+  dplyr::mutate(
+    valores_ajustados_agua = predict(modelo_linear_multiplo_log, newdata = pnud_muni_2010_ajustado_agua),
+    valores_ajustados_rdpc = predict(modelo_linear_multiplo_log, newdata = pnud_muni_2010_ajustado_rdpc),
+        valores_ajustados = predict(modelo_linear_multiplo_log),
+    residuos = mort5 - valores_ajustados
+  ) 
+```
+
+
+```{r}
+pnud_muni_2010_ajustado_multiplo_log |> 
+  ggplot() +
+  geom_point(aes(x = rdpc_log, y = mort5), alpha = 0.5) +
+  geom_line(aes(x = rdpc_log, y = valores_ajustados_rdpc), color = "red") +
+  theme_light() 
+```
+
+Os gráficos indicam que o resultado do modelo ajustado com a variável `rdpc` transformada em logaritmo é melhor do que o modelo anterior. Vamos seguir com a análise do modelo ajustado.
+
+#### Explorando o modelo ajustado
+
+```{r}
+report::report(modelo_linear_multiplo_log) 
+```
+
+```{r}
+broom::tidy(modelo_linear_multiplo_log) |> 
+  knitr::kable()
+```
+
+#### Diagnóstico do modelo ajustado
+
+```{r}
+pnud_muni_2010_ajustado_multiplo_log |>
+  ggplot(aes(x = residuos)) +
+  geom_histogram(
+    aes(y = after_stat(density)),
+    fill = "lightblue"
+  ) +
+  geom_density() +
+  theme_light()
+```
+
+```{r}
+car::residualPlot(modelo_linear_multiplo_log)
+```
+
+```{r}
+car::ncvTest(modelo_linear_multiplo_log)
+```
+
+```{r}
+car::qqPlot(modelo_linear_multiplo_log)
+```
+
 
 
 ## Sugestões de exercícios
