@@ -15,3 +15,8 @@ em{
   top: 0em;
   }
 }
+
+pre code {
+  background-color: #EFF1F3 !important;
+  border-radius: 3px !important;
+}
