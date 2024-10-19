@@ -16,6 +16,8 @@ Nesta aula, exploraremos:
   
   - Como visualizar o ajuste do modelo.
   
+  - Como verificar os pressupostos da regressão linear.
+  
   - Como extrair tabelas de regressão para apresentação dos resultados.
   
 ::: callout-warning
@@ -36,31 +38,35 @@ install.packages(pacotes)
 
 ## Carregando pacotes
 
+Vamos carregar o pacote `{ggplot2}`, que utilizamos anteriormente para elaborar gráficos:
+
 ```{r}
 #| message: false
-library(dplyr) # <1>
-library(ggplot2) # <2>
+library(ggplot2)
 ```
-1. Pacote para transformação de dados.
-2. Pacote para visualização de dados.
+
 
 
 ## Importando os dados
 
 Nesta aula, utilizaremos os dados do [Programa das Nações Unidas para o Desenvolvimento (PNUD)](http://www.br.undp.org/content/brazil/pt/home/idh0/rankings/idhm-municipios-2010.html) sobre o Índice de Desenvolvimento Humano Municipal (IDHM) e suas dimensões para os municípios brasileiros em 2010. Esses dados estão disponíveis no pacote `abjData`.
 
-Vamos salvar os dados referentes aos dados mais recentes disponíveis (censo de 2010) em um objeto chamado `pnud_muni_2010`:
+Vamos filtrar os dados mais recentes disponíveis (censo de 2010) e salvar em um objeto chamado `pnud_muni_2010`:
 
 ```{r}
 pnud_muni_2010 <- abjData::pnud_muni |> 
- filter(ano == 2010) 
+ dplyr::filter(ano == 2010) 
 ```
+
+**Obs:** O pacote `abjData` contém dados do PNUD para os anos de 1991, 2000 e 2010. Utilizamos apenas os dados de 2010 nesta aula, pois os dados não são independentes entre si. Se quisermos ajustar um modelo com dados de diferentes anos, seria necessário ajustar um modelo longitudinal (em painel), o que foge do escopo desta aula.
+
+### Dicionário dos dados
 
 A tabela `pnud_muni_2010` contém muitas variáveis, e alguns nomes não são muito descritivos. Podemos consultar o significado de cada variável consultando a tabela `pnud_siglas` do pacote `{abjData}`:
 
 ```{r}
 nomes_col_pnud_muni_2010 <- abjData::pnud_siglas |> 
-  filter(sigla %in% names(pnud_muni_2010))
+  dplyr::filter(sigla %in% names(pnud_muni_2010))
 
 nomes_col_pnud_muni_2010 |> 
   DT::datatable()
@@ -129,15 +135,16 @@ A função `summary()` nos fornece um resumo do modelo ajustado:
 summary(modelo_linear)
 ```
 
-Podemos extrair uma *tibble* com informações sobre o modelo ajustado utilizando as funções `tidy()` e `glance()` do pacote `{broom}`:
-
-```{r}
-broom::glance(modelo_linear)|> 
-  knitr::kable()
-```
+Podemos extrair uma *tibble* com informações sobre o modelo ajustado utilizando as funções `tidy()` e `glance()` do pacote `{broom}`. A função `broom::tidy()` nos fornece informações sobre os coeficientes do modelo ajustado.
 
 ```{r}
 broom::tidy(modelo_linear) |> 
+  knitr::kable()
+```
+Os resultados da função `broom::glance()` são relativos ao ajuste do modelo, sendo útil para comparar diferentes modelos.
+
+```{r}
+broom::glance(modelo_linear)|> 
   knitr::kable()
 ```
 
@@ -148,33 +155,33 @@ A função `report::report()` nos fornece um relatório completo sobre o modelo 
 report::report(modelo_linear) 
 ```
 
+A tradução do relatório gerado pela função `report::report()` é:
+
+
+> Ajustamos um modelo linear (estimado usando MQO - Mínimos Quadrados Ordinários) para prever `mort5` com base em `t_agua` (fórmula: `mort5 ~ t_agua`). O modelo explica uma proporção significativa e substancial da variância (R² = 0,28, F(1, 5563) = 2209,54, p < 0,001, R² ajustado = 0,28). O intercepto do modelo, correspondente a `t_agua = 0`, é 44,23 (IC 95% [43,27, 45,19], t(5563) = 90,27, p < 0,001). Dentro deste modelo:
+
+> - O efeito de `t_agua` é estatisticamente significativo e negativo (beta = -0,27, IC 95% [-0,28, -0,25], t(5563) = -47,01, p < 0,001; Beta padronizado = -0,53, IC 95% [-0,56, -0,51]).
+
+> Os parâmetros padronizados foram obtidos ajustando o modelo a uma versão padronizada do conjunto de dados. Os intervalos de confiança de 95% (ICs) e os valores-p foram calculados usando uma aproximação da distribuição t de Wald.
+
+
 
 ### Interpretação dos resultados
 
 A equação ajustada é da forma:
 
 
-$$\text{mort5} = 44.23 - 0.27 \times \text{t_agua}$$
+$$
+mort5 = 44.23 - 0.27 \times tagua
+$$
 
-s
+
 - O coeficiente de `t_agua` (-0.27) indica que, para cada aumento de 1% no percentual de água encanada, espera-se uma diminuição de 0.27 na taxa de mortalidade infantil.
 
 - O intercepto (44.23) significa que, se o percentual de água encanada fosse zero, a mortalidade infantil seria de 44,23 por 1000 crianças.
 
 - O valor de \(R^2 = 0.28\) indica que aproximadamente 28% da variação na mortalidade infantil é explicada pela variável `t_agua`.
 
-
-
-### Pressupostos da Regressão Linear
-
-Antes de interpretarmos os resultados de um modelo de regressão linear, devemos garantir que alguns pressupostos são atendidos:
-
-1. **Linearidade**: A relação entre a variável dependente e a(s) variável(is) independente(s) deve ser linear.
-2. **Independência dos Erros**: Os erros devem ser independentes uns dos outros.
-3. **Homoscedasticidade**: A variância dos erros deve ser constante ao longo de todos os níveis da variável preditora.
-4. **Normalidade dos Erros**: Os erros devem seguir uma distribuição normal.
-
-Podemos verificar esses pressupostos utilizando gráficos de diagnóstico, que discutiremos em breve.
 
 ### Visualizando o ajuste do modelo
 
@@ -183,11 +190,11 @@ Para adicionar a linha de regressão ao gráfico anterior, podemos criar uma nov
 ```{r}
 pnud_muni_2010_predicted <- pnud_muni_2010 |>
   mutate(
-    valores_preditos = predict(modelo_linear), # <1>
-    residuos = mort5 - valores_preditos # <2>
+    valores_ajustados = predict(modelo_linear), # <1>
+    residuos = mort5 - valores_ajustados # <2>
   ) 
 ```
-1. Adiciona uma nova coluna chamada `valores_preditos` ao data.frame contendo as predições do modelo linear, utilizando a função `predict()`.
+1. Adiciona uma nova coluna chamada `valores_ajustados` ao data.frame contendo as predições do modelo linear, utilizando a função `predict()`.
 2. Adiciona uma nova coluna chamada `residuos` ao data.frame contendo os resíduos do modelo linear: a diferença entre os valores reais (mort5) e os valores previstos pelo modelo.
 
 Agora, podemos adicionar a linha de regressão ao gráfico anterior:
@@ -198,7 +205,7 @@ pnud_muni_2010_predicted |>
   ggplot() + 
   aes(x = t_agua, y = mort5) + 
   geom_point(alpha = 0.5) + 
-  geom_line(aes(y = valores_preditos), color = "blue", linewidth = 1) + # <1>
+  geom_line(aes(y = valores_ajustados), color = "blue", linewidth = 1) + # <1>
   theme_light()
 ```
 1. Adiciona a linha de regressão com base nas predições do  modelo.
@@ -223,37 +230,52 @@ pnud_muni_2010 |>
 :::
 
 
+### Pressupostos da Regressão Linear
+
+Agora que sabemos ajustar um modelo de regressão linear simples, é importante verificar se os pressupostos da regressão linear estão sendo respeitados.
+
+1. **Linearidade**: A relação entre a variável dependente e a(s) variável(is) independente(s) deve ser linear.
+2. **Independência dos Erros**: Os erros devem ser independentes uns dos outros. Não queremos que eles tenham uma ordem ou relação com as variáveis independentes.
+3. **Homoscedasticidade**: A variância dos erros deve ser constante ao longo de todos os níveis da variável independente.
+4. **Normalidade dos Erros**: Os erros devem seguir uma distribuição normal.
+
+Podemos verificar esses pressupostos utilizando gráficos de diagnóstico, que discutiremos em breve.
+
 ###  Diagnóstico de Modelos
 
-Utilizar gráficos de diagnóstico ajuda a verificar se os pressupostos do modelo estão sendo respeitados. 
+Utilizar gráficos de diagnóstico ajuda a verificar se os pressupostos do modelo estão sendo respeitados. Vamos explorar alguns gráficos de diagnóstico, que são úteis para tomar decisões sobre o modelo!
 
+- **Histograma dos resíduos**: para que os pressupostos sejam satisfeitos, espera-se uma uma distribuição aproximadamente normal.
 
-- **Gráfico de resíduos vs valores ajustados**: Espera-se que os resíduos estejam distribuídos aleatoriamente.
+```{r}
+pnud_muni_2010_predicted |> 
+  ggplot(aes(x = residuos)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 30, fill = "blue", alpha = 0.5) +
+  geom_density() + 
+  theme_light()
+```
+
+- **Gráfico de resíduos vs valores ajustados**: para que os pressupostos sejam satisfeitos, espera-se que os resíduos estejam distribuídos aleatoriamente.
+
+A interpretação do gráfico a seguir é de que talvez o modelo linear não seja o mais adequado para ajustar esses dados, pois os resíduos não estão distribuídos aleatoriamente.
 
 ```{r}
 car::residualPlot(modelo_linear)
 ```
 
-- **Teste de homocedasticidade**:
+- **Teste de homocedasticidade**: para que os pressupostos sejam satisfeitos, espera-se que a variância dos erros seja constante ao longo de todos os níveis da variável independente. Para verificar isso, podemos utilizar a função `car::ncvTest()`, que testa a homocedasticidade dos resíduos.
+
+Neste modelo, a homocedasticidade não é satisfeita.
 
 ```{r}
 car::ncvTest(modelo_linear)
 ```
 
 
-- **Q-Q plot para normalidade dos resíduos**: Os pontos devem seguir a linha reta, o que indicaria que os resíduos seguem uma distribuição normal.
+- **Q-Q plot para normalidade dos resíduos**: para que os pressupostos sejam satisfeitos, os pontos devem seguir a linha reta, o que indicaria que os resíduos seguem uma distribuição normal.
 
 ```{r}
 car::qqPlot(modelo_linear)
-```
-
-- **Histograma dos resíduos**: Espera-se uma uma distribuição aproximadamente normal.
-
-```{r}
-pnud_muni_2010_predicted |> 
-  ggplot(aes(x = residuos)) +
-  geom_histogram(bins = 30) +
-  theme_light()
 ```
 
 
@@ -263,8 +285,15 @@ pnud_muni_2010_predicted |>
 Podemos extrair tabelas de regressão para apresentar os resultados do modelo ajustado.  Existem várias maneiras de fazer isso.
 
 
-Vamos utilizar a função `stargazer::stargazer()`:
+Vamos utilizar a função `stargazer::stargazer()`. Essa função pode gerar tabelas de regressão em diferentes formatos, como texto, HTML, LaTeX e Markdown.
 
+
+```{r}
+stargazer::stargazer(modelo_linear, type = "text")
+```
+
+
+Cuidado: observe que na última linha (`Note: *p<0.1; **p<0.05; ***p<0.01`) o resultado em HTML apresenta asteriscos a menos do que o resultado em texto. Isso ocorre porque o Markdown interpreta o asterisco como um comando de itálico (`*`) ou negrito (`**`) (e utilizamos Markdown para a construção deste site). 
 
 ```{r}
 #| results: asis
@@ -272,6 +301,9 @@ stargazer::stargazer(modelo_linear, type = "html")
 ```
 
 
+### Interpretação final
+
+- 
 
 
 ## Regressão linear múltipla
@@ -289,8 +321,16 @@ Em breve!
 ```
 
 
+## Sugestões de exercícios
+
+Em breve!
+
+
 ## Sugestões de materiais
 
 - [Livro *Introduction to Modern Statistics*](https://openintro-ims.netlify.app) de Mine Çetinkaya-Rundel e Johanna Hardin. 
   - [Regressão linear simples](https://openintro-ims.netlify.app/model-slr)
   - [Regressão linear múltipla](https://openintro-ims.netlify.app/model-mlr)
+  
+  
+- [Introduction to Econometrics with R](https://www.econometrics-with-r.org/) - conteúdo mais avançado, para quem tem experiência em econometria.
