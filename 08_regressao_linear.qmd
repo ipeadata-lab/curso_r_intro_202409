@@ -4,6 +4,8 @@ code-annotations: "hover"
 cache: true
 ---
 
+
+
 ## Introdução
 
 A regressão linear é uma técnica estatística que busca modelar a relação entre uma variável dependente e uma ou mais variáveis independentes. A regressão linear simples é utilizada quando temos apenas uma variável independente, enquanto a regressão linear múltipla é utilizada quando temos mais de uma variável independente.
@@ -45,7 +47,11 @@ Vamos carregar o pacote `{ggplot2}`, que utilizamos anteriormente para elaborar 
 library(ggplot2)
 ```
 
+O comando abaixo desabilita a notação científica no R, o que facilita a leitura dos resultados:
 
+```{r}
+options(scipen = 999) 
+```
 
 ## Importando os dados
 
@@ -85,7 +91,7 @@ Uma primeira variável que podemos explorar é o acesso à água encanada.
 
 ```{r}
 nomes_col_pnud_muni_2010 |> 
-  filter(sigla == "mort5" | sigla == "t_agua") |> 
+  dplyr::filter(sigla == "mort5" | sigla == "t_agua") |> 
   knitr::kable()
 ```
 
@@ -168,19 +174,23 @@ A tradução do relatório gerado pela função `report::report()` é:
 
 ### Interpretação dos resultados
 
-A equação ajustada é da forma:
+A equação ajustada é:
 
 
 $$
 mort5 = 44.23 - 0.27 \times tagua
 $$
+- **Interpretação do Coeficiente de `t_agua`**: Para cada aumento de 1% no percentual de água encanada, espera-se uma redução de 0.27 na taxa de mortalidade infantil (por 1000 nascidos vivos).
+
+- **Interpretação do Intercepto**: Se o percentual de água encanada fosse 0, a mortalidade infantil seria de 44.23 por 1000 nascidos vivos. Este valor pode não ser relevante na prática, mas é útil para entender o comportamento do modelo.
+
+- **R²**: O valor de \( R^2 = 0.28 \) significa que cerca de 28% da variação na taxa de mortalidade infantil (`mort5`) é explicada pela variação no percentual de acesso à água encanada (`t_agua`).
+
+- **Significância**: O p-valor muito pequeno (p < 0.001) indica que o acesso à água encanada tem uma relação estatisticamente significativa com a mortalidade infantil.
 
 
-- O coeficiente de `t_agua` (-0.27) indica que, para cada aumento de 1% no percentual de água encanada, espera-se uma diminuição de 0.27 na taxa de mortalidade infantil.
+- **Significância do p-valor**: O p-valor muito baixo (< 0.001) indica que há evidência de que existe uma relação estatisticamente significativa entre o percentual de água encanada e a mortalidade infantil. 
 
-- O intercepto (44.23) significa que, se o percentual de água encanada fosse zero, a mortalidade infantil seria de 44,23 por 1000 crianças.
-
-- O valor de \(R^2 = 0.28\) indica que aproximadamente 28% da variação na mortalidade infantil é explicada pela variável `t_agua`.
 
 
 ### Visualizando o ajuste do modelo
@@ -188,8 +198,8 @@ $$
 Para adicionar a linha de regressão ao gráfico anterior, podemos criar uma nova tabela com as predições do modelo linear e os resíduos:
 
 ```{r}
-pnud_muni_2010_predicted <- pnud_muni_2010 |>
-  mutate(
+pnud_muni_2010_adjusted <- pnud_muni_2010 |>
+  dplyr::mutate(
     valores_ajustados = predict(modelo_linear), # <1>
     residuos = mort5 - valores_ajustados # <2>
   ) 
@@ -201,7 +211,7 @@ Agora, podemos adicionar a linha de regressão ao gráfico anterior:
 
 ```{r}
 #| label: lm-simples-reta
-pnud_muni_2010_predicted |> 
+pnud_muni_2010_adjusted |> 
   ggplot() + 
   aes(x = t_agua, y = mort5) + 
   geom_point(alpha = 0.5) + 
@@ -241,40 +251,72 @@ Agora que sabemos ajustar um modelo de regressão linear simples, é importante 
 
 Podemos verificar esses pressupostos utilizando gráficos de diagnóstico, que discutiremos em breve.
 
+
 ###  Diagnóstico de Modelos
 
 Utilizar gráficos de diagnóstico ajuda a verificar se os pressupostos do modelo estão sendo respeitados. Vamos explorar alguns gráficos de diagnóstico, que são úteis para tomar decisões sobre o modelo!
 
-- **Histograma dos resíduos**: para que os pressupostos sejam satisfeitos, espera-se uma uma distribuição aproximadamente normal.
+#### Histograma dos resíduos
+
+Para que os pressupostos sejam satisfeitos, espera-se uma uma distribuição simétrica e aproximadamente normal.
+
+A curva de densidade adicionada ao histograma permite verificar visualmente se os resíduos seguem uma distribuição normal. Se a curva de densidade não se parecer com uma curva gaussiana, isso pode ser um indicativo de que os resíduos não são normalmente distribuídos, violando um dos pressupostos da regressão linear.
+
 
 ```{r}
-pnud_muni_2010_predicted |> 
-  ggplot(aes(x = residuos)) +
-  geom_histogram(aes(y = after_stat(density)), bins = 30, fill = "blue", alpha = 0.5) +
-  geom_density() + 
-  theme_light()
+#| label: lm-simples-histograma-residuos
+pnud_muni_2010_adjusted |> # <1>
+  ggplot(aes(x = residuos)) + # <2>
+  geom_histogram( # <3>
+    aes(y = after_stat(density)), # <4>
+    fill = "lightblue" # <5>
+  ) +  # <3>
+  geom_density() + # <6>
+  theme_light() # <7>
 ```
+1. Utilizando os dados que contém os resíduos do modelo ajustado.
+2. Iniciando o gráfico, e definindo a variável `x` como os resíduos.
+3. Adicionando a geometria de histograma.
+4. Nos atributos estéticos (`aes()`), definimos que o eixo `y` do histograma será a densidade dos resíduos. Quando criamos um histograma, os valores padrão no eixo y correspondem à contagem de observações em cada intervalo (bin). Ao utilizar `after_stat(density)`, estamos instruindo o `ggplot2` a calcular a densidade ao invés da contagem bruta.
+5. Definindo a cor de preenchimento do histograma.
+6. Adicionando a geometria de densidade.
+7. Aplicando o tema `theme_light()` ao gráfico.
 
-- **Gráfico de resíduos vs valores ajustados**: para que os pressupostos sejam satisfeitos, espera-se que os resíduos estejam distribuídos aleatoriamente.
+
+
+#### Gráfico de resíduos vs valores ajustados
+
+Para que os pressupostos sejam satisfeitos, os pontos devem estar distribuídos aleatoriamente em torno de zero. Se houver um padrão nos resíduos, pode indicar que a relação entre as variáveis não é linear.
 
 A interpretação do gráfico a seguir é de que talvez o modelo linear não seja o mais adequado para ajustar esses dados, pois os resíduos não estão distribuídos aleatoriamente.
 
 ```{r}
+#| label: lm-simples-residual-plot
 car::residualPlot(modelo_linear)
 ```
 
-- **Teste de homocedasticidade**: para que os pressupostos sejam satisfeitos, espera-se que a variância dos erros seja constante ao longo de todos os níveis da variável independente. Para verificar isso, podemos utilizar a função `car::ncvTest()`, que testa a homocedasticidade dos resíduos.
+#### Teste de homocedasticidade
 
-Neste modelo, a homocedasticidade não é satisfeita.
+Para que os pressupostos sejam satisfeitos, espera-se que a variância dos erros seja constante ao longo de todos os níveis da variável independente. Para verificar isso, podemos utilizar a função `car::ncvTest()`, que testa a homocedasticidade dos resíduos.
+
+Um p-valor muito pequeno (`p < 0.001`) sugere que os resíduos não possuem variância constante (heterocedasticidade), o que pode violar um dos pressupostos da regressão linear.
+
+Neste modelo, o pressuposto de homocedasticidade não é satisfeito.
 
 ```{r}
+#| label: lm-simples-homocedasticidade
 car::ncvTest(modelo_linear)
 ```
 
 
-- **Q-Q plot para normalidade dos resíduos**: para que os pressupostos sejam satisfeitos, os pontos devem seguir a linha reta, o que indicaria que os resíduos seguem uma distribuição normal.
+#### Q-Q plot para normalidade dos resíduos
+
+Para que os pressupostos sejam satisfeitos, os pontos devem seguir a linha reta, o que indicaria que os resíduos seguem uma distribuição normal. Desvios significativos da linha indicam que os resíduos não são normais.
+
+No caso do exemplo a seguir, os resíduos não seguem uma distribuição normal.
 
 ```{r}
+#| label: lm-simples-qqplot
 car::qqPlot(modelo_linear)
 ```
 
@@ -282,7 +324,12 @@ car::qqPlot(modelo_linear)
 
 ### Extraindo tabelas de regressão
 
-Podemos extrair tabelas de regressão para apresentar os resultados do modelo ajustado.  Existem várias maneiras de fazer isso.
+Podemos extrair tabelas de regressão para apresentar os resultados do modelo ajustado.  
+Existem diversos pacotes que podem ser utilizados para extrair tabelas de regressão, como:
+
+- [`{stargazer}`](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf)
+- [`{gtsummary}`](https://www.danieldsjoberg.com/gtsummary/articles/tbl_regression.html)
+- [`{fixest}`](https://lrberge.github.io/fixest/articles/exporting_tables.html)
 
 
 Vamos utilizar a função `stargazer::stargazer()`. Essa função pode gerar tabelas de regressão em diferentes formatos, como texto, HTML, LaTeX e Markdown.
@@ -301,9 +348,14 @@ stargazer::stargazer(modelo_linear, type = "html")
 ```
 
 
+
+
 ### Interpretação final
 
-- 
+- O modelo que ajustamos pode não ser o mais adequado para explicar a relação entre a taxa de mortalidade infantil e o percentual de acesso à água encanada, pois os pressupostos da regressão linear não foram atendidos. Pode ser necessário ajustar um modelo mais complexo.
+
+- A taxa de mortalidade infantil é influenciada por diversos fatores, e o acesso à água encanada pode ser apenas um deles. É interessante investigar se outras variáveis como renda, educação, saneamento básico, entre outras, são importantes para explicar a mortalidade infantil.
+
 
 
 ## Regressão linear múltipla
@@ -323,7 +375,26 @@ Em breve!
 
 ## Sugestões de exercícios
 
-Em breve!
+1. Utilize os dados de 2010 do PNUD que já carregamos (`pnud_muni_2010`). Ajuste um modelo de regressão linear simples para investigar a relação entre a taxa de mortalidade infantil (até 5 anos de idade) (`mort5`) e a renda per capita (`rdpc`), disponível nos dados.
+
+a. Identifique qual é a variável dependente e qual é a variável independente.
+
+b. Visualize a relação entre essas duas variáveis utilizando um gráfico de dispersão. Antes de ajustar o modelo, o que você espera encontrar? Parece haver uma relação linear entre as variáveis?
+
+c. Ajuste um modelo de regressão linear simples.
+
+c. Interprete o coeficiente da variável `rdpc`.
+
+d. Após ajustar o modelo no exercício anterior, avalie se os pressupostos da regressão linear foram atendidos.
+
+e. Verifique o valor de \(R^2\) e interprete seu significado. 
+
+f. O p-valor do coeficiente de `rdpc` é significativo? O que isso indica sobre a relação entre essas variáveis?
+
+g. Crie um gráfico de dispersão entre as variáveis, adicionando uma linha de regressão ao gráfico.
+
+h. Esse modelo é melhor para explicar a expectativa de vida do que o modelo anterior que ajustamos para a taxa de mortalidade infantil? Por quê?
+
 
 
 ## Sugestões de materiais
