@@ -470,10 +470,14 @@ pnud_muni_2010_ajustado_multiplo |>
 
 O gráfico acima indica que a relação entre `rdpc` e `mort5` não é linear. Nesse caso, podemos tentar transformar a variável `rdpc` e testar novamente ajustar um modelo linear.
 
+
 Vamos tentar ajustar um modelo de regressão linear múltipla com a variável `rdpc` transformada em logaritmo (`log()`).
 
 
 ### Modelando a variável `rdpc` transformada em `log()`
+
+Transformações em variáveis são usadas quando a relação entre as variáveis independentes e a dependente não é linear. No nosso exemplo, a relação entre `rdpc` e `mort5` não é linear. Ao aplicar a transformação logarítmica à variável `rdpc`, tentamos "linearizar" a relação, o que pode melhorar a capacidade do modelo de capturar a verdadeira relação entre as variáveis.
+
 
 Vamos ajustar um modelo de regressão linear múltipla com a variável `rdpc` transformada em logaritmo.
 
@@ -577,7 +581,13 @@ broom::tidy(modelo_linear_multiplo_log) |>
   knitr::kable()
 ```
 
-#### Diagnóstico do modelo ajustado
+
+#### Diagnóstico do Modelo de Regressão Múltipla
+
+Os diagnósticos do modelo de regressão múltipla são similares aos da regressão simples, mas é importante prestar mais atenção nos resíduos, pois agora temos mais de uma variável explicativa. 
+
+Os mesmos pressupostos de linearidade, independência dos erros, homocedasticidade e normalidade dos resíduos precisam ser verificados.
+
 
 ##### Histograma dos resíduos
 
@@ -595,6 +605,8 @@ pnud_muni_2010_ajustado_multiplo_log |>
 
 ##### Gráfico de resíduos vs valores ajustados
 
+É importante verificar se os resíduos estão distribuídos de forma aleatória. Se houver padrões, o modelo pode estar mal especificado.
+
 ```{r}
 #| label: lm-multiplo-log-residual-plot
 car::residualPlot(modelo_linear_multiplo_log)
@@ -602,12 +614,16 @@ car::residualPlot(modelo_linear_multiplo_log)
 
 ##### Teste de homocedasticidade
 
+É importante verificar se a variância dos resíduos é constante ao longo dos valores ajustados.
+
 ```{r}
 #| label: lm-multiplo-log-homocedasticidade
 car::ncvTest(modelo_linear_multiplo_log)
 ```
 
 ##### Q-Q plot para normalidade dos resíduos
+
+É importante verificar a normalidade dos resíduos.
 
 ```{r}
 #| label: lm-multiplo-log-qqplot
