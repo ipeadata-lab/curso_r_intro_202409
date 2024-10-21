@@ -33,7 +33,7 @@ Para esta aula, utilizaremos alguns pacotes do R, que talvez não tenham sido in
 
 ```{r}
 #| eval: false
-pacotes <- c("abjData", "broom", "car", "fixest", "report")
+pacotes <- c("abjData", "broom", "car", "stargazer", "report")
 install.packages(pacotes)
 ```
 
@@ -325,6 +325,7 @@ Existem diversos pacotes que podem ser utilizados para extrair tabelas de regres
 - [`{stargazer}`](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf)
 - [`{gtsummary}`](https://www.danieldsjoberg.com/gtsummary/articles/tbl_regression.html)
 - [`{fixest}`](https://lrberge.github.io/fixest/articles/exporting_tables.html)
+- [`{modelsummary}`](https://modelsummary.com/)
 
 
 Vamos utilizar a função `stargazer::stargazer()`. Essa função pode gerar tabelas de regressão em diferentes formatos, como texto, HTML, LaTeX e Markdown.
@@ -458,7 +459,7 @@ O gráfico a seguir mostra a relação entre a taxa de mortalidade infantil e a 
 pnud_muni_2010_ajustado_multiplo |> 
   ggplot() +
   geom_point(aes(x = rdpc, y = mort5), alpha = 0.5) + # <1>
-  geom_line(aes(x = rdpc, y = valores_ajustados_rdpc), color = "red") +
+  geom_line(aes(x = rdpc, y = valores_ajustados_rdpc), color = "red") + # <2>
   theme_light() 
 ```
 1. Adicionando a geometria de pontos ao gráfico, com os valores de `rdpc` no eixo x e `mort5` no eixo y.
@@ -661,6 +662,19 @@ g. Crie um gráfico de dispersão entre as variáveis, adicionando uma linha de 
 
 h. Esse modelo é melhor para explicar a expectativa de vida do que o modelo anterior que ajustamos para a taxa de mortalidade infantil? Por quê?
 
+## Links citados na aula
+
+- [Pacote performance](https://easystats.github.io/performance/articles/check_model.html): funções para avaliar o ajuste de modelos de regressão, visualizar diagnósticos e comparar modelos.
+
+- [Pacote modelsummary](https://modelsummary.com/): para criar tabelas de regressão, que exportam para word.
+
+- [Pacote coefplot](https://cran.r-project.org/web/packages/coefplot/index.html): para visualizar os coeficientes do modelo de regressão linear.
+
+- [Tidymodels](https://www.tidymodels.org/packages/) - metapacote, segue uma filosofia similar ao pacote tidyverse, para quem tem interesse em *machine learning* no R.
+
+- [Livro R Packages](https://r-pkgs.org/) - para quem tem interesse em criar pacotes no R.
+
+- Livro "Uma senhora toma chá...: Como a estatística revolucionou a ciência no século XX" - David Salsburg
 
 
 ## Sugestões de materiais
