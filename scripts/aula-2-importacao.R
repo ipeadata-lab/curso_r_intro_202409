@@ -5,9 +5,9 @@ library(tidyverse)
 ## Importando um csv -----
 dados_csv <- read_csv("dados/sidrar_4092_bruto.csv")
 
-# Dúvida: Como saber se foi importado? 
+# Dúvida: Como saber se foi importado?
 # veja se o objeto aparece no environment!
-# ou tente usar ele 
+# ou tente usar ele
 View(dados_csv) # Cuidado com bases grandes
 
 # View(dados_csv2)
@@ -25,8 +25,9 @@ dados_csv_2 <- read_csv2("dados/sidrar_4092_bruto_2.csv")
 ## Usando o Import Dataset -----
 
 library(readr)
-sidrar_4092_bruto_2 <- read_delim("dados/sidrar_4092_bruto_2.csv", 
-    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+sidrar_4092_bruto_2 <- read_delim("dados/sidrar_4092_bruto_2.csv",
+  delim = ";", escape_double = FALSE, trim_ws = TRUE
+)
 View(sidrar_4092_bruto_2)
 
 
@@ -39,7 +40,7 @@ excel_sheets("dados/sidrar_4092_bruto.xlsx")
 
 # Erro que aconteceu com algumas pessoas:
 # > excel_sheets("dados/sidrar_4092_bruto.xlsx")
-# Error in readBin(con, raw(), n = size) : 
+# Error in readBin(con, raw(), n = size) :
 #   error reading from the connection
 
 # Isso significa que o arquivo está corrompido, precisa baixar novamente.

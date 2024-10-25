@@ -7,7 +7,7 @@ library(ipeaplot)
 dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
 
 # Filtrando dados mais recentes
-dados_tri_recente <- dados |>  
+dados_tri_recente <- dados |>
   filter(trimestre_inicio == max(trimestre_inicio))
 
 # Selecionando colunas relevantes
@@ -36,11 +36,12 @@ dados_longos <- dados_selecionados |>
 head(dados_longos)
 
 # Preparar os dados para o gráfico
-dados_preparados <- dados_longos |> 
+dados_preparados <- dados_longos |>
   group_by(regiao, uf, trimestre) |>
   mutate(
     soma_grupo = sum(mil_pessoas),
-    perc = mil_pessoas / soma_grupo * 100) |>
+    perc = mil_pessoas / soma_grupo * 100
+  ) |>
   ungroup()
 
 head(dados_preparados)
@@ -54,31 +55,32 @@ dados_preparados |>
 
 # Transformando os dados para melhorar a visualização
 # da legenda
-dados_grafico_1 <- dados_preparados |> 
-  mutate( 
+dados_grafico_1 <- dados_preparados |>
+  mutate(
     categoria_label = case_match(
       categoria,
       "forca_de_trabalho_ocupada" ~ "Força de trabalho ocupada",
       "forca_de_trabalho_desocupada" ~ "Força de trabalho desocupada",
       "fora_da_forca_de_trabalho" ~ "Fora da força de trabalho"
     )
-  ) 
+  )
 
 # Transformando os dados novamente, para fatores
-dados_grafico_2 <- dados_grafico_1 |> 
-  mutate( 
+dados_grafico_2 <- dados_grafico_1 |>
+  mutate(
     categoria_fct = factor(
       categoria_label,
       levels = c(
         "Fora da força de trabalho",
         "Força de trabalho ocupada",
         "Força de trabalho desocupada"
-      )),
+      )
+    ),
     uf_fct = forcats::fct_reorder(uf, perc, min)
-    ) 
+  )
 
 # Segunda tentativa do gráfico
-dados_grafico_2 |> 
+dados_grafico_2 |>
   ggplot(aes(fill = categoria_fct)) +
   aes(x = uf_fct, y = perc) +
   geom_col()
@@ -88,11 +90,11 @@ dados_grafico_2 |>
 trimestre_referencia <- unique(dados_grafico_2$trimestre)
 
 # Gráfico da proporção, ainda sem o IPEA Plot
-grafico_proporcao <- dados_grafico_2 |> 
+grafico_proporcao <- dados_grafico_2 |>
   ggplot(aes(fill = categoria_fct)) +
   aes(x = uf_fct, y = perc) +
   geom_col() +
-  scale_fill_manual(values = c( "#5b5e62", "gray", "#cc1e00")) +
+  scale_fill_manual(values = c("#5b5e62", "gray", "#cc1e00")) +
   labs(
     y = "Proporção (%)",
     x = "Estado",
@@ -101,7 +103,7 @@ grafico_proporcao <- dados_grafico_2 |>
     fill = "Categoria",
     caption = "Dados da PNAD Contínua Trimestral - IBGE, obtidos no SIDRA."
   ) +
-   theme_minimal()  +
+  theme_minimal() +
   coord_flip()
 
 grafico_proporcao
@@ -112,25 +114,25 @@ grafico_proporcao
 # carregar o pacote
 library("ipeaplot")
 
-grafico_ipeaplot <- grafico_proporcao + 
+grafico_ipeaplot <- grafico_proporcao +
   # adiciona o tema do ipea
   theme_ipea() +
   # Configura o eixo X para limitar aos valores existentes nos dados
   coord_flip(expand = FALSE) +
   # adiciona a paleta de cores do ipea
-  scale_fill_ipea(palette = 'Blue')
+  scale_fill_ipea(palette = "Blue")
 
 # Salvando o gráfico ----------
 save_eps(grafico_ipeaplot,
-         file.name = "graficos/grafico_ipeaplot.eps",
-         width = 10,
-         height = 8,
-         dpi = 300
+  file.name = "graficos/grafico_ipeaplot.eps",
+  width = 10,
+  height = 8,
+  dpi = 300
 )
 
 save_pdf(grafico_ipeaplot,
-         file.name = "graficos/grafico_ipeaplot.pdf",
-         width = 10,
-         height = 8,
-         dpi = 300
+  file.name = "graficos/grafico_ipeaplot.pdf",
+  width = 10,
+  height = 8,
+  dpi = 300
 )

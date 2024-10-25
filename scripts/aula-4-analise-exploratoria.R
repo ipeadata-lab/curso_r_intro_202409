@@ -17,7 +17,7 @@ dados_skim
 mean(dados$perc_desocupacao)
 
 # Função summarise() ---------------------------------------------------------
-dados |> 
+dados |>
   summarise(
     valor_min = min(perc_desocupacao),
     valor_max = max(perc_desocupacao),
@@ -30,41 +30,41 @@ dados |>
 
 
 # Função group_by() ----------------------------------------------------------
-dados |> 
+dados |>
   group_by(uf)
 # # Groups:   uf [27]
 
-dados |> 
+dados |>
   group_by(ano, regiao)
 # Groups:   ano, regiao [65]
 
-dados |> 
-  group_by(ano, regiao) |> 
+dados |>
+  group_by(ano, regiao) |>
   ungroup()
 # Nenhum grupo
 
 # Função summarise() com group_by() ------------------------------------------
-dados |> 
-  group_by(uf) |> 
+dados |>
+  group_by(uf) |>
   summarise(
     valor_min = min(perc_desocupacao),
     valor_max = max(perc_desocupacao),
     amplitude = valor_max - valor_min,
     media = mean(perc_desocupacao)
-  ) 
+  )
 
 # Sobre o argumento .groups -------------------------------------------------
 # Isso gerou bastante dúvida, então vamos explorar um pouco mais
-dados_agrupados <- dados |> 
-  group_by(regiao, ano) |> 
+dados_agrupados <- dados |>
+  group_by(regiao, ano) |>
   summarise(
     valor_min = min(perc_desocupacao),
     valor_max = max(perc_desocupacao),
     amplitude = valor_max - valor_min,
-    media = mean(perc_desocupacao), 
-      # .groups = "keep"  # manter grupos
+    media = mean(perc_desocupacao),
+    # .groups = "keep"  # manter grupos
     # .groups = "drop" # perder grupos
-  ) 
+  )
 
 dados_agrupados
 # Groups:   regiao [5]
@@ -74,14 +74,14 @@ dados_agrupados
 filter(dados_agrupados, valor_max == max(valor_max))
 
 # Exemplo de filtro com dados desagrupados:
-dados_agrupados |> 
-  ungroup() |> 
+dados_agrupados |>
+  ungroup() |>
   filter(valor_max == max(valor_max))
 
 # função n() -----------------------------
 # conta o número de linhas
-dados |> 
-  group_by(regiao) |> 
+dados |>
+  group_by(regiao) |>
   summarise(
     n_linhas = n()
   )
@@ -90,52 +90,52 @@ dados |>
 
 # filter() + group_by --------------------
 
-dados |> 
-  group_by(uf) |> 
+dados |>
+  group_by(uf) |>
   summarise(maximo = max(perc_desocupacao))
 
-dados |> 
-  group_by(uf) |> 
-  filter(perc_desocupacao == max(perc_desocupacao)) |> 
-  select(uf, trimestre, perc_desocupacao) |> 
+dados |>
+  group_by(uf) |>
+  filter(perc_desocupacao == max(perc_desocupacao)) |>
+  select(uf, trimestre, perc_desocupacao) |>
   ungroup()
 
 # mutate() + group_by() ------
 
-dados_desocupacao_trimestre <- dados |> 
-  group_by(trimestre) |> 
+dados_desocupacao_trimestre <- dados |>
+  group_by(trimestre) |>
   # Cuidado, usar média ponderada
-  mutate(media_desocupacao_trimestre_br = mean(perc_desocupacao)) |> 
-  ungroup() 
+  mutate(media_desocupacao_trimestre_br = mean(perc_desocupacao)) |>
+  ungroup()
 
 # função count() -----------------------
-# contar numero de linhas por grupos 
+# contar numero de linhas por grupos
 
-dados |> 
-  group_by(regiao) |> 
+dados |>
+  group_by(regiao) |>
   summarise(
     n_linhas = n(),
-    #. ....
+    # . ....
   )
 
-dados |> 
+dados |>
   count(regiao)
 
-starwars |> 
+starwars |>
   count(species, sort = TRUE)
 
-starwars |> 
+starwars |>
   count(species, homeworld)
 
-dados |> 
+dados |>
   filter(trimestre_codigo == "202402") |>
   count(regiao)
 
-dados |> 
+dados |>
   filter(trimestre_codigo == "202402") |>
   count(regiao, sort = TRUE)
 
-dados |> 
+dados |>
   count(regiao, ano)
 
 # resultado em formato largo
@@ -146,4 +146,3 @@ table(dados$regiao, dados$ano)
 dados |>
   filter(trimestre_codigo == "202402") |>
   janitor::tabyl(regiao)
-

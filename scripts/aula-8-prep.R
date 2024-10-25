@@ -12,7 +12,7 @@ populacao_2010 <- read_population(year = 2010)
 # populacao_2010 <- read_population(year = 2010, cache = FALSE)
 
 nrow(populacao_2010)
-# [1] 20635472          
+# [1] 20635472
 
 ncol(populacao_2010)
 # [1] 251

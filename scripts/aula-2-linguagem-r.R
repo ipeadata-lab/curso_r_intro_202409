@@ -30,9 +30,11 @@ mean(numeros_com_na, na.rm = TRUE)
 
 
 # Listas -----------------------
-lista_exemplo <- list(numero_pi = pi,
-                      df_qualidade_do_ar = airquality,
-                      letras = letters)
+lista_exemplo <- list(
+  numero_pi = pi,
+  df_qualidade_do_ar = airquality,
+  letras = letters
+)
 class(lista_exemplo)
 
 lista_exemplo
@@ -62,9 +64,7 @@ install.packages(pacotes_necessarios)
 # O R é case sensitive, ou seja, diferencia maiúsculas de minúsculas.
 
 MeUnOmE <- "BEATRIZ"
-# CASE SENSITIVE 
+# CASE SENSITIVE
 
-meunome 
+meunome
 MeUnOme
-
-

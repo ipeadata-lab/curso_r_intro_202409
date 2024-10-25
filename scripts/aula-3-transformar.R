@@ -4,9 +4,9 @@ library(janitor)
 
 # mensagem que apareceu: é um aviso de funções com o mesmo nome.
 # Attaching package: ‘janitor’
-# 
+#
 # The following objects are masked from ‘package:stats’:
-# 
+#
 #     chisq.test, fisher.test
 
 # Carregando os dados -----------------------------------------
@@ -22,8 +22,8 @@ names(dados_renomeados)
 # Valores distintos --------------------------------------------
 View(distinct(
   # base de dados
-  dados_renomeados, 
-  # colunas que queremos bucar os valores distintos 
+  dados_renomeados,
+  # colunas que queremos bucar os valores distintos
   variavel, unidade_de_medida
 ))
 
@@ -31,7 +31,7 @@ View(distinct(
 dados_renomeados |> # %>%
   distinct(
     variavel, unidade_de_medida
-  ) |> 
+  ) |>
   View()
 
 
@@ -39,40 +39,48 @@ dados_renomeados |> # %>%
 # Pipe do R base: |>
 # Pipe do tidyverse: %>% (mais antigo)
 
-sum(c(1,2))
+sum(c(1, 2))
 
-c(1,2) |> 
+c(1, 2) |>
   sum()
 
 # filter() -----------------------------
 
-dados_filtrados <- dados_renomeados |> 
+dados_filtrados <- dados_renomeados |>
   filter(variavel == "Pessoas de 14 anos ou mais de idade")
 
 # exemplo sem pipe
-select(filter(clean_names(dados_brutos), 
-      variavel == "Pessoas de 14 anos ou mais de idade"),
-      valor, unidade_da_federacao, trimestre)
+select(
+  filter(
+    clean_names(dados_brutos),
+    variavel == "Pessoas de 14 anos ou mais de idade"
+  ),
+  valor, unidade_da_federacao, trimestre
+)
 
 # exemplo com pipe
-dados_brutos |> 
-  clean_names() |> 
-  filter(variavel == "Pessoas de 14 anos ou mais de idade") |> 
-  select(valor, unidade_da_federacao, trimestre) 
+dados_brutos |>
+  clean_names() |>
+  filter(variavel == "Pessoas de 14 anos ou mais de idade") |>
+  select(valor, unidade_da_federacao, trimestre)
 
 # Uma coisa E outra
-dados_renomeados |> 
-  filter(variavel == "Pessoas de 14 anos ou mais de idade", # & 
-         unidade_da_federacao == "São Paulo") |> View()
+dados_renomeados |>
+  filter(
+    variavel == "Pessoas de 14 anos ou mais de idade", # &
+    unidade_da_federacao == "São Paulo"
+  ) |>
+  View()
 
 # Uma coisa OU outra
-dados_renomeados |> 
+dados_renomeados |>
   filter(unidade_da_federacao == "São Paulo" | # OU
-         trimestre == "2º trimestre 2024") |> View()
+    trimestre == "2º trimestre 2024") |>
+  View()
 
 
-dados_renomeados |> 
-  filter(str_detect(variavel, "percentual")) |> 
+dados_renomeados |>
+  filter(str_detect(variavel, "percentual")) |>
   View()
 
 
@@ -80,7 +88,7 @@ dados_renomeados |>
 
 dados_selecionados <- select(
   # base de dados
-  dados_filtrados, 
+  dados_filtrados,
   # colunas que queremos manter
   unidade_da_federacao,
   unidade_da_federacao_codigo,
@@ -88,22 +96,22 @@ dados_selecionados <- select(
   trimestre_codigo,
   condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
   valor
-) 
+)
 
 View(dados_selecionados)
 
 glimpse(dados_selecionados)
 
 # Usando funções auxiliares para selecionar colunas
-dados_filtrados |> 
-  select(contains("codigo")) |> 
+dados_filtrados |>
+  select(contains("codigo")) |>
   View()
 
 
 # Renomeando colunas --------------------------
 dados_renomeados_2 <- rename(
   # base de dados
-  dados_selecionados, 
+  dados_selecionados,
   # colunas que queremos renomear: novo_nome = nome_atual
   condicao = condicao_em_relacao_a_forca_de_trabalho_e_condicao_de_ocupacao,
   valor_mil_pessoas = valor,
@@ -124,12 +132,12 @@ glimpse(dados_renomeados_2)
 
 dados_largos <- pivot_wider(
   # base de dados
-  dados_renomeados_2, 
+  dados_renomeados_2,
   # nome da coluna de onde os nomes das novas colunas serão extraídos
-  names_from = condicao, 
-  # nome da coluna de onde os valores das novas colunas serão extraídos 
-  values_from = valor_mil_pessoas, 
-  # podemos adicionar um texto como prefixo. nesse caso, isso é opcional, 
+  names_from = condicao,
+  # nome da coluna de onde os valores das novas colunas serão extraídos
+  values_from = valor_mil_pessoas,
+  # podemos adicionar um texto como prefixo. nesse caso, isso é opcional,
   # mas é útil para ficar claro qual é a unidade de medida das variáveis
   names_prefix = "mil_pessoas_"
 )
@@ -138,7 +146,7 @@ View(dados_largos)
 
 ## exemplo com pivot_longer() -----
 pivot_longer(
-  dados_largos, 
+  dados_largos,
   cols = starts_with("mil_pessoas"),
   names_to = "condicao",
   values_to = "valor_mil_pessoas"
@@ -150,25 +158,26 @@ dados_largos_renomeados <- clean_names(dados_largos)
 glimpse(dados_largos_renomeados)
 
 # mutate() --------------------------------------
-dados_tipo <- dados_largos_renomeados |> 
+dados_tipo <- dados_largos_renomeados |>
   mutate(
     uf_codigo = as.factor(uf_codigo),
     prop_desocupacao = mil_pessoas_forca_de_trabalho_desocupada / mil_pessoas_forca_de_trabalho,
-    perc_desocupacao = prop_desocupacao * 100) |> 
+    perc_desocupacao = prop_desocupacao * 100
+  ) |>
   mutate(
     ano = str_sub(trimestre_codigo, 1, 4),
     ano = as.numeric(ano),
     trimestre_numero = as.numeric(str_sub(trimestre_codigo, 5, 6)),
     trimestre_mes_inicio = case_when(
       trimestre_numero == 1 ~ 1, # janeiro
-      trimestre_numero == 2 ~ 4, # abril 
+      trimestre_numero == 2 ~ 4, # abril
       trimestre_numero == 3 ~ 7, # julho
       trimestre_numero == 4 ~ 10 # outubro
     ),
     trimestre_inicio = paste0(ano, "-", trimestre_mes_inicio, "-01"), # YYYY-MM-DD
     trimestre_inicio = as.Date(trimestre_inicio),
     .after = trimestre_codigo
-  ) |> 
+  ) |>
   select(-trimestre_numero, -trimestre_mes_inicio)
 
 
@@ -200,27 +209,30 @@ dados_dummy <- dados_tipo |>
 # aula 4 ---------------
 
 # arrange() ---------------------------
-dados_dummy |> 
-  arrange(perc_desocupacao) |> View()
-
-dados_dummy |> 
-  arrange(desc(perc_desocupacao)) |> 
+dados_dummy |>
+  arrange(perc_desocupacao) |>
   View()
 
-dados_dummy |> 
-  arrange(trimestre_inicio, uf) 
+dados_dummy |>
+  arrange(desc(perc_desocupacao)) |>
+  View()
 
-dados_dummy |> 
-  arrange(desc(trimestre_inicio), desc(perc_desocupacao)) |> View()
+dados_dummy |>
+  arrange(trimestre_inicio, uf)
+
+dados_dummy |>
+  arrange(desc(trimestre_inicio), desc(perc_desocupacao)) |>
+  View()
 
 # ordem das colunas importa
-dados_dummy |> 
-  arrange(uf, trimestre_inicio) |> View()
+dados_dummy |>
+  arrange(uf, trimestre_inicio) |>
+  View()
 
-# dúvida: 
-dados_dummy |> 
+# dúvida:
+dados_dummy |>
   arrange(desc(perc_desocupacao)) |>
-  select(uf, trimestre, perc_desocupacao) |> 
+  select(uf, trimestre, perc_desocupacao) |>
   head(15) |> # busca as 15 primeiras linhas
   View()
 
@@ -236,7 +248,7 @@ View(uf_regiao)
 
 # chave: uf_codigo
 
-dados_dummy |> 
+dados_dummy |>
   left_join(uf_regiao, by = "uf_codigo")
 
 # Error in `left_join()`:
@@ -245,13 +257,13 @@ dados_dummy |>
 # ℹ `x$uf_codigo` is a <factor<48524>>.
 # ℹ `y$uf_codigo` is a <double>.
 
-uf_regiao_fct <- uf_regiao |> 
+uf_regiao_fct <- uf_regiao |>
   mutate(uf_codigo = as.factor(uf_codigo))
 
 
-dados_com_regiao <- dados_dummy |> 
-  left_join(uf_regiao_fct, by = c("uf_codigo")) |> 
-  relocate(uf_sigla, regiao, .after = uf_codigo) 
+dados_com_regiao <- dados_dummy |>
+  left_join(uf_regiao_fct, by = c("uf_codigo")) |>
+  relocate(uf_sigla, regiao, .after = uf_codigo)
 
 ## Exemplo 2, com geobr --------------------------------
 # geobr
@@ -262,27 +274,31 @@ glimpse(geo_estados)
 class(geo_estados)
 
 library(ggplot2)
-ggplot(geo_estados) + geom_sf()
+ggplot(geo_estados) +
+  geom_sf()
 
 left_join(geo_estados,
-          dados_com_regiao,
-          by = join_by(code_state == uf_codigo))
+  dados_com_regiao,
+  by = join_by(code_state == uf_codigo)
+)
 
 
-dados_geo <- geo_estados |> 
-  mutate(code_state = as.factor(code_state)) |> 
+dados_geo <- geo_estados |>
+  mutate(code_state = as.factor(code_state)) |>
   left_join(dados_com_regiao, by = c("code_state" = "uf_codigo"))
 
 # gráfico usando a base de dados unida
 library(ggplot2)
-dados_geo |> 
+dados_geo |>
   filter(trimestre_codigo == "202402") |>
   ggplot() +
   geom_sf(aes(fill = perc_desocupacao)) +
   theme_light() +
   scale_fill_viridis_c() +
-  labs(title = "Percentual de desocupação por UF no 2º trimestre de 2024",
-       fill = "Desocupação (%)") +
+  labs(
+    title = "Percentual de desocupação por UF no 2º trimestre de 2024",
+    fill = "Desocupação (%)"
+  ) +
   theme(legend.position = "bottom")
 
 

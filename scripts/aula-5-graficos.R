@@ -4,20 +4,20 @@ library(dplyr)
 
 dados <- readr::read_rds("dados_output/sidra_4092_arrumado.rds")
 
-dados_tri_recente <- dados |>  
+dados_tri_recente <- dados |>
   filter(trimestre_inicio == max(trimestre_inicio))
 
-# Introdução ao ggplot2 ------- 
-dados_tri_recente |> 
+# Introdução ao ggplot2 -------
+dados_tri_recente |>
   ggplot()
 
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot() +
   # atribuos estéticos
   aes(x = perc_desocupacao, y = uf)
 
 # dados
-dados_tri_recente |> 
+dados_tri_recente |>
   # começa o gráfico
   ggplot() + # usa o + para adicionar novas camadas
   # atribuos estéticos
@@ -27,7 +27,7 @@ dados_tri_recente |>
 
 # aes() dentro ou fora do geom? ---
 
-dados_tri_recente |> 
+dados_tri_recente |>
   # começa o gráfico
   ggplot() + # usa o + para adicionar novas camadas
   # atribuos estéticos
@@ -35,35 +35,35 @@ dados_tri_recente |>
   geom_col(aes(x = perc_desocupacao, y = uf))
 
 # 2 geometrias no mesmo gráfico
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot() +
   aes(x = perc_desocupacao, y = uf) +
   geom_col() +
   geom_point()
 
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot() +
   geom_col(aes(x = perc_desocupacao, y = uf)) +
   geom_point(aes(x = perc_desocupacao, y = uf))
 
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot() +
   aes(x = perc_desocupacao, y = uf) +
   geom_col() +
   geom_point(aes(color = regiao))
 
 
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot(aes(x = perc_desocupacao, y = uf)) +
   geom_col() +
   geom_point(aes(color = regiao))
 
 # dúvida: como preencher com a cor?
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot(aes(x = perc_desocupacao, y = uf)) +
   geom_col(aes(fill = regiao))
 
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot(aes(x = perc_desocupacao, y = uf)) +
   geom_col(fill = "lightblue")
 
@@ -82,37 +82,37 @@ dados_tri_recente |>
   geom_col(fill = "lightblue")
 
 # gráfico de dispersão --------
-dados |> 
-  filter(uf_sigla == "BA") |> 
+dados |>
+  filter(uf_sigla == "BA") |>
   ggplot() +
   geom_point(aes(x = trimestre_inicio, y = perc_desocupacao))
 
 # gráfico de linha ---
-dados |> 
-  filter(uf_sigla == "BA") |> 
+dados |>
+  filter(uf_sigla == "BA") |>
   ggplot() +
   geom_line(aes(x = trimestre_inicio, y = perc_desocupacao))
 
 # ordem das geometrias importa -----
-dados |> 
-  filter(uf_sigla == "BA") |> 
+dados |>
+  filter(uf_sigla == "BA") |>
   ggplot() +
   aes(x = trimestre_inicio, y = perc_desocupacao) +
   geom_line(color = "blue") +
   geom_point(color = "red")
 
-dados |> 
-  filter(uf_sigla == "BA") |> 
+dados |>
+  filter(uf_sigla == "BA") |>
   ggplot() +
   aes(x = trimestre_inicio, y = perc_desocupacao) +
   geom_point(color = "red") +
-  geom_line(color = "blue") 
+  geom_line(color = "blue")
 
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = trimestre_inicio, y = perc_desocupacao) +
-  geom_line(aes(group = uf)) 
+  geom_line(aes(group = uf))
 
 # geometria de barras/colunas ------
 
@@ -120,38 +120,38 @@ geom_bar() # x, calcula o numero de linhas por grupo
 geom_col() # x e y,
 
 # geom_col
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot() +
   aes(y = uf, x = perc_desocupacao) +
   geom_col()
 
 # geom_bar - é util para contagens
-dados |> 
+dados |>
   filter(perc_desocupacao >= 20) |>
-  ggplot() + 
-  aes(x = uf) + 
+  ggplot() +
+  aes(x = uf) +
   geom_bar()
 
-dados |> 
+dados |>
   filter(perc_desocupacao >= 20) |>
-  count(uf, name = "n_linhas") |> 
-  ggplot() + 
-  aes(x = uf, y  = n_linhas) + 
+  count(uf, name = "n_linhas") |>
+  ggplot() +
+  aes(x = uf, y = n_linhas) +
   geom_col()
 
 # exemplo do rafael
-tab_contagem <- dados |> 
+tab_contagem <- dados |>
   filter(perc_desocupacao >= 20) |>
-  count(uf) 
+  count(uf)
 
-tab_contagem |> 
-  ggplot() + 
-  aes(x = uf, y  = n) + 
+tab_contagem |>
+  ggplot() +
+  aes(x = uf, y = n) +
   geom_col()
 
 # invertendo os eixos: sugestão do Rafael
 
-dados_tri_recente |> 
+dados_tri_recente |>
   ggplot() +
   aes(x = uf, y = perc_desocupacao) +
   geom_col() +
@@ -159,7 +159,7 @@ dados_tri_recente |>
 
 # histograma e densidade ------------
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = perc_desocupacao) +
   geom_histogram() # valores absolutos
@@ -167,113 +167,115 @@ dados |>
 # `stat_bin()` using `bins = 30`. Pick better value with
 # `binwidth`.
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = perc_desocupacao) +
   geom_histogram(binwidth = 1) # 1 é a largura da barra
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = perc_desocupacao) +
-  geom_histogram(bins = 20) # 
+  geom_histogram(bins = 20) #
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = perc_desocupacao) +
-  geom_density()  # valores relativos
+  geom_density() # valores relativos
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = perc_desocupacao) +
   geom_density(aes(fill = regiao),
-               #alpha = 0.5, # TRANSPARENCIA
-               show.legend = FALSE) +
+    # alpha = 0.5, # TRANSPARENCIA
+    show.legend = FALSE
+  ) +
   facet_wrap(~regiao)
 
 # Boxplot ---------------------------
-dados |> 
+dados |>
   ggplot() +
   aes(x = regiao, y = perc_desocupacao) +
   geom_boxplot()
 
 # exercicio
-dados |> 
+dados |>
   ggplot() +
   aes(x = regiao, y = perc_desocupacao) +
   geom_boxplot(color = "green")
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = regiao, y = perc_desocupacao) +
   geom_boxplot(fill = "green")
 
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = regiao, y = perc_desocupacao) +
   geom_boxplot(aes(fill = regiao))
 
 
 
-dados |> 
+dados |>
   ggplot() +
   aes(x = regiao, y = perc_desocupacao) +
   geom_boxplot(aes(fill = regiao), show.legend = FALSE)
 
 # ?geom_boxplot
-# The upper whisker extends from the hinge to the largest value no further 
-# than 1.5 * IQR from the hinge (where IQR is the 
+# The upper whisker extends from the hinge to the largest value no further
+# than 1.5 * IQR from the hinge (where IQR is the
 # inter-quartile range, or distance between the first
-# and third quartiles). The lower whisker extends from 
+# and third quartiles). The lower whisker extends from
 # the hinge to the smallest value at most 1.5 * IQR of
-# the hinge. Data beyond the end of the whiskers are 
+# the hinge. Data beyond the end of the whiskers are
 # called "outlying" points and are plotted individually.
 
 # facet ---------------
 
 
-dados |> 
-  ggplot() + 
-  aes(x = trimestre_inicio, y = perc_desocupacao) + 
-  geom_line(aes(group = uf)) + 
+dados |>
+  ggplot() +
+  aes(x = trimestre_inicio, y = perc_desocupacao) +
+  geom_line(aes(group = uf)) +
   facet_wrap(~regiao, nrow = 1)
 
 # cuidado para nao colocar muitas categorias
-dados |> 
-  ggplot() + 
-  aes(x = trimestre_inicio, y = perc_desocupacao) + 
-  geom_line(aes(group = uf)) + 
+dados |>
+  ggplot() +
+  aes(x = trimestre_inicio, y = perc_desocupacao) +
+  geom_line(aes(group = uf)) +
   facet_wrap(~uf)
 
-dados |> 
-  ggplot() + 
-  aes(x = trimestre_inicio, y = perc_desocupacao) + 
-  geom_line(aes(group = uf)) + 
+dados |>
+  ggplot() +
+  aes(x = trimestre_inicio, y = perc_desocupacao) +
+  geom_line(aes(group = uf)) +
   # 1 variável
-  facet_wrap(~regiao, 
-             # scales = "free_y",
-             nrow = 1)
+  facet_wrap(~regiao,
+    # scales = "free_y",
+    nrow = 1
+  )
 
 
 
 
-dados |> 
-  ggplot() + 
-  aes(y = perc_desocupacao) + 
-  geom_boxplot() + 
+dados |>
+  ggplot() +
+  aes(y = perc_desocupacao) +
+  geom_boxplot() +
   facet_grid(regiao ~ periodo_pandemia)
 
 
-dados |> 
+dados |>
   ggplot() +
-  aes(y = uf, x = perc_desocupacao) + 
+  aes(y = uf, x = perc_desocupacao) +
   geom_boxplot() +
-  facet_grid(regiao~periodo_pandemia,
-              scales = "free_y"
-             )
+  facet_grid(regiao ~ periodo_pandemia,
+    scales = "free_y"
+  )
 
 # Dica do Pedro: pedir ajuda ao Chat GPT ao usar o ggplot2
-# Dica da Bea: escreva no prompt que está fazendo um gráfico com R e o 
+# Dica da Bea: escreva no prompt que está fazendo um gráfico com R e o
 # pacote ggplot2.
 # adicionar o resultado do glimpse() também é uma boa ideia,
 # assim as sugestões oferecidas usarão as colunas existentes
@@ -303,21 +305,18 @@ glimpse(dados)
 # Comentário: cuidado com a interpolação
 
 # O gráfico a seguir pode passar uma ideia errada:
-dados |> 
+dados |>
   filter(uf_sigla == "BA") |>
   mutate(periodo_pandemia = as.character(periodo_pandemia)) |>
-  ggplot() + 
-  aes(x = trimestre_inicio, y = perc_desocupacao) + 
+  ggplot() +
+  aes(x = trimestre_inicio, y = perc_desocupacao) +
   geom_line(aes(color = periodo_pandemia, group = "none"))
 
 # melhor colorir os pontos
-dados |> 
+dados |>
   filter(uf_sigla == "BA") |>
   mutate(periodo_pandemia = as.character(periodo_pandemia)) |>
-  ggplot() + 
-  aes(x = trimestre_inicio, y = perc_desocupacao) + 
+  ggplot() +
+  aes(x = trimestre_inicio, y = perc_desocupacao) +
   geom_line() +
   geom_point(aes(color = periodo_pandemia, group = "none"))
-
-
-
