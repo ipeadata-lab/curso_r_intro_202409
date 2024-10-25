@@ -351,8 +351,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="servidores-estatísticos" class="level1">
 <h1>Servidores estatísticos</h1>
-<p>No Ipea, existe um conjunto de servidores (máquinas virtuais) de alta capacidade, com softwares estatísticos instalados e que estão disponíveis para todos os nossos pesquisadores e colaboradores (e.g.&nbsp;bolsistas, etc.). Estes servidores (que chamamos de “servidores estatísticos”) são parte fundamental da ciência de dados do Ipea. Isso porque nós temos muitos pesquisadores e colaboradores trabalhando simultaneamente em projetos por vezes muito complexos. Além disso, é muito comum nos nossos trabalhos a gente ter que lidar com grandes volumes de dados (vários anos de RAIS, Cadastro Único, etc.), o que seria é inviável ou muito demorado em computadores comuns (limitação de memória RAM, capacidade de processamento, instabilidade da conexão de rede, etc., mesmo com o auxílio de pacotes para lidar com grandes bases de dados como <code>{arrow}</code> ou <code>{duckdb}</code>.</p>
-<p>A capacidade destes servidores (em Out/20204) é apresentada na figura abaixo:</p>
+<p>No Ipea, existe um conjunto de servidores (máquinas virtuais) de alta capacidade, com softwares de análise e processamento de dados e que estão disponíveis para todos os nossos pesquisadores e colaboradores (e.g.&nbsp;bolsistas). Estes servidores (que chamamos de “servidores estatísticos”) são parte fundamental da ciência de dados do Ipea. Isso porque nós temos muitos pesquisadores e colaboradores trabalhando simultaneamente em projetos por vezes muito complexos. Além disso, é muito comum nos nossos trabalhos a gente ter que lidar com grandes volumes de dados (vários anos de RAIS, Cadastro Único, etc.), o que seria é inviável ou muito demorado em computadores comuns devido a limitação de memória RAM, capacidade de processamento, instabilidade da conexão de rede, etc.</p>
+<p>A capacidade destes servidores (em Out/2024) é apresentada na figura abaixo:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/servidores.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
@@ -370,13 +370,13 @@ Nota
 <div class="callout-body-container callout-body">
 <p><strong>Como ter acesso aos servidores estatísticos?</strong></p>
 <ol type="1">
-<li><p>Entrar na rede do Ipea (PC ou <strong>Conexao VPN</strong>)</p></li>
-<li><p>Solicitar permissão por <strong>e-pedidos de TI</strong></p></li>
+<li><p>Entrar na rede do Ipea (PC ou via Conexao VPN)</p></li>
+<li><p>Abrir um <strong>e-pedidos de TI</strong> solicitando permissão de acesso a um ou mais dos servicodes estatísticos acima.</p></li>
 <li><p>Uma vez que você recebeu acesso, você pode se conectar ao servidor abrindo no seu computador a <strong>Área de Trabalho Remota</strong> do Windows.</p></li>
 </ol>
 </div>
 </div>
-<p>Os recursos computacionais nestes servidores, no entanto, não são ilimiados. Para evitarmos uma situação de <em>tragédia dos comuns</em>, que leve ao esgotamento dos recursos compartilhados sugerimos a adoção de algumas boas práticas na utilização dos servidores:</p>
+<p>Os recursos computacionais nestes servidores, no entanto, não são ilimitados. Para evitarmos uma situação de <em>tragédia dos comuns</em>, que leve ao esgotamento dos recursos compartilhados sugerimos a adoção de algumas boas práticas na utilização dos servidores:</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -408,14 +408,18 @@ Importante
 <li>Cadatro Único</li>
 <li>etc.</li>
 </ul>
-<p>A lista completa das bases de dados disponíveis pode ser consultada na intranet no <a href="intranet.gov.br/bases">catálogo de bases de dados</a>.</p>
+<p>A lista completa das bases de dados disponíveis pode ser consultada na intranet no <a href="http://intranet.ipea.gov.br/?id=1.4.25.4">catálogo de bases de dados</a>.</p>
 <p>As bases de dados do Ipea são armazenadas em difentes formatos, em alguns diretórios da rede (tabela abaixo) ou em bancos de dados relacionais (SQL Server).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/storages.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
-<p>Atualmente, a maior parte dos dados estão em diretórios na rede do Ipea, em especial no <code>Storage6</code>. No <code>Storage6</code>, essas bases estão organizadas a partir de duas pastas e suas subpastas: - <code>"documentação"</code>. Os arquivos nesta pasta e subpastas são totalmente acessível, mesmo a documentação das bases restritas. - <code>"dados"</code>. Suas subpastas incluem tanto os dados públicos quanto restritos. No caso dos dados restritos, o acesso a leitura dos dados requer autorização (detalhes abaixo):</p>
+<p>Atualmente, a maior parte dos dados estão em diretórios na rede do Ipea, em especial no <code>Storage6</code>. No <code>Storage6</code>, essas bases estão organizadas a partir de duas pastas e suas subpastas:</p>
+<ul>
+<li><code>"documentação"</code>: Os arquivos nesta pasta e subpastas são totalmente acessíveis, mesmo a documentação das bases restritas.</li>
+<li><code>"dados"</code>: Suas subpastas incluem tanto os dados públicos quanto restritos. No caso dos dados restritos, o acesso a leitura dos dados requer autorização (detalhes abaixo):</li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
@@ -453,9 +457,9 @@ Nota
 <li><p>O pedido de acesso é feito à Coordenação de Gestão de Dados (COGD), por meio de processo que tramita no <strong>SEI</strong> e envolve a assinatura de termos de compromisso sobre sigilo do dado;</p></li>
 <li><p>Algumas bases de dados sigilosas estão disponíveis apenas em ambientes de sigilo (sala ou servidor de sigilo). O acesso a esses ambientes também deve ser solicitado à COGD.</p></li>
 </ol>
-</div>
-</div>
 <p>Veja mais detalhes na nossa <a href="images/cheat_sheet_dados_v3.pdf">cheatsheet sobre as bases de dados</a>.</p>
+</div>
+</div>
 
 
 </section>
