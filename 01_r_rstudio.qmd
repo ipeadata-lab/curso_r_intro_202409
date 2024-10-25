@@ -272,8 +272,18 @@ pacotes_necessarios <- c( # <1>
   "skimr",
   "esquisse",
   "geobr",
+  "sf",
   "ipeaplot",
-  "ggthemes"
+  "ggthemes",
+  "censobr",
+  "arrow",
+  "knitr",
+  "abjData",
+  "DT",
+  "broom",
+  "report",
+  "car",
+  "stargazer"
 )  # <1>
 
 install.packages(pacotes_necessarios)  # <2>
