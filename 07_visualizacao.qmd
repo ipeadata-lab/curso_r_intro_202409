@@ -477,7 +477,7 @@ No caso do nosso exemplo, queremos ordenar as barras de acordo com o valor de `p
 grafico_ordenado <- dados_tri_recente |> 
   mutate(uf_fct = forcats::fct_reorder(uf, perc_desocupacao)) |> # <1>
   ggplot() + 
-  aes(y = uf_fct, x = perc_desocupacao) + 
+  aes(y = uf_fct, x = perc_desocupacao) + # <2>
   geom_col()
 
 grafico_ordenado
