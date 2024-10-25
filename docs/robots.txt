@@ -1,1 +1,0 @@
-Sitemap: https://ipeadata-lab.github.io/curso_r_intro_202409/sitemap.xml
