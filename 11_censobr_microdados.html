@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introdução à análise de dados no R - Microdados do Censo</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./12_censobr_agregados_setores.html" rel="next">
+<link href="./10_censobr_conceitos.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./11_censobr_microdados.html">Microdados do Censo</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introdução à análise de dados no R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ipeadata-lab/curso_r_intro_202409" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Pré-curso</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução à análise de dados no R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_instrucoes_pre_curso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instalação</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_projeto_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projeto de Análise Exploratória de Dados com R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Conceitos básicos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conhecendo o R e o RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_1_rproj.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diretório de trabalho e Projetos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_conceitos_basicos_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linguagem R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Etapas em uma análise de dados</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_intro_etapas_analise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_importacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_conhecendo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conhecendo a base de dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_transformacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise exploratória de dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_visualizacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_visualizacao_exemplo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exemplo prático: Visualização</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_regressao_linear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressão linear</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_censobr_conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceitos iniciais do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_censobr_microdados.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Microdados do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_censobr_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agregados dos Setores Censitários</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_censobr_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentação dos Censos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Data Lake do Ipea</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_infra_ipea.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_ipeadatalake.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acessando dados com o {ipeadatalake}</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Anexos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_erros_frequentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erros e <em>warnings</em> frequentes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#dados-disponíveis-no-censobr" id="toc-dados-disponíveis-no-censobr" class="nav-link active" data-scroll-target="#dados-disponíveis-no-censobr">Dados disponíveis no {censobr}</a></li>
+  <li><a href="#trabalhando-com-dados-maior-do-que-a-ram" id="toc-trabalhando-com-dados-maior-do-que-a-ram" class="nav-link" data-scroll-target="#trabalhando-com-dados-maior-do-que-a-ram">Trabalhando com dados maior do que a RAM</a></li>
+  <li><a href="#dados-de-população" id="toc-dados-de-população" class="nav-link" data-scroll-target="#dados-de-população">Dados de população</a></li>
+  <li><a href="#dados-de-domicílios" id="toc-dados-de-domicílios" class="nav-link" data-scroll-target="#dados-de-domicílios">Dados de domicílios</a>
+  <ul>
+  <li><a href="#saneamento" id="toc-saneamento" class="nav-link" data-scroll-target="#saneamento">Saneamento:</a></li>
+  </ul></li>
+  <li><a href="#análise-espacial-com-geobr" id="toc-análise-espacial-com-geobr" class="nav-link" data-scroll-target="#análise-espacial-com-geobr">Análise espacial com {geobr}</a></li>
+  <li><a href="#integração-entre-censobr-e-geobr" id="toc-integração-entre-censobr-e-geobr" class="nav-link" data-scroll-target="#integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</a>
+  <ul>
+  <li><a href="#distribuição-espacial-do-valor-do-aluguel" id="toc-distribuição-espacial-do-valor-do-aluguel" class="nav-link" data-scroll-target="#distribuição-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</a></li>
+  </ul></li>
+  <li><a href="#data-cache" id="toc-data-cache" class="nav-link" data-scroll-target="#data-cache">Data cache</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_censobr_intro.html">Explorando o Censo Demográfico</a></li><li class="breadcrumb-item"><a href="./11_censobr_microdados.html">Microdados do Censo</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Microdados do Censo</h1>
+<p class="subtitle lead">Módulo ministrado pela COCD</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="dados-disponíveis-no-censobr" class="level2">
+<h2 class="anchored" data-anchor-id="dados-disponíveis-no-censobr">Dados disponíveis no {censobr}</h2>
+<p>A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o <strong>{censobr}</strong>.</p>
+<p><strong>Tabela 1. Funções de dados disponíveis no {censobr}</strong></p>
+
+
+
+  <!-- <meta charset="UTF-8"> -->
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black; /* Thicker border for better visibility */
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+
+
+
+
+<table data-quarto-postprocess="true" data-border="1" data-cellpadding="5" data-cellspacing="0" class="table">
+<thead>
+<tr class="header">
+<th rowspan="2" data-quarto-table-cell-role="th">Função</th>
+<th rowspan="2" data-quarto-table-cell-role="th">Origem</th>
+<th rowspan="2" data-quarto-table-cell-role="th">Unidade</th>
+<th rowspan="2" data-quarto-table-cell-role="th">Definição</th>
+<th colspan="7" data-quarto-table-cell-role="th">Disponibilidade</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1960</th>
+<th data-quarto-table-cell-role="th">70</th>
+<th data-quarto-table-cell-role="th">80</th>
+<th data-quarto-table-cell-role="th">91</th>
+<th data-quarto-table-cell-role="th">2000</th>
+<th data-quarto-table-cell-role="th">10</th>
+<th data-quarto-table-cell-role="th">22</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>read_population()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de pessoas</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td><em>em breve</em></td>
+</tr>
+<tr class="even">
+<td>read_households()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de domicílios</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td><em>em breve</em></td>
+</tr>
+<tr class="odd">
+<td>read_families()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de famílias do censo de 2000</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>read_emigration()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de emigração</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td><em>em breve</em></td>
+</tr>
+<tr class="odd">
+<td>read_mortality()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de mortalidade</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td><em>em breve</em></td>
+</tr>
+<tr class="even">
+<td>read_tracts()</td>
+<td>Universo</td>
+<td>Setor Censitário</td>
+<td>Lê os dados do Universo agregados por setores censitários</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>em breve</td>
+<td>X</td>
+<td>em breve</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<p>Todas as funções do <strong>{censobr}</strong> para leitura de microdados possuem a mesma estrutra (sintaxe), o que permite o usuário baixar os dados de maneira fácil e intuitiva com um único comando. As funções possuem os seguintes parâmetros:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_households</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  year,          <span class="co"># ano de referência do censo</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  columns,       <span class="co"># seleciona colunas que devem ser lidas</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  add_labels,    <span class="co"># adiciona os 'labels' das variáveis categóricas</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  as_data_frame, <span class="co"># retorna resultado como um `Arrow DataSet` ou `data.frame`</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  showProgress,  <span class="co"># mostra barra de progresso do download</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  cache          <span class="co"># salva arquivo em cache para rapida leitura posteriormente</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cache local dos dados
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A primeira vez que o usuário executa uma função, o <strong>{censobr}</strong> fará o download dos dados e os armazenará localmente numa pasta do pacote. Dessa forma, os dados precisam ser baixados apenas uma vez. Mais informações na seção <em>Cache de Dados</em> abaixo.</p>
+</div>
+</div>
+</section>
+<section id="trabalhando-com-dados-maior-do-que-a-ram" class="level2">
+<h2 class="anchored" data-anchor-id="trabalhando-com-dados-maior-do-que-a-ram">Trabalhando com dados maior do que a RAM</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
+</figure>
+</div>
+<p>É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM do usuário. Para resolver esse problema, o <strong>{censobr}</strong> foi construído sobre a plataforma <a href="https://arrow.apache.org/docs/r/">Arrow</a> e arquivos em formato <code>.parquet</code>, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote <a href="https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr">{dplyr}</a>.</p>
+<p>Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que usamos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carrega bibliotecas</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censobr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dados-de-população" class="level2">
+<h2 class="anchored" data-anchor-id="dados-de-população">Dados de população</h2>
+<p>Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função <code>read_population()</code> para carregar os microdados de população.</p>
+<p>O comportamento padrão das funções do <strong>{censobr}</strong> é retornar <em>todas</em> as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar. Neste caso, usaremos somente as variáveis de peso amostral, sexo e idade (códigos <code>"V0010"</code>, <code>"V0601"</code> e <code>"V6036"</code>, respectivamente). No último capítulo do curso a gente vai ver como baixar os dicionários variáveis dos censos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">read_population</span>(</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">'V0010'</span>, <span class="st">'V0601'</span>, <span class="st">'V6036'</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">add_labels =</span> <span class="st">'pt'</span>,</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">showProgress =</span> <span class="cn">FALSE</span></span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(pop)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">Aumentando eficiência ao ler apenas as colunas que vamos usar</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">Adicionando os ‘labels’ em Português das variáveis categóricas.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "arrow_dplyr_query"</code></pre>
+</div>
+</div>
+<p>Ao rodar o comando <code>nrow(pop)</code>, você verá que a tabela de microdados de população do Censo de 2010 tinha mais de vinte milhões de observações (<code>20.635.472</code>), mas essas observações não estão carregadas na sua memória RAM. Isso porque, por padrão, a saída da função é um <code>"arrow_dplyr_query"</code> ou <code>"ArrowObject"</code>. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Note que se você passar o parâmetro <code>as_data_frame = TRUE</code>, a função carregará os dados como um <code>data.frame</code> na memória RAM. <strong><em>Atenção</em></strong>: isso pode fazer com que a sessão do R trave em ambientes com pouca memória.</p>
+<p>Esse output em arrow pode ser analisado de maneira similar a como se analisaria um <code>data.frame</code> utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas e resultados extraídos quando o usuário roda a função <code>dplyr::collect()</code>.</p>
+<p>Neste exemplo, abaixo, nós visualizamos as primeiras linhas 6 da tabela de dados com <code>head(pop)</code>, e somente essas poucas observações são carregas para memória com o commando <code>collect()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      V0010     V0601 V6036
+1 11.996452  Feminino    14
+2 11.996452 Masculino    45
+3 11.996452  Feminino     3
+4 10.298796  Feminino    57
+5 10.298796 Masculino    53
+6  7.872739  Feminino    29</code></pre>
+</div>
+</div>
+<p>O próximo passo para criamos nossa pirâmide populacional é criar um variável categória com grupos de idade. No exemplo abaix, nós utilizadmos grupos de 5 anos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&lt;=</span> <span class="dv">04</span>              <span class="sc">~</span> <span class="st">"00-05"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">05</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"05-10"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"10-15"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"15-20"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"20-25"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"25-30"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"30-35"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">35</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">40</span> <span class="sc">~</span> <span class="st">"35-40"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">40</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">"40-45"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"45-50"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">55</span> <span class="sc">~</span> <span class="st">"50-55"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">55</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"55-60"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"60-65"</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"65-70"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">70</span>              <span class="sc">~</span> <span class="st">"70+"</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      ))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     V0010     V0601 V6036 age_group
+1 8.083000 Masculino     8     05-10
+2 9.718624 Masculino    28     25-30
+3 9.718624  Feminino    19     15-20
+4 9.718624  Feminino     3     00-05
+5 9.513442  Feminino    61     60-65
+6 9.513442 Masculino    58     55-60</code></pre>
+</div>
+</div>
+<p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada grupo. Repare que ao chamarmos a função <code>collect()</code>, o código é executado e retorna um <code>data.frame</code> com a contagem de pessoas por sexo e faixa de idade. Repare que nós processamos todos os mais de 20 milhões de registro do censo, mas só precisamos carregar na memória essa tabela com 30 observações.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cacula tabela de contagem de pessoas por idade</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(V0601, age_group) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarise</span>(<span class="at">pop_count =</span> <span class="fu">sum</span>(V0010)) <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">collect</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(piramide_df)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   V0601 [2]
+  V0601     age_group pop_count
+  &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
+1 Masculino 20-25      8627665.
+2 Feminino  15-20      8429180.
+3 Masculino 35-40      6767177.
+4 Feminino  40-45      6688525.
+5 Masculino 10-15      8727095.
+6 Masculino 15-20      8557608.</code></pre>
+</div>
+</div>
+<p>Pronto, no último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove grupo com idade missing `NA`</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> <span class="fu">filter</span>(piramide_df, <span class="sc">!</span><span class="fu">is.na</span>(age_group))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># transforma a contagem de mulheres para valores negativos</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> piramide_df <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_count =</span> <span class="fu">if_else</span>(V0601 <span class="sc">==</span> <span class="st">"Masculino"</span>, pop_count, <span class="sc">-</span>pop_count))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># figura</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> piramide_df,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> pop_count <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> age_group,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> V0601)) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name=</span><span class="st">""</span>, <span class="at">type=</span><span class="fu">c</span>(<span class="st">"#ffcb69"</span>,<span class="st">"#437297"</span>)) <span class="sc">+</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x){scales<span class="sc">::</span><span class="fu">comma</span>(<span class="fu">abs</span>(x))},</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">8000</span>, <span class="sc">-</span><span class="dv">4000</span>,<span class="dv">0</span>,<span class="dv">4000</span>, <span class="dv">8000</span>),</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"População (em milhares)"</span>) <span class="sc">+</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"grey90"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/pop-pyramid-ggplot-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Pirâmide demográfica, Brasil, 2010</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dados-de-domicílios" class="level2">
+<h2 class="anchored" data-anchor-id="dados-de-domicílios">Dados de domicílios</h2>
+<section id="saneamento" class="level3">
+<h3 class="anchored" data-anchor-id="saneamento">Saneamento:</h3>
+<p>Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual a proporção de domicílios que estavam conectados à rede de esgoto nos municípios de cada região do Brasil. O primeiro passo é baixar os dados utilizando a função <code>read_households()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dom <span class="ot">&lt;-</span> <span class="fu">read_households</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora vamos (1) agrupar as observações por região e município, (2) obter o número de domicílios conectados à rede de esgoto, (3) obter o número total de domicílios, (4) calcular a proporção de domicílios conectados e (5) coletar os resultados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a>esg <span class="ot">&lt;-</span> dom <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">compute</span>() <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(name_region, code_muni) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">rede =</span> <span class="fu">sum</span>(V0010[<span class="fu">which</span>(V0207<span class="sc">==</span><span class="st">'1'</span>)]),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">total =</span> <span class="fu">sum</span>(V0010)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4">4</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">cobertura =</span> rede <span class="sc">/</span> total) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5">5</button><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">collect</span>()</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(esg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="1">Agrupar as observações por região e município</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="2">Obter o número de domicílios conectados à rede de esgoto</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="5" data-code-annotation="3">Obter o número total de domicílios</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="4">Calcular a proporção de domicílios conectados</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="7" data-code-annotation="5">Coletar os resultados.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+# Groups:   name_region [1]
+  name_region  code_muni   rede  total cobertura
+  &lt;chr&gt;            &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+1 Centro-oeste   5000203   73.4  4534    0.0162 
+2 Centro-oeste   5000252   10.3  1596.   0.00646
+3 Centro-oeste   5000609 2150.  11012.   0.195  
+4 Centro-oeste   5000708 1705.   7419.   0.230  
+5 Centro-oeste   5000807   35.9  2759.   0.0130 
+6 Centro-oeste   5000856   12.4  3053.   0.00407</code></pre>
+</div>
+</div>
+<p>Uma rápida análise da dispersão dos valores com o <em>box-plot</em> abaixo já revela um dos retratos da desigualdade regional brasileira. Em todos municípios da região Norte e quase metade dos municípios da região Nordeste, a gente encontra que menos de 50% dos domicílios estavam conectados à rede de esgoto em 2010. No próximo bloco, nós vamos visualizar como essas diferenças se distribuem espacialmente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(esg) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(name_region, <span class="sc">-</span>cobertura), <span class="at">y=</span>cobertura, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weight  =</span> rede, <span class="at">color=</span>name_region), </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">show.legend =</span> F, <span class="at">outlier.alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Região"</span>, <span class="at">y=</span><span class="st">"Quantidade de domicílios</span><span class="sc">\n</span><span class="st">conectados à rede de esgoto"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/plot-sewage-regions-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="análise-espacial-com-geobr" class="level2">
+<h2 class="anchored" data-anchor-id="análise-espacial-com-geobr">Análise espacial com {geobr}</h2>
+<p>O <strong>{geobr}</strong> é um pacote para baixar dados espaciais oficiais do Brasil <span class="citation" data-cites="pereira2019geobr">(<a href="#ref-pereira2019geobr" role="doc-biblioref">Pereira e Gonçalves 2019</a>)</span>. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a <a href="https://ipeagit.github.io/geobr/">lista completa no site do pacote</a>).</p>
+</section>
+<section id="integração-entre-censobr-e-geobr" class="level2">
+<h2 class="anchored" data-anchor-id="integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</h2>
+<div style="display: flex; justify-content: space-around;">
+<p><img src="images/censobr_logo.png" class="img-fluid quarto-figure quarto-figure-center" width="160" alt="Image 1"> <img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-center" width="160" alt="Image 2"></p>
+</div>
+<div class="callout-information" data-appearance="default">
+<p>Todos os dados do <strong>{censobr}</strong> são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote <strong>{geobr}</strong> para facilitar a manipulação e a integração de dados espaciais dos censos demográficos do Brasil. As colunas adicionadas são: <code>c('code_muni', 'code_state', 'abbrev_state', 'name_state', 'code_region', 'name_region', 'code_weighting', 'code_tract')</code>.</p>
+</div>
+<p>Para criarmos uma mapa com a distribuição espacial da cobertura da rede de esgoto no Brasil, nós vamos primeiro usar o pacote <strong>{geobr}</strong> para baixar as geometrias dos municípios brasileiros no ano de 2010. Vamos também sobrepor os limites das grandes regiões do país para dar um pouco mais de contexto à figura.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>regioes_df <span class="ot">&lt;-</span> <span class="fu">read_region</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>muni_sf <span class="ot">&lt;-</span> <span class="fu">read_municipality</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(muni_sf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 4 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -63.61822 ymin: -13.6937 xmax: -60.33317 ymax: -9.66916
+Geodetic CRS:  SIRGAS 2000
+  code_muni             name_muni code_state abbrev_state
+1   1100015 Alta Floresta D'oeste         11           RO
+2   1100023             Ariquemes         11           RO
+3   1100031                Cabixi         11           RO
+4   1100049                Cacoal         11           RO
+5   1100056            Cerejeiras         11           RO
+6   1100064     Colorado Do Oeste         11           RO
+                            geom
+1 MULTIPOLYGON (((-62.2462 -1...
+2 MULTIPOLYGON (((-63.13712 -...
+3 MULTIPOLYGON (((-60.52408 -...
+4 MULTIPOLYGON (((-61.42679 -...
+5 MULTIPOLYGON (((-61.41347 -...
+6 MULTIPOLYGON (((-60.66352 -...</code></pre>
+</div>
+</div>
+<p>Agora nós só precisamos unir os dados espaciais com nossas estimativas utilizando a variável chave <code>code_muni</code> e mapear os resultados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>esg_sf <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(muni_sf, esg, <span class="at">by =</span> <span class="st">'code_muni'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot map</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> esg_sf, <span class="fu">aes</span>(<span class="at">fill =</span> cobertura), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> regioes_df, <span class="at">color =</span> <span class="st">'gray20'</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Quantidade de domicílios conectados à rede de esgoto"</span>) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Greens"</span>, <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name=</span><span class="st">'Proporção de</span><span class="sc">\n</span><span class="st">domicílios'</span>, </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'bottom'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/merge-geobr-censobr-plot-map-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="distribuição-espacial-do-valor-do-aluguel" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</h3>
+<p>No exemplo anterior, nós agregamos os microdados do censo no nível de municípios. Neste próximo exemplo, faremos uma análise espacial no nível de áreas de ponderação. Aqui nós vamos visualizar como o valor do aluguel varia espacialmente na região metropolitana de São Paulo.</p>
+<p>Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o <strong>{geobr}</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>metro_sp <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_metro_area</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">showProgress =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(name_metro <span class="sc">==</span> <span class="st">"RM São Paulo"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Também precisamos dos polígonos das áreas de ponderação. Com o código abaixo, baixamos todas as áreas de ponderação do estado de São Paulo e, em seguida, mantemos apenas aquelas na região metropolitana de São Paulo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>wt_areas <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_weighting_area</span>(<span class="at">code_weighting =</span> <span class="st">"SP"</span>,</span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">simplified =</span> <span class="cn">FALSE</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>wt_areas <span class="ot">&lt;-</span> <span class="fu">filter</span>(wt_areas, code_muni <span class="sc">%in%</span> metro_sp<span class="sc">$</span>code_muni)</span>
+<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wt_areas)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="1">O comportamento padrão do {geobr} é baixar uma versão da malha espacial com geometrias ligeiramente simplificadas (<code>simplified = TRUE</code>) para agilizar o processamento e visualização de dados. Aqui, nós baixamos os dados com geometrias originais devido à escala espacial da visualização dos resultados.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 7 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -46.73454 ymin: -23.64487 xmax: -46.64756 ymax: -23.53528
+Geodetic CRS:  SIRGAS 2000
+  code_weighting code_muni name_muni code_state abbrev_state code_region
+1  3550308005100   3550308 São Paulo         35           SP           3
+2  3550308005102   3550308 São Paulo         35           SP           3
+3  3550308005101   3550308 São Paulo         35           SP           3
+4  3550308005104   3550308 São Paulo         35           SP           3
+5  3550308005103   3550308 São Paulo         35           SP           3
+6  3550308005106   3550308 São Paulo         35           SP           3
+  name_region                           geom
+1     Sudeste MULTIPOLYGON (((-46.67201 -...
+2     Sudeste MULTIPOLYGON (((-46.67663 -...
+3     Sudeste MULTIPOLYGON (((-46.67257 -...
+4     Sudeste MULTIPOLYGON (((-46.70138 -...
+5     Sudeste MULTIPOLYGON (((-46.69581 -...
+6     Sudeste MULTIPOLYGON (((-46.73454 -...</code></pre>
+</div>
+</div>
+<p>Agora voltamos para a base de dados de domicílios do censo de 2010. Com essa base, nós precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Note que para isso nós usamos a média do aluguel (variável <code>V2011</code>) ponderada pelo peso do domicílio (variável <code>V0010</code>). Para encontrar esses valores, o código abaixo (1) filtra apenas as observações nos nossos municípios de interesse, (2) computa temporariamente o resultado, (3) agrupa as observações por área de ponderação, (4) calcula o valor médio do aluguel e (5) coleta os resultados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>rent <span class="ot">&lt;-</span> dom <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(code_muni <span class="sc">%in%</span> metro_sp<span class="sc">$</span>code_muni) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">compute</span>() <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(code_weighting) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4">4</button><span id="annotated-cell-15-5" class="code-annotation-target"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">avgrent=</span><span class="fu">weighted.mean</span>(<span class="at">x=</span>V2011, <span class="at">w=</span>V0010, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5">5</button><span id="annotated-cell-15-6" class="code-annotation-target"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">collect</span>()</span>
+<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rent)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="1">Filtra apenas as observações nos nossos municípios de interesse</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="3" data-code-annotation="2">Computa temporariamente o resultado</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="4" data-code-annotation="3">Agrupa as observações por área de ponderação</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="5" data-code-annotation="4">Calcula o valor médio do aluguel</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="6" data-code-annotation="5">Coleta os resultados.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  code_weighting avgrent
+  &lt;chr&gt;            &lt;dbl&gt;
+1 3503901003001     355.
+2 3503901003002     627.
+3 3503901003003     358.
+4 3505708005001     577.
+5 3505708005002     397.
+6 3505708005003     327.</code></pre>
+</div>
+</div>
+<p>Por fim, basta unirmos os dados espaciais com nossas estimativas de aluguel pela variável chave de código da área de ponderação (<code>code_weighting</code>), e mapear os resultados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rent_sf <span class="ot">&lt;-</span> <span class="fu">left_join</span>(wt_areas, rent, <span class="at">by =</span> <span class="st">'code_weighting'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rent_sf, <span class="fu">aes</span>(<span class="at">fill =</span> avgrent), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> metro_sp, <span class="at">color=</span><span class="st">'gray'</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Valor médio do aluguel por área de ponderação"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Região Metropolitana de São Paulo, 2010"</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Purples"</span>, <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name=</span><span class="st">'Valores</span><span class="sc">\n</span><span class="st">em R$'</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>)) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11_censobr_microdados_files/figure-html/plot-alugel-areapond-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-cache" class="level2">
+<h2 class="anchored" data-anchor-id="data-cache">Data cache</h2>
+<p>Na primeira vez que o usuário executa uma função, o <strong>{censobr}</strong> fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro <code>cache</code> está configurado como <code>TRUE</code> (que é o comportamento padrão do pacote), a função lerá os dados que já estão armanezados em cache, o que é praticamente instantâneo.</p>
+<p>Os usuários podem gerenciar os conjuntos de dados em cache usando a função <code>censobr_cache()</code>. Por exemplo, os usuários podem:</p>
+<p>Listar arquivos em cache:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">list_files =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Deletar um arquivo específico:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"2010_emigration"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Deletar todos arquivos do cache:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"all"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Por padrão, os arquivos do <strong>{censobr}</strong> são salvos no diretório ‘User’. No entanto, os usuários podem executar a função <code>set_censobr_cache_dir()</code> para definir um diretório de cache personalizado. Note que essa definição personalizada precisa ser definida a cada nova sessão do R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tempf <span class="ot">&lt;-</span> <span class="fu">tempdir</span>()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set_censobr_cache_dir</span>(<span class="at">path =</span> tempf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-pereira2019geobr" class="csl-entry" role="listitem">
+Pereira, Rafael H. M., e Caio N. Gonçalves. 2019. <em>geobr: Download Official Spatial Data Sets of Brazil</em>. CRAN. <a href="https://doi.org/10.32614/CRAN.package.geobr">https://doi.org/10.32614/CRAN.package.geobr</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ipeadata-lab\.github\.io\/curso_r_intro_202409");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
+          }
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10_censobr_conceitos.html" class="pagination-link  aria-label=" conceitos="" iniciais="" do="" censo"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conceitos iniciais do Censo</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./12_censobr_agregados_setores.html" class="pagination-link" aria-label="Agregados dos Setores Censitários">
+        <span class="nav-page-text">Agregados dos Setores Censitários</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

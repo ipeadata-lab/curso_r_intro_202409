@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introdução à análise de dados no R - Conhecendo a base de dados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05_transformacao.html" rel="next">
+<link href="./03_importacao.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./04_conhecendo.html">Conhecendo a base de dados</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introdução à análise de dados no R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ipeadata-lab/curso_r_intro_202409" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Pré-curso</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução à análise de dados no R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_instrucoes_pre_curso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instalação</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_projeto_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projeto de Análise Exploratória de Dados com R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Conceitos básicos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_r_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conhecendo o R e o RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_1_rproj.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diretório de trabalho e Projetos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_conceitos_basicos_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linguagem R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Etapas em uma análise de dados</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_intro_etapas_analise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_importacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_conhecendo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Conhecendo a base de dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_transformacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_analise_exploratoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise exploratória de dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_visualizacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizando dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_visualizacao_exemplo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exemplo prático: Visualização</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_regressao_linear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressão linear</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_censobr_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explorando o Censo Demográfico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_censobr_conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceitos iniciais do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_censobr_microdados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Microdados do Censo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_censobr_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agregados dos Setores Censitários</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_censobr_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentação dos Censos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Data Lake do Ipea</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_infra_ipea.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Infraestrutura de pesquisa do Ipea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_ipeadatalake.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acessando dados com o {ipeadatalake}</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Anexos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_erros_frequentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erros e <em>warnings</em> frequentes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#estrutura-da-base-de-dados" id="toc-estrutura-da-base-de-dados" class="nav-link active" data-scroll-target="#estrutura-da-base-de-dados">Estrutura da base de dados</a>
+  <ul>
+  <li><a href="#view" id="toc-view" class="nav-link" data-scroll-target="#view">View</a></li>
+  </ul></li>
+  <li><a href="#sumário-das-variáveis" id="toc-sumário-das-variáveis" class="nav-link" data-scroll-target="#sumário-das-variáveis">Sumário das variáveis</a>
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">summary()</a></li>
+  <li><a href="#skimrskim" id="toc-skimrskim" class="nav-link" data-scroll-target="#skimrskim">skimr::skim()</a></li>
+  </ul></li>
+  <li><a href="#valores-faltantes-na" id="toc-valores-faltantes-na" class="nav-link" data-scroll-target="#valores-faltantes-na">Valores faltantes (<code>NA</code>)</a></li>
+  <li><a href="#retornar-algumas-linhas-da-base-de-dados" id="toc-retornar-algumas-linhas-da-base-de-dados" class="nav-link" data-scroll-target="#retornar-algumas-linhas-da-base-de-dados">Retornar algumas linhas da base de dados</a></li>
+  <li><a href="#conhecendo-os-valores-únicos-de-uma-coluna" id="toc-conhecendo-os-valores-únicos-de-uma-coluna" class="nav-link" data-scroll-target="#conhecendo-os-valores-únicos-de-uma-coluna">Conhecendo os valores únicos de uma coluna</a></li>
+  <li><a href="#sugestão-de-exercícios" id="toc-sugestão-de-exercícios" class="nav-link" data-scroll-target="#sugestão-de-exercícios">Sugestão de exercícios</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_intro_etapas_analise.html">Etapas em uma análise de dados</a></li><li class="breadcrumb-item"><a href="./04_conhecendo.html">Conhecendo a base de dados</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Conhecendo a base de dados</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Conceitos prévios importantes:</p>
+<ul>
+<li><p><a href="./03_importacao.html">Como importar bases de dados?</a></p></li>
+<li><p><a href="./02_conceitos_basicos_r.html">Tipos de variáveis</a></p></li>
+<li><p><a href="./02_conceitos_basicos_r.html">Valores faltantes (<code>NA</code>)</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Nesta seção, vamos conhecer algumas funções que nos ajudarão a conhecer um pouco mais sobre a base de dados que estamos trabalhando.</p>
+<p>Essa etapa é importante para:</p>
+<ul>
+<li><p>Entender qual é a estrutura da base de dados: quais são as variáveis presentes, o que cada linha representa, entre outros.</p></li>
+<li><p>Descobrir se há valores faltantes, em quais variáveis eles estão presentes e em que proporção.</p></li>
+<li><p>Identificar o que é necessário fazer para arrumar a base de dados (isso vamos explorar posteriormente).</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Sugestão:</strong> Ao longo deste capítulo, sugerimos que tente identificar o que é necessário para arrumar essa base de dados.</p>
+</div>
+</div>
+<p>Vamos começar importando a base de dados que utilizaremos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/sidrar_4092_bruto.rds"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="estrutura-da-base-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="estrutura-da-base-de-dados">Estrutura da base de dados</h2>
+<p>Vamos começar conhecendo a estrutura da base de dados. Para isso, existem algumas funções para saber o número de colunas e linhas, os nomes das colunas, entre outras informações. Algumas delas apresentam as mesmas informações, mas de formas diferentes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Número de colunas</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Número de linhas</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Número de linhas e colunas</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27000    13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nomes das colunas</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Nível Territorial (Código)"                                             
+ [2] "Nível Territorial"                                                      
+ [3] "Unidade de Medida (Código)"                                             
+ [4] "Unidade de Medida"                                                      
+ [5] "Valor"                                                                  
+ [6] "Unidade da Federação (Código)"                                          
+ [7] "Unidade da Federação"                                                   
+ [8] "Trimestre (Código)"                                                     
+ [9] "Trimestre"                                                              
+[10] "Variável (Código)"                                                      
+[11] "Variável"                                                               
+[12] "Condição em relação à força de trabalho e condição de ocupação (Código)"
+[13] "Condição em relação à força de trabalho e condição de ocupação"         </code></pre>
+</div>
+</div>
+<p>A função <code>glimpse()</code> do pacote <code>{dplyr}</code> apresenta informações como: número de linhas, número de colunas, nome e tipo de cada coluna, e os primeiros valores de cada coluna. Porém o texto resultante dependerá da largura do <em>Console</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/04_glimpse.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela: Resultado da função glimpse()</figcaption>
+</figure>
+</div>
+<section id="view" class="level3">
+<h3 class="anchored" data-anchor-id="view">View</h3>
+<p>Uma outra função que é interessante é a <code>View()</code>. Ela nos permite visualizar a base de dados em uma nova janela, em formato de tabela. Porém, é importante tomar cuidado ao usá-la com bases de dados grandes, pois pode travar o RStudio dependendo.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Observação:</strong> Se você estiver com o <code>{tidyverse}</code> carregado, a função <code>view()</code> (com o v minúsculo) também está disponível. Ela é uma versão mais moderna da função <code>View()</code>, e tem algumas funcionalidades a mais. Para os fins dessa aula, podemos usar qualquer uma das duas.</p>
+</div>
+</div>
+<p>Outra forma de acessar o View é clicando na linha do objeto no painel <em>Environment</em> do RStudio:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/04_environment.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Captura de tela: Onde clicamos para abrir o View</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/04_view.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Gravação da tela - Usando o View</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sumário-das-variáveis" class="level2">
+<h2 class="anchored" data-anchor-id="sumário-das-variáveis">Sumário das variáveis</h2>
+<p>Em funções apresentadas anteriormente, como a <code>names()</code>, já conseguimos ter uma ideia de quais são as variáveis da base de dados. Mas é interessante ter mais informações, como: tipo de variável, quantidade de valores faltantes, entre outros.</p>
+<p>Nessa etapa, conheceremos algumas funções que nos ajudarão a ter essas informações. Algumas apresentam as mesmas informações, mas de formas diferentes. Portanto, é interessante conhecer algumas delas, e escolher qual é a que melhor atende às nossas necessidades.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aviso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cuidado: as funções apresentadas a seguir calculam algumas estatísticas descritivas (como a média, mediana, desvio padrão, valor mínimo, valor máximo, entre outras) em variáveis numéricas. Porém, ainda não “arrumamos” a base de dados (faremos isso no capítulo <a href="./05_transformacao.html">Transformando dados</a>), e os dados ainda não estão adequados para esses cálculos.</p>
+<p>Alguns exemplos:</p>
+<ul>
+<li><p>Várias colunas numéricas representam o código de uma categoria, e não faz sentido calcular a média desses códigos.</p></li>
+<li><p>A variável <code>valor</code> está relacionada com a variável <code>Unidade de Medida</code>. Neste momento, a tabela apresenta valores com diferentes unidades de medida, e não faz sentido calcular a média desses valores.</p></li>
+</ul>
+<p>Falaremos sobre o cálculo de estatísticas descritivas no capítulo <a href="./06_analise_exploratoria.html">Análise Exploratória de Dados</a>.</p>
+</div>
+</div>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">summary()</h3>
+<p>A função <code>summary()</code> é uma função do R base (ou seja, não precisamos carregar nenhum pacote para usá-la), e ela nos dá um sumário das variáveis da base de dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Nível Territorial (Código) Nível Territorial  Unidade de Medida (Código)
+ Length:27000               Length:27000       Length:27000              
+ Class :character           Class :character   Class :character          
+ Mode  :character           Mode  :character   Mode  :character          
+                                                                         
+                                                                         
+                                                                         
+                                                                         
+ Unidade de Medida      Valor         Unidade da Federação (Código)
+ Length:27000       Min.   :    0.3   Length:27000                 
+ Class :character   1st Qu.:    1.5   Class :character             
+ Mode  :character   Median :    7.8   Mode  :character             
+                    Mean   :  862.0                                
+                    3rd Qu.:  105.8                                
+                    Max.   :39480.0                                
+                    NA's   :1350                                   
+ Unidade da Federação Trimestre (Código)  Trimestre         Variável (Código) 
+ Length:27000         Length:27000       Length:27000       Length:27000      
+ Class :character     Class :character   Class :character   Class :character  
+ Mode  :character     Mode  :character   Mode  :character   Mode  :character  
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+   Variável        
+ Length:27000      
+ Class :character  
+ Mode  :character  
+                   
+                   
+                   
+                   
+ Condição em relação à força de trabalho e condição de ocupação (Código)
+ Length:27000                                                           
+ Class :character                                                       
+ Mode  :character                                                       
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+ Condição em relação à força de trabalho e condição de ocupação
+ Length:27000                                                  
+ Class :character                                              
+ Mode  :character                                              
+                                                               
+                                                               
+                                                               
+                                                               </code></pre>
+</div>
+</div>
+</section>
+<section id="skimrskim" class="level3">
+<h3 class="anchored" data-anchor-id="skimrskim">skimr::skim()</h3>
+<p>O pacote <code>{skimr}</code> tem uma função chamada <code>skim()</code> que nos dá um sumário das variáveis da base de dados.</p>
+<p>É interesante salvar o resultado da função em um objeto, para que possamos acessar as informações posteriormente, em formato de tabela.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>skim_dados <span class="ot">&lt;-</span> skimr<span class="sc">::</span><span class="fu">skim</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A seguir, podemos ver o resultado da função <code>skim()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>skim_dados</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">dados</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">27000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nível Territorial (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nível Territorial</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unidade de Medida (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unidade de Medida</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unidade da Federação (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unidade da Federação</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Trimestre (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trimestre</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Variável (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Variável</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condição em relação à força de trabalho e condição de ocupação (Código)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Condição em relação à força de trabalho e condição de ocupação</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Valor</td>
+<td style="text-align: right;">1350</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">862.03</td>
+<td style="text-align: right;">2896.64</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">7.8</td>
+<td style="text-align: right;">105.75</td>
+<td style="text-align: right;">39480</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>O resultado da função <code>skim()</code> é dividido em duas partes:</p>
+<ul>
+<li><p><em>Data summary</em>: informações gerais sobre a base de dados, como: nome do objeto, número de linhas, número de colunas, quantas colunas temos em cada tipo, e se a base está agrupada por alguma variável<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
+<li><p><strong>Variable type</strong>: para cada tipo de variável presente na base de dados, temos informações como:</p>
+<ul>
+<li><code>skim_variable</code>: nome da variável.</li>
+<li><code>n_missing</code>: número de valores faltantes.</li>
+<li><code>complete_rate</code>: proporção de valores não faltantes (está relacionada com a <code>n_missing</code>).</li>
+<li>Outras colunas específicas segundo o tipo de variável.</li>
+</ul></li>
+</ul>
+<p>A seguir, estão as informações que a função <code>skim()</code> retorna para os tipos de variáveis mais frequentes:</p>
+<ul>
+<li><em>character</em> (dados de texto):
+<ul>
+<li><code>min</code>: número mínimo de caracteres.</li>
+<li><code>max</code>: número máximo de caracteres.</li>
+<li><code>empty</code>: número de linhas contendo valores vazios (um valor vazio é um valor que contém apenas <code>""</code>).</li>
+<li><code>n_unique</code>: número de valores únicos.</li>
+<li><code>whitespace</code>: número de linhas contendo apenas espaços em branco.</li>
+</ul></li>
+<li><em>numeric</em> (dados numéricos):
+<ul>
+<li><code>mean</code>: média.</li>
+<li><code>sd</code>: desvio padrão.</li>
+<li><code>p0</code>: valor mínimo.</li>
+<li><code>p25</code>: primeiro quartil.</li>
+<li><code>p50</code>: mediana.</li>
+<li><code>p75</code>: terceiro quartil.</li>
+<li><code>p100</code>: valor máximo.</li>
+<li><code>hist</code>: histograma dos valores.</li>
+</ul></li>
+<li><em>date</em> (datas):
+<ul>
+<li><code>min</code>: data mínima.</li>
+<li><code>max</code>: data máxima.</li>
+<li><code>median</code>: data mediana.</li>
+<li><code>n_unique</code>: número de datas únicas.</li>
+</ul></li>
+<li><em>factor</em> (dados categóricos):
+<ul>
+<li><code>ordered</code>: os níveis do fator estão ordenados?</li>
+<li><code>n_unique</code>: número de valores únicos do fator.</li>
+<li><code>top_counts</code>: os valores mais frequentes do fator.</li>
+</ul></li>
+<li><em>logical</em> (dados booleanos):
+<ul>
+<li><code>mean</code>: média dos valores, considerando que <code>TRUE</code> é 1 e <code>FALSE</code> é 0.</li>
+<li><code>count</code>: contagem dos valores <code>TRUE</code> e <code>FALSE</code>.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="valores-faltantes-na" class="level2">
+<h2 class="anchored" data-anchor-id="valores-faltantes-na">Valores faltantes (<code>NA</code>)</h2>
+<p>A presença de valores faltantes é algo comum em bases de dados. Eles podem ocorrer por diversos motivos, como: não temos a informação, erros de digitação, entre outros.</p>
+<p>É importante identificar onde estão esses valores, para que possamos nos atentar em análises futuras.</p>
+<p>Existem algumas funções que nos ajudam a identificar a presença de valores faltantes na base de dados. O pacote <code>{naniar}</code> apresenta funções úteis para isso: a função <code>gg_miss_var()</code> cria uma visualição apresentando o nome das variáveis da base de dados, assim como a quantidade de valores faltantes em cada uma delas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>naniar<span class="sc">::</span><span class="fu">gg_miss_var</span>(dados)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Valores absolutos</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_conhecendo_files/figure-html/exemplo-naniar-absoluto-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>naniar<span class="sc">::</span><span class="fu">gg_miss_var</span>(dados, <span class="at">show_pct =</span> <span class="cn">TRUE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">Valores relativos</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_conhecendo_files/figure-html/exemplo-naniar-relativo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="retornar-algumas-linhas-da-base-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="retornar-algumas-linhas-da-base-de-dados">Retornar algumas linhas da base de dados</h2>
+<p>Em situações onde trabalharmos com dados que possuem um número de linhas muito grande, não podemos utilizar a função <code>View()</code> para ver a tabela inteira.</p>
+<p>Nesse caso, podemos ser interessante usar funções que retornam apenas algumas linhas da base de dados, como <code>head()</code>, <code>tail()</code>, <code>slice_sample()</code>, entre outras.</p>
+<p>Antes de usá-las, vamos adicionar uma coluna que represente o número da linha, para que seja mais fácil identificar as linhas que estamos selecionando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a>dados_com_n_linha <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">rowid_to_column</span>(dados, <span class="st">"n_linha"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">A função <code>rowid_to_column()</code> adiciona uma coluna com o número da linha.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Agora podemos usar as funções para retornar algumas linhas da base de dados. Observe os resultados apresentados, e os valores na coluna <code>n_linha</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibindo as primeiras linhas</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados_com_n_linha)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
+1       1                          3 Unidade da Federação
+2       2                          3 Unidade da Federação
+3       3                          3 Unidade da Federação
+4       4                          3 Unidade da Federação
+5       5                          3 Unidade da Federação
+6       6                          3 Unidade da Federação
+  Unidade de Medida (Código) Unidade de Medida  Valor
+1                       1572       Mil pessoas 1210.0
+2                       1572       Mil pessoas  765.0
+3                       1572       Mil pessoas  703.0
+4                       1572       Mil pessoas   62.0
+5                       1572       Mil pessoas  446.0
+6                          2                 %    0.7
+  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
+1                            11             Rondônia             201201
+2                            11             Rondônia             201201
+3                            11             Rondônia             201201
+4                            11             Rondônia             201201
+5                            11             Rondônia             201201
+6                            11             Rondônia             201201
+          Trimestre Variável (Código)
+1 1º trimestre 2012              1641
+2 1º trimestre 2012              1641
+3 1º trimestre 2012              1641
+4 1º trimestre 2012              1641
+5 1º trimestre 2012              1641
+6 1º trimestre 2012              4087
+                                                       Variável
+1                           Pessoas de 14 anos ou mais de idade
+2                           Pessoas de 14 anos ou mais de idade
+3                           Pessoas de 14 anos ou mais de idade
+4                           Pessoas de 14 anos ou mais de idade
+5                           Pessoas de 14 anos ou mais de idade
+6 Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+  Condição em relação à força de trabalho e condição de ocupação (Código)
+1                                                                   32385
+2                                                                   32386
+3                                                                   32387
+4                                                                   32446
+5                                                                   32447
+6                                                                   32385
+  Condição em relação à força de trabalho e condição de ocupação
+1                                                          Total
+2                                              Força de trabalho
+3                                    Força de trabalho - ocupada
+4                                 Força de trabalho - desocupada
+5                                      Fora da força de trabalho
+6                                                          Total</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibindo as últimas linhas</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dados_com_n_linha)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      n_linha Nível Territorial (Código)    Nível Territorial
+26995   26995                          3 Unidade da Federação
+26996   26996                          3 Unidade da Federação
+26997   26997                          3 Unidade da Federação
+26998   26998                          3 Unidade da Federação
+26999   26999                          3 Unidade da Federação
+27000   27000                          3 Unidade da Federação
+      Unidade de Medida (Código) Unidade de Medida Valor
+26995                          2                 %  31.6
+26996                          2                 %    NA
+26997                          2                 %   1.1
+26998                          2                 %   1.3
+26999                          2                 %   7.4
+27000                          2                 %   2.3
+      Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
+26995                            53     Distrito Federal             202402
+26996                            53     Distrito Federal             202402
+26997                            53     Distrito Federal             202402
+26998                            53     Distrito Federal             202402
+26999                            53     Distrito Federal             202402
+27000                            53     Distrito Federal             202402
+              Trimestre Variável (Código)
+26995 2º trimestre 2024              4104
+26996 2º trimestre 2024              4105
+26997 2º trimestre 2024              4105
+26998 2º trimestre 2024              4105
+26999 2º trimestre 2024              4105
+27000 2º trimestre 2024              4105
+                                                                                       Variável
+26995                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+26996 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+26997 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+26998 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+26999 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+27000 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+      Condição em relação à força de trabalho e condição de ocupação (Código)
+26995                                                                   32447
+26996                                                                   32385
+26997                                                                   32386
+26998                                                                   32387
+26999                                                                   32446
+27000                                                                   32447
+      Condição em relação à força de trabalho e condição de ocupação
+26995                                      Fora da força de trabalho
+26996                                                          Total
+26997                                              Força de trabalho
+26998                                    Força de trabalho - ocupada
+26999                                 Força de trabalho - desocupada
+27000                                      Fora da força de trabalho</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "Sorteando" linhas</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(dados_com_n_linha, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
+1   19938                          3 Unidade da Federação
+2    6832                          3 Unidade da Federação
+3   21174                          3 Unidade da Federação
+4    4435                          3 Unidade da Federação
+5    5625                          3 Unidade da Federação
+  Unidade de Medida (Código) Unidade de Medida Valor
+1                          2                 %   0.6
+2                          2                 %  61.6
+3                          2                 %   2.0
+4                          2                 %  40.0
+5                       1572       Mil pessoas 227.0
+  Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
+1                            35            São Paulo             202303
+2                            17            Tocantins             202202
+3                            42       Santa Catarina             201401
+4                            15                 Pará             201702
+5                            16                Amapá             201904
+          Trimestre Variável (Código)
+1 3º trimestre 2023              4105
+2 2º trimestre 2022              4104
+3 1º trimestre 2014              4104
+4 2º trimestre 2017              4104
+5 4º trimestre 2019              1641
+                                                                                   Variável
+1 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+2                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+3                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+4                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+5                                                       Pessoas de 14 anos ou mais de idade
+  Condição em relação à força de trabalho e condição de ocupação (Código)
+1                                                                   32387
+2                                                                   32386
+3                                                                   32446
+4                                                                   32447
+5                                                                   32447
+  Condição em relação à força de trabalho e condição de ocupação
+1                                    Força de trabalho - ocupada
+2                                              Força de trabalho
+3                                 Força de trabalho - desocupada
+4                                      Fora da força de trabalho
+5                                      Fora da força de trabalho</code></pre>
+</div>
+</div>
+</section>
+<section id="conhecendo-os-valores-únicos-de-uma-coluna" class="level2">
+<h2 class="anchored" data-anchor-id="conhecendo-os-valores-únicos-de-uma-coluna">Conhecendo os valores únicos de uma coluna</h2>
+<p>Para variáveis categóricas ou de texto, é interessante conhecer os valores únicos presentes.</p>
+<p>Para acessar uma coluna específica, utilize o <code>$</code>. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: <code>dados$ano</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dica: após escrever o <code>nome_do_dataframe$</code>, aperte <code>tab</code> para que o RStudio faça sugestões de colunas da base.</p>
+</div>
+</div>
+<p>A função <code>unique()</code> retorna os valores únicos de um vetor. Exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(dados<span class="sc">$</span><span class="st">`</span><span class="at">Unidade de Medida</span><span class="st">`</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mil pessoas" "%"          </code></pre>
+</div>
+</div>
+<p>Note que, nesse caso, foi necessário colocar uma crase para identificar o nome da coluna. Isso acontece porque a coluna contém espaços em branco e, por isso, o R entenderia que o nome da coluna é <code>Unidade</code> e <code>de</code> e <code>Medida</code>. Com a crase, o R entende que o nome da coluna é <code>Unidade de Medida</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>É uma boa prática evitar espaços em branco e caracteres especiais nos nomes das colunas. Em <a href="05_transformacao.html#padronizar-nome-das-colunas">Transformando dados &gt; Padronizar nome das colunas</a> apresentaremos uma forma de fazer isso!</p>
+</div>
+</div>
+<p>Outra forma de extrair o conteúdo de uma coluna é utilizando o operador <code>[[</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(dados[[<span class="st">"Unidade de Medida"</span>]])</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mil pessoas" "%"          </code></pre>
+</div>
+</div>
+<p>O resultado é o mesmo, mas dessa forma utilizamos o nome da coluna em texto (string) para acessar a coluna.</p>
+</section>
+<section id="sugestão-de-exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="sugestão-de-exercícios">Sugestão de exercícios</h2>
+<p>Nesses exercícios a seguir, vamos utilizar a tabela como <a href="https://dadosabertos.camara.leg.br/swagger/api.html?tab=staticfile#api">deputadas e deputados que já estiveram em exercício na Câmara dos Deputados</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>deputados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(<span class="st">"https://dadosabertos.camara.leg.br/arquivos/deputados/csv/deputados.csv"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Responda as perguntas a seguir:</p>
+<ol type="1">
+<li>Conhecendo a estrutura da base de dados:
+<ul>
+<li>Quantas colunas e linhas temos na base de dados?</li>
+<li>O que cada linha representa?</li>
+<li>Quais são as colunas presentes na colunas?</li>
+<li>Os nomes das colunas estão aceitáveis (por exemplo, sem espaços, acentos, caracteres especiais)?</li>
+<li>Qual é o tipo de cada variável?</li>
+<li>Existe alguma variável que deveria ser de outro tipo?</li>
+</ul></li>
+<li>Valores faltantes (<em>missing values</em>):
+<ul>
+<li>Em quais variáveis temos valores faltantes?</li>
+<li>Qual é a variável com a maior quantidade de valores faltantes?</li>
+<li>O que significa os valores faltantes na coluna <code>dataFalecimento</code>?</li>
+</ul></li>
+<li>Conhecendo variáveis com categorias:
+<ul>
+<li>Quais são os valores únicos para a variável <code>siglaSexo</code>?</li>
+</ul></li>
+</ol>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas de rodapé</h2>
+
+<ol>
+<li id="fn1"><p>Ainda não abordamos o conceito de grupos, então isso ficará mais claro posteriormente.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ipeadata-lab\.github\.io\/curso_r_intro_202409");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
+          }
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03_importacao.html" class="pagination-link  aria-label=" importando="" dados"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Importando dados</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05_transformacao.html" class="pagination-link" aria-label="Transformando dados">
+        <span class="nav-page-text">Transformando dados</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
