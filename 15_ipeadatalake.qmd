@@ -12,9 +12,9 @@ execute:
 Em termos gerais, um "*data lake*" é um conjunto de bases de dados armazenadas num repositório que permite rápido e fácil acesso e integração entre bases diferentes. O Ipea vem gradativamente progredindo na construção e integração do seu *data lake*, que inclui uma ampla gama de bases de dados públicos, e registros administrativos restritos do governo federal e instituições parceiras. 
 
 Todos esses dados podem ser acessados diretamente no `storage6`, como visto na aula anterior. No entanto, uma maneira mais fácil de acessar esses dados é pelo pacote de R 
-[**{ipeadatalake}**](https://gitlab.ipea.gov.br/data/ipeadatalake). Nesta aula você vai aprender alguns exemplos de como usar o pacote {ipeadatalake} no R.
+[**{ipeadatalake}**](https://gitlab.ipea.gov.br/data/ipeadatalake). Nesta aula você vai aprender alguns exemplos de como usar o pacote {ipeadatalake} no R. ![](images/logo_ipeadatalake.png){width=150 fig-align="right"}
 
-![](images/logo_ipeadatalake.png){width=150 fig-align="right"}
+
 
 # Instalando o {ipeadatalake}
 
@@ -48,33 +48,33 @@ remotes::install_git(
 
 Até o momento desse curso, o pacote incluía as seguintes funções / bases de dados:
 
-1. `read_bmap()`              # trabalho
-2. `read_cadunico()`
-3. `read_censo_escolar()`
-4. `read_censo_demografico()`
-5. `read_cnefe()`
-6. `read_pnadc()`
-7. `read_rais()`
+1. `ler_bmap()`              # trabalho
+2. `ler_cadunico()`
+3. `ler_censo_escolar()`
+4. `ler_censo_demografico()`
+5. `ler_cnefe()`
+6. `ler_pnadc()`
+7. `ler_rais()`
 
 Estas são as algumas das principais bases de dados do *data lake* do Ipea, mas em breve o pacote deverá incluir novas funções para ler outras bases, como as listadas abaixo. A inclusão de novas bases no {ipeadatalake} também depende em grande medida dos pesquisadores especialistas de cada base e que contribuem para sua organização e importação.
 
-8. [*em breve*] `read_condicionalidades()`
-9. [*em breve*] `read_pof()`
-10. [*em breve*] `read_cpf()`
-11. [*em breve*] `read_cnpj()`
-12. [*em breve*] `read_pnad()`
+8. [*em breve*] `ler_condicionalidades()`
+9. [*em breve*] `ler_pof()`
+10. [*em breve*] `ler_cpf()`
+11. [*em breve*] `ler_cnpj()`
+12. [*em breve*] `ler_pnad()`
 
 
 A sintaxe de todas as funções do {ipeadatalake} segue uma mesma lógica, o que torna intuitivo e fácil a leitura de diversas bases de dados com apenas uma linha de código. A estrutura básica das funções tem os seguintes argumentos:
 
 ```{R eval = FALSE, message = FALSE}
 #| label: ilustra-argumentos-das-funcoes
-read_rais(
-  year,          # <1> 
-  columns,       # <2> 
+ler_rais(
+  ano,          # <1> 
+  colunas,       # <2> 
   as_data_frame, # <3>
-  geocode,       # <4> 
-  silent         # <5> 
+  geoloc,       # <4> 
+  verbose         # <5> 
   )
 ```
 1. Ano de referenência
@@ -199,9 +199,84 @@ ggplot(data = df_esc_agua) +
 
 # Exemplo 2: PNADc
 
+A PNAD Contínua (PNADc) é uma pesquisa amostral realizada pelo IBGE que coleta dados socioeconômicos regularmente para monitorar indicadores sobre o mercado de trabalho, rendimento, educação e outras características da população. A PNADc tem uma lógica interna as vezes complexa devido ao desenho de como a pesquisa é conduzida e de que quais variáveis são perguntadas em cada onda da pesquisa. Para saber quais questões foram perguntadas em qual onda da pesquisa, ver detalhes na documentação da função `??ler_pnadc` e no dicionário de variáveis.
+
+Em linhas gerais, o comportamento padrão da função `ler_pnadc()` é retornar os dados anuais consolidados para o `ano` de input do usuário, e você precisa apenas indicar se quer os dados levantados durante a entrevista de número `1` ou `5`. Alternativamente, basta você indicar o `ano` de input e o `trimestre` de quando os dados foram coletados.
+
+Neste exemplo abaixo, nós vamos calcular qual a proporção de pessoas com ensino superior completo segundo cor/raça no ano de 2023. Para ler os dados, basta rodar o código:
+
+```{r, message = FALSE, warning=FALSE}
+#| label: exemplo-read_pnadc
+df_pnadc <- ipeadatalake::read_pnadc(
+  year = 2023, 
+  interview  = 1
+  )
+
+```
+
+O próximo passo é processar os dados para calcular o indicador desejado. Isso exige que a gente crie manipule os dados seguindo o conteúdo que aprendemos nas aulas passadas.
 
 
+```{r, message = FALSE, warning=FALSE}
+#| label: exemplo-read_pnadc_process
 
+tab_edu <- df_pnadc |>
+  filter(v2009 >= 20) |>                           # <1>
+  mutate(dummy_edu_sup = ifelse(vd3004==7,1,0)) |> # <2>
+  group_by(v2010) |>                               # <3>
+  summarise(pop_total = sum(v1031),                # <4>
+          pop_sup_abs = sum(v1031 * dummy_edu_sup),# <5>
+          pop_sup_pct = pop_sup_abs / pop_total    # <6>
+          ) |>             
+  collect()                                        # <7>
+
+head(tab_edu)
+```
+1. Mantém apenas pessoas com 20 anos de idade ou mais
+2. Cria uma variável dummy indicando se a pessoa completou ensino superior
+3. Agrupa observações por cor/raça
+4. Calcula população total
+5. Calcula população com ensino superior completo
+6. Calcula proporção de pessoas com ensino superior completo
+7. Carrega resultado na memória
+
+
+Por fim, basta recodificar a coluna de cor/raça e fazermos um ggplot.
+
+```{r, message = FALSE, warning=FALSE}
+#| label: exemplo-read_pnadc_figura
+# recodifica cor
+tab_edu <- tab_edu |>
+  mutate( cor = dplyr::case_when(
+    v2010 == 1 ~ 'Branca',
+    v2010 == 2 ~ 'Preta',
+    v2010 == 3 ~ 'Amarela',
+    v2010 == 4 ~ 'Parda', 
+    v2010 == 5 ~ 'Indígena',
+    v2010 == 9 ~ 'Ignorado'))
+
+# figura
+ggplot(data=tab_edu) +
+  geom_col(aes(x=reorder(cor, pop_sup_pct), y=pop_sup_pct), fill='#1ba185') +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Proproção de pessoas com 20 anos ou mais com ensino superior completo. Brasil, 2023.", x="Cor/raça", y="Proporção") +
+  theme_classic()
+```
+
+### Amostra complexa
+
+Para usuários avançados que queiram fazer análises incorporando o desenho de amostra complexa da PNADc, basta passar o parâmetro `survey = TRUE` que a função `read_pnadc()` automaticamente gera e retorna o objeto `svyrep.design`. Dicas sobre como analisar esses dados utilizando os pacotes {survey} e {srvyr} [neste livro online](https://tidy-survey-r.github.io/tidy-survey-book/).
+
+```{r, message = FALSE, warning=FALSE}
+#| label: exemplo-read_pnadc
+svy_pnadc <- ipeadatalake::read_pnadc(
+  year = 2023, 
+  interview  = 1, 
+  survey = TRUE
+  )
+
+class(svy_pnadc)
+```
 
 
 # Exemplo 3: Cadastro Único
@@ -241,7 +316,6 @@ df_cadunico_agua <- df_cadunico |>
   collect()                                                               # <6>
 
 
-
 ```
 1. Recodifica variável de rede de água como dummy (1 com acesso, 0 sem acesso)
 2. Agrupa por UF
@@ -264,7 +338,7 @@ df_cadunico_agua_tb <- df_cadunico_agua |>
 
 # figura
 ggplot(data = df_cadunico_agua_tb) +
-  geom_col(aes(x=reorder(regiao, cobertura_agua), y = cobertura_agua)) +
+  geom_col(aes(x=reorder(regiao, cobertura_agua), y = cobertura_agua), , fill='#2f4b7c') +
   scale_y_continuous(labels = scales::percent) +
   labs(title = "Escolas públicas municipais conectadas a rede de água. Brasil, 2023.", x="Região", y="Proporção") +
   theme_classic()
