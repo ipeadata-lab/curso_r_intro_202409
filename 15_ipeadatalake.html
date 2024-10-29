@@ -392,10 +392,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introdução" class="level1">
 <h1>Introdução</h1>
 <p>Em termos gerais, um “<em>data lake</em>” é um conjunto de bases de dados armazenadas num repositório que permite rápido e fácil acesso e integração entre bases diferentes. O Ipea vem gradativamente progredindo na construção e integração do seu <em>data lake</em>, que inclui uma ampla gama de bases de dados públicos, e registros administrativos restritos do governo federal e instituições parceiras.</p>
-<p>Todos esses dados podem ser acessados diretamente no <code>storage6</code>, como visto na aula anterior. A maneira mais fácil de acessar esses dados é pelo pacote de R <a href="https://gitlab.ipea.gov.br/data/ipeadatalake"><strong>{ipeadatalake}</strong></a>. Nesta aula você vai aprender alguns exemplos de como usar o pacote {ipeadatalake} no R.</p>
+<p>Todos esses dados podem ser acessados diretamente no <code>storage6</code>, como visto na aula anterior. No entanto, uma maneira mais fácil de acessar esses dados é pelo pacote de R <a href="https://gitlab.ipea.gov.br/data/ipeadatalake"><strong>{ipeadatalake}</strong></a>. Nesta aula você vai aprender alguns exemplos de como usar o pacote {ipeadatalake} no R.</p>
 <div class="quarto-figure quarto-figure-right">
 <figure class="figure">
-<p><img src="images/logo_ipeadatalake.png" class="img-fluid quarto-figure quarto-figure-right figure-img" width="300"></p>
+<p><img src="images/logo_ipeadatalake.png" class="img-fluid quarto-figure quarto-figure-right figure-img" width="150"></p>
 </figure>
 </div>
 </section>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkgs_to_install <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'remotes'</span>, <span class="st">'getPass'</span>, <span class="st">'git2r'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkgs_to_install)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pronto, agora basta rodar o codigo abaixo para instalar o {ipeadatalake}. Note que você deve informar passar sua matrícula para o objeto <code>your_id</code>, e que o R abrir uma jenala <em>pop-up</em> para você inserir sua senha.</p>
+<p>Pronto, agora basta rodar o codigo abaixo para instalar o {ipeadatalake}. Note que você deve passar sua matrícula para o objeto <code>your_id</code>, e que o R abrir uma janela <em>pop-up</em> para você inserir sua senha.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seu login (matricula)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>your_id <span class="ot">&lt;-</span> <span class="st">"r1701707"</span> </span>
@@ -417,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">username =</span> your_id, </span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">password =</span> getPass<span class="sc">::</span><span class="fu">getPass</span>()</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="visão-geral-do-ipeadatalake" class="level1">
@@ -432,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>read_pnadc()</code></li>
 <li><code>read_rais()</code></li>
 </ol>
-<p>Estas são as algumas das principais bases de dados do data lake to Ipea, mas em breve o pacote deverá incluir novas funções para ler outras bases, como as listadas abaixo. A inclusão de novas bases no {ipeadatalake} também depende em grande medida dos pesquisadores especiliastas de cada base e que contribuem para sua organização e importação.</p>
+<p>Estas são as algumas das principais bases de dados do <em>data lake</em> do Ipea, mas em breve o pacote deverá incluir novas funções para ler outras bases, como as listadas abaixo. A inclusão de novas bases no {ipeadatalake} também depende em grande medida dos pesquisadores especialistas de cada base e que contribuem para sua organização e importação.</p>
 <ol start="8" type="1">
 <li>[<em>em breve</em>] <code>read_condicionalidades()</code></li>
 <li>[<em>em breve</em>] <code>read_pof()</code></li>
@@ -440,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>[<em>em breve</em>] <code>read_cnpj()</code></li>
 <li>[<em>em breve</em>] <code>read_pnad()</code></li>
 </ol>
-<p>A sintaxe de todas as funções do {ipeadatalake} seguem uma mesma lógica, o que torna intuitivo e fácil o forma de se ler uma base de dados com apenas uma linha de código. A estrutura básica das funções tem os seguintes argumentos:</p>
+<p>A sintaxe de todas as funções do {ipeadatalake} segue uma mesma lógica, o que torna intuitivo e fácil a leitura de diversas bases de dados com apenas uma linha de código. A estrutura básica das funções tem os seguintes argumentos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_rais</span>(</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>  year,</span>
@@ -500,10 +500,10 @@ Importante
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Por padrão, as funções do {ipeadatalake} sempre retoram um</p>
+<p>Por padrão, as funções do {ipeadatalake} sempre retoram um objeto tipo <code>Dataset</code> / <code>ArrowObject</code>.</p>
 </div>
 </div>
-<p>Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que usamos.</p>
+<p>Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que vamos usar.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carrega bibliotecas</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ipeadatalake)</span>
@@ -521,7 +521,7 @@ Importante
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dados de populacao</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_pop <span class="ot">&lt;-</span> ipeadatalake<span class="sc">::</span><span class="fu">read_censo_demografico</span>(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2010</span>, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">'population'</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">'populacao'</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dados de domicilios</span></span>
@@ -535,7 +535,7 @@ Importante
 <h1>Exemplo 2: Censo Escolar</h1>
 <p>Outra base de dados pública disponível no pacote é o Censo Escolar (Inep). A base traz os dados tanto de escolas de ensino básico quanto profissional. Para edições do censo anteriores a 2007, no entanto, o usuário precisa explicitar qual tipo de escola deve ser lido, pois a função carrega separadamente os dados das escolas de educação básica (<code>"type = basica"</code>), e as escolas de ensino profissional (<code>"type = profissional"</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># todas escolas em 2020</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># todas escolas em 2023</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_esc_2023 <span class="ot">&lt;-</span> ipeadatalake<span class="sc">::</span><span class="fu">read_censo_escolar</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2023</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  )</span>
@@ -592,8 +592,9 @@ Importante
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_esc_agua) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(NO_REGIAO, rede_agua_pct), <span class="at">y =</span> rede_agua_pct)) <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Escolas públicas municipais conectadas a rede de água. Brasil, 2023."</span>, <span class="at">x=</span><span class="st">"Região"</span>, <span class="at">y=</span><span class="st">"Proporção"</span>) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Escolas públicas municipais conectadas a rede de água. Brasil, 2023."</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Região"</span>, <span class="at">y=</span><span class="st">"Proporção"</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exemplo-2-pnadc" class="level1">
@@ -603,7 +604,7 @@ Importante
 <h1>Exemplo 3: Cadastro Único</h1>
 <p>O Cadastro Único é a principal fonte de dados sobre a população em situação de vulnerabilidade socioeconômica no Brasil, e é utilizado para planejamento, implementação, monitoramento, operação e avaliação de diversas políticas de todas as esferas federativas no país.</p>
 <p>O Ipea recebe dados das atualizações mensais do Cadúnico. Por isso, ao invés do usuário informar o ano dos dados, é necessário informar a data <code>date</code> de referência no formato <code>YYYYMM</code>. Além disso, o usuário deve especificar se a função deve ler os dados de famílias (<code>type = 'familias'</code>) ou de pessoas (<code>type = 'pessoas'</code>)</p>
-<p>Nesse examplo aqui, calcule a proporção de famílias com acesso a rede de água.</p>
+<p>Nesse examplo aqui, nós vamos estimar a proporção de famílias com acesso a rede de água em cada região do Brasil em julho de 2024. Repare que podemoves usar o argumento <code>columns</code> para carregar apenas as colunas que vamos usar, o que tornar todo processo muito mais rápido e eficiente.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ler somente colunas de UF e tipo de abastecimento de agua</span></span>
 <span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>df_cadunico <span class="ot">&lt;-</span> ipeadatalake<span class="sc">::</span><span class="fu">read_cadunico</span>(</span>
@@ -620,6 +621,7 @@ Importante
 </dl>
 </div>
 </div>
+<p>Com os dados em formato arrow, podemos agora calcular proporção de famílias com rede de água em cada UF:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recodifica coluna de abastecimento de agua</span></span>
 <span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a>df_cadunico_agua <span class="ot">&lt;-</span> df_cadunico <span class="sc">|&gt;</span></span>
@@ -658,7 +660,7 @@ Importante
 </dl>
 </div>
 </div>
-<p>Essa tabela acima é agrupada por UF, mas nós precisamos agrupar por região para fazer o gráfico.</p>
+<p>Essa tabela acima é agrupada por UF, então agora só falta agruparos resultados por região e fazer o gráfico.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tira média de cada região</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_cadunico_agua_tb <span class="ot">&lt;-</span> df_cadunico_agua <span class="sc">|&gt;</span></span>
@@ -676,7 +678,7 @@ Importante
 </section>
 <section id="exemplo-4-dados-com-coordenadas-geográficas" class="level1">
 <h1>Exemplo 4: Dados com coordenadas geográficas</h1>
-<p>Algumas bases de dados presente no <em>data lake</em> do Ipea possuem informação dos endereços das unidades de análise (e.g.&nbsp;empresas, pessoas, estabelecimentos de ensino etc). A política que o Ipea começou a adotar a partir de 2023 é fazer a geolocalização massiva de todas as suas bases de dados para todos os dados, e disponibilizar as informações espaciais para todos os usuários.</p>
+<p>Algumas bases de dados no <em>data lake</em> do Ipea possuem informação dos endereços das unidades de análise (e.g.&nbsp;empresas, pessoas, estabelecimentos de ensino etc). A política que o Ipea começou a adotar a partir de 2023 é fazer a geolocalização massiva de todas as suas bases de dados para todos os anos, e disponibilizar as informações espaciais para todos os usuários.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -690,7 +692,7 @@ Nota
 <p>Atualmente, essas informações espaciais estão disponíveis apenas para algumas bases, como censo escolar, CadÚnico, e Rais.</p>
 </div>
 </div>
-<p>Em todos os casos, pasta passar o parametro <code>geocode = TRUE</code> para acessar esses dados.</p>
+<p>Em todos os casos, pasta passar o parametro <code>geocode = TRUE</code> para acessar esses dados. Neste exemplo abaixo, nós lemos os dados do censo escolar e adicionamos as colunas espaciais.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ler dados com colunas espaciais</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_esc_2023 <span class="ot">&lt;-</span> ipeadatalake<span class="sc">::</span><span class="fu">read_censo_escolar</span>(</span>
@@ -698,7 +700,7 @@ Nota
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geocode =</span> <span class="cn">TRUE</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Para por um instante e veja o nome das colunas espaciais. Veja detalhes na documentação da função: <code>??read_censo_escolar</code></p>
+<p>Pare por um instante e veja o nome das colunas espaciais usando <code>names(df_esc_2023)</code>. Veja detalhes na documentação da função: <code>??read_censo_escolar</code> o que essas colunas significam.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -709,7 +711,7 @@ Aviso
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Dentre as colunas de dados espaciais, a coluna <code>Addr_type</code> é que traz informação sobre as categorias de precisão das coordenadas geográficas. <a href="https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-included-in-the-geocoded-results-.htm">A definicao exata de cada categoria se encontra na documentacao do ArcGIS</a>. Você deve ser muita cautela na hora de usar estes dados, e entender qual o grau de precisão mínimo que a sua análise exige.</p>
+<p>Dentre as colunas de dados espaciais, a coluna <code>Addr_type</code> é que traz informação sobre as categorias de precisão das coordenadas geográficas. A definicao exata de cada categoria se encontra <a href="https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-included-in-the-geocoded-results-.htm">na documentacao do ArcGIS</a>. Você deve ter muita cautela na hora de usar estes dados, e entender qual o grau de precisão mínimo que a sua análise exige.</p>
 </div>
 </div>
 <p>Agora que entendemos um pouco melhor esses dados, vamos fazer uma rápida inspeção visual para examinar a distribuição espacial das escolas com acesso a rede de água no estado de Sergipe. Neste exemplo, nós só precisamos saber o município de cada escola, então vamos aceitar os resultados do geocode para todas as observações da base.</p>
