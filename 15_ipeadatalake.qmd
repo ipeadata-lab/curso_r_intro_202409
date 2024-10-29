@@ -86,7 +86,7 @@ read_rais(
 Além dessas funções de leitura de dados, o {ipeadatalake} tem a função `data_documentation()`, que abre a pasta com a documentação de uma base de dados selecionada.
 
 ```{r, message = FALSE, eval=FALSE}
-#| label: load-libraries
+#| label: read_documentation
 # censo escolar
 ipeadatalake::data_documentation(dataset = 'censo_escolar')
 
