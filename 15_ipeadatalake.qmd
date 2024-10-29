@@ -11,10 +11,10 @@ execute:
 
 Em termos gerais, um "*data lake*" é um conjunto de bases de dados armazenadas num repositório que permite rápido e fácil acesso e integração entre bases diferentes. O Ipea vem gradativamente progredindo na construção e integração do seu *data lake*, que inclui uma ampla gama de bases de dados públicos, e registros administrativos restritos do governo federal e instituições parceiras. 
 
-Todos esses dados podem ser acessados diretamente no `storage6`, como visto na aula anterior. A maneira mais fácil de acessar esses dados é pelo pacote de R 
+Todos esses dados podem ser acessados diretamente no `storage6`, como visto na aula anterior. No entanto, uma maneira mais fácil de acessar esses dados é pelo pacote de R 
 [**{ipeadatalake}**](https://gitlab.ipea.gov.br/data/ipeadatalake). Nesta aula você vai aprender alguns exemplos de como usar o pacote {ipeadatalake} no R.
 
-![](images/logo_ipeadatalake.png){width=300 fig-align="right"}
+![](images/logo_ipeadatalake.png){width=150 fig-align="right"}
 
 # Instalando o {ipeadatalake}
 
@@ -26,9 +26,9 @@ pkgs_to_install <- c('remotes', 'getPass', 'git2r')
 install.packages(pkgs_to_install)
 ```
 
-Pronto, agora basta rodar o codigo abaixo para instalar o {ipeadatalake}. Note que você deve informar passar sua matrícula para o objeto `your_id`, e que o R abrir uma jenala *pop-up* para você inserir sua senha.
+Pronto, agora basta rodar o codigo abaixo para instalar o {ipeadatalake}. Note que você deve passar sua matrícula para o objeto `your_id`, e que o R abrir uma janela *pop-up* para você inserir sua senha.
 
-```{r warning = FALSE, eval = FALSE}
+```{r warning = FALSE, eval = FALSE, message=FALSE}
 #| label: instalando-ipeadatalake
 # seu login (matricula)
 your_id <- "r1701707" 
@@ -39,7 +39,7 @@ remotes::install_git(
     username = your_id, 
     password = getPass::getPass()
     )
-)
+  )
 
 ```
 
@@ -56,7 +56,7 @@ Até o momento desse curso, o pacote incluía as seguintes funções / bases de 
 6. `read_pnadc()`
 7. `read_rais()`
 
-Estas são as algumas das principais bases de dados do data lake to Ipea, mas em breve o pacote deverá incluir novas funções para ler outras bases, como as listadas abaixo. A inclusão de novas bases no {ipeadatalake} também depende em grande medida dos pesquisadores especiliastas de cada base e que contribuem para sua organização e importação.
+Estas são as algumas das principais bases de dados do *data lake* do Ipea, mas em breve o pacote deverá incluir novas funções para ler outras bases, como as listadas abaixo. A inclusão de novas bases no {ipeadatalake} também depende em grande medida dos pesquisadores especialistas de cada base e que contribuem para sua organização e importação.
 
 8. [*em breve*] `read_condicionalidades()`
 9. [*em breve*] `read_pof()`
@@ -65,7 +65,7 @@ Estas são as algumas das principais bases de dados do data lake to Ipea, mas em
 12. [*em breve*] `read_pnad()`
 
 
-A sintaxe de todas as funções do {ipeadatalake} seguem uma mesma lógica, o que torna intuitivo e fácil o forma de se ler uma base de dados com apenas uma linha de código. A estrutura básica das funções tem os seguintes argumentos:
+A sintaxe de todas as funções do {ipeadatalake} segue uma mesma lógica, o que torna intuitivo e fácil a leitura de diversas bases de dados com apenas uma linha de código. A estrutura básica das funções tem os seguintes argumentos:
 
 ```{R eval = FALSE, message = FALSE}
 #| label: ilustra-argumentos-das-funcoes
@@ -103,12 +103,12 @@ Assim como o pacote [{censobr}](https://ipeagit.github.io/censobr/), que vimos n
 ![](images/arrow_plus_dplyr.png){width=350 fig-align="center"}
 
 ::: {.callout-important appearance="default"}
-Por padrão, as funções do {ipeadatalake} sempre retoram um 
+Por padrão, as funções do {ipeadatalake} sempre retoram um objeto tipo `Dataset` / `ArrowObject`.
 :::
 
 
 
-Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que usamos.
+Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que vamos usar.
 
 ```{r, message = FALSE, warning=FALSE}
 #| label: load-libraries
@@ -129,7 +129,7 @@ O pacote possui a função `read_censo_demografico()` para ler os dados dos cens
 # dados de populacao
 df_pop <- ipeadatalake::read_censo_demografico(
   year = 2010, 
-  type = 'population'
+  type = 'populacao'
   )
 
 # dados de domicilios
@@ -148,7 +148,7 @@ Outra base de dados pública disponível no pacote é o Censo Escolar (Inep). A 
 
 ```{r, message = FALSE, warning=FALSE}
 #| label: exemplo-read_censo_escolar
-# todas escolas em 2020
+# todas escolas em 2023
 df_esc_2023 <- ipeadatalake::read_censo_escolar(
   year = 2023
   )
@@ -191,7 +191,8 @@ Com essa tabela em mãos, a gente pode fazer um ggplot com o que aprendemos na a
 ggplot(data = df_esc_agua) +
   geom_col(aes(x=reorder(NO_REGIAO, rede_agua_pct), y = rede_agua_pct)) +
   scale_y_continuous(labels = scales::percent) +
-  labs(title = "Escolas públicas municipais conectadas a rede de água. Brasil, 2023.", x="Região", y="Proporção") +
+  labs(title = "Escolas públicas municipais conectadas a rede de água. Brasil, 2023.", 
+       x="Região", y="Proporção") +
   theme_classic()
 
 ```
@@ -209,7 +210,8 @@ O Cadastro Único é a principal fonte de dados sobre a população em situaçã
 
 O Ipea recebe dados das atualizações mensais do Cadúnico. Por isso, ao invés do usuário informar o ano dos dados, é necessário informar a data `date` de referência no formato `YYYYMM`. Além disso, o usuário deve especificar se a função deve ler os dados de famílias (`type = 'familias'`) ou de pessoas (`type = 'pessoas'`)
 
-Nesse examplo aqui, calcule a proporção de famílias com acesso a rede de água.
+
+Nesse examplo aqui, nós vamos estimar a proporção de famílias com acesso a rede de água em cada região do Brasil em julho de 2024. Repare que podemoves usar o argumento `columns` para carregar apenas as colunas que vamos usar, o que tornar todo processo muito mais rápido e eficiente.
 
 
 ```{r, message = FALSE, warning=FALSE}
@@ -224,6 +226,8 @@ df_cadunico <- ipeadatalake::read_cadunico(
 ```
 1. Lendo somente as colunas necessárias
 
+
+Com os dados em formato arrow, podemos agora calcular proporção de famílias com rede de água em cada UF:
 
 ```{r, message = FALSE, warning=FALSE}
 #| label: exemplo-read_cadunico_summary_tb
@@ -247,7 +251,7 @@ df_cadunico_agua <- df_cadunico |>
 6. Carrega resultado na memória
 
 
-Essa tabela acima é agrupada por UF, mas nós precisamos agrupar por região para fazer o gráfico.
+Essa tabela acima é agrupada por UF, então agora só falta agruparos resultados  por região e fazer o gráfico.
 
 ```{r, message = FALSE, warning=FALSE}
 #| label: exemplo-cad_unico-figura
@@ -266,15 +270,17 @@ ggplot(data = df_cadunico_agua_tb) +
   theme_classic()
 ```
 
+
+
 # Exemplo 4: Dados com coordenadas geográficas
 
-Algumas bases de dados presente no *data lake* do Ipea possuem informação dos endereços das unidades de análise (e.g. empresas, pessoas, estabelecimentos de ensino etc). A política que o Ipea começou a adotar a partir de 2023 é fazer a geolocalização massiva de todas as suas bases de dados para todos os dados, e disponibilizar as informações espaciais para todos os usuários.
+Algumas bases de dados no *data lake* do Ipea possuem informação dos endereços das unidades de análise (e.g. empresas, pessoas, estabelecimentos de ensino etc). A política que o Ipea começou a adotar a partir de 2023 é fazer a geolocalização massiva de todas as suas bases de dados para todos os anos, e disponibilizar as informações espaciais para todos os usuários.
 
 ::: {.callout-note appearance="default"}
 Atualmente, essas informações espaciais estão disponíveis apenas para algumas bases, como censo escolar, CadÚnico, e Rais.
 :::
 
-Em todos os casos, pasta passar o parametro `geocode = TRUE` para acessar esses dados.
+Em todos os casos, pasta passar o parametro `geocode = TRUE` para acessar esses dados. Neste exemplo abaixo, nós lemos os dados do censo escolar e adicionamos as colunas espaciais.
 
 
 ```{r, message = FALSE, warning=FALSE}
@@ -287,10 +293,10 @@ df_esc_2023 <- ipeadatalake::read_censo_escolar(
 
 ```
 
-Para por um instante e veja o nome das colunas espaciais. Veja detalhes na documentação da função: `??read_censo_escolar`
+Pare por um instante e veja o nome das colunas espaciais usando `names(df_esc_2023)`. Veja detalhes na documentação da função: `??read_censo_escolar` o que essas colunas significam.
 
 ::: {.callout-warning appearance="default"}
-Dentre as colunas de dados espaciais, a coluna `Addr_type` é que traz informação sobre as categorias de precisão das coordenadas geográficas. [A definicao exata de cada categoria se encontra na documentacao do ArcGIS](https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-included-in-the-geocoded-results-.htm). Você deve ser muita cautela na hora de usar estes dados, e entender qual o grau de precisão mínimo que a sua análise exige.
+Dentre as colunas de dados espaciais, a coluna `Addr_type` é que traz informação sobre as categorias de precisão das coordenadas geográficas. A definicao exata de cada categoria se encontra [na documentacao do ArcGIS](https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-included-in-the-geocoded-results-.htm). Você deve ter muita cautela na hora de usar estes dados, e entender qual o grau de precisão mínimo que a sua análise exige.
 :::
 
 Agora que entendemos um pouco melhor esses dados, vamos fazer uma rápida inspeção visual para examinar a distribuição espacial das escolas com acesso a rede de água no estado de Sergipe. Neste exemplo, nós só precisamos saber o município de cada escola, então vamos aceitar os resultados do geocode para todas as observações da base.
