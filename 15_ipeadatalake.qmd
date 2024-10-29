@@ -199,10 +199,72 @@ ggplot(data = df_esc_agua) +
 # Exemplo 2: PNADc
 
 
-# Exemplo 3: CADunico
 
 
 
+
+# Exemplo 3: Cadastro Único
+
+O Cadastro Único é a principal fonte de dados sobre a população em situação de vulnerabilidade socioeconômica no Brasil, e é utilizado para planejamento, implementação, monitoramento, operação e avaliação de diversas políticas de todas as esferas federativas no país.
+
+O Ipea recebe dados das atualizações mensais do Cadúnico. Por isso, ao invés do usuário informar o ano dos dados, é necessário informar a data `date` de referência no formato `YYYYMM`. Além disso, o usuário deve especificar se a função deve ler os dados de famílias (`type = 'familias'`) ou de pessoas (`type = 'pessoas'`)
+
+Nesse examplo aqui, calcule a proporção de famílias com acesso a rede de água.
+
+
+```{r, message = FALSE, warning=FALSE}
+#| label: exemplo-read_cadunico
+
+# ler somente colunas de UF e tipo de abastecimento de agua
+df_cadunico <- ipeadatalake::read_cadunico(
+  date = 202407, 
+  type = 'familia',
+  columns = c('co_uf', 'co_abaste_agua_domic_fam')          # <1>
+)
+```
+1. Lendo somente as colunas necessárias
+
+
+```{r, message = FALSE, warning=FALSE}
+#| label: exemplo-read_cadunico_summary_tb
+# recodifica coluna de abastecimento de agua
+df_cadunico_agua <- df_cadunico |>
+  mutate(agual_canalizada = ifelse(co_abaste_agua_domic_fam==1, 1, 0)) |> # <1>
+  group_by(co_uf) |>                                                      # <2>
+  summarise(total_familias = n(),                                         # <3>
+            rede_agua_abs = sum(agual_canalizada, na.rm=T),               # <4>
+            rede_agua_pct = rede_agua_abs / total_familias) |>            # <5>
+  collect()                                                               # <6>
+
+
+
+```
+1. Recodifica variável de rede de água como dummy (1 com acesso, 0 sem acesso)
+2. Agrupa por UF
+3. Conta total de famílias
+4. Conta total de famílias com rede de água
+5. Calcula proporção de famílias com rede de água
+6. Carrega resultado na memória
+
+
+Essa tabela acima é agrupada por UF, mas nós precisamos agrupar por região para fazer o gráfico.
+
+```{r, message = FALSE, warning=FALSE}
+#| label: exemplo-cad_unico-figura
+
+# tira média de cada região
+df_cadunico_agua_tb <- df_cadunico_agua |>
+  mutate(regiao = substring(co_uf, 1, 1)) |>
+  group_by(regiao) |>
+  summarise(cobertura_agua  = weighted.mean(x=rede_agua_pct, total_familias))
+
+# figura
+ggplot(data = df_cadunico_agua_tb) +
+  geom_col(aes(x=reorder(regiao, cobertura_agua), y = cobertura_agua)) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Escolas públicas municipais conectadas a rede de água. Brasil, 2023.", x="Região", y="Proporção") +
+  theme_classic()
+```
 
 # Exemplo 4: Dados com coordenadas geográficas
 
@@ -235,7 +297,7 @@ Agora que entendemos um pouco melhor esses dados, vamos fazer uma rápida inspe�
 
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-dados_espaciais_read
+#| label: exemplo-dados_espaciais_mapa
 
 # filtrar somente estado de Sergipe
 df_esc_sergipe <- df_esc_2023 |>
