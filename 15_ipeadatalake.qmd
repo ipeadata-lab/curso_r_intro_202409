@@ -268,7 +268,7 @@ ggplot(data=tab_edu) +
 Para usuários avançados que queiram fazer análises incorporando o desenho de amostra complexa da PNADc, basta passar o parâmetro `survey = TRUE` que a função `read_pnadc()` automaticamente gera e retorna o objeto `svyrep.design`. Dicas sobre como analisar esses dados utilizando os pacotes {survey} e {srvyr} [neste livro online](https://tidy-survey-r.github.io/tidy-survey-book/).
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_pnadc
+#| label: exemplo-read_pnadc_survey
 svy_pnadc <- ipeadatalake::read_pnadc(
   year = 2023, 
   interview  = 1, 
