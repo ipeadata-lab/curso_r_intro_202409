@@ -1,0 +1,9 @@
+"0","#| label: exemplo-ler_pnadc"
+"0","df_pnadc <- ipeadatalake::ler_pnadc("
+"0","  ano = 2023, "
+"0","  entrevista  = 1"
+"0","  )"
+"2","Reading the 'anual' data set.
+"
+"2","See data documentation at: //storage6/bases2/NINSOC/Bases/PNADC
+"

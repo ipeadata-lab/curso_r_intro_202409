@@ -1,0 +1,8 @@
+"0","#| label: exemplo-ler_censo_escolar-figura"
+"0","ggplot(data = df_esc_agua) +"
+"0","  geom_col(aes(x=reorder(NO_REGIAO, rede_agua_pct), y = rede_agua_pct), fill='#0d6556') +"
+"0","  scale_y_continuous(labels = scales::percent) +"
+"0","  labs(title = ""Escolas públicas municipais conectadas a rede de água. Brasil, 2023."", "
+"0","       x=""Região"", y=""Proporção"") +"
+"0","  theme_classic()"
+"0",""

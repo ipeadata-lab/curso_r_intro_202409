@@ -1,0 +1,12 @@
+"0","#| label: exemplo-ler_cadunico"
+"0",""
+"0","# ler somente colunas de UF e tipo de abastecimento de agua"
+"0","df_cadunico <- ipeadatalake::ler_cadunico("
+"0","  data = 202407, "
+"0","  tipo = 'familia',"
+"0","  colunas = c('co_uf', 'co_abaste_agua_domic_fam')          # <1>"
+"0",")"
+"2","Reading the 'familia' data set.
+"
+"2","See data documentation at: //storage6/bases/DOCUMENTACAO/RESTRITO/CADASTRO_UNICO/documentacao
+"

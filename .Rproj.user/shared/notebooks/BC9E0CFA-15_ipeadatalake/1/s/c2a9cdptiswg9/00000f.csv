@@ -1,0 +1,13 @@
+"0","#| label: exemplo-ler_pnadc_survey"
+"0","svy_pnadc <- ipeadatalake::ler_pnadc("
+"0","  ano = 2023, "
+"0","  entrevista = 1, "
+"0","  survey = TRUE"
+"0","  )"
+"2","Reading the 'anual' data set.
+"
+"0","class(svy_pnadc)"
+"1","[1]"
+"1"," ""svyrep.design"""
+"1","
+"

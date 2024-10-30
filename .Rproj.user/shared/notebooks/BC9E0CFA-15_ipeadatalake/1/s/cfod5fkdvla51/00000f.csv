@@ -1,0 +1,30 @@
+"0","#| label: load-libraries"
+"0","# carrega bibliotecas"
+"0","library(ipeadatalake)"
+"0","library(arrow)"
+"2","
+Anexando pacote: ‘arrow’
+
+"
+"2","O seguinte objeto é mascarado por ‘package:utils’:
+
+    timestamp
+
+"
+"0","library(dplyr)"
+"2","
+Anexando pacote: ‘dplyr’
+
+"
+"2","Os seguintes objetos são mascarados por ‘package:stats’:
+
+    filter, lag
+
+"
+"2","Os seguintes objetos são mascarados por ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","library(ggplot2)"
+"0","library(geobr)"
