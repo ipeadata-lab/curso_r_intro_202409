@@ -4,7 +4,7 @@ subtitle: "Módulo ministrado pela COCD"
 from: markdown+emoji
 code-annotations: hover
 execute:
-  eval: false
+  eval: true
 ---
 
 # Introdução

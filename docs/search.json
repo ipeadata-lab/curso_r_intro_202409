@@ -1,0 +1,24 @@
+[
+  {
+    "objectID": "15_ipeadatalake.html",
+    "href": "15_ipeadatalake.html",
+    "title": "Acessando dados com o {ipeadatalake}",
+    "section": "",
+    "text": "Em termos gerais, um “data lake” é um conjunto de bases de dados armazenadas num repositório que permite rápido e fácil acesso e integração entre bases diferentes. O Ipea vem gradativamente progredindo na construção e integração do seu data lake, que inclui uma ampla gama de bases de dados públicos, e registros administrativos restritos do governo federal e instituições parceiras.\nTodos esses dados podem ser acessados diretamente no storage6, como visto na aula anterior. No entanto, uma maneira mais fácil de acessar esses dados é pelo pacote de R {ipeadatalake}. Nesta aula você vai aprender alguns exemplos de como usar o pacote {ipeadatalake} no R.",
+    "crumbs": [
+      "Data Lake do Ipea",
+      "Acessando dados com o {ipeadatalake}"
+    ]
+  },
+  {
+    "objectID": "15_ipeadatalake.html#trabalhando-com-dados-maior-do-que-a-ram",
+    "href": "15_ipeadatalake.html#trabalhando-com-dados-maior-do-que-a-ram",
+    "title": "Acessando dados com o {ipeadatalake}",
+    "section": "Trabalhando com dados maior do que a RAM",
+    "text": "Trabalhando com dados maior do que a RAM\nAssim como o pacote {censobr}, que vimos na aula anterior, o pacote {ipeadatalake} também facilita que usuários trabalhem com grandes bases de dados de maneira eficiente utilizando pouca memória RAM a partir de integração com pacotes como {dplyr}, {arrow} e {duckdb}.\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\n\nPor padrão, as funções do {ipeadatalake} sempre retoram um objeto tipo Dataset / ArrowObject.\n\n\nVamos então partir para exemplos na prática, e começar carregando as bibliotecas que vamos usar.\n\n# carrega bibliotecas\nlibrary(ipeadatalake)\nlibrary(arrow)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(geobr)",
+    "crumbs": [
+      "Data Lake do Ipea",
+      "Acessando dados com o {ipeadatalake}"
+    ]
+  }
+]
