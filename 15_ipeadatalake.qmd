@@ -34,7 +34,7 @@ Pronto, agora basta rodar o codigo abaixo para instalar o {ipeadatalake}. Note q
 your_id <- "r1701707" 
 
 remotes::install_git(
-  url = "https://gitlab.ipea.gov.br/data/ipeadatalake", 
+  url = "https://gitlab.ipea.gov.br/data/ipeadatalake@v0.1.0", 
   credentials = git2r::cred_user_pass(
     username = your_id, 
     password = getPass::getPass()
@@ -70,28 +70,28 @@ A sintaxe de todas as funções do {ipeadatalake} segue uma mesma lógica, o que
 ```{R eval = FALSE, message = FALSE}
 #| label: ilustra-argumentos-das-funcoes
 ler_rais(
-  ano,          # <1> 
+  ano,           # <1> 
   colunas,       # <2> 
   as_data_frame, # <3>
-  geoloc,       # <4> 
-  verbose         # <5> 
+  geoloc,        # <4> 
+  verbose        # <5> 
   )
 ```
 1. Ano de referenência
 2. seleciona colunas que devem ser lidas
 3. Retorna resultado como um `Arrow DataSet` ou `data.frame`
 4. Adiciona columnas com dados espaciais (disponível apenas para algumas bases)
-5. Silencia mensagens da função
+5. Permite função imprimir mensagens
 
-Além dessas funções de leitura de dados, o {ipeadatalake} tem a função `data_documentation()`, que abre a pasta com a documentação de uma base de dados selecionada.
+Além dessas funções de leitura de dados, o {ipeadatalake} tem a função `abrir_documentacao()`, que abre a pasta com a documentação de uma base de dados selecionada.
 
 ```{r, message = FALSE, eval=FALSE}
-#| label: read_documentation
+#| label: ler_documentation
 # censo escolar
-ipeadatalake::data_documentation(dataset = 'censo_escolar')
+ipeadatalake::abrir_documentacao(dados = 'censo_escolar')
 
 # RAIS
-ipeadatalake::data_documentation(dataset = 'rais')
+ipeadatalake::abrir_documentacao(dados = 'rais')
 ```
 
 
@@ -122,20 +122,20 @@ library(geobr)
 
 # Exemplo 1: Censo Demográfico
 
-O pacote possui a função `read_censo_demografico()` para ler os dados dos censos demográficos brasileiros (IBGE). Esta função é um *wrapper* do pacote {censobr} para ler os dados localmente do *data lake* to Ipea. Assim, você tem as vantagens do {censobr} sem ter que baixar os dados, e o acesso é praticamente instantâneo. Uma diferença importante é que aqui, ao invés de termos uma função separada para cada base de dados do censo demográfico, nós temos uma única função, e o tipo de base de dados deve ser informado no argumento `type`:
+O pacote possui a função `ler_censo_demografico()` para ler os dados dos censos demográficos brasileiros (IBGE). Esta função é um *wrapper* do pacote {censobr} para ler os dados localmente do *data lake* to Ipea. Assim, você tem as vantagens do {censobr} sem ter que baixar os dados, e o acesso é praticamente instantâneo. Uma diferença importante é que aqui, ao invés de termos uma função separada para cada base de dados do censo demográfico, nós temos uma única função, e o tipo de base de dados deve ser informado no argumento `type`:
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_censo_demografico
+#| label: exemplo-ler_censo_demografico
 # dados de populacao
-df_pop <- ipeadatalake::read_censo_demografico(
-  year = 2010, 
-  type = 'populacao'
+df_pop <- ipeadatalake::ler_censo_demografico(
+  ano = 2010, 
+  tipo = 'populacao'
   )
 
 # dados de domicilios
-df_dom <- ipeadatalake::read_censo_demografico(
-  year = 2010, 
-  type = 'domicilios'
+df_dom <- ipeadatalake::ler_censo_demografico(
+  ano = 2010, 
+  tipo = 'domicilios'
   )
 
 ```
@@ -147,16 +147,16 @@ Outra base de dados pública disponível no pacote é o Censo Escolar (Inep). A 
 
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_censo_escolar
+#| label: exemplo-ler_censo_escolar
 # todas escolas em 2023
-df_esc_2023 <- ipeadatalake::read_censo_escolar(
-  year = 2023
+df_esc_2023 <- ipeadatalake::ler_censo_escolar(
+  ano = 2023
   )
 
 # escolas de ensino basico em 2000
-df_esc_2000 <- ipeadatalake::read_censo_escolar(
-  year = 2000, 
-  type = 'basica', 
+df_esc_2000 <- ipeadatalake::ler_censo_escolar(
+  ano = 2000, 
+  tipo = 'basica', 
   )
 
 ```
@@ -164,7 +164,7 @@ df_esc_2000 <- ipeadatalake::read_censo_escolar(
 Nesse exercício abaixo, nós vamos calcular a proporção das escolas públicas municipais que estava conectadas à rede de água em 2023, e como esse índice varia entre as grandes regiões do Brasil.
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_censo_escolar-tabela
+#| label: exemplo-ler_censo_escolar-tabela
 df_esc_agua <- df_esc_2023 |> 
   filter(TP_DEPENDENCIA == 3) |>                                # <1>
   group_by(NO_REGIAO) |>                                        # <2>
@@ -187,9 +187,9 @@ head(df_esc_agua)
 Com essa tabela em mãos, a gente pode fazer um ggplot com o que aprendemos na aula passada.
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_censo_escolar-figura
+#| label: exemplo-ler_censo_escolar-figura
 ggplot(data = df_esc_agua) +
-  geom_col(aes(x=reorder(NO_REGIAO, rede_agua_pct), y = rede_agua_pct)) +
+  geom_col(aes(x=reorder(NO_REGIAO, rede_agua_pct), y = rede_agua_pct), fill='#0d6556') +
   scale_y_continuous(labels = scales::percent) +
   labs(title = "Escolas públicas municipais conectadas a rede de água. Brasil, 2023.", 
        x="Região", y="Proporção") +
@@ -206,10 +206,10 @@ Em linhas gerais, o comportamento padrão da função `ler_pnadc()` é retornar 
 Neste exemplo abaixo, nós vamos calcular qual a proporção de pessoas com ensino superior completo segundo cor/raça no ano de 2023. Para ler os dados, basta rodar o código:
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_pnadc
-df_pnadc <- ipeadatalake::read_pnadc(
-  year = 2023, 
-  interview  = 1
+#| label: exemplo-ler_pnadc
+df_pnadc <- ipeadatalake::ler_pnadc(
+  ano = 2023, 
+  entrevista  = 1
   )
 
 ```
@@ -218,7 +218,7 @@ O próximo passo é processar os dados para calcular o indicador desejado. Isso 
 
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_pnadc_process
+#| label: exemplo-ler_pnadc_process
 
 tab_edu <- df_pnadc |>
   filter(v2009 >= 20) |>                           # <1>
@@ -244,7 +244,7 @@ head(tab_edu)
 Por fim, basta recodificar a coluna de cor/raça e fazermos um ggplot.
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_pnadc_figura
+#| label: exemplo-ler_pnadc_figura
 # recodifica cor
 tab_edu <- tab_edu |>
   mutate( cor = dplyr::case_when(
@@ -265,13 +265,13 @@ ggplot(data=tab_edu) +
 
 ### Amostra complexa
 
-Para usuários avançados que queiram fazer análises incorporando o desenho de amostra complexa da PNADc, basta passar o parâmetro `survey = TRUE` que a função `read_pnadc()` automaticamente gera e retorna o objeto `svyrep.design`. Dicas sobre como analisar esses dados utilizando os pacotes {survey} e {srvyr} [neste livro online](https://tidy-survey-r.github.io/tidy-survey-book/).
+Para usuários avançados que queiram fazer análises incorporando o desenho de amostra complexa da PNADc, basta passar o parâmetro `survey = TRUE` que a função `ler_pnadc()` automaticamente gera e retorna o objeto `svyrep.design`. Dicas sobre como analisar esses dados utilizando os pacotes {survey} e {srvyr} [neste livro online](https://tidy-survey-r.github.io/tidy-survey-book/).
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_pnadc_survey
-svy_pnadc <- ipeadatalake::read_pnadc(
-  year = 2023, 
-  interview  = 1, 
+#| label: exemplo-ler_pnadc_survey
+svy_pnadc <- ipeadatalake::ler_pnadc(
+  ano = 2023, 
+  entrevista = 1, 
   survey = TRUE
   )
 
@@ -290,13 +290,13 @@ Nesse examplo aqui, nós vamos estimar a proporção de famílias com acesso a r
 
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_cadunico
+#| label: exemplo-ler_cadunico
 
 # ler somente colunas de UF e tipo de abastecimento de agua
-df_cadunico <- ipeadatalake::read_cadunico(
-  date = 202407, 
-  type = 'familia',
-  columns = c('co_uf', 'co_abaste_agua_domic_fam')          # <1>
+df_cadunico <- ipeadatalake::ler_cadunico(
+  data = 202407, 
+  tipo = 'familia',
+  colunas = c('co_uf', 'co_abaste_agua_domic_fam')          # <1>
 )
 ```
 1. Lendo somente as colunas necessárias
@@ -305,7 +305,7 @@ df_cadunico <- ipeadatalake::read_cadunico(
 Com os dados em formato arrow, podemos agora calcular proporção de famílias com rede de água em cada UF:
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: exemplo-read_cadunico_summary_tb
+#| label: exemplo-ler_cadunico_summary_tb
 # recodifica coluna de abastecimento de agua
 df_cadunico_agua <- df_cadunico |>
   mutate(agual_canalizada = ifelse(co_abaste_agua_domic_fam==1, 1, 0)) |> # <1>
@@ -340,7 +340,8 @@ df_cadunico_agua_tb <- df_cadunico_agua |>
 ggplot(data = df_cadunico_agua_tb) +
   geom_col(aes(x=reorder(regiao, cobertura_agua), y = cobertura_agua), , fill='#2f4b7c') +
   scale_y_continuous(labels = scales::percent) +
-  labs(title = "Escolas públicas municipais conectadas a rede de água. Brasil, 2023.", x="Região", y="Proporção") +
+  labs(title = "Escolas públicas municipais conectadas a rede de água. Brasil, 2023.", 
+       x="Região", y="Proporção") +
   theme_classic()
 ```
 
@@ -360,14 +361,14 @@ Em todos os casos, pasta passar o parametro `geocode = TRUE` para acessar esses 
 ```{r, message = FALSE, warning=FALSE}
 #| label: exemplo-dados_espaciais_read
 # ler dados com colunas espaciais
-df_esc_2023 <- ipeadatalake::read_censo_escolar(
-  year = 2023, 
-  geocode = TRUE
+df_esc_2023 <- ipeadatalake::ler_censo_escolar(
+  ano = 2023, 
+  geoloc = TRUE
   )
 
 ```
 
-Pare por um instante e veja o nome das colunas espaciais usando `names(df_esc_2023)`. Veja detalhes na documentação da função: `??read_censo_escolar` o que essas colunas significam.
+Pare por um instante e veja o nome das colunas espaciais usando `names(df_esc_2023)`. Veja detalhes na documentação da função: `??ler_censo_escolar` o que essas colunas significam.
 
 ::: {.callout-warning appearance="default"}
 Dentre as colunas de dados espaciais, a coluna `Addr_type` é que traz informação sobre as categorias de precisão das coordenadas geográficas. A definicao exata de cada categoria se encontra [na documentacao do ArcGIS](https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-included-in-the-geocoded-results-.htm). Você deve ter muita cautela na hora de usar estes dados, e entender qual o grau de precisão mínimo que a sua análise exige.
