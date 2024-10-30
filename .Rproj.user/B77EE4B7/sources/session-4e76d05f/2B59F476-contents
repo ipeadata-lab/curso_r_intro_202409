@@ -1,0 +1,25 @@
+df_pnadc <- ipeadatalake::read_pnadc(
+  year = 2023, 
+  interview  = 1, as_data_frame = T
+)
+
+# pseo v1031
+# nível de escolaridade (variável `"VD3004"`)
+
+tab_edu <- df_pnadc |>
+  filter(v2009 > 20) |> # filter idade
+  mutate(dummy_edu_sup = ifelse(vd3004==7,1,0)) |> # new var se superior
+  group_by(v2010) |> # cor
+  summarise(pop_total = sum(v1031),
+          pop_sup_abs = sum(v1031 * dummy_edu_sup),
+          pop_sup_pct = pop_sup_abs / pop_total
+          )
+
+tab_edu <- tab_edu |>
+  mutate( cor = dplyr::case_when(
+    v2010 == 1 ~ 'Branca',
+    v2010 == 2 ~ 'Preta',
+    v2010 == 3 ~ 'Amarela',
+    v2010 == 4 ~ 'Parda', 
+    v2010 == 5 ~ 'Indígena',
+    v2010 == 9 ~ 'Ignorado'))

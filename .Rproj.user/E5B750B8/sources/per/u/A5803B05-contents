@@ -1,0 +1,20 @@
+
+# ler somente colunas de UF e tipo de abastecimento de agua
+df_cadunico <- ipeadatalake::read_cadunico(
+  date = 202407, 
+  type = 'familia' ,columns = c('co_uf', 'co_abaste_agua_domic_fam')
+)
+
+# recodifica coluna de abastecimento de agua
+df_cadunico_agua <- df_cadunico |>
+  mutate(agual_canalizada = ifelse(co_abaste_agua_domic_fam==1, 1, 0)) |> # <1>
+  group_by(co_uf) |>                                                      # <2>
+  summarise(total_familias = n(),                                         # <3>
+            rede_agua_abs = sum(agual_canalizada, na.rm=T),               # <4>
+            rede_agua_pct = rede_agua_abs / total_familias) |>            # <5>
+  collect()                                                               # <6>
+
+df_cadunico_agua_tb <- df_cadunico_agua |>
+  mutate(regiao = substring(co_uf, 1, 1)) |>
+  group_by(regiao) |>
+  summarise(cobertura_agua  = weighted.mean(x=rede_agua_pct, total_familias))
