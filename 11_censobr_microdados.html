@@ -620,13 +620,13 @@ Cache local dos dados
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     V0010     V0601 V6036
-1 8.705865 Masculino    22
-2 8.705865  Feminino    17
-3 9.818689 Masculino    38
-4 9.495608  Feminino    44
-5 9.495608 Masculino    11
-6 9.495608 Masculino    16</code></pre>
+<pre><code>      V0010     V0601 V6036
+1 11.996452  Feminino    14
+2 11.996452 Masculino    45
+3 11.996452  Feminino     3
+4 10.298796  Feminino    57
+5 10.298796 Masculino    53
+6  7.872739  Feminino    29</code></pre>
 </div>
 </div>
 <p>O próximo passo para criamos nossa pirâmide populacional é criar um variável categória com grupos de idade. No exemplo abaix, nós utilizadmos grupos de 5 anos.</p>
@@ -677,12 +677,12 @@ Cache local dos dados
 # Groups:   V0601 [2]
   V0601     age_group pop_count
   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
-1 Masculino 05-10      7623609.
-2 Masculino 25-30      8458790.
-3 Feminino  15-20      8429180.
-4 Feminino  00-05      6781032.
-5 Feminino  60-65      3470156.
-6 Masculino 55-60      3912544.</code></pre>
+1 Masculino 20-25      8627665.
+2 Feminino  15-20      8429180.
+3 Masculino 35-40      6767177.
+4 Feminino  40-45      6688525.
+5 Masculino 10-15      8727095.
+6 Masculino 15-20      8557608.</code></pre>
 </div>
 </div>
 <p>Pronto, no último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>
