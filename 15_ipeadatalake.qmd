@@ -110,7 +110,7 @@ Por padrão, as funções do {ipeadatalake} sempre retoram um objeto tipo `Datas
 
 Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que vamos usar.
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: load-libraries
 # carrega bibliotecas
 library(ipeadatalake)
@@ -124,7 +124,7 @@ library(geobr)
 
 O pacote possui a função `ler_censo_demografico()` para ler os dados dos censos demográficos brasileiros (IBGE). Esta função é um *wrapper* do pacote {censobr} para ler os dados localmente do *data lake* to Ipea. Assim, você tem as vantagens do {censobr} sem ter que baixar os dados, e o acesso é praticamente instantâneo. Uma diferença importante é que aqui, ao invés de termos uma função separada para cada base de dados do censo demográfico, nós temos uma única função, e o tipo de base de dados deve ser informado no argumento `type`:
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_censo_demografico
 # dados de populacao
 df_pop <- ipeadatalake::ler_censo_demografico(
@@ -146,7 +146,7 @@ df_dom <- ipeadatalake::ler_censo_demografico(
 Outra base de dados pública disponível no pacote é o Censo Escolar (Inep). A base traz os dados tanto de escolas de ensino básico quanto profissional. Para edições do censo anteriores a 2007, no entanto, o usuário precisa explicitar qual tipo de escola deve ser lido, pois a função carrega separadamente os dados das escolas de educação básica (`"type = basica"`), e as escolas de ensino profissional (`"type = profissional"`).
 
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_censo_escolar
 # todas escolas em 2023
 df_esc_2023 <- ipeadatalake::ler_censo_escolar(
@@ -163,7 +163,7 @@ df_esc_2000 <- ipeadatalake::ler_censo_escolar(
 
 Nesse exercício abaixo, nós vamos calcular a proporção das escolas públicas municipais que estava conectadas à rede de água em 2023, e como esse índice varia entre as grandes regiões do Brasil.
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_censo_escolar-tabela
 df_esc_agua <- df_esc_2023 |> 
   filter(TP_DEPENDENCIA == 3) |>                                # <1>
@@ -186,7 +186,7 @@ head(df_esc_agua)
 
 Com essa tabela em mãos, a gente pode fazer um ggplot com o que aprendemos na aula passada.
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_censo_escolar-figura
 ggplot(data = df_esc_agua) +
   geom_col(aes(x=reorder(NO_REGIAO, rede_agua_pct), y = rede_agua_pct), fill='#0d6556') +
@@ -205,7 +205,7 @@ Em linhas gerais, o comportamento padrão da função `ler_pnadc()` é retornar 
 
 Neste exemplo abaixo, nós vamos calcular qual a proporção de pessoas com ensino superior completo segundo cor/raça no ano de 2023. Para ler os dados, basta rodar o código:
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_pnadc
 df_pnadc <- ipeadatalake::ler_pnadc(
   ano = 2023, 
@@ -217,7 +217,7 @@ df_pnadc <- ipeadatalake::ler_pnadc(
 O próximo passo é processar os dados para calcular o indicador desejado. Isso exige que a gente crie manipule os dados seguindo o conteúdo que aprendemos nas aulas passadas.
 
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_pnadc_process
 
 tab_edu <- df_pnadc |>
@@ -243,7 +243,7 @@ head(tab_edu)
 
 Por fim, basta recodificar a coluna de cor/raça e fazermos um ggplot.
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_pnadc_figura
 # recodifica cor
 tab_edu <- tab_edu |>
@@ -267,7 +267,7 @@ ggplot(data=tab_edu) +
 
 Para usuários avançados que queiram fazer análises incorporando o desenho de amostra complexa da PNADc, basta passar o parâmetro `survey = TRUE` que a função `ler_pnadc()` automaticamente gera e retorna o objeto `svyrep.design`. Dicas sobre como analisar esses dados utilizando os pacotes {survey} e {srvyr} [neste livro online](https://tidy-survey-r.github.io/tidy-survey-book/).
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_pnadc_survey
 svy_pnadc <- ipeadatalake::ler_pnadc(
   ano = 2023, 
@@ -289,7 +289,7 @@ O Ipea recebe dados das atualizações mensais do Cadúnico. Por isso, ao invés
 Nesse examplo aqui, nós vamos estimar a proporção de famílias com acesso a rede de água em cada região do Brasil em julho de 2024. Repare que podemoves usar o argumento `columns` para carregar apenas as colunas que vamos usar, o que tornar todo processo muito mais rápido e eficiente.
 
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_cadunico
 
 # ler somente colunas de UF e tipo de abastecimento de agua
@@ -304,7 +304,7 @@ df_cadunico <- ipeadatalake::ler_cadunico(
 
 Com os dados em formato arrow, podemos agora calcular proporção de famílias com rede de água em cada UF:
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-ler_cadunico_summary_tb
 # recodifica coluna de abastecimento de agua
 df_cadunico_agua <- df_cadunico |>
@@ -327,7 +327,7 @@ df_cadunico_agua <- df_cadunico |>
 
 Essa tabela acima é agrupada por UF, então agora só falta agruparos resultados  por região e fazer o gráfico.
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-cad_unico-figura
 
 # tira média de cada região
@@ -358,7 +358,7 @@ Atualmente, essas informações espaciais estão disponíveis apenas para alguma
 Em todos os casos, pasta passar o parametro `geocode = TRUE` para acessar esses dados. Neste exemplo abaixo, nós lemos os dados do censo escolar e adicionamos as colunas espaciais.
 
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-dados_espaciais_read
 # ler dados com colunas espaciais
 df_esc_2023 <- ipeadatalake::ler_censo_escolar(
@@ -377,7 +377,7 @@ Dentre as colunas de dados espaciais, a coluna `Addr_type` é que traz informaç
 Agora que entendemos um pouco melhor esses dados, vamos fazer uma rápida inspeção visual para examinar a distribuição espacial das escolas com acesso a rede de água no estado de Sergipe. Neste exemplo, nós só precisamos saber o município de cada escola, então vamos aceitar os resultados do geocode para todas as observações da base.
 
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval = FALSE}
 #| label: exemplo-dados_espaciais_mapa
 
 # filtrar somente estado de Sergipe
