@@ -1233,33 +1233,6 @@
       ],
       "Hash": "856341c90b80b78090cf2d68862102bd"
     },
-    "ipeadatalake": {
-      "Package": "ipeadatalake",
-      "Version": "0.1.0",
-      "Source": "Git",
-      "RemoteType": "git2r",
-      "RemoteUrl": "https://gitlab.ipea.gov.br/data/ipeadatalake",
-      "RemoteRef": "v0.1.0",
-      "RemoteSha": "fc27f89ab3e493135bfb56934ce1b0cc448e15cf",
-      "Requirements": [
-        "DBI",
-        "R",
-        "arrow",
-        "bit64",
-        "censobr",
-        "checkmate",
-        "cli",
-        "data.table",
-        "dplyr",
-        "duckdb",
-        "duckplyr",
-        "fs",
-        "lifecycle",
-        "rlang",
-        "survey"
-      ],
-      "Hash": "7a975cff84657cbd1efec1e77d38c5a2"
-    },
     "ipeaplot": {
       "Package": "ipeaplot",
       "Version": "0.4.0",
