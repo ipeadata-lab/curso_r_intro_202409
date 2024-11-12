@@ -40,7 +40,7 @@ Os recursos computacionais nestes servidores, no entanto, não são ilimitados. 
 
 :::
 
-Veja mais informações na nossa [cheatsheet de boas práticas](images/cheat_sheet_servidores_v3.pdf).
+Veja mais informações na nossa [cheatsheet de boas práticas](images/cheat_sheet_servidores_v2.pdf).
 
 
 # Bases de dados
