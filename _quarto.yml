@@ -14,6 +14,14 @@ website:
   title: "Introdução à análise de dados no R"
   site-url: "https://ipeadata-lab.github.io/curso_r_intro_202409"
   repo-url: "https://github.com/ipeadata-lab/curso_r_intro_202409"
+  navbar:
+    right: 
+      - text: "Materiais"
+        menu:
+          - text: "Introdução à análise de dados no R"
+            href: "https://ipeadata-lab.github.io/curso_r_intro_202409/"
+          - text: "R intermediário e pesquisa reprodutível"
+            href: "https://ipeadata-lab.github.io/curso_r_intermediario_202501/"  
   sidebar:
     style: "docked"
     search: true
