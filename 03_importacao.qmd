@@ -248,11 +248,31 @@ Para importar dados do SIDRA, precisamos saber o **código da tabela** que desej
 Outra forma é buscar por palavras-chave no próprio R, utilizando a função `search_sidra()`:
 
 ```{r}
+#| eval: false
 # Exemplo de busca por palavras-chave: 
 # Tabelas com resultados da PNAD Contínua Trimestral
 sidrar::search_sidra("PNADCT") #<1>
+
+#  [1] "Tabela 5435 - Pessoas de 14 anos ou mais de idade, ocupadas na semana de referência, por grupamento ocupacional no trabalho principal"                                                                                                                                                                                                              
+#  [2] "Tabela 5444 - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente e efetivamente recebidos no trabalho principal, por grupamento ocupacional no trabalho principal"                                                                                     
+#  [3] "Tabela 9399 - Pessoas de 16 e 17 anos de idade classificadas na Proxy de Informalidade no trabalho principal e rendimento médio mensal real destas pessoas ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido no trabalho principal, por grupamento ocupacional no trabalho principal - Estatísticas experimentais"
+#  [4] "Tabela 9407 - Pessoas de 5 a 17 anos de idade em situação de trabalho infantil no trabalho principal, por grupo de idade e grupamento ocupacional no trabalho principal - Estatísticas experimentais"                                                                                                                                               
+#  [5] "Tabela 9440 - Pessoas de 14 anos ou mais de idade ocupadas na semana de referência, exclusive os empregados no setor público e militares, por grupamento ocupacional no trabalho principal e trabalho por meio de plataforma digital de serviço no trabalho principal - Estatísticas experimentais"                                                 
+#  [6] "Tabela 9457 - Indicador 8.5.1 - Rendimento médio por hora real das pessoas de 15 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos, por grupamento ocupacional no trabalho principal"                                                                                 
+#  [7] "Tabela 9485 - Percentual de pessoas de 14 anos ou mais de idade ocupadas na semana de referência, exclusive os empregados no setor público e militares, que trabalharam por meio de plataformas de serviços, por grupamento ocupacional no trabalho principal - Estatísticas experimentais"                                                         
+#  [8] "Tabela 9504 - Pessoas de 5 a 17 anos de idade que realizam atividade econômica, por grupo de idade e grupamento ocupacional no trabalho principal - Estatísticas experimentais"                                                                                                                                                                     
+#  [9] "Tabela 9540 - Percentual de pessoas de 14 anos ou mais de idade ocupadas na semana de referência que realizaram teletrabalho no período de referência de 30 dias, por grupamento ocupacional no trabalho principal - Estatísticas experimentais"                                                                                                    
+# [10] "Tabela 9572 - Percentual de pessoas de 14 anos ou mais de idade ocupadas na semana de referência que realizaram teletrabalho no domicílio no período de referência de 30 dias, por grupamento ocupacional no trabalho principal - Estatísticas experimentais"                                                                                       
+# [11] "Tabela 9575 - Pessoas de 14 anos ou mais de idade ocupadas na semana de referência que trabalharam no domicílio, por grupamento ocupacional no trabalho principal e frequência do trabalho no domicílio - Estatísticas experimentais"                                                                                                               
+# [12] "Tabela 9599 - Pessoas de 14 anos ou mais de idade ocupadas na semana de referência, por grupamento ocupacional no trabalho principal e realização de teletrabalho fora do domicílio no período de referência de 30 dias - Estatísticas experimentais"                                                                                               
+# [13] "Tabela 9603 - Percentual de pessoas de 14 anos ou mais de idade ocupadas na semana de referência que realizaram teletrabalho fora do domicílio no período de referência de 30 dias, por grupamento ocupacional no trabalho principal - Estatísticas experimentais"                                                                                  
+# [14] "Tabela 9617 - Pessoas de 14 anos ou mais de idade ocupadas na semana de referência, por grupamento ocupacional no trabalho principal e realização de teletrabalho no período de referência de 30 dias - Estatísticas experimentais"                                                                                                                 
+# [15] "Tabela 9624 - Pessoas de 14 anos ou mais de idade ocupadas na semana de referência, por grupamento ocupacional no trabalho principal e realização de teletrabalho no domicílio no período de referência de 30 dias - Estatísticas experimentais" 
 ```
 1. Exemplo de busca por palavras-chave: tabelas com resultados da PNAD Contínua Trimestral
+
+
+
 
 Neste curso, utilizaremos na maioria das aulas a [Tabela 4092 - Pessoas de 14 anos ou mais de idade, por condição em relação à força de trabalho e condição e ocupação](https://sidra.ibge.gov.br/Tabela/4092), proveniente da Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T).
 
@@ -261,8 +281,16 @@ Neste curso, utilizaremos na maioria das aulas a [Tabela 4092 - Pessoas de 14 an
 Sabendo o código da tabela, você pode buscar informações sobre a tabela com a função `info_sidra()`. 
 
 ```{r}
+#| eval: false
 info_4092 <- sidrar::info_sidra("4092")
 ```
+
+```{r}
+#| echo: false
+# readr::write_rds(info_4092, "dados_output/sidra_4092_info.rds")
+info_4092 <- readr::read_rds("dados_output/sidra_4092_info.rds")
+```
+
 
 O resultado dessa função é uma lista, portanto podemos acessar os elementos da lista utilizando o operador `$`, seguido pelo nome do elemento.
 
@@ -332,7 +360,6 @@ dados_brutos_4092 <- sidrar::get_sidra(
   period = c("201402", "201702", "202002", "202302"), # <2>
   geo = "State"                  # <3>
 )
-
 ```
 1. Qual é o código da tabela que vamos usar?
 2. Períodos: trimestres, podemos indicar um vetor
