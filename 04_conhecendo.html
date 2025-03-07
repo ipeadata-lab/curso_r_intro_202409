@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,16 +71,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c55491ef36bbbc1896d0375eee332cfe.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -107,10 +107,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Introdução à análise de dados no R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-materiais" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Materiais</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-materiais">    
+        <li>
+    <a class="dropdown-item" href="https://ipeadata-lab.github.io/curso_r_intro_202409/">
+ <span class="dropdown-text">Introdução à análise de dados no R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ipeadata-lab.github.io/curso_r_intermediario_202501/">
+ <span class="dropdown-text">R intermediário e pesquisa reprodutível</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -126,22 +160,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introdução à análise de dados no R</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/ipeadata-lab/curso_r_intro_202409" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
-</div>
-    </div>
-      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Procurar"></div>
         </div>
         </div>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/ipeadata-lab/curso_r_intro_202409" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+</div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -1060,47 +1089,47 @@ Aviso
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(dados_com_n_linha, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  n_linha Nível Territorial (Código)    Nível Territorial
-1    8521                          3 Unidade da Federação
-2    8425                          3 Unidade da Federação
-3    3387                          3 Unidade da Federação
-4    2685                          3 Unidade da Federação
-5   25250                          3 Unidade da Federação
-  Unidade de Medida (Código) Unidade de Medida  Valor
-1                       1572       Mil pessoas 2549.0
-2                       1572       Mil pessoas 1100.0
-3                          2                 %    2.2
-4                       1572       Mil pessoas 1233.0
-5                          2                 %    1.7
+1    1736                          3 Unidade da Federação
+2    4032                          3 Unidade da Federação
+3    3810                          3 Unidade da Federação
+4   21752                          3 Unidade da Federação
+5   25039                          3 Unidade da Federação
+  Unidade de Medida (Código) Unidade de Medida Valor
+1                          2                 %    NA
+2                          2                 %  63.1
+3                          2                 %   3.5
+4                          2                 %  65.3
+5                          2                 %   6.6
   Unidade da Federação (Código) Unidade da Federação Trimestre (Código)
-1                            22                Piauí             201803
-2                            22                Piauí             201702
-3                            14              Roraima             201604
-4                            13             Amazonas             202003
-5                            52                Goiás             201501
+1                            12                 Acre             202101
+2                            15                 Pará             201202
+3                            14              Roraima             202201
+4                            42       Santa Catarina             202102
+5                            52                Goiás             201202
           Trimestre Variável (Código)
-1 3º trimestre 2018              1641
-2 2º trimestre 2017              1641
-3 4º trimestre 2016              4087
-4 3º trimestre 2020              1641
-5 1º trimestre 2015              4087
-                                                       Variável
-1                           Pessoas de 14 anos ou mais de idade
-2                           Pessoas de 14 anos ou mais de idade
-3 Coeficiente de variação - Pessoas de 14 anos ou mais de idade
-4                           Pessoas de 14 anos ou mais de idade
-5 Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+1 1º trimestre 2021              4105
+2 2º trimestre 2012              4104
+3 1º trimestre 2022              4087
+4 2º trimestre 2021              4104
+5 2º trimestre 2012              4105
+                                                                                   Variável
+1 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
+2                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+3                             Coeficiente de variação - Pessoas de 14 anos ou mais de idade
+4                           Distribuição percentual das pessoas de 14 anos ou mais de idade
+5 Coeficiente de variação - Distribuição percentual das pessoas de 14 anos ou mais de idade
   Condição em relação à força de trabalho e condição de ocupação (Código)
 1                                                                   32385
-2                                                                   32447
-3                                                                   32386
-4                                                                   32447
-5                                                                   32447
+2                                                                   32386
+3                                                                   32447
+4                                                                   32386
+5                                                                   32446
   Condição em relação à força de trabalho e condição de ocupação
 1                                                          Total
-2                                      Fora da força de trabalho
-3                                              Força de trabalho
-4                                      Fora da força de trabalho
-5                                      Fora da força de trabalho</code></pre>
+2                                              Força de trabalho
+3                                      Fora da força de trabalho
+4                                              Força de trabalho
+5                                 Força de trabalho - desocupada</code></pre>
 </div>
 </div>
 </section>
@@ -1272,8 +1301,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1389,7 +1416,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
